@@ -23,11 +23,11 @@ export const recetas = [
       S('Mientras tanto, abre los chiles y quítales semillas y venas. Tuéstalos 20 segundos por lado en un comal y remójalos en agua caliente.', 'Meanwhile, open the chilies and remove seeds and veins. Toast them 20 seconds per side on a griddle and soak them in hot water.', 15),
       S('En una sartén con 1 cucharada de manteca, dora por separado: ajonjolí, almendras, cacahuates y pasas, 2 minutos cada uno. Resérvalos.', 'In a pan with 1 tablespoon of lard, brown separately: sesame, almonds, peanuts and raisins, 2 minutes each. Set aside.', 8),
       S('Asa los jitomates, la media cebolla y los 3 dientes de ajo hasta que estén suaves y con manchitas doradas.', 'Roast the tomatoes, the half onion and the 3 garlic cloves until soft and lightly charred.', 10),
-      S('Licúa en tandas: chiles escurridos, frutos secos, tortillas, jitomate, cebolla, ajo, canela, clavos, pimienta, anís y 2 tazas de caldo. Debe quedar muy suave.', 'Blend in batches: drained chilies, nuts, tortillas, tomato, onion, garlic, cinnamon, cloves, pepper, aniseed and 2 cups of broth. It should be very smooth.'),
+      S('Licúa en tandas: chiles escurridos, frutos secos, tortillas, jitomate, cebolla, ajo, canela, clavos, pimienta, anís y 2 tazas de caldo. Debe quedar muy suave.', 'Blend in batches: drained chilies, nuts, tortillas, tomato, onion, garlic, cinnamon, cloves, pepper, aniseed and 2 cups of broth. It should be very smooth.', 8),
       S('Calienta 2 cucharadas de manteca en una cazuela, vierte la pasta (con cuidado, salpica) y fríela, moviendo sin parar.', 'Heat 2 tablespoons of lard in a casserole, pour in the paste (carefully, it splashes) and fry it, stirring constantly.', 10),
       S('Agrega el chocolate, el azúcar y el resto del caldo (hasta 1 litro). Cuece a fuego bajo, moviendo de vez en cuando, hasta que espese.', 'Add the chocolate, sugar and the rest of the broth (up to 1 liter). Simmer on low heat, stirring now and then, until it thickens.', 45),
       S('Prueba y ajusta la sal. Mete las piezas de pollo al mole y déjalas hervir suavecito para que tomen sabor.', 'Taste and adjust the salt. Add the chicken pieces to the mole and let them simmer gently to soak up the flavor.', 15),
-      S('Sirve caliente con ajonjolí por encima, arroz y tortillas. ¡Buen provecho, mijo!', 'Serve hot with sesame seeds on top, rice and tortillas. Enjoy, mijo!'),
+      S('Sirve caliente con ajonjolí por encima, arroz y tortillas. ¡Buen provecho, mijo!', 'Serve hot with sesame seeds on top, rice and tortillas. Enjoy, mijo!', 3),
     ],
   },
   {
@@ -45,10 +45,10 @@ export const recetas = [
     pasos: [
       S('Pon la carne en una olla grande con el agua, la media cebolla, 2 dientes de ajo y 1 cucharadita de sal. Cuece a fuego medio quitando la espuma.', 'Put the pork in a large pot with the water, the half onion, 2 garlic cloves and 1 teaspoon of salt. Cook over medium heat, skimming off the foam.', 60),
       S('Mientras tanto, tuesta los chiles 15 segundos por lado y remójalos en agua caliente.', 'Meanwhile, toast the chilies 15 seconds per side and soak them in hot water.', 15),
-      S('Licúa los chiles escurridos con 2 dientes de ajo, el orégano y 1 taza de caldo. Cuela la salsa.', 'Blend the drained chilies with 2 garlic cloves, the oregano and 1 cup of broth. Strain the sauce.'),
+      S('Licúa los chiles escurridos con 2 dientes de ajo, el orégano y 1 taza de caldo. Cuela la salsa.', 'Blend the drained chilies with 2 garlic cloves, the oregano and 1 cup of broth. Strain the sauce.', 5),
       S('Agrega la salsa y el maíz a la olla. Cuece a fuego bajo hasta que la carne esté suave y el maíz haya florecido.', 'Add the sauce and hominy to the pot. Simmer on low heat until the pork is tender and the hominy has bloomed.', 60),
       S('Prueba y ajusta la sal. Deja reposar 10 minutos con la olla tapada.', 'Taste and adjust the salt. Let it rest for 10 minutes with the lid on.', 10),
-      S('Sirve en tazones y pon en la mesa lechuga, rábano, cebolla, limón, orégano y tostadas. ¡Cada quien arma su pozole!', 'Serve in bowls and put lettuce, radish, onion, lime, oregano and tostadas on the table. Everyone builds their own pozole!'),
+      S('Sirve en tazones y pon en la mesa lechuga, rábano, cebolla, limón, orégano y tostadas. ¡Cada quien arma su pozole!', 'Serve in bowls and put lettuce, radish, onion, lime, oregano and tostadas on the table. Everyone builds their own pozole!', 5),
     ],
   },
   {
@@ -63,10 +63,10 @@ export const recetas = [
     ],
     pasos: [
       S('En una olla, calienta el agua con la canela, el piloncillo y el chocolate, moviendo hasta que todo se disuelva.', 'In a pot, heat the water with the cinnamon, piloncillo and chocolate, stirring until everything dissolves.', 8),
-      S('Disuelve la masa harina en la leche fría con ayuda de un batidor, sin grumos.', 'Dissolve the masa flour in the cold milk with a whisk until smooth.'),
-      S('Vierte la mezcla de leche en la olla colándola, y agrega la pizca de sal.', 'Pour the milk mixture into the pot through a strainer and add the pinch of salt.'),
+      S('Disuelve la masa harina en la leche fría con ayuda de un batidor, sin grumos.', 'Dissolve the masa flour in the cold milk with a whisk until smooth.', 3),
+      S('Vierte la mezcla de leche en la olla colándola, y agrega la pizca de sal.', 'Pour the milk mixture into the pot through a strainer and add the pinch of salt.', 2),
       S('Cuece a fuego bajo moviendo siempre, hasta que espese y cubra la cuchara.', 'Cook on low heat, stirring all the time, until it thickens and coats the spoon.', 12),
-      S('Retira la canela y bátelo con un molinillo hasta que haga espuma. Sirve caliente en tazas.', 'Remove the cinnamon and froth it with a molinillo until foamy. Serve hot in cups.'),
+      S('Retira la canela y bátelo con un molinillo hasta que haga espuma. Sirve caliente en tazas.', 'Remove the cinnamon and froth it with a molinillo until foamy. Serve hot in cups.', 3),
     ],
   },
   {
@@ -81,13 +81,13 @@ export const recetas = [
       I(300, 'g', 'piloncillo (2 conos pequeños)', 'piloncillo (2 small cones)'), I(500, 'ml', 'agua para la miel', 'water for the syrup'), I(1, 'pza', 'raja de canela', 'cinnamon stick'),
     ],
     pasos: [
-      S('Mezcla la harina, el polvo para hornear, la sal y el azúcar. Haz un hueco en el centro.', 'Mix the flour, baking powder, salt and sugar. Make a well in the center.'),
+      S('Mezcla la harina, el polvo para hornear, la sal y el azúcar. Haz un hueco en el centro.', 'Mix the flour, baking powder, salt and sugar. Make a well in the center.', 3),
       S('Agrega los huevos, la mantequilla y el agua de anís poco a poco. Amasa hasta que la masa quede suave y no se pegue.', 'Add the eggs, butter and aniseed water little by little. Knead until the dough is smooth and not sticky.', 10),
       S('Tapa la masa con un trapo húmedo y déjala reposar.', 'Cover the dough with a damp cloth and let it rest.', 30),
       S('Mientras tanto, hierve el agua con el piloncillo y la canela hasta que se haga una miel ligera.', 'Meanwhile, boil the water with the piloncillo and cinnamon until it becomes a light syrup.', 20),
-      S('Divide la masa en 12 bolitas y estíralas muy delgadas (del tamaño de un plato chico).', 'Divide the dough into 12 balls and roll them out very thin (the size of a small plate).'),
+      S('Divide la masa en 12 bolitas y estíralas muy delgadas (del tamaño de un plato chico).', 'Divide the dough into 12 balls and roll them out very thin (the size of a small plate).', 15),
       S('(Con un adulto) Fríe cada buñuelo en aceite caliente 1 minuto por lado, hasta que esté dorado. Escurre en papel absorbente.', '(With an adult) Fry each buñuelo in hot oil 1 minute per side until golden. Drain on paper towels.', 12),
-      S('Báñalos con la miel tibia y sirve de inmediato.', 'Drizzle with the warm syrup and serve right away.'),
+      S('Báñalos con la miel tibia y sirve de inmediato.', 'Drizzle with the warm syrup and serve right away.', 2),
     ],
   },
 ];

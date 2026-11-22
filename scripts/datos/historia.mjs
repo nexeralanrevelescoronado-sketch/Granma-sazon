@@ -60,13 +60,13 @@ export const historia = {
       titulo: P('Sunday pozole', 'Domingo de pozole'),
       relato: {
         es: [
-          'Los domingos íbamos al mercado con mi abuela. Yo llevaba la canasta y ella llevaba la lista.',
+          'Mija, los domingos íbamos al mercado con mi abuela. Yo llevaba la canasta y ella llevaba la lista.',
           'Comprábamos carne, cebolla, limones y rábanos. El vecino siempre nos regalaba un poco de orégano.',
           'En casa, la olla grande cocinaba toda la tarde. ¡Era el pozole de la fiesta!',
           'Esa noche nos juntábamos todos, grandes y chiquitos, y nadie se levantaba de la mesa sin repetir.',
         ],
         en: [
-          'On Sundays we went to the market with my grandmother. I carried the basket and she carried the list.',
+          'Mija, on Sundays we went to the market with my grandmother. I carried the basket and she carried the list.',
           'We bought meat, onions, limes and radishes. The neighbor always gave us a little oregano.',
           'At home, the big pot cooked all afternoon. It was the pozole for the party!',
           'That night we all gathered, big and small, and nobody left the table without having seconds.',
@@ -107,13 +107,13 @@ export const historia = {
       titulo: P('Christmas and buñuelos', 'Navidad y buñuelos'),
       relato: {
         es: [
-          'En diciembre hacía mucho frío en el rancho. Yo me ponía mi rebozo y ayudaba a mi mamá con los buñuelos.',
+          'Mijo, en diciembre hacía mucho frío en el rancho. Yo me ponía mi rebozo y ayudaba a mi mamá con los buñuelos.',
           'Mezclábamos harina, azúcar y un poquito de sal. Después estirábamos la masa con las manos, bien delgadita.',
           'Mi mamá los freía en aceite caliente y yo los bañaba con miel de piloncillo. ¡Qué dulce Navidad!',
           'Una vela en la ventana y un regalo para cada niño: así era nuestra noche buena.',
         ],
         en: [
-          'In December it was very cold on the ranch. I put on my rebozo and helped my mom with the buñuelos.',
+          'Mijo, in December it was very cold on the ranch. I put on my rebozo and helped my mom with the buñuelos.',
           'We mixed flour, sugar and a little salt. Then we stretched the dough with our hands, nice and thin.',
           'My mom fried them in hot oil and I covered them with piloncillo syrup. What a sweet Christmas!',
           'A candle in the window and a gift for every child: that was our Christmas Eve.',
@@ -204,13 +204,13 @@ export const historia = {
           'En la fiesta del pueblo conocí a un joven muy serio, con sombrero de palma. No hablaba mucho, pero me miraba con una sonrisa tranquila.',
           'Me invitó a bailar una pieza. Yo estaba tan nerviosa que casi se me cae la cuchara… ¡todavía la traía en la mano!',
           'Pasó el tiempo y nos casamos. En mi boda cociné mi mole para todos los invitados.',
-          'Aquel joven era tu abuelo. Me hizo una promesa y la cumplió: estar juntos siempre, con el corazón.',
+          'Aquel joven era tu abuelo, mija. Me hizo una promesa y la cumplió: estar juntos siempre, con el corazón.',
         ],
         en: [
           'At the town party I met a very serious young man with a palm hat. He did not talk much, but he looked at me with a calm smile.',
           'He asked me to dance one song. I was so nervous that I almost dropped my spoon… I was still holding it!',
           'Time passed and we got married. At my wedding I cooked my mole for all the guests.',
-          'That young man was your grandfather. He made me a promise and he kept it: to be together always, with all his heart.',
+          'That young man was your grandfather, mija. He made me a promise and he kept it: to be together always, with all his heart.',
         ],
       },
       palabras: [P('hat','sombrero'),P('young','joven'),P('smile','sonrisa'),P('dance','baile'),P('wedding','boda'),P('promise','promesa'),P('together','juntos'),P('always','siempre'),P('heart','corazón'),P('guest','invitado')],

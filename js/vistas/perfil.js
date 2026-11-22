@@ -10,7 +10,7 @@ import { alternarVoz, vozDisponible } from '../habla.js';
 
 export async function montar(main) {
   const S = estado(), listaIns = INSIGNIAS;
-  let hecha = 0; try { const h = await (await import('../datos.js')).historia(); hecha = h.capitulos.every((c) => S.caps[c.id]?.hecho) ? 1 : 0; } catch { hecha = Object.values(S.caps).filter((c) => c.hecho).length >= 5 ? 1 : 0; }
+  let hecha = 0; try { const h = await (await import('../datos.js')).historia(); hecha = h.capitulos.every((c) => S.caps[c.id]?.hecho) ? 1 : 0; } catch { hecha = Object.values(S.caps).filter((c) => c.hecho).length >= 6 ? 1 : 0; }
   const fechaBonita = () => new Date().toLocaleDateString(S.perfil.aprende === 'es' ? 'en-US' : 'es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
   let urlPrevia = null;
 

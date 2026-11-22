@@ -53,8 +53,9 @@ test('no se menciona ni imita a otras apps, marcas o personajes', () => {
   for (const f of readdirSync(join(RAIZ, 'assets/personajes'))) { const t = leer('assets/personajes/' + f).toLowerCase(); for (const m of marcas) assert.ok(!t.includes(m)); }
 });
 
-test('Historia 1: 5 capítulos, 8-10 palabras, relato bilingüe y consejo con 2 claves', () => {
-  assert.equal(historia.capitulos.length, 5);
+test('Historia 1: 6 capítulos, 8-10 palabras, relato bilingüe y consejo con 2 claves', () => {
+  assert.equal(historia.capitulos.length, 6);
+  assert.deepEqual(historia.capitulos.map((c) => c.id), [1, 2, 3, 4, 5, 6]);
   for (const c of historia.capitulos) {
     assert.ok(c.palabras.length >= 8 && c.palabras.length <= 10, `cap ${c.id}: ${c.palabras.length} palabras`);
     assert.ok(c.relato.es.length >= 3 && c.relato.es.length === c.relato.en.length, `cap ${c.id}: relato ES/EN`);
@@ -92,8 +93,8 @@ test('los ejercicios cambian según el interés (5 por capítulo, en ambos idiom
   }
 });
 
-test('recetas: mole, pozole, champurrado y buñuelos con medidas, pasos y cronómetro', () => {
-  assert.deepEqual(recetas.map((r) => r.id).sort(), ['bunuelos', 'champurrado', 'mole', 'pozole']);
+test('recetas: mole, pozole, champurrado, buñuelos y ponche con medidas, pasos y cronómetro', () => {
+  assert.deepEqual(recetas.map((r) => r.id).sort(), ['bunuelos', 'champurrado', 'mole', 'ponche', 'pozole']);
   assert.equal(recetas.find((r) => r.id === 'mole').estrella, true);
   assert.equal(recetas.find((r) => r.id === 'pozole').insignia, 'dia-festivo'); assert.equal(recetas.find((r) => r.id === 'mole').insignia, 'maestro-mole');
   for (const r of recetas) {

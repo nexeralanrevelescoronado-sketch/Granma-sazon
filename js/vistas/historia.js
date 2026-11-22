@@ -7,7 +7,7 @@ import { esc } from '../util.js';
 export async function montar(main) {
   const S = estado(), h = await historia();
   const hechos = h.capitulos.filter((c) => S.caps[c.id]?.hecho).length, todos = hechos === h.capitulos.length;
-  main.innerHTML = `<div class="dialogo">${pj('granma', 'contento')}<div class="globo"><span class="quien">Granma</span><h1 style="font-size:1.3rem;margin:0">${esc(Ln(h.titulo))}</h1><p>${u('Cinco capítulos de mi niñez. En cada uno aprendes palabras y cocinamos una receta.', 'Five chapters from my childhood. In each one you learn words and we cook a recipe.')}</p></div></div>
+  main.innerHTML = `<div class="dialogo">${pj('granma', 'contento')}<div class="globo"><span class="quien">Granma</span><h1 style="font-size:1.3rem;margin:0">${esc(Ln(h.titulo))}</h1><p>${u(`${h.capitulos.length} capítulos de mi vida. En cada uno aprendes palabras y cocinamos una receta.`, `${h.capitulos.length} chapters from my life. In each one you learn words and we cook a recipe.`)}</p></div></div>
     <div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="${h.capitulos.length}" aria-valuenow="${hechos}" aria-label="${u('Capítulos terminados', 'Chapters completed')}"><i style="transform:scaleX(${((hechos / h.capitulos.length) * 100) / 100})"></i></div>
     <p class="muted">${hechos} / ${h.capitulos.length} ${u('capítulos', 'chapters')} · ${u('Nivel', 'Level')} ${h.nivel}</p>
     <ol class="mapa mt">${h.capitulos.map((c) => {

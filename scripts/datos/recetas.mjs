@@ -90,4 +90,105 @@ export const recetas = [
       S('Báñalos con la miel tibia y sirve de inmediato.', 'Drizzle with the warm syrup and serve right away.', 2),
     ],
   },
+  // Ponche navideño (capítulo 6; agregado con la skill contenido-granma)
+  {
+    "id": "ponche",
+    "icono": "ponche",
+    "insignia": null,
+    "nombre": {
+      "es": "Ponche navideño",
+      "en": "Christmas fruit punch"
+    },
+    "resumen": {
+      "es": "La bebida calientita de frutas y canela de las posadas.",
+      "en": "The warm fruit and cinnamon drink of the posadas."
+    },
+    "nota": {
+      "es": "La olla y el líquido hierven y queman: pide ayuda de un adulto para cortar la fruta y para servir. Déjalo entibiar antes de tomarlo.",
+      "en": "The pot and the liquid are boiling hot: ask an adult to help cut the fruit and serve. Let it cool a little before drinking."
+    },
+    "nivel": {
+      "es": "Fácil",
+      "en": "Easy"
+    },
+    "porciones": 8,
+    "tiempoPrep": 15,
+    "tiempoCoccion": 45,
+    "ingredientes": [
+      {
+        "cant": 2,
+        "un": "L",
+        "es": "agua",
+        "en": "water"
+      },
+      {
+        "cant": 4,
+        "un": "pza",
+        "es": "guayabas, en cuartos",
+        "en": "guavas, in quarters"
+      },
+      {
+        "cant": 2,
+        "un": "pza",
+        "es": "manzanas, en trozos",
+        "en": "apples, in chunks"
+      },
+      {
+        "cant": 8,
+        "un": "pza",
+        "es": "ciruelas pasas",
+        "en": "prunes"
+      },
+      {
+        "cant": 2,
+        "un": "pza",
+        "es": "rajas de canela (5 cm cada una)",
+        "en": "cinnamon sticks (5 cm each)"
+      },
+      {
+        "cant": 150,
+        "un": "g",
+        "es": "piloncillo",
+        "en": "piloncillo"
+      },
+      {
+        "cant": 2,
+        "un": "pza",
+        "es": "naranjas, en rebanadas",
+        "en": "oranges, sliced"
+      }
+    ],
+    "pasos": [
+      {
+        "es": "Con ayuda de un adulto, lava la fruta y córtala: las guayabas en cuartos, las manzanas en trozos y las naranjas en rebanadas.",
+        "en": "With an adult's help, wash the fruit and cut it: guavas in quarters, apples in chunks and oranges in slices.",
+        "min": 10
+      },
+      {
+        "es": "En una olla grande, pon el agua con el piloncillo y la canela a fuego medio, moviendo hasta que el piloncillo se disuelva.",
+        "en": "In a large pot, put the water with the piloncillo and cinnamon on medium heat, stirring until the piloncillo dissolves.",
+        "min": 8
+      },
+      {
+        "es": "Agrega la guayaba, la manzana, las ciruelas pasas y la naranja.",
+        "en": "Add the guava, apple, prunes and orange.",
+        "min": 2
+      },
+      {
+        "es": "Baja el fuego y cuece tapado hasta que la fruta esté suave y el aroma llene la cocina.",
+        "en": "Lower the heat and cook covered until the fruit is soft and the aroma fills the kitchen.",
+        "min": 30
+      },
+      {
+        "es": "Apaga el fuego y deja reposar para que se mezclen los sabores.",
+        "en": "Turn off the heat and let it rest so the flavors blend.",
+        "min": 5
+      },
+      {
+        "es": "Un adulto sirve el ponche caliente en tazas, con un poco de fruta en cada una.",
+        "en": "An adult serves the hot punch in cups, with some fruit in each one.",
+        "min": 5
+      }
+    ]
+  },
 ];

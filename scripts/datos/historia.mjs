@@ -243,5 +243,188 @@ export const historia = {
       },
       consejo: { es: 'Quien promete con el corazón, cumple con las manos.', en: 'Whoever promises with the heart keeps it with the hands.', clave: [P('promises','promete'), P('keeps','cumple')] },
     },
+    // Capítulo 6 (agregado con la skill contenido-granma; objeto literal validado con validar.mjs)
+    {
+      "id": 6,
+      "receta": "ponche",
+      "titulo": {
+        "es": "La noche de las posadas",
+        "en": "The night of the posadas"
+      },
+      "relato": {
+        "es": [
+          "Cada diciembre, mijo, mi casita se llenaba de gente para las posadas. Los vecinos llegaban con un farol en la mano y la nariz roja de frío.",
+          "Los niños cantaban un villancico afuera de la puerta, pidiendo posada como en la historia de José y María. Yo abría y les decía: «Pásenle, pásenle, aquí hay lugar para todos».",
+          "Luego venía la piñata, con su estrella de colores. Tu abuelo, tan serio, le ponía el palo a cada niño con mucho cuidado, y todos reíamos cuando caían los dulces.",
+          "Y para el frío, una olla grande de ponche: guayaba, manzana y canela, bien calientito. Ándale, mijo, hoy también te toca prepararlo conmigo, con cobija o sin cobija.",
+          "Tu abuelo nunca decía mucho, pero en cada posada levantaba su taza y sonreía. Eso era su manera de decir «gracias por venir»."
+        ],
+        "en": [
+          "Every December, mijo, my little house filled with people for the posadas. The neighbors arrived with a lantern in hand and red noses from the cold.",
+          "The children sang a carol outside the door, asking for shelter like in the story of Joseph and Mary. I opened up and said: \"Come in, come in, there is room for everyone here\".",
+          "Then came the piñata, with its colorful star. Your grandfather, so serious, handed the stick to each child very carefully, and we all laughed when the candy fell.",
+          "And for the cold, a big pot of punch: guava, apple and cinnamon, nice and warm. Come on, mijo, today you get to make it with me, with a blanket or without one.",
+          "Your grandfather never said much, but at every posada he raised his cup and smiled. That was his way of saying \"thank you for coming\"."
+        ]
+      },
+      "palabras": [
+        {
+          "en": "lantern",
+          "es": "farol"
+        },
+        {
+          "en": "carol",
+          "es": "villancico"
+        },
+        {
+          "en": "piñata",
+          "es": "piñata"
+        },
+        {
+          "en": "cinnamon",
+          "es": "canela"
+        },
+        {
+          "en": "guava",
+          "es": "guayaba"
+        },
+        {
+          "en": "star",
+          "es": "estrella"
+        },
+        {
+          "en": "sing",
+          "es": "cantar"
+        },
+        {
+          "en": "blanket",
+          "es": "cobija"
+        },
+        {
+          "en": "warm",
+          "es": "cálido"
+        },
+        {
+          "en": "cup",
+          "es": "taza"
+        }
+      ],
+      "ejemplos": {
+        "trabajo": [
+          {
+            "en": "A warm welcome helps every customer.",
+            "es": "Un trato cálido ayuda a cada cliente.",
+            "we": "warm",
+            "ws": "cálido"
+          },
+          {
+            "en": "She is the star of the team.",
+            "es": "Ella es la estrella del equipo.",
+            "we": "star",
+            "ws": "estrella"
+          },
+          {
+            "en": "A lantern at the door tells customers we are open.",
+            "es": "Un farol en la puerta avisa a los clientes que estamos abiertos.",
+            "we": "lantern",
+            "ws": "farol"
+          }
+        ],
+        "amigos": [
+          {
+            "en": "My friend has a piñata at the party.",
+            "es": "Mi amigo tiene una piñata en la fiesta.",
+            "we": "piñata",
+            "ws": "piñata"
+          },
+          {
+            "en": "My friend brings a blanket to the park.",
+            "es": "Mi amigo trae una cobija al parque.",
+            "we": "blanket",
+            "ws": "cobija"
+          },
+          {
+            "en": "Let us sing together tonight.",
+            "es": "Vamos a cantar juntos esta noche.",
+            "we": "sing",
+            "ws": "cantar"
+          }
+        ],
+        "biblia": [
+          {
+            "en": "The wise men followed a star.",
+            "es": "Los sabios siguieron una estrella.",
+            "we": "star",
+            "ws": "estrella"
+          },
+          {
+            "en": "Let us sing to the Lord.",
+            "es": "Vamos a cantar al Señor.",
+            "we": "sing",
+            "ws": "cantar"
+          },
+          {
+            "en": "We sing a carol about baby Jesus.",
+            "es": "Cantamos un villancico del niño Jesús.",
+            "we": "carol",
+            "ws": "villancico"
+          }
+        ],
+        "viajes": [
+          {
+            "en": "I need a blanket for the cold bus.",
+            "es": "Necesito una cobija para el autobús frío.",
+            "we": "blanket",
+            "ws": "cobija"
+          },
+          {
+            "en": "I carry a small lantern on the trip.",
+            "es": "Llevo un farol pequeño en el viaje.",
+            "we": "lantern",
+            "ws": "farol"
+          },
+          {
+            "en": "In the desert you can see every star.",
+            "es": "En el desierto se ve cada estrella.",
+            "we": "star",
+            "ws": "estrella"
+          }
+        ],
+        "cocina": [
+          {
+            "en": "Add one cinnamon stick to the pot.",
+            "es": "Agrega una raja de canela a la olla.",
+            "we": "cinnamon",
+            "ws": "canela"
+          },
+          {
+            "en": "Cut the guava into pieces.",
+            "es": "Corta la guayaba en trozos.",
+            "we": "guava",
+            "ws": "guayaba"
+          },
+          {
+            "en": "Serve the punch in a cup.",
+            "es": "Sirve el ponche en una taza.",
+            "we": "cup",
+            "ws": "taza"
+          }
+        ]
+      },
+      "consejo": {
+        "es": "Una puerta abierta calienta más que una fogata.",
+        "en": "An open door warms more than a bonfire.",
+        "clave": [
+          {
+            "es": "puerta",
+            "en": "door"
+          },
+          {
+            "es": "abierta",
+            "en": "open"
+          }
+        ]
+      }
+    },
   ],
 };

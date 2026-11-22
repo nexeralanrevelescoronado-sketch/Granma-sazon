@@ -10,8 +10,8 @@
 |---|---|
 | **Historia de Granma** | 5 capítulos de su niñez · relato bilingüe · 10 palabras por capítulo · 5 ejercicios (opción múltiple, ordenar frase, emparejar) que **cambian según el interés** · «El consejo del Abuelo» con 2 palabras clave |
 | **Recetas** | Mole poblano (la estrella), pozole («Día festivo»), champurrado y buñuelos · medidas exactas · pasos con **cronómetro** · ES/EN · JSON-LD `Recipe` |
-| **El consejo del Abuelo** | 42 consejos (trabajo, amistad, familia, constancia, fe, dinero, cocina) con claves y mini-ejercicio · consejo del día + WhatsApp |
-| **Cotorreo con Granma** | 30 chistes, adivinanzas, refranes, trabalenguas y juegos de palabras sanos · «¿Qué quiso decir?» · el Abuelo de remate serio · chiste del día + WhatsApp |
+| **El consejo del Abuelo** | 45 consejos (trabajo, amistad, familia, constancia, fe, dinero, cocina) con claves y mini-ejercicio · consejo del día + WhatsApp |
+| **Cotorreo con Granma** | 33 chistes, adivinanzas, refranes, trabalenguas y juegos de palabras sanos · «¿Qué quiso decir?» · el Abuelo de remate serio · chiste del día + WhatsApp |
 | **Biblia** | Lado a lado o una versión · **RV1909, KJV y WEB** (dominio público, offline) · búsqueda · ruta de ejercicios con versículos ES/EN · NTV/NLT preparadas como proveedores con licencia (apagadas) |
 | **Juego** | Racha diaria, XP, «tortillitas» (vidas que se regeneran), mapa de capítulos, retos de 60 s, misiones diarias, 5 insignias, sonidos opcionales, confeti, **Constancia Granma** (PNG generado en el dispositivo) |
 | **Sin internet** | Pantalla «Descargas»: paquetes con su peso, progreso, **pausa/reanudación**, reanuda sola al volver el internet, espacio usado, borrar por paquete |

@@ -155,6 +155,17 @@ function validarBiblia(p) {
   return [e, a];
 }
 
+/* campos permitidos por tipo: nada de `autor`, `atribucion`, `nota`… inventados (rompen el esquema y las pruebas del repo) */
+const CAMPOS = {
+  consejos: ['id', 'tema', 'es', 'en', 'clave', 'q'],
+  cotorreos: ['id', 'tema', 'tipo', 'es', 'en', 'clave', 'q', 'abuelo'],
+  capitulos: ['id', 'receta', 'titulo', 'relato', 'palabras', 'ejemplos', 'consejo'],
+  recetas: ['id', 'icono', 'estrella', 'insignia', 'nombre', 'resumen', 'porciones', 'tiempoPrep', 'tiempoCoccion', 'nivel', 'nota', 'ingredientes', 'pasos'],
+  biblia: ['id', 'ref', 'titulo', 'pares'],
+};
+/* gentilicios y apodos regionales: no son error por sí solos (puede haber un «poblano» legítimo), pero un chiste con ellos casi siempre es una burla */
+const GENTILICIOS = ['regio', 'regios', 'regiomontano', 'regiomontanos', 'chilango', 'chilangos', 'jarocho', 'jarochos', 'tapatío', 'tapatíos', 'norteño', 'norteños', 'yucateco', 'yucatecos', 'naco', 'nacos', 'gringo', 'gringos', 'paisa'];
+
 const VALIDADORES = { consejos: validarConsejo, cotorreos: validarCotorreo, capitulos: validarCapitulo, recetas: validarReceta, biblia: validarBiblia };
 const ARCHIVO = { consejos: 'data/consejos.json', cotorreos: 'data/cotorreo.json', capitulos: null, recetas: 'data/recetas.json', biblia: 'data/biblia/ruta.json' };
 const etiqueta = (tipo, it, n) => `${tipo.slice(0, -1)} ${it.id ?? n + 1}${it.es ? ` «${String(it.es).slice(0, 38)}…»` : it.titulo?.es ? ` «${it.titulo.es}»` : it.nombre?.es ? ` «${it.nombre.es}»` : ''}`;
@@ -163,6 +174,9 @@ function validarLista(tipo, lista, { duplicadosContra = [] } = {}) {
   let errores = 0, avisos = 0; const salida = [], vistos = new Set(duplicadosContra.map((x) => norm(x)));
   lista.forEach((it, n) => {
     const [e, a] = VALIDADORES[tipo](it), [e2, a2] = reglasGenerales(it), clave = norm(it.es ?? it.titulo?.es ?? it.nombre?.es ?? it.id ?? '');
+    const extra = Object.keys(it).filter((k) => !CAMPOS[tipo].includes(k));
+    if (extra.length) e2.push(`campo(s) fuera del esquema: ${extra.join(', ')} (usa solo ${CAMPOS[tipo].join(', ')})`);
+    if (tipo === 'cotorreos' || tipo === 'consejos') { const texto = norm(`${it.es} ${it.en}`); const g = GENTILICIOS.filter((w) => new RegExp(`(^|[^\\p{L}])${esc(w)}($|[^\\p{L}])`, 'u').test(texto)); if (g.length) a2.push(`menciona a un grupo regional («${g.join(', ')}»): ¿es una burla? el humor no se ríe de regiones`); }
     const todo = [...e, ...e2], av = [...a, ...a2];
     if (clave && vistos.has(clave)) todo.push('duplicado: ya existe contenido con el mismo texto'); vistos.add(clave);
     errores += todo.length; avisos += av.length;

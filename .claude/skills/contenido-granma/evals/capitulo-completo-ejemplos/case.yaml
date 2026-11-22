@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: capitulo-completo-ejemplos
+expected_outcome: |
+  Capítulo completo con el esquema de data/historia.json: relato de 3-5 párrafos ES/EN con mijo/mija, 8-10 palabras, 3 frases por cada uno de los 5 intereses con la palabra completa en ambos idiomas, y consejo del Abuelo con 2 claves. Valida con validar.mjs sin errores.

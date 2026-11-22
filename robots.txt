@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /demo-animaciones.html
+Sitemap: https://nexeralanrevelescoronado-sketch.github.io/Granma-sazon/sitemap.xml

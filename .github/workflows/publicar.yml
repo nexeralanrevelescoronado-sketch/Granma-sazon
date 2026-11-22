@@ -1,0 +1,25 @@
+# Publica el sitio: cada cambio en main se copia a la rama gh-pages, que es la que sirve GitHub Pages.
+name: Publicar en GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publicar
+  cancel-in-progress: true
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Pruebas del contenido
+        run: npm test
+      - name: Copiar main a gh-pages
+        run: git push origin HEAD:gh-pages --force

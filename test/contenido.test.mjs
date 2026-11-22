@@ -235,3 +235,14 @@ test('consistencia: la historia ya no se llama «niñez» y hay nota de cambios 
   assert.ok(leer('js/constancia.js').includes('La vida de Granma en México') && !leer('js/constancia.js').includes('niñez'));
   const nota = leer('docs/CAMBIOS-AL-SPEC.md'); for (const t of ['6 capítulos', 'Energía', 'Pruebas']) assert.ok(nota.includes(t), 'falta en la nota: ' + t);
 });
+
+test('publicación: una sola dirección pública en index, recetas, robots y sitemap', async () => {
+  const { SITIO } = await import('../scripts/sitio.mjs');
+  assert.match(SITIO, /^https:\/\/.+\/$/);
+  const idx = leer('index.html');
+  assert.ok(idx.includes(`<link rel="canonical" href="${SITIO}">`) && idx.includes(`content="${SITIO}assets/iconos/og-1200.png"`), 'canonical e imagen social absolutas');
+  assert.ok(leer('robots.txt').includes(`Sitemap: ${SITIO}sitemap.xml`));
+  const mapa = leer('sitemap.xml'); for (const r of recetas) assert.ok(mapa.includes(`${SITIO}recetas/${r.id}.html`), 'sitemap sin ' + r.id);
+  const mole = leer('recetas/mole.html'); assert.ok(mole.includes(`"image":["${SITIO}assets/iconos/og-1200.png"]`) && mole.includes(`rel="canonical" href="${SITIO}recetas/mole.html"`));
+  assert.ok(existsSync(join(RAIZ, '.nojekyll')), 'GitHub Pages debe servir los archivos tal cual');
+});

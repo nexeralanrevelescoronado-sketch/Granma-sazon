@@ -12,6 +12,7 @@ import { cotorreos } from './datos/cotorreo.mjs';
 import { rutaBiblia } from './datos/biblia.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
+import { SITIO } from './sitio.mjs';
 const j = (...p) => join(RAIZ, ...p);
 const escribir = (ruta, obj) => { mkdirSync(dirname(ruta), { recursive: true }); writeFileSync(ruta, typeof obj === 'string' ? obj : JSON.stringify(obj)); };
 const url = (ruta) => relative(RAIZ, ruta).split(sep).join('/');
@@ -41,7 +42,7 @@ for (const r of recetas) {
     prepTime: iso(r.tiempoPrep), cookTime: iso(r.tiempoCoccion), totalTime: iso(total), recipeYield: `${r.porciones} porciones`,
     recipeIngredient: r.ingredientes.map(ing),
     recipeInstructions: r.pasos.map((p, k) => ({ '@type': 'HowToStep', position: k + 1, text: p.es })),
-    image: ['../assets/iconos/og-1200.png'],
+    image: [`${SITIO}assets/iconos/og-1200.png`], url: `${SITIO}recetas/${r.id}.html`,
   };
   const html = `<!doctype html>
 <html lang="es">
@@ -51,10 +52,11 @@ for (const r of recetas) {
 <title>${esc(r.nombre.es)} — Granma Sazón</title>
 <meta name="description" content="${esc(r.resumen.es)} Ingredientes con medidas exactas y pasos con cronómetro. Recipe in English too.">
 <meta name="theme-color" content="#C8553D">
+<link rel="canonical" href="${SITIO}recetas/${r.id}.html">
 <link rel="icon" href="../assets/logo/icono.svg" type="image/svg+xml">
 <link rel="manifest" href="../manifest.webmanifest">
 <meta property="og:type" content="article"><meta property="og:title" content="${esc(r.nombre.es)} — Granma Sazón"><meta property="og:description" content="${esc(r.resumen.es)}">
-<meta property="og:image" content="../assets/iconos/og-1200.png"><meta property="og:locale" content="es_MX"><meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="${SITIO}assets/iconos/og-1200.png"><meta property="og:url" content="${SITIO}recetas/${r.id}.html"><meta property="og:locale" content="es_MX"><meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 <style>body{font:18px/1.6 system-ui,sans-serif;margin:0;background:#FFF1DC;color:#4A2E1B}main{max-width:44rem;margin:0 auto;padding:1rem 16px 3rem}h1,h2{font-family:Georgia,serif;color:#8F3A27}a.b{display:inline-flex;min-height:44px;align-items:center;padding:0 1.2rem;background:#9C3F29;color:#fff;border-radius:999px;text-decoration:none;font-weight:700}li{margin:.3rem 0}</style>
@@ -85,6 +87,10 @@ const paquetes = [
   { id: 'biblia', nombre: { es: 'Biblia (RV1909, KJV y WEB)', en: 'Bible (RV1909, KJV and WEB)' }, icono: '✝️', archivos: bibliaFiles },
 ].map((p) => ({ ...p, bytes: peso(p.archivos) }));
 escribir(j('data', 'paquetes.json'), { fmt: 1, paquetes: paquetes.map((p) => p) });
+
+// ---- robots.txt y sitemap.xml (con la dirección pública)
+escribir(j('robots.txt'), `User-agent: *\nAllow: /\nDisallow: /demo-animaciones.html\nSitemap: ${SITIO}sitemap.xml\n`);
+escribir(j('sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[SITIO, ...recetas.map((r) => `${SITIO}recetas/${r.id}.html`)].map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
 
 // ---- 3) nucleo (cache de la app) + version por contenido
 const nucleo = [

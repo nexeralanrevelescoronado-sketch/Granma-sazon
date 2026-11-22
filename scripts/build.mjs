@@ -89,7 +89,7 @@ escribir(j('data', 'paquetes.json'), { fmt: 1, paquetes: paquetes.map((p) => p) 
 // ---- 3) nucleo (cache de la app) + version por contenido
 const nucleo = [
   'index.html', 'manifest.webmanifest', 'data/paquetes.json',
-  ...listar(j('css')).map(url), ...listar(j('js')).map(url),
+  'demo-animaciones.html', ...listar(j('css')).map(url), ...listar(j('js')).map(url), ...listar(j('assets', 'animaciones')).map(url),
   ...listar(j('assets', 'personajes'), (f) => /\/(granma-(contenta|hablando|carinosa|pensando|aplaudiendo)|abuelo-(serio|hablando|sonrisa|asintiendo|aconsejando))\.svg$/.test(f.split(sep).join('/'))).map(url),
   ...listar(j('assets', 'logo')).map(url),
   ...listar(j('assets', 'iconos'), (f) => !/og-1200/.test(f)).map(url),

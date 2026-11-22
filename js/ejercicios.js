@@ -5,6 +5,7 @@ import { u, tgt, nat, vidas, perderVida } from './state.js';
 import { pj } from './personajes.js';
 import { sonido } from './sound.js';
 import { confeti, animar, vibrar, hablar } from './fx.js';
+import { reaccion, tortillaPierde } from '../assets/animaciones/index.js';
 
 /* ---------- generación ---------- */
 const otros = (palabras, excluir, n, campo) => mezclar(palabras.filter((p) => p[campo] !== excluir)).slice(0, n);
@@ -34,8 +35,8 @@ export function ejerciciosDeCapitulo(cap, interes) {
 }
 
 /* ---------- reproductor ---------- */
-const OK = [['granma', 'aplaudiendo', '¡Eso es, mija!', 'That is it, mija!'], ['granma', 'contento', '¡Qué bonito, mijo!', 'How lovely, mijo!'], ['abuelo', 'contento', 'Bien hecho.', 'Well done.'], ['granma', 'animo', '¡Ándale, sigue así!', 'Go on, keep it up!'], ['abuelo', 'aplaudiendo', 'Muy bien.', 'Very good.']];
-const MAL = [['granma', 'animo', '¡Ándale, otra vez, mijo!', 'Come on, try again, mijo!'], ['abuelo', 'pensando', 'Quien persevera, alcanza.', 'Whoever perseveres, achieves.'], ['granma', 'pensando', 'No pasa nada, mija. Así se aprende.', 'It is fine, mija. That is how we learn.']];
+const OK = [['granma', 'aplaudiendo', '¡Eso es, mija!', 'That is it, mija!'], ['granma', 'aplaudiendo', '¡Qué bonito, mijo!', 'How lovely, mijo!'], ['abuelo', 'asintiendo', 'Bien hecho.', 'Well done.'], ['granma', 'aplaudiendo', '¡Ándale, sigue así!', 'Go on, keep it up!'], ['abuelo', 'asintiendo', 'Muy bien.', 'Very good.']];
+const MAL = [['granma', 'contenta', '¡Ándale, otra vez, mijo!', 'Come on, try again, mijo!'], ['abuelo', 'serio', 'Quien persevera, alcanza.', 'Whoever perseveres, achieves.'], ['granma', 'pensando', 'No pasa nada, mija. Así se aprende.', 'It is fine, mija. That is how we learn.']];
 
 /**
  * Juega una lista de ejercicios dentro de `raiz`.
@@ -91,18 +92,21 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
         msg = al(OK);
       } else {
         errores++; sonido.mal(); vibrar([40, 40, 40]);
-        if (usarVidas && it.tipo !== 'pares') perderVida();
+        if (usarVidas && it.tipo !== 'pares') { perderVida(); perdioTortilla(); }
         if (!it.reintento) { cola.push({ ...it, reintento: true }); } else hechos++;
         msg = al(MAL);
       }
       const [quien, variante, es, en] = msg;
       const pie = raiz.querySelector('[data-pie]') || (() => { const d = document.createElement('div'); d.dataset.pie = ''; raiz.append(d); return d; })();
       pie.className = 'retro ' + (ok ? 'ok' : 'mal');
-      pie.innerHTML = `${pj(quien, variante, { clase: ok ? 'anim-brinca' : 'anim-asiente' })}<div class="msg" role="alert">${u(es, en)}${!ok && correcta ? `<br><small>${u('Respuesta', 'Answer')}: <strong>${esc(correcta)}</strong></small>` : ''}</div><button class="btn ${ok ? 'verde' : ''}" data-seguir>${u('Continuar', 'Continue')}</button>`;
+      pie.innerHTML = `${pj(quien, variante)}<div class="msg" role="alert">${u(es, en)}${!ok && correcta ? `<br><small>${u('Respuesta', 'Answer')}: <strong>${esc(correcta)}</strong></small>` : ''}</div><button class="btn ${ok ? 'verde' : ''}" data-seguir>${u('Continuar', 'Continue')}</button>`;
       pie.querySelector('[data-seguir]').focus();
-      if (ok && hechos === total) confeti(60);
+      if (ok) reaccion(pie.querySelector('.pj'), quien === 'granma' ? 'aplauso' : 'asiente');
       const barra = raiz.querySelector('.barra>i'); if (barra) barra.style.width = `${(hechos / total) * 100}%`;
     }
+
+    // La tortillita que acaba de perderse (la de índice = vidas actuales) se desinfla y cae
+    function perdioTortilla() { tortillaPierde(raiz.querySelectorAll('.vidas .tortilla')[vidas()]); }
 
     function delegado(ev) {
       const b = ev.target.closest('button'); if (!b || !raiz.contains(b)) return;
@@ -141,7 +145,7 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
           if (++it.hechosPares === it.pares.length) responder(!it.fallo);
         } else {
           it.fallo = true; const a = it.sel; a.classList.add('mal'); b.classList.add('mal'); it.sel = null; sonido.mal(); vibrar(40);
-          if (usarVidas && !it.vidaPerdida) { it.vidaPerdida = true; perderVida(); const v = raiz.querySelector('.vidas'); if (v) v.innerHTML = Array.from({ length: 5 }, (_, k) => `<i class="tortilla ${k < vidas() ? '' : 'vacia'}"></i>`).join(''); }
+          if (usarVidas && !it.vidaPerdida) { it.vidaPerdida = true; perderVida(); perdioTortilla(); }
           setTimeout(() => { a.classList.remove('mal', 'sel'); b.classList.remove('mal'); }, 450);
         }
       }

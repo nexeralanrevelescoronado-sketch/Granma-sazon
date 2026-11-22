@@ -54,7 +54,7 @@ export async function montar(main, { args }) {
     const primera = !S.caps[id]?.hecho, xp = 20 + resultado.aciertos * 8;
     S.caps[id] = { ...(S.caps[id] || {}), hecho: true, aciertos: resultado.aciertos, errores: resultado.errores }; guardar();
     if (primera) { ganarXP(xp); evento('lecciones'); } else ganarXP(5);
-    sonido.logro(); confeti(140);
+    sonido.logro(); confeti(40);
     const sig = h.capitulos.find((c) => c.id === id + 1), todos = h.capitulos.every((c) => S.caps[c.id]?.hecho);
     let rec = null; try { rec = (await cargarRecetas()).find((r) => r.id === cap.receta); } catch { /* receta sin descargar */ }
     main.innerHTML = `<div class="centro"><div class="pareja">${pj('granma', 'aplaudiendo', { ancho: 140, clase: 'anim-aplaude' })}${pj('abuelo', 'contento', { ancho: 112, clase: 'anim-asiente' })}</div><h1>${u('¡Capítulo terminado!', 'Chapter complete!')}</h1>

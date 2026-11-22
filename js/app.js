@@ -5,6 +5,7 @@ import { toast, confeti } from './fx.js';
 import { sonido } from './sound.js';
 import { SinDescargar } from './datos.js';
 import { pj } from './personajes.js';
+import { iniciarAnimaciones } from '../assets/animaciones/index.js';
 import { vigilarDialogos, detenerHabla, alternarVoz, vozDisponible } from './habla.js';
 
 const rutas = {
@@ -122,6 +123,7 @@ export const instalar = async () => { if (!promptInstalar) return false; promptI
 /* Service worker */
 if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch((e) => console.warn('SW', e)));
 
+iniciarAnimaciones();
 vigilarDialogos(main);
 addEventListener('hashchange', navegar);
 navegar();

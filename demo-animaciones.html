@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demo de animaciones — Granma Sazón</title>
+<meta name="description" content="Prueba una por una las animaciones de Granma y el Abuelo desde tu celular.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#A8412B">
+<link rel="icon" href="assets/logo/icono.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="assets/animaciones/animaciones.css">
+<style>
+  body{padding:12px 16px 40px;max-width:44rem;margin:0 auto}
+  .banco{display:grid;gap:12px;grid-template-columns:1fr 1fr;margin:10px 0 22px}
+  .banco .btn{min-height:56px;font-size:.98rem;padding:0 12px;text-align:center}
+  .escena{display:flex;gap:12px;align-items:flex-end;justify-content:center;min-height:200px;background:#fff;border-radius:18px;padding:14px;box-shadow:var(--sombra)}
+  .estado{font-size:.9rem;color:var(--muted);text-align:center;min-height:1.6em}
+  #fila-tortillas{display:flex;gap:10px;justify-content:center;padding:26px 0 40px}
+  #fila-tortillas .tortilla{width:34px;height:34px}
+  body.sin-resp [data-g="respira"],body.sin-resp [data-g="ojos"]{animation:none!important}
+</style>
+</head>
+<body>
+<h1>Demo de animaciones</h1>
+<p class="muted">Toca un botón por animación. Solo se mueve <code>transform</code> y <code>opacity</code>. <span id="rm"></span></p>
+<p class="estado" id="estado" role="status">Listo.</p>
+
+<h2>Personajes (en reposo respiran y parpadean)</h2>
+<div class="escena" id="escena">
+  <span class="pj" style="width:150px"><img src="assets/personajes/granma-contenta.svg" width="240" height="320" alt="Granma"></span>
+  <span class="pj" style="width:150px"><img src="assets/personajes/abuelo-serio.svg" width="240" height="320" alt="El Abuelo"></span>
+</div>
+<div class="banco">
+  <button class="btn" data-a="aplauso">👏 Granma aplaude</button>
+  <button class="btn" data-a="asiente">🎩 Abuelo asiente</button>
+  <button class="btn" data-a="dedo">☝️ Abuelo levanta el dedo</button>
+  <button class="btn" data-a="estados">🙂 Cambiar de cara</button>
+  <button class="btn sec" data-a="parpadeo">👁 Parpadear ahora</button>
+  <button class="btn sec" data-a="respira" aria-pressed="true">🫁 Respiración: sí</button>
+</div>
+
+<h2>Boca y globo (se escribe y la boca alterna)</h2>
+<div id="dialogos"></div>
+<div class="banco"><button class="btn" data-a="habla-granma">💬 Granma habla</button><button class="btn" data-a="habla-abuelo">💬 Abuelo habla</button></div>
+
+<h2>Vapor de la olla (loop suave)</h2>
+<div class="escena" id="logo"></div>
+<div class="banco"><button class="btn sec" data-a="vapor" aria-pressed="true">♨️ Vapor: sí</button></div>
+
+<h2>Tortillitas</h2>
+<div id="fila-tortillas" role="img" aria-label="Tortillitas"></div>
+<div class="banco"><button class="btn" data-a="pierde">🫓 Perder una tortillita</button><button class="btn sec" data-a="repone">↺ Reponer</button></div>
+
+<h2>Confeti (máx. 40)</h2>
+<div class="banco"><button class="btn olla" data-a="confeti">🎉 Confeti</button><button class="btn sec" data-a="oculta">🙈 Simular pestaña oculta (3 s)</button></div>
+<p class="muted"><a class="volver" href="./">← Volver a la app</a></p>
+
+<script type="module">
+import { iniciarAnimaciones, estadoPj, reaccion, listoPj, confeti, tortillaPierde, logoVapor, forzarOculta } from './assets/animaciones/index.js';
+import { vigilarDialogos } from './js/habla.js';
+iniciarAnimaciones();
+const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
+const dec = (t) => { $('#estado').textContent = t; };
+$('#rm').textContent = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'Tu dispositivo pide movimiento reducido: los estados cambian al instante y no hay animaciones.' : '';
+const [g, a] = $$('#escena .pj');
+$('#logo').innerHTML = logoVapor(150);
+for (let i = 0; i < 5; i++) $('#fila-tortillas').insertAdjacentHTML('beforeend', '<i class="tortilla"></i>');
+vigilarDialogos(document.body);
+const ESTADOS = { granma: ['contenta', 'hablando', 'carinosa', 'pensando', 'aplaudiendo'], abuelo: ['serio', 'hablando', 'sonrisa', 'asintiendo', 'aconsejando'] };
+let k = 0, resp = true, vapor = true;
+function hablar(quien, estado, texto) {
+  const nombre = quien === 'granma' ? 'Granma' : 'El Abuelo';
+  $('#dialogos').innerHTML = `<div class="dialogo ${quien === 'abuelo' ? 'der' : ''}"><span class="pj" style="width:110px"><img src="assets/personajes/${quien}-${estado}.svg" width="240" height="320" alt=""></span><div class="globo ${quien === 'abuelo' ? 'abuelo' : ''}"><span class="quien">${nombre}</span><p lang="es">${texto}</p></div></div>`;
+  dec(`${nombre} habla: el texto se escribe y la boca alterna. Toca el globo para completarlo.`);
+}
+const acciones = {
+  aplauso: () => { reaccion(g, 'aplauso'); dec('Granma aplaude: 2 palmadas de 300 ms.'); },
+  asiente: () => { reaccion(a, 'asiente'); dec('El Abuelo asiente: 2 cabeceos de 300 ms; el sombrero baja un poco más.'); },
+  dedo: () => { reaccion(a, 'dedo'); dec('El Abuelo levanta el dedo: 450 ms, ease-out.'); },
+  estados: () => { k = (k + 1) % 5; estadoPj(g, ESTADOS.granma[k], { base: true }); estadoPj(a, ESTADOS.abuelo[k], { base: true }); dec(`Cara ${k + 1}/5 — Granma: ${ESTADOS.granma[k]} · Abuelo: ${ESTADOS.abuelo[k]} (fundido de 180 ms).`); },
+  parpadeo: async () => { await Promise.all([listoPj(g), listoPj(a)]); $$('#escena [data-g="ojos"]').forEach((o) => o.animate([{ transform: 'scaleY(1)' }, { transform: 'scaleY(.08)', offset: .5 }, { transform: 'scaleY(1)' }], { duration: 170, easing: 'ease-out' })); dec('Parpadeo (170 ms). En reposo ocurre solo, cada ~5 s.'); },
+  respira: (b) => { resp = !resp; document.body.classList.toggle('sin-resp', !resp); b.setAttribute('aria-pressed', resp); b.textContent = `🫁 Respiración: ${resp ? 'sí' : 'no'}`; dec(resp ? 'Respiración y parpadeo activos.' : 'Respiración y parpadeo en pausa.'); },
+  'habla-granma': () => hablar('granma', 'contenta', 'Mijo, cuando yo era niña, mi mamá encendía el fuego cada mañana. ¡Qué rico olía el champurrado!'),
+  'habla-abuelo': () => hablar('abuelo', 'aconsejando', 'La paciencia es la mejor especia.'),
+  vapor: (b) => { vapor = !vapor; $$('#logo [data-g="hilo"]').forEach((h) => { h.style.animationPlayState = vapor ? '' : 'paused'; }); b.setAttribute('aria-pressed', vapor); b.textContent = `♨️ Vapor: ${vapor ? 'sí' : 'pausado'}`; dec('3 hilos que suben y se desvanecen, 3.4 s por hilo.'); },
+  pierde: () => { const t = $$('#fila-tortillas .tortilla:not(.vacia)').pop(); if (t) { tortillaPierde(t); dec('La tortillita se desinfla y cae (520 ms).'); } else dec('No quedan tortillitas: toca «Reponer».'); },
+  repone: () => { $$('#fila-tortillas .tortilla').forEach((t) => t.classList.remove('vacia')); dec('Tortillitas repuestas.'); },
+  confeti: () => dec(`Confeti: ${confeti(40)} partículas (máx. 40).`),
+  oculta: () => { forzarOculta(true); dec('Pestaña «oculta»: todo en pausa durante 3 s…'); setTimeout(() => { forzarOculta(false); dec('Pestaña visible: se reanuda.'); }, 3000); },
+};
+document.addEventListener('click', (e) => { const b = e.target.closest('[data-a]'); if (b) acciones[b.dataset.a](b); });
+</script>
+</body>
+</html>

@@ -189,34 +189,21 @@ select,input[type=text],input[type=search]{min-height:44px;border:2px solid var(
 .toast{background:var(--cafe);color:#fff;padding:12px 18px;border-radius:14px;font-weight:700;box-shadow:var(--sombra);animation:entra .22s ease-out;max-width:30rem}
 .toast.insig{background:var(--olla);color:var(--cafe)}
 @keyframes entra{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
-.confeti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:70}
 .vacio{text-align:center;padding:24px 12px}
 .vacio .pj{width:140px;margin:0 auto 8px}
 dialog{border:0;border-radius:20px;padding:20px;max-width:min(92vw,28rem);box-shadow:0 20px 60px rgba(0,0,0,.35);background:var(--crema)}
 dialog::backdrop{background:rgba(74,46,27,.55)}
 .constancia-vista{width:100%;border-radius:12px;border:2px solid var(--linea);background:#fff}
 
-/* Animaciones de personajes (solo si el movimiento está permitido) */
-@media (prefers-reduced-motion:no-preference){
-  .anim-brinca{animation:brinca .5s ease-out 1}
-  .anim-asiente{animation:asiente .7s ease-in-out 1;transform-origin:50% 90%}
-  .anim-aplaude{animation:aplaude .6s ease-in-out 2}
-  .anim-flota{animation:flota 3.2s ease-in-out infinite}
-  @keyframes brinca{0%{transform:translateY(0)}35%{transform:translateY(-16px)}70%{transform:translateY(0)}85%{transform:translateY(-5px)}100%{transform:translateY(0)}}
-  @keyframes asiente{0%,100%{transform:rotate(0)}30%{transform:rotate(-5deg) translateY(4px)}60%{transform:rotate(2deg)}}
-  @keyframes aplaude{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-  @keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-  .confeti{display:none}
 }
 @media (min-width:720px){
   h1{font-size:2rem}
   .rejilla.tres{grid-template-columns:repeat(3,1fr)}
   .nav{left:50%;right:auto;transform:translateX(-50%);width:min(100%,var(--ancho));border-radius:20px 20px 0 0;border:2px solid var(--linea);border-bottom:0}
 }
-@media print{.encabezado,.nav,.toasts,.confeti,.aviso-red{display:none}}
+@media print{.encabezado,.nav,.toasts,.aviso-red{display:none}}
 
 .volver{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
 mark.clave:empty{display:none}

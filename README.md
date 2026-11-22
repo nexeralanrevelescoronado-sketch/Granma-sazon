@@ -22,6 +22,24 @@
 - **Cuando hablan** (`js/habla.js`): el globo se escribe letra por letra, tocarlo lo completa, y la boca alterna cerrada/abierta con una animación CSS dentro del SVG `-hablando` (respeta `prefers-reduced-motion`: con movimiento reducido el texto aparece completo y la boca queda quieta).
 - **Voz opcional** (Web Speech API, es-MX y en-US): **apagada por defecto**; se activa con el botón 🗣 del encabezado o en Perfil. Sin internet depende de las voces instaladas en el dispositivo (la app lo avisa). Los botones 🔊 leen una frase puntual aunque la voz automática esté apagada.
 
+## Animaciones (`assets/animaciones/`)
+
+CSS y JS ligeros, sin librerías. Reglas: solo `transform` y `opacity` (nunca layout); acciones de 150–600 ms con ease-out; reposo en loops lentos; `prefers-reduced-motion` ⇒ nada se mueve y los estados cambian al instante; con la pestaña oculta todo se pausa (`html[data-oculta]` + WAAPI).
+
+| Animación | Dónde | Cómo |
+|---|---|---|
+| Granma aplaude | al acertar un ejercicio | 2 palmadas de 300 ms + saltito |
+| Abuelo asiente con el sombrero | al acertar | 2 cabeceos de 300 ms; el sombrero baja un poco más |
+| Abuelo levanta el dedo | cuando da un consejo | 450 ms, ease-out |
+| Boca que alterna | mientras se escribe el globo | `.ma`/`.mb` con `steps(1)`, en cualquier estado |
+| Parpadeo + respiración | en reposo | loops de ~5 s y 4,6 s, a ritmo distinto por personaje |
+| Cambio de cara | entre estados | fundido de 180 ms |
+| Tortillita | al perder una vida | se desinfla y cae (520 ms) |
+| Confeti | al terminar una lección | máx. **40** partículas, 520–580 ms |
+| Vapor de la olla | logo de la bienvenida y la demo | 3 hilos en loop de 3,4 s (no en el encabezado: se ve todo el día) |
+
+Los personajes se convierten en SVG en línea al cargar (así cada parte —ojos, boca, sombrero, dedo, manos— se anima con CSS y se pausa). **Demo para el iPhone:** `demo-animaciones.html` tiene un botón por animación. Prueba automática: `node scripts/qa-animaciones.mjs`.
+
 ## Ejecutar
 
 No hay dependencias ni paso de compilación en el navegador (HTML + CSS + JS nativo, sin frameworks).

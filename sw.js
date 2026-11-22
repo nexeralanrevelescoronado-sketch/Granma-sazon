@@ -6,8 +6,15 @@
  * - Los cachés viejos se limpian en `activate`.
  */
 /*NUCLEO:INICIO*/
-const VERSION = '2e6f51ea0e';
+const VERSION = 'ef4fcff440';
 const NUCLEO = [
+ "assets/animaciones/animaciones.css",
+ "assets/animaciones/confeti.js",
+ "assets/animaciones/index.js",
+ "assets/animaciones/personajes.js",
+ "assets/animaciones/tortilla.js",
+ "assets/animaciones/vapor.js",
+ "assets/animaciones/visibilidad.js",
  "assets/iconos/apple-touch-icon.png",
  "assets/iconos/icon-192.png",
  "assets/iconos/icon-512.png",
@@ -28,6 +35,7 @@ const NUCLEO = [
  "assets/personajes/granma-pensando.svg",
  "css/app.css",
  "data/paquetes.json",
+ "demo-animaciones.html",
  "index.html",
  "js/app.js",
  "js/biblia/base.js",

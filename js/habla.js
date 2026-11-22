@@ -3,6 +3,7 @@
 import { estado, guardar, u } from './state.js';
 import { reducirMovimiento } from './util.js';
 import { toast } from './fx.js';
+import { estadoPj, reaccion, hablando, listoPj } from '../assets/animaciones/index.js';
 
 let epoca = 0, cola = Promise.resolve(), avisoVoces = false;
 const LANG = { es: 'es-MX', en: 'en-US' };
@@ -60,21 +61,24 @@ function escribir(globo, mio) {
     })();
   });
 }
-function conBoca(dialogo, hablando) {
-  const img = dialogo.querySelector('.pj img'); if (!img) return;
-  const m = img.getAttribute('src').match(/personajes\/(granma|abuelo)-([a-z]+)\.svg$/); if (!m) return;
-  if (hablando) { img.dataset.base = img.getAttribute('src'); img.src = `assets/personajes/${m[1]}-hablando.svg`; }
-  else if (img.dataset.base) { img.src = img.dataset.base; delete img.dataset.base; }
+const GESTO = new Set(['contenta', 'serio']);   // estados en reposo que pasan a «hablando» (con ademán) mientras se escribe
+async function conBoca(dialogo, hablandoAhora) {
+  const span = dialogo.querySelector('.pj'); if (!span) return;
+  await listoPj(span); const base = span.dataset.base;
+  if (hablandoAhora) {
+    if (GESTO.has(base)) await estadoPj(span, 'hablando'); else await hablando(span, true);
+    if (base === 'aconsejando') reaccion(span, 'dedo');
+  } else { await hablando(span, false); await estadoPj(span, base); }
 }
 async function hablar(dialogo, mio) {
   const globo = dialogo.querySelector('.globo'); if (!globo || mio !== epoca) return;
   const l1 = globo.querySelector('[lang]'), idioma = (l1?.getAttribute('lang') || document.documentElement.lang || 'es').slice(0, 2);
   const copia = (l1 || globo).cloneNode(true); copia.querySelectorAll('.quien,button,mark svg').forEach((x) => x.remove());
   const texto = copia.textContent.replace(/\s+/g, ' ').trim();
-  conBoca(dialogo, true);
+  await conBoca(dialogo, true);
   const voz = vozActiva() && texto ? decir(texto, idioma) : Promise.resolve();
   await Promise.all([escribir(globo, mio), voz]);
-  conBoca(dialogo, false);
+  await conBoca(dialogo, false);
 }
 
 /** Observa `raiz`: cada diálogo nuevo se «habla» en orden. Tocar un globo lo completa. */

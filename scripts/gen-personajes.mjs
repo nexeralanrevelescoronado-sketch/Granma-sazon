@@ -18,7 +18,6 @@ const mano = (x, y, col, r = 11) => `<circle cx="${x}" cy="${y}" r="${r}" fill="
 const corazon = (x, y, s, col = '#E0568C') => `<path transform="translate(${x} ${y}) scale(${s})" d="M0 5 C-10 -3 -9 -11 -4 -11 C-1.5 -11 0 -9 0 -8 C0 -9 1.5 -11 4 -11 C9 -11 10 -3 0 5Z" fill="${col}"/>`;
 // Animación de hablar: dos bocas que se alternan. Dentro del propio SVG: no requiere JS ni audio.
 const ESTILO_HABLA = `<style>.ma{animation:ma .46s steps(1,end) infinite}.mb{animation:mb .46s steps(1,end) infinite}@keyframes ma{0%{opacity:1}45%{opacity:0}100%{opacity:0}}@keyframes mb{0%{opacity:0}45%{opacity:1}100%{opacity:1}}@media (prefers-reduced-motion:reduce){.ma{animation:none;opacity:1}.mb{display:none}}</style>`;
-const ESTILO_ASIENTE = `<style>#cabeza{animation:nod 1.5s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}@keyframes nod{0%,100%{transform:none}30%{transform:translateY(6px) rotate(2deg)}60%{transform:translateY(1px)}}@media (prefers-reduced-motion:reduce){#cabeza{animation:none}}</style>`;
 
 /* ================= GRANMA ================= */
 const G = { piel:'#B97A56', pielSombra:'#A06644', pelo:'#F1EEE9', peloSombra:'#D8D3CB', vestido:C.verde, rebozo:'#B8322A', dalia:'#E0568C', armazon:'#8A6A55' };
@@ -37,8 +36,8 @@ const granmaCuerpo = (pose) => {
     hablando: brazo('M68 186 Q52 234 60 266', G.vestido) + mano(60, 272, G.piel) + brazo('M172 186 Q208 176 200 134', G.vestido) + mano(200, 126, G.piel, 12) + cuchara(200, 90, 36, 0),
     carinosa: brazo('M68 188 Q70 228 106 220', G.vestido) + brazo('M172 188 Q170 228 134 220', G.vestido) + mano(108, 216, G.piel) + mano(132, 216, G.piel) + corazon(120, 204, 1.2),
     pensando: brazo('M172 188 Q188 234 180 266', G.vestido) + mano(180, 272, G.piel) + cuchara(180, 266, 44, 0) + brazo('M68 188 Q40 218 76 194 Q100 176 112 160', G.vestido, 22) + mano(112, 154, G.piel, 12),
-    aplaudiendo: `<line x1="58" y1="156" x2="48" y2="146" stroke="${C.olla}" stroke-width="4" stroke-linecap="round"/><line x1="182" y1="156" x2="192" y2="146" stroke="${C.olla}" stroke-width="4" stroke-linecap="round"/><line x1="120" y1="172" x2="120" y2="160" stroke="${C.olla}" stroke-width="4" stroke-linecap="round"/>`
-      + cuchara(150, 218, 50, -8) + brazo('M68 188 Q70 228 108 218', G.vestido) + brazo('M172 188 Q170 228 132 218', G.vestido) + mano(110, 216, G.piel) + mano(130, 216, G.piel),
+    aplaudiendo: `<g id="chispas"><line x1="58" y1="156" x2="48" y2="146" stroke="${C.olla}" stroke-width="4" stroke-linecap="round"/><line x1="182" y1="156" x2="192" y2="146" stroke="${C.olla}" stroke-width="4" stroke-linecap="round"/><line x1="120" y1="172" x2="120" y2="160" stroke="${C.olla}" stroke-width="4" stroke-linecap="round"/></g>`
+      + cuchara(150, 218, 50, -8) + `<g id="aplauso">` + brazo('M68 188 Q70 228 108 218', G.vestido) + brazo('M172 188 Q170 228 132 218', G.vestido) + mano(110, 216, G.piel) + mano(130, 216, G.piel) + `</g>`,
   };
   return base + poses[pose];
 };
@@ -47,12 +46,13 @@ const gCerrado = (cx) => `<path d="M${cx - 10} 110 Q${cx} 98 ${cx + 10} 110" fil
 const gCejaArq = (cx, dy = 0) => `<path d="M${cx - 11} ${86 + dy} Q${cx} ${80 + dy} ${cx + 11} ${86 + dy}" fill="none" stroke="${G.peloSombra}" stroke-width="3" stroke-linecap="round"/>`;
 const gBocaCerrada = `<path d="M106 137 Q120 151 134 137" fill="none" stroke="#7A2E2E" stroke-width="3.6" stroke-linecap="round"/>`;
 const gBocaAbierta = `<path d="M106 135 Q120 160 134 135 Z" fill="#7A2A2A"/><path d="M112 148 Q120 155 128 148 Q120 144 112 148Z" fill="#E88A8A"/>`;
+const par = (cerrada, abierta) => `<g class="ma">${cerrada}</g><g class="mb" opacity="0">${abierta}</g>`;
 const GRANMA_ESTADOS = {
-  contenta: { pose: 'contenta', ojos: gOjo(98) + gOjo(142), boca: gBocaCerrada },
-  hablando: { pose: 'hablando', ojos: gOjo(98) + gOjo(142) + gCejaArq(98, -2) + gCejaArq(142, -2), boca: `<g class="ma">${gBocaCerrada}</g><g class="mb">${gBocaAbierta}</g>`, estilo: ESTILO_HABLA },
-  carinosa: { pose: 'carinosa', ojos: gCerrado(98) + gCerrado(142), boca: gBocaCerrada, extra: corazon(56, 66, 1.3) + corazon(186, 50, 1.6) + corazon(196, 84, 1) },
-  pensando: { pose: 'pensando', ojos: gOjo(98, 3, -4) + gOjo(142, 3, -4) + `<path d="M86 84 Q98 74 110 80" fill="none" stroke="${G.peloSombra}" stroke-width="3" stroke-linecap="round"/><path d="M132 86 Q144 84 154 88" fill="none" stroke="${G.peloSombra}" stroke-width="3" stroke-linecap="round"/>`, boca: `<path d="M110 140 Q122 135 132 142" fill="none" stroke="#7A2E2E" stroke-width="3.6" stroke-linecap="round"/>`, extra: `<circle cx="190" cy="56" r="4" fill="#C9B9A4"/><circle cx="200" cy="42" r="6" fill="#C9B9A4"/><circle cx="214" cy="24" r="9" fill="#C9B9A4"/>` },
-  aplaudiendo: { pose: 'aplaudiendo', ojos: gCerrado(98) + gCerrado(142), boca: gBocaAbierta },
+  contenta: { pose: 'contenta', ojos: gOjo(98) + gOjo(142), boca: par(gBocaCerrada, gBocaAbierta) },
+  hablando: { pose: 'hablando', ojos: gOjo(98) + gOjo(142) + gCejaArq(98, -2) + gCejaArq(142, -2), boca: par(gBocaCerrada, gBocaAbierta), estilo: ESTILO_HABLA },
+  carinosa: { pose: 'carinosa', ojos: gCerrado(98) + gCerrado(142), boca: par(gBocaCerrada, gBocaAbierta), extra: corazon(56, 66, 1.3) + corazon(186, 50, 1.6) + corazon(196, 84, 1) },
+  pensando: { pose: 'pensando', ojos: gOjo(98, 3, -4) + gOjo(142, 3, -4) + `<path d="M86 84 Q98 74 110 80" fill="none" stroke="${G.peloSombra}" stroke-width="3" stroke-linecap="round"/><path d="M132 86 Q144 84 154 88" fill="none" stroke="${G.peloSombra}" stroke-width="3" stroke-linecap="round"/>`, boca: par(`<path d="M110 140 Q122 135 132 142" fill="none" stroke="#7A2E2E" stroke-width="3.6" stroke-linecap="round"/>`, gBocaAbierta), extra: `<circle cx="190" cy="56" r="4" fill="#C9B9A4"/><circle cx="200" cy="42" r="6" fill="#C9B9A4"/><circle cx="214" cy="24" r="9" fill="#C9B9A4"/>` },
+  aplaudiendo: { pose: 'aplaudiendo', ojos: gCerrado(98) + gCerrado(142), boca: par(gBocaAbierta, gBocaAbierta) },
 };
 const granmaCabeza = () => `
   <rect x="104" y="150" width="32" height="30" rx="9" fill="${G.pielSombra}"/>
@@ -85,8 +85,8 @@ const abueloCuerpo = (pose) => {
     hablando: brazo('M66 186 Q52 236 62 266', A.chaleco) + mano(62, 272, A.piel) + baston(46) + brazo('M174 188 Q204 204 200 172', A.chaleco, 22) + `<g transform="translate(200 160)"><rect x="-12" y="-4" width="24" height="22" rx="9" fill="${A.piel}"/><rect x="-14" y="-18" width="8" height="18" rx="4" fill="${A.piel}"/><rect x="-5" y="-22" width="8" height="20" rx="4" fill="${A.piel}"/><rect x="4" y="-18" width="8" height="18" rx="4" fill="${A.piel}"/></g>`,
     sonrisa: brazo('M66 186 Q52 236 62 266', A.chaleco) + mano(62, 272, A.piel) + baston() + brazo('M174 188 Q192 218 190 194', A.chaleco, 22) + mano(190, 182, A.piel),
     asintiendo: baston(190) + brazo('M66 188 Q78 244 182 210', A.chaleco, 22) + mano(186, 206, A.piel, 12) + brazo('M174 188 Q196 214 190 188', A.chaleco, 22) + mano(190, 180, A.piel, 12),
-    aconsejando: brazo('M66 186 Q52 236 62 266', A.chaleco) + mano(62, 272, A.piel) + baston(208) + brazo('M172 188 Q206 168 198 128', A.chaleco)
-      + `<g transform="translate(198 116)"><rect x="-12" y="-4" width="24" height="22" rx="9" fill="${A.piel}"/><rect x="-4" y="-34" width="9" height="34" rx="4.5" fill="${A.piel}"/></g><path d="M214 84 l8 -8 M218 100 l12 0 M180 78 l-4 -10" stroke="${C.olla}" stroke-width="4" stroke-linecap="round"/>`,
+    aconsejando: brazo('M66 186 Q52 236 62 266', A.chaleco) + mano(62, 272, A.piel) + baston(208) + `<g id="dedo">` + brazo('M172 188 Q206 168 198 128', A.chaleco)
+      + `<g transform="translate(198 116)"><rect x="-12" y="-4" width="24" height="22" rx="9" fill="${A.piel}"/><rect x="-4" y="-34" width="9" height="34" rx="4.5" fill="${A.piel}"/></g></g><path id="chispas" d="M214 84 l8 -8 M218 100 l12 0 M180 78 l-4 -10" stroke="${C.olla}" stroke-width="4" stroke-linecap="round" fill="none"/>`,
   };
   return base + poses[pose];
 };
@@ -96,11 +96,11 @@ const aCejas = (dyL = 0, dyR = 0) => `<path d="M86 ${88 + dyL} Q100 ${82 + dyL} 
 const aBocaSeria = `<path d="M109 139 H131" stroke="#3D2412" stroke-width="3.6" stroke-linecap="round"/>`;
 const aBocaAbierta = `<ellipse cx="120" cy="141" rx="8" ry="5.5" fill="#3D1F10"/>`;
 const ABUELO_ESTADOS = {
-  serio: { pose: 'serio', ojos: aPunto(100) + aPunto(140) + aCejas(), boca: aBocaSeria },
-  hablando: { pose: 'hablando', ojos: aPunto(100) + aPunto(140) + aCejas(-2, -2), boca: `<g class="ma">${aBocaSeria}</g><g class="mb">${aBocaAbierta}</g>`, estilo: ESTILO_HABLA },
-  sonrisa: { pose: 'sonrisa', ojos: aCerrado(100) + aCerrado(140) + aCejas(-1, -1) + `<path d="M84 110 l-5 -3 M156 110 l5 -3" stroke="${A.pielSombra}" stroke-width="2.4" stroke-linecap="round"/>`, boca: `<path d="M107 138 Q120 146 133 138" fill="none" stroke="#3D2412" stroke-width="3.6" stroke-linecap="round"/>` },
-  asintiendo: { pose: 'asintiendo', ojos: aCerrado(100) + aCerrado(140) + aCejas(), boca: aBocaSeria, estilo: ESTILO_ASIENTE },
-  aconsejando: { pose: 'aconsejando', ojos: aPunto(104, 2, -2) + aPunto(144, 2, -2) + aCejas(-3, 0), boca: `<path d="M109 139 Q120 141 131 138" fill="none" stroke="#3D2412" stroke-width="3.6" stroke-linecap="round"/>` },
+  serio: { pose: 'serio', ojos: aPunto(100) + aPunto(140) + aCejas(), boca: par(aBocaSeria, aBocaAbierta) },
+  hablando: { pose: 'hablando', ojos: aPunto(100) + aPunto(140) + aCejas(-2, -2), boca: par(aBocaSeria, aBocaAbierta), estilo: ESTILO_HABLA },
+  sonrisa: { pose: 'sonrisa', ojos: aCerrado(100) + aCerrado(140) + aCejas(-1, -1) + `<path d="M84 110 l-5 -3 M156 110 l5 -3" stroke="${A.pielSombra}" stroke-width="2.4" stroke-linecap="round"/>`, boca: par(`<path d="M107 138 Q120 146 133 138" fill="none" stroke="#3D2412" stroke-width="3.6" stroke-linecap="round"/>`, aBocaAbierta) },
+  asintiendo: { pose: 'asintiendo', ojos: aCerrado(100) + aCerrado(140) + aCejas(), boca: par(aBocaSeria, aBocaAbierta) },
+  aconsejando: { pose: 'aconsejando', ojos: aPunto(104, 2, -2) + aPunto(144, 2, -2) + aCejas(-3, 0), boca: par(`<path d="M109 139 Q120 141 131 138" fill="none" stroke="#3D2412" stroke-width="3.6" stroke-linecap="round"/>`, aBocaAbierta) },
 };
 const abueloCabeza = () => `
   <rect x="104" y="142" width="32" height="28" rx="9" fill="${A.pielSombra}"/>
@@ -110,11 +110,11 @@ const abueloCabeza = () => `
   <path d="M120 100 Q111 117 122 119" fill="none" stroke="${A.pielSombra}" stroke-width="3" stroke-linecap="round"/>`;
 const abueloAdelante = `
   <path d="M90 124 Q106 112 120 121 Q134 112 150 124 Q138 138 120 131 Q102 138 90 124 Z" fill="${A.blanco}" stroke="#D8D3CB" stroke-width="1.5"/>
-  <ellipse cx="120" cy="66" rx="90" ry="15" fill="${A.paja}" stroke="${A.pajaSombra}" stroke-width="2.5"/>
+  <g id="sombrero"><ellipse cx="120" cy="66" rx="90" ry="15" fill="${A.paja}" stroke="${A.pajaSombra}" stroke-width="2.5"/>
   <path d="M80 66 Q80 16 120 16 Q160 16 160 66 Z" fill="${A.paja}" stroke="${A.pajaSombra}" stroke-width="2.5"/>
   <path d="M80 66 Q120 74 160 66 L160 50 Q120 58 80 50 Z" fill="${A.banda}"/>
   <path d="M92 28 Q120 22 148 28 M88 40 Q120 34 152 40" fill="none" stroke="${A.pajaSombra}" stroke-width="2" stroke-linecap="round"/>
-  <path d="M38 66 Q120 86 202 66" fill="none" stroke="${A.pajaSombra}" stroke-width="2" opacity=".7"/>`;
+  <path d="M38 66 Q120 86 202 66" fill="none" stroke="${A.pajaSombra}" stroke-width="2" opacity=".7"/></g>`;
 
 const PERSONAJES = {
   granma: { nombre: 'Granma', estados: GRANMA_ESTADOS, cuerpo: granmaCuerpo, cabeza: granmaCabeza, delante: '', lentes: granmaLentes, vbCabeza: '40 0 160 176' },
@@ -125,7 +125,7 @@ for (const [id, p] of Object.entries(PERSONAJES)) {
   writeFileSync(join(OUT, `${id}-cabeza.svg`), svg('0 0 240 320', `<g id="cabeza">${p.cabeza()}${p.delante}</g>`, `${p.nombre}, cabeza sin cara`));
   for (const [estado, e] of Object.entries(p.estados)) {
     const cara = `<g id="cara"><g id="ojos">${e.ojos}</g><g id="boca">${e.boca}</g>${p.lentes}</g>`;
-    const completo = `<g id="cuerpo">${p.cuerpo(e.pose)}</g><g id="cabeza">${p.cabeza()}${cara}${p.delante}</g>${e.extra || ''}`;
+    const completo = `<g id="respira"><g id="cuerpo">${p.cuerpo(e.pose)}</g><g id="cabeza">${p.cabeza()}${cara}${p.delante}</g></g>${e.extra || ''}`;
     writeFileSync(join(OUT, `${id}-${estado}.svg`), svg('0 0 240 320', completo, `${p.nombre}, ${estado}`, (e.estilo || '')));
     writeFileSync(join(OUT, `${id}-cara-${estado}.svg`), svg('0 0 240 320', cara, `${p.nombre}, cara ${estado}`, (e.estilo || '')));
     writeFileSync(join(OUT, `${id}-cuerpo-${estado}.svg`), svg('0 140 240 180', `<g id="cuerpo">${p.cuerpo(e.pose)}</g>`, `${p.nombre}, cuerpo ${estado}`));

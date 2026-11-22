@@ -3,6 +3,7 @@ import { estado, guardar, u, nat } from '../state.js';
 import { pj } from '../personajes.js';
 import { esc } from '../util.js';
 import { sonido } from '../sound.js';
+import { logoVapor } from '../../assets/animaciones/index.js';
 
 const INTERESES = [['trabajo', '💼', 'Trabajo', 'Work'], ['amigos', '💬', 'Amigos y conversación', 'Friends and conversation'], ['biblia', '📖', 'Biblia y fe', 'Bible and faith'], ['viajes', '✈️', 'Viajes', 'Travel'], ['cocina', '🍲', 'Cocina', 'Cooking']];
 
@@ -13,7 +14,7 @@ export function montar(main) {
     const ui = (es, en) => (sel.aprende === 'es' ? en : es);   // interfaz en el idioma nativo (si ya eligió)
     if (paso === 0) {
       main.innerHTML = `<div class="centro">${pj('granma', 'contento', { ancho: 170, clase: 'anim-flota' })}</div>
-        <h1 class="centro">Granma Sazón</h1><p class="centro muted">Recetas de México para el mundo · Recipes from Mexico to the world</p>${puntos()}
+        <div class="centro">${logoVapor(96, 'Granma Sazón')}</div><h1 class="centro">Granma Sazón</h1><p class="centro muted">Recetas de México para el mundo · Recipes from Mexico to the world</p>${puntos()}
         <h2 class="centro">¿Qué idioma quieres aprender? <small class="muted">· Which language do you want to learn?</small></h2>
         <button class="opcion-grande" data-aprende="en" aria-pressed="${sel.aprende === 'en'}"><span class="emoji">🇺🇸</span><span>Inglés<br><small class="muted">English · lo explico en español</small></span></button>
         <button class="opcion-grande" data-aprende="es" aria-pressed="${sel.aprende === 'es'}"><span class="emoji">🇲🇽</span><span>Español<br><small class="muted">Spanish · I explain in English</small></span></button>

@@ -1,0 +1,62 @@
+/* Granma Sazón — animaciones. Solo transform y opacity (nunca layout). Sin librerías.
+ * Reposo: loops lentos (respiración, parpadeo, vapor). Acciones: 150–600 ms con ease-out.
+ * prefers-reduced-motion: nada se mueve; los estados cambian al instante.
+ * Con la pestaña oculta, html[data-oculta] pausa todo (ver visibilidad.js). */
+:root{--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1)}
+.pj{position:relative}
+.pj-svg{display:block;width:100%;height:auto;overflow:visible}
+.pj-svg.encima{position:absolute;inset:0}
+.pj-svg [data-g]{transform-box:fill-box}
+.pj-svg [data-g="mb"],.pj-svg .mb{opacity:0}
+
+html[data-oculta] *,html[data-oculta] *::before,html[data-oculta] *::after{animation-play-state:paused!important}
+
+@media (prefers-reduced-motion:no-preference){
+  /* ---------- reposo ---------- */
+  .pj-svg [data-g="respira"]{transform-origin:50% 100%;animation:respira var(--t-resp,4.6s) ease-in-out var(--d-resp,0s) infinite}
+  .pj-svg:not([data-cerrados]) [data-g="ojos"]{transform-origin:50% 50%;animation:parpadeo var(--t-parp,5.4s) linear var(--d-parp,0s) infinite}
+  @keyframes respira{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.012)}}
+  @keyframes parpadeo{0%,92%{transform:scaleY(1)}96%{transform:scaleY(.08)}100%{transform:scaleY(1)}}
+
+  /* ---------- hablar: la boca alterna cerrada/abierta mientras se escribe ---------- */
+  .pj-svg.habla .ma,.pj-svg[data-estado="hablando"] .ma{animation:boca-ma .46s steps(1,end) infinite}
+  .pj-svg.habla .mb,.pj-svg[data-estado="hablando"] .mb{animation:boca-mb .46s steps(1,end) infinite}
+  @keyframes boca-ma{0%{opacity:1}45%,100%{opacity:0}}
+  @keyframes boca-mb{0%{opacity:0}45%,100%{opacity:1}}
+
+  /* ---------- acciones ---------- */
+  /* Granma aplaudiendo al acertar: 2 palmadas de 300 ms + saltito del cuerpo */
+  .pj-svg.anim-aplauso [data-g="aplauso"]{transform-origin:50% 50%;animation:palmada .3s var(--ease-out) 2}
+  .pj-svg.anim-aplauso [data-g="chispas"]{transform-origin:50% 50%;animation:destello .3s var(--ease-out) 2}
+  .pj-svg.anim-aplauso [data-g="respira"]{animation:salto .6s var(--ease-out) 1}
+  @keyframes palmada{0%,100%{transform:scale(1)}45%{transform:scale(1.14,.92)}}
+  @keyframes destello{0%{opacity:.2;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}100%{opacity:.2;transform:scale(.85)}}
+  @keyframes salto{0%,100%{transform:translateY(0)}35%{transform:translateY(-9px)}70%{transform:translateY(0)}}
+
+  /* Abuelo asintiendo con el sombrero: 2 cabeceos de 300 ms; el sombrero baja un poco más, un pelín después */
+  .pj-svg.anim-asiente [data-g="cabeza"]{transform-origin:50% 100%;animation:asiente .3s var(--ease-in-out) 2}
+  .pj-svg.anim-asiente [data-g="sombrero"]{transform-origin:50% 80%;animation:sombrero .3s var(--ease-in-out) .03s 2}
+  @keyframes asiente{0%,100%{transform:none}50%{transform:translateY(7px) rotate(2.5deg)}}
+  @keyframes sombrero{0%,100%{transform:none}50%{transform:translateY(3px) rotate(-3deg)}}
+
+  /* Abuelo levanta el dedo al dar un consejo: 450 ms ease-out, parte desde abajo y casi invisible */
+  .pj-svg.anim-dedo [data-g="dedo"]{transform-origin:50% 100%;animation:dedo .45s var(--ease-out) both}
+  .pj-svg.anim-dedo [data-g="chispas"]{animation:aparece .3s var(--ease-out) .25s both}
+  @keyframes dedo{from{opacity:0;transform:translateY(30px) rotate(14deg)}to{opacity:1;transform:none}}
+  @keyframes aparece{from{opacity:0}to{opacity:1}}
+
+  /* Vapor de la olla: 3 hilos suben y se desvanecen, en loop suave */
+  .vapor [data-g="hilo"]{transform-origin:50% 100%;opacity:0;animation:vapor 3.4s ease-out infinite}
+  .vapor [data-g="hilo"]:nth-of-type(2){animation-delay:1.1s}
+  .vapor [data-g="hilo"]:nth-of-type(3){animation-delay:2.2s}
+  @keyframes vapor{0%{opacity:0;transform:translateY(14px) scaleY(.85)}25%{opacity:.95}100%{opacity:0;transform:translateY(-30px) scaleY(1.08)}}
+}
+/* Con movimiento reducido el vapor se queda como dibujo quieto */
+@media (prefers-reduced-motion:reduce){.vapor [data-g="hilo"]{opacity:.9}}
+
+/* Tortillitas (las anima tortilla.js con WAAPI; aquí solo el estado final) */
+.tortilla{transform-origin:50% 100%}
+
+/* Confeti (partículas DOM: solo transform/opacity; ver confeti.js) */
+.confeti-cap{position:fixed;inset:0;pointer-events:none;z-index:70;overflow:hidden}
+.confeti-cap i{position:absolute;left:50%;top:60%;width:8px;height:12px;border-radius:2px;opacity:0;will-change:transform,opacity}

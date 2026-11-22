@@ -164,3 +164,21 @@ test('voz: apagada por defecto, Web Speech es-MX / en-US y aviso de modo sin int
   assert.ok(/voces instaladas en tu dispositivo/.test(h) && /installed on your device/.test(h), 'aviso sin internet');
   const { pj, estadoValido } = await import('../js/personajes.js'); assert.match(pj('granma', 'carinosa'), /granma-carinosa\.svg/); assert.equal(estadoValido('abuelo', 'animo'), 'aconsejando');
 });
+
+test('animaciones: módulo propio, solo transform/opacity, movimiento reducido, pausa oculta, confeti ≤ 40, demo', () => {
+  for (const f of ['animaciones.css', 'personajes.js', 'confeti.js', 'tortilla.js', 'vapor.js', 'visibilidad.js', 'index.js']) assert.ok(existsSync(join(RAIZ, 'assets/animaciones', f)), f);
+  const css = leer('assets/animaciones/animaciones.css');
+  for (const [, nombre, cuerpo] of css.matchAll(/@keyframes\s+([\w-]+)\s*\{([\s\S]*?\})\s*\}/g)) {
+    const malas = [...cuerpo.matchAll(/([a-z-]+)\s*:/g)].map((m) => m[1]).filter((p) => !['transform', 'opacity'].includes(p));
+    assert.deepEqual(malas, [], `@keyframes ${nombre} anima ${malas}`);
+  }
+  assert.ok(css.includes('prefers-reduced-motion:no-preference') && css.includes('prefers-reduced-motion:reduce'));
+  assert.ok(css.includes('html[data-oculta]') && css.includes('animation-play-state:paused'), 'pausa con pestaña oculta');
+  assert.ok(!/transition\s*:\s*all/.test(css) && !/scale\(0\)/.test(css));
+  assert.ok(leer('assets/animaciones/confeti.js').includes('MAX_CONFETI = 40'));
+  assert.ok(/visibilitychange/.test(leer('assets/animaciones/visibilidad.js')));
+  const demo = leer('demo-animaciones.html'); assert.ok((demo.match(/data-a="/g) || []).length >= 11, 'un botón por animación');
+  for (const t of ['respira', 'sombrero', 'dedo', 'aplauso']) assert.ok(leer('assets/personajes/abuelo-aconsejando.svg').includes(`id="${t}"`) || leer('assets/personajes/granma-aplaudiendo.svg').includes(`id="${t}"`) || leer('assets/personajes/abuelo-serio.svg').includes(`id="${t}"`), 'grupo ' + t);
+  assert.ok(json('data/paquetes.json').paquetes.reduce((s, x) => s + x.bytes, 0) < 50 * 1048576);
+  assert.ok(leer('sw.js').includes('assets/animaciones/animaciones.css') && leer('sw.js').includes('demo-animaciones.html'), 'animaciones precacheadas');
+});

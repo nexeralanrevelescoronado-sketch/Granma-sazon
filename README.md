@@ -42,6 +42,10 @@ CSS y JS ligeros, sin librerías. Reglas: solo `transform` y `opacity` (nunca la
 
 Los personajes se convierten en SVG en línea al cargar (así cada parte —ojos, boca, sombrero, dedo, manos— se anima con CSS y se pausa). **Demo para el iPhone:** `demo-animaciones.html` tiene un botón por animación. Prueba automática: `node scripts/qa-animaciones.mjs`.
 
+## Publicación
+
+Está publicada en GitHub Pages: <https://nexeralanrevelescoronado-sketch.github.io/Granma-sazon/>. Cada push a `main` corre las pruebas y copia `main` a la rama `gh-pages` (`.github/workflows/publicar.yml`); **no edites `gh-pages` a mano**. La dirección pública vive en `scripts/sitio.mjs` (y en `index.html`); si se cambia de dominio, se cambia ahí.
+
 ## Ejecutar
 
 No hay dependencias ni paso de compilación en el navegador (HTML + CSS + JS nativo, sin frameworks).
@@ -89,7 +93,7 @@ Otros scripts: `npm run personajes` (SVG de Granma y el Abuelo), `npm run logo` 
 
 ## Calidad medida
 
-- Lighthouse (móvil, pantalla inicial): **Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100 · SEO 100**; página de receta: 100/100/100/100.
+- Lighthouse (móvil): bienvenida y página de receta **100 / 100 / 100 / 100** (rendimiento, accesibilidad, buenas prácticas, SEO); inicio con sesión iniciada **96–97** de rendimiento y 100 en lo demás; CLS 0. Con red y CPU lentas aplicadas de verdad, el inicio pinta en 1,5 s y muestra el contenido en 2,8 s.
 - axe-core en **todas** las pantallas (móvil 390 px y escritorio 1280 px, ES y EN): 0 violaciones; sin desborde horizontal; botones ≥ 44 px.
 - `prefers-reduced-motion` respetado (CSS y confeti en JS). Sin librerías de animación.
 

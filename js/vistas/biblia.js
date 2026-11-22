@@ -59,6 +59,7 @@ export async function montar(main, { args }) {
         <label>${u('Libro', 'Book')}<select id="libro">${libros.map((l) => `<option value="${l.id}" ${l.id === pref.libro ? 'selected' : ''}>${esc(l[nat()])}</option>`).join('')}</select></label>
         <label>${u('Capítulo', 'Chapter')}<select id="cap">${L.caps.map((_, i) => `<option ${i + 1 === pref.cap ? 'selected' : ''}>${i + 1}</option>`).join('')}</select></label></div>
       <div class="fila mt"><button class="btn sec" data-prev>←</button><button class="btn sec" data-next>→</button><form id="buscar" class="fila" style="flex:1" role="search"><input type="search" id="q" placeholder="${u('Buscar en este libro…', 'Search this book…')}" aria-label="${u('Buscar', 'Search')}" style="flex:1"><button class="btn">${u('Buscar', 'Search')}</button></form></div>
+      <label class="fila" style="min-height:44px;margin-top:6px"><input type="checkbox" id="todo" style="width:24px;height:24px" ${pref.todo ? 'checked' : ''}> ${u('Buscar en toda la Biblia (tarda un poco más)', 'Search the whole Bible (takes a little longer)')}</label>
       <div id="resultados"></div>
       <h2 class="mt2" id="titulo-pasaje">${esc(L[nat()])} ${pref.cap}</h2><div id="texto" aria-live="polite"></div>
       ${ruta.length ? `<h2 class="mt2">${u('Ruta Biblia: aprende con versículos', 'Bible path: learn with verses')}</h2><p class="muted">${u('Pasajes cortos con RV1909 y KJV (dominio público).', 'Short passages in RV1909 and KJV (public domain).')}</p>
@@ -68,6 +69,7 @@ export async function montar(main, { args }) {
   const cambiarCap = (d) => { const L = libroActual(); let c = pref.cap + d; if (c < 1) c = L.caps.length; if (c > L.caps.length) c = 1; pref.cap = c; guardarPref(); pintar(); scrollTo({ top: 0 }); };
   main.onchange = (e) => {
     if (e.target.id === 'v-es') pref.es = e.target.value; else if (e.target.id === 'v-en') pref.en = e.target.value;
+    else if (e.target.id === 'todo') { pref.todo = e.target.checked; guardarPref(); return; }
     else if (e.target.id === 'libro') { pref.libro = e.target.value; pref.cap = 1; } else if (e.target.id === 'cap') pref.cap = +e.target.value; else return;
     guardarPref(); pintar();
   };
@@ -79,12 +81,14 @@ export async function montar(main, { args }) {
   };
   main.onsubmit = async (e) => {
     e.preventDefault(); const q = main.querySelector('#q').value; if (q.trim().length < 3) return;
-    const cont = main.querySelector('#resultados'); cont.innerHTML = `<p class="muted">${u('Buscando…', 'Searching…')}</p>`;
+    const todo = !!main.querySelector('#todo')?.checked, MAX = 60;
+    const cont = main.querySelector('#resultados'); cont.innerHTML = `<p class="muted" role="status">${todo ? u('Buscando en los 66 libros…', 'Searching all 66 books…') : u('Buscando…', 'Searching…')}</p>`;
     const idioma = pref.modo === 'en' ? 'en' : pref.modo === 'es' ? 'es' : tgt();
     try {
-      const r = await search(pref[idioma], q, { libro: pref.libro });
+      const r = await search(pref[idioma], q, todo ? { max: MAX } : { libro: pref.libro, max: MAX });
+      const donde = `${todo ? u('toda la Biblia', 'the whole Bible') : libroActual()[nat()]} (${versionPorId(pref[idioma]).corto})`;
       const nombre = (id) => libros.find((l) => l.id === id)[nat()];
-      cont.innerHTML = r.length ? `<div class="tarjeta"><h2>${r.length} ${u('resultado(s) en', 'result(s) in')} ${esc(libroActual()[nat()])}</h2>${r.map((x) => `<button class="btn-icono" data-ir="${x.libro}|${x.cap}" style="width:100%;text-align:left;margin:4px 0;padding:8px 12px"><strong>${esc(nombre(x.libro))} ${x.cap}:${x.v}</strong> ${resaltar(x.t, [q])}</button>`).join('')}</div>` : `<p class="muted">${u('Sin resultados.', 'No results.')}</p>`;
+      cont.innerHTML = r.length ? `<div class="tarjeta"><h2>${r.length >= MAX ? u(`Primeros ${MAX} resultados en`, `First ${MAX} results in`) : `${r.length} ${u('resultado(s) en', 'result(s) in')}`} ${esc(donde)}</h2>${r.map((x) => `<button class="btn-icono" data-ir="${x.libro}|${x.cap}" style="width:100%;text-align:left;margin:4px 0;padding:8px 12px"><strong>${esc(nombre(x.libro))} ${x.cap}:${x.v}</strong> ${resaltar(x.t, [q])}</button>`).join('')}</div>` : `<p class="muted" role="status">${u('Sin resultados en', 'No results in')} ${esc(donde)}. ${u('Se busca en la versión que estás viendo; escribe la palabra en ese idioma.', 'The search uses the version you are viewing; type the word in that language.')}</p>`;
     } catch (err) { cont.innerHTML = `<p class="tarjeta crema2">${err instanceof SinDescargar ? u('No descargada. Ve a «Descargas».', 'Not downloaded. Go to "Downloads".') : u('Búsqueda no disponible para esta versión.', 'Search is not available for this version.')}</p>`; }
   };
   pintar();

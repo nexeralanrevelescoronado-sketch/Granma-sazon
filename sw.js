@@ -6,7 +6,7 @@
  * - Los cachés viejos se limpian en `activate`.
  */
 /*NUCLEO:INICIO*/
-const VERSION = '420463bda9';
+const VERSION = 'fbe0099e57';
 const NUCLEO = [
  "assets/animaciones/animaciones.css",
  "assets/animaciones/confeti.js",
@@ -45,6 +45,7 @@ const NUCLEO = [
  "js/biblia/remote.js",
  "js/compartir.js",
  "js/constancia.js",
+ "js/cronometros.js",
  "js/datos.js",
  "js/descargas.js",
  "js/ejercicios.js",
@@ -145,5 +146,15 @@ self.addEventListener('fetch', (ev) => {
       }
       return new Response('', { status: 503 });
     }
+  })());
+});
+
+// Notificación del cronómetro: al tocarla se enfoca la app (o se abre si estaba cerrada).
+self.addEventListener('notificationclick', (ev) => {
+  ev.notification.close();
+  ev.waitUntil((async () => {
+    const ventanas = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    if (ventanas.length) return ventanas[0].focus();
+    return self.clients.openWindow(ALCANCE);
   })());
 });

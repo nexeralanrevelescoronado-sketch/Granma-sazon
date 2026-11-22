@@ -342,3 +342,32 @@ test('hablar: compara lo dicho con la frase sin castigar, y la lección trae oí
   assert.ok(!/tipo === 'di'[\s\S]{0,400}perderVida/.test(e.slice(e.indexOf('async function micro'), e.indexOf('function responder'))), 'hablar nunca quita energía');
   assert.ok(/mejorRacha/.test(e) && /racha = 0/.test(e), 'racha de aciertos');
 });
+
+test('Biblia: el texto es el original de dominio público, sin cambiar una letra', async () => {
+  const { huellas } = await import('../scripts/biblia-huella.mjs'), guardadas = JSON.parse(leer('scripts/datos/biblia-huella.json'));
+  assert.deepEqual(huellas(), guardadas, 'el texto de data/biblia cambió: solo se regenera con npm run biblia (y luego node scripts/biblia-huella.mjs --escribir)');
+  const v = leer('js/vistas/biblia.js'); assert.ok(!/\.replace\(|toUpperCase|toLowerCase\(\)\s*\)/.test(v.split('\n').filter((l) => /versos|x\.t|v\.t/.test(l) && !/sinAcentos|buscar|search/.test(l)).join('\n')), 'la vista no transforma el texto del versículo');
+});
+
+test('privacidad de la voz: se pregunta antes, nada se guarda y la grabación dura 1 minuto como máximo', async () => {
+  const e = leer('js/ejercicios.js'), { BORRADO_MS } = await import('../js/ejercicios.js');
+  assert.ok(BORRADO_MS <= 60000);
+  assert.ok(/'pregunta'/.test(e) && /data-oido-modo="reco"/.test(e) && /data-oido-modo="local"/.test(e), 'pregunta cómo practicar');
+  assert.ok(/elegido === 'reco'/.test(e), 'el reconocimiento solo corre si la persona lo eligió');
+  const o = leer('js/oido.js'); assert.ok(!/fetch\(|XMLHttpRequest|sendBeacon|localStorage|indexedDB/.test(o), 'el audio no se envía ni se guarda');
+  assert.ok(/getTracks\(\)\.forEach\(\(t\) => t\.stop\(\)\)/.test(o), 'el micrófono se apaga al terminar');
+  assert.ok(/class="privacidad"/.test(leer('js/vistas/perfil.js')));
+});
+
+test('glosario bíblico: formal, y cubre cada palabra de los pasajes de la ruta', () => {
+  const g = JSON.parse(leer('data/biblia/glosario.json')), ruta = JSON.parse(leer('data/biblia/ruta.json'));
+  const pal = (t) => (String(t).toLowerCase().match(/\p{L}+(?:['’]\p{L}+)?/gu) || []).map((w) => w.replace('’', "'"));
+  for (const p of ruta) for (const [v, l] of [['rv1909', 'es'], ['kjv', 'en'], ['web', 'en']]) {
+    const c = JSON.parse(leer(`data/biblia/${v}/${p.ref.libro}.json`)).c[p.ref.cap - 1];
+    for (let i = p.ref.desde; i <= p.ref.hasta; i++) for (const w of pal(c[i - 1])) assert.ok(g[l][w], `${p.id} (${v}): falta «${w}» en scripts/datos/glosario/biblia-${l}.json`);
+  }
+  for (const l of ['en', 'es']) for (const [w, s] of Object.entries(g[l])) { assert.ok(s && s.length <= 60, `glosa rara: ${w}`); assert.ok(!/broma|chiste|joke|\bpun\b|trabalenguas|tongue twister/i.test(s), `glosa informal en la Biblia: ${w}`); }
+  assert.ok(Object.keys(g.en).length >= 2000 && Object.keys(g.es).length >= 2000);
+  assert.ok(/INFORMAL\.test\(g\.significado\)/.test(leer('js/glosario.js')), 'en la Biblia nunca sale una glosa de chiste');
+  assert.ok(JSON.parse(leer('data/paquetes.json')).paquetes.find((p) => p.id === 'biblia').archivos.includes('data/biblia/glosario.json'));
+});

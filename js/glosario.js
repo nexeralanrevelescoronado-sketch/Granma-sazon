@@ -5,8 +5,11 @@ import { estado, guardar, tgt, nat, u } from './state.js';
 import { esc } from './util.js';
 import { hablar } from './fx.js';
 
-let datos = null, burbuja = null;
+let datos = null, biblico = null, burbuja = null;
 const cargar = () => (datos ||= fetch('data/glosario.json').then((r) => (r.ok ? r.json() : { en: {}, es: {} })).catch(() => ({ en: {}, es: {} })));
+// El glosario bíblico va aparte (viaja con el paquete «Biblia»): significados formales, sin bromas ni comentarios.
+const cargarBiblico = () => (biblico ||= fetch('data/biblia/glosario.json').then((r) => (r.ok ? r.json() : null)).catch(() => null).then((g) => { if (!g) biblico = null; return g || { en: {}, es: {} }; }));
+const INFORMAL = /broma|chiste|juego de palabras|trabalenguas|joke|pun|tongue twister/i;
 const LETRA = /[\p{L}'’]/u;
 
 /** Busca el significado de una palabra tal como aparece; si no está, prueba formas cercanas (plural, posesivo…). Pura. */
@@ -50,10 +53,10 @@ function rangoDeTexto(el, a, b) {
 
 export function cerrarGlosa() { burbuja?.remove(); burbuja = null; try { CSS.highlights?.delete('glosa'); } catch { /* sin resaltado */ } }
 
-function mostrar(palabra, hallado, caja, idioma) {
+function mostrar(palabra, hallado, caja, idioma, enBiblia) {
   cerrarGlosa();
   burbuja = document.createElement('div'); burbuja.className = 'glosa'; burbuja.setAttribute('role', 'dialog'); burbuja.setAttribute('aria-live', 'polite');
-  burbuja.innerHTML = `<button class="btn-icono" data-glosa-voz aria-label="${u('Escuchar', 'Listen')}">🔊</button><div><strong lang="${idioma}">${esc(palabra)}</strong><span lang="${nat()}">${hallado ? esc(hallado.significado) : u('Todavía no tengo esta palabra en mi cuaderno.', 'I do not have this word in my notebook yet.')}</span></div>`;
+  burbuja.innerHTML = `<button class="btn-icono" data-glosa-voz aria-label="${u('Escuchar', 'Listen')}">🔊</button><div><strong lang="${idioma}">${esc(palabra)}</strong><span lang="${nat()}">${hallado ? esc(hallado.significado) : (enBiblia ? u('Esta palabra aún no está en el glosario bíblico.', 'This word is not in the Bible glossary yet.') : u('Todavía no tengo esta palabra en mi cuaderno.', 'I do not have this word in my notebook yet.'))}</span></div>`;
   document.body.append(burbuja);
   const ancho = burbuja.offsetWidth, alto = burbuja.offsetHeight, vw = document.documentElement.clientWidth;
   const izq = Math.max(8, Math.min(vw - ancho - 8, caja.left + caja.width / 2 - ancho / 2)), arriba = caja.top - alto - 10;
@@ -73,9 +76,12 @@ export function iniciarGlosario() {
     if (e.target.closest('button,a,input,select,textarea,label,[data-sin-glosa]')) return;
     const el = e.target.closest('[lang]'); if (!el || el === document.documentElement || el.getAttribute('lang').slice(0, 2) !== T) return;
     const dato = palabraEn(el, e.clientX, e.clientY); if (!dato) return;
-    const hallado = buscar(await cargar(), dato.palabra, T), caja = dato.rango?.getBoundingClientRect() || { left: e.clientX, top: e.clientY, bottom: e.clientY, width: 0 };
+    const enBiblia = !!el.closest('.versos');
+    let hallado = enBiblia ? buscar(await cargarBiblico(), dato.palabra, T) : buscar(await cargar(), dato.palabra, T);
+    if (enBiblia && !hallado) { const g = buscar(await cargar(), dato.palabra, T); if (g && !INFORMAL.test(g.significado)) hallado = g; }   // respaldo, nunca una glosa de chiste
+    const caja = dato.rango?.getBoundingClientRect() || { left: e.clientX, top: e.clientY, bottom: e.clientY, width: 0 };
     try { if (dato.rango && window.Highlight && CSS.highlights) CSS.highlights.set('glosa', new Highlight(dato.rango)); } catch { /* sin resaltado */ }
-    mostrar(dato.palabra, hallado, caja, T);
+    mostrar(dato.palabra, hallado, caja, T, enBiblia);
     if (estado().ajustes.voz) hablar(dato.palabra, T);
     if (hallado) anotar(hallado.palabra, hallado.significado, T);
   });

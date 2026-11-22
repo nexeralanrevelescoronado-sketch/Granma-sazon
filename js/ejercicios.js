@@ -1,7 +1,7 @@
 // Motor de ejercicios: generación (según el interés) y reproductor compartido por lecciones, retos,
 // consejos, cotorreos y la ruta de Biblia. Sin librerías.
 import { esc, mezclar, al, sinAcentos } from './util.js';
-import { u, tgt, nat, vidas, perderVida, sinEnergia, MAX_VIDAS } from './state.js';
+import { u, tgt, nat, vidas, perderVida, sinEnergia, MAX_VIDAS, estado, guardar } from './state.js';
 import { pj } from './personajes.js';
 import { sonido } from './sound.js';
 import { confeti, animar, vibrar, hablar } from './fx.js';
@@ -13,6 +13,7 @@ import { hayVozPara } from './voz.js';
 // «Ahora no puedo hablar»: los ejercicios de voz se saltan un rato (20 min) sin castigo.
 const CLAVE_NOHABLO = 'granma:nohablo';
 export const hablarPausado = () => { try { return Date.now() - +(sessionStorage.getItem(CLAVE_NOHABLO) || 0) < 20 * 60000; } catch { return false; } };
+export const BORRADO_MS = 60000;   // la grabación de práctica vive, como mucho, un minuto y solo en la memoria del teléfono
 const pausarHablar = () => { try { sessionStorage.setItem(CLAVE_NOHABLO, String(Date.now())); } catch { /* sin almacenamiento */ } };
 
 /* ---------- generación ---------- */
@@ -77,7 +78,7 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
     </div>`;
 
     // Al dejar un ejercicio de voz se apaga el micrófono y se borra la grabación (nada queda guardado).
-    const soltarVoz = (it) => { if (!it || it.tipo !== 'di') return; try { it.oido?.parar(); it.grab?.parar(); } catch { /* ya cerró */ } soltar(it.url); it.url = null; it.oyendo = false; };
+    const soltarVoz = (it) => { if (!it || it.tipo !== 'di') return; try { it.oido?.parar(); it.grab?.parar(); } catch { /* ya cerró */ } clearTimeout(it.borrado); soltar(it.url); it.url = null; it.oyendo = false; };
     const cierre = (extra) => { soltarVoz(actual); raiz.removeEventListener('click', delegado); resolver({ aciertos, errores, mejorRacha, ...extra }); };
 
     function siguiente() {
@@ -105,12 +106,14 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
           ${it.izq.map((a, i) => `<button class="par" data-lado="i" data-v="${esc(a)}" lang="${tgt()}">${esc(a)}</button>${`<button class="par" data-lado="d" data-v="${esc(it.der[i])}">${esc(it.der[i])}</button>`}`).join('')}</div>`;
       }
       else if (it.tipo === 'di') {
-        it.intentos = 0; it.silencios = 0; it.modo = puedeReconocer() ? 'reco' : puedeGrabar() ? 'graba' : 'solo';
+        // Privacidad: el reconocimiento de voz del teléfono solo se usa si la persona dijo que sí (se le pregunta una vez).
+        const elegido = estado().ajustes.oido;
+        it.intentos = 0; it.silencios = 0; it.modo = puedeReconocer() && !elegido ? 'pregunta' : puedeReconocer() && elegido === 'reco' ? 'reco' : puedeGrabar() ? 'graba' : 'solo';
         cuerpo = `<p class="pregunta">${esc(it.prompt)}<br><span class="decir" lang="${T}">${esc(it.frase)}</span><small>${esc(it.ayuda)}</small></p>
           <button class="btn-icono" data-voz aria-label="${u('Escuchar cómo se dice', 'Hear how it sounds')}">🔊</button>
           <div class="hablar"><button class="btn-micro" data-micro aria-pressed="false" aria-label="${u('Toca y habla', 'Tap and speak')}">🎤</button>
             <p class="oido" data-oido role="status"></p><div class="fila" data-extra></div>
-            <p class="muted chico">${u('Nada se guarda: es solo para que practiques.', 'Nothing is saved: it is just for practice.')}</p>
+            <p class="muted chico" data-privado></p>
             <button class="btn-liga" data-nohablo>${u('Ahora no puedo hablar', 'I can\'t speak right now')}</button></div>`;
       }
       const sinBoton = it.tipo === 'pares' || it.tipo === 'di';
@@ -126,7 +129,18 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
       m.classList.toggle('oyendo', !!it.oyendo); m.setAttribute('aria-pressed', String(!!it.oyendo));
       const base = it.modo === 'reco' ? u('Toca el micrófono y dilo.', 'Tap the microphone and say it.') : it.modo === 'graba' ? u('Toca el micrófono, dilo y escúchate.', 'Tap the microphone, say it and hear yourself.') : u('Dilo fuerte y claro, como te salga.', 'Say it loud and clear, as best you can.');
       o.textContent = it.oyendo ? (it.modo === 'reco' ? u('Te escucho…', 'Listening…') : u('Grabando… toca otra vez para terminar.', 'Recording… tap again to finish.')) : (texto || base);
-      m.hidden = it.modo === 'solo';
+      m.hidden = it.modo === 'solo' || it.modo === 'pregunta';
+      const priv = raiz.querySelector('[data-privado]');
+      if (priv) priv.textContent = it.modo === 'reco' ? u('Te escucha el servicio de voz de tu teléfono. La app no guarda nada.', 'Your phone\'s speech service listens. The app saves nothing.')
+        : it.modo === 'graba' ? u('Tu grabación no sale de tu teléfono y se borra sola en 1 minuto.', 'Your recording never leaves your phone and deletes itself in 1 minute.')
+        : it.modo === 'solo' ? u('Aquí no se usa el micrófono.', 'The microphone is not used here.') : '';
+      if (it.modo === 'pregunta') {
+        o.textContent = u('¿Cómo quieres practicar tu voz?', 'How do you want to practice speaking?');
+        x.innerHTML = `<button class="opcion" data-oido-modo="reco"><strong>🎧 ${u('Que mi teléfono me escuche', 'Let my phone listen')}</strong><br><small>${u('Te dice si lo dijiste bien. Usa el servicio de voz de tu teléfono (Apple o Google), que procesa tu voz fuera del teléfono.', 'It tells you if you said it right. It uses your phone\'s speech service (Apple or Google), which processes your voice outside the phone.')}</small></button>
+          <button class="opcion" data-oido-modo="local"><strong>🔒 ${u('Solo grabarme y escucharme', 'Just record and hear myself')}</strong><br><small>${u('Nada sale de tu teléfono. La grabación se borra sola en 1 minuto.', 'Nothing leaves your phone. The recording deletes itself in 1 minute.')}</small></button>
+          <p class="muted chico">${u('Puedes cambiarlo cuando quieras en Mi perfil.', 'You can change it any time in My profile.')}</p>`;
+        return;
+      }
       x.innerHTML = it.modo === 'solo' ? `<button class="btn verde" data-yadije>✓ ${u('Ya lo dije en voz alta', 'I said it out loud')}</button>`
         : it.url ? `<button class="btn sec" data-mivoz>▶ ${u('Mi voz', 'My voice')}</button><button class="btn verde" data-yadije>✓ ${u('Ya me salió', 'I got it')}</button>`
         : it.intentos >= 2 ? `<button class="btn sec" data-yadije>${u('Seguir adelante', 'Move on')}</button>` : '';
@@ -155,6 +169,8 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
         it.grab = g; it.oyendo = true; estadoDi(it);
         const url = await g.fin; it.oyendo = false; if (actual !== it) return soltar(url);
         it.url = url; estadoDi(it, url ? u('¡Listo! Escúchate y compárate con 🔊.', 'Done! Hear yourself and compare with 🔊.') : '');
+        clearTimeout(it.borrado);
+        if (url) it.borrado = setTimeout(() => { soltar(it.url); it.url = null; if (actual === it && !bloqueado) estadoDi(it, u('Tu grabación ya se borró. Puedes grabarte otra vez.', 'Your recording was deleted. You can record again.')); }, BORRADO_MS);
       }
     }
 
@@ -194,6 +210,10 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
       if (b.hasAttribute('data-voz')) return void hablar(actual.voz, tgt());
       const it = actual, boton = raiz.querySelector('[data-comprobar]');
       if (it.tipo === 'di') {
+        if (b.dataset.oidoModo) {                       // respuesta a «¿cómo quieres practicar tu voz?»
+          estado().ajustes.oido = b.dataset.oidoModo; guardar();
+          it.modo = b.dataset.oidoModo === 'reco' ? 'reco' : puedeGrabar() ? 'graba' : 'solo'; return estadoDi(it);
+        }
         if (b.hasAttribute('data-micro')) return void micro(it);
         if (b.hasAttribute('data-mivoz')) { if (it.url) new Audio(it.url).play().catch(() => {}); return; }
         if (b.hasAttribute('data-yadije')) return responder(true);

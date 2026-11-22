@@ -6,18 +6,18 @@ const R = join(dirname(fileURLToPath(import.meta.url)), '..'), CAPT = join(R, '.
 const TIPOS = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png' };
 const srv = createServer((q, s) => { let p = new URL(q.url, 'http://x').pathname; if (p.endsWith('/')) p += 'index.html'; const f = join(R, p); if (!existsSync(f) || statSync(f).isDirectory()) { s.writeHead(404); return s.end(); } s.writeHead(200, { 'Content-Type': TIPOS[extname(f)] || 'application/octet-stream' }); s.end(readFileSync(f)); }).listen(0);
 const B = `http://localhost:${srv.address().port}/`, fallas = [], ok = (c, t) => { console.log(`  ${c ? '✔' : '✘'} ${t}`); if (!c) fallas.push(t); };
-const estado = (ap) => JSON.stringify({ v: 1, perfil: { aprende: ap, interes: 'cocina', cocina: 'mexicana', nombre: 'Ana', listo: true }, xp: 0, racha: { n: 0, ultimo: null }, caps: {}, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false, vozV: 2 }, constancia: { fecha: null } });
+const estado = (ap, oido) => JSON.stringify({ v: 1, perfil: { aprende: ap, interes: 'cocina', cocina: 'mexicana', nombre: 'Ana', listo: true }, xp: 0, racha: { n: 0, ultimo: null }, caps: {}, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false, vozV: 2, ...(oido ? { oido } : {}) }, constancia: { fecha: null } });
 const hist = JSON.parse(readFileSync(join(R, 'data/historia.json'), 'utf8')), glos = JSON.parse(readFileSync(join(R, 'data/glosario.json'), 'utf8'));
-const b = await chromium.launch(), errores = [];
-async function abrir(ap, simula) {
-  const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true }); const pg = await ctx.newPage(); pg.on('pageerror', (e) => errores.push(e.message));
+const b = await chromium.launch({ args: ['--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream'] }), errores = [];
+async function abrir(ap, simula, oido = 'reco') {
+  const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, permissions: ['microphone'] }); const pg = await ctx.newPage(); pg.on('pageerror', (e) => errores.push(e.message));
   await ctx.addInitScript((modo) => {
     window.__dice = null;
     if (modo === 'reco') window.SpeechRecognition = window.webkitSpeechRecognition = function () { this.start = () => { setTimeout(() => this.onstart?.(), 10); setTimeout(() => { const t = window.__dice; if (t == null) this.onerror?.({ error: 'no-speech' }); else if (t === '#red') this.onerror?.({ error: 'network' }); else this.onresult?.({ results: [[{ transcript: t }]] }); }, 60); }; this.stop = this.abort = () => {}; };
     else { delete window.SpeechRecognition; delete window.webkitSpeechRecognition; }
     if (modo === 'nada') Object.defineProperty(navigator, 'mediaDevices', { value: undefined, configurable: true });
   }, simula);
-  await pg.goto(B); await pg.evaluate((e) => localStorage.setItem('granma:v1', e), estado(ap)); await pg.reload(); return pg;
+  await pg.goto(B); await pg.evaluate((e) => localStorage.setItem('granma:v1', e), estado(ap, oido)); await pg.reload(); return pg;
 }
 
 console.log('1) Glosario al toque');
@@ -70,7 +70,7 @@ await pg.screenshot({ path: join(CAPT, '22-fin-estrellas.png') });
 await pg.context().close();
 
 console.log('3) Sin reconocimiento de voz ni micrófono: la persona lo dice y sigue');
-pg = await abrir('en', 'nada');
+pg = await abrir('en', 'nada', null);
 await pg.goto(B + '#/leccion/1'); await pg.click('[data-accion="palabras"]'); await pg.click('[data-accion="ejercicios"]');
 for (let i = 0; i < 20; i++) { await pg.waitForTimeout(140); if (await pg.locator('[data-seguir]').count()) { await pg.click('[data-seguir]'); continue; } if (await pg.locator('[data-nohablo]').count()) break; await resolver(pg, async () => {}); }
 ok((await pg.locator('[data-yadije]').count()) === 1 && !(await pg.locator('[data-micro]').isVisible()), 'aparece «Ya lo dije en voz alta» y no hay micrófono');
@@ -85,6 +85,21 @@ await pg.goto(B + '#/leccion/1'); await pg.click('[data-accion="palabras"]'); aw
 for (let i = 0; i < 20; i++) { await pg.waitForTimeout(140); if (await pg.locator('[data-seguir]').count()) { await pg.click('[data-seguir]'); continue; } if (await pg.locator('[data-nohablo]').count()) break; await resolver(pg, async () => {}); }
 await pg.evaluate(() => { window.__dice = '#red'; }); await pg.click('[data-micro]'); await pg.waitForFunction(() => /Sin internet/.test(document.querySelector('[data-oido]').textContent));
 ok(true, 'avisa que sin internet no puede oír y ofrece la otra forma');
+await pg.context().close();
+
+console.log('5) Privacidad: se pregunta antes de usar el reconocimiento, y la grabación se borra sola');
+pg = await abrir('en', 'reco', null); await pg.clock.install();
+await pg.goto(B + '#/leccion/1'); await pg.click('[data-accion="palabras"]'); await pg.click('[data-accion="ejercicios"]');
+for (let i = 0; i < 20; i++) { await pg.clock.runFor(200); if (await pg.locator('[data-seguir]').count()) { await pg.click('[data-seguir]'); continue; } if (await pg.locator('[data-nohablo]').count()) break; await resolver(pg, async () => {}); }
+ok((await pg.locator('[data-oido-modo]').count()) === 2 && !(await pg.locator('[data-micro]').isVisible()), 'la primera vez pregunta cómo practicar y el micrófono no se usa hasta elegir');
+await pg.screenshot({ path: join(CAPT, '23-permiso-voz.png') });
+await pg.click('[data-oido-modo="local"]');
+ok((await pg.evaluate(() => JSON.parse(localStorage.getItem('granma:v1')).ajustes.oido)) === 'local' && /no sale de tu teléfono/.test(await pg.locator('[data-privado]').textContent()), 'al elegir «solo grabarme» queda guardado y lo dice en pantalla');
+await pg.click('[data-micro]'); await pg.waitForFunction(() => document.querySelector('[data-micro]').classList.contains('oyendo')); await pg.clock.runFor(900); await pg.click('[data-micro]');
+await pg.waitForSelector('[data-mivoz]'); ok(true, 'se graba y aparece «Mi voz» para escucharse');
+await pg.clock.runFor(61000); await pg.waitForFunction(() => !document.querySelector('[data-mivoz]'));
+ok(/ya se borró/.test(await pg.locator('[data-oido]').textContent()), 'pasado 1 minuto la grabación se borra sola y lo avisa');
+await pg.goto(B + '#/perfil'); await pg.clock.runFor(1500); await pg.waitForSelector('.privacidad', { timeout: 8000 }).catch(() => {}); ok((await pg.locator('.privacidad li').count()) === 4 && (await pg.locator('[data-probar-micro]').count()) === 1, 'el perfil trae el aviso de privacidad y «Probar mi micrófono»');
 await pg.context().close();
 
 ok(errores.length === 0, 'sin errores de JS' + (errores.length ? ': ' + errores.slice(0, 3).join(' | ') : ''));

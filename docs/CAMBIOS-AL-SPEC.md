@@ -48,9 +48,15 @@
 - **Glosario al toque** (`js/glosario.js`): al tocar cualquier palabra del idioma que se aprende sale una burbuja con su significado y 🔊. Sirve en relatos, consejos, cotorreos, frases de los ejercicios y versículos. La fuente es `scripts/datos/glosario/en.json` y `es.json` (una entrada por cada forma que aparece en el contenido); una prueba falla si se agrega contenido con una palabra sin glosa. El texto de la Biblia no está glosado completo: ahí solo salen las palabras que coinciden.
 - **Mi cuaderno** (Perfil): las últimas palabras que la persona tocó.
 - **Dilo en voz alta** (`js/oido.js`): 2 ejercicios por lección. Si el navegador reconoce voz, compara lo dicho con la frase (con 6 de cada 10 palabras se da por bueno). Si no puede (sin internet, sin permiso o sin esa función), la persona se graba y se escucha, o lo dice y sigue. Nunca quita energía y se puede saltar con «Ahora no puedo hablar».
-- **Privacidad:** la app no guarda ni sube audio. El reconocimiento de voz lo hace el navegador del teléfono y puede enviar el audio a su proveedor (Apple o Google).
+- **Privacidad:** la app no guarda ni sube audio. La primera vez pregunta cómo practicar: «que mi teléfono me escuche» (usa el servicio de voz del teléfono, de Apple o Google, que procesa la voz fuera del teléfono) o «solo grabarme» (nada sale del teléfono). La grabación de práctica vive en memoria y se borra sola en 1 minuto o al pasar de ejercicio. Se cambia en Perfil, donde también está «Probar mi micrófono» y el aviso de privacidad. No es asesoría legal: si la app se publica en tiendas o para menores, conviene que un abogado revise el aviso.
 - **Más juego:** la lección pasa de 5 a 9 ejercicios (se suman «¿Qué escuchaste?», deletrear con fichas y los 2 de voz), racha de aciertos 🔥 con sonido que sube y puntos extra, y estrellas al cerrar el capítulo.
 
 ## Pendiente (recordar al dueño)
 
 - **Voz real del Abuelo:** grabar las 51 frases de `docs/GUION-ABUELO.pdf` y pasarlas para integrarlas. El dueño pidió dejarlo para después y que se le recuerde.
+
+## Biblia: texto intacto y glosario formal
+
+- **Versión en español: Reina-Valera 1909** (dominio público). La **Reina-Valera 1960 no se puede incluir**: tiene derechos vigentes (Sociedades Bíblicas en América Latina, renovados por Sociedades Bíblicas Unidas) y pide licencia. Si algún día se consigue por escrito, entra por el mismo camino previsto para NTV/NLT (`docs/BIBLIA.md`).
+- **El texto no se toca.** `scripts/datos/biblia-huella.json` guarda la huella (SHA-256) de RV1909, KJV y WEB tal como se bajaron de sus fuentes; `npm test` falla si cambia una sola letra.
+- **Glosario bíblico aparte** (`scripts/datos/glosario/biblia-en.json` y `biblia-es.json`, en el paquete «Biblia»): solo el significado de la palabra, formal, sin bromas ni interpretación. Cubre el 100 % de las palabras de los pasajes de la ruta y las ~2,000 formas más frecuentes de cada idioma (≈ 93 % de las palabras del texto en inglés y ≈ 87 % en español). **Pendiente:** el resto son unas 14,000 formas en inglés y 26,000 en español (nombres y formas poco frecuentes).

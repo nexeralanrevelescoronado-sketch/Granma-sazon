@@ -227,6 +227,7 @@ html[data-tgt="en"] main [lang="en"]:not(button),html[data-tgt="es"] main [lang=
 .btn-micro{width:96px;height:96px;border-radius:50%;border:3px solid var(--verde-ink);border-bottom-width:6px;background:#E6F3F2;font-size:2.6rem;cursor:pointer;transition:transform .12s ease-out}
 .btn-micro:active{transform:translateY(2px)}
 .btn-micro.oyendo{background:var(--mal-bg);border-color:var(--mal)}
+.hablar .opcion{width:100%;font-weight:400}.hablar .opcion small{color:var(--muted)}.hablar [data-extra]{flex-direction:column;align-items:stretch;width:100%}
 .oido{min-height:2.8em;margin:0;font-weight:700;color:var(--cafe)}
 .btn-liga{min-height:44px;padding:0 12px;border:0;background:none;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit}
 .chico{font-size:.85rem;margin:0}
@@ -235,5 +236,6 @@ html[data-tgt="en"] main [lang="en"]:not(button),html[data-tgt="es"] main [lang=
 .estrellas{font-size:2rem;letter-spacing:.2em;margin:4px 0}
 .armado.letras,.fichas.letras{gap:6px}
 .fichas.letras .ficha,.armado.letras .ficha{min-width:44px;padding:8px 0;text-align:center;font-size:1.2rem;text-transform:lowercase}
+.privacidad{margin:0;padding-left:1.2em;display:grid;gap:8px}
 .cuaderno{list-style:none;padding:0;margin:0;display:grid;gap:6px}
 .cuaderno li{display:flex;gap:8px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--linea)}

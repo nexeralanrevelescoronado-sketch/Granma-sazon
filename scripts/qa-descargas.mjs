@@ -22,7 +22,7 @@ await ctx.setOffline(true); await pg.waitForFunction(()=>/Se cortó|dropped/.tes
 const c1=await n(); console.log('CORTE: mensaje →',await txt(),'| archivos guardados',c1);
 // 3) vuelve el internet: se reanuda solo
 await ctx.setOffline(false); await pg.waitForFunction(()=>/Descargado|Downloaded/.test(document.querySelector('#pq-biblia [data-estado]').textContent),null,{timeout:90000});
-const fin=await n(); console.log('REANUDA sola: total',fin,'de 200', fin===200?'✔':'✘');
+const esperados=JSON.parse(readFileSync(R+'/data/paquetes.json','utf8')).paquetes.find(p=>p.id==='biblia').archivos.length; const fin=await n(); console.log('REANUDA sola: total',fin,'de',esperados, fin===esperados?'✔':'✘'); if(fin!==esperados) process.exitCode=1;
 // 4) abrir un capítulo sin internet
 await ctx.setOffline(true); await pg.goto(B+'#/biblia'); await pg.waitForSelector('.verso-fila'); console.log('Biblia offline filas',await pg.locator('.verso-fila').count());
 await b.close(); srv.close();

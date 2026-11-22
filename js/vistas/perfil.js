@@ -1,5 +1,6 @@
 // Perfil: insignias, constancia, ajustes y créditos.
-import { estado, guardar, reiniciar, u, nat, Ln, INSIGNIAS, rachaVigente } from '../state.js';
+import { puedeReconocer, escuchar, grabar, soltar } from '../oido.js';
+import { estado, guardar, reiniciar, u, nat, tgt, Ln, INSIGNIAS, rachaVigente } from '../state.js';
 import { generarConstancia } from '../constancia.js';
 import { sonido } from '../sound.js';
 import { pj } from '../personajes.js';
@@ -26,9 +27,19 @@ export async function montar(main) {
     <div class="tarjeta"><div class="fila"><button class="btn sec" data-sonido>${S.ajustes.sonido ? '🔊 ' + u('Sonido: sí', 'Sound: on') : '🔇 ' + u('Sonido: no', 'Sound: off')}</button>
       ${vozDisponible() ? `<button class="btn sec" data-voz aria-pressed="${!!S.ajustes.voz}">🗣 ${S.ajustes.voz ? u('Voz: sí', 'Voice: on') : u('Voz: no', 'Voice: off')}</button>` : ''}
       <a class="btn sec" href="#/onboarding?cambiar">${u('Cambiar interés o cocina', 'Change interest or cuisine')}</a></div>
-      <p class="muted mt">${u('La voz de Granma y el Abuelo viene apagada. Sin internet depende de las voces instaladas en tu dispositivo (es-MX y en-US).', 'The voice of Granma and Grandpa is off by default. Offline it depends on the voices installed on your device (es-MX and en-US).')}</p>
+      <p class="muted mt">${u('La voz de Granma y el Abuelo se apaga con 🗣. Usa las voces instaladas en tu dispositivo (es-MX y en-US).', 'Turn the voice of Granma and Grandpa off with 🗣. It uses the voices installed on your device (es-MX and en-US).')}</p>
       <p class="muted">${u('Idioma que aprendes', 'Language you are learning')}: <strong>${S.perfil.aprende === 'es' ? 'Español' : 'English'}</strong> · ${u('Interés', 'Interest')}: <strong>${esc(S.perfil.interes)}</strong></p>
       <button class="btn sec" data-borrar style="margin-top:6px">${u('Borrar mi progreso', 'Delete my progress')}</button></div>
+    <h2 class="mt2">🎤 ${u('Practicar mi voz', 'Speaking practice')}</h2>
+    <div class="tarjeta"><p>${u('Ahora', 'Now')}: <strong>${S.ajustes.oido === 'reco' ? u('mi teléfono me escucha', 'my phone listens') : S.ajustes.oido === 'local' ? u('solo me grabo y me escucho', 'I just record and hear myself') : u('todavía no eliges', 'not chosen yet')}</strong></p>
+      <div class="fila">${puedeReconocer() ? `<button class="btn sec" data-oido="reco" aria-pressed="${S.ajustes.oido === 'reco'}">🎧 ${u('Que me escuche', 'Let it listen')}</button>` : ''}<button class="btn sec" data-oido="local" aria-pressed="${S.ajustes.oido === 'local'}">🔒 ${u('Solo grabarme', 'Just record')}</button><button class="btn sec" data-probar-micro>${u('Probar mi micrófono', 'Test my microphone')}</button></div>
+      <p class="muted mt" id="micro-out" role="status"></p></div>
+    <h2 class="mt2">🔒 ${u('Tu privacidad', 'Your privacy')}</h2>
+    <div class="tarjeta"><ul class="privacidad">
+      <li>${u('No hay cuentas ni registro. Tu avance, tu nombre y tu cuaderno se guardan solo en este teléfono.', 'There are no accounts or sign-up. Your progress, your name and your notebook are stored only on this phone.')}</li>
+      <li>${u('La app no guarda ni envía tu voz. Si te grabas para practicar, la grabación vive solo en la memoria del teléfono y se borra sola en 1 minuto o al pasar de ejercicio.', 'The app does not store or send your voice. If you record yourself to practice, the recording lives only in the phone\'s memory and deletes itself in 1 minute or when you move on.')}</li>
+      <li>${u('Si eliges «que mi teléfono me escuche», quien procesa tu voz es el servicio de voz de tu teléfono (Apple o Google), con sus propias reglas. Solo se usa si tú dices que sí, y lo puedes apagar aquí arriba.', 'If you choose "let my phone listen", your voice is processed by your phone\'s speech service (Apple or Google), under their own rules. It is only used if you say yes, and you can turn it off above.')}</li>
+      <li>${u('«Borrar mi progreso» elimina todo lo guardado en este teléfono.', '"Delete my progress" removes everything stored on this phone.')}</li></ul></div>
     <h2 class="mt2">${u('Créditos y derechos', 'Credits and rights')}</h2>
     <div class="tarjeta"><p class="atrib">${u('Personajes, logo, textos, chistes y consejos: creación original de Granma Sazón.', 'Characters, logo, texts, jokes and advice: original creations of Granma Sazón.')}</p>
       ${VERSIONES.map((v) => `<p class="atrib"><strong>${esc(v.corto)}</strong> — ${esc(v.attribution[nat()])}${v.activa ? '' : ' (' + u('apagada', 'switched off') + ')'}</p>`).join('')}</div>`;
@@ -36,6 +47,19 @@ export async function montar(main) {
     const b = e.target.closest('button'); if (!b) return;
     if (b.hasAttribute('data-sonido')) { sonido.alternar(); montar(main); }
     else if (b.hasAttribute('data-voz')) { alternarVoz(); montar(main); }
+    else if (b.dataset.oido) { S.ajustes.oido = b.dataset.oido; guardar(); montar(main); }
+    else if (b.hasAttribute('data-probar-micro')) {
+      const out = main.querySelector('#micro-out'), instalada = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+      const grabaOk = async () => { const g = await grabar({ ms: 1200 }); if (!g.ok) return false; soltar(await g.fin); return true; };
+      if (!puedeReconocer()) { out.textContent = u('Revisando…', 'Checking…'); out.textContent = (await grabaOk()) ? u('✔ Tu micrófono funciona. Este navegador no reconoce voz, así que practicarás grabándote y escuchándote.', '✔ Your microphone works. This browser cannot recognize speech, so you will practice by recording and hearing yourself.') : u('No pude usar el micrófono. Revisa el permiso del micrófono para esta app en los ajustes del teléfono.', 'I could not use the microphone. Check the microphone permission for this app in your phone settings.'); return; }
+      out.textContent = u('Di algo en voz alta…', 'Say something out loud…');
+      const r = await escuchar(tgt(), { ms: 7000 });
+      out.textContent = r.ok ? `✔ ${u('Tu teléfono sí reconoce tu voz. Escuché', 'Your phone does recognize your voice. I heard')}: «${r.textos[0]}»`
+        : r.motivo === 'silencio' ? u('No alcancé a oír nada. Acércate e inténtalo otra vez.', 'I could not hear anything. Come closer and try again.')
+        : r.motivo === 'red' ? u('Sin internet el teléfono no puede reconocer la voz. Sin internet practicarás grabándote.', 'Without internet the phone cannot recognize speech. Offline you will practice by recording yourself.')
+        : instalada ? u('Aquí, con la app en la pantalla de inicio, tu teléfono no dejó usar el reconocimiento de voz. Practicarás grabándote; para que te escuche, abre la app en el navegador.', 'Here, with the app on the home screen, your phone did not allow speech recognition. You will practice by recording; to be listened to, open the app in the browser.')
+        : u('Tu teléfono no dejó usar el reconocimiento de voz (revisa el permiso del micrófono y del dictado). Mientras, practicarás grabándote.', 'Your phone did not allow speech recognition (check the microphone and dictation permissions). Meanwhile you will practice by recording.');
+    }
     else if (b.hasAttribute('data-borrar')) { if (confirm(u('¿Seguro? Se borrará tu avance en este teléfono.', 'Sure? Your progress on this phone will be deleted.'))) { reiniciar(); location.hash = '#/onboarding'; location.reload(); } }
     else if (b.hasAttribute('data-const')) {
       const nombre = main.querySelector('#nombre').value.trim(); if (!nombre) return void main.querySelector('#nombre').focus();

@@ -1,0 +1,14 @@
+{
+ "rv1909": {
+  "sha256": "72523ed64d9fb30436bcb6bcb4d975978a4ae90970e25d187874cd5d0d6831f5",
+  "versiculos": 31102
+ },
+ "kjv": {
+  "sha256": "453621c12bf39685bb18029ba93f26be49ba2f2a2559a3cb98b5501a1d198836",
+  "versiculos": 31102
+ },
+ "web": {
+  "sha256": "c301039ec8c60ea65dfb3895b87accea599910a39b39795548410d349153c78b",
+  "versiculos": 31103
+ }
+}

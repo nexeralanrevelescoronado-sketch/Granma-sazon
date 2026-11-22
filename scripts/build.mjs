@@ -89,6 +89,8 @@ escribir(j('data', 'audios.json'), audios);
 // ---- glosario al toque (cada palabra del contenido con su significado; fuente: scripts/datos/glosario/)
 const glos = (l) => JSON.parse(readFileSync(j('scripts', 'datos', 'glosario', `${l}.json`), 'utf8'));
 escribir(j('data', 'glosario.json'), { en: glos('en'), es: glos('es') });
+// El glosario bíblico (formal) viaja con el paquete «Biblia»
+escribir(j('data', 'biblia', 'glosario.json'), { en: glos('biblia-en'), es: glos('biblia-es') });
 
 // ---- 4) paquetes descargables (con su peso real)
 const peso = (rutas) => rutas.reduce((s, r) => s + statSync(j(r)).size, 0);

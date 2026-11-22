@@ -16,7 +16,7 @@ export async function montar(main) {
   if (cons.status === 'fulfilled') {
     const c = delDia(cons.value), claves = c.clave;
     const textoWA = `🎩 «${c.es}»\n«${c.en}»\n— ${u('El consejo del Abuelo', 'Grandpa\'s advice')}`;
-    consejoHTML = `<div class="dialogo der">${pj('abuelo', 'pensando', { clase: 'anim-flota' })}<div class="globo abuelo"><span class="quien">${u('El consejo del Abuelo', 'Grandpa\'s advice')}</span>
+    consejoHTML = `<div class="dialogo der">${pj('abuelo', 'aconsejando', { clase: 'anim-flota' })}<div class="globo abuelo"><span class="quien">${u('El consejo del Abuelo', 'Grandpa\'s advice')}</span>
       <p class="bilingue"><span class="l1" lang="${tgt()}">${resaltar(c[tgt()], claves.map((k) => k[tgt()]))}</span><br><span class="l2" lang="${nat()}">${resaltar(c[nat()], claves.map((k) => k[nat()]))}</span></p></div></div>
       <div class="fila"><a class="btn sec" href="#/consejo/${c.id}">${u('Entenderlo', 'Understand it')}</a>${botonWhatsApp(textoWA)}</div>`;
   }

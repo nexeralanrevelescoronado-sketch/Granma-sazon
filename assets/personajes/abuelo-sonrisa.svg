@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" role="img" aria-label="El Abuelo, sonrisa"><title>El Abuelo, sonrisa</title><g id="cuerpo">
+  <path d="M60 320 L68 176 Q120 154 172 176 L180 320 Z" fill="#5F7C8C"/>
+  <path d="M100 170 L120 218 L140 170 Z" fill="#F3EAD8"/>
+  <line x1="120" y1="218" x2="120" y2="320" stroke="#47606E" stroke-width="3"/>
+  <circle cx="120" cy="240" r="3.4" fill="#4A2E1B"/><circle cx="120" cy="262" r="3.4" fill="#4A2E1B"/><circle cx="120" cy="284" r="3.4" fill="#4A2E1B"/>
+  <path d="M70 176 Q120 154 170 176 L196 256 L162 266 L130 204 Q100 194 70 200 Z" fill="#C8553D"/>
+  <path d="M76 200 Q100 194 130 208 L164 266" fill="none" stroke="#F2A93B" stroke-width="6"/>
+  <path d="M72 188 Q112 180 134 196 L176 266" fill="none" stroke="#FFF1DC" stroke-width="2.5" stroke-dasharray="5 6"/><path d="M66 186 Q52 236 62 266" fill="none" stroke="#5F7C8C" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><circle cx="62" cy="272" r="11" fill="#8E5A3C"/><path d="M190 314 L190 192 Q190 170 176 172" fill="none" stroke="#8B5A2B" stroke-width="8" stroke-linecap="round"/><path d="M174 188 Q192 218 190 194" fill="none" stroke="#5F7C8C" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="190" cy="182" r="11" fill="#8E5A3C"/></g><g id="cabeza">
+  <rect x="104" y="142" width="32" height="28" rx="9" fill="#774A31"/>
+  <circle cx="72" cy="106" r="10" fill="#8E5A3C"/><circle cx="168" cy="106" r="10" fill="#8E5A3C"/>
+  <ellipse cx="120" cy="104" rx="49" ry="52" fill="#8E5A3C"/>
+  <path d="M84 108 q-3 4 -1 8 M156 108 q3 4 1 8" fill="none" stroke="#774A31" stroke-width="2" stroke-linecap="round"/>
+  <path d="M120 100 Q111 117 122 119" fill="none" stroke="#774A31" stroke-width="3" stroke-linecap="round"/><g id="cara"><g id="ojos"><path d="M91 101 Q100 94 109 101" fill="none" stroke="#4A2E1B" stroke-width="3.4" stroke-linecap="round"/><path d="M131 101 Q140 94 149 101" fill="none" stroke="#4A2E1B" stroke-width="3.4" stroke-linecap="round"/><path d="M86 87 Q100 81 114 87" fill="none" stroke="#F4F1EC" stroke-width="10" stroke-linecap="round"/><path d="M126 87 Q140 81 154 87" fill="none" stroke="#F4F1EC" stroke-width="10" stroke-linecap="round"/><path d="M84 110 l-5 -3 M156 110 l5 -3" stroke="#774A31" stroke-width="2.4" stroke-linecap="round"/></g><g id="boca"><path d="M107 138 Q120 146 133 138" fill="none" stroke="#3D2412" stroke-width="3.6" stroke-linecap="round"/></g></g>
+  <path d="M90 124 Q106 112 120 121 Q134 112 150 124 Q138 138 120 131 Q102 138 90 124 Z" fill="#F4F1EC" stroke="#D8D3CB" stroke-width="1.5"/>
+  <ellipse cx="120" cy="66" rx="90" ry="15" fill="#E3C07A" stroke="#C9A25C" stroke-width="2.5"/>
+  <path d="M80 66 Q80 16 120 16 Q160 16 160 66 Z" fill="#E3C07A" stroke="#C9A25C" stroke-width="2.5"/>
+  <path d="M80 66 Q120 74 160 66 L160 50 Q120 58 80 50 Z" fill="#6B3F22"/>
+  <path d="M92 28 Q120 22 148 28 M88 40 Q120 34 152 40" fill="none" stroke="#C9A25C" stroke-width="2" stroke-linecap="round"/>
+  <path d="M38 66 Q120 86 202 66" fill="none" stroke="#C9A25C" stroke-width="2" opacity=".7"/></g></svg>

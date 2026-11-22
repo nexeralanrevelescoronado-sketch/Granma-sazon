@@ -16,6 +16,12 @@
 | **Juego** | Racha diaria, XP, «tortillitas» (vidas que se regeneran), mapa de capítulos, retos de 60 s, misiones diarias, 5 insignias, sonidos opcionales, confeti, **Constancia Granma** (PNG generado en el dispositivo) |
 | **Sin internet** | Pantalla «Descargas»: paquetes con su peso, progreso, **pausa/reanudación**, reanuda sola al volver el internet, espacio usado, borrar por paquete |
 
+## Personajes y voz
+
+- **Granma** (contenta · hablando · cariñosa · pensando · aplaudiendo) y **el Abuelo** (serio · hablando · sonrisa leve · asintiendo · aconsejando con el dedo levantado), dibujados como SVG propios en `assets/personajes/`. Cada SVG trae grupos separables `#cuerpo`, `#cabeza`, `#cara > #ojos + #boca`; además hay `<personaje>-cabeza.svg` (sin cara), `<personaje>-cara-<estado>.svg` (cara intercambiable, mismo lienzo) y `<personaje>-cuerpo-<estado>.svg`. Se regeneran con `npm run personajes`.
+- **Cuando hablan** (`js/habla.js`): el globo se escribe letra por letra, tocarlo lo completa, y la boca alterna cerrada/abierta con una animación CSS dentro del SVG `-hablando` (respeta `prefers-reduced-motion`: con movimiento reducido el texto aparece completo y la boca queda quieta).
+- **Voz opcional** (Web Speech API, es-MX y en-US): **apagada por defecto**; se activa con el botón 🗣 del encabezado o en Perfil. Sin internet depende de las voces instaladas en el dispositivo (la app lo avisa). Los botones 🔊 leen una frase puntual aunque la voz automática esté apagada.
+
 ## Ejecutar
 
 No hay dependencias ni paso de compilación en el navegador (HTML + CSS + JS nativo, sin frameworks).

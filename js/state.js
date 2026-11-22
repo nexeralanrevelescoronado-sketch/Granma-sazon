@@ -12,7 +12,7 @@ const base = () => ({
   xp: 0, racha: { n: 0, ultimo: null }, vidas: { n: MAX_VIDAS, t: Date.now() },
   caps: {}, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {},
   misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 },
-  ajustes: { sonido: true }, constancia: { fecha: null },
+  ajustes: { sonido: true, voz: false }, constancia: { fecha: null },
 });
 let S;
 function cargar() {

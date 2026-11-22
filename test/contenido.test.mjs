@@ -145,8 +145,22 @@ test('PWA: manifest con íconos 192/512/maskable y peso total < 50 MB', () => {
   const sw = leer('sw.js'); assert.ok(!sw.includes("VERSION = 'dev'"), 'corre «node scripts/build.mjs» antes de subir'); assert.ok(sw.includes('"index.html"'));
 });
 
-test('personajes: 4 variantes por abuelo, con cabeza y cuerpo separables', () => {
-  for (const q of ['granma', 'abuelo']) for (const v of ['contento', 'pensando', 'aplaudiendo', 'animo']) for (const pref of ['', '-cabeza', '-cuerpo']) {
-    const f = `assets/personajes/${q}${pref}-${v}.svg`; assert.ok(existsSync(join(RAIZ, f)), f); assert.ok(statSync(join(RAIZ, f)).size < 12000, f + ' pesa demasiado');
+test('personajes: 5 estados por abuelo, con cabeza, cuerpo, ojos y boca como grupos separables', () => {
+  const estados = { granma: ['contenta', 'hablando', 'carinosa', 'pensando', 'aplaudiendo'], abuelo: ['serio', 'hablando', 'sonrisa', 'asintiendo', 'aconsejando'] };
+  for (const [q, lista] of Object.entries(estados)) {
+    assert.ok(existsSync(join(RAIZ, `assets/personajes/${q}-cabeza.svg`)));
+    for (const e of lista) for (const pref of ['', 'cara-', 'cuerpo-']) {
+      const f = `assets/personajes/${q}-${pref}${e}.svg`; assert.ok(existsSync(join(RAIZ, f)), f); assert.ok(statSync(join(RAIZ, f)).size < 14000, f + ' pesa demasiado');
+    }
+    for (const e of lista) { const t = leer(`assets/personajes/${q}-${e}.svg`); for (const id of ['cuerpo', 'cabeza', 'cara', 'ojos', 'boca']) assert.ok(t.includes(`id="${id}"`), `${q}-${e}: falta grupo #${id}`); }
+    const hab = leer(`assets/personajes/${q}-hablando.svg`); assert.ok(hab.includes('class="ma"') && hab.includes('class="mb"') && hab.includes('prefers-reduced-motion'), 'boca animada que respeta reduced-motion');
   }
+});
+
+test('voz: apagada por defecto, Web Speech es-MX / en-US y aviso de modo sin internet', async () => {
+  globalThis.localStorage ||= { _d: {}, getItem(k) { return this._d[k] ?? null; }, setItem(k, v) { this._d[k] = v; } };
+  const { estado } = await import('../js/state.js'); assert.equal(estado().ajustes.voz, false);
+  const h = leer('js/habla.js'); assert.ok(h.includes("'es-MX'") && h.includes("'en-US'") && h.includes('SpeechSynthesisUtterance'));
+  assert.ok(/voces instaladas en tu dispositivo/.test(h) && /installed on your device/.test(h), 'aviso sin internet');
+  const { pj, estadoValido } = await import('../js/personajes.js'); assert.match(pj('granma', 'carinosa'), /granma-carinosa\.svg/); assert.equal(estadoValido('abuelo', 'animo'), 'aconsejando');
 });

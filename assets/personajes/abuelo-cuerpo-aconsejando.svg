@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 140 240 180" role="img" aria-label="El Abuelo, cuerpo aconsejando"><title>El Abuelo, cuerpo aconsejando</title><g id="cuerpo">
+  <path d="M60 320 L68 176 Q120 154 172 176 L180 320 Z" fill="#5F7C8C"/>
+  <path d="M100 170 L120 218 L140 170 Z" fill="#F3EAD8"/>
+  <line x1="120" y1="218" x2="120" y2="320" stroke="#47606E" stroke-width="3"/>
+  <circle cx="120" cy="240" r="3.4" fill="#4A2E1B"/><circle cx="120" cy="262" r="3.4" fill="#4A2E1B"/><circle cx="120" cy="284" r="3.4" fill="#4A2E1B"/>
+  <path d="M70 176 Q120 154 170 176 L196 256 L162 266 L130 204 Q100 194 70 200 Z" fill="#C8553D"/>
+  <path d="M76 200 Q100 194 130 208 L164 266" fill="none" stroke="#F2A93B" stroke-width="6"/>
+  <path d="M72 188 Q112 180 134 196 L176 266" fill="none" stroke="#FFF1DC" stroke-width="2.5" stroke-dasharray="5 6"/><path d="M66 186 Q52 236 62 266" fill="none" stroke="#5F7C8C" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><circle cx="62" cy="272" r="11" fill="#8E5A3C"/><path d="M208 314 L208 192 Q208 170 194 172" fill="none" stroke="#8B5A2B" stroke-width="8" stroke-linecap="round"/><path d="M172 188 Q206 168 198 128" fill="none" stroke="#5F7C8C" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><g transform="translate(198 116)"><rect x="-12" y="-4" width="24" height="22" rx="9" fill="#8E5A3C"/><rect x="-4" y="-34" width="9" height="34" rx="4.5" fill="#8E5A3C"/></g><path d="M214 84 l8 -8 M218 100 l12 0 M180 78 l-4 -10" stroke="#F2A93B" stroke-width="4" stroke-linecap="round"/></g></svg>

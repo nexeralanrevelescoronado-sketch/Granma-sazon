@@ -30,7 +30,7 @@ main.sin-nav{padding-bottom:28px}
 .encabezado .marca span{white-space:nowrap}
 @media (max-width:460px){.encabezado .marca span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
 .chips{margin-left:auto;display:flex;gap:6px;align-items:center}
-.chip{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:44px;min-width:44px;padding:0 10px;border-radius:999px;background:rgba(0,0,0,.22);color:#fff;font-weight:700;font-size:.95rem;border:0;text-decoration:none;cursor:pointer}
+.chip{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:44px;min-width:44px;padding:0 10px;border-radius:999px;background:rgba(0,0,0,.22);color:#fff;font-weight:700;font-size:.95rem;border:0;text-decoration:none;cursor:pointer}
 .chip svg{width:20px;height:20px}
 .chip[aria-pressed="true"]{background:rgba(0,0,0,.32)}
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--blanco);border-top:2px solid var(--linea);display:flex;justify-content:space-around;padding:4px 4px calc(4px + var(--seguro-inf))}
@@ -219,3 +219,4 @@ dialog::backdrop{background:rgba(74,46,27,.55)}
 @media print{.encabezado,.nav,.toasts,.confeti,.aviso-red{display:none}}
 
 .volver{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
+mark.clave:empty{display:none}

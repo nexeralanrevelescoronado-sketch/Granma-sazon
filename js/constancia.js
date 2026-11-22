@@ -4,7 +4,7 @@ const cargarImg = (src) => new Promise((ok, mal) => { const i = new Image(); i.o
 
 export async function generarConstancia({ nombre, fecha, aprende }) {
   const W = 1600, H = 1130, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
-  const [granma, abuelo, logo] = await Promise.all([cargarImg('assets/personajes/granma-aplaudiendo.svg'), cargarImg('assets/personajes/abuelo-contento.svg'), cargarImg('assets/logo/logo.svg')]);
+  const [granma, abuelo, logo] = await Promise.all([cargarImg('assets/personajes/granma-carinosa.svg'), cargarImg('assets/personajes/abuelo-sonrisa.svg'), cargarImg('assets/logo/logo.svg')]);
   x.fillStyle = C.crema; x.fillRect(0, 0, W, H);
   x.strokeStyle = C.terra; x.lineWidth = 14; x.strokeRect(36, 36, W - 72, H - 72);
   x.strokeStyle = C.olla; x.lineWidth = 4; x.setLineDash([4, 14]); x.lineCap = 'round'; x.strokeRect(64, 64, W - 128, H - 128); x.setLineDash([]);

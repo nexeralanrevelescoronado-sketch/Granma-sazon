@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" role="img" aria-label="El Abuelo, cabeza sin cara"><title>El Abuelo, cabeza sin cara</title><g id="cabeza">
+  <rect x="104" y="142" width="32" height="28" rx="9" fill="#774A31"/>
+  <circle cx="72" cy="106" r="10" fill="#8E5A3C"/><circle cx="168" cy="106" r="10" fill="#8E5A3C"/>
+  <ellipse cx="120" cy="104" rx="49" ry="52" fill="#8E5A3C"/>
+  <path d="M84 108 q-3 4 -1 8 M156 108 q3 4 1 8" fill="none" stroke="#774A31" stroke-width="2" stroke-linecap="round"/>
+  <path d="M120 100 Q111 117 122 119" fill="none" stroke="#774A31" stroke-width="3" stroke-linecap="round"/>
+  <path d="M90 124 Q106 112 120 121 Q134 112 150 124 Q138 138 120 131 Q102 138 90 124 Z" fill="#F4F1EC" stroke="#D8D3CB" stroke-width="1.5"/>
+  <ellipse cx="120" cy="66" rx="90" ry="15" fill="#E3C07A" stroke="#C9A25C" stroke-width="2.5"/>
+  <path d="M80 66 Q80 16 120 16 Q160 16 160 66 Z" fill="#E3C07A" stroke="#C9A25C" stroke-width="2.5"/>
+  <path d="M80 66 Q120 74 160 66 L160 50 Q120 58 80 50 Z" fill="#6B3F22"/>
+  <path d="M92 28 Q120 22 148 28 M88 40 Q120 34 152 40" fill="none" stroke="#C9A25C" stroke-width="2" stroke-linecap="round"/>
+  <path d="M38 66 Q120 86 202 66" fill="none" stroke="#C9A25C" stroke-width="2" opacity=".7"/></g></svg>

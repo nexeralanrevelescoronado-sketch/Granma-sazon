@@ -5,6 +5,7 @@ import { toast, confeti } from './fx.js';
 import { sonido } from './sound.js';
 import { SinDescargar } from './datos.js';
 import { pj } from './personajes.js';
+import { vigilarDialogos, detenerHabla, alternarVoz, vozDisponible } from './habla.js';
 
 const rutas = {
   '': () => import('./vistas/inicio.js'),
@@ -44,7 +45,7 @@ function pintarCromo() {
   encabezado.hidden = nav.hidden = !listo;
   main.classList.toggle('sin-nav', !listo);
   if (!listo) return;
-  const clave = `${nat()}|${rachaVigente()}|${S.xp}|${vidas()}|${S.ajustes.sonido}|${location.hash}`;
+  const clave = `${nat()}|${rachaVigente()}|${S.xp}|${vidas()}|${S.ajustes.sonido}|${S.ajustes.voz}|${location.hash}`;
   if (clave === versionPintada) return; versionPintada = clave;
   encabezado.innerHTML = `<a class="marca" href="#/" aria-label="Granma Sazón — ${u('inicio', 'home')}"><img src="assets/logo/icono.svg" width="34" height="34" alt=""><span>Granma Sazón</span></a>
     <div class="chips">
@@ -52,12 +53,16 @@ function pintarCromo() {
       <span class="chip" role="group" title="XP" aria-label="XP: ${S.xp}">${icono('xp', true)}${S.xp}</span>
       <span class="chip" role="group" aria-label="${u('Tortillitas', 'Tortillas')}: ${vidas()}"><i class="tortilla"></i>${vidas()}</span>
       <button class="chip" id="btn-sonido" aria-pressed="${S.ajustes.sonido}" aria-label="${u('Sonido', 'Sound')}">${S.ajustes.sonido ? '🔊' : '🔇'}</button>
+      ${vozDisponible() ? `<button class="chip" id="btn-voz" aria-pressed="${!!S.ajustes.voz}" aria-label="${u('Voz de Granma y el Abuelo', 'Voice of Granma and Grandpa')}" title="${u('Voz de los abuelos', 'Grandparents\' voice')}">🗣${S.ajustes.voz ? '' : '<span aria-hidden="true" style="position:absolute;width:22px;border-top:3px solid #fff;transform:rotate(-40deg)"></span>'}</button>` : ''}
     </div>`;
   const items = [['', 'inicio', u('Inicio', 'Home')], ['historia', 'historia', u('Historia', 'Story')], ['recetas', 'recetas', u('Recetas', 'Recipes')], ['consejos', 'consejos', u('Abuelo', 'Grandpa')], ['cotorreo', 'cotorreo', u('Cotorreo', 'Chat')], ['biblia', 'biblia', u('Biblia', 'Bible')]];
   const ruta = rutaActual().base;
   nav.innerHTML = items.map(([r, ic, tx]) => `<a href="#/${r}" ${(r === ruta || (r === 'consejos' && ruta === 'consejo') || (r === 'recetas' && ruta === 'receta') || (r === 'historia' && ruta === 'leccion')) ? 'aria-current="page"' : ''}>${icono(ic)}<span>${tx}</span></a>`).join('');
 }
-$('#encabezado').addEventListener('click', (e) => { if (e.target.closest('#btn-sonido')) { sonido.alternar(); versionPintada = ''; pintarCromo(); } });
+$('#encabezado').addEventListener('click', (e) => {
+  if (e.target.closest('#btn-sonido')) { sonido.alternar(); versionPintada = ''; pintarCromo(); }
+  else if (e.target.closest('#btn-voz')) { alternarVoz(); versionPintada = ''; pintarCromo(); }
+});
 
 function rutaActual() {
   const h = location.hash.replace(/^#\/?/, '').split('?')[0], p = h.split('/').filter(Boolean);
@@ -69,6 +74,7 @@ async function navegar() {
   const S = estado();
   if (!S.perfil.listo && base !== 'onboarding') { location.replace('#/onboarding'); return; }
   if (S.perfil.listo && base === 'onboarding' && !location.hash.includes('cambiar')) { location.replace('#/'); return; }
+  detenerHabla();
   if (limpiar) { try { limpiar(); } catch { /* ya no existe */ } limpiar = null; }
   document.documentElement.lang = S.perfil.listo ? nat() : 'es';
   const carga = rutas[base] || rutas[''];
@@ -116,5 +122,6 @@ export const instalar = async () => { if (!promptInstalar) return false; promptI
 /* Service worker */
 if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch((e) => console.warn('SW', e)));
 
+vigilarDialogos(main);
 addEventListener('hashchange', navegar);
 navegar();

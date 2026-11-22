@@ -32,7 +32,7 @@ function detalle(main, lista, id) {
   const S = estado(), T = tgt(), N = nat(), claves = c.clave;
   const texto = `🎩 «${c.es}»\n«${c.en}»\n— ${u('El consejo del Abuelo', 'Grandpa\'s advice')}`;
   main.innerHTML = `<p><a class="volver" href="#/consejos">← ${u('Todos los consejos', 'All advice')}</a></p>
-    <div class="dialogo der">${pj('abuelo', 'contento', { ancho: 120, clase: 'anim-asiente' })}<div class="globo abuelo"><span class="quien">${u('El Abuelo', 'Grandpa')}</span>
+    <div class="dialogo der">${pj('abuelo', 'aconsejando', { ancho: 120 })}<div class="globo abuelo"><span class="quien">${u('El Abuelo', 'Grandpa')}</span>
       <h1 style="font-size:1.3rem" lang="${T}">${resaltar(c[T], claves.map((k) => k[T]))}</h1><p class="muted" lang="${N}">${resaltar(c[N], claves.map((k) => k[N]))}</p></div></div>
     <div class="fila"><button class="btn-icono" data-voz aria-label="${u('Escuchar', 'Listen')}">🔊</button>${botonWhatsApp(texto)}</div>
     <div class="tarjeta mt"><h2>${u('Palabras clave', 'Key words')}</h2><ul>${claves.map((k) => `<li><mark class="clave">${esc(k[T])}</mark> = ${esc(k[N])}</li>`).join('')}</ul></div>

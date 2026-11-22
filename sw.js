@@ -6,7 +6,7 @@
  * - Los cachés viejos se limpian en `activate`.
  */
 /*NUCLEO:INICIO*/
-const VERSION = '6f60e6469d';
+const VERSION = '2e6f51ea0e';
 const NUCLEO = [
  "assets/iconos/apple-touch-icon.png",
  "assets/iconos/icon-192.png",
@@ -16,13 +16,15 @@ const NUCLEO = [
  "assets/logo/icono-maskable.svg",
  "assets/logo/icono.svg",
  "assets/logo/logo.svg",
- "assets/personajes/abuelo-animo.svg",
- "assets/personajes/abuelo-aplaudiendo.svg",
- "assets/personajes/abuelo-contento.svg",
- "assets/personajes/abuelo-pensando.svg",
- "assets/personajes/granma-animo.svg",
+ "assets/personajes/abuelo-aconsejando.svg",
+ "assets/personajes/abuelo-asintiendo.svg",
+ "assets/personajes/abuelo-hablando.svg",
+ "assets/personajes/abuelo-serio.svg",
+ "assets/personajes/abuelo-sonrisa.svg",
  "assets/personajes/granma-aplaudiendo.svg",
- "assets/personajes/granma-contento.svg",
+ "assets/personajes/granma-carinosa.svg",
+ "assets/personajes/granma-contenta.svg",
+ "assets/personajes/granma-hablando.svg",
  "assets/personajes/granma-pensando.svg",
  "css/app.css",
  "data/paquetes.json",
@@ -39,6 +41,7 @@ const NUCLEO = [
  "js/descargas.js",
  "js/ejercicios.js",
  "js/fx.js",
+ "js/habla.js",
  "js/personajes.js",
  "js/sound.js",
  "js/state.js",

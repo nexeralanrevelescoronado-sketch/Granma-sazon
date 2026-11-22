@@ -6,6 +6,7 @@ import { pj } from '../personajes.js';
 import { esc } from '../util.js';
 import { VERSIONES } from '../biblia/config.js';
 import { confeti } from '../fx.js';
+import { alternarVoz, vozDisponible } from '../habla.js';
 
 export async function montar(main) {
   const S = estado(), listaIns = INSIGNIAS;
@@ -21,8 +22,10 @@ export async function montar(main) {
       <label class="muted" for="nombre">${u('Tu nombre', 'Your name')}</label><input type="text" id="nombre" maxlength="40" value="${esc(S.perfil.nombre)}" autocomplete="name" style="margin-bottom:10px"><button class="btn grande olla" data-const>${u('Crear mi constancia', 'Create my certificate')}</button><div id="const-out" class="mt"></div>` : `<p>${u('Termina los 5 capítulos de la Historia 1 para ganarla.', 'Finish the 5 chapters of Story 1 to earn it.')}</p><a class="btn" href="#/historia">${u('Ir a la historia', 'Go to the story')}</a>`}</div>
     <h2 class="mt2">${u('Ajustes', 'Settings')}</h2>
     <div class="tarjeta"><div class="fila"><button class="btn sec" data-sonido>${S.ajustes.sonido ? '🔊 ' + u('Sonido: sí', 'Sound: on') : '🔇 ' + u('Sonido: no', 'Sound: off')}</button>
+      ${vozDisponible() ? `<button class="btn sec" data-voz aria-pressed="${!!S.ajustes.voz}">🗣 ${S.ajustes.voz ? u('Voz: sí', 'Voice: on') : u('Voz: no', 'Voice: off')}</button>` : ''}
       <a class="btn sec" href="#/onboarding?cambiar">${u('Cambiar interés o cocina', 'Change interest or cuisine')}</a></div>
-      <p class="muted mt">${u('Idioma que aprendes', 'Language you are learning')}: <strong>${S.perfil.aprende === 'es' ? 'Español' : 'English'}</strong> · ${u('Interés', 'Interest')}: <strong>${esc(S.perfil.interes)}</strong></p>
+      <p class="muted mt">${u('La voz de Granma y el Abuelo viene apagada. Sin internet depende de las voces instaladas en tu dispositivo (es-MX y en-US).', 'The voice of Granma and Grandpa is off by default. Offline it depends on the voices installed on your device (es-MX and en-US).')}</p>
+      <p class="muted">${u('Idioma que aprendes', 'Language you are learning')}: <strong>${S.perfil.aprende === 'es' ? 'Español' : 'English'}</strong> · ${u('Interés', 'Interest')}: <strong>${esc(S.perfil.interes)}</strong></p>
       <button class="btn sec" data-borrar style="margin-top:6px">${u('Borrar mi progreso', 'Delete my progress')}</button></div>
     <h2 class="mt2">${u('Créditos y derechos', 'Credits and rights')}</h2>
     <div class="tarjeta"><p class="atrib">${u('Personajes, logo, textos, chistes y consejos: creación original de Granma Sazón.', 'Characters, logo, texts, jokes and advice: original creations of Granma Sazón.')}</p>
@@ -30,6 +33,7 @@ export async function montar(main) {
   main.onclick = async (e) => {
     const b = e.target.closest('button'); if (!b) return;
     if (b.hasAttribute('data-sonido')) { sonido.alternar(); montar(main); }
+    else if (b.hasAttribute('data-voz')) { alternarVoz(); montar(main); }
     else if (b.hasAttribute('data-borrar')) { if (confirm(u('¿Seguro? Se borrará tu avance en este teléfono.', 'Sure? Your progress on this phone will be deleted.'))) { reiniciar(); location.hash = '#/onboarding'; location.reload(); } }
     else if (b.hasAttribute('data-const')) {
       const nombre = main.querySelector('#nombre').value.trim(); if (!nombre) return void main.querySelector('#nombre').focus();

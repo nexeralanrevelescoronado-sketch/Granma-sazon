@@ -28,8 +28,8 @@ export function montar(main) {
         <button class="opcion-grande" disabled aria-disabled="true"><span class="emoji">🍝</span><span>${ui('Italiana', 'Italian')} <span class="etiqueta">${ui('próximamente', 'coming soon')}</span></span></button>
         <div class="fila"><button class="btn sec" data-atras>${ui('Atrás', 'Back')}</button><button class="btn" data-sig ${sel.cocina ? '' : 'disabled'}>${ui('¡Listo!', 'Done!')}</button></div>`;
     } else {
-      main.innerHTML = `<div class="dialogo">${pj('granma', 'aplaudiendo', { clase: 'anim-aplaude' })}<div class="globo"><span class="quien">Granma</span><p class="bilingue"><span class="l1">${ui('¡Bienvenido, mijo! Qué gusto tenerte en mi cocina. Vamos a aprender juntos, con calma y con sabor.', 'Welcome, mijo! So happy to have you in my kitchen. We will learn together, calmly and with flavor.')}</span></p></div></div>
-        <div class="dialogo der">${pj('abuelo', 'contento', { clase: 'anim-asiente' })}<div class="globo abuelo"><span class="quien">${ui('El Abuelo', 'Grandpa')}</span><p class="bilingue"><span class="l1">${ui('Quien persevera, alcanza.', 'Whoever perseveres, achieves.')}</span></p></div></div>
+      main.innerHTML = `<div class="dialogo">${pj('granma', 'carinosa', { clase: 'anim-aplaude' })}<div class="globo"><span class="quien">Granma</span><p class="bilingue"><span class="l1">${ui('¡Bienvenido, mijo! Qué gusto tenerte en mi cocina. Vamos a aprender juntos, con calma y con sabor.', 'Welcome, mijo! So happy to have you in my kitchen. We will learn together, calmly and with flavor.')}</span></p></div></div>
+        <div class="dialogo der">${pj('abuelo', 'aconsejando')}<div class="globo abuelo"><span class="quien">${ui('El Abuelo', 'Grandpa')}</span><p class="bilingue"><span class="l1">${ui('Quien persevera, alcanza.', 'Whoever perseveres, achieves.')}</span></p></div></div>
         <button class="btn grande" data-empezar>${ui('¡Empezar!', 'Let\'s start!')}</button>`;
     }
     main.querySelector('button:not([disabled])')?.focus?.();

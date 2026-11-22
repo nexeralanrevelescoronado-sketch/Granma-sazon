@@ -90,7 +90,7 @@ escribir(j('data', 'paquetes.json'), { fmt: 1, paquetes: paquetes.map((p) => p) 
 const nucleo = [
   'index.html', 'manifest.webmanifest', 'data/paquetes.json',
   ...listar(j('css')).map(url), ...listar(j('js')).map(url),
-  ...listar(j('assets', 'personajes'), (f) => /\/(granma|abuelo)-(contento|pensando|aplaudiendo|animo)\.svg$/.test(f.split(sep).join('/'))).map(url),
+  ...listar(j('assets', 'personajes'), (f) => /\/(granma-(contenta|hablando|carinosa|pensando|aplaudiendo)|abuelo-(serio|hablando|sonrisa|asintiendo|aconsejando))\.svg$/.test(f.split(sep).join('/'))).map(url),
   ...listar(j('assets', 'logo')).map(url),
   ...listar(j('assets', 'iconos'), (f) => !/og-1200/.test(f)).map(url),
 ].sort();

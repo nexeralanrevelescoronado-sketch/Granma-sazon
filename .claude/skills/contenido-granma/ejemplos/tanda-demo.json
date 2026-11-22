@@ -1,0 +1,50 @@
+{
+  "cotorreos": [
+    {
+      "tema": "cocina", "tipo": "adivinanza",
+      "es": "Me doblas y me llenas y nunca me quejo; si me pones salsa, ¡me luzco! ¿Qué soy?",
+      "en": "Fold me and fill me, I never complain; add some salsa and I shine! What am I?",
+      "clave": [{ "es": "doblas", "en": "fold" }, { "es": "llenas", "en": "fill" }, { "es": "salsa", "en": "salsa" }],
+      "q": { "p": { "es": "¿Cuál es la respuesta?", "en": "What is the answer?" }, "ok": { "es": "Un taco", "en": "A taco" }, "mal": [{ "es": "Una cuchara", "en": "A spoon" }, { "es": "Un sombrero", "en": "A hat" }] },
+      "abuelo": { "es": "Doblado con cuidado, como todo lo bueno.", "en": "Folded with care, like everything good." }
+    },
+    {
+      "tema": "amigos", "tipo": "chiste",
+      "es": "¿Por qué el libro tenía tantos amigos? Porque siempre estaba abierto para todos.",
+      "en": "Why did the book have so many friends? Because it was always open to everyone.",
+      "clave": [{ "es": "libro", "en": "book" }, { "es": "amigos", "en": "friends" }, { "es": "abierto", "en": "open" }],
+      "q": { "p": { "es": "¿Qué quiso decir?", "en": "What did it mean?" }, "ok": { "es": "Quien recibe a todos con los brazos abiertos hace amigos.", "en": "Whoever welcomes everyone with open arms makes friends." }, "mal": [{ "es": "El libro no se podía cerrar.", "en": "The book could not be closed." }, { "es": "Los libros siempre son muy grandes.", "en": "Books are always very big." }] }
+    },
+    {
+      "tema": "viajes", "tipo": "refrán",
+      "es": "Más vale tarde que nunca.",
+      "en": "Better late than never.",
+      "clave": [{ "es": "tarde", "en": "late" }, { "es": "nunca", "en": "never" }, { "es": "vale", "en": "better" }],
+      "q": { "p": { "es": "¿Qué quiso decir?", "en": "What did it mean?" }, "ok": { "es": "Llegar tarde es mejor que no llegar.", "en": "Arriving late is better than not arriving." }, "mal": [{ "es": "Nunca hay que salir de viaje.", "en": "You should never go on a trip." }, { "es": "Hay que llegar siempre temprano.", "en": "You must always arrive early." }] },
+      "abuelo": { "es": "Aunque mejor, a tiempo.", "en": "Though better still, on time." }
+    }
+  ],
+  "consejos": [
+    {
+      "tema": "trabajo",
+      "es": "Quien enseña con paciencia, aprende dos veces.",
+      "en": "Whoever teaches with patience learns twice.",
+      "clave": [{ "es": "paciencia", "en": "patience" }, { "es": "aprende", "en": "learns" }],
+      "q": { "ok": { "es": "Enseñar a otros también te enseña a ti.", "en": "Teaching others also teaches you." }, "mal": [{ "es": "Enseñar es perder el tiempo.", "en": "Teaching is a waste of time." }, { "es": "Solo los maestros aprenden.", "en": "Only teachers learn." }] }
+    },
+    {
+      "tema": "familia",
+      "es": "Una receta compartida es un abrazo que se hereda.",
+      "en": "A shared recipe is a hug that gets passed down.",
+      "clave": [{ "es": "receta", "en": "recipe" }, { "es": "abrazo", "en": "hug" }, { "es": "hereda", "en": "passed down" }],
+      "q": { "ok": { "es": "Las recetas de la familia guardan cariño.", "en": "Family recipes hold affection." }, "mal": [{ "es": "Las recetas son secretos que no se comparten.", "en": "Recipes are secrets that are not shared." }, { "es": "Las recetas solo se cocinan en fiestas.", "en": "Recipes are only cooked at parties." }] }
+    },
+    {
+      "tema": "dinero",
+      "es": "Ahorrar es regar hoy lo que cosecharás mañana.",
+      "en": "Saving is watering today what you will harvest tomorrow.",
+      "clave": [{ "es": "ahorrar", "en": "saving" }, { "es": "regar", "en": "watering" }, { "es": "cosecharás", "en": "harvest" }],
+      "q": { "ok": { "es": "Guardar un poco hoy da frutos después.", "en": "Setting a little aside today bears fruit later." }, "mal": [{ "es": "Es mejor gastarlo todo antes de la cosecha.", "en": "It is better to spend it all before the harvest." }, { "es": "Regar las plantas es un gasto inútil.", "en": "Watering plants is a useless expense." }] }
+    }
+  ]
+}

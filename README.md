@@ -97,3 +97,7 @@ Otros scripts: `npm run personajes` (SVG de Granma y el Abuelo), `npm run logo` 
 
 - Personajes, logo, textos, chistes, consejos y recetas: creación original de este proyecto.
 - Biblia: **RV1909**, **KJV** y **WEB** son de dominio público (ver `docs/BIBLIA.md` para fuentes y la nota sobre la KJV en el Reino Unido). **NTV y NLT** (Tyndale House) **no están en el repositorio**; solo existe la capa para consultarlas con licencia a través de un proxy, apagada por defecto.
+
+## Skill del proyecto: `contenido-granma`
+
+En `.claude/skills/contenido-granma/` (viaja con el repo). Genera cotorreos, consejos, capítulos, recetas y ejercicios de Biblia con la misma voz, esquema y reglas de contenido sano, y trae `scripts/validar.mjs` (también corre en `npm test`). Ver su `SKILL.md`.

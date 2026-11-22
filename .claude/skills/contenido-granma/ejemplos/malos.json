@@ -1,0 +1,26 @@
+{
+  "consejos": [
+    { "tema": "trabajo", "es": "Trabaja sin descanso o te vas a arrepentir y todos se burlarán de ti.", "en": "Work without rest or you will regret it and everyone will laugh at you.", "clave": [{ "es": "trabaja", "en": "work" }, { "es": "descanso", "en": "rest" }], "q": { "ok": { "es": "Hay que trabajar siempre.", "en": "You must always work." }, "mal": [{ "es": "Descansar es bueno.", "en": "Resting is good." }, { "es": "Nada importa.", "en": "Nothing matters." }] } },
+    { "tema": "fe", "es": "Como dijo Albert Einstein, la fe mueve montañas.", "en": "The Lord is my shepherd; I shall not want (NLT).", "clave": [{ "es": "fe", "en": "shepherd" }, { "es": "montañas", "en": "mountains" }], "q": { "ok": { "es": "La fe ayuda.", "en": "Faith helps." }, "mal": [{ "es": "La fe es inútil.", "en": "Faith is useless." }] } }
+  ],
+  "cotorreos": [
+    { "tema": "trabajo", "tipo": "chiste", "es": "¿Por qué los abogados nunca ríen? Porque son unos idiotas que solo piensan en cobrar.", "en": "Why do lawyers never laugh? Because they are idiots who only think about charging.", "clave": [{ "es": "abogados", "en": "lawyers" }, { "es": "ríen", "en": "laugh" }, { "es": "cobrar", "en": "charging" }], "q": { "p": { "es": "¿Qué quiso decir?", "en": "What did it mean?" }, "ok": { "es": "Se burla de una profesión.", "en": "It mocks a profession." }, "mal": [{ "es": "Nada.", "en": "Nothing." }, { "es": "Otra cosa.", "en": "Something else." }] } },
+    { "tema": "cocina", "tipo": "chiste", "es": "¿Qué le dijo la sopa al plato? Nada.", "clave": [{ "es": "sopa", "en": "soup" }, { "es": "plato", "en": "plate" }], "q": { "ok": { "es": "Nada", "en": "Nothing" }, "mal": [{ "es": "Algo", "en": "Something" }, { "es": "Hola", "en": "Hello" }] } }
+  ],
+  "capitulos": [
+    { "id": 9, "receta": "mole", "titulo": { "es": "Un día", "en": "A day" }, "relato": { "es": ["Hola.", "Adiós.", "Fin."], "en": ["Hello.", "Bye.", "End."] }, "palabras": [{ "en": "house", "es": "casa" }, { "en": "tree", "es": "árbol" }], "ejemplos": { "trabajo": [{ "en": "The tree is big.", "es": "El árbol es grande.", "we": "house", "ws": "casa" }], "amigos": [], "biblia": [], "viajes": [], "cocina": [] }, "consejo": { "es": "Haz el bien.", "en": "Do good.", "clave": [{ "es": "bien", "en": "good" }] } },
+    { "id": 10, "receta": "pozole", "titulo": { "es": "Aprende como en Duolingo", "en": "Learn like in Duolingo" }, "relato": { "es": ["Uno.", "Dos.", "Tres."], "en": ["One.", "Two."] }, "palabras": [], "ejemplos": {}, "consejo": { "es": "Sí.", "en": "Yes.", "clave": [{ "es": "sí", "en": "yes" }, { "es": "no", "en": "no" }] } }
+  ],
+  "recetas": [
+    { "id": "sopa rara", "nombre": { "es": "Sopa", "en": "Soup" }, "resumen": { "es": "Sopa.", "en": "Soup." }, "nota": { "es": "Cuidado.", "en": "Careful." }, "nivel": { "es": "Fácil", "en": "Easy" }, "porciones": 4, "tiempoPrep": 10, "tiempoCoccion": 20,
+      "ingredientes": [{ "cant": "un poco", "un": "", "es": "sal", "en": "salt" }, { "cant": 2, "un": "tazas", "es": "agua" }, { "cant": 1, "un": "pza", "es": "cebolla", "en": "onion" }, { "cant": 1, "un": "pza", "es": "ajo", "en": "garlic" }],
+      "pasos": [{ "es": "Hierve el agua.", "en": "Boil the water." }, { "es": "Agrega todo.", "en": "Add everything." }] },
+    { "id": "pollo-frito", "nombre": { "es": "Pollo frito", "en": "Fried chicken" }, "resumen": { "es": "Pollo con marca Maseca.", "en": "Chicken." }, "nota": { "es": "Disfruta.", "en": "Enjoy." }, "nivel": { "es": "Fácil", "en": "Easy" }, "porciones": 4, "tiempoPrep": 10, "tiempoCoccion": 20,
+      "ingredientes": [{ "cant": 500, "un": "g", "es": "pollo", "en": "chicken" }, { "cant": 100, "un": "g", "es": "harina", "en": "flour" }, { "cant": 1, "un": "cdta", "es": "sal", "en": "salt" }, { "cant": 300, "un": "ml", "es": "aceite", "en": "oil" }],
+      "pasos": [{ "es": "Empaniza el pollo.", "en": "Coat the chicken." }, { "es": "Fríe 10 minutos en aceite caliente.", "en": "Fry 10 minutes in hot oil." }, { "es": "Escurre.", "en": "Drain." }, { "es": "Sirve.", "en": "Serve." }] }
+  ],
+  "biblia": [
+    { "id": "mal1", "version": "ntv", "texto": "Texto copiado de la NTV", "ref": { "libro": "jua", "cap": 3, "desde": 16, "hasta": 16 }, "titulo": { "es": "Amor", "en": "Love" }, "pares": [["mundo", "world"], ["hijo", "son"], ["vida", "life"]] },
+    { "id": "mal2", "ref": { "libro": "sal", "cap": 23, "desde": 1, "hasta": 1 }, "titulo": { "es": "Pastor", "en": "Shepherd" }, "pares": [["gato", "cat"], ["perro", "dog"], ["casa", "house"]] }
+  ]
+}

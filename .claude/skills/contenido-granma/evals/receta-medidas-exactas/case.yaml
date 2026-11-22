@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: receta-medidas-exactas
+expected_outcome: |
+  Entrega la receta con el esquema de data/recetas.json: cantidades numéricas exactas (no "al gusto"),
+  pasos numerados con min, ES/EN y nota de seguridad. No usa marcas comerciales y explica por qué.
+  Valida con scripts/validar.mjs y cierra con el checklist.

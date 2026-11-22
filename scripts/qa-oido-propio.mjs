@@ -9,7 +9,7 @@ const TIPOS = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/cs
 const srv = createServer((q, s) => { let p = new URL(q.url, 'http://x').pathname; if (p.endsWith('/')) p += 'index.html'; const f = join(R, p); if (!existsSync(f) || statSync(f).isDirectory()) { s.writeHead(404); return s.end(); } s.writeHead(200, { 'Content-Type': TIPOS[extname(f)] || 'application/octet-stream' }); s.end(readFileSync(f)); }).listen(0);
 const B = `http://localhost:${srv.address().port}/`, fallas = [], ok = (c, t) => { console.log(`  ${c ? '✔' : '✘'} ${t}`); if (!c) fallas.push(t); };
 const TMP = mkdtempSync(join(tmpdir(), 'oido-')), hayVoz = spawnSync('espeak-ng', ['--version']).status === 0;
-const wav = (nombre, texto) => { const f = join(TMP, nombre); spawnSync('espeak-ng', ['-v', 'en-us', '-s', '135', '-w', f, texto]); return f; };
+const wav = (nombre, texto, voz = 'en-us') => { const f = join(TMP, nombre); spawnSync('espeak-ng', ['-v', voz, '-s', '135', '-w', f, texto]); return f; };
 const estado = JSON.stringify({ v: 1, perfil: { aprende: 'en', interes: 'cocina', cocina: 'mexicana', nombre: 'Ana', listo: true }, xp: 0, racha: { n: 0, ultimo: null }, caps: {}, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false, vozV: 2, oido: 'local' }, constancia: { fecha: null } });
 const errores = [];
 async function abrir(audio) {
@@ -19,7 +19,7 @@ async function abrir(audio) {
   await pg.goto(B); await pg.evaluate((e) => localStorage.setItem('granma:v1', e), estado); await pg.reload(); await pg.waitForFunction(() => navigator.serviceWorker?.controller, null, { timeout: 20000 }).catch(() => {});
   return { b, pg };
 }
-const bajarOido = async (pg) => { await pg.goto(B + '#/descargas'); await pg.click('[data-bajar="oido-en"]'); await pg.waitForSelector('#pq-oido-en .estado-ok', { timeout: 90000 }); };
+const bajarOido = async (pg, l = 'en') => { await pg.goto(B + '#/descargas'); await pg.click(`[data-bajar="oido-${l}"]`); await pg.waitForSelector(`#pq-oido-${l} .estado-ok`, { timeout: 90000 }); };
 const hist = JSON.parse(readFileSync(join(R, 'data/historia.json'), 'utf8')), cap = hist.capitulos[0], pal = [...cap.palabras, ...Object.values(cap.palabrasInteres).flat()], ejs = [...Object.values(cap.ejemplos).flat(), ...Object.values(cap.palabrasInteres).flat().map((p) => ({ en: p.f.en, es: p.f.es, we: p.en }))];
 async function resolver(p) {
   if (await p.locator('[data-pares]').count()) { for (const a of await p.locator('[data-lado="i"]').evaluateAll((x) => x.map((y) => y.dataset.v))) { await p.click(`[data-lado="i"][data-v="${a}"]`); await p.click(`[data-lado="d"][data-v="${pal.find((x) => x.en === a).es}"]`); } return; }
@@ -54,6 +54,15 @@ if (hayVoz) {
   const pan = r3.palabras.find((x) => x.w === 'bread');
   ok(pan.estado === 'casi' && pan.sono === 'bed' && r3.estrellas < 3, `pronunciación: dijo «bed» en vez de «bread» y lo notó (sonó como «${pan.sono}», ${r3.estrellas} estrellas)`);
   await b.close();
+
+  console.log('2b) Español (para quien aprende español desde el inglés)');
+  const oirEs = async (audio, frase) => { ({ b, pg } = await abrir(wav('es.wav', audio, 'es-419'))); await bajarOido(pg, 'es'); await pg.context().setOffline(true);
+    const r = await pg.evaluate(async (f) => { const m = await import('./js/oido-propio.js'); const e = await m.escucharPropio('es', f); if (!e.ok) return e; const x = await e.fin; URL.revokeObjectURL(x.url); return x; }, frase); await b.close(); return r; };
+  let e1 = await oirEs('buenos días abuela', 'Buenos días, abuela.'); ok(e1.todo === true && e1.pasa, `sin internet oyó «buenos días, abuela» completa: ${e1.dichas} de ${e1.total} (${e1.estrellas} estrellas) ${JSON.stringify(e1.oido)}`);
+  e1 = await oirEs('la casa es grande', 'La casa es grande.'); ok(e1.pasa, `oyó «la casa es grande»: ${e1.dichas} de ${e1.total} (${e1.estrellas} estrellas) ${JSON.stringify(e1.oido)}`);
+  e1 = await oirEs('pero come pan', 'El perro come pan.'); const perro = e1.palabras.find((x) => x.w === 'perro');
+  ok(perro.estado === 'casi' && perro.sono === 'pero', `pronunciación: dijo «pero» en vez de «perro» y lo notó (sonó como «${perro.sono}»)`);
+  e1 = await oirEs('buenos días abuela', 'La casa es grande.'); ok(!e1.pasa, `si dice otra frase en español, no pasa (${e1.dichas} de ${e1.total})`);
 
   console.log('3) En la lección: palabras en verde, «¡Viva México!» y fiesta de tortillas');
   // El archivo de voz se escribe después de leer la frase que tocó: el navegador lo abre hasta que se enciende el micrófono.

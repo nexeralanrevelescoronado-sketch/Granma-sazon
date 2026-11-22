@@ -43,7 +43,7 @@ const GRUPOS = {
     ['full', 'fool', 'fall'], ['hot', 'hat', 'hut', 'heart'], ['cup', 'cap', 'cop'], ['pan', 'pen', 'pin'], ['bad', 'bat', 'bet', 'but'], ['want', 'won\'t', 'went'], ['work', 'walk', 'woke'], ['word', 'world', 'ward'],
     ['three', 'tree', 'free'], ['think', 'sink', 'thing'], ['they', 'day'], ['then', 'than', 'den'], ['very', 'berry'], ['year', 'ear', 'jeer'], ['yes', 'jazz'], ['wash', 'watch'], ['shoe', 'chew'], ['soup', 'soap'],
     ['rice', 'rise', 'race'], ['made', 'mad', 'make'], ['hungry', 'angry'], ['warm', 'worm', 'warn', 'arm'], ['spoon', 'spun'], ['table', 'cable'], ['mother', 'mutter'], ['house', 'horse'], ['water', 'waiter'], ['sweet', 'sweat'], ['small', 'smell'], ['salt', 'sold'], ['milk', 'meal'], ['fire', 'fear', 'far'], ['corn', 'con', 'cone']],
-  es: [['pero', 'perro'], ['caro', 'carro'], ['casa', 'caza', 'cosa'], ['pan', 'plan'], ['hola', 'ola'], ['mesa', 'misa', 'masa'], ['sal', 'sol'], ['año', 'ano'], ['beso', 'peso', 'vaso'], ['cena', 'pena']],
+  es: [['pero', 'perro'], ['caro', 'carro'], ['casa', 'caza', 'cosa'], ['pan', 'plan'], ['hola', 'ola'], ['mesa', 'misa', 'masa'], ['sal', 'sol'], ['beso', 'peso', 'vaso'], ['cena', 'pena'], ['papa', 'papá'], ['esta', 'está'], ['si', 'sí'], ['hablo', 'habló'], ['mano', 'mono'], ['hoja', 'hija'], ['luz', 'los'], ['queso', 'beso'], ['dulce', 'doce'], ['fuego', 'juego']],
 };
 const clave = (w) => w.replace(/ph/g, 'f').replace(/ck/g, 'k').replace(/^kn/, 'n').replace(/^wr/, 'r').replace(/wh/g, 'w').replace(/[aeiouyáéíóúü]+/g, 'V').replace(/(.)\1/g, '$1');
 function distancia(a, b) {
@@ -52,23 +52,27 @@ function distancia(a, b) {
   for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
   return d[a.length][b.length];
 }
+/** Como `limpiar`, pero conserva acentos y ñ: así se le pasan las palabras al reconocedor (en español «está» no es «esta»). */
+export const paraOir = (t) => String(t || '').toLowerCase().normalize('NFC').replace(/[^\p{L}\p{N}\s']/gu, ' ').replace(/'/g, '').replace(/\s+/g, ' ').trim();
+
 /** Palabras que suenan parecido a `palabra` (máx. `tope`). `vocabulario` = palabras de la app en ese idioma. Pura. */
-export function rivalesDe(palabra, idioma, vocabulario = [], tope = 4) {
+export function rivalesDe(palabra, idioma, vocabulario = [], tope = idioma === 'es' ? 2 : 4) {
   const w = limpiar(palabra); if (w.length < 2) return [];
-  const sal = new Set(); if (w.length >= 3) for (const g of GRUPOS[idioma] || []) if (g.includes(w)) g.forEach((x) => x !== w && sal.add(limpiar(x)));
+  const sal = new Set(); if (w.length >= 3) for (const g of GRUPOS[idioma] || []) if (g.includes(w)) g.forEach((x) => x !== w && sal.add(x));
   const k = clave(w);
   if (w.length >= 4) for (const v of vocabulario) {
     if (sal.size >= tope) break;
-    const x = limpiar(v); if (x === w || x.includes(' ') || Math.abs(x.length - w.length) > 2 || x.length < 2 || x[0] !== w[0]) continue;
+    const x = limpiar(v); if (x === w || x.includes(' ') || Math.abs(x.length - w.length) > 2 || x.length < 2 || x[0] !== w[0] || [...sal].some((r) => limpiar(r) === x)) continue;
     if (x === w + 's' || w === x + 's' || x === w + 'es' || x === w + 'd' || x === w + 'ed') continue;            // plural o pasado de la misma palabra: no es error de pronunciación
-    if (distancia(clave(x), k) <= 1 && distancia(x, w) <= 2) sal.add(x);
+    // En español cada letra suena: solo cuenta como rival la que cambia UNA letra (pero / perro). En inglés se compara por sonido aproximado.
+    if (idioma === 'es' ? distancia(x, w) === 1 && Math.abs(x.length - w.length) <= 1 : distancia(clave(x), k) <= 1 && distancia(x, w) <= 2) sal.add(paraOir(v));
   }
   return [...sal].slice(0, tope);
 }
 /** Rivales de todas las palabras de una frase: { palabra: [rivales] }. Las rivales nunca son palabras de la propia frase. */
 export function rivalesDeFrase(frase, idioma, vocabulario = []) {
   const esp = [...new Set(limpiar(frase).split(' ').filter(Boolean))], mapa = {};
-  for (const w of esp) mapa[w] = rivalesDe(w, idioma, vocabulario).filter((x) => !esp.includes(x));
+  for (const w of esp) mapa[w] = rivalesDe(w, idioma, vocabulario).filter((x) => !esp.includes(limpiar(x)));
   return mapa;
 }
 
@@ -88,8 +92,8 @@ export function calificar(frase, oidoGuiado, oidoLibre = '', rivales = {}) {
     const enLibre = !!sacar(ll, (x) => parecida(x, w)), enGuiado = sacar(gg, (x) => x.word === w);
     if (enGuiado) return { w, ok: true, estado: enGuiado.conf >= 0.6 || enLibre ? 'clara' : 'casi' };
     if (enLibre) return { w, ok: true, estado: 'clara' };
-    const rival = sacar(gg, (x) => (rivales[w] || []).includes(x.word));
-    return rival ? { w, ok: true, estado: 'casi', sono: rival.word } : { w, ok: false, estado: 'falta' };
+    const rival = sacar(gg, (x) => (rivales[w] || []).some((r) => limpiar(r) === x.word));
+    return rival ? { w, ok: true, estado: 'casi', sono: (rivales[w] || []).find((r) => limpiar(r) === rival.word) || rival.word } : { w, ok: false, estado: 'falta' };
   });
   const dichas = palabras.filter((p) => p.ok).length, claras = palabras.filter((p) => p.estado === 'clara').length, total = esp.length;
   const nota = total ? (claras + 0.5 * (dichas - claras)) / total : 0;
@@ -113,7 +117,8 @@ export async function escucharPropio(idioma, frase, { ms = 12000, alParcial, alN
   try { flujo = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, channelCount: 1 } }); } catch { return { ok: false, motivo: 'permiso' }; }
   const AC = window.AudioContext || window.webkitAudioContext, ctx = new AC(); if (ctx.state === 'suspended') await ctx.resume().catch(() => {});
   const esp = limpiar(frase).split(' ').filter(Boolean), rivales = rivalesDeFrase(frase, idioma, await vocabularioDe(idioma));
-  const guiado = new modelo.KaldiRecognizer(ctx.sampleRate, JSON.stringify([esp.join(' '), ...new Set(esp), ...new Set(Object.values(rivales).flat()), '[unk]'])), libre = new modelo.KaldiRecognizer(ctx.sampleRate);
+  const dichoAsi = paraOir(frase).split(' ').filter(Boolean);            // con acentos, como las conoce el reconocedor
+  const guiado = new modelo.KaldiRecognizer(ctx.sampleRate, JSON.stringify([dichoAsi.join(' '), ...new Set(dichoAsi), ...new Set(Object.values(rivales).flat()), '[unk]'])), libre = new modelo.KaldiRecognizer(ctx.sampleRate);
   guiado.setWords(true);                                   // confianza por palabra en el resultado final
   const finales = [];
   const oido = { g: [], l: [], gp: '', lp: '' };            // resultados cerrados y el parcial en curso de cada uno
@@ -148,7 +153,7 @@ export async function escucharPropio(idioma, frase, { ms = 12000, alParcial, alN
         try { nodo.disconnect(); fuente.disconnect(); } catch { /* ya */ } flujo.getTracks().forEach((x) => x.stop()); ctx.close().catch(() => {});
         try { guiado.remove(); libre.remove(); } catch { /* ya */ }
         const r = calificar(frase, finales.length ? finales : texto('g'), texto('l'), rivales);
-        ok({ ...r, oyoAlgo: hablo > 2, url: trozos.length ? URL.createObjectURL(new Blob(trozos, { type: mr?.mimeType || 'audio/mp4' })) : null });
+        ok({ ...r, oyoAlgo: hablo > 2, oido: { guiado: finales.map((x) => `${x.word}:${(x.conf ?? 1).toFixed(2)}`).join(' ') || texto('g'), libre: texto('l') }, url: trozos.length ? URL.createObjectURL(new Blob(trozos, { type: mr?.mimeType || 'audio/mp4' })) : null });
       });
     };
   });

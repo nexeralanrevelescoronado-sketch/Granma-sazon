@@ -104,6 +104,7 @@ const paquetes = [
   { id: 'biblia', nombre: { es: 'Biblia (RV1909, KJV y WEB)', en: 'Bible (RV1909, KJV and WEB)' }, icono: '✝️', archivos: bibliaFiles },
   // Opcionales (no cuentan para la meta de 50 MB ni se bajan con «Descargar todo»): reconocimiento de voz dentro del teléfono
   { id: 'oido-en', opcional: true, nombre: { es: 'Oído de Granma: inglés', en: 'Granma\'s ear: English' }, icono: '👂', archivos: ['assets/oido/vosk.js', 'assets/oido/modelo-en.tar.gz', 'assets/oido/LICENCIAS.md', 'assets/oido/LICENSE-APACHE-2.0.txt'] },
+  { id: 'oido-es', opcional: true, nombre: { es: 'Oído de Granma: español', en: 'Granma\'s ear: Spanish' }, icono: '👂', archivos: ['assets/oido/vosk.js', 'assets/oido/modelo-es.tar.gz', 'assets/oido/LICENCIAS.md', 'assets/oido/LICENSE-APACHE-2.0.txt'] },
 ].map((p) => ({ ...p, bytes: peso(p.archivos) }));
 escribir(j('data', 'paquetes.json'), { fmt: 1, paquetes: paquetes.map((p) => p) });
 

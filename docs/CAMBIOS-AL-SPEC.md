@@ -70,7 +70,7 @@
 
 ## Oído de Granma: reconocimiento de palabras dentro del teléfono
 
-- **Qué es:** paquete opcional «Oído de Granma: inglés» (≈ 45 MB) en Descargas. El de español se retiró hasta integrar el modelo 0.42, que es el que tiene licencia publicada (ver `assets/oido/LICENCIAS.md`). Con el paquete, el modo «Granma, en mi teléfono» reconoce las palabras sin internet y sin enviar la voz a nadie (`js/oido-propio.js`). Funciona igual en el navegador y con la app instalada.
+- **Qué es:** paquetes opcionales «Oído de Granma: inglés» (≈ 45 MB) y «español» (≈ 44 MB) en Descargas. El de español usa el modelo 0.42, con licencia Apache 2.0 publicada (ver `assets/oido/LICENCIAS.md`). Con el paquete, el modo «Granma, en mi teléfono» reconoce las palabras sin internet y sin enviar la voz a nadie (`js/oido-propio.js`). Funciona igual en el navegador y con la app instalada.
 - **Librería:** Vosk compilado a WebAssembly (`vosk-browser` 0.0.8) y sus modelos pequeños, todo con licencia **Apache-2.0** (`assets/oido/LICENCIAS.md`). Es la única librería de terceros de la app y no cuenta para la meta de 50 MB.
 - **Cómo oye:** en vivo, palabra por palabra (cada palabra reconocida se pinta de verde y suena). Corren dos reconocedores: uno guiado por la frase y uno libre. Con 6 de cada 10 palabras se da por bueno.
 - **Calificación de pronunciación:** al reconocedor se le dan también palabras «rivales» que suenan parecido (bread → bed, red; kitchen → chicken; love → live), así que tiene que elegir cuál oyó. Cada palabra queda **clara** (verde), **casi** (amarilla, con la pista «sonó como bed») o **falta**, y la frase recibe de 1 a 3 estrellas.

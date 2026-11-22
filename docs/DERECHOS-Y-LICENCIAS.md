@@ -28,10 +28,10 @@ conectarlas existe pero está apagado; ningún texto suyo está en el repositori
 
 ## 3. Lo que es de terceros (con licencia abierta)
 
-Solo el **Oído de Granma** (`assets/oido/`): Vosk y su modelo de inglés, licencia **Apache-2.0**. Detalle, titulares, huellas y
+Solo el **Oído de Granma** (`assets/oido/`): Vosk y sus modelos de inglés y español, licencia **Apache-2.0**. Detalle, titulares, huellas y
 dónde consta cada licencia: `assets/oido/LICENCIAS.md`. Obligaciones que ya se cumplen: se distribuye el texto de la licencia
 (`LICENSE-APACHE-2.0.txt`), se conserva el aviso de derechos, los archivos no se modificaron y los créditos aparecen en Perfil.
-El modelo de **español 0.3 se retiró** porque su licencia no estaba a la vista; el 0.42 (Apache 2.0) queda pendiente de integrar.
+El modelo de español es el **0.42**, bajado de la página oficial, donde consta como Apache 2.0 (el 0.3 anterior se retiró porque su licencia no estaba a la vista).
 
 ## 4. Servicios que usa el teléfono (no son de la app)
 
@@ -62,8 +62,6 @@ La app **no tiene cuentas, servidor propio, analítica, anuncios ni cookies de r
 5. **Licencias de Biblia con derechos** (RV1960, NTV, NLT): se piden por escrito a su titular (Sociedades Bíblicas Unidas para
    RV1960; Tyndale House para NTV/NLT). Suelen preguntar: nombre de la app, si es gratuita, cuántos versículos se muestran y si
    funcionará sin internet. Pasos técnicos en `docs/BIBLIA.md`.
-6. **Modelo de voz en español 0.42:** bajarlo de la página oficial de modelos de Vosk y pasarlo para integrarlo (o abrir una sesión
-   nueva en el entorno «Granma Sazon y Genesis», que ya permite ese sitio).
 
 ## 7. Regla para lo que venga
 

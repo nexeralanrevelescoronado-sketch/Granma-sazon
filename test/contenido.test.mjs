@@ -140,7 +140,7 @@ test('PWA: manifest con íconos 192/512/maskable y peso total < 50 MB', () => {
   assert.ok(tam('192x192', 'any') && tam('512x512', 'any') && tam('512x512', 'maskable'));
   for (const i of m.icons) assert.ok(existsSync(join(RAIZ, i.src)), i.src);
   const png = readFileSync(join(RAIZ, 'assets/iconos/icon-512.png')); assert.equal(png.readUInt32BE(16), 512);
-  const p = json('data/paquetes.json').paquetes; assert.deepEqual(p.map((x) => x.id), ['historia', 'recetas', 'cotorreo', 'consejos', 'italianas', 'biblia', 'oido-en']);
+  const p = json('data/paquetes.json').paquetes; assert.deepEqual(p.map((x) => x.id), ['historia', 'recetas', 'cotorreo', 'consejos', 'italianas', 'biblia', 'oido-en', 'oido-es']);
   const total = p.filter((x) => !x.opcional).reduce((s, x) => s + x.bytes, 0); assert.ok(total < 50 * 1048576, `total ${total}`);
   assert.equal(p.find((x) => x.id === 'italianas').proximamente, true);
   const sw = leer('sw.js'); assert.ok(!sw.includes("VERSION = 'dev'"), 'corre «node scripts/build.mjs» antes de subir'); assert.ok(sw.includes('"index.html"'));
@@ -396,6 +396,12 @@ test('Oído de Granma: califica palabra por palabra, es opcional, con licencia a
   const { rivalesDe, rivalesDeFrase } = await import('../js/oido-propio.js'), voc = Object.keys(JSON.parse(leer('data/glosario.json')).en);
   assert.ok(rivalesDe('bread', 'en', voc).includes('bed') && rivalesDe('kitchen', 'en', voc).includes('chicken') && rivalesDe('love', 'en', voc).includes('live'));
   assert.deepEqual(rivalesDe('the', 'en', voc), [], 'las palabritas de enlace no llevan rivales');
+  const { paraOir } = await import('../js/oido-propio.js'), vocEs = Object.keys(JSON.parse(leer('data/glosario.json')).es);
+  assert.equal(paraOir('¡El pan está caliente, mijo!'), 'el pan está caliente mijo', 'al reconocedor se le pasan los acentos');
+  assert.ok(rivalesDe('perro', 'es', vocEs).includes('pero') && rivalesDe('perro', 'es', vocEs).length <= 2 && !rivalesDe('perro', 'es', vocEs).includes('peso'), 'en español la rival cambia una sola letra');
+  let q = calificar('El perro come pan.', [{ word: 'pero', conf: 0.9 }, { word: 'come', conf: 1 }, { word: 'pan', conf: 1 }], '', rivalesDeFrase('El perro come pan.', 'es', vocEs));
+  assert.deepEqual([q.palabras[1].estado, q.palabras[1].sono], ['casi', 'pero']);
+  q = calificar('El pan está caliente.', [{ word: 'el', conf: 1 }, { word: 'pan', conf: 1 }, { word: 'está', conf: 1 }, { word: 'caliente', conf: 1 }], '', {}); assert.equal(q.estrellas, 3, 'los acentos no estorban al comparar');
   const R = rivalesDeFrase('The bread is warm.', 'en', voc); assert.ok(!Object.values(R).flat().some((x) => ['the', 'bread', 'is', 'warm'].includes(x)));
   let p = calificar('The bread is warm.', [{ word: 'the', conf: 1 }, { word: 'bread', conf: 1 }, { word: 'is', conf: 1 }, { word: 'warm', conf: 1 }], '', R); assert.equal(p.estrellas, 3); assert.equal(p.pasa, true);
   p = calificar('The bread is warm.', [{ word: 'the', conf: 0.9 }, { word: 'bed', conf: 0.86 }, { word: 'is', conf: 1 }, { word: 'warm', conf: 1 }], 'the man is warm', R);
@@ -409,7 +415,7 @@ test('Oído de Granma: califica palabra por palabra, es opcional, con licencia a
   r = calificar('The kitchen is warm.', 'kitchen', 'the kitchens is warm'); assert.equal(r.todo, true, 'junta lo que oyó cada reconocedor y tolera una letra');
   assert.equal(calificar('', 'hola', 'hola').todo, false);
   const paq = JSON.parse(leer('data/paquetes.json')).paquetes;
-  for (const id of ['oido-en']) { const p = paq.find((x) => x.id === id); assert.ok(p.opcional && p.archivos.every((f) => existsSync(join(RAIZ, f))), id); }
+  for (const id of ['oido-en', 'oido-es']) { const p = paq.find((x) => x.id === id); assert.ok(p.opcional && p.archivos.every((f) => existsSync(join(RAIZ, f))), id); }
   assert.ok(!leer('sw.js').includes('assets/oido'), 'el Oído no viaja en el arranque de la app');
   assert.ok(!/oido-propio|vosk/i.test(leer('index.html')), 'ni se precarga');
   const lic = leer('assets/oido/LICENCIAS.md'); assert.ok(/Apache-2\.0/.test(lic) && /vosk-browser/.test(lic));
@@ -429,6 +435,6 @@ test('derechos: nada de terceros fuera del Oído, sin peticiones externas y con 
   const html = leer('index.html'); assert.ok(!/<script[^>]+src=["']https?:|<link[^>]+href=["']https?:\/\/(?!nexeralanrevelescoronado-sketch\.github\.io)/.test(html), 'index.html no carga nada de otros sitios');
   const permitidos = /^assets\/(oido|iconos|logo|personajes|animaciones)\//;
   for (const f of readdirSync(join(RAIZ, 'assets'), { recursive: true }).map((x) => 'assets/' + String(x).split('\\').join('/'))) assert.ok(permitidos.test(f) || !f.includes('.'), `archivo fuera de inventario: ${f}`);
-  assert.ok(!existsSync(join(RAIZ, 'assets/oido/modelo-es.tar.gz')), 'el modelo de español sin licencia a la vista no se distribuye');
+  const lic = leer('assets/oido/LICENCIAS.md'); assert.ok(/vosk-model-small-es-0\.42/.test(lic) && !/modelo-es\.tar\.gz` \| `vosk-model-small-es-0\.3/.test(lic), 'el español que se distribuye es el 0.42, con licencia publicada');
   for (const f of readdirSync(join(RAIZ, 'js'), { recursive: true }).filter((x) => String(x).endsWith('.js'))) { const t = leer('js/' + f); assert.ok(!/google-analytics|googletagmanager|facebook\.net|doubleclick|hotjar/.test(t), `${f}: sin rastreadores`); }
 });

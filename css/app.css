@@ -212,3 +212,5 @@ mark.clave:empty{display:none}
 .nodo.prueba{width:52px;height:52px;margin:0 8px;background:var(--olla);color:var(--cafe);box-shadow:0 4px 0 #C98511;font-size:1.3rem}
 .nodo.prueba.hecho{background:var(--verde-ink);box-shadow:0 4px 0 #1B5450}
 .mapa li.li-prueba{padding:4px 0}.mapa li.li-prueba::after{top:60px}
+.arranque{min-height:70dvh;display:grid;place-content:center;justify-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:1.4rem;color:var(--terra-osc)}
+.arranque img{border-radius:24px}

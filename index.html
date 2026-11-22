@@ -27,7 +27,23 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Granma Sazón","applicationCategory":"EducationalApplication","operatingSystem":"Web","inLanguage":["es","en"],"description":"App web instalable para aprender inglés y español con historias, recetas mexicanas, consejos y Biblia. Funciona sin internet.","offers":{"@type":"Offer","price":"0","priceCurrency":"MXN"}}</script>
 <link rel="stylesheet" href="css/app.css">
 <link rel="stylesheet" href="assets/animaciones/animaciones.css">
+<!-- Todos los módulos del arranque, declarados por adelantado: se piden a la vez en lugar de en cascada (LCP) -->
 <link rel="modulepreload" href="js/app.js">
+<link rel="modulepreload" href="js/state.js">
+<link rel="modulepreload" href="js/util.js">
+<link rel="modulepreload" href="js/fx.js">
+<link rel="modulepreload" href="js/sound.js">
+<link rel="modulepreload" href="js/datos.js">
+<link rel="modulepreload" href="js/personajes.js">
+<link rel="modulepreload" href="js/habla.js">
+<link rel="modulepreload" href="assets/animaciones/index.js">
+<link rel="modulepreload" href="assets/animaciones/personajes.js">
+<link rel="modulepreload" href="assets/animaciones/confeti.js">
+<link rel="modulepreload" href="assets/animaciones/tortilla.js">
+<link rel="modulepreload" href="assets/animaciones/vapor.js">
+<link rel="modulepreload" href="assets/animaciones/visibilidad.js">
+<link rel="modulepreload" href="js/vistas/inicio.js">
+<link rel="modulepreload" href="js/compartir.js">
 </head>
 <body>
 <a class="saltar" href="#main">Saltar al contenido</a>
@@ -35,7 +51,7 @@
   <span aria-hidden="true">✈️</span> <span id="sin-internet-texto">Sin internet — modo descargado</span>
 </div>
 <header id="encabezado" class="encabezado" hidden></header>
-<main id="main" tabindex="-1" aria-live="off"></main>
+<main id="main" tabindex="-1" aria-live="off"><div class="arranque"><img src="assets/logo/icono.svg" width="96" height="96" alt=""><p>Granma Sazón</p></div></main>
 <nav id="nav" class="nav" aria-label="Secciones" hidden></nav>
 <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
 <noscript><p style="padding:1rem">Granma Sazón necesita JavaScript para funcionar. · Granma Sazón needs JavaScript to run.</p></noscript>

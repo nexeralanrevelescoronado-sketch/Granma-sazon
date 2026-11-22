@@ -69,3 +69,7 @@ Los `id` los pone el build (posición + 1): en una tanda nueva déjalos fuera. T
 ## Glosario al toque (obligatorio al agregar contenido)
 
 Cada palabra nueva que aparezca en un texto (`es`/`en`) necesita su entrada en `scripts/datos/glosario/en.json` (inglés → significado en español) o `es.json` (español → significado en inglés). La clave es la forma exacta en minúsculas (`cooked`, `manzanas`, `don't`); el valor, un significado corto (≤ 45 caracteres, sin punto final; dos sentidos se separan con `; `). `npm test` dice qué palabras faltan.
+
+### Glosario bíblico (completo)
+
+Cubre todas las palabras de RV1909, KJV y WEB; `npm test` falla si falta una. Va aparte del glosario general y es **formal**: solo el significado de la palabra, sin bromas ni interpretación. Capas (la primera manda): `biblia-<idioma>.json` (base revisada) → `biblia-<idioma>-resto.json` (lotes) → `biblia-<idioma>-auto.json` (deducido; se regenera con `node scripts/glosario-biblia-auto.mjs --escribir`, no se edita a mano). Para corregir una glosa, ponla en `biblia-<idioma>.json`.

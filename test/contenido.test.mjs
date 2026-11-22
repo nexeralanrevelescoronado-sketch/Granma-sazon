@@ -369,6 +369,10 @@ test('glosario bíblico: formal, y cubre cada palabra de los pasajes de la ruta'
   }
   for (const l of ['en', 'es']) for (const [w, s] of Object.entries(g[l])) { assert.ok(s && s.length <= 60, `glosa rara: ${w}`); assert.ok(!/broma|chiste|joke|\bpun\b|trabalenguas|tongue twister/i.test(s), `glosa informal en la Biblia: ${w}`); }
   assert.ok(Object.keys(g.en).length >= 2000 && Object.keys(g.es).length >= 2000);
+  // Biblia completa: cada palabra de cada versículo (RV1909, KJV y WEB) tiene su glosa
+  for (const [v, l] of [['rv1909', 'es'], ['kjv', 'en'], ['web', 'en']]) { const faltan = new Set();
+    for (const f of readdirSync(join(RAIZ, 'data/biblia', v))) for (const c of JSON.parse(leer(`data/biblia/${v}/${f}`)).c) for (const t of c) for (const w of pal(t)) if (!g[l][w]) faltan.add(w);
+    assert.equal(faltan.size, 0, `${v}: ${faltan.size} palabras sin glosa (${[...faltan].slice(0, 15).join(', ')}…). Corre scripts/glosario-biblia-auto.mjs para ver la lista`); }
   assert.ok(/INFORMAL\.test\(g\.significado\)/.test(leer('js/glosario.js')), 'en la Biblia nunca sale una glosa de chiste');
   assert.ok(JSON.parse(leer('data/paquetes.json')).paquetes.find((p) => p.id === 'biblia').archivos.includes('data/biblia/glosario.json'));
 });

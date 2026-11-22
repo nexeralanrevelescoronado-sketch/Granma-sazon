@@ -36,7 +36,7 @@ await pg.waitForFunction(() => document.getAnimations().filter((a) => a.animatio
 ok((await anims(pg)).filter((a) => a.n === 'vapor').length === 3, 'vapor: 3 hilos en loop');
 ok(await pg.evaluate(() => document.getAnimations().filter((a) => a.animationName === 'vapor').every((a) => a.effect.target.tagName.toLowerCase() === 'svg' && a.effect.target.classList.contains('hilo'))), 'los hilos son capas propias (cajas CSS, no hijos del dibujo)');
 
-for (const [btn, esperadas, durMax, que] of [['aplauso', ['palmada'], 320, 'Granma aplaude'], ['asiente', ['asiente', 'sombrero'], 320, 'Abuelo asiente con el sombrero'], ['dedo', ['dedo'], 460, 'Abuelo levanta el dedo']]) {
+for (const [btn, esperadas, durMax, que] of [['aplauso', ['palmada'], 320, 'Granma aplaude'], ['asiente', ['asiente', 'sombrero'], 320, 'Abuelo asiente con el sombrero'], ['mano', ['mano'], 460, 'Abuelo levanta la mano']]) {
   await pg.click(`[data-a="${btn}"]`); await pg.waitForTimeout(120); l = await anims(pg);
   const e = l.filter((a) => esperadas.includes(a.n)); ok(e.length >= esperadas.length && e.every((a) => a.dur >= 150 && a.dur <= durMax * 1.5), `${que}: ${e.map((a) => a.n + ' ' + a.dur + 'ms×' + a.it).join(', ')}`);
   ok(!noPermitidas(l).length, `${que}: solo transform/opacity`); await pg.waitForTimeout(800); }
@@ -57,7 +57,7 @@ l = await anims(pg); ok(l.some((a) => a.n === 'boca-ma') && l.some((a) => a.n ==
 await pg.waitForTimeout(3500); const alto1 = await pg.locator('.dialogo .globo').evaluate((g) => Math.round(g.getBoundingClientRect().height)); ok(alto0 === alto1, `el globo no cambia de tamaño al escribirse (${alto0}px → ${alto1}px): sin reflujo`);
 ok((await pg.locator('.dialogo .pj-svg[data-estado="contenta"]').count()) === 1, 'al terminar vuelve a «contenta»'); ok(await pg.evaluate(() => !document.getAnimations().some((a) => /boca/.test(a.animationName || '') && a.effect.target.closest('.dialogo'))), 'la boca del globo deja de moverse');
 await pg.click('[data-a="habla-abuelo"]'); await pg.waitForTimeout(700); l = await anims(pg);
-ok(l.some((a) => a.n === 'dedo') && (await pg.locator('.dialogo .pj-svg.habla').count()) === 1, 'Abuelo da consejo: levanta el dedo y la boca alterna');
+ok(l.some((a) => a.n === 'mano') && (await pg.locator('.dialogo .pj-svg.habla').count()) === 1, 'Abuelo da consejo: levanta la mano y la boca alterna');
 console.log('3) Pestaña oculta pausa todo');
 await pg.click('[data-a="oculta"]'); await pg.waitForTimeout(200); l = await anims(pg);
 ok(l.length > 0 && l.every((a) => a.estado !== 'running'), `con la pestaña oculta ${l.length} animaciones en pausa, 0 corriendo`);
@@ -69,7 +69,7 @@ await pg.context().close();
 console.log('4) prefers-reduced-motion: sin movimiento, estados instantáneos');
 pg = await nueva({ reducedMotion: 'reduce' }); await pg.goto(B + 'demo-animaciones.html'); await pg.waitForSelector('.pj-svg'); await pg.waitForTimeout(300);
 l = await anims(pg); ok(l.filter((a) => a.estado === 'running').length === 0, 'reposo sin animaciones corriendo');
-for (const b of ['aplauso', 'asiente', 'dedo']) { await pg.click(`[data-a="${b}"]`); await pg.waitForTimeout(100); }
+for (const b of ['aplauso', 'asiente', 'mano']) { await pg.click(`[data-a="${b}"]`); await pg.waitForTimeout(100); }
 ok((await anims(pg)).filter((a) => a.estado === 'running').length === 0, 'las reacciones no mueven nada');
 ok((await pg.locator('#escena .pj-svg[data-estado="aplaudiendo"]').count()) === 1 && (await pg.locator('#escena .pj-svg[data-estado="aconsejando"]').count()) === 1, 'pero el estado sí cambia (Granma aplaudiendo, Abuelo aconsejando)');
 await pg.click('[data-a="estados"]'); await pg.waitForTimeout(50); ok((await pg.locator('.pj-svg.encima').count()) === 0, 'cambio de cara instantáneo (sin fundido)');
@@ -79,7 +79,7 @@ await pg.click('[data-a="habla-granma"]'); await pg.waitForTimeout(300); ok((awa
 await pg.context().close();
 
 console.log('5) En la app: acierto → reacción; error → tortillita cae; fin de lección → confeti ≤ 40');
-pg = await nueva(); const hist = JSON.parse(readFileSync(join(RAIZ, 'data/historia.json'))); const pal = hist.capitulos[0].palabras;
+pg = await nueva(); const hist = JSON.parse(readFileSync(join(RAIZ, 'data/historia.json'))); const propias = Object.values(hist.capitulos[0].palabrasInteres).flat(); const pal = [...hist.capitulos[0].palabras, ...propias];
 await pg.goto(B); await pg.evaluate(() => localStorage.setItem('granma:v1', JSON.stringify({ v: 1, perfil: { aprende: 'en', interes: 'trabajo', cocina: 'mexicana', nombre: 'Ana', listo: true }, xp: 0, racha: { n: 0, ultimo: null }, vidas: { n: 5, t: Date.now() }, caps: {}, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false }, constancia: { fecha: null } }))); await pg.reload();
 await pg.goto(B + '#/leccion/1'); await pg.waitForSelector('[data-accion="palabras"]'); await pg.click('[data-accion="palabras"]'); await pg.click('[data-accion="ejercicios"]'); await pg.waitForSelector('.opcion');
 const preg = await pg.locator('.pregunta').innerText(); const w = preg.match(/«(.+?)»/)[1]; const correcta = pal.find((p) => p.en === w).es;
@@ -89,7 +89,7 @@ await pg.click(`.opcion[data-op="${incorrecta}"]`); await pg.click('[data-compro
 ok(l.some((a) => a.dur === 520 && a.props.includes('transform')), 'error: la tortillita se desinfla y cae'); await pg.waitForTimeout(700); ok((await pg.locator('.vidas .tortilla.vacia').count()) === 1, 'la tortillita queda vacía');
 await pg.click('[data-seguir]'); await pg.waitForSelector('.opcion,.ficha,.par');
 // ahora un acierto: primer ejercicio repetido o el siguiente; resolvemos lo que toque con datos conocidos
-const ejs = Object.values(hist.capitulos[0].ejemplos).flat();
+const ejs = [...Object.values(hist.capitulos[0].ejemplos).flat(), ...propias.map((p) => ({ en: p.f.en, es: p.f.es, we: p.en, ws: p.es }))];
 async function resolverUno() {
   if (await pg.locator('[data-pares]').count()) { const izq = await pg.locator('[data-lado="i"]').evaluateAll((b) => b.map((x) => x.dataset.v)); for (const a of izq) { const p = pal.find((x) => x.en === a); await pg.click(`[data-lado="i"][data-v="${a}"]`); await pg.click(`[data-lado="d"][data-v="${p.es}"]`); } return; }
   if (await pg.locator('[data-armado]').count()) { const ay = await pg.locator('.pregunta small').textContent(); const e = ejs.find((x) => x.es === ay); for (const pa of e.en.split(/\s+/)) await pg.locator('[data-ficha]:not(.usada)').filter({ hasText: new RegExp(`^${pa.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`) }).first().click(); await pg.click('[data-comprobar]'); return; }

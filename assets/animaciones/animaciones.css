@@ -40,10 +40,10 @@ html[data-oculta] *,html[data-oculta] *::before,html[data-oculta] *::after{anima
   @keyframes asiente{0%,100%{transform:none}50%{transform:translateY(7px) rotate(2.5deg)}}
   @keyframes sombrero{0%,100%{transform:none}50%{transform:translateY(3px) rotate(-3deg)}}
 
-  /* Abuelo levanta el dedo al dar un consejo: 450 ms ease-out, parte desde abajo y casi invisible */
-  .pj-svg.anim-dedo [data-g="dedo"]{transform-origin:50% 100%;animation:dedo .45s var(--ease-out) both}
-  .pj-svg.anim-dedo [data-g="chispas"]{animation:aparece .3s var(--ease-out) .25s both}
-  @keyframes dedo{from{opacity:0;transform:translateY(30px) rotate(14deg)}to{opacity:1;transform:none}}
+  /* Abuelo levanta la mano abierta al dar un consejo: 450 ms ease-out, parte desde abajo y casi invisible */
+  .pj-svg.anim-mano [data-g="mano"]{transform-origin:50% 100%;animation:mano .45s var(--ease-out) both}
+  .pj-svg.anim-mano [data-g="chispas"]{animation:aparece .3s var(--ease-out) .25s both}
+  @keyframes mano{from{opacity:0;transform:translateY(30px) rotate(14deg)}to{opacity:1;transform:none}}
   @keyframes aparece{from{opacity:0}to{opacity:1}}
 
   /* Vapor de la olla: 3 capas (cada hilo es su propio <svg> = caja CSS → compositor), suben y se desvanecen en loop suave */

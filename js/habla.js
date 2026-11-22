@@ -1,19 +1,16 @@
 // Cuando Granma o el Abuelo «hablan»: el globo se escribe letra por letra y la boca alterna
-// cerrada/abierta (animación CSS dentro del SVG «hablando»). La voz (Web Speech API) es opcional y viene apagada.
+// cerrada/abierta (animación CSS dentro del SVG «hablando»). La voz (Web Speech API, ver voz.js) viene encendida y se apaga con el botón 🗣.
 import { estado, guardar, u } from './state.js';
 import { reducirMovimiento } from './util.js';
 import { toast } from './fx.js';
+import { vozDisponible, hayVozPara, cancelarVoz, decir } from './voz.js';
 import { estadoPj, reaccion, hablando, listoPj } from '../assets/animaciones/index.js';
 
-let epoca = 0, cola = Promise.resolve(), avisoVoces = false;
-const LANG = { es: 'es-MX', en: 'en-US' };
+let epoca = 0, cola = Promise.resolve();
 
 /* ---------- voz ---------- */
-export const vozDisponible = () => 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+export { vozDisponible };
 export const vozActiva = () => !!estado().ajustes.voz && vozDisponible();
-export function hayVozPara(idioma) {
-  try { return speechSynthesis.getVoices().some((v) => v.lang.toLowerCase().replace('_', '-').startsWith(idioma)); } catch { return false; }
-}
 export function alternarVoz() {
   const a = estado().ajustes;
   if (!vozDisponible()) { toast(u('Tu navegador no tiene voz.', 'Your browser has no speech voice.')); return false; }
@@ -23,18 +20,6 @@ export function alternarVoz() {
     for (const l of ['es', 'en']) if (!hayVozPara(l) && speechSynthesis.getVoices().length) toast(u(`No encontré una voz instalada para ${l === 'es' ? 'español' : 'inglés'}.`, `No installed voice found for ${l === 'es' ? 'Spanish' : 'English'}.`));
   } else cancelarVoz();
   return a.voz;
-}
-export const cancelarVoz = () => { try { speechSynthesis.cancel(); } catch { /* sin voz */ } };
-function decir(texto, idioma) {
-  return new Promise((ok) => {
-    try {
-      cancelarVoz();
-      const ut = new SpeechSynthesisUtterance(texto); ut.lang = LANG[idioma] || 'es-MX'; ut.rate = 0.92;
-      const t = setTimeout(ok, Math.min(20000, 1500 + texto.length * 90));
-      ut.onend = ut.onerror = () => { clearTimeout(t); ok(); };
-      speechSynthesis.speak(ut);
-    } catch { ok(); }
-  });
 }
 
 /* ---------- escritura ---------- */
@@ -76,7 +61,7 @@ async function conBoca(dialogo, hablandoAhora) {
   await listoPj(span); const base = span.dataset.base;
   if (hablandoAhora) {
     if (GESTO.has(base)) await estadoPj(span, 'hablando'); else await hablando(span, true);
-    if (base === 'aconsejando') reaccion(span, 'dedo');
+    if (base === 'aconsejando') reaccion(span, 'mano');
   } else { await hablando(span, false); await estadoPj(span, base); }
 }
 async function hablar(dialogo, mio) {
@@ -85,7 +70,8 @@ async function hablar(dialogo, mio) {
   const copia = (l1 || globo).cloneNode(true); copia.querySelectorAll('.quien,button,mark svg').forEach((x) => x.remove());
   const texto = copia.textContent.replace(/\s+/g, ' ').trim();
   await conBoca(dialogo, true);
-  const voz = vozActiva() && texto ? decir(texto, idioma) : Promise.resolve();
+  const quien = globo.classList.contains('abuelo') ? 'abuelo' : 'granma';          // el Abuelo habla grave y pausado; Granma, cálida
+  const voz = vozActiva() && texto ? decir(texto, idioma, quien) : Promise.resolve();
   await Promise.all([escribir(globo, mio), voz]);
   await conBoca(dialogo, false);
 }

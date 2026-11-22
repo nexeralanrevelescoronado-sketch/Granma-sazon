@@ -11,13 +11,16 @@ const base = () => ({
   xp: 0, racha: { n: 0, ultimo: null }, vidas: { n: MAX_VIDAS, fecha: '', agotada: false }, repetir: null, pruebas: {},
   caps: {}, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {},
   misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 },
-  ajustes: { sonido: true, voz: false }, constancia: { fecha: null },
+  ajustes: { sonido: true, voz: true, vozV: 2 }, constancia: { fecha: null },
 });
 let S;
 function cargar() {
   try { const r = JSON.parse(localStorage.getItem(KEY)); S = r && r.v === 1 ? { ...base(), ...r } : base(); } catch { S = base(); }
 }
 cargar();
+// El dueño pidió que los abuelos se escuchen: la voz pasa a estar encendida. Se aplica UNA vez a quien ya tenía
+// la app (después respeta lo que la persona elija con el botón 🗣).
+if (S.ajustes.vozV !== 2) { S.ajustes = { ...S.ajustes, voz: true, vozV: 2 }; }
 export const estado = () => S;
 export function guardar() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch { /* sin espacio o modo privado: el juego sigue en memoria */ } bus.dispatchEvent(new Event('cambio')); }
 export function reiniciar() { S = base(); guardar(); }

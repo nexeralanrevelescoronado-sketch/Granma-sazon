@@ -34,7 +34,7 @@
 <div class="banco">
   <button class="btn" data-a="aplauso">👏 Granma aplaude</button>
   <button class="btn" data-a="asiente">🎩 Abuelo asiente</button>
-  <button class="btn" data-a="dedo">☝️ Abuelo levanta el dedo</button>
+  <button class="btn" data-a="mano">✋ Abuelo levanta la mano</button>
   <button class="btn" data-a="estados">🙂 Cambiar de cara</button>
   <button class="btn sec" data-a="parpadeo">👁 Parpadear ahora</button>
   <button class="btn sec" data-a="respira" aria-pressed="true">🫁 Respiración: sí</button>
@@ -77,7 +77,7 @@ function hablar(quien, estado, texto) {
 const acciones = {
   aplauso: () => { reaccion(g, 'aplauso'); dec('Granma aplaude: 2 palmadas de 300 ms.'); },
   asiente: () => { reaccion(a, 'asiente'); dec('El Abuelo asiente: 2 cabeceos de 300 ms; el sombrero baja un poco más.'); },
-  dedo: () => { reaccion(a, 'dedo'); dec('El Abuelo levanta el dedo: 450 ms, ease-out.'); },
+  mano: () => { reaccion(a, 'mano'); dec('El Abuelo levanta la mano abierta: 450 ms, ease-out.'); },
   estados: () => { k = (k + 1) % 5; estadoPj(g, ESTADOS.granma[k], { base: true }); estadoPj(a, ESTADOS.abuelo[k], { base: true }); dec(`Cara ${k + 1}/5 — Granma: ${ESTADOS.granma[k]} · Abuelo: ${ESTADOS.abuelo[k]} (fundido de 180 ms).`); },
   parpadeo: async () => { await Promise.all([listoPj(g), listoPj(a)]); $$('#escena [data-g="ojos"]').forEach((o) => o.animate([{ transform: 'scaleY(1)' }, { transform: 'scaleY(.08)', offset: .5 }, { transform: 'scaleY(1)' }], { duration: 170, easing: 'ease-out' })); dec('Parpadeo (170 ms). En reposo ocurre solo, cada ~5 s.'); },
   respira: (b) => { resp = !resp; document.body.classList.toggle('sin-resp', !resp); b.setAttribute('aria-pressed', resp); b.textContent = `🫁 Respiración: ${resp ? 'sí' : 'no'}`; dec(resp ? 'Respiración y parpadeo activos.' : 'Respiración y parpadeo en pausa.'); },

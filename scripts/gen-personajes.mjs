@@ -71,6 +71,9 @@ const granmaLentes = `<circle cx="98" cy="108" r="21" fill="#fff" fill-opacity="
 /* ================= ABUELO ================= */
 const A = { piel:'#8E5A3C', pielSombra:'#774A31', blanco:'#F4F1EC', chaleco:'#5F7C8C', camisa:'#F3EAD8', sarape:C.terracota, baston:'#8B5A2B', paja:'#E3C07A', pajaSombra:'#C9A25C', banda:'#6B3F22' };
 const baston = (x = 190) => `<path d="M${x} 314 L${x} 192 Q${x} 170 ${x - 14} 172" fill="none" stroke="${A.baston}" stroke-width="8" stroke-linecap="round"/>`;
+// Mano abierta y bien definida: palma, cuatro dedos juntos y pulgar. Es un saludo o un «escucha»;
+// nunca se dibuja un dedo solo (se puede malinterpretar). (x, y) = muñeca; la mano sube desde ahí.
+const manoAbierta = (x, y, col, sombra) => `<g transform="translate(${x} ${y})"><rect x="-13" y="-24" width="26" height="27" rx="9" fill="${col}"/>${[[-13, 14], [-6.5, 18], [0, 17], [6.5, 13]].map(([fx, h]) => `<rect x="${fx}" y="${-22 - h}" width="6" height="${h + 6}" rx="3" fill="${col}"/>`).join('')}<rect x="-22" y="-20" width="7.5" height="17" rx="3.75" fill="${col}" transform="rotate(-30 -18 -8)"/><path d="M-6.8 -25 v-9 M-0.3 -25 v-10 M6.2 -25 v-8" stroke="${sombra}" stroke-width="1" stroke-linecap="round" opacity=".7"/></g>`;
 const abueloCuerpo = (pose) => {
   const base = `
   <path d="M60 320 L68 176 Q120 154 172 176 L180 320 Z" fill="${A.chaleco}"/>
@@ -82,11 +85,11 @@ const abueloCuerpo = (pose) => {
   <path d="M72 188 Q112 180 134 196 L176 266" fill="none" stroke="${C.crema}" stroke-width="2.5" stroke-dasharray="5 6"/>`;
   const poses = {
     serio: brazo('M66 186 Q52 236 62 266', A.chaleco) + mano(62, 272, A.piel) + baston() + brazo('M174 188 Q192 218 190 194', A.chaleco, 22) + mano(190, 182, A.piel),
-    hablando: brazo('M66 186 Q52 236 62 266', A.chaleco) + mano(62, 272, A.piel) + baston(46) + brazo('M174 188 Q204 204 200 172', A.chaleco, 22) + `<g transform="translate(200 160)"><rect x="-12" y="-4" width="24" height="22" rx="9" fill="${A.piel}"/><rect x="-14" y="-18" width="8" height="18" rx="4" fill="${A.piel}"/><rect x="-5" y="-22" width="8" height="20" rx="4" fill="${A.piel}"/><rect x="4" y="-18" width="8" height="18" rx="4" fill="${A.piel}"/></g>`,
+    hablando: brazo('M66 186 Q52 236 62 266', A.chaleco) + mano(62, 272, A.piel) + baston(46) + brazo('M174 188 Q204 204 200 172', A.chaleco, 22) + manoAbierta(200, 170, A.piel, A.pielSombra),
     sonrisa: brazo('M66 186 Q52 236 62 266', A.chaleco) + mano(62, 272, A.piel) + baston() + brazo('M174 188 Q192 218 190 194', A.chaleco, 22) + mano(190, 182, A.piel),
     asintiendo: baston(190) + brazo('M66 188 Q78 244 182 210', A.chaleco, 22) + mano(186, 206, A.piel, 12) + brazo('M174 188 Q196 214 190 188', A.chaleco, 22) + mano(190, 180, A.piel, 12),
-    aconsejando: brazo('M66 186 Q52 236 62 266', A.chaleco) + mano(62, 272, A.piel) + baston(208) + `<g id="dedo">` + brazo('M172 188 Q206 168 198 128', A.chaleco)
-      + `<g transform="translate(198 116)"><rect x="-12" y="-4" width="24" height="22" rx="9" fill="${A.piel}"/><rect x="-4" y="-34" width="9" height="34" rx="4.5" fill="${A.piel}"/></g></g><path id="chispas" d="M214 84 l8 -8 M218 100 l12 0 M180 78 l-4 -10" stroke="${C.olla}" stroke-width="4" stroke-linecap="round" fill="none"/>`,
+    aconsejando: brazo('M66 186 Q52 236 62 266', A.chaleco) + mano(62, 272, A.piel) + baston(208) + `<g id="mano">` + brazo('M172 188 Q206 168 198 128', A.chaleco)
+      + `` + manoAbierta(198, 126, A.piel, A.pielSombra) + `</g><path id="chispas" d="M214 84 l8 -8 M218 100 l12 0 M180 78 l-4 -10" stroke="${C.olla}" stroke-width="4" stroke-linecap="round" fill="none"/>`,
   };
   return base + poses[pose];
 };

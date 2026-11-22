@@ -38,7 +38,7 @@ function detalle(main, lista, id) {
     <div class="tarjeta mt"><h2>${u('Palabras clave', 'Key words')}</h2><ul>${claves.map((k) => `<li><mark class="clave">${esc(k[T])}</mark> = ${esc(k[N])}</li>`).join('')}</ul></div>
     <div id="juego" class="mt">${S.consejos[c.id] ? `<p class="estado-ok">✓ ${u('Ya lo entendiste.', 'You already got this one.')}</p>` : ''}<button class="btn grande" data-probar>${u('¿Qué quiso decir el Abuelo?', 'What did Grandpa mean?')}</button></div>`;
   main.onclick = async (e) => {
-    if (e.target.closest('[data-voz]')) return void hablar(c[T], T);
+    if (e.target.closest('[data-voz]')) return void hablar(c[T], T, 'abuelo');
     if (!e.target.closest('[data-probar]')) return;
     const caja = main.querySelector('#juego'), q = c.q;
     const item = { tipo: 'mcq', prompt: u('¿Qué quiso decir el Abuelo?', 'What did Grandpa mean?'), frase: c[T], opciones: mezclar([q.ok, ...q.mal].map((o) => o[N])), correcta: q.ok[N] };

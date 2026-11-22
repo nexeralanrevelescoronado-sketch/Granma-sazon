@@ -6,10 +6,10 @@ import { esc, mezclar, mmss, al } from '../util.js';
 import { sonido } from '../sound.js';
 import { confeti, vibrar, hablar } from '../fx.js';
 
-const todasLasPalabras = (h) => h.capitulos.flatMap((c) => c.palabras);
+const todasLasPalabras = (h, interes) => h.capitulos.flatMap((c) => [...c.palabras, ...(c.palabrasInteres?.[interes] || [])]);
 
 export async function montar(main, { ruta }) {
-  const h = await historia(), pool = todasLasPalabras(h), S = estado();
+  const h = await historia(), S = estado(), pool = todasLasPalabras(h, S.perfil.interes);
   return ruta === 'repaso' ? repaso(main, pool, S) : reto(main, pool, S);
 }
 

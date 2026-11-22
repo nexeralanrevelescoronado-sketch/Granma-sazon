@@ -109,6 +109,22 @@ function validarCapitulo(c) {
       if (!contiene(x.es, x.ws)) e.push(`ejemplos.${i}: «${x.ws}» no aparece (palabra completa) en «${x.es}»`);
     }
   }
+  // vocabulario propio de cada interés: 3 palabras nuevas con su frase, completas en los dos idiomas
+  if (!c.palabrasInteres) e.push('falta palabrasInteres (3 palabras con frase por cada interés)'); else {
+    const base = new Set(pal.map((p) => norm(p.en))), vistas = new Set();
+    for (const i of INTERESES) {
+      const lista = c.palabrasInteres[i];
+      if (!Array.isArray(lista) || lista.length !== 3) { e.push(`palabrasInteres.${i}: deben ser 3 palabras`); continue; }
+      for (const w of lista) {
+        if (!esTexto(w.en) || !esTexto(w.es) || !par(w.f)) { e.push(`palabrasInteres.${i}: palabra incompleta (en, es, f.en, f.es)`); continue; }
+        if (norm(w.en) === norm(w.es)) e.push(`palabrasInteres.${i}: «${w.en}» es igual en los dos idiomas, no enseña nada`);
+        if (base.has(norm(w.en))) e.push(`palabrasInteres.${i}: «${w.en}» ya es una palabra base del capítulo`);
+        if (vistas.has(norm(w.en))) a.push(`palabrasInteres: «${w.en}» se repite en otro interés del mismo capítulo`); vistas.add(norm(w.en));
+        if (!contiene(w.f.en, w.en)) e.push(`palabrasInteres.${i}: «${w.en}» no aparece (palabra completa) en «${w.f.en}»`);
+        if (!contiene(w.f.es, w.es)) e.push(`palabrasInteres.${i}: «${w.es}» no aparece (palabra completa) en «${w.f.es}»`);
+      }
+    }
+  }
   if (!c.consejo || !par(c.consejo)) e.push('consejo del Abuelo sin es/en'); else { claves({ ...c.consejo }, 2, 2, e); if (exclam(c.consejo)) a.push('consejo del Abuelo con exclamaciones'); }
   if (!esTexto(c.receta)) e.push('falta receta (id de la receta ligada al capítulo)');
   else { try { if (!leer('data/recetas.json').some((r2) => r2.id === c.receta)) a.push(`la receta «${c.receta}» no existe todavía en data/recetas.json`); } catch { /* sin repo */ } }
@@ -159,7 +175,7 @@ function validarBiblia(p) {
 const CAMPOS = {
   consejos: ['id', 'tema', 'es', 'en', 'clave', 'q'],
   cotorreos: ['id', 'tema', 'tipo', 'es', 'en', 'clave', 'q', 'abuelo'],
-  capitulos: ['id', 'receta', 'titulo', 'relato', 'palabras', 'ejemplos', 'consejo'],
+  capitulos: ['id', 'receta', 'titulo', 'relato', 'palabras', 'palabrasInteres', 'ejemplos', 'consejo'],
   recetas: ['id', 'icono', 'estrella', 'insignia', 'nombre', 'resumen', 'porciones', 'tiempoPrep', 'tiempoCoccion', 'nivel', 'nota', 'ingredientes', 'pasos'],
   biblia: ['id', 'ref', 'titulo', 'pares'],
 };

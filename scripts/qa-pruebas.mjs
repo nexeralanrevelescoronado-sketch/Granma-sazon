@@ -28,6 +28,7 @@ function respuestas(n, interes) {
   for (const c of hist.capitulos.filter((x) => x.id <= n)) {
     for (const p of c.palabras) { m.set(p.es, p.en); m.set(p.en, p.es); }
     for (const e of c.ejemplos[interes]) { m.set(e.es, e.en); m.set(e.en, e.es); }
+    for (const w of c.palabrasInteres[interes]) { m.set(w.es, w.en); m.set(w.en, w.es); m.set(w.f.es, w.f.en); m.set(w.f.en, w.f.es); }
   }
   return m;
 }
@@ -57,7 +58,7 @@ if (CAPTURAS) await pg.screenshot({ path: join(CAPTURAS, 'prueba-portada.png') }
 await pg.click('[data-empezar]'); ok(/Primero, en español/.test(await pg.locator('main h1').innerText()), 'Parte 1: «Primero, en español»');
 await pg.click('[data-parte="A"]'); await pg.waitForSelector('.opcion');
 ok((await pg.locator('.sesion-top .tortilla').count()) === 10, 'la sesión muestra las 10 tortillitas de energía');
-let enEsp = 0, n = 0, repaso = false; const cap1 = new Set(hist.capitulos[0].palabras.flatMap((p) => [p.es, p.en]));
+let enEsp = 0, n = 0, repaso = false; const cap1 = new Set([...hist.capitulos[0].palabras, ...hist.capitulos[0].palabrasInteres.trabajo].flatMap((p) => [p.es, p.en, p.f?.es, p.f?.en]));
 for (let i = 0; i < 9; i++) { const r = await responder(pg, dic, true); n++; if (/¿Cómo se dice «.+» en inglés\?|Elige cómo se dice en inglés/.test(r.txt)) enEsp++; if (cap1.has(r.clave)) repaso = true; if (i === 0 && CAPTURAS) { /* captura tomada antes */ } }
 ok(enEsp === 9, `las 9 preguntas de la parte 1 están en español (${enEsp}/9)`); ok(repaso, 'incluye repaso de palabras del capítulo 1');
 await pg.waitForSelector('[data-parte="B"]'); ok(/Now, in English/.test(await pg.locator('main h1').innerText()), 'Parte 2: «Now, in English»');
@@ -115,7 +116,7 @@ await pg.context().close();
 console.log('4) Lección: al agotarse la energía se repite mañana');
 pg = await sesion('en', 'viajes', [], { vidas: { n: 0, fecha: new Date().toLocaleDateString('sv-SE'), agotada: false } });
 await pg.goto(B + '#/leccion/1'); await pg.click('[data-accion="palabras"]'); await pg.click('[data-accion="ejercicios"]'); await pg.waitForSelector('.opcion');
-const q = await pregunta(pg); const pal = hist.capitulos[0].palabras; const buena = pal.find((p) => p.en === q.clave).es;
+const q = await pregunta(pg); const pal = [...hist.capitulos[0].palabras, ...hist.capitulos[0].palabrasInteres.viajes]; const buena = pal.find((p) => p.en === q.clave).es;
 await pg.locator('.opcion').filter({ hasText: new RegExp(`^${q.ops.find((o) => o !== buena)}$`) }).first().click(); await pg.click('[data-comprobar]'); await pg.click('[data-seguir]'); await pg.waitForTimeout(200);
 ok((await pg.locator('text=Se acabó la energía por hoy').count()) === 1, 'la lección se detiene al pasar de 10 errores');
 S = await pg.evaluate(() => JSON.parse(localStorage.getItem('granma:v1'))); ok(S.repetir?.cap === 1 && !S.caps[1]?.hecho, 'la lección queda para repetir mañana y no se da por hecha');

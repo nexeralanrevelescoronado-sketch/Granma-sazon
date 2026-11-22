@@ -18,9 +18,9 @@
 
 ## Personajes y voz
 
-- **Granma** (contenta · hablando · cariñosa · pensando · aplaudiendo) y **el Abuelo** (serio · hablando · sonrisa leve · asintiendo · aconsejando con el dedo levantado), dibujados como SVG propios en `assets/personajes/`. Cada SVG trae grupos separables `#cuerpo`, `#cabeza`, `#cara > #ojos + #boca`; además hay `<personaje>-cabeza.svg` (sin cara), `<personaje>-cara-<estado>.svg` (cara intercambiable, mismo lienzo) y `<personaje>-cuerpo-<estado>.svg`. Se regeneran con `npm run personajes`.
+- **Granma** (contenta · hablando · cariñosa · pensando · aplaudiendo) y **el Abuelo** (serio · hablando · sonrisa leve · asintiendo · aconsejando con la mano levantada), dibujados como SVG propios en `assets/personajes/`. Cada SVG trae grupos separables `#cuerpo`, `#cabeza`, `#cara > #ojos + #boca`; además hay `<personaje>-cabeza.svg` (sin cara), `<personaje>-cara-<estado>.svg` (cara intercambiable, mismo lienzo) y `<personaje>-cuerpo-<estado>.svg`. Se regeneran con `npm run personajes`.
 - **Cuando hablan** (`js/habla.js`): el globo se escribe letra por letra, tocarlo lo completa, y la boca alterna cerrada/abierta con una animación CSS dentro del SVG `-hablando` (respeta `prefers-reduced-motion`: con movimiento reducido el texto aparece completo y la boca queda quieta).
-- **Voz opcional** (Web Speech API, es-MX y en-US): **apagada por defecto**; se activa con el botón 🗣 del encabezado o en Perfil. Sin internet depende de las voces instaladas en el dispositivo (la app lo avisa). Los botones 🔊 leen una frase puntual aunque la voz automática esté apagada.
+- **Voz** (Web Speech API, es-MX y en-US, `js/voz.js`): **encendida por defecto**; se apaga con el botón 🗣 del encabezado o en Perfil. El Abuelo habla grave y pausado, con voz de hombre si el dispositivo la tiene; Granma, con voz de mujer. Sin internet depende de las voces instaladas en el dispositivo (la app lo avisa). Los botones 🔊 leen una frase puntual aunque la voz automática esté apagada.
 
 ## Animaciones (`assets/animaciones/`)
 
@@ -30,7 +30,7 @@ CSS y JS ligeros, sin librerías. Reglas: solo `transform` y `opacity` (nunca la
 |---|---|---|
 | Granma aplaude | al acertar un ejercicio | 2 palmadas de 300 ms + saltito |
 | Abuelo asiente con el sombrero | al acertar | 2 cabeceos de 300 ms; el sombrero baja un poco más |
-| Abuelo levanta el dedo | cuando da un consejo | 450 ms, ease-out |
+| Abuelo levanta la mano abierta | cuando da un consejo | 450 ms, ease-out |
 | Boca que alterna | mientras se escribe el globo | `.ma`/`.mb` con `steps(1)`, en cualquier estado |
 | Parpadeo + respiración | en reposo | loops de ~5 s y 4,6 s, a ritmo distinto por personaje |
 | Cambio de cara | entre estados | fundido de 180 ms |
@@ -40,7 +40,7 @@ CSS y JS ligeros, sin librerías. Reglas: solo `transform` y `opacity` (nunca la
 
 **Rendimiento (revisión de animaciones):** la respiración corre en el `<svg>` raíz y cada hilo de vapor es su propia capa (se animan en el compositor, sin repintar); el parpadeo es una animación corta programada cada 3–7 s (no un loop); el efecto de escritura revela letras/palabras con `opacity` sobre un texto ya maquetado (cero reflujo); las barras de progreso usan `scaleX`; nada de `width`, `height` ni `box-shadow` animados; con la pestaña oculta o con movimiento reducido no arranca ninguna animación nueva. Banco: `node scripts/qa-rendimiento.mjs` (CPU frenada 4×, personaje hablando + confeti + reacciones + vapor).
 
-Los personajes se convierten en SVG en línea al cargar (así cada parte —ojos, boca, sombrero, dedo, manos— se anima con CSS y se pausa). **Demo para el iPhone:** `demo-animaciones.html` tiene un botón por animación. Prueba automática: `node scripts/qa-animaciones.mjs`.
+Los personajes se convierten en SVG en línea al cargar (así cada parte —ojos, boca, sombrero, manos— se anima con CSS y se pausa). **Demo para el iPhone:** `demo-animaciones.html` tiene un botón por animación. Prueba automática: `node scripts/qa-animaciones.mjs`.
 
 ## Publicación
 

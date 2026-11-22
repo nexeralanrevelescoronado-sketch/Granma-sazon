@@ -13,6 +13,8 @@ export async function montar(main, { args }) {
   if (!cap) { location.hash = '#/historia'; return; }
   if (id > 1 && !S.caps[id - 1]?.hecho && !S.caps[id]?.hecho) { location.hash = '#/historia'; return; }
   const T = tgt(), N = nat();
+  const propias = cap.palabrasInteres?.[S.perfil.interes] || [];
+  const INTERES = { trabajo: ['el trabajo', 'work'], amigos: ['amigos y conversación', 'friends and conversation'], biblia: ['Biblia y fe', 'Bible and faith'], viajes: ['viajes', 'travel'], cocina: ['la cocina', 'cooking'] }[S.perfil.interes] || ['tu interés', 'your interest'];
   const boton = (txt, accion, cls = '') => `<div class="mt2"><button class="btn grande ${cls}" data-accion="${accion}">${txt}</button></div>`;
   let activo = true;
 
@@ -25,8 +27,10 @@ export async function montar(main, { args }) {
   function palabras() {
     main.innerHTML = `<h1>${u('Palabras nuevas', 'New words')}</h1><p class="muted">${u('Toca 🔊 para escucharlas.', 'Tap 🔊 to hear them.')}</p>
       <ul style="list-style:none;padding:0;margin:0">${cap.palabras.map((p, i) => `<li class="tarjeta" style="display:flex;align-items:center;gap:10px;margin-bottom:8px;padding:10px 14px"><button class="btn-icono" data-vozp="${i}" aria-label="${u('Escuchar', 'Listen')} ${esc(p[T])}">🔊</button><div style="flex:1"><strong lang="${T}">${esc(p[T])}</strong><br><span class="muted" lang="${N}">${esc(p[N])}</span></div></li>`).join('')}</ul>
+      ${propias.length ? `<h2 class="mt2">${u(`Tus palabras de ${INTERES[0]}`, `Your words for ${INTERES[1]}`)}</h2><p class="muted">${u('Las elegí pensando en lo que te interesa, mijo.', 'I chose them thinking of what interests you, mijo.')}</p>
+      <ul style="list-style:none;padding:0;margin:0">${propias.map((p, i) => `<li class="tarjeta crema2" style="display:flex;align-items:center;gap:10px;margin-bottom:8px;padding:10px 14px"><button class="btn-icono" data-vozx="${i}" aria-label="${u('Escuchar', 'Listen')} ${esc(p[T])}">🔊</button><div style="flex:1"><strong lang="${T}">${esc(p[T])}</strong> <span class="muted" lang="${N}">= ${esc(p[N])}</span><br><span lang="${T}">${esc(p.f[T])}</span><br><span class="muted" lang="${N}">${esc(p.f[N])}</span></div></li>`).join('')}</ul>` : ''}
       ${boton(u('¡A practicar!', 'Let\'s practice!'), 'ejercicios')}`;
-    if (!S.caps[id]?.palabras) { S.caps[id] = { ...(S.caps[id] || {}), palabras: true }; guardar(); evento('palabras', cap.palabras.length); }
+    if (!S.caps[id]?.palabras) { S.caps[id] = { ...(S.caps[id] || {}), palabras: true }; guardar(); evento('palabras', cap.palabras.length + propias.length); }
   }
   async function ejercicios() {
     if (sinEnergia()) return sinVidas(false);
@@ -75,7 +79,8 @@ export async function montar(main, { args }) {
     else if (b.dataset.accion === 'fin') fin();
     else if (b.dataset.voz) hablar(cap.relato[T][+b.dataset.voz], T);
     else if (b.dataset.vozp) hablar(cap.palabras[+b.dataset.vozp][T], T);
-    else if (b.hasAttribute('data-vozc')) hablar(cap.consejo[T], T);
+    else if (b.dataset.vozx) hablar(propias[+b.dataset.vozx].f[T], T);
+    else if (b.hasAttribute('data-vozc')) hablar(cap.consejo[T], T, 'abuelo');
     if (b.dataset.accion) scrollTo({ top: 0 });
   };
   relato();

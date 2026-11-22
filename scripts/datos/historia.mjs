@@ -1,3 +1,4 @@
+import { PALABRAS_INTERES } from './palabras-interes.mjs';
 // Historia 1 de Granma: "Mi vida en México" (de la niñez a las posadas con el Abuelo). 6 capítulos.
 // ejemplos[interes] = 3 frases [en, es, palabraEn, palabraEs]; la palabra debe ser una de las del capitulo.
 const P = (en, es) => ({ en, es });
@@ -428,3 +429,6 @@ export const historia = {
     },
   ],
 };
+
+// Vocabulario propio de cada interés (scripts/datos/palabras-interes.mjs)
+for (const c of historia.capitulos) c.palabrasInteres = PALABRAS_INTERES[c.id];

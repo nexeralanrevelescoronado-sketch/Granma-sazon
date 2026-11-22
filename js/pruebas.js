@@ -36,8 +36,10 @@ export function armarPrueba(historia, n, interes, tgt, nat) {
   const caps = historia.capitulos.filter((c) => c.id <= n), cap = caps.find((c) => c.id === n);
   if (!cap) throw new Error('capítulo no existe');
   const util = (p) => p.en.toLowerCase() !== p.es.toLowerCase();            // «chocolate/chocolate» no enseña nada en una prueba
-  const palAct = cap.palabras.filter(util), palAnt = caps.filter((c) => c.id < n).flatMap((c) => c.palabras).filter(util);
-  const ej = (c) => c.ejemplos[interes] || c.ejemplos.amigos;
+  const prop = (c) => c.palabrasInteres?.[interes] || [];                     // vocabulario propio del interés
+  const pals = (c) => [...c.palabras, ...prop(c)].filter(util);
+  const palAct = pals(cap), palAnt = caps.filter((c) => c.id < n).flatMap(pals);
+  const ej = (c) => [...(c.ejemplos[interes] || c.ejemplos.amigos), ...prop(c).map((w) => w.f)];
   const frAct = ej(cap), frAnt = caps.filter((c) => c.id < n).flatMap(ej);
   const t = tamanoPrueba(n), todasPal = [...palAct, ...palAnt], todasFr = [...frAct, ...frAnt];
   const palabras = repartir(palAct, palAnt, Math.min(t.palabras, todasPal.length));

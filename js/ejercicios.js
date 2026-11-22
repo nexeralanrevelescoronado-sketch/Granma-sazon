@@ -18,7 +18,10 @@ export function ejerciciosDeCapitulo(cap, interes) {
   const hueco = (e) => { const w = T === 'en' ? e.we : e.ws, f = T === 'en' ? e.en : e.es; return f.replace(new RegExp(`(^|[^\\p{L}])(${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(?=$|[^\\p{L}])`, 'iu'), (_m, a) => `${a}_____`); };
   const items = [];
   // 1) ¿Qué significa?
-  const p1 = aPalabra(ej[1]);
+  // palabras propias del interés elegido (3 por capítulo): entran en el ejercicio 1, el 4 y el 5
+  const propias = cap.palabrasInteres?.[interes] || [];
+  const p1 = propias[0] || aPalabra(ej[1]);
+  const f5 = propias[2] ? propias[2].f : ej[2], ops5 = (propias.length === 3 ? propias.map((x) => x.f) : ej).map((x) => x[N]);
   items.push({ tipo: 'mcq', prompt: u(`¿Qué significa ${comillas(p1[T])}?`, `What does ${comillas(p1[T])} mean?`), voz: p1[T], opciones: mezclar([p1[N], ...otros(pal, p1[N], 3, N).map((p) => p[N])]), correcta: p1[N] });
   // 2) Completa la frase (ejemplo del interés)
   const p2 = aPalabra(ej[0]);
@@ -28,9 +31,9 @@ export function ejerciciosDeCapitulo(cap, interes) {
   // 4) Emparejar
   const usadas = [...new Set(ej.map((e) => aPalabra(e)))];
   const extra = mezclar(pal.filter((p) => !usadas.includes(p)));
-  items.push({ tipo: 'pares', prompt: u('Une cada palabra con su significado', 'Match each word with its meaning'), pares: [...usadas, ...extra].slice(0, 4).map((p) => [p[T], p[N]]) });
+  items.push({ tipo: 'pares', prompt: u('Une cada palabra con su significado', 'Match each word with its meaning'), pares: [...propias.slice(1), ...usadas, ...extra].slice(0, 4).map((p) => [p[T], p[N]]) });
   // 5) Elige la traducción
-  items.push({ tipo: 'mcq', prompt: u('Elige la traducción correcta', 'Choose the right translation'), frase: ej[2][T], voz: ej[2][T], opciones: mezclar(ej.map((e) => e[N])), correcta: ej[2][N] });
+  items.push({ tipo: 'mcq', prompt: u('Elige la traducción correcta', 'Choose the right translation'), frase: f5[T], voz: f5[T], opciones: mezclar(ops5), correcta: f5[N] });
   return items;
 }
 

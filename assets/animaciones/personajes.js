@@ -1,5 +1,5 @@
 // Personajes vivos: convierte cada <img> de personaje en SVG en línea (para animar sus partes con CSS),
-// cambia de estado con fundido suave y dispara las reacciones (aplauso, asentir, dedo, hablar).
+// cambia de estado con fundido suave y dispara las reacciones (aplauso, asentir, mano, hablar).
 const A = 'assets/personajes/';
 const ESTADOS = { granma: ['contenta', 'hablando', 'carinosa', 'pensando', 'aplaudiendo'], abuelo: ['serio', 'hablando', 'sonrisa', 'asintiendo', 'aconsejando'] };
 const ANTIGUOS = { granma: { contento: 'contenta', animo: 'contenta' }, abuelo: { contento: 'sonrisa', pensando: 'serio', aplaudiendo: 'asintiendo', animo: 'aconsejando' } };
@@ -65,8 +65,8 @@ export async function estadoPj(span, nuevo, { base = false } = {}) {
   const a = svg.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 180, easing: 'cubic-bezier(.23,1,.32,1)' });
   a.onfinish = a.oncancel = () => { span.querySelectorAll('.pj-svg').forEach((x) => { if (x !== svg) x.remove(); }); svg.classList.remove('encima'); };
 }
-/** Reacciones de una sola vez. tipo: aplauso | asiente | dedo. Sin movimiento (reduced-motion) solo cambia el estado. */
-const REACCION = { aplauso: ['granma', 'aplaudiendo', 620], asiente: ['abuelo', 'asintiendo', 640], dedo: ['abuelo', 'aconsejando', 800] };
+/** Reacciones de una sola vez. tipo: aplauso | asiente | mano. Sin movimiento (reduced-motion) solo cambia el estado. */
+const REACCION = { aplauso: ['granma', 'aplaudiendo', 620], asiente: ['abuelo', 'asintiendo', 640], mano: ['abuelo', 'aconsejando', 800] };
 export async function reaccion(span, tipo) {
   const [q, estado, ms] = REACCION[tipo]; await listoPj(span); if (span.dataset.quien !== q) return;
   await estadoPj(span, estado); if (reducir()) return;

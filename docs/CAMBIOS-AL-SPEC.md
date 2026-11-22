@@ -10,6 +10,9 @@
 | Vidas | «Tortillitas» como vidas | **Energía del día: 10 tortillitas.** Cada error se come una. Con **más de 10 errores** se acaba la energía y la lección o prueba **se repite mañana** | Pedido del dueño: que no se pierda el contexto. Ya no se regeneran durante el día ni se ganan repasando |
 | Pruebas | No existían | **Pruebas pequeñas y acumulativas** después de cada capítulo | Pedido del dueño: preguntar lo aprendido, primero en español y después en inglés |
 | Personajes y voz | 4 variantes | 5 estados por personaje, habla con efecto de escritura y voz opcional | Segundo SPEC de personajes |
+| Gesto del Abuelo | «Aconsejando (dedo levantado)» | **Mano abierta levantada** (palma, cuatro dedos y pulgar) | Pedido del dueño: un dedo solo se puede malinterpretar. Ningún personaje dibuja un dedo solo (lo vigila una prueba) |
+| Voz | Opcional, apagada por defecto | **Encendida por defecto**; se apaga con 🗣. El Abuelo habla grave y pausado (voz de hombre si el dispositivo la tiene); Granma, cálida | Pedido del dueño: que el Abuelo se escuche como abuelo sabio |
+| Vocabulario por interés | El interés «personaliza vocabulario y ejemplos» | Cada capítulo suma **3 palabras propias por interés**, con su frase | Antes solo cambiaban las frases |
 | Animaciones | Confeti, aplausos, asentir | Módulo `assets/animaciones/` (ver README) | SPEC de animaciones y su revisión |
 
 ## Energía (tortillitas)
@@ -27,3 +30,9 @@
 - **Dos partes:** primero cada palabra y frase se pregunta en el idioma que la persona ya habla (español, si aprende inglés) y después en el idioma que aprende. Para quien aprende español es al revés.
 - **Crecen:** de 5 palabras y 2 frases (14 preguntas) en la prueba 1 a 8 palabras y 5 frases (26 preguntas) desde la prueba 4.
 - Se aprueba con 70 %; 1, 2 o 3 estrellas (70 %, 80 %, 90 %). Se puede repetir; se guarda el mejor resultado.
+
+## Voz de los abuelos
+
+- Usa las voces instaladas en el dispositivo (Web Speech API): no se descarga ni se envía nada. `js/voz.js` elige, para el Abuelo, una voz de hombre en español de México si existe, con tono grave y ritmo lento; para Granma, una voz de mujer.
+- **Límite real:** con voces del sistema no se puede elegir un acento regional (por ejemplo, de los Altos de Jalisco) ni un timbre de abuelo de verdad; depende de lo que traiga cada teléfono, y en algunos solo hay una voz en español.
+- **Para tener esa voz de verdad** hace falta audio grabado por una persona (o una voz con licencia). El contenido ya está listo para eso: son 45 consejos y 6 consejos de capítulo; se pueden grabar y servir como archivos de audio dentro del paquete «Consejos del Abuelo».

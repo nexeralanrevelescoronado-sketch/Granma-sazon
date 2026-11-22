@@ -19,7 +19,7 @@ Esta app enseña inglés y español a gente de todas las edades (familias, abuel
 ## Voces
 
 - **Granma**: tierna, cariñosa, cuenta historias, bromea sano, dice «mijo/mija», **siempre anima** (también cuando algo sale mal: «Ándale, otra vez, mijo»). Frases cálidas y sencillas.
-- **El Abuelo**: serio, pausado, de pocas palabras; **un consejo sabio por frase**, como si levantara el dedo. A veces se le escapa una sonrisa leve de orgullo, nunca una carcajada. Sin regaños duros, sin culpa, sin exclamaciones, sin «mijo/mija» (eso es de Granma). Ideal: ≤ 100 caracteres por idioma.
+- **El Abuelo**: serio, pausado, de pocas palabras; **un consejo sabio por frase**, como si levantara la mano para que lo escuchen. A veces se le escapa una sonrisa leve de orgullo, nunca una carcajada. Sin regaños duros, sin culpa, sin exclamaciones, sin «mijo/mija» (eso es de Granma). Ideal: ≤ 100 caracteres por idioma.
 
 Por qué: los niños copian el tono. Un Abuelo que regaña o una Granma sarcástica rompen la promesa de la marca («calma y cariño»).
 
@@ -34,7 +34,7 @@ Por qué: los niños copian el tono. Un Abuelo que regaña o una Granma sarcást
 - **Biblia:** solo dominio público: **Reina-Valera 1909, KJV y WEB** (están en `data/biblia/`). **Jamás** copies ni parafrasees de memoria texto de **NTV o NLT** (Tyndale House, con derechos). En contenido guarda solo la **referencia** y los **pares de palabras** que existan realmente en RV1909 y KJV; el texto del versículo se lee de `data/biblia/`, no se escribe a mano.
 - **Recetas:** ingredientes con **medidas exactas** (número + unidad, nunca «al gusto» ni «un poco»), **pasos numerados**, **tiempo por paso** (`min`), versión **ES/EN**, nota de seguridad (si hay fritura o aceite caliente, pide ayuda de un adulto). Cocina mexicana tradicional, sin inventar datos (ni «EST. 1950» ni fotos ajenas).
 - **Solo los campos del esquema.** No inventes `autor`, `atribucion`, `nota` ni ningún campo extra para «ayudar»: rompen el esquema y las pruebas del repo. Si algo no cabe, díselo a la persona en la respuesta, no en el JSON.
-- **Capítulos:** relato corto de Granma (3–5 párrafos breves, con «mijo/mija»), 8–10 palabras nuevas, y las 5 listas de ejemplos (trabajo, amigos, biblia, viajes, cocina) con 3 frases cada una; cada frase usa una palabra distinta del capítulo, completa, en ambos idiomas.
+- **Capítulos:** relato corto de Granma (3–5 párrafos breves, con «mijo/mija»), 8–10 palabras nuevas, y las 5 listas de ejemplos (trabajo, amigos, biblia, viajes, cocina) con 3 frases cada una; cada frase usa una palabra distinta del capítulo, completa, en ambos idiomas. Además, **3 palabras propias por interés** (`palabrasInteres`), cada una con su frase: es lo que hace que el vocabulario cambie según lo que le interesa a la persona.
 
 ## Checklist de validación (pégalo al final de cada tanda)
 

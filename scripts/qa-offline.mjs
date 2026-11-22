@@ -61,7 +61,7 @@ await page.goto(BASE + '#/historia'); await page.waitForSelector('.mapa');
 await page.click('a.nodo'); await page.waitForSelector('[data-accion="palabras"]');
 await page.screenshot({ path: join(CAPT, '05-relato.png'), fullPage: true });
 await page.click('[data-accion="palabras"]'); await page.click('[data-accion="ejercicios"]');
-const cap = hist.capitulos[0], pal = cap.palabras, ejs = Object.values(cap.ejemplos).flat();
+const cap = hist.capitulos[0], propias = Object.values(cap.palabrasInteres).flat(), pal = [...cap.palabras, ...propias], ejs = [...Object.values(cap.ejemplos).flat(), ...propias.map((p) => ({ en: p.f.en, es: p.f.es, we: p.en, ws: p.es }))];
 const nativoDe = (t) => (ejs.find((e) => e[T] === t) || {})[N];
 for (let i = 0; i < 12; i++) {
   await page.waitForTimeout(150);

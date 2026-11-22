@@ -158,11 +158,20 @@ test('personajes: 5 estados por abuelo, con cabeza, cuerpo, ojos y boca como gru
   }
 });
 
-test('voz: apagada por defecto, Web Speech es-MX / en-US y aviso de modo sin internet', async () => {
+test('voz: encendida por defecto, voz grave y pausada para el Abuelo, es-MX / en-US y aviso sin internet', async () => {
   globalThis.localStorage ||= { _d: {}, getItem(k) { return this._d[k] ?? null; }, setItem(k, v) { this._d[k] = v; } };
-  const { estado } = await import('../js/state.js'); assert.equal(estado().ajustes.voz, false);
-  const h = leer('js/habla.js'); assert.ok(h.includes("'es-MX'") && h.includes("'en-US'") && h.includes('SpeechSynthesisUtterance'));
-  assert.ok(/voces instaladas en tu dispositivo/.test(h) && /installed on your device/.test(h), 'aviso sin internet');
+  const { estado } = await import('../js/state.js'); assert.equal(estado().ajustes.voz, true); assert.equal(estado().ajustes.vozV, 2);
+  const v = leer('js/voz.js'); assert.ok(v.includes("'es-MX'") && v.includes("'en-US'") && v.includes('SpeechSynthesisUtterance'));
+  const h = leer('js/habla.js'); assert.ok(/voces instaladas en tu dispositivo/.test(h) && /installed on your device/.test(h), 'aviso sin internet');
+  const { elegirVoz, PERFIL } = await import('../js/voz.js');
+  assert.ok(PERFIL.abuelo.pitch < 0.8 && PERFIL.abuelo.rate < 0.9, 'el Abuelo habla grave y pausado');
+  assert.ok(PERFIL.granma.pitch > PERFIL.abuelo.pitch);
+  const voces = [{ name: 'Mónica', lang: 'es-ES' }, { name: 'Paulina', lang: 'es-MX' }, { name: 'Jorge', lang: 'es-ES' }, { name: 'Juan', lang: 'es-MX' }, { name: 'Samantha', lang: 'en-US' }, { name: 'Aaron', lang: 'en-US' }];
+  assert.equal(elegirVoz(voces, 'es', 'abuelo').name, 'Juan', 'Abuelo: voz de hombre y de México');
+  assert.equal(elegirVoz(voces, 'es', 'granma').name, 'Paulina', 'Granma: voz de mujer y de México');
+  assert.equal(elegirVoz(voces, 'en', 'abuelo').name, 'Aaron'); assert.equal(elegirVoz(voces, 'en', 'granma').name, 'Samantha');
+  assert.equal(elegirVoz([{ name: 'Paulina', lang: 'es-MX' }], 'es', 'abuelo').name, 'Paulina', 'si solo hay una voz, se usa (con tono grave)');
+  assert.equal(elegirVoz([{ name: 'Samantha', lang: 'en-US' }], 'es', 'abuelo'), null);
   const { pj, estadoValido } = await import('../js/personajes.js'); assert.match(pj('granma', 'carinosa'), /granma-carinosa\.svg/); assert.equal(estadoValido('abuelo', 'animo'), 'aconsejando');
 });
 
@@ -186,7 +195,7 @@ test('animaciones: módulo propio, solo transform/opacity, movimiento reducido, 
   assert.ok(leer('assets/animaciones/confeti.js').includes('MAX_CONFETI = 40'));
   assert.ok(/visibilitychange/.test(leer('assets/animaciones/visibilidad.js')));
   const demo = leer('demo-animaciones.html'); assert.ok((demo.match(/data-a="/g) || []).length >= 11, 'un botón por animación');
-  for (const t of ['respira', 'sombrero', 'dedo', 'aplauso']) assert.ok(leer('assets/personajes/abuelo-aconsejando.svg').includes(`id="${t}"`) || leer('assets/personajes/granma-aplaudiendo.svg').includes(`id="${t}"`) || leer('assets/personajes/abuelo-serio.svg').includes(`id="${t}"`), 'grupo ' + t);
+  for (const t of ['respira', 'sombrero', 'mano', 'aplauso']) assert.ok(leer('assets/personajes/abuelo-aconsejando.svg').includes(`id="${t}"`) || leer('assets/personajes/granma-aplaudiendo.svg').includes(`id="${t}"`) || leer('assets/personajes/abuelo-serio.svg').includes(`id="${t}"`), 'grupo ' + t);
   assert.ok(json('data/paquetes.json').paquetes.reduce((s, x) => s + x.bytes, 0) < 50 * 1048576);
   assert.ok(leer('sw.js').includes('assets/animaciones/animaciones.css') && leer('sw.js').includes('demo-animaciones.html'), 'animaciones precacheadas');
 });
@@ -221,9 +230,10 @@ test('pruebas: acumulativas, primero en el idioma propio y después en el que se
       assert.ok(p.parteA.every((q) => q.idioma === nat) && p.parteB.every((q) => q.idioma === tgt), 'parte A en el idioma propio, parte B en el que aprende');
       for (const q of [...p.parteA, ...p.parteB]) { assert.ok(q.opciones.includes(q.correcta)); assert.equal(new Set(q.opciones).size, q.opciones.length, 'opciones repetidas'); assert.ok(q.opciones.length >= 3); }
       assert.ok(p.palabras.every((w) => w.en.toLowerCase() !== w.es.toLowerCase()), 'sin palabras idénticas en los dos idiomas');
-      const deAntes = historia.capitulos.filter((x) => x.id < c.id).flatMap((x) => x.palabras);
+      const todas = (x) => [...x.palabras, ...x.palabrasInteres[interes]];
+      const deAntes = historia.capitulos.filter((x) => x.id < c.id).flatMap(todas);
       if (c.id >= 2) assert.ok(p.palabras.some((w) => deAntes.includes(w)), `prueba ${c.id}: debe repasar capítulos anteriores`);
-      assert.ok(p.palabras.some((w) => c.palabras.includes(w)), `prueba ${c.id}: debe incluir el capítulo actual`);
+      assert.ok(p.palabras.some((w) => todas(c).includes(w)), `prueba ${c.id}: debe incluir el capítulo actual`);
     }
   }
   assert.ok(tamanoPrueba(6).palabras > tamanoPrueba(1).palabras && tamanoPrueba(6).frases > tamanoPrueba(1).frases, 'la última prueba es más grande que la primera');
@@ -245,4 +255,42 @@ test('publicación: una sola dirección pública en index, recetas, robots y sit
   const mapa = leer('sitemap.xml'); for (const r of recetas) assert.ok(mapa.includes(`${SITIO}recetas/${r.id}.html`), 'sitemap sin ' + r.id);
   const mole = leer('recetas/mole.html'); assert.ok(mole.includes(`"image":["${SITIO}assets/iconos/og-1200.png"]`) && mole.includes(`rel="canonical" href="${SITIO}recetas/mole.html"`));
   assert.ok(existsSync(join(RAIZ, '.nojekyll')), 'GitHub Pages debe servir los archivos tal cual');
+});
+
+test('el interés cambia el vocabulario: 3 palabras propias con su frase por interés en cada capítulo', async () => {
+  const INTERESES = ['trabajo', 'amigos', 'biblia', 'viajes', 'cocina'];
+  for (const c of historia.capitulos) {
+    const base = new Set(c.palabras.map((p) => p.en.toLowerCase())), vistas = new Set();
+    for (const i of INTERESES) {
+      const lista = c.palabrasInteres[i]; assert.equal(lista.length, 3, `cap ${c.id} ${i}`);
+      for (const w of lista) {
+        assert.ok(w.en && w.es && w.f.en && w.f.es, `cap ${c.id} ${i}: palabra incompleta`);
+        assert.notEqual(w.en.toLowerCase(), w.es.toLowerCase(), `cap ${c.id}: «${w.en}» igual en los dos idiomas`);
+        assert.ok(!base.has(w.en.toLowerCase()), `cap ${c.id}: «${w.en}» ya es palabra base`);
+        assert.ok(!vistas.has(w.en.toLowerCase()), `cap ${c.id}: «${w.en}» repetida entre intereses`); vistas.add(w.en.toLowerCase());
+        assert.ok(new RegExp(`(^|[^\\p{L}])${w.en}([^\\p{L}]|$)`, 'iu').test(w.f.en), `cap ${c.id}: «${w.en}» no está en «${w.f.en}»`);
+        assert.ok(new RegExp(`(^|[^\\p{L}])${w.es}([^\\p{L}]|$)`, 'iu').test(w.f.es), `cap ${c.id}: «${w.es}» no está en «${w.f.es}»`);
+      }
+    }
+  }
+  // en la lección: las palabras que se preguntan son distintas según el interés
+  const { estado } = await import('../js/state.js'); const { ejerciciosDeCapitulo } = await import('../js/ejercicios.js');
+  estado().perfil.aprende = 'en';
+  for (const c of historia.capitulos) {
+    const primeras = new Set(INTERESES.map((i) => ejerciciosDeCapitulo(c, i)[0].voz));
+    assert.equal(primeras.size, 5, `cap ${c.id}: la primera palabra debe ser distinta en cada interés`);
+    for (const i of INTERESES) { const it = ejerciciosDeCapitulo(c, i); assert.ok(c.palabrasInteres[i].some((w) => w.en === it[0].voz)); assert.ok(it[3].pares.some(([a]) => c.palabrasInteres[i].some((w) => w.en === a)), 'el emparejar incluye palabras del interés'); }
+  }
+});
+
+test('manos: el Abuelo levanta la mano abierta (palma, 4 dedos y pulgar), nunca un dedo solo', () => {
+  for (const e of ['aconsejando', 'hablando']) {
+    const t = leer(`assets/personajes/abuelo-${e}.svg`);
+    const dedos = (t.match(/<rect x="(-13|-6\.5|0|6\.5)" y="-\d+" width="6" /g) || []).length;
+    assert.equal(dedos, 4, `abuelo-${e}: la mano levantada debe tener 4 dedos juntos (tiene ${dedos})`);
+    assert.ok(t.includes('rotate(-30 -18 -8)'), `abuelo-${e}: falta el pulgar`);
+    assert.ok(!/width="9" height="34"/.test(t), `abuelo-${e}: no debe haber un dedo largo y solo`);
+  }
+  assert.ok(leer('assets/personajes/abuelo-aconsejando.svg').includes('id="mano"') && !leer('assets/personajes/abuelo-aconsejando.svg').includes('id="dedo"'));
+  for (const f of readdirSync(join(RAIZ, 'assets/personajes'))) assert.ok(!/width="9" height="34"/.test(leer('assets/personajes/' + f)), f);
 });

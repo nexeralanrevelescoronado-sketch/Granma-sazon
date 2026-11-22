@@ -39,8 +39,9 @@ Los `id` los pone el build (posición + 1): en una tanda nueva déjalos fuera. T
 - `relato`: 3–5 párrafos breves, los mismos en `es` y `en`, narrados por Granma (con «mijo/mija»).
 - `palabras`: 8–10, forma `{en, es}` (¡en primero!).
 - `ejemplos.<interés>`: **3** frases por interés (`trabajo, amigos, biblia, viajes, cocina`); `we/ws` es la palabra del capítulo y debe aparecer **como palabra completa** en `en`/`es`; las 3 frases usan palabras distintas. La app cambia los ejercicios según el interés elegido.
+- `palabrasInteres.<interés>`: **3** palabras nuevas propias de ese interés, cada una con su frase: `{ "en": "schedule", "es": "horario", "f": { "en": "My schedule starts early.", "es": "Mi horario empieza temprano." } }`. No repiten las palabras base del capítulo, no son iguales en los dos idiomas y aparecen completas en su frase. Con ellas, quien eligió «trabajo» aprende palabras distintas de quien eligió «cocina».
 - `receta`: id existente en `data/recetas.json`.
-- Fuente: `scripts/datos/historia.mjs` → `E(en, es, we, ws)`.
+- Fuente: `scripts/datos/historia.mjs` → `E(en, es, we, ws)`; el vocabulario por interés va en `scripts/datos/palabras-interes.mjs` → `W(en, es, fraseEn, fraseEs)`.
 
 ## Receta — `data/recetas.json`
 ```json

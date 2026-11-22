@@ -7,8 +7,10 @@ import { sonido } from './sound.js';
 import { confeti, animar, vibrar, hablar } from './fx.js';
 import { callar as callarVoz } from './voz.js';
 import { reaccion, tortillaPierde } from '../assets/animaciones/index.js';
-import { puedeReconocer, puedeGrabar, escuchar, grabar, soltar, parecido, UMBRAL, silabas, analizarVoz } from './oido.js';
+import { puedeReconocer, puedeGrabar, escuchar, grabar, soltar, parecido, UMBRAL, silabas, analizarVoz, limpiar as limpiarTxt } from './oido.js';
 import { reducirMovimiento } from './util.js';
+import { oidoPropioListo, prepararOido, escucharPropio } from './oido-propio.js';
+import { confetiMexicano } from '../assets/animaciones/fiesta.js';
 import { hayVozPara } from './voz.js';
 
 // «Ahora no puedo hablar»: los ejercicios de voz se saltan un rato (20 min) sin castigo.
@@ -110,7 +112,9 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
         // Privacidad: el reconocimiento de voz del teléfono solo se usa si la persona dijo que sí (se le pregunta una vez).
         const elegido = estado().ajustes.oido;
         it.intentos = 0; it.silencios = 0; it.modo = puedeReconocer() && !elegido ? 'pregunta' : puedeReconocer() && elegido === 'reco' ? 'reco' : puedeGrabar() ? 'graba' : 'solo';
-        cuerpo = `<p class="pregunta">${esc(it.prompt)}<br><span class="decir" lang="${T}">${esc(it.frase)}</span><small>${esc(it.ayuda)}</small></p>
+        // cada palabra va en su etiqueta para pintarla de verde en cuanto se reconoce
+        it.fichas = it.frase.split(/\s+/).map((w) => ({ w, n: limpiarTxt(w).split(' ').filter(Boolean).length }));
+        cuerpo = `<p class="pregunta">${esc(it.prompt)}<br><span class="decir" lang="${T}">${it.fichas.map((f) => `<span class="pal">${esc(f.w)}</span>`).join(' ')}</span><small>${esc(it.ayuda)}</small></p>
           <button class="btn-icono" data-voz aria-label="${u('Escuchar cómo se dice', 'Hear how it sounds')}">🔊</button>
           <div class="hablar"><button class="btn-micro" data-micro aria-pressed="false" aria-label="${u('Toca y habla', 'Tap and speak')}">🎤</button>
             <p class="oido" data-oido role="status"></p><div class="fila" data-extra></div>
@@ -120,19 +124,37 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
       const sinBoton = it.tipo === 'pares' || it.tipo === 'di';
       raiz.innerHTML = `<div class="sesion">${cab()}${cuerpo}<div class="retro-espacio"></div></div>${sinBoton ? '' : `<div class="retro sola" data-pie><button class="btn bloque" data-comprobar disabled>${u('Comprobar', 'Check')}</button></div>`}`;
       raiz.querySelector('[data-comprobar]')?.focus?.();
-      if (it.tipo === 'di') estadoDi(it);
+      if (it.tipo === 'di') { estadoDi(it); mejorarOido(it); }
       if (it.oir || it.tipo === 'di') hablar(it.voz, T);            // se oye solo al aparecer
     }
 
     /* ---------- «dilo en voz alta» ---------- */
+    // Si está descargado el «Oído de Granma», el modo local reconoce las palabras dentro del teléfono.
+    function mejorarOido(it) {
+      if (it.modo !== 'graba') return;
+      oidoPropioListo(T).then((si) => { if (!si && actual === it && it.modo === 'graba') { it.sinOido = true; if (!it.oyendo && !it.url) estadoDi(it, raiz.querySelector('[data-oido]')?.textContent); }   // conserva el mensaje que ya se estaba mostrando
+        if (si && actual === it && it.modo === 'graba' && !it.oyendo) { it.modo = 'propio'; estadoDi(it); prepararOido(T).catch(() => {}); } });
+    }
+    // Pinta de verde las palabras ya reconocidas (y suena un «tic» por cada palabra nueva).
+    function pintarPalabras(it, palabras) {
+      const els = raiz.querySelectorAll('.decir .pal'); let k = 0, nuevas = 0;
+      it.fichas.forEach((f, i) => { const mias = palabras.slice(k, k + f.n); k += f.n; const ok = f.n === 0 || (mias.length === f.n && mias.every((x) => x.ok)); if (ok && f.n && els[i] && !els[i].classList.contains('ok')) { els[i].classList.add('ok'); nuevas++; } });
+      if (nuevas) sonido.tic();
+    }
+    function borrarLuego(it) {
+      clearTimeout(it.borrado);
+      if (it.url) it.borrado = setTimeout(() => { soltar(it.url); it.url = null; if (actual === it && !bloqueado) estadoDi(it, u('Tu grabación ya se borró. Puedes grabarte otra vez.', 'Your recording was deleted. You can record again.')); }, BORRADO_MS);
+    }
     function estadoDi(it, texto) {
       const o = raiz.querySelector('[data-oido]'), m = raiz.querySelector('[data-micro]'), x = raiz.querySelector('[data-extra]'); if (!o || !m) return;
       m.classList.toggle('oyendo', !!it.oyendo); m.setAttribute('aria-pressed', String(!!it.oyendo));
-      const base = it.modo === 'reco' ? u('Toca el micrófono y dilo.', 'Tap the microphone and say it.') : it.modo === 'graba' ? u('Toca el micrófono y dilo. Yo mido tu voz aquí mismo.', 'Tap the microphone and say it. I measure your voice right here.') : u('Dilo fuerte y claro, como te salga.', 'Say it loud and clear, as best you can.');
-      o.textContent = it.oyendo ? (it.modo === 'reco' ? u('Te escucho…', 'Listening…') : u('Te escucho… al terminar me detengo sola.', 'Listening… I stop by myself when you finish.')) : (texto || base);
+      const base = it.modo === 'propio' ? u('Toca el micrófono y dilo. Te oigo aquí mismo, palabra por palabra.', 'Tap the microphone and say it. I hear you right here, word by word.') : it.modo === 'reco' ? u('Toca el micrófono y dilo.', 'Tap the microphone and say it.') : it.modo === 'graba' ? u('Toca el micrófono y dilo. Yo mido tu voz aquí mismo.', 'Tap the microphone and say it. I measure your voice right here.') : u('Dilo fuerte y claro, como te salga.', 'Say it loud and clear, as best you can.');
+      o.textContent = it.oyendo ? (it.modo === 'reco' || it.modo === 'propio' ? u('Te escucho…', 'Listening…') : u('Te escucho… al terminar me detengo sola.', 'Listening… I stop by myself when you finish.')) : (texto || base);
       m.hidden = it.modo === 'solo' || it.modo === 'pregunta';
       const priv = raiz.querySelector('[data-privado]');
-      if (priv) priv.textContent = it.modo === 'reco' ? u('Te escucha el servicio de voz de tu teléfono. La app no guarda nada.', 'Your phone\'s speech service listens. The app saves nothing.')
+      if (priv) priv.textContent = it.modo === 'propio' ? u('Tu voz se reconoce dentro de tu teléfono, sin internet, y se borra sola en 1 minuto.', 'Your voice is recognized inside your phone, offline, and deletes itself in 1 minute.')
+        : it.modo === 'graba' && it.sinOido ? u('Tu voz se mide solo en tu teléfono. En Descargas puedes bajar el «Oído de Granma» para que reconozca tus palabras.', 'Your voice is measured only on your phone. In Downloads you can get "Granma\'s ear" so it recognizes your words.')
+        : it.modo === 'reco' ? u('Te escucha el servicio de voz de tu teléfono. La app no guarda nada.', 'Your phone\'s speech service listens. The app saves nothing.')
         : it.modo === 'graba' ? u('Tu voz se mide y se graba solo en tu teléfono, y se borra sola en 1 minuto.', 'Your voice is measured and recorded only on your phone, and deletes itself in 1 minute.')
         : it.modo === 'solo' ? u('Aquí no se usa el micrófono.', 'The microphone is not used here.') : '';
       if (it.modo === 'pregunta') {
@@ -155,13 +177,33 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
         if (actual !== it || bloqueado) return;
         if (r.ok) {
           const mejor = r.textos.reduce((m, t) => (parecido(t, it.frase) > parecido(m, it.frase) ? t : m), r.textos[0]);
-          if (parecido(mejor, it.frase) >= UMBRAL) return responder(true);
+          if (parecido(mejor, it.frase) >= UMBRAL) { it.verificado = true; it.completita = parecido(mejor, it.frase) === 1; raiz.querySelectorAll('.decir .pal').forEach((x) => x.classList.add('ok')); return responder(true); }
           it.intentos++; return estadoDi(it, `${u('Escuché', 'I heard')}: «${mejor}». ${u('Otra vez, despacito.', 'Once more, slowly.')}`);
         }
         if (r.motivo === 'silencio' && ++it.silencios < 2) return estadoDi(it, u('No te alcancé a oír. Acércate tantito y otra vez.', 'I could not hear you. Come a little closer and try again.'));
         // sin permiso, sin internet o sin servicio: la persona se graba y se escucha ella misma
-        it.modo = puedeGrabar() ? 'graba' : 'solo';
+        it.modo = puedeGrabar() ? 'graba' : 'solo'; mejorarOido(it);
         return estadoDi(it, r.motivo === 'red' ? u('Sin internet no puedo oírte, pero puedes grabarte y escucharte.', 'Without internet I cannot hear you, but you can record and hear yourself.') : '');
+      }
+      if (it.modo === 'propio') {
+        soltar(it.url); it.url = null; clearTimeout(it.borrado);
+        const boton = raiz.querySelector('[data-micro]'), mover = !reducirMovimiento();
+        estadoDi(it, u('Preparando el oído…', 'Getting the ear ready…'));
+        const e = await escucharPropio(T, it.frase, {
+          alNivel: (v) => { if (mover && boton?.isConnected) boton.style.transform = `scale(${(1 + Math.min(0.28, v * 2.2)).toFixed(3)})`; },
+          alParcial: (r) => { if (actual === it && !bloqueado) pintarPalabras(it, r.palabras); },
+        });
+        if (actual !== it) return void e.parar?.();
+        if (!e.ok) { it.modo = e.motivo === 'permiso' ? 'solo' : 'graba'; return estadoDi(it, e.motivo === 'permiso' ? '' : u('No pude abrir el oído ahora; mido tu voz de la otra forma.', 'I could not open the ear now; I will measure your voice the other way.')); }
+        it.grab = e; it.oyendo = true; estadoDi(it);
+        const r = await e.fin; it.oyendo = false; if (boton) boton.style.transform = '';
+        if (actual !== it || bloqueado) return soltar(r.url);
+        it.url = r.url; borrarLuego(it); pintarPalabras(it, r.palabras);
+        if (r.total && r.dichas / r.total >= UMBRAL) { it.verificado = true; it.completita = r.todo; return responder(true); }
+        it.intentos++;
+        return estadoDi(it, !r.oyoAlgo ? u('No alcancé a oír tu voz. Acércate tantito y dilo más fuerte.', 'I could not hear your voice. Come a bit closer and say it louder.')
+          : r.dichas ? u(`Te oí ${r.dichas} de ${r.total} palabras: las verdes ya salieron. Dila otra vez, completa.`, `I heard ${r.dichas} of ${r.total} words: the green ones are done. Say it again, all of it.`)
+          : u('Oí tu voz, pero no las palabras de la frase. Escucha 🔊 y repite despacito.', 'I heard your voice, but not the words of the sentence. Listen to 🔊 and repeat slowly.'));
       }
       if (it.modo === 'graba') {
         soltar(it.url); it.url = null;
@@ -181,8 +223,7 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
           : u('No alcancé a oír tu voz. Acércate tantito y dilo más fuerte.', 'I could not hear your voice. Come a bit closer and say it louder.'));
         it.completa = medido && v.veredicto === 'completa';
         estadoDi(it, raiz.querySelector('[data-oido]')?.textContent);
-        clearTimeout(it.borrado);
-        if (url) it.borrado = setTimeout(() => { soltar(it.url); it.url = null; if (actual === it && !bloqueado) estadoDi(it, u('Tu grabación ya se borró. Puedes grabarte otra vez.', 'Your recording was deleted. You can record again.')); }, BORRADO_MS);
+        borrarLuego(it);
       }
     }
 
@@ -192,8 +233,10 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
       let msg;
       if (ok) {
         aciertos++; hechos++; racha++; mejorRacha = Math.max(mejorRacha, racha); vibrar(25);
-        if (racha >= 3) sonido.racha(racha); else sonido.ok();
-        msg = al(OK);
+        if (it.tipo === 'di' && it.verificado) {            // la app SÍ oyó las palabras: grito, confeti tricolor y Granma lo celebra
+          sonido.viva(); confetiMexicano(); if (estado().ajustes.voz) hablar('¡Viva México!', 'es', 'granma');
+          msg = ['granma', 'aplaudiendo', it.completita ? '¡Viva México! Lo dijiste completito, mijo.' : '¡Viva México! Ya casi te sale todo, mija.', it.completita ? 'Viva México! You said every word, mijo.' : 'Viva México! You almost have it all, mija.'];
+        } else { if (racha >= 3) sonido.racha(racha); else sonido.ok(); msg = al(OK); }
       } else {
         errores++; racha = 0; sonido.mal(); vibrar([40, 40, 40]);
         if (usarVidas && it.tipo !== 'pares') { perderVida(); perdioTortilla(); }
@@ -224,7 +267,7 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
       if (it.tipo === 'di') {
         if (b.dataset.oidoModo) {                       // respuesta a «¿cómo quieres practicar tu voz?»
           estado().ajustes.oido = b.dataset.oidoModo; guardar();
-          it.modo = b.dataset.oidoModo === 'reco' ? 'reco' : puedeGrabar() ? 'graba' : 'solo'; return estadoDi(it);
+          it.modo = b.dataset.oidoModo === 'reco' ? 'reco' : puedeGrabar() ? 'graba' : 'solo'; estadoDi(it); return mejorarOido(it);
         }
         if (b.hasAttribute('data-micro')) return void micro(it);
         if (b.hasAttribute('data-mivoz')) { if (it.url) new Audio(it.url).play().catch(() => {}); return; }

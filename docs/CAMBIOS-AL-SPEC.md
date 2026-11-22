@@ -67,3 +67,11 @@
 - **Qué comprueba:** que la persona sí habló, que dijo la frase completa (cuenta los golpes de voz y los compara con las sílabas de la frase) y que no se quedó a medias. El micrófono se mueve con su voz y se detiene solo al terminar. Luego puede oírse y compararse con 🔊.
 - **Qué no hace:** no reconoce palabras ni califica la pronunciación. Eso solo lo hace un servicio de voz (el del teléfono, que sigue disponible si la persona lo elige) o un modelo de reconocimiento, que pesa decenas de MB y sería una librería de terceros.
 - Los tres caminos conviven: servicio de voz del teléfono (con permiso) → verificador propio → decirlo en voz alta sin micrófono.
+
+## Oído de Granma: reconocimiento de palabras dentro del teléfono
+
+- **Qué es:** paquetes opcionales «Oído de Granma: inglés» (≈ 45 MB) y «español» (≈ 38 MB) en Descargas. Con el paquete, el modo «Granma, en mi teléfono» reconoce las palabras sin internet y sin enviar la voz a nadie (`js/oido-propio.js`). Funciona igual en el navegador y con la app instalada.
+- **Librería:** Vosk compilado a WebAssembly (`vosk-browser` 0.0.8) y sus modelos pequeños, todo con licencia **Apache-2.0** (`assets/oido/LICENCIAS.md`). Es la única librería de terceros de la app y no cuenta para la meta de 50 MB.
+- **Cómo oye:** en vivo, palabra por palabra (cada palabra reconocida se pinta de verde y suena). Corren dos reconocedores: uno guiado por la frase y uno libre. Con 6 de cada 10 palabras se da por bueno.
+- **Límites:** (1) dos palabras que suenan casi igual (bed / bread, kitchen / chicken) pueden darse por buenas: confirma que dijeron la frase, no califica la pronunciación fina; (2) se probó con voz sintética en el navegador de pruebas, no en un iPhone ni con acentos reales; (3) palabras que el modelo no conoce (mijo, champurrado) no se pueden reconocer y no cuentan en contra si el resto sale.
+- **Fiesta:** cuando la app sí oyó la frase: «¡Viva México!» (sonido, voz de Granma y confeti tricolor). Al cerrar el capítulo, Granma avienta tortillas hacia la persona y dice «¡Te ganaste 1 kilo de tortillas hechas con mucho amor, mijo!»; los kilos se suman en el perfil.

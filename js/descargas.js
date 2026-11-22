@@ -69,7 +69,7 @@ export async function borrar(p) {
   if (hayCaches()) await caches.delete(nombreCache(p.id));
   delete marcas[p.id]; guardarMarcas(); bus.dispatchEvent(new CustomEvent('p', { detail: { id: p.id, estado: 'no', hechos: 0, bytes: 0 } }));
 }
-export async function descargarTodo(lista) { for (const p of lista) if (!p.proximamente && (await estadoDe(p)).estado !== 'listo') await descargar(p, { manual: true }); }
+export async function descargarTodo(lista) { for (const p of lista) if (!p.proximamente && !p.opcional && (await estadoDe(p)).estado !== 'listo') await descargar(p, { manual: true }); }
 
 export async function espacio() {
   try { const e = await navigator.storage.estimate(); return { usado: e.usage || 0, cuota: e.quota || 0 }; } catch { return { usado: 0, cuota: 0 }; }

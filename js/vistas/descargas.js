@@ -8,7 +8,7 @@ import { esc, MB } from '../util.js';
 export async function montar(main) {
   const lista = await listaPaquetes(), estados = {};
   for (const p of lista) estados[p.id] = await estadoDe(p);
-  const totalMB = lista.reduce((s, p) => s + p.bytes, 0);
+  const totalMB = lista.filter((p) => !p.opcional).reduce((s, p) => s + p.bytes, 0);
   const ios = /iphone|ipad|ipod/i.test(navigator.userAgent), instalada = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
 
   const fila = (p) => {
@@ -18,7 +18,7 @@ export async function montar(main) {
       : e.estado === 'listo' ? `<button class="btn sec" data-borrar="${p.id}">🗑 ${u('Borrar', 'Delete')}</button>`
       : `<button class="btn" data-bajar="${p.id}">${e.estado === 'no' ? '⬇ ' + u('Descargar', 'Download') : '▶ ' + u('Reanudar', 'Resume')}</button>${e.hechos ? `<button class="btn sec" data-borrar="${p.id}">🗑 ${u('Borrar', 'Delete')}</button>` : ''}`;
     return `<section class="tarjeta paquete ${e.estado === 'proximamente' ? 'prox' : ''}" id="pq-${p.id}" aria-label="${esc(Ln(p.nombre))}"><span class="ico" aria-hidden="true">${p.icono}</span>
-      <div><h2 style="font-size:1.1rem;margin:0">${esc(Ln(p.nombre))}</h2><span class="muted">${p.proximamente ? '' : MB(p.bytes)}${e.estado === 'listo' || e.hechos ? ` · ${u('usado', 'used')}: ${MB(e.bytes || 0)}` : ''}</span></div>
+      <div><h2 style="font-size:1.1rem;margin:0">${esc(Ln(p.nombre))}</h2><span class="muted">${p.opcional ? u('Opcional · reconoce tus palabras sin internet · ', 'Optional · recognizes your words offline · ') : ''}${p.proximamente ? '' : MB(p.bytes)}${e.estado === 'listo' || e.hechos ? ` · ${u('usado', 'used')}: ${MB(e.bytes || 0)}` : ''}</span></div>
       <span data-estado aria-live="polite">${estado}</span>
       ${e.estado === 'bajando' || e.estado === 'pausa' || e.estado === 'parcial' ? `<div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="${esc(Ln(p.nombre))}"><i style="transform:scaleX(${(pct) / 100})"></i></div>` : ''}
       <div class="acciones">${botones}</div></section>`;

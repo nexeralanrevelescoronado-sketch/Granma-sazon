@@ -1,4 +1,5 @@
 // Lección: relato de Granma → palabras → 5 ejercicios → consejo del Abuelo → resultado.
+import { lluviaTortillas, confetiMexicano } from '../../assets/animaciones/fiesta.js';
 import { estado, guardar, u, tgt, nat, Ln, Lt, ganarXP, evento, sinEnergia, marcarRepetir, limpiarRepetir, tocaRepetir } from '../state.js';
 import { sinEnergiaHTML } from './sin-energia.js';
 import { historia, recetas as cargarRecetas } from '../datos.js';
@@ -64,16 +65,20 @@ export async function montar(main, { args }) {
     S.caps[id] = { ...(S.caps[id] || {}), hecho: true, aciertos: resultado.aciertos, errores: resultado.errores, estrellas: Math.max(estrellas, S.caps[id]?.estrellas || 0) }; guardar();
     if (S.repetir?.cap === id) limpiarRepetir();
     if (primera) { ganarXP(xp); evento('lecciones'); } else ganarXP(5);
+    S.stats.kilos = (S.stats.kilos || 0) + 1; guardar();
     sonido.logro(); confeti(40);
     const sig = h.capitulos.find((c) => c.id === id + 1), todos = h.capitulos.every((c) => S.caps[c.id]?.hecho);
     let rec = null; try { rec = (await cargarRecetas()).find((r) => r.id === cap.receta); } catch { /* receta sin descargar */ }
     main.innerHTML = `<div class="centro"><div class="pareja">${pj('granma', 'aplaudiendo', { ancho: 140, clase: 'anim-aplaude' })}${pj('abuelo', 'contento', { ancho: 112, clase: 'anim-asiente' })}</div><h1>${u('¡Capítulo terminado!', 'Chapter complete!')}</h1>
+      <div class="dialogo" data-premio><div class="globo"><span class="quien">Granma</span><p class="bilingue"><span class="l1 premio" lang="${N}">${u('¡Te ganaste 1 kilo de tortillas hechas con mucho amor, mijo!', 'You earned 1 kilo of tortillas made with lots of love, mijo!')}</span><br><span class="l2" lang="${T}">${T === 'en' ? 'You earned 1 kilo of tortillas made with lots of love, mijo!' : '¡Te ganaste 1 kilo de tortillas hechas con mucho amor, mijo!'}</span></p><p class="muted" style="margin:0">🫓 ${u('Llevas', 'You have')} ${S.stats.kilos} kg</p></div></div>
       <p class="estrellas" role="img" aria-label="${estrellas} ${u('de 3 estrellas', 'of 3 stars')}">${'⭐'.repeat(estrellas)}${'☆'.repeat(3 - estrellas)}</p>
       <p>${u('Aciertos', 'Correct')}: <strong>${resultado.aciertos}</strong> · ${u('Intentos fallidos', 'Missed')}: <strong>${resultado.errores}</strong>${mejor >= 3 ? ` · 🔥 ${u('Mejor racha', 'Best streak')}: <strong>${mejor}</strong>` : ''}</p><p class="estrella">+${primera ? xp : 5} XP</p></div>
       ${rec ? `<div class="tarjeta crema2"><h2>🍲 ${u('Ahora, a cocinar', 'Now, let\'s cook')}</h2><p>${esc(Ln(rec.nombre))} — ${esc(Ln(rec.resumen))}</p><a class="btn olla" href="#/receta/${rec.id}">${u('Ver la receta', 'See the recipe')}</a></div>` : ''}
       ${todos ? `<div class="tarjeta verde"><h2>🏆 ${u('¡Terminaste la Historia 1!', 'You finished Story 1!')}</h2><p>${u('Tu Constancia Granma está lista.', 'Your Granma Certificate is ready.')}</p><a class="btn olla" href="#/perfil">${u('Ver mi constancia', 'See my certificate')}</a></div>` : sig ? `<a class="btn grande" href="#/leccion/${sig.id}">${u('Siguiente capítulo', 'Next chapter')} →</a>` : ''}
       <a class="btn grande olla mt" href="#/prueba/${id}">⭐ ${u('Haz la prueba de lo aprendido', 'Take the quiz on what you learned')}</a>
       <p class="mt"><a class="btn sec" href="#/historia">${u('Volver al mapa', 'Back to the map')}</a></p>`;
+    // Modo fiesta: Granma avienta las tortillas hacia la persona, con confeti tricolor
+    setTimeout(() => { if (!activo) return; lluviaTortillas(main.querySelector('.pareja .pj'), 18); confetiMexicano(30); sonido.viva(); }, 450);
   }
 
   main.onclick = (e) => {

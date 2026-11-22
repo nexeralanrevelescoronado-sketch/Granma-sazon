@@ -140,8 +140,8 @@ test('PWA: manifest con íconos 192/512/maskable y peso total < 50 MB', () => {
   assert.ok(tam('192x192', 'any') && tam('512x512', 'any') && tam('512x512', 'maskable'));
   for (const i of m.icons) assert.ok(existsSync(join(RAIZ, i.src)), i.src);
   const png = readFileSync(join(RAIZ, 'assets/iconos/icon-512.png')); assert.equal(png.readUInt32BE(16), 512);
-  const p = json('data/paquetes.json').paquetes; assert.deepEqual(p.map((x) => x.id), ['historia', 'recetas', 'cotorreo', 'consejos', 'italianas', 'biblia']);
-  const total = p.reduce((s, x) => s + x.bytes, 0); assert.ok(total < 50 * 1048576, `total ${total}`);
+  const p = json('data/paquetes.json').paquetes; assert.deepEqual(p.map((x) => x.id), ['historia', 'recetas', 'cotorreo', 'consejos', 'italianas', 'biblia', 'oido-en', 'oido-es']);
+  const total = p.filter((x) => !x.opcional).reduce((s, x) => s + x.bytes, 0); assert.ok(total < 50 * 1048576, `total ${total}`);
   assert.equal(p.find((x) => x.id === 'italianas').proximamente, true);
   const sw = leer('sw.js'); assert.ok(!sw.includes("VERSION = 'dev'"), 'corre «node scripts/build.mjs» antes de subir'); assert.ok(sw.includes('"index.html"'));
 });
@@ -196,7 +196,7 @@ test('animaciones: módulo propio, solo transform/opacity, movimiento reducido, 
   assert.ok(/visibilitychange/.test(leer('assets/animaciones/visibilidad.js')));
   const demo = leer('demo-animaciones.html'); assert.ok((demo.match(/data-a="/g) || []).length >= 11, 'un botón por animación');
   for (const t of ['respira', 'sombrero', 'mano', 'aplauso']) assert.ok(leer('assets/personajes/abuelo-aconsejando.svg').includes(`id="${t}"`) || leer('assets/personajes/granma-aplaudiendo.svg').includes(`id="${t}"`) || leer('assets/personajes/abuelo-serio.svg').includes(`id="${t}"`), 'grupo ' + t);
-  assert.ok(json('data/paquetes.json').paquetes.reduce((s, x) => s + x.bytes, 0) < 50 * 1048576);
+  assert.ok(json('data/paquetes.json').paquetes.filter((x) => !x.opcional).reduce((s, x) => s + x.bytes, 0) < 50 * 1048576);
   assert.ok(leer('sw.js').includes('assets/animaciones/animaciones.css') && leer('sw.js').includes('demo-animaciones.html'), 'animaciones precacheadas');
 });
 
@@ -388,4 +388,24 @@ test('verificador propio de voz: en el teléfono, sin red; distingue silencio, f
   const o = leer('js/oido.js'), v = o.slice(o.indexOf('Verificador propio'));
   assert.ok(!/fetch\(|XMLHttpRequest|WebSocket|sendBeacon/.test(o), 'nada sale del teléfono');
   assert.ok(/NO reconoce palabras/.test(v), 'el código dice con claridad lo que el verificador no hace');
+});
+
+test('Oído de Granma: califica palabra por palabra, es opcional, con licencia abierta y fiesta con tope', async () => {
+  globalThis.localStorage ||= { _d: {}, getItem(k) { return this._d[k] ?? null; }, setItem(k, v) { this._d[k] = v; } };
+  const { calificar } = await import('../js/oido-propio.js');
+  let r = calificar('The bread is warm.', 'the bread is warm', 'that man is warm'); assert.equal(r.todo, true); assert.equal(r.dichas, 4); assert.equal(r.exacta, false);
+  r = calificar('The bread is warm.', 'the bread is warm', 'the bread is warm'); assert.equal(r.exacta, true);
+  r = calificar('I love my family.', '[unk] my family', 'they live with my family'); assert.deepEqual(r.palabras.map((p) => p.ok), [false, false, true, true]); assert.equal(r.todo, false);
+  r = calificar('I love my family.', '[unk]', 'hello how are you'); assert.equal(r.dichas, 0);
+  r = calificar('The kitchen is warm.', 'kitchen', 'the kitchens is warm'); assert.equal(r.todo, true, 'junta lo que oyó cada reconocedor y tolera una letra');
+  assert.equal(calificar('', 'hola', 'hola').todo, false);
+  const paq = JSON.parse(leer('data/paquetes.json')).paquetes;
+  for (const id of ['oido-en', 'oido-es']) { const p = paq.find((x) => x.id === id); assert.ok(p.opcional && p.archivos.every((f) => existsSync(join(RAIZ, f))), id); }
+  assert.ok(!leer('sw.js').includes('assets/oido'), 'el Oído no viaja en el arranque de la app');
+  assert.ok(!/oido-propio|vosk/i.test(leer('index.html')), 'ni se precarga');
+  const lic = leer('assets/oido/LICENCIAS.md'); assert.ok(/Apache-2\.0/.test(lic) && /vosk-browser/.test(lic));
+  const o = leer('js/oido-propio.js'); assert.ok(!/fetch\(|XMLHttpRequest|WebSocket|sendBeacon/.test(o), 'la voz no sale del teléfono');
+  const { MAX_TORTILLAS, TRICOLOR } = await import('../assets/animaciones/fiesta.js'); assert.ok(MAX_TORTILLAS <= 24 && TRICOLOR.length >= 3);
+  const f = leer('assets/animaciones/fiesta.js'); assert.ok(/prefers-reduced-motion/.test(f) && !/(left|top|width|height|margin)\s*:/.test(f.slice(f.indexOf('t.animate'))), 'solo transform y opacity');
+  assert.ok(/Te ganaste 1 kilo de tortillas hechas con mucho amor/.test(leer('js/vistas/leccion.js')));
 });

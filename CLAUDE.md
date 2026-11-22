@@ -11,5 +11,5 @@ No aplica a tareas de código, animaciones, rendimiento o pruebas: ahí trabaja 
 ## Reglas del repo
 
 - La fuente del contenido es `scripts/datos/*.mjs`; `data/*.json` se genera. Después de cambiar contenido o archivos del núcleo: `npm run build` y luego `npm test` (el build actualiza la versión del service worker; la prueba lo exige).
-- Sin frameworks ni librerías: HTML, CSS y JS nativos. Animaciones solo con `transform` y `opacity`, en `assets/animaciones/`.
+- Sin frameworks ni librerías: HTML, CSS y JS nativos. **Única excepción** (pedida por el dueño): el «Oído de Granma» (`assets/oido/`, Vosk con licencia Apache-2.0), que es un paquete opcional y nunca se carga en el arranque; sus licencias están en `assets/oido/LICENCIAS.md`. Animaciones solo con `transform` y `opacity`, en `assets/animaciones/`.
 - Nunca texto de NTV/NLT en el repo, ni claves de API en el frontend.

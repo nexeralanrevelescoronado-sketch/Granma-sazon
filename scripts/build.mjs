@@ -102,6 +102,9 @@ const paquetes = [
   { id: 'consejos', nombre: { es: 'Consejos del Abuelo', en: 'Grandpa\'s advice' }, icono: '🎩', archivos: ['data/consejos.json', ...audioFiles] },
   { id: 'italianas', nombre: { es: 'Recetas italianas', en: 'Italian recipes' }, icono: '🍝', archivos: [], proximamente: true },
   { id: 'biblia', nombre: { es: 'Biblia (RV1909, KJV y WEB)', en: 'Bible (RV1909, KJV and WEB)' }, icono: '✝️', archivos: bibliaFiles },
+  // Opcionales (no cuentan para la meta de 50 MB ni se bajan con «Descargar todo»): reconocimiento de voz dentro del teléfono
+  { id: 'oido-en', opcional: true, nombre: { es: 'Oído de Granma: inglés', en: 'Granma\'s ear: English' }, icono: '👂', archivos: ['assets/oido/vosk.js', 'assets/oido/modelo-en.tar.gz'] },
+  { id: 'oido-es', opcional: true, nombre: { es: 'Oído de Granma: español', en: 'Granma\'s ear: Spanish' }, icono: '👂', archivos: ['assets/oido/vosk.js', 'assets/oido/modelo-es.tar.gz'] },
 ].map((p) => ({ ...p, bytes: peso(p.archivos) }));
 escribir(j('data', 'paquetes.json'), { fmt: 1, paquetes: paquetes.map((p) => p) });
 
@@ -124,7 +127,7 @@ let sw = readFileSync(j('sw.js'), 'utf8');
 sw = sw.replace(/\/\*NUCLEO:INICIO\*\/[\s\S]*?\/\*NUCLEO:FIN\*\//, `/*NUCLEO:INICIO*/\nconst VERSION = '${VERSION}';\nconst NUCLEO = ${JSON.stringify(nucleo, null, 1)};\n/*NUCLEO:FIN*/`);
 writeFileSync(j('sw.js'), sw);
 
-const total = paquetes.reduce((s, p) => s + p.bytes, 0) + peso(nucleo);
+const total = paquetes.filter((p) => !p.opcional).reduce((s, p) => s + p.bytes, 0) + peso(nucleo);
 console.log(`nucleo ${nucleo.length} archivos (${(peso(nucleo) / 1024).toFixed(0)} KB) v${VERSION}`);
 for (const p of paquetes) console.log(`  ${p.id.padEnd(10)} ${(p.bytes / 1048576).toFixed(2)} MB  ${p.archivos.length} archivos`);
 console.log(`TOTAL ${(total / 1048576).toFixed(2)} MB (meta < 50 MB)`);

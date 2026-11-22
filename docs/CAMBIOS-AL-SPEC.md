@@ -36,3 +36,9 @@
 - Usa las voces instaladas en el dispositivo (Web Speech API): no se descarga ni se envía nada. `js/voz.js` elige, para el Abuelo, una voz de hombre en español de México si existe, con tono grave y ritmo lento; para Granma, una voz de mujer.
 - **Límite real:** con voces del sistema no se puede elegir un acento regional (por ejemplo, de los Altos de Jalisco) ni un timbre de abuelo de verdad; depende de lo que traiga cada teléfono, y en algunos solo hay una voz en español.
 - **Para tener esa voz de verdad** hace falta audio grabado por una persona (o una voz con licencia). El contenido ya está listo para eso: son 45 consejos y 6 consejos de capítulo; se pueden grabar y servir como archivos de audio dentro del paquete «Consejos del Abuelo».
+
+### Grabaciones con voz real (listo para recibirlas)
+
+- El guion está en `docs/GUION-ABUELO.md` (51 frases). `node scripts/audios.mjs procesar <carpeta|archivo>` corta, limpia el ruido, empareja el volumen y guarda en `assets/audio/abuelo/`; `npm run build` las mete al paquete «Consejos del Abuelo» (suenan sin internet).
+- En la app, si la frase del Abuelo tiene grabación se oye esa (aunque la persona esté aprendiendo inglés: el Abuelo habla con su voz, en español); si no hay o no carga, sigue la voz del dispositivo.
+- La voz debe ser de una persona que dio su permiso por escrito para usarla en la app. No se usa la voz de nadie sin permiso ni voces de otras marcas.

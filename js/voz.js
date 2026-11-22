@@ -26,9 +26,43 @@ export function elegirVoz(voces, idioma, quien) {
 }
 export function hayVozPara(idioma) { try { return speechSynthesis.getVoices().some((v) => normal(v.lang).startsWith(idioma)); } catch { return false; } }
 export const cancelarVoz = () => { try { speechSynthesis.cancel(); } catch { /* sin voz */ } };
+export const callar = () => { pararGrabacion(); cancelarVoz(); };
 
-/** Dice un texto con la voz del personaje. Devuelve una promesa que termina cuando acaba de hablar. */
-export function decir(texto, idioma, quien = 'granma') {
+/* ---------- grabaciones (voz real del Abuelo) ----------
+   data/audios.json lo arma el build con lo que haya en assets/audio/: { abuelo: { es: { "<frase>": "ruta" } } }.
+   Si una frase tiene grabación, se oye esa; si falta o no carga (sin internet y sin el paquete), se usa la voz del dispositivo. */
+export const claveAudio = (t) => String(t || '').toLowerCase().replace(/\s+/g, ' ').trim();
+let mapa = null, sonando = null;
+const cargarMapa = () => (mapa ||= fetch('data/audios.json').then((r) => (r.ok ? r.json() : {})).catch(() => ({})));
+export async function rutaGrabada(texto, idioma, quien) { return (await cargarMapa())?.[quien]?.[idioma]?.[claveAudio(texto)] || null; }
+function pararGrabacion() { if (sonando) { try { sonando.audio.pause(); } catch { /* ya paró */ } URL.revokeObjectURL(sonando.url); sonando = null; } }
+async function tocarGrabacion(ruta) {
+  // Se baja completa y se toca desde memoria: así funciona igual con el paquete guardado y sin internet.
+  const r = await fetch(ruta); if (!r.ok) return false;
+  const url = URL.createObjectURL(await r.blob()), audio = new Audio(url);
+  pararGrabacion(); sonando = { audio, url };
+  return new Promise((ok) => {
+    const fin = (v) => { if (sonando?.audio === audio) pararGrabacion(); ok(v); };
+    audio.onended = () => fin(true); audio.onerror = () => fin(false);
+    audio.play().catch(() => fin(false));
+  });
+}
+
+/** Dice un texto con la voz del personaje (grabada si existe). Termina cuando acaba de hablar. */
+export async function decir(texto, idioma, quien = 'granma') {
+  try {
+    pararGrabacion();
+    const ruta = typeof fetch === 'function' && typeof Audio === 'function' ? await rutaGrabada(texto, idioma, quien) : null;
+    if (ruta) { cancelarVoz(); if (await tocarGrabacion(ruta)) return true; }
+  } catch { /* sin grabación: sigue la voz del dispositivo */ }
+  return decirSintetica(texto, idioma, quien);
+}
+/** De varias versiones de la misma frase ([texto, idioma]) dice la que tenga grabación; si ninguna, la primera. */
+export async function decirPreferido(versiones, quien) {
+  for (const [t, l] of versiones) if (await rutaGrabada(t, l, quien).catch(() => null)) return decir(t, l, quien);
+  return decir(versiones[0][0], versiones[0][1], quien);
+}
+function decirSintetica(texto, idioma, quien) {
   return new Promise((ok) => {
     try {
       if (!vozDisponible() || !texto) return ok(false);

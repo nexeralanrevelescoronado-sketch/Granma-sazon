@@ -294,3 +294,18 @@ test('manos: el Abuelo levanta la mano abierta (palma, 4 dedos y pulgar), nunca 
   assert.ok(leer('assets/personajes/abuelo-aconsejando.svg').includes('id="mano"') && !leer('assets/personajes/abuelo-aconsejando.svg').includes('id="dedo"'));
   for (const f of readdirSync(join(RAIZ, 'assets/personajes'))) assert.ok(!/width="9" height="34"/.test(leer('assets/personajes/' + f)), f);
 });
+
+test('grabaciones del Abuelo: guion completo, índice coherente y respaldo con la voz del dispositivo', async () => {
+  const guion = leer('docs/GUION-ABUELO.md'), consejos = JSON.parse(leer('data/consejos.json')), caps = JSON.parse(leer('data/historia.json')).capitulos;
+  for (const c of consejos) assert.ok(guion.includes(c.es), `falta en el guion el consejo ${c.id}`);
+  for (const c of caps) assert.ok(guion.includes(c.consejo.es), `falta en el guion el consejo del capítulo ${c.id}`);
+  assert.equal((guion.match(/^\d+\. /gm) || []).length - 5, consejos.length + caps.length, 'el guion se regenera con: node scripts/audios.mjs guion');
+  const audios = JSON.parse(leer('data/audios.json')), paquete = JSON.parse(leer('data/paquetes.json')).paquetes.find((p) => p.id === 'consejos');
+  const frases = new Set([...consejos, ...caps.map((c) => c.consejo)].flatMap((c) => [c.es, c.en]).map((t) => t.toLowerCase().replace(/\s+/g, ' ').trim()));
+  for (const l of ['es', 'en']) for (const [frase, ruta] of Object.entries(audios.abuelo[l])) {
+    assert.ok(frases.has(frase), `grabación de una frase que ya no existe: ${ruta}`);
+    assert.ok(existsSync(join(RAIZ, ruta)) && paquete.archivos.includes(ruta), `${ruta} debe existir y viajar en el paquete de consejos`);
+  }
+  const v = leer('js/voz.js'); assert.ok(/tocarGrabacion\(ruta\)\) return true;[\s\S]*return decirSintetica/.test(v), 'si la grabación falla, habla la voz del dispositivo');
+  const { claveAudio } = await import('../js/voz.js'); assert.equal(claveAudio('  Hola   Mijo. '), 'hola mijo.');
+});

@@ -75,6 +75,17 @@ for (const r of recetas) {
   escribir(j('recetas', `${r.id}.html`), html);
 }
 
+// ---- grabaciones del Abuelo: assets/audio/abuelo/consejo-<id>.<es|en>.m4a y cap-<n>.<es|en>.m4a
+const audios = { abuelo: { es: {}, en: {} } }, audioFiles = [];
+const claveAudio = (t) => String(t).toLowerCase().replace(/\s+/g, ' ').trim();
+if (existsSync(j('assets', 'audio', 'abuelo'))) for (const f of readdirSync(j('assets', 'audio', 'abuelo')).sort()) {
+  const m = /^(consejo|cap)-(\d+)\.(es|en)\.m4a$/.exec(f); if (!m) continue;
+  const de = m[1] === 'consejo' ? consejos.find((c) => c.id === +m[2]) : historia.capitulos.find((c) => c.id === +m[2])?.consejo;
+  if (!de) throw new Error(`Grabación sin consejo: ${f}`);
+  audios.abuelo[m[3]][claveAudio(de[m[3]])] = `assets/audio/abuelo/${f}`; audioFiles.push(`assets/audio/abuelo/${f}`);
+}
+escribir(j('data', 'audios.json'), audios);
+
 // ---- 4) paquetes descargables (con su peso real)
 const peso = (rutas) => rutas.reduce((s, r) => s + statSync(j(r)).size, 0);
 const bibliaFiles = [...listar(j('data', 'biblia'), (f) => f.endsWith('.json')).map(url)].sort();
@@ -82,7 +93,7 @@ const paquetes = [
   { id: 'historia', nombre: { es: 'Historia de Granma', en: 'Granma\'s story' }, icono: '📖', archivos: ['data/historia.json'] },
   { id: 'recetas', nombre: { es: 'Recetas mexicanas', en: 'Mexican recipes' }, icono: '🍲', archivos: ['data/recetas.json', ...recetas.map((r) => `recetas/${r.id}.html`)] },
   { id: 'cotorreo', nombre: { es: 'Cotorreo con Granma', en: 'Chat with Granma' }, icono: '😄', archivos: ['data/cotorreo.json'] },
-  { id: 'consejos', nombre: { es: 'Consejos del Abuelo', en: 'Grandpa\'s advice' }, icono: '🎩', archivos: ['data/consejos.json'] },
+  { id: 'consejos', nombre: { es: 'Consejos del Abuelo', en: 'Grandpa\'s advice' }, icono: '🎩', archivos: ['data/consejos.json', ...audioFiles] },
   { id: 'italianas', nombre: { es: 'Recetas italianas', en: 'Italian recipes' }, icono: '🍝', archivos: [], proximamente: true },
   { id: 'biblia', nombre: { es: 'Biblia (RV1909, KJV y WEB)', en: 'Bible (RV1909, KJV and WEB)' }, icono: '✝️', archivos: bibliaFiles },
 ].map((p) => ({ ...p, bytes: peso(p.archivos) }));
@@ -94,7 +105,7 @@ escribir(j('sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmln
 
 // ---- 3) nucleo (cache de la app) + version por contenido
 const nucleo = [
-  'index.html', 'manifest.webmanifest', 'data/paquetes.json',
+  'index.html', 'manifest.webmanifest', 'data/paquetes.json', 'data/audios.json',
   'demo-animaciones.html', ...listar(j('css')).map(url), ...listar(j('js')).map(url), ...listar(j('assets', 'animaciones')).map(url),
   ...listar(j('assets', 'personajes'), (f) => /\/(granma-(contenta|hablando|carinosa|pensando|aplaudiendo)|abuelo-(serio|hablando|sonrisa|asintiendo|aconsejando))\.svg$/.test(f.split(sep).join('/'))).map(url),
   ...listar(j('assets', 'logo')).map(url),

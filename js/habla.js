@@ -3,7 +3,7 @@
 import { estado, guardar, u } from './state.js';
 import { reducirMovimiento } from './util.js';
 import { toast } from './fx.js';
-import { vozDisponible, hayVozPara, cancelarVoz, decir } from './voz.js';
+import { vozDisponible, hayVozPara, callar, decirPreferido } from './voz.js';
 import { estadoPj, reaccion, hablando, listoPj } from '../assets/animaciones/index.js';
 
 let epoca = 0, cola = Promise.resolve();
@@ -18,7 +18,7 @@ export function alternarVoz() {
   if (a.voz) {
     toast(u('🗣 Voz activada. Sin internet usa las voces instaladas en tu dispositivo.', '🗣 Voice on. Offline it uses the voices installed on your device.'));
     for (const l of ['es', 'en']) if (!hayVozPara(l) && speechSynthesis.getVoices().length) toast(u(`No encontré una voz instalada para ${l === 'es' ? 'español' : 'inglés'}.`, `No installed voice found for ${l === 'es' ? 'Spanish' : 'English'}.`));
-  } else cancelarVoz();
+  } else callar();
   return a.voz;
 }
 
@@ -71,7 +71,10 @@ async function hablar(dialogo, mio) {
   const texto = copia.textContent.replace(/\s+/g, ' ').trim();
   await conBoca(dialogo, true);
   const quien = globo.classList.contains('abuelo') ? 'abuelo' : 'granma';          // el Abuelo habla grave y pausado; Granma, cálida
-  const voz = vozActiva() && texto ? decir(texto, idioma, quien) : Promise.resolve();
+  // Si el Abuelo tiene esa frase grabada con su voz real (aunque sea en el otro idioma del globo), se oye la grabación.
+  const limpio = (el) => { const c = el.cloneNode(true); c.querySelectorAll('.quien,button,mark svg').forEach((x) => x.remove()); return c.textContent.replace(/\s+/g, ' ').trim(); };
+  const otras = [...globo.querySelectorAll('[lang]')].filter((el) => el !== l1).map((el) => [limpio(el), el.getAttribute('lang').slice(0, 2)]).filter(([t]) => t);
+  const voz = vozActiva() && texto ? decirPreferido([[texto, idioma], ...otras], quien) : Promise.resolve();
   await Promise.all([escribir(globo, mio), voz]);
   await conBoca(dialogo, false);
 }
@@ -87,4 +90,4 @@ export function vigilarDialogos(raiz) {
   new MutationObserver(cuando).observe(raiz, { childList: true, subtree: true });
 }
 /** Al cambiar de pantalla: corta escritura y voz pendientes. */
-export function detenerHabla() { epoca++; cola = Promise.resolve(); cancelarVoz(); }
+export function detenerHabla() { epoca++; cola = Promise.resolve(); callar(); }

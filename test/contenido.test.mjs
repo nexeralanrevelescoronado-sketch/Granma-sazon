@@ -357,6 +357,7 @@ test('privacidad de la voz: se pregunta antes, nada se guarda y la grabación du
   const o = leer('js/oido.js'); assert.ok(!/fetch\(|XMLHttpRequest|sendBeacon|localStorage|indexedDB/.test(o), 'el audio no se envía ni se guarda');
   assert.ok(/getTracks\(\)\.forEach\(\(t\) => t\.stop\(\)\)/.test(o), 'el micrófono se apaga al terminar');
   assert.ok(/class="privacidad"/.test(leer('js/vistas/perfil.js')));
+  const pf = leer('js/vistas/perfil.js'); assert.ok(pf.indexOf("S.ajustes.oido !== 'reco'") > 0 && pf.indexOf("S.ajustes.oido !== 'reco'") < pf.indexOf('await escuchar('), '«Probar mi micrófono» no usa el reconocimiento sin permiso');
 });
 
 test('glosario bíblico: formal, y cubre cada palabra de los pasajes de la ruta', () => {

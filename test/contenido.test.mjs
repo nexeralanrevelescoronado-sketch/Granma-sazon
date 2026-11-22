@@ -372,3 +372,20 @@ test('glosario bíblico: formal, y cubre cada palabra de los pasajes de la ruta'
   assert.ok(/INFORMAL\.test\(g\.significado\)/.test(leer('js/glosario.js')), 'en la Biblia nunca sale una glosa de chiste');
   assert.ok(JSON.parse(leer('data/paquetes.json')).paquetes.find((p) => p.id === 'biblia').archivos.includes('data/biblia/glosario.json'));
 });
+
+test('verificador propio de voz: en el teléfono, sin red; distingue silencio, frase cortada y frase completa', async () => {
+  const { silabas, analizarVoz } = await import('../js/oido.js');
+  assert.equal(silabas('bread', 'en'), 1); assert.equal(silabas('kitchen', 'en'), 2); assert.equal(silabas('The bread is warm.', 'en'), 4);
+  assert.equal(silabas('pan', 'es'), 1); assert.equal(silabas('queso', 'es'), 2); assert.equal(silabas('guisado', 'es'), 3);
+  const voz = (n, ruido = 0.004) => { const a = []; let t = 0; const pon = (v) => { a.push({ t, v }); t += 16; };
+    for (let i = 0; i < 20; i++) pon(ruido); for (let s = 0; s < n; s++) { for (let i = 0; i < 9; i++) pon(0.02 + 0.12 * Math.sin(Math.PI * i / 8)); for (let i = 0; i < 4; i++) pon(ruido * 2); } for (let i = 0; i < 30; i++) pon(ruido); return a; };
+  assert.equal(analizarVoz(voz(0), 5).veredicto, 'silencio');
+  assert.equal(analizarVoz(voz(0, 0.01), 5).veredicto, 'silencio', 'el ruido de fondo no cuenta como voz');
+  assert.equal(analizarVoz(voz(1), 1).veredicto, 'completa'); assert.equal(analizarVoz(voz(5), 5).veredicto, 'completa'); assert.equal(analizarVoz(voz(5), 5).golpes, 5);
+  assert.equal(analizarVoz(voz(2), 6).veredicto, 'corta', 'quedarse a medias no pasa');
+  assert.equal(analizarVoz(voz(4), 6).veredicto, 'completa', 'tolera juntar sílabas'); assert.equal(analizarVoz(voz(9), 6).veredicto, 'completa', 'tolera hablar despacio');
+  assert.equal(analizarVoz([], 3).veredicto, 'silencio');
+  const o = leer('js/oido.js'), v = o.slice(o.indexOf('Verificador propio'));
+  assert.ok(!/fetch\(|XMLHttpRequest|WebSocket|sendBeacon/.test(o), 'nada sale del teléfono');
+  assert.ok(/NO reconoce palabras/.test(v), 'el código dice con claridad lo que el verificador no hace');
+});

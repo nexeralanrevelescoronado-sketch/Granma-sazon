@@ -60,3 +60,10 @@
 - **Versión en español: Reina-Valera 1909** (dominio público). La **Reina-Valera 1960 no se puede incluir**: tiene derechos vigentes (Sociedades Bíblicas en América Latina, renovados por Sociedades Bíblicas Unidas) y pide licencia. Si algún día se consigue por escrito, entra por el mismo camino previsto para NTV/NLT (`docs/BIBLIA.md`).
 - **El texto no se toca.** `scripts/datos/biblia-huella.json` guarda la huella (SHA-256) de RV1909, KJV y WEB tal como se bajaron de sus fuentes; `npm test` falla si cambia una sola letra.
 - **Glosario bíblico aparte** (`scripts/datos/glosario/biblia-en.json` y `biblia-es.json`, en el paquete «Biblia»): solo el significado de la palabra, formal, sin bromas ni interpretación. Cubre el 100 % de las palabras de los pasajes de la ruta y las ~2,000 formas más frecuentes de cada idioma (≈ 93 % de las palabras del texto en inglés y ≈ 87 % en español). **Pendiente:** el resto son unas 14,000 formas en inglés y 26,000 en español (nombres y formas poco frecuentes).
+
+## Verificador propio de voz («que me escuche Granma, aquí en mi teléfono»)
+
+- Corre entero en el teléfono, en vivo, sin internet y sin servicio de terceros (`js/oido.js`: `grabar`, `analizarVoz`, `silabas`). Funciona en el navegador y con la app en la pantalla de inicio: solo necesita el permiso del micrófono.
+- **Qué comprueba:** que la persona sí habló, que dijo la frase completa (cuenta los golpes de voz y los compara con las sílabas de la frase) y que no se quedó a medias. El micrófono se mueve con su voz y se detiene solo al terminar. Luego puede oírse y compararse con 🔊.
+- **Qué no hace:** no reconoce palabras ni califica la pronunciación. Eso solo lo hace un servicio de voz (el del teléfono, que sigue disponible si la persona lo elige) o un modelo de reconocimiento, que pesa decenas de MB y sería una librería de terceros.
+- Los tres caminos conviven: servicio de voz del teléfono (con permiso) → verificador propio → decirlo en voz alta sin micrófono.

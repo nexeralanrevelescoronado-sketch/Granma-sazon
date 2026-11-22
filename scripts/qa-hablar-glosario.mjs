@@ -94,9 +94,11 @@ for (let i = 0; i < 20; i++) { await pg.clock.runFor(200); if (await pg.locator(
 ok((await pg.locator('[data-oido-modo]').count()) === 2 && !(await pg.locator('[data-micro]').isVisible()), 'la primera vez pregunta cómo practicar y el micrófono no se usa hasta elegir');
 await pg.screenshot({ path: join(CAPT, '23-permiso-voz.png') });
 await pg.click('[data-oido-modo="local"]');
-ok((await pg.evaluate(() => JSON.parse(localStorage.getItem('granma:v1')).ajustes.oido)) === 'local' && /no sale de tu teléfono/.test(await pg.locator('[data-privado]').textContent()), 'al elegir «solo grabarme» queda guardado y lo dice en pantalla');
-await pg.click('[data-micro]'); await pg.waitForFunction(() => document.querySelector('[data-micro]').classList.contains('oyendo')); await pg.clock.runFor(900); await pg.click('[data-micro]');
-await pg.waitForSelector('[data-mivoz]'); ok(true, 'se graba y aparece «Mi voz» para escucharse');
+ok((await pg.evaluate(() => JSON.parse(localStorage.getItem('granma:v1')).ajustes.oido)) === 'local' && /solo en tu teléfono/.test(await pg.locator('[data-privado]').textContent()), 'al elegir «aquí en mi teléfono» queda guardado y lo dice en pantalla');
+await pg.click('[data-micro]'); await pg.waitForFunction(() => document.querySelector('[data-micro]').classList.contains('oyendo'));
+for (let i = 0; i < 30 && !(await pg.locator('[data-mivoz]').count()); i++) { await pg.clock.runFor(400); await pg.waitForTimeout(60); }
+const dicho = await pg.locator('[data-oido]').textContent(); ok((await pg.locator('[data-mivoz]').count()) === 1, `el verificador propio escucha, se detiene solo y deja oírse (dijo: «${dicho}»)`);
+ok(/completa|cortita|No alcancé|Listo/.test(dicho), 'da su veredicto sin internet y sin servicio de voz');
 await pg.clock.runFor(61000); await pg.waitForFunction(() => !document.querySelector('[data-mivoz]'));
 ok(/ya se borró/.test(await pg.locator('[data-oido]').textContent()), 'pasado 1 minuto la grabación se borra sola y lo avisa');
 await pg.goto(B + '#/perfil'); await pg.clock.runFor(1500); await pg.waitForSelector('.privacidad', { timeout: 8000 }).catch(() => {}); ok((await pg.locator('.privacidad li').count()) === 4 && (await pg.locator('[data-probar-micro]').count()) === 1, 'el perfil trae el aviso de privacidad y «Probar mi micrófono»');

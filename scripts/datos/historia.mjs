@@ -1,11 +1,11 @@
-// Historia 1 de Granma: "Mi niñez en México". 5 capitulos.
+// Historia 1 de Granma: "Mi vida en México" (de la niñez a las posadas con el Abuelo). 6 capítulos.
 // ejemplos[interes] = 3 frases [en, es, palabraEn, palabraEs]; la palabra debe ser una de las del capitulo.
 const P = (en, es) => ({ en, es });
 const E = (en, es, we, ws) => ({ en, es, we, ws });
 
 export const historia = {
   id: 'historia-1',
-  titulo: P('Granma\'s childhood in Mexico', 'La niñez de Granma en México'),
+  titulo: P('Granma\'s life in Mexico', 'La vida de Granma en México'),
   nivel: 'A1',
   capitulos: [
     {

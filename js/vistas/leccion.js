@@ -1,5 +1,6 @@
 // Lección: relato de Granma → palabras → 5 ejercicios → consejo del Abuelo → resultado.
-import { estado, guardar, u, tgt, nat, Ln, Lt, ganarXP, evento, vidas, msParaVida } from '../state.js';
+import { estado, guardar, u, tgt, nat, Ln, Lt, ganarXP, evento, sinEnergia, marcarRepetir, limpiarRepetir, tocaRepetir } from '../state.js';
+import { sinEnergiaHTML } from './sin-energia.js';
 import { historia, recetas as cargarRecetas } from '../datos.js';
 import { ejerciciosDeCapitulo, jugar } from '../ejercicios.js';
 import { pj } from '../personajes.js';
@@ -16,7 +17,8 @@ export async function montar(main, { args }) {
   let activo = true;
 
   function relato() {
-    main.innerHTML = `<p class="etiqueta">${u('Capítulo', 'Chapter')} ${cap.id} / ${h.capitulos.length}</p><h1>${esc(Lt(cap.titulo))}</h1><p class="muted" lang="${N}">${esc(Ln(cap.titulo))}</p>
+    const repetir = S.repetir?.cap === id && tocaRepetir();
+    main.innerHTML = `${repetir ? `<div class="tarjeta crema2" role="status">🔁 ${u('Hoy repetimos esta lección con calma, para no perder el hilo.', 'Today we repeat this lesson calmly, so the thread is not lost.')}</div>` : ''}<p class="etiqueta">${u('Capítulo', 'Chapter')} ${cap.id} / ${h.capitulos.length}</p><h1>${esc(Lt(cap.titulo))}</h1><p class="muted" lang="${N}">${esc(Ln(cap.titulo))}</p>
       ${cap.relato[T].map((p, i) => `<div class="dialogo ${i % 2 ? 'der' : ''}">${pj('granma', i === 0 ? 'contento' : i === cap.relato[T].length - 1 ? 'aplaudiendo' : 'pensando', { ancho: 78 })}<div class="globo"><p class="bilingue"><span class="l1" lang="${T}">${esc(p)}</span> <button class="btn-icono" data-voz="${i}" aria-label="${u('Escuchar', 'Listen')}">🔊</button><br><span class="l2" lang="${N}">${esc(cap.relato[N][i])}</span></p></div></div>`).join('')}
       ${boton(u('Ver las palabras nuevas', 'See the new words'), 'palabras')}`;
   }
@@ -27,19 +29,19 @@ export async function montar(main, { args }) {
     if (!S.caps[id]?.palabras) { S.caps[id] = { ...(S.caps[id] || {}), palabras: true }; guardar(); evento('palabras', cap.palabras.length); }
   }
   async function ejercicios() {
-    if (vidas() === 0) return sinVidas();
+    if (sinEnergia()) return sinVidas(false);
     const items = ejerciciosDeCapitulo(cap, S.perfil.interes);
     main.innerHTML = '<div id="juego"></div>';
     const r = await jugar(main.querySelector('#juego'), items, { usarVidas: true });
     if (!activo) return;
     if (r.salio) { location.hash = '#/historia'; return; }
-    if (r.sinVidas) return sinVidas();
+    if (r.sinVidas) return sinVidas(true);
     resultado = r; consejo();
   }
-  function sinVidas() {
-    const min = Math.ceil(msParaVida() / 60000);
-    main.innerHTML = `<div class="vacio">${pj('granma', 'animo', { ancho: 150 })}<h1>${u('Se acabaron las tortillitas', 'Out of tortillas')}</h1><p>${u(`Descansa tantito, mijo. En unos ${min} min te toca otra tortillita, o repasa las palabras y te regalo una ya.`, `Rest a little, mijo. In about ${min} min you get another tortilla, or review the words and I will give you one right now.`)}</p>
-      <p><a class="btn olla" href="#/repaso">${u('Repasar palabras (+1 tortillita)', 'Review words (+1 tortilla)')}</a></p><p><a class="btn sec" href="#/historia">${u('Volver al mapa', 'Back to the map')}</a></p></div>`;
+  // Más de 10 errores hoy: se acabó la energía. Esta lección queda para repetirse mañana (así no se pierde el hilo).
+  function sinVidas(aqui) {
+    if (aqui) marcarRepetir({ cap: id, titulo: Ln(cap.titulo) });
+    main.innerHTML = sinEnergiaHTML(Ln(cap.titulo));
   }
   let resultado = { aciertos: 0, errores: 0 };
   function consejo() {
@@ -53,6 +55,7 @@ export async function montar(main, { args }) {
   async function fin() {
     const primera = !S.caps[id]?.hecho, xp = 20 + resultado.aciertos * 8;
     S.caps[id] = { ...(S.caps[id] || {}), hecho: true, aciertos: resultado.aciertos, errores: resultado.errores }; guardar();
+    if (S.repetir?.cap === id) limpiarRepetir();
     if (primera) { ganarXP(xp); evento('lecciones'); } else ganarXP(5);
     sonido.logro(); confeti(40);
     const sig = h.capitulos.find((c) => c.id === id + 1), todos = h.capitulos.every((c) => S.caps[c.id]?.hecho);
@@ -61,6 +64,7 @@ export async function montar(main, { args }) {
       <p>${u('Aciertos', 'Correct')}: <strong>${resultado.aciertos}</strong> · ${u('Intentos fallidos', 'Missed')}: <strong>${resultado.errores}</strong></p><p class="estrella">+${primera ? xp : 5} XP</p></div>
       ${rec ? `<div class="tarjeta crema2"><h2>🍲 ${u('Ahora, a cocinar', 'Now, let\'s cook')}</h2><p>${esc(Ln(rec.nombre))} — ${esc(Ln(rec.resumen))}</p><a class="btn olla" href="#/receta/${rec.id}">${u('Ver la receta', 'See the recipe')}</a></div>` : ''}
       ${todos ? `<div class="tarjeta verde"><h2>🏆 ${u('¡Terminaste la Historia 1!', 'You finished Story 1!')}</h2><p>${u('Tu Constancia Granma está lista.', 'Your Granma Certificate is ready.')}</p><a class="btn olla" href="#/perfil">${u('Ver mi constancia', 'See my certificate')}</a></div>` : sig ? `<a class="btn grande" href="#/leccion/${sig.id}">${u('Siguiente capítulo', 'Next chapter')} →</a>` : ''}
+      <a class="btn grande olla mt" href="#/prueba/${id}">⭐ ${u('Haz la prueba de lo aprendido', 'Take the quiz on what you learned')}</a>
       <p class="mt"><a class="btn sec" href="#/historia">${u('Volver al mapa', 'Back to the map')}</a></p>`;
   }
 

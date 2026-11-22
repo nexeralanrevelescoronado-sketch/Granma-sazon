@@ -17,7 +17,7 @@ export async function generarConstancia({ nombre, fecha, aprende }) {
   let t = 76; x.font = `bold ${t}px Georgia, serif`; while (x.measureText(nombre).width > 900 && t > 36) { t -= 4; x.font = `bold ${t}px Georgia, serif`; }
   centro(nombre, 570, `bold ${t}px Georgia, serif`, C.verde);
   x.strokeStyle = C.olla; x.lineWidth = 4; x.beginPath(); x.moveTo(W / 2 - 330, 594); x.lineTo(W / 2 + 330, 594); x.stroke();
-  centro(es ? 'completed "Granma\'s childhood in Mexico" and learned Spanish with recipes from Mexico.' : 'terminó «La niñez de Granma en México» y aprendió inglés con recetas de México.', 660, '31px Georgia, serif', C.cafe);
+  centro(es ? 'completed "Granma\'s life in Mexico" and learned Spanish with recipes from Mexico.' : 'terminó «La vida de Granma en México» y aprendió inglés con recetas de México.', 660, '31px Georgia, serif', C.cafe);
   centro(es ? 'Level A1 · Spanish' : 'Nivel A1 · Inglés', 730, 'bold 46px Georgia, serif', C.terra);
   centro(fecha, 800, '30px Georgia, serif', C.cafe);
   x.drawImage(granma, 120, 560, 330, 440); x.drawImage(abuelo, W - 450, 560, 330, 440);

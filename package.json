@@ -11,7 +11,7 @@
     "biblia": "python3 scripts/build-biblia.py",
     "serve": "node scripts/servidor.mjs",
     "test": "node --test test/contenido.test.mjs && node .claude/skills/contenido-granma/scripts/validar.mjs --repo && node .claude/skills/contenido-granma/scripts/validar.mjs --autoprueba",
-    "qa": "node scripts/qa-offline.mjs && node scripts/qa-descargas.mjs && node scripts/qa-animaciones.mjs && node scripts/qa-rendimiento.mjs"
+    "qa": "node scripts/qa-offline.mjs && node scripts/qa-descargas.mjs && node scripts/qa-animaciones.mjs && node scripts/qa-rendimiento.mjs && node scripts/qa-pruebas.mjs"
   },
   "engines": { "node": ">=20" }
 }

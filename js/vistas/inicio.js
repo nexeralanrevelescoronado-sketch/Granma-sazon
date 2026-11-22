@@ -1,4 +1,4 @@
-import { estado, u, tgt, nat, Ln, vidas, rachaVigente, misionesDeHoy, progresoMision, MAX_VIDAS } from '../state.js';
+import { estado, u, tgt, nat, Ln, vidas, rachaVigente, misionesDeHoy, progresoMision, MAX_VIDAS, sinEnergia, tocaRepetir } from '../state.js';
 import { pj } from '../personajes.js';
 import { esc, delDia, resaltar } from '../util.js';
 import { consejos, cotorreos, historia } from '../datos.js';
@@ -16,9 +16,11 @@ export function montar(main) {
       <h1 style="font-size:1.25rem;margin:0">${u(`¡Hola${nombre}, mijo!`, `Hello${nombre}, mijo!`)}</h1>
       <p>${u(rachaVigente() ? `Llevas <strong>${rachaVigente()}</strong> día(s) de racha. ¡Qué orgullo!` : 'Hoy es un buen día para empezar tu racha.', rachaVigente() ? `You have a <strong>${rachaVigente()}</strong>-day streak. So proud!` : 'Today is a great day to start your streak.')}</p></div></section>
     <a class="btn grande olla" id="cta" href="#/historia">▶ ${u('Historia de Granma', 'Granma\'s story')}</a>
+    <a class="btn sec bloque mt" id="cta-prueba" href="#/historia" hidden></a>
     <div class="rejilla mt"><a class="btn sec" href="#/reto">⏱ ${u('Reto de 60 s', '60-second challenge')}</a><a class="btn sec" href="#/descargas">⬇ ${u('Sin internet', 'Offline')}</a></div>
     <section class="tarjeta mt2" aria-labelledby="h-misiones"><h2 id="h-misiones">${u('Misiones de hoy', 'Today\'s missions')}</h2><ul style="list-style:none;padding:0;margin:0">${misiones}</ul>
-      <p class="muted" style="margin-top:8px"><span class="vidas" aria-hidden="true">${Array.from({ length: MAX_VIDAS }, (_, i) => `<i class="tortilla ${i < vidas() ? '' : 'vacia'}"></i>`).join('')}</span> ${u('tortillitas', 'tortillas')}</p></section>
+      <p class="muted" style="margin-top:8px"><span class="vidas" aria-hidden="true">${Array.from({ length: MAX_VIDAS }, (_, i) => `<i class="tortilla ${i < vidas() ? '' : 'vacia'}"></i>`).join('')}</span> ${u(`energía de hoy: ${vidas()} / ${MAX_VIDAS}`, `energy today: ${vidas()} / ${MAX_VIDAS}`)}</p>
+      ${sinEnergia() ? `<p role="status"><strong>${u('Se acabó la energía por hoy.', 'Out of energy for today.')}</strong> ${u('Mañana repetimos con calma.', 'Tomorrow we repeat calmly.')}</p>` : ''}</section>
     <section class="tarjeta" id="tarjeta-consejo" style="min-height:11.5rem" aria-labelledby="h-consejo"><h2 id="h-consejo" class="solo-lector">${u('Consejo del día', 'Advice of the day')}</h2><div data-cont></div></section>
     <section class="tarjeta" id="tarjeta-chiste" style="min-height:11.5rem" aria-labelledby="h-chiste"><h2 id="h-chiste" class="solo-lector">${u('Chiste del día', 'Joke of the day')}</h2><div data-cont></div></section>`;
 
@@ -40,6 +42,11 @@ export function montar(main) {
   historia().then((h) => {
     const cta = main.querySelector('#cta'); if (!cta) return;
     const sig = h.capitulos.find((c) => !S.caps[c.id]?.hecho);
+    // prueba pendiente: la del último capítulo terminado que todavía no se aprueba
+    const pend = [...h.capitulos].reverse().find((c) => S.caps[c.id]?.hecho && !S.pruebas[c.id]?.aprobada), bp = main.querySelector('#cta-prueba');
+    if (pend && bp) { bp.hidden = false; bp.href = `#/prueba/${pend.id}`; bp.textContent = `⭐ ${u('Prueba', 'Quiz')} ${pend.id}: ${u('lo que llevas aprendido', 'what you have learned')}`; }
+    // lo que quedó para repetir (se acabó la energía): va primero
+    if (S.repetir) { cta.href = S.repetir.cap ? `#/leccion/${S.repetir.cap}` : `#/prueba/${S.repetir.prueba}`; cta.textContent = `🔁 ${tocaRepetir() ? u('Hoy repetimos', 'Today we repeat') : u('Mañana repetimos', 'Tomorrow we repeat')}: ${S.repetir.titulo}`; return; }
     if (sig) { cta.href = `#/leccion/${sig.id}`; cta.textContent = `▶ ${u('Continuar', 'Continue')}: ${Ln(sig.titulo)}`; }
     else cta.textContent = `🏆 ${u('¡Terminaste la historia! Ver constancia', 'You finished the story! See your certificate')}`;
   }).catch(() => {});

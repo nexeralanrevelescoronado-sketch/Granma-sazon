@@ -1,7 +1,7 @@
 // Motor de ejercicios: generación (según el interés) y reproductor compartido por lecciones, retos,
 // consejos, cotorreos y la ruta de Biblia. Sin librerías.
 import { esc, mezclar, al, sinAcentos } from './util.js';
-import { u, tgt, nat, vidas, perderVida } from './state.js';
+import { u, tgt, nat, vidas, perderVida, sinEnergia, MAX_VIDAS } from './state.js';
 import { pj } from './personajes.js';
 import { sonido } from './sound.js';
 import { confeti, animar, vibrar, hablar } from './fx.js';
@@ -51,14 +51,14 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
     const cab = () => `<div class="sesion-top">
       <button class="btn-icono" data-salir aria-label="${u('Salir', 'Exit')}">✕</button>
       <div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${hechos}" aria-label="${u('Progreso', 'Progress')}"><i style="transform:scaleX(${((hechos / total) * 100) / 100})"></i></div>
-      ${usarVidas ? `<span class="vidas" role="img" aria-label="${u('Tortillitas', 'Tortillas')}: ${vidas()}">${Array.from({ length: 5 }, (_, i) => `<i class="tortilla ${i < vidas() ? '' : 'vacia'}"></i>`).join('')}</span>` : ''}
+      ${usarVidas ? `<span class="vidas" role="img" aria-label="${u('Energía', 'Energy')}: ${vidas()} / ${MAX_VIDAS}">${Array.from({ length: MAX_VIDAS }, (_, i) => `<i class="tortilla mini ${i < vidas() ? '' : 'vacia'}"></i>`).join('')}</span>` : ''}
     </div>`;
 
     const cierre = (extra) => { raiz.removeEventListener('click', delegado); resolver({ aciertos, errores, ...extra }); };
 
     function siguiente() {
       bloqueado = false;
-      if (usarVidas && vidas() === 0) return cierre({ sinVidas: true });
+      if (usarVidas && sinEnergia()) return cierre({ sinVidas: true });
       if (!cola.length) return cierre({ completo: true });
       actual = cola.shift(); pintar();
     }
@@ -66,7 +66,7 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
     function pintar() {
       const it = actual; let cuerpo = '';
       if (it.tipo === 'mcq') {
-        cuerpo = `<p class="pregunta">${esc(it.prompt)}${it.frase ? `<br><span lang="${tgt()}">${esc(it.frase)}</span>` : ''}${it.ayuda ? `<small>${esc(it.ayuda)}</small>` : ''}</p>
+        cuerpo = `<p class="pregunta">${esc(it.prompt)}${it.frase ? `<br><span lang="${it.langFrase || tgt()}">${esc(it.frase)}</span>` : ''}${it.ayuda ? `<small>${esc(it.ayuda)}</small>` : ''}</p>
           ${it.voz ? `<button class="btn-icono" data-voz aria-label="${u('Escuchar', 'Listen')}">🔊</button>` : ''}
           <div class="opciones" role="group" aria-label="${u('Opciones', 'Options')}">${it.opciones.map((o) => `<button class="opcion" data-op="${esc(o)}" aria-pressed="false">${esc(o)}</button>`).join('')}</div>`;
       } else if (it.tipo === 'orden') {
@@ -106,7 +106,7 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
     }
 
     // La tortillita que acaba de perderse (la de índice = vidas actuales) se desinfla y cae
-    function perdioTortilla() { tortillaPierde(raiz.querySelectorAll('.vidas .tortilla')[vidas()]); }
+    function perdioTortilla() { const el = raiz.querySelectorAll('.vidas .tortilla')[vidas()]; if (el && !el.classList.contains('vacia')) tortillaPierde(el); }
 
     function delegado(ev) {
       const b = ev.target.closest('button'); if (!b || !raiz.contains(b)) return;

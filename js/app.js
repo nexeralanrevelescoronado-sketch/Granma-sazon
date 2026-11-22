@@ -19,6 +19,7 @@ const rutas = {
   cotorreo: () => import('./vistas/cotorreo.js'),
   biblia: () => import('./vistas/biblia.js'),
   descargas: () => import('./vistas/descargas.js'),
+  prueba: () => import('./vistas/prueba.js'),
   reto: () => import('./vistas/reto.js'),
   repaso: () => import('./vistas/reto.js'),
   perfil: () => import('./vistas/perfil.js'),
@@ -52,13 +53,13 @@ function pintarCromo() {
     <div class="chips">
       <span class="chip" role="group" title="${u('Racha diaria', 'Daily streak')}" aria-label="${u('Racha', 'Streak')}: ${rachaVigente()}">${icono('racha', true)}${rachaVigente()}</span>
       <span class="chip" role="group" title="XP" aria-label="XP: ${S.xp}">${icono('xp', true)}${S.xp}</span>
-      <span class="chip" role="group" aria-label="${u('Tortillitas', 'Tortillas')}: ${vidas()}"><i class="tortilla"></i>${vidas()}</span>
+      <span class="chip" role="group" title="${u('Energía de hoy', 'Energy today')}" aria-label="${u('Energía', 'Energy')}: ${vidas()}"><i class="tortilla"></i>${vidas()}</span>
       <button class="chip" id="btn-sonido" aria-pressed="${S.ajustes.sonido}" aria-label="${u('Sonido', 'Sound')}">${S.ajustes.sonido ? '🔊' : '🔇'}</button>
       ${vozDisponible() ? `<button class="chip" id="btn-voz" aria-pressed="${!!S.ajustes.voz}" aria-label="${u('Voz de Granma y el Abuelo', 'Voice of Granma and Grandpa')}" title="${u('Voz de los abuelos', 'Grandparents\' voice')}">🗣${S.ajustes.voz ? '' : '<span aria-hidden="true" style="position:absolute;width:22px;border-top:3px solid #fff;transform:rotate(-40deg)"></span>'}</button>` : ''}
     </div>`;
   const items = [['', 'inicio', u('Inicio', 'Home')], ['historia', 'historia', u('Historia', 'Story')], ['recetas', 'recetas', u('Recetas', 'Recipes')], ['consejos', 'consejos', u('Abuelo', 'Grandpa')], ['cotorreo', 'cotorreo', u('Cotorreo', 'Chat')], ['biblia', 'biblia', u('Biblia', 'Bible')]];
   const ruta = rutaActual().base;
-  nav.innerHTML = items.map(([r, ic, tx]) => `<a href="#/${r}" ${(r === ruta || (r === 'consejos' && ruta === 'consejo') || (r === 'recetas' && ruta === 'receta') || (r === 'historia' && ruta === 'leccion')) ? 'aria-current="page"' : ''}>${icono(ic)}<span>${tx}</span></a>`).join('');
+  nav.innerHTML = items.map(([r, ic, tx]) => `<a href="#/${r}" ${(r === ruta || (r === 'consejos' && ruta === 'consejo') || (r === 'recetas' && ruta === 'receta') || (r === 'historia' && (ruta === 'leccion' || ruta === 'prueba'))) ? 'aria-current="page"' : ''}>${icono(ic)}<span>${tx}</span></a>`).join('');
 }
 $('#encabezado').addEventListener('click', (e) => {
   if (e.target.closest('#btn-sonido')) { sonido.alternar(); versionPintada = ''; pintarCromo(); }

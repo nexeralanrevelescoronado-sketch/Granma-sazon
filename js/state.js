@@ -1,15 +1,14 @@
 // Estado del juego: todo vive en el dispositivo (localStorage). Funciona 100% sin internet.
 import { fechaLocal, ayer, numeroDeDia } from './util.js';
 const KEY = 'granma:v1';
-export const MAX_VIDAS = 5;
-export const REGEN_MS = 10 * 60 * 1000;
+export const MAX_VIDAS = 10;   // energía del día: 10 tortillitas = 10 errores permitidos
 const bus = new EventTarget();
 export const alCambiar = (fn) => bus.addEventListener('cambio', fn);
 
 const base = () => ({
   v: 1,
   perfil: { aprende: null, interes: null, cocina: null, nombre: '', listo: false },
-  xp: 0, racha: { n: 0, ultimo: null }, vidas: { n: MAX_VIDAS, t: Date.now() },
+  xp: 0, racha: { n: 0, ultimo: null }, vidas: { n: MAX_VIDAS, fecha: '', agotada: false }, repetir: null, pruebas: {},
   caps: {}, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {},
   misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 },
   ajustes: { sonido: true, voz: false }, constancia: { fecha: null },
@@ -30,18 +29,21 @@ export const u = (es, en) => (nat() === 'es' ? es : en);
 export const Ln = (o) => o[nat()];      // texto en el idioma nativo
 export const Lt = (o) => o[tgt()];      // texto en el idioma que aprende
 
-/* Tortillitas (vidas) con regeneración */
-export function vidas() {
-  const v = S.vidas;
-  if (v.n < MAX_VIDAS) {
-    const ganadas = Math.floor((Date.now() - v.t) / REGEN_MS);
-    if (ganadas > 0) { v.n = Math.min(MAX_VIDAS, v.n + ganadas); v.t = v.n >= MAX_VIDAS ? Date.now() : v.t + ganadas * REGEN_MS; guardar(); }
-  } else v.t = Date.now();
-  return v.n;
+/* Energía del día (tortillitas): 10 por día. Cada error se come una.
+   Con MÁS de 10 errores la energía se agota: la lección o prueba se repite mañana (no se regenera durante el día). */
+function sincronizarEnergia() {
+  const hoy = fechaLocal(), v = S.vidas;
+  if (!v || v.fecha !== hoy || typeof v.n !== 'number') { S.vidas = { n: MAX_VIDAS, fecha: hoy, agotada: false }; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch { /* sin espacio */ } }
 }
-export const msParaVida = () => (vidas() >= MAX_VIDAS ? 0 : Math.max(0, REGEN_MS - (Date.now() - S.vidas.t)));
-export function perderVida() { vidas(); if (S.vidas.n >= MAX_VIDAS) S.vidas.t = Date.now(); S.vidas.n = Math.max(0, S.vidas.n - 1); guardar(); return S.vidas.n; }
-export function darVida(n = 1) { vidas(); S.vidas.n = Math.min(MAX_VIDAS, S.vidas.n + n); guardar(); }
+export function vidas() { sincronizarEnergia(); return S.vidas.n; }
+export function sinEnergia() { sincronizarEnergia(); return !!S.vidas.agotada; }
+/** Un error: se come una tortillita; si ya no quedaba ninguna (error n.º 11), la energía se agota por hoy. */
+export function perderVida() { sincronizarEnergia(); if (S.vidas.n > 0) S.vidas.n -= 1; else S.vidas.agotada = true; guardar(); return S.vidas.n; }
+/** Lo que hay que repetir mañana: { cap } o { prueba }, con su título. */
+export function marcarRepetir(que) { S.repetir = { ...que, fecha: fechaLocal() }; guardar(); }
+export function limpiarRepetir() { S.repetir = null; guardar(); }
+/** true si lo pendiente de repetir es de un día anterior (hoy ya hay energía para hacerlo). */
+export const tocaRepetir = () => !!S.repetir && S.repetir.fecha !== fechaLocal();
 
 /* Racha diaria */
 export function actividad() {
@@ -85,6 +87,7 @@ export const MISIONES = [
   { id: 'm4', xp: 25, req: { lecciones: 1 }, texto: { es: 'Termina una lección', en: 'Finish a lesson' } },
   { id: 'm5', xp: 20, req: { pasos: 3 }, texto: { es: 'Completa 3 pasos de una receta', en: 'Complete 3 recipe steps' } },
   { id: 'm6', xp: 15, req: { biblia: 1 }, texto: { es: 'Lee un pasaje de la Biblia', en: 'Read a Bible passage' } },
+  { id: 'm7', xp: 25, req: { pruebas: 1 }, texto: { es: 'Aprueba una prueba', en: 'Pass a quiz' } },
 ];
 export function misionesDeHoy() {
   const d = numeroDeDia(), otros = MISIONES.slice(1);

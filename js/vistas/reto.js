@@ -1,5 +1,5 @@
 // Reto rápido de 60 segundos y repaso de palabras (devuelve una tortillita).
-import { estado, guardar, u, tgt, nat, ganarXP, evento, darVida, vidas } from '../state.js';
+import { estado, guardar, u, tgt, nat, ganarXP, evento } from '../state.js';
 import { historia } from '../datos.js';
 import { pj } from '../personajes.js';
 import { esc, mezclar, mmss, al } from '../util.js';
@@ -17,7 +17,7 @@ function reto(main, pool, S) {
   const T = tgt(), N = nat(); let timer = null, activo = true;
   const portada = () => {
     main.innerHTML = `<div class="centro">${pj('granma', 'animo', { ancho: 150, clase: 'anim-brinca' })}</div><h1 class="centro">${u('Reto de 60 segundos', '60-second challenge')}</h1>
-      <p class="centro">${u('Responde cuantas puedas. Cada acierto vale 2 XP. ¡Aquí no se gastan tortillitas!', 'Answer as many as you can. Each correct answer is worth 2 XP. No tortillas are used here!')}</p>
+      <p class="centro">${u('Responde cuantas puedas. Cada acierto vale 2 XP. ¡Aquí no se gasta energía!', 'Answer as many as you can. Each correct answer is worth 2 XP. No energy is used here!')}</p>
       <p class="centro muted">${u('Tu mejor marca', 'Your best score')}: <strong>${S.stats.retoMejor}</strong></p><button class="btn grande olla" data-ir>${u('¡Empezar!', 'Start!')}</button>`;
   };
   function jugar() {
@@ -64,8 +64,8 @@ function repaso(main, pool, S) {
   const T = tgt(), N = nat(), cartas = mezclar(pool).slice(0, 8); let i = 0, visto = false;
   const pintar = () => {
     if (i >= cartas.length) {
-      darVida(1); sonido.logro();
-      main.innerHTML = `<div class="vacio">${pj('granma', 'aplaudiendo', { ancho: 150, clase: 'anim-aplaude' })}<h1>${u('¡Repaso listo!', 'Review done!')}</h1><p>${u('Te regalo una tortillita.', 'Here is a tortilla for you.')} <span class="tortilla"></span> ${vidas()}</p><a class="btn olla" href="#/historia">${u('Volver a la historia', 'Back to the story')}</a></div>`; return;
+      sonido.logro();
+      main.innerHTML = `<div class="vacio">${pj('granma', 'aplaudiendo', { ancho: 150, clase: 'anim-aplaude' })}<h1>${u('¡Repaso listo!', 'Review done!')}</h1><p>${u('Repasar no gasta energía y deja las palabras fresquitas.', 'Reviewing uses no energy and keeps the words fresh.')}</p><a class="btn olla" href="#/historia">${u('Volver a la historia', 'Back to the story')}</a></div>`; return;
     }
     const c = cartas[i];
     main.innerHTML = `<h1>${u('Repaso de palabras', 'Word review')}</h1><p class="muted">${i + 1} / ${cartas.length}</p>

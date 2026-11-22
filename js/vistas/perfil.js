@@ -15,7 +15,7 @@ export async function montar(main) {
   let urlPrevia = null;
 
   main.innerHTML = `<h1>${u('Mi perfil', 'My profile')}</h1>
-    <div class="tarjeta"><div class="fila"><strong>${S.xp} XP</strong><span>🔥 ${rachaVigente()} ${u('días', 'days')}</span><span>🎯 ${u('Reto', 'Challenge')}: ${S.stats.retoMejor}</span></div></div>
+    <div class="tarjeta"><div class="fila"><strong>${S.xp} XP</strong><span>🔥 ${rachaVigente()} ${u('días', 'days')}</span><span>🎯 ${u('Reto', 'Challenge')}: ${S.stats.retoMejor}</span><span>⭐ ${u('Pruebas', 'Quizzes')}: ${Object.values(S.pruebas || {}).filter((x) => x.aprobada).length}</span></div></div>
     <h2>${u('Insignias', 'Badges')}</h2><div class="insignias">${listaIns.map((i) => { const ok = S.insignias[i.id]; return `<div class="insignia ${ok ? '' : 'bloq'}"><span class="medalla" aria-hidden="true">${i.emoji}</span><strong>${esc(Ln(i.nombre))}</strong><br><small class="muted">${esc(Ln(i.desc))}</small>${ok ? `<br><small>✓ ${ok}</small>` : ''}</div>`; }).join('')}</div>
     <h2 class="mt2">🏆 ${u('Constancia Granma', 'Granma Certificate')}</h2>
     <div class="tarjeta">${hecha ? `<p>${u('¡La ganaste! Escribe tu nombre para tu constancia (se hace en tu teléfono).', 'You earned it! Type your name for your certificate (made on your phone).')}</p>

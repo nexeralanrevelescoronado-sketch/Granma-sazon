@@ -2,7 +2,7 @@
 
 **Recetas de México para el mundo.** App web instalable (PWA) para aprender **inglés y español** de forma inmersiva, guiada por dos abuelos mexicanos originales: **Granma** (la abuelita tierna que cuenta su vida) y **el Abuelo** (serio, sabio, de pocos pero buenos consejos). Cada capítulo enseña idioma + una receta. Se siente como un juego y **funciona sin internet**.
 
-> El SPEC completo está en [`SPEC.md`](SPEC.md).
+> El SPEC completo está en [`SPEC.md`](SPEC.md); lo que cambió después, en [`docs/CAMBIOS-AL-SPEC.md`](docs/CAMBIOS-AL-SPEC.md).
 
 ## Qué trae
 
@@ -13,7 +13,7 @@
 | **El consejo del Abuelo** | 45 consejos (trabajo, amistad, familia, constancia, fe, dinero, cocina) con claves y mini-ejercicio · consejo del día + WhatsApp |
 | **Cotorreo con Granma** | 33 chistes, adivinanzas, refranes, trabalenguas y juegos de palabras sanos · «¿Qué quiso decir?» · el Abuelo de remate serio · chiste del día + WhatsApp |
 | **Biblia** | Lado a lado o una versión · **RV1909, KJV y WEB** (dominio público, offline) · búsqueda · ruta de ejercicios con versículos ES/EN · NTV/NLT preparadas como proveedores con licencia (apagadas) |
-| **Juego** | Racha diaria, XP, «tortillitas» (vidas que se regeneran), mapa de capítulos, retos de 60 s, misiones diarias, 5 insignias, sonidos opcionales, confeti, **Constancia Granma** (PNG generado en el dispositivo) |
+| **Juego** | Racha diaria, XP, **energía del día** (10 «tortillitas»: con más de 10 errores la lección se repite mañana), **pruebas acumulativas** tras cada capítulo (primero en español, luego en inglés), mapa de capítulos, retos de 60 s, misiones diarias, 5 insignias, sonidos opcionales, confeti, **Constancia Granma** (PNG generado en el dispositivo) |
 | **Sin internet** | Pantalla «Descargas»: paquetes con su peso, progreso, **pausa/reanudación**, reanuda sola al volver el internet, espacio usado, borrar por paquete |
 
 ## Personajes y voz

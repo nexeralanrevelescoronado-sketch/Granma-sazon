@@ -190,3 +190,48 @@ test('animaciones: módulo propio, solo transform/opacity, movimiento reducido, 
   assert.ok(json('data/paquetes.json').paquetes.reduce((s, x) => s + x.bytes, 0) < 50 * 1048576);
   assert.ok(leer('sw.js').includes('assets/animaciones/animaciones.css') && leer('sw.js').includes('demo-animaciones.html'), 'animaciones precacheadas');
 });
+
+test('energía diaria: 10 errores permitidos, el n.º 11 la agota y al día siguiente se recupera', async () => {
+  globalThis.localStorage ||= { _d: {}, getItem(k) { return this._d[k] ?? null; }, setItem(k, v) { this._d[k] = v; } };
+  const st = await import('../js/state.js');
+  assert.equal(st.MAX_VIDAS, 10);
+  st.estado().vidas = { n: 10, fecha: '', agotada: false };
+  assert.equal(st.vidas(), 10); assert.equal(st.sinEnergia(), false);
+  for (let i = 0; i < 10; i++) st.perderVida();
+  assert.equal(st.vidas(), 0); assert.equal(st.sinEnergia(), false, 'con 10 errores todavía se puede seguir');
+  st.perderVida();
+  assert.equal(st.sinEnergia(), true, 'con más de 10 errores se acaba la energía');
+  st.marcarRepetir({ cap: 2, titulo: 'Domingo de pozole' });
+  assert.equal(st.tocaRepetir(), false, 'hoy no toca: se repite mañana');
+  st.estado().vidas.fecha = '2000-01-01'; st.estado().repetir.fecha = '2000-01-01';   // «mañana»
+  assert.equal(st.vidas(), 10); assert.equal(st.sinEnergia(), false); assert.equal(st.tocaRepetir(), true);
+  st.limpiarRepetir(); assert.equal(st.estado().repetir, null);
+  assert.ok(!('darVida' in st) && !('REGEN_MS' in st), 'ya no hay regeneración durante el día');
+});
+
+test('pruebas: acumulativas, primero en el idioma propio y después en el que se aprende, y van creciendo', async () => {
+  const { armarPrueba, tamanoPrueba, estrellasDe, NOTA_MINIMA } = await import('../js/pruebas.js');
+  let anterior = 0;
+  for (const c of historia.capitulos) {
+    const t = tamanoPrueba(c.id); assert.ok(t.palabras + t.frases >= anterior, 'cada prueba es igual o más grande'); anterior = t.palabras + t.frases;
+    for (const [tgt, nat] of [['en', 'es'], ['es', 'en']]) for (const interes of ['trabajo', 'amigos', 'biblia', 'viajes', 'cocina']) {
+      const p = armarPrueba(historia, c.id, interes, tgt, nat);
+      assert.equal(p.parteA.length, p.parteB.length, 'cada palabra y frase se pregunta en los dos idiomas');
+      assert.equal(p.total, (p.palabras.length + p.frases.length) * 2);
+      assert.ok(p.parteA.every((q) => q.idioma === nat) && p.parteB.every((q) => q.idioma === tgt), 'parte A en el idioma propio, parte B en el que aprende');
+      for (const q of [...p.parteA, ...p.parteB]) { assert.ok(q.opciones.includes(q.correcta)); assert.equal(new Set(q.opciones).size, q.opciones.length, 'opciones repetidas'); assert.ok(q.opciones.length >= 3); }
+      assert.ok(p.palabras.every((w) => w.en.toLowerCase() !== w.es.toLowerCase()), 'sin palabras idénticas en los dos idiomas');
+      const deAntes = historia.capitulos.filter((x) => x.id < c.id).flatMap((x) => x.palabras);
+      if (c.id >= 2) assert.ok(p.palabras.some((w) => deAntes.includes(w)), `prueba ${c.id}: debe repasar capítulos anteriores`);
+      assert.ok(p.palabras.some((w) => c.palabras.includes(w)), `prueba ${c.id}: debe incluir el capítulo actual`);
+    }
+  }
+  assert.ok(tamanoPrueba(6).palabras > tamanoPrueba(1).palabras && tamanoPrueba(6).frases > tamanoPrueba(1).frases, 'la última prueba es más grande que la primera');
+  assert.equal(estrellasDe(1), 3); assert.equal(estrellasDe(0.8), 2); assert.equal(estrellasDe(NOTA_MINIMA), 1); assert.equal(estrellasDe(0.5), 0);
+});
+
+test('consistencia: la historia ya no se llama «niñez» y hay nota de cambios frente al SPEC', () => {
+  assert.equal(historia.titulo.es, 'La vida de Granma en México');
+  assert.ok(leer('js/constancia.js').includes('La vida de Granma en México') && !leer('js/constancia.js').includes('niñez'));
+  const nota = leer('docs/CAMBIOS-AL-SPEC.md'); for (const t of ['6 capítulos', 'Energía', 'Pruebas']) assert.ok(nota.includes(t), 'falta en la nota: ' + t);
+});

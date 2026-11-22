@@ -1,0 +1,17 @@
+{
+  "name": "granma-sazon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Granma Sazón — PWA para aprender inglés y español con recetas de México. Funciona sin internet.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "personajes": "node scripts/gen-personajes.mjs",
+    "logo": "node scripts/gen-logo.mjs",
+    "biblia": "python3 scripts/build-biblia.py",
+    "serve": "node scripts/servidor.mjs",
+    "test": "node --test test/contenido.test.mjs",
+    "qa": "node scripts/qa-offline.mjs && node scripts/qa-descargas.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

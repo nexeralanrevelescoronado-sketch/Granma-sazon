@@ -1,2 +1,73 @@
-# Granma-sazon
-Granma/Sazón: app web (PWA) bilingüe Aprende inglés y español con la historia de Granma, recetas mexicanas, chistes sanos y Biblia. Funciona sin internet.
+# Granma Sazón
+
+**Recetas de México para el mundo.** App web instalable (PWA) para aprender **inglés y español** de forma inmersiva, guiada por dos abuelos mexicanos originales: **Granma** (la abuelita tierna que cuenta su vida) y **el Abuelo** (serio, sabio, de pocos pero buenos consejos). Cada capítulo enseña idioma + una receta. Se siente como un juego y **funciona sin internet**.
+
+> El SPEC completo está en [`SPEC.md`](SPEC.md).
+
+## Qué trae
+
+| Sección | Contenido |
+|---|---|
+| **Historia de Granma** | 5 capítulos de su niñez · relato bilingüe · 10 palabras por capítulo · 5 ejercicios (opción múltiple, ordenar frase, emparejar) que **cambian según el interés** · «El consejo del Abuelo» con 2 palabras clave |
+| **Recetas** | Mole poblano (la estrella), pozole («Día festivo»), champurrado y buñuelos · medidas exactas · pasos con **cronómetro** · ES/EN · JSON-LD `Recipe` |
+| **El consejo del Abuelo** | 42 consejos (trabajo, amistad, familia, constancia, fe, dinero, cocina) con claves y mini-ejercicio · consejo del día + WhatsApp |
+| **Cotorreo con Granma** | 30 chistes, adivinanzas, refranes, trabalenguas y juegos de palabras sanos · «¿Qué quiso decir?» · el Abuelo de remate serio · chiste del día + WhatsApp |
+| **Biblia** | Lado a lado o una versión · **RV1909, KJV y WEB** (dominio público, offline) · búsqueda · ruta de ejercicios con versículos ES/EN · NTV/NLT preparadas como proveedores con licencia (apagadas) |
+| **Juego** | Racha diaria, XP, «tortillitas» (vidas que se regeneran), mapa de capítulos, retos de 60 s, misiones diarias, 5 insignias, sonidos opcionales, confeti, **Constancia Granma** (PNG generado en el dispositivo) |
+| **Sin internet** | Pantalla «Descargas»: paquetes con su peso, progreso, **pausa/reanudación**, reanuda sola al volver el internet, espacio usado, borrar por paquete |
+
+## Ejecutar
+
+No hay dependencias ni paso de compilación en el navegador (HTML + CSS + JS nativo, sin frameworks).
+
+```bash
+node scripts/servidor.mjs 8080     # http://localhost:8080
+```
+
+> Un service worker necesita `https://` o `localhost`. Para publicar sirve cualquier hosting estático (GitHub Pages: Settings → Pages → rama `main`, carpeta raíz; ya incluye `.nojekyll`). Todas las rutas son relativas, así que funciona también en un subdirectorio (`/granma-sazon/`).
+
+## Estructura
+
+```
+index.html · manifest.webmanifest · sw.js     PWA y service worker
+css/app.css                                    estilos (móvil primero, variables de marca)
+js/                                            app.js (router) · state.js (juego) · ejercicios.js · descargas.js ·
+                                               sound.js · fx.js · constancia.js · compartir.js · vistas/ · biblia/
+data/                                          historia, recetas, consejos, cotorreo, paquetes (generados) y biblia/
+assets/personajes · logo · iconos              SVG de los abuelos, logo y PNG 192/512/maskable
+api/biblia.js                                  proxy serverless para versiones con licencia
+scripts/                                       generadores y pruebas con navegador real
+scripts/datos/*.mjs                            ★ FUENTE del contenido (se edita aquí)
+test/contenido.test.mjs                        pruebas del contenido y de las reglas del SPEC
+docs/                                          BIBLIA.md · EXTENDER.md
+```
+
+### Flujo de trabajo
+
+1. Edita el contenido en `scripts/datos/*.mjs` (historia, recetas, consejos, cotorreo, ruta Biblia).
+2. `npm run build` → regenera `data/*.json`, `data/paquetes.json` (con el peso real de cada paquete), `recetas/*.html` (SEO + JSON-LD) y **la lista y versión del núcleo dentro de `sw.js`**. Hay que correrlo antes de subir (la prueba lo exige).
+3. `npm test` → valida contenido (≥ 40 consejos, ≥ 30 cotorreos, claves dentro del texto, cero groserías, sin marcas ajenas, NTV/NLT sin texto, sin claves de API en el frontend, íconos, peso < 50 MB…).
+4. `npm run qa` → navegador real (Chromium/Playwright): instalar → descargar → **modo avión** → lección y receta completas; y pausa/corte/reanudación de la descarga.
+
+Otros scripts: `npm run personajes` (SVG de Granma y el Abuelo), `npm run logo` (logo e íconos PNG), `npm run biblia` (vuelve a generar los JSON de la Biblia desde fuentes de dominio público).
+
+## Cómo funciona el modo sin internet
+
+- **Núcleo** (HTML/CSS/JS/íconos/personajes, ~230 KB): se precachea al instalar el service worker en `granma-core-<versión>`.
+- **Paquetes** (Historia · Recetas · Cotorreo · Consejos · Recetas italianas · Biblia): los guarda la página en su propio caché, `granma-pkg-<id>-f<FMT>`, cuando el usuario los descarga. Cada uno se mide, se pausa, se reanuda y se borra por separado.
+- **Estrategia:** *cache-first* para el contenido y *stale-while-revalidate* para las actualizaciones en segundo plano. Los cachés están versionados y los viejos se limpian en `activate` (los paquetes sobreviven a las actualizaciones de la app; solo se borran si cambia el formato `FMT`).
+- Se pide `navigator.storage.persist()` y se explica cómo instalarla en la pantalla de inicio (en iOS protege mejor lo descargado).
+- Indicador visible «Sin internet — modo descargado» y mensajes claros si algo no está descargado.
+- Progreso, racha, XP, insignias y la Constancia viven en `localStorage` y se generan en el dispositivo: 100 % offline.
+- **Peso:** todo el paquete ≈ **12 MB** (meta < 50 MB). Personajes en SVG; no hay fotos, audio ni video (los sonidos se sintetizan con WebAudio). Si más adelante se agregan fotos, deben ir en WebP.
+
+## Calidad medida
+
+- Lighthouse (móvil, pantalla inicial): **Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100 · SEO 100**; página de receta: 100/100/100/100.
+- axe-core en **todas** las pantallas (móvil 390 px y escritorio 1280 px, ES y EN): 0 violaciones; sin desborde horizontal; botones ≥ 44 px.
+- `prefers-reduced-motion` respetado (CSS y confeti en JS). Sin librerías de animación.
+
+## Derechos y licencias
+
+- Personajes, logo, textos, chistes, consejos y recetas: creación original de este proyecto.
+- Biblia: **RV1909**, **KJV** y **WEB** son de dominio público (ver `docs/BIBLIA.md` para fuentes y la nota sobre la KJV en el Reino Unido). **NTV y NLT** (Tyndale House) **no están en el repositorio**; solo existe la capa para consultarlas con licencia a través de un proxy, apagada por defecto.

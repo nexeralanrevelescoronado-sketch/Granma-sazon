@@ -1,0 +1,25 @@
+{
+  "name": "Granma Sazón",
+  "short_name": "Granma Sazón",
+  "description": "Aprende inglés y español con la historia de Granma, recetas de México, consejos del Abuelo, cotorreo y Biblia. Funciona sin internet.",
+  "lang": "es-MX",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF1DC",
+  "theme_color": "#C8553D",
+  "categories": ["education", "food", "lifestyle"],
+  "icons": [
+    { "src": "assets/iconos/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/iconos/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/iconos/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/iconos/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/logo/icono.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Consejo del día", "url": "./#/consejos", "icons": [{ "src": "assets/iconos/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Descargas", "url": "./#/descargas", "icons": [{ "src": "assets/iconos/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

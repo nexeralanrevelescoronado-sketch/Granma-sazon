@@ -90,7 +90,10 @@ escribir(j('data', 'audios.json'), audios);
 const glos = (l) => JSON.parse(readFileSync(j('scripts', 'datos', 'glosario', `${l}.json`), 'utf8'));
 escribir(j('data', 'glosario.json'), { en: glos('en'), es: glos('es') });
 // El glosario bíblico (formal) viaja con el paquete «Biblia»
-escribir(j('data', 'biblia', 'glosario.json'), { en: glos('biblia-en'), es: glos('biblia-es') });
+// Tres capas, de menor a mayor confianza: lo deducido solo (nombres por versículo paralelo y formas de palabras ya glosadas),
+// lo glosado a mano por lotes y el glosario base revisado. La de más confianza pisa a las otras.
+const capas = (l) => Object.assign({}, ...[`biblia-${l}-auto`, `biblia-${l}-resto`, `biblia-${l}`].map((n) => (existsSync(j('scripts', 'datos', 'glosario', `${n}.json`)) ? glos(n) : {})));
+escribir(j('data', 'biblia', 'glosario.json'), { en: capas('en'), es: capas('es') });
 
 // ---- 4) paquetes descargables (con su peso real)
 const peso = (rutas) => rutas.reduce((s, r) => s + statSync(j(r)).size, 0);

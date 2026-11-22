@@ -38,6 +38,8 @@ CSS y JS ligeros, sin librerías. Reglas: solo `transform` y `opacity` (nunca la
 | Confeti | al terminar una lección | máx. **40** partículas, 520–580 ms |
 | Vapor de la olla | logo de la bienvenida y la demo | 3 hilos en loop de 3,4 s (no en el encabezado: se ve todo el día) |
 
+**Rendimiento (revisión de animaciones):** la respiración corre en el `<svg>` raíz y cada hilo de vapor es su propia capa (se animan en el compositor, sin repintar); el parpadeo es una animación corta programada cada 3–7 s (no un loop); el efecto de escritura revela letras/palabras con `opacity` sobre un texto ya maquetado (cero reflujo); las barras de progreso usan `scaleX`; nada de `width`, `height` ni `box-shadow` animados; con la pestaña oculta o con movimiento reducido no arranca ninguna animación nueva. Banco: `node scripts/qa-rendimiento.mjs` (CPU frenada 4×, personaje hablando + confeti + reacciones + vapor).
+
 Los personajes se convierten en SVG en línea al cargar (así cada parte —ojos, boca, sombrero, dedo, manos— se anima con CSS y se pausa). **Demo para el iPhone:** `demo-animaciones.html` tiene un botón por animación. Prueba automática: `node scripts/qa-animaciones.mjs`.
 
 ## Ejecutar

@@ -7,16 +7,17 @@
 .pj-svg{display:block;width:100%;height:auto;overflow:visible}
 .pj-svg.encima{position:absolute;inset:0}
 .pj-svg [data-g]{transform-box:fill-box}
+.pj-svg [data-g="ojos"]{transform-origin:50% 50%}
 .pj-svg [data-g="mb"],.pj-svg .mb{opacity:0}
 
 html[data-oculta] *,html[data-oculta] *::before,html[data-oculta] *::after{animation-play-state:paused!important}
 
 @media (prefers-reduced-motion:no-preference){
-  /* ---------- reposo ---------- */
-  .pj-svg [data-g="respira"]{transform-origin:50% 100%;animation:respira var(--t-resp,4.6s) ease-in-out var(--d-resp,0s) infinite}
-  .pj-svg:not([data-cerrados]) [data-g="ojos"]{transform-origin:50% 50%;animation:parpadeo var(--t-parp,5.4s) linear var(--d-parp,0s) infinite}
+  /* ---------- reposo ----------
+     La respiración va en el <svg> raíz (una caja CSS → se anima en el compositor, sin repintar).
+     El parpadeo NO es un loop: personajes.js lo programa cada 3–7 s con WAAPI (sin cuadros inútiles entre parpadeos). */
+  .pj-svg{transform-origin:50% 100%;animation:respira var(--t-resp,4.6s) ease-in-out var(--d-resp,0s) infinite}
   @keyframes respira{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.012)}}
-  @keyframes parpadeo{0%,92%{transform:scaleY(1)}96%{transform:scaleY(.08)}100%{transform:scaleY(1)}}
 
   /* ---------- hablar: la boca alterna cerrada/abierta mientras se escribe ---------- */
   .pj-svg.habla .ma,.pj-svg[data-estado="hablando"] .ma{animation:boca-ma .46s steps(1,end) infinite}
@@ -28,7 +29,7 @@ html[data-oculta] *,html[data-oculta] *::before,html[data-oculta] *::after{anima
   /* Granma aplaudiendo al acertar: 2 palmadas de 300 ms + saltito del cuerpo */
   .pj-svg.anim-aplauso [data-g="aplauso"]{transform-origin:50% 50%;animation:palmada .3s var(--ease-out) 2}
   .pj-svg.anim-aplauso [data-g="chispas"]{transform-origin:50% 50%;animation:destello .3s var(--ease-out) 2}
-  .pj-svg.anim-aplauso [data-g="respira"]{animation:salto .6s var(--ease-out) 1}
+  .pj-svg.anim-aplauso [data-g="respira"]{transform-origin:50% 100%;animation:salto .6s var(--ease-out) 1}
   @keyframes palmada{0%,100%{transform:scale(1)}45%{transform:scale(1.14,.92)}}
   @keyframes destello{0%{opacity:.2;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}100%{opacity:.2;transform:scale(.85)}}
   @keyframes salto{0%,100%{transform:translateY(0)}35%{transform:translateY(-9px)}70%{transform:translateY(0)}}
@@ -45,18 +46,22 @@ html[data-oculta] *,html[data-oculta] *::before,html[data-oculta] *::after{anima
   @keyframes dedo{from{opacity:0;transform:translateY(30px) rotate(14deg)}to{opacity:1;transform:none}}
   @keyframes aparece{from{opacity:0}to{opacity:1}}
 
-  /* Vapor de la olla: 3 hilos suben y se desvanecen, en loop suave */
-  .vapor [data-g="hilo"]{transform-origin:50% 100%;opacity:0;animation:vapor 3.4s ease-out infinite}
-  .vapor [data-g="hilo"]:nth-of-type(2){animation-delay:1.1s}
-  .vapor [data-g="hilo"]:nth-of-type(3){animation-delay:2.2s}
-  @keyframes vapor{0%{opacity:0;transform:translateY(14px) scaleY(.85)}25%{opacity:.95}100%{opacity:0;transform:translateY(-30px) scaleY(1.08)}}
+  /* Vapor de la olla: 3 capas (cada hilo es su propio <svg> = caja CSS → compositor), suben y se desvanecen en loop suave */
+  .vapor .hilo{opacity:0;transform-origin:50% 60%;animation:vapor 3.4s ease-out infinite}
+  .vapor .hilo:nth-of-type(3){animation-delay:1.1s}
+  .vapor .hilo:nth-of-type(4){animation-delay:2.2s}
+  @keyframes vapor{0%{opacity:0;transform:translateY(7%) scaleY(.85)}25%{opacity:.95}100%{opacity:0;transform:translateY(-14%) scaleY(1.08)}}
 }
 /* Con movimiento reducido el vapor se queda como dibujo quieto */
-@media (prefers-reduced-motion:reduce){.vapor [data-g="hilo"]{opacity:.9}}
+@media (prefers-reduced-motion:reduce){.vapor .hilo{opacity:.9}}
+.vapor{position:relative;display:inline-block;line-height:0}
+.vapor svg{display:block;width:100%;height:100%}
+.vapor svg+svg{position:absolute;inset:0}
 
 /* Tortillitas (las anima tortilla.js con WAAPI; aquí solo el estado final) */
 .tortilla{transform-origin:50% 100%}
+.globo .t{opacity:0}.globo .t.on{opacity:1}   /* escritura del globo: solo opacity, el layout ya está completo */
 
 /* Confeti (partículas DOM: solo transform/opacity; ver confeti.js) */
 .confeti-cap{position:fixed;inset:0;pointer-events:none;z-index:70;overflow:hidden}
-.confeti-cap i{position:absolute;left:50%;top:60%;width:8px;height:12px;border-radius:2px;opacity:0;will-change:transform,opacity}
+.confeti-cap i{position:absolute;left:50%;top:60%;width:8px;height:12px;border-radius:2px;opacity:0}

@@ -2,7 +2,7 @@
 export const MAX_CONFETI = 40;
 const COLORES = ['#C8553D', '#F2A93B', '#2E8B83', '#E0568C', '#FFF1DC'];
 export function confeti(cant = MAX_CONFETI) {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.oculta) return 0;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.hasAttribute('data-oculta')) return 0;   // sin movimiento o pestaña oculta
   const n = Math.min(MAX_CONFETI, Math.max(1, cant | 0));
   let cap = document.querySelector('.confeti-cap'); if (!cap) { cap = document.createElement('div'); cap.className = 'confeti-cap'; cap.setAttribute('aria-hidden', 'true'); document.body.append(cap); }
   cap.replaceChildren();

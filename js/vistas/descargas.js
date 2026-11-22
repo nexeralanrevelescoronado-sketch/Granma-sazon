@@ -20,7 +20,7 @@ export async function montar(main) {
     return `<section class="tarjeta paquete ${e.estado === 'proximamente' ? 'prox' : ''}" id="pq-${p.id}" aria-label="${esc(Ln(p.nombre))}"><span class="ico" aria-hidden="true">${p.icono}</span>
       <div><h2 style="font-size:1.1rem;margin:0">${esc(Ln(p.nombre))}</h2><span class="muted">${p.proximamente ? '' : MB(p.bytes)}${e.estado === 'listo' || e.hechos ? ` · ${u('usado', 'used')}: ${MB(e.bytes || 0)}` : ''}</span></div>
       <span data-estado aria-live="polite">${estado}</span>
-      ${e.estado === 'bajando' || e.estado === 'pausa' || e.estado === 'parcial' ? `<div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="${esc(Ln(p.nombre))}"><i style="width:${pct}%"></i></div>` : ''}
+      ${e.estado === 'bajando' || e.estado === 'pausa' || e.estado === 'parcial' ? `<div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="${esc(Ln(p.nombre))}"><i style="transform:scaleX(${(pct) / 100})"></i></div>` : ''}
       <div class="acciones">${botones}</div></section>`;
   };
   const pintar = async () => {
@@ -42,7 +42,7 @@ export async function montar(main) {
 
   const parar = alProgreso((d) => {
     estados[d.id] = { ...estados[d.id], ...d }; const p = lista.find((x) => x.id === d.id), sec = main.querySelector(`#pq-${d.id}`); if (!p || !sec) return;
-    if (d.estado === 'bajando') { const pct = Math.round((d.hechos / d.total) * 100); const b = sec.querySelector('.barra>i'); if (b) { b.style.width = pct + '%'; b.parentElement.setAttribute('aria-valuenow', pct); } else sec.outerHTML = fila(p); }
+    if (d.estado === 'bajando') { const pct = Math.round((d.hechos / d.total) * 100); const b = sec.querySelector('.barra>i'); if (b) { b.style.transform = `scaleX(${pct / 100})`; b.parentElement.setAttribute('aria-valuenow', pct); } else sec.outerHTML = fila(p); }
     else sec.outerHTML = fila(p);
     if (d.estado === 'listo') pedirPersistencia();
   });

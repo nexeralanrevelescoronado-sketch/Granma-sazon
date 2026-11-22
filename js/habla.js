@@ -39,23 +39,32 @@ function decir(texto, idioma) {
 
 /* ---------- escritura ---------- */
 function nodosDeTexto(raiz) {
-  const w = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT, { acceptNode: (n) => (n.parentElement.closest('button,script,style') || !n.data.trim() && !n.data.length ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
+  const w = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT, { acceptNode: (n) => (n.parentElement.closest('button,script,style,.t') || !n.data.length ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
   const lista = []; while (w.nextNode()) lista.push(w.currentNode); return lista;
+}
+/** Parte el texto en <span class="t"> (letras, o palabras si es largo) para revelarlos con opacity: el layout ya está completo, no hay reflujo. */
+function dividir(globo) {
+  const nodos = nodosDeTexto(globo), total = nodos.reduce((s, n) => s + n.data.length, 0), porPalabra = total > 120, spans = [];
+  for (const n of nodos) {
+    const frag = document.createDocumentFragment();
+    for (const parte of (porPalabra ? n.data.split(/(\s+)/) : [...n.data])) { if (!parte) continue; const sp = document.createElement('span'); sp.className = 't'; sp.textContent = parte; frag.append(sp); spans.push(sp); }
+    n.replaceWith(frag);
+  }
+  return spans;
 }
 function escribir(globo, mio) {
   return new Promise((fin) => {
-    const nodos = nodosDeTexto(globo), orig = nodos.map((n) => n.data), total = orig.reduce((s, t) => s + t.length, 0);
-    if (!total || reducirMovimiento()) { globo.style.visibility = 'visible'; return fin(); }
-    globo.style.minHeight = globo.offsetHeight + 'px'; nodos.forEach((n) => { n.data = ''; }); globo.style.visibility = 'visible';
+    globo.style.visibility = 'visible';
+    if (reducirMovimiento() || document.documentElement.hasAttribute('data-oculta')) return fin();
+    const spans = dividir(globo), total = spans.length; if (!total) return fin();
     globo.setAttribute('aria-busy', 'true');
     const ms = Math.min(24, Math.max(7, 1800 / total)), t0 = performance.now(); let hecho = 0;
-    const completar = () => { nodos.forEach((n, i) => { n.data = orig[i]; }); globo.removeAttribute('aria-busy'); globo.style.minHeight = ''; globo.removeEventListener('pointerdown', completar); fin(); };
+    const completar = () => { for (let i = hecho; i < total; i++) spans[i].classList.add('on'); hecho = total; globo.removeAttribute('aria-busy'); globo.removeEventListener('pointerdown', completar); fin(); };
     globo.addEventListener('pointerdown', completar, { once: true });
-    globo._completar = completar;
     (function paso() {
       if (mio !== epoca || !globo.isConnected) return fin();
       const n = Math.min(total, Math.floor((performance.now() - t0) / ms));
-      if (n !== hecho) { hecho = n; let resto = n; nodos.forEach((nodo, i) => { const k = Math.max(0, Math.min(orig[i].length, resto)); nodo.data = orig[i].slice(0, k); resto -= orig[i].length; }); }
+      for (; hecho < n; hecho++) spans[hecho].classList.add('on');
       if (hecho >= total) return completar();
       requestAnimationFrame(paso);
     })();

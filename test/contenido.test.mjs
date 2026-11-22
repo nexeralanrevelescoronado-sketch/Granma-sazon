@@ -175,6 +175,13 @@ test('animaciones: módulo propio, solo transform/opacity, movimiento reducido, 
   assert.ok(css.includes('prefers-reduced-motion:no-preference') && css.includes('prefers-reduced-motion:reduce'));
   assert.ok(css.includes('html[data-oculta]') && css.includes('animation-play-state:paused'), 'pausa con pestaña oculta');
   assert.ok(!/transition\s*:\s*all/.test(css) && !/scale\(0\)/.test(css));
+  // ningún nombre de @keyframes repetido entre las hojas (uno pisaba al otro: el cronómetro se estiraba)
+  const nombres = [...leer('css/app.css').matchAll(/@keyframes\s+([\w-]+)/g), ...css.matchAll(/@keyframes\s+([\w-]+)/g)].map((m) => m[1]);
+  assert.deepEqual(nombres.filter((n, i) => nombres.indexOf(n) !== i), [], 'nombres de @keyframes duplicados');
+  // nada de layout animado en la app: barras con scaleX, sin transition de width/height/box-shadow
+  const app = leer('css/app.css'); assert.ok(!/transition:[^;}]*(width|height|margin|padding|top|left|box-shadow)/.test(app), 'transition de propiedad no GPU en app.css');
+  for (const f of readdirSync(join(RAIZ, 'js'), { recursive: true }).filter((x) => x.endsWith('.js'))) assert.ok(!/style\.(width|height)\s*=/.test(leer('js/' + f)), `js/${f} anima width/height`);
+  assert.ok(!/@keyframes parpadeo/.test(css) && !/\.confeti-cap i\{[^}]*will-change/.test(css), 'parpadeo programado y sin will-change en 40 partículas');
   assert.ok(leer('assets/animaciones/confeti.js').includes('MAX_CONFETI = 40'));
   assert.ok(/visibilitychange/.test(leer('assets/animaciones/visibilidad.js')));
   const demo = leer('demo-animaciones.html'); assert.ok((demo.match(/data-a="/g) || []).length >= 11, 'un botón por animación');

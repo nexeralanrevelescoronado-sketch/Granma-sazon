@@ -5,7 +5,8 @@ const ESTADOS = { granma: ['contenta', 'hablando', 'carinosa', 'pensando', 'apla
 const ANTIGUOS = { granma: { contento: 'contenta', animo: 'contenta' }, abuelo: { contento: 'sonrisa', pensando: 'serio', aplaudiendo: 'asintiendo', animo: 'aconsejando' } };
 const CERRADOS = new Set(['carinosa', 'aplaudiendo', 'sonrisa', 'asintiendo']);   // ojos cerrados: sin parpadeo
 export const estadoValido = (q, e) => ANTIGUOS[q]?.[e] || (ESTADOS[q]?.includes(e) ? e : ESTADOS[q]?.[0]);
-const reducir = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+export const sinMovimiento = () => matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.hasAttribute('data-oculta');
+const reducir = sinMovimiento;   // reduced-motion O pestaña oculta: cambios instantáneos, nada que animar
 
 const textos = new Map();
 async function textoSvg(q, e) {
@@ -13,14 +14,26 @@ async function textoSvg(q, e) {
   const p = fetch(`${A}${k}.svg`).then((r) => { if (!r.ok) throw new Error('svg'); return r.text(); });
   textos.set(k, p); p.catch(() => textos.delete(k)); return p;
 }
+/** Parpadeo ocasional: una animación corta (170 ms) cada 3–7 s en vez de un loop que gaste cuadros entre parpadeos. */
+function programarParpadeo(svg) {
+  const paso = () => {
+    if (svg.isConnected) svg._visto = true;
+    else if (svg._visto) return;                                                  // ya salió de la pantalla: se detiene
+    const ojos = svg.querySelector('[data-g="ojos"]');
+    if (ojos && svg.isConnected && !svg.hasAttribute('data-cerrados') && !sinMovimiento()) ojos.animate([{ transform: 'scaleY(1)' }, { transform: 'scaleY(.08)', offset: .5 }, { transform: 'scaleY(1)' }], { duration: 170, easing: 'ease-out' });
+    setTimeout(paso, 3200 + Math.random() * 3800);
+  };
+  setTimeout(paso, 1500 + Math.random() * 3000);
+}
 /** SVG en línea: quita estilos propios (el movimiento vive en animaciones.css) y cambia id → data-g. */
 async function crearSvg(q, e) {
   const t = (await textoSvg(q, e)).replace(/<style>[\s\S]*?<\/style>/g, '').replace(/<title>[\s\S]*?<\/title>/g, '').replace(/ id="(\w+)"/g, ' data-g="$1"')
     .replace(/ role="img" aria-label="[^"]*"/, ' aria-hidden="true" focusable="false"').replace('<svg ', `<svg class="pj-svg" data-estado="${e}" ${CERRADOS.has(e) ? 'data-cerrados ' : ''}`);
   const tpl = document.createElement('template'); tpl.innerHTML = t.trim(); const svg = tpl.content.firstElementChild;
-  const q2 = q === 'abuelo' ? 1.18 : 1;                                    // cada uno respira y parpadea a su ritmo
-  svg.style.setProperty('--t-resp', `${(4.6 * q2).toFixed(2)}s`); svg.style.setProperty('--t-parp', `${(5.4 * q2).toFixed(2)}s`);
-  svg.style.setProperty('--d-resp', `-${(Math.random() * 4).toFixed(2)}s`); svg.style.setProperty('--d-parp', `-${(Math.random() * 5).toFixed(2)}s`);
+  const T = q === 'abuelo' ? 5.4 : 4.6;                                    // cada uno respira a su ritmo
+  svg.style.setProperty('--t-resp', `${T}s`);
+  svg.style.setProperty('--d-resp', `-${((performance.now() / 1000) % T).toFixed(2)}s`);   // misma fase al cambiar de estado: sin saltos
+  programarParpadeo(svg);
   return svg;
 }
 

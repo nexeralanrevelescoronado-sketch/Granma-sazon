@@ -29,7 +29,7 @@ function reto(main, pool, S) {
         <div class="opciones">${ops.map((o) => `<button class="opcion" data-o="${esc(o)}">${esc(o)}</button>`).join('')}</div>`;
       main.querySelector('#reto-q').dataset.ok = ok; ocupado = false;
     };
-    main.innerHTML = `<div class="sesion"><div class="fila" style="justify-content:space-between"><span class="reto-tiempo" id="reto-t" role="timer" aria-label="${u('Tiempo', 'Time')}">01:00</span><span class="estrella" aria-live="polite">✔ <span id="reto-a">0</span></span></div><div class="barra olla"><i id="reto-b" style="width:100%"></i></div><div id="reto-q"></div></div>`;
+    main.innerHTML = `<div class="sesion"><div class="fila" style="justify-content:space-between"><span class="reto-tiempo" id="reto-t" role="timer" aria-label="${u('Tiempo', 'Time')}">01:00</span><span class="estrella" aria-live="polite">✔ <span id="reto-a">0</span></span></div><div class="barra olla"><i id="reto-b" style="transform:scaleX(1)"></i></div><div id="reto-q"></div></div>`;
     nueva();
     main.onclick = (e) => {
       const b = e.target.closest('[data-o]'); if (!b || ocupado) return; ocupado = true;
@@ -41,7 +41,7 @@ function reto(main, pool, S) {
     };
     timer = setInterval(() => {
       const resto = (fin - Date.now()) / 1000; const t = main.querySelector('#reto-t'), b = main.querySelector('#reto-b');
-      if (t) t.textContent = mmss(resto); if (b) b.style.width = `${Math.max(0, resto / 60) * 100}%`;
+      if (t) t.textContent = mmss(resto); if (b) b.style.transform = `scaleX(${Math.max(0, resto / 60)})`;
       if (resto <= 0) { clearInterval(timer); terminar(aciertos, fallos); }
     }, 250);
   }

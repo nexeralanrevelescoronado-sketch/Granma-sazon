@@ -11,7 +11,7 @@
     "biblia": "python3 scripts/build-biblia.py",
     "serve": "node scripts/servidor.mjs",
     "test": "node --test test/contenido.test.mjs",
-    "qa": "node scripts/qa-offline.mjs && node scripts/qa-descargas.mjs && node scripts/qa-animaciones.mjs"
+    "qa": "node scripts/qa-offline.mjs && node scripts/qa-descargas.mjs && node scripts/qa-animaciones.mjs && node scripts/qa-rendimiento.mjs"
   },
   "engines": { "node": ">=20" }
 }

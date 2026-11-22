@@ -18,7 +18,7 @@
   .estado{font-size:.9rem;color:var(--muted);text-align:center;min-height:1.6em}
   #fila-tortillas{display:flex;gap:10px;justify-content:center;padding:26px 0 40px}
   #fila-tortillas .tortilla{width:34px;height:34px}
-  body.sin-resp [data-g="respira"],body.sin-resp [data-g="ojos"]{animation:none!important}
+  body.sin-resp .pj-svg{animation:none!important}
 </style>
 </head>
 <body>
@@ -83,7 +83,7 @@ const acciones = {
   respira: (b) => { resp = !resp; document.body.classList.toggle('sin-resp', !resp); b.setAttribute('aria-pressed', resp); b.textContent = `🫁 Respiración: ${resp ? 'sí' : 'no'}`; dec(resp ? 'Respiración y parpadeo activos.' : 'Respiración y parpadeo en pausa.'); },
   'habla-granma': () => hablar('granma', 'contenta', 'Mijo, cuando yo era niña, mi mamá encendía el fuego cada mañana. ¡Qué rico olía el champurrado!'),
   'habla-abuelo': () => hablar('abuelo', 'aconsejando', 'La paciencia es la mejor especia.'),
-  vapor: (b) => { vapor = !vapor; $$('#logo [data-g="hilo"]').forEach((h) => { h.style.animationPlayState = vapor ? '' : 'paused'; }); b.setAttribute('aria-pressed', vapor); b.textContent = `♨️ Vapor: ${vapor ? 'sí' : 'pausado'}`; dec('3 hilos que suben y se desvanecen, 3.4 s por hilo.'); },
+  vapor: (b) => { vapor = !vapor; $$('#logo .hilo').forEach((h) => { h.style.animationPlayState = vapor ? '' : 'paused'; }); b.setAttribute('aria-pressed', vapor); b.textContent = `♨️ Vapor: ${vapor ? 'sí' : 'pausado'}`; dec('3 hilos que suben y se desvanecen, 3.4 s por hilo.'); },
   pierde: () => { const t = $$('#fila-tortillas .tortilla:not(.vacia)').pop(); if (t) { tortillaPierde(t); dec('La tortillita se desinfla y cae (520 ms).'); } else dec('No quedan tortillitas: toca «Reponer».'); },
   repone: () => { $$('#fila-tortillas .tortilla').forEach((t) => t.classList.remove('vacia')); dec('Tortillitas repuestas.'); },
   confeti: () => dec(`Confeti: ${confeti(40)} partículas (máx. 40).`),

@@ -50,7 +50,7 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
 
     const cab = () => `<div class="sesion-top">
       <button class="btn-icono" data-salir aria-label="${u('Salir', 'Exit')}">✕</button>
-      <div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${hechos}" aria-label="${u('Progreso', 'Progress')}"><i style="width:${(hechos / total) * 100}%"></i></div>
+      <div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${hechos}" aria-label="${u('Progreso', 'Progress')}"><i style="transform:scaleX(${((hechos / total) * 100) / 100})"></i></div>
       ${usarVidas ? `<span class="vidas" role="img" aria-label="${u('Tortillitas', 'Tortillas')}: ${vidas()}">${Array.from({ length: 5 }, (_, i) => `<i class="tortilla ${i < vidas() ? '' : 'vacia'}"></i>`).join('')}</span>` : ''}
     </div>`;
 
@@ -102,7 +102,7 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
       pie.innerHTML = `${pj(quien, variante)}<div class="msg" role="alert">${u(es, en)}${!ok && correcta ? `<br><small>${u('Respuesta', 'Answer')}: <strong>${esc(correcta)}</strong></small>` : ''}</div><button class="btn ${ok ? 'verde' : ''}" data-seguir>${u('Continuar', 'Continue')}</button>`;
       pie.querySelector('[data-seguir]').focus();
       if (ok) reaccion(pie.querySelector('.pj'), quien === 'granma' ? 'aplauso' : 'asiente');
-      const barra = raiz.querySelector('.barra>i'); if (barra) barra.style.width = `${(hechos / total) * 100}%`;
+      const barra = raiz.querySelector('.barra>i'); if (barra) barra.style.transform = `scaleX(${hechos / total})`;
     }
 
     // La tortillita que acaba de perderse (la de índice = vidas actuales) se desinfla y cae

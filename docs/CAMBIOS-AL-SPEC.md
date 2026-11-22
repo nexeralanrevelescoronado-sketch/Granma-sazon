@@ -42,3 +42,15 @@
 - El guion está en `docs/GUION-ABUELO.md` (51 frases). `node scripts/audios.mjs procesar <carpeta|archivo>` corta, limpia el ruido, empareja el volumen y guarda en `assets/audio/abuelo/`; `npm run build` las mete al paquete «Consejos del Abuelo» (suenan sin internet).
 - En la app, si la frase del Abuelo tiene grabación se oye esa (aunque la persona esté aprendiendo inglés: el Abuelo habla con su voz, en español); si no hay o no carga, sigue la voz del dispositivo.
 - La voz debe ser de una persona que dio su permiso por escrito para usarla en la app. No se usa la voz de nadie sin permiso ni voces de otras marcas.
+
+## Glosario al toque, hablar y más juego
+
+- **Glosario al toque** (`js/glosario.js`): al tocar cualquier palabra del idioma que se aprende sale una burbuja con su significado y 🔊. Sirve en relatos, consejos, cotorreos, frases de los ejercicios y versículos. La fuente es `scripts/datos/glosario/en.json` y `es.json` (una entrada por cada forma que aparece en el contenido); una prueba falla si se agrega contenido con una palabra sin glosa. El texto de la Biblia no está glosado completo: ahí solo salen las palabras que coinciden.
+- **Mi cuaderno** (Perfil): las últimas palabras que la persona tocó.
+- **Dilo en voz alta** (`js/oido.js`): 2 ejercicios por lección. Si el navegador reconoce voz, compara lo dicho con la frase (con 6 de cada 10 palabras se da por bueno). Si no puede (sin internet, sin permiso o sin esa función), la persona se graba y se escucha, o lo dice y sigue. Nunca quita energía y se puede saltar con «Ahora no puedo hablar».
+- **Privacidad:** la app no guarda ni sube audio. El reconocimiento de voz lo hace el navegador del teléfono y puede enviar el audio a su proveedor (Apple o Google).
+- **Más juego:** la lección pasa de 5 a 9 ejercicios (se suman «¿Qué escuchaste?», deletrear con fichas y los 2 de voz), racha de aciertos 🔥 con sonido que sube y puntos extra, y estrellas al cerrar el capítulo.
+
+## Pendiente (recordar al dueño)
+
+- **Voz real del Abuelo:** grabar las 51 frases de `docs/GUION-ABUELO.pdf` y pasarlas para integrarlas. El dueño pidió dejarlo para después y que se le recuerde.

@@ -82,11 +82,11 @@ test('los ejercicios cambian según el interés (5 por capítulo, en ambos idiom
     for (const c of historia.capitulos) {
       const huellas = new Set();
       for (const interes of ['trabajo', 'amigos', 'biblia', 'viajes', 'cocina']) {
-        const items = ejerciciosDeCapitulo(c, interes); assert.equal(items.length, 5);
-        assert.deepEqual(items.map((i) => i.tipo), ['mcq', 'mcq', 'orden', 'pares', 'mcq']);
+        const items = ejerciciosDeCapitulo(c, interes).filter((x) => x.tipo !== 'di' && !x.letras && !x.oir); assert.equal(items.length, 5);
+        assert.deepEqual(items.map((i) => i.tipo), ['mcq', 'mcq', 'pares', 'orden', 'mcq']);
         for (const it of items.filter((i) => i.tipo === 'mcq')) { assert.ok(it.opciones.includes(it.correcta), 'la correcta está en las opciones'); assert.equal(new Set(it.opciones).size, it.opciones.length, 'opciones repetidas'); }
-        assert.ok(items[1].frase.includes('_____')); assert.ok(items[3].pares.length >= 3);
-        huellas.add(JSON.stringify([items[1].frase, items[2].respuesta]));
+        assert.ok(items[1].frase.includes('_____')); assert.ok(items[2].pares.length >= 3);
+        huellas.add(JSON.stringify([items[1].frase, items[3].respuesta]));
       }
       assert.equal(huellas.size, 5, `cap ${c.id} (${aprende}): los ejemplos deben cambiar por interés`);
     }
@@ -279,7 +279,7 @@ test('el interés cambia el vocabulario: 3 palabras propias con su frase por int
   for (const c of historia.capitulos) {
     const primeras = new Set(INTERESES.map((i) => ejerciciosDeCapitulo(c, i)[0].voz));
     assert.equal(primeras.size, 5, `cap ${c.id}: la primera palabra debe ser distinta en cada interés`);
-    for (const i of INTERESES) { const it = ejerciciosDeCapitulo(c, i); assert.ok(c.palabrasInteres[i].some((w) => w.en === it[0].voz)); assert.ok(it[3].pares.some(([a]) => c.palabrasInteres[i].some((w) => w.en === a)), 'el emparejar incluye palabras del interés'); }
+    for (const i of INTERESES) { const it = ejerciciosDeCapitulo(c, i); assert.ok(c.palabrasInteres[i].some((w) => w.en === it[0].voz)); assert.ok(it.find((x) => x.tipo === 'pares').pares.some(([a]) => c.palabrasInteres[i].some((w) => w.en === a)), 'el emparejar incluye palabras del interés'); }
   }
 });
 
@@ -308,4 +308,37 @@ test('grabaciones del Abuelo: guion completo, índice coherente y respaldo con l
   }
   const v = leer('js/voz.js'); assert.ok(/tocarGrabacion\(ruta\)\) return true;[\s\S]*return decirSintetica/.test(v), 'si la grabación falla, habla la voz del dispositivo');
   const { claveAudio } = await import('../js/voz.js'); assert.equal(claveAudio('  Hola   Mijo. '), 'hola mijo.');
+});
+
+test('glosario al toque: toda palabra del contenido tiene su significado, en los dos idiomas', async () => {
+  const g = JSON.parse(leer('data/glosario.json')), faltan = { en: new Set(), es: new Set() };
+  const suma = (l, t) => { for (const w of String(t).toLowerCase().match(/\p{L}+(?:['’]\p{L}+)?/gu) || []) if (!g[l][w.replace('’', "'")]) faltan[l].add(w); };
+  const anda = (o) => { if (!o || typeof o !== 'object') return; if (Array.isArray(o)) return o.forEach(anda);
+    for (const [k, v] of Object.entries(o)) { const l = k === 'en' || k === 'we' ? 'en' : k === 'es' || k === 'ws' ? 'es' : null;
+      if (l) (Array.isArray(v) ? v : [v]).forEach((x) => (typeof x === 'string' ? suma(l, x) : anda(x))); else anda(v); } };
+  for (const f of ['historia', 'consejos', 'cotorreo', 'recetas', 'biblia/ruta']) anda(JSON.parse(leer(`data/${f}.json`)));
+  for (const l of ['en', 'es']) assert.equal(faltan[l].size, 0, `faltan en scripts/datos/glosario/${l}.json: ${[...faltan[l]].join(', ')}`);
+  for (const l of ['en', 'es']) for (const [w, s] of Object.entries(g[l])) assert.ok(s && s.length <= 60 && w === w.toLowerCase(), `glosa rara: ${w}`);
+  globalThis.localStorage ||= { _d: {}, getItem(k) { return this._d[k] ?? null; }, setItem(k, v) { this._d[k] = v; } };
+  const { buscar } = await import('../js/glosario.js');
+  assert.equal(buscar(g, 'Bread', 'en').significado, g.en.bread);
+  assert.ok(buscar(g, "grandmother's", 'en') || buscar(g, "mother's", 'en'), 'posesivos');
+  assert.equal(buscar(g, 'zzzz', 'en'), null);
+});
+
+test('hablar: compara lo dicho con la frase sin castigar, y la lección trae oído, deletreo y voz', async () => {
+  const { parecido, limpiar, UMBRAL } = await import('../js/oido.js');
+  assert.equal(limpiar("  Don't WORRY, mijo! "), 'dont worry mijo');
+  assert.equal(parecido('the bread is warm', 'The bread is warm.'), 1);
+  assert.ok(parecido('the bred is worm', 'The bread is warm.') >= UMBRAL, 'tolera pronunciación de principiante');
+  assert.ok(parecido('hello', 'The bread is warm.') < UMBRAL);
+  assert.equal(parecido('', 'bread'), 0);
+  const { ejerciciosDeCapitulo } = await import('../js/ejercicios.js');
+  const cap = JSON.parse(leer('data/historia.json')).capitulos[0], it = ejerciciosDeCapitulo(cap, 'cocina');
+  assert.equal(it.filter((x) => x.tipo === 'di').length, 2, 'dos ejercicios de decir en voz alta');
+  const letras = it.find((x) => x.letras); assert.ok(letras && /^\p{L}{3,8}$/u.test(letras.respuesta));
+  const e = leer('js/ejercicios.js');
+  assert.ok(/data-nohablo/.test(e) && /pausarHablar\(\)/.test(e), 'se puede saltar hablar sin castigo');
+  assert.ok(!/tipo === 'di'[\s\S]{0,400}perderVida/.test(e.slice(e.indexOf('async function micro'), e.indexOf('function responder'))), 'hablar nunca quita energía');
+  assert.ok(/mejorRacha/.test(e) && /racha = 0/.test(e), 'racha de aciertos');
 });

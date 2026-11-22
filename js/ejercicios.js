@@ -5,7 +5,15 @@ import { u, tgt, nat, vidas, perderVida, sinEnergia, MAX_VIDAS } from './state.j
 import { pj } from './personajes.js';
 import { sonido } from './sound.js';
 import { confeti, animar, vibrar, hablar } from './fx.js';
+import { callar as callarVoz } from './voz.js';
 import { reaccion, tortillaPierde } from '../assets/animaciones/index.js';
+import { puedeReconocer, puedeGrabar, escuchar, grabar, soltar, parecido, UMBRAL } from './oido.js';
+import { hayVozPara } from './voz.js';
+
+// «Ahora no puedo hablar»: los ejercicios de voz se saltan un rato (20 min) sin castigo.
+const CLAVE_NOHABLO = 'granma:nohablo';
+export const hablarPausado = () => { try { return Date.now() - +(sessionStorage.getItem(CLAVE_NOHABLO) || 0) < 20 * 60000; } catch { return false; } };
+const pausarHablar = () => { try { sessionStorage.setItem(CLAVE_NOHABLO, String(Date.now())); } catch { /* sin almacenamiento */ } };
 
 /* ---------- generación ---------- */
 const otros = (palabras, excluir, n, campo) => mezclar(palabras.filter((p) => p[campo] !== excluir)).slice(0, n);
@@ -34,7 +42,16 @@ export function ejerciciosDeCapitulo(cap, interes) {
   items.push({ tipo: 'pares', prompt: u('Une cada palabra con su significado', 'Match each word with its meaning'), pares: [...propias.slice(1), ...usadas, ...extra].slice(0, 4).map((p) => [p[T], p[N]]) });
   // 5) Elige la traducción
   items.push({ tipo: 'mcq', prompt: u('Elige la traducción correcta', 'Choose the right translation'), frase: f5[T], voz: f5[T], opciones: mezclar(ops5), correcta: f5[N] });
-  return items;
+  // 6-9) Más juego: oído, deletreo y hablar. Se intercalan con los anteriores para que la lección no sea pareja.
+  const cortas = mezclar([...pal, ...propias].filter((x) => /^\p{L}{3,8}$/u.test(x[T]) && x.en.toLowerCase() !== x.es.toLowerCase()));
+  const pE = cortas[0], pL = cortas[1] || cortas[0], pD = cortas[2] || cortas[0];
+  const idiomaT = T === 'en' ? u('inglés', 'English') : u('español', 'Spanish');
+  const oido = pE && hayVozPara(T) ? { tipo: 'mcq', oir: true, prompt: u('¿Qué escuchaste?', 'What did you hear?'), ayuda: u('Toca 🔊 las veces que quieras.', 'Tap 🔊 as many times as you like.'), voz: pE[T], opciones: mezclar([pE[T], ...otros(pal, pE[T], 3, T).map((x) => x[T])]), correcta: pE[T] } : null;
+  const letras = pL ? { tipo: 'orden', letras: true, prompt: u(`Escribe ${comillas(pL[N])} en ${idiomaT}`, `Spell ${comillas(pL[N])} in ${idiomaT}`), ayuda: u('Toca las letras en orden.', 'Tap the letters in order.'), respuesta: pL[T] } : null;
+  const diPalabra = pD ? { tipo: 'di', prompt: u('Dilo en voz alta', 'Say it out loud'), frase: pD[T], ayuda: pD[N], voz: pD[T] } : null;
+  const diFrase = { tipo: 'di', prompt: u('Ahora di la frase completa', 'Now say the whole sentence'), frase: ej[0][T], ayuda: ej[0][N], voz: ej[0][T] };
+  const [significa, completa, ordena, une, traduce] = items;
+  return [significa, oido, completa, diPalabra, une, letras, ordena, traduce, diFrase].filter(Boolean);
 }
 
 /* ---------- reproductor ---------- */
@@ -47,21 +64,26 @@ const MAL = [['granma', 'contenta', '¡Ándale, otra vez, mijo!', 'Come on, try 
  */
 export function jugar(raiz, items, { usarVidas = true } = {}) {
   return new Promise((resolver) => {
-    const cola = items.map((it, i) => ({ ...it, id: i, reintento: false }));
-    const total = items.length;
-    let hechos = 0, aciertos = 0, errores = 0, actual = null, bloqueado = false;
+    const cola = items.filter((it) => it.tipo !== 'di' || !hablarPausado()).map((it, i) => ({ ...it, id: i, reintento: false }));
+    let total = cola.length;
+    let hechos = 0, aciertos = 0, errores = 0, actual = null, bloqueado = false, racha = 0, mejorRacha = 0;
+    const T = tgt();
 
     const cab = () => `<div class="sesion-top">
       <button class="btn-icono" data-salir aria-label="${u('Salir', 'Exit')}">✕</button>
-      <div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${hechos}" aria-label="${u('Progreso', 'Progress')}"><i style="transform:scaleX(${((hechos / total) * 100) / 100})"></i></div>
+      <div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${hechos}" aria-label="${u('Progreso', 'Progress')}"><i style="transform:scaleX(${total ? hechos / total : 1})"></i></div>
+      <span class="combo" data-combo ${racha >= 3 ? '' : 'hidden'} role="img" aria-label="${u('Racha de aciertos', 'Streak')}: ${racha}">🔥 ${racha}</span>
       ${usarVidas ? `<span class="vidas" role="img" aria-label="${u('Energía', 'Energy')}: ${vidas()} / ${MAX_VIDAS}">${Array.from({ length: MAX_VIDAS }, (_, i) => `<i class="tortilla mini ${i < vidas() ? '' : 'vacia'}"></i>`).join('')}</span>` : ''}
     </div>`;
 
-    const cierre = (extra) => { raiz.removeEventListener('click', delegado); resolver({ aciertos, errores, ...extra }); };
+    // Al dejar un ejercicio de voz se apaga el micrófono y se borra la grabación (nada queda guardado).
+    const soltarVoz = (it) => { if (!it || it.tipo !== 'di') return; try { it.oido?.parar(); it.grab?.parar(); } catch { /* ya cerró */ } soltar(it.url); it.url = null; it.oyendo = false; };
+    const cierre = (extra) => { soltarVoz(actual); raiz.removeEventListener('click', delegado); resolver({ aciertos, errores, mejorRacha, ...extra }); };
 
     function siguiente() {
       bloqueado = false;
       if (usarVidas && sinEnergia()) return cierre({ sinVidas: true });
+      soltarVoz(actual);
       if (!cola.length) return cierre({ completo: true });
       actual = cola.shift(); pintar();
     }
@@ -73,17 +95,67 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
           ${it.voz ? `<button class="btn-icono" data-voz aria-label="${u('Escuchar', 'Listen')}">🔊</button>` : ''}
           <div class="opciones" role="group" aria-label="${u('Opciones', 'Options')}">${it.opciones.map((o) => `<button class="opcion" data-op="${esc(o)}" aria-pressed="false">${esc(o)}</button>`).join('')}</div>`;
       } else if (it.tipo === 'orden') {
-        it.tokens = mezclar(it.respuesta.split(/\s+/).map((t, i) => ({ t, i }))); it.armado = [];
+        it.tokens = mezclar((it.letras ? [...it.respuesta] : it.respuesta.split(/\s+/)).map((t, i) => ({ t, i }))); it.armado = [];
         cuerpo = `<p class="pregunta">${esc(it.prompt)}<small>${esc(it.ayuda)}</small></p>
-          <div class="armado" data-armado aria-live="polite" aria-label="${u('Tu frase', 'Your sentence')}"></div>
-          <div class="fichas" data-fichas>${it.tokens.map((k) => `<button class="ficha" data-ficha="${k.i}">${esc(k.t)}</button>`).join('')}</div>`;
+          <div class="armado ${it.letras ? 'letras' : ''}" data-armado aria-live="polite" aria-label="${it.letras ? u('Tu palabra', 'Your word') : u('Tu frase', 'Your sentence')}"></div>
+          <div class="fichas ${it.letras ? 'letras' : ''}" data-fichas>${it.tokens.map((k) => `<button class="ficha" data-ficha="${k.i}">${esc(k.t)}</button>`).join('')}</div>`;
       } else if (it.tipo === 'pares') {
         it.izq = mezclar(it.pares.map((p) => p[0])); it.der = mezclar(it.pares.map((p) => p[1])); it.sel = null; it.hechosPares = 0; it.fallo = false;
         cuerpo = `<p class="pregunta">${esc(it.prompt)}</p><div class="pares" data-pares>
           ${it.izq.map((a, i) => `<button class="par" data-lado="i" data-v="${esc(a)}" lang="${tgt()}">${esc(a)}</button>${`<button class="par" data-lado="d" data-v="${esc(it.der[i])}">${esc(it.der[i])}</button>`}`).join('')}</div>`;
       }
-      raiz.innerHTML = `<div class="sesion">${cab()}${cuerpo}<div class="retro-espacio"></div></div>${it.tipo === 'pares' ? '' : `<div class="retro sola" data-pie><button class="btn bloque" data-comprobar disabled>${u('Comprobar', 'Check')}</button></div>`}`;
+      else if (it.tipo === 'di') {
+        it.intentos = 0; it.silencios = 0; it.modo = puedeReconocer() ? 'reco' : puedeGrabar() ? 'graba' : 'solo';
+        cuerpo = `<p class="pregunta">${esc(it.prompt)}<br><span class="decir" lang="${T}">${esc(it.frase)}</span><small>${esc(it.ayuda)}</small></p>
+          <button class="btn-icono" data-voz aria-label="${u('Escuchar cómo se dice', 'Hear how it sounds')}">🔊</button>
+          <div class="hablar"><button class="btn-micro" data-micro aria-pressed="false" aria-label="${u('Toca y habla', 'Tap and speak')}">🎤</button>
+            <p class="oido" data-oido role="status"></p><div class="fila" data-extra></div>
+            <p class="muted chico">${u('Nada se guarda: es solo para que practiques.', 'Nothing is saved: it is just for practice.')}</p>
+            <button class="btn-liga" data-nohablo>${u('Ahora no puedo hablar', 'I can\'t speak right now')}</button></div>`;
+      }
+      const sinBoton = it.tipo === 'pares' || it.tipo === 'di';
+      raiz.innerHTML = `<div class="sesion">${cab()}${cuerpo}<div class="retro-espacio"></div></div>${sinBoton ? '' : `<div class="retro sola" data-pie><button class="btn bloque" data-comprobar disabled>${u('Comprobar', 'Check')}</button></div>`}`;
       raiz.querySelector('[data-comprobar]')?.focus?.();
+      if (it.tipo === 'di') estadoDi(it);
+      if (it.oir || it.tipo === 'di') hablar(it.voz, T);            // se oye solo al aparecer
+    }
+
+    /* ---------- «dilo en voz alta» ---------- */
+    function estadoDi(it, texto) {
+      const o = raiz.querySelector('[data-oido]'), m = raiz.querySelector('[data-micro]'), x = raiz.querySelector('[data-extra]'); if (!o || !m) return;
+      m.classList.toggle('oyendo', !!it.oyendo); m.setAttribute('aria-pressed', String(!!it.oyendo));
+      const base = it.modo === 'reco' ? u('Toca el micrófono y dilo.', 'Tap the microphone and say it.') : it.modo === 'graba' ? u('Toca el micrófono, dilo y escúchate.', 'Tap the microphone, say it and hear yourself.') : u('Dilo fuerte y claro, como te salga.', 'Say it loud and clear, as best you can.');
+      o.textContent = it.oyendo ? (it.modo === 'reco' ? u('Te escucho…', 'Listening…') : u('Grabando… toca otra vez para terminar.', 'Recording… tap again to finish.')) : (texto || base);
+      m.hidden = it.modo === 'solo';
+      x.innerHTML = it.modo === 'solo' ? `<button class="btn verde" data-yadije>✓ ${u('Ya lo dije en voz alta', 'I said it out loud')}</button>`
+        : it.url ? `<button class="btn sec" data-mivoz>▶ ${u('Mi voz', 'My voice')}</button><button class="btn verde" data-yadije>✓ ${u('Ya me salió', 'I got it')}</button>`
+        : it.intentos >= 2 ? `<button class="btn sec" data-yadije>${u('Seguir adelante', 'Move on')}</button>` : '';
+    }
+    async function micro(it) {
+      if (it.oyendo) { it.oido?.parar(); it.grab?.parar(); return; }
+      callarVoz();
+      if (it.modo === 'reco') {
+        it.oyendo = true; estadoDi(it);
+        it.oido = escuchar(T); const r = await it.oido; it.oyendo = false;
+        if (actual !== it || bloqueado) return;
+        if (r.ok) {
+          const mejor = r.textos.reduce((m, t) => (parecido(t, it.frase) > parecido(m, it.frase) ? t : m), r.textos[0]);
+          if (parecido(mejor, it.frase) >= UMBRAL) return responder(true);
+          it.intentos++; return estadoDi(it, `${u('Escuché', 'I heard')}: «${mejor}». ${u('Otra vez, despacito.', 'Once more, slowly.')}`);
+        }
+        if (r.motivo === 'silencio' && ++it.silencios < 2) return estadoDi(it, u('No te alcancé a oír. Acércate tantito y otra vez.', 'I could not hear you. Come a little closer and try again.'));
+        // sin permiso, sin internet o sin servicio: la persona se graba y se escucha ella misma
+        it.modo = puedeGrabar() ? 'graba' : 'solo';
+        return estadoDi(it, r.motivo === 'red' ? u('Sin internet no puedo oírte, pero puedes grabarte y escucharte.', 'Without internet I cannot hear you, but you can record and hear yourself.') : '');
+      }
+      if (it.modo === 'graba') {
+        soltar(it.url); it.url = null;
+        const g = await grabar(); if (actual !== it) return void g.parar?.();
+        if (!g.ok) { it.modo = 'solo'; return estadoDi(it); }
+        it.grab = g; it.oyendo = true; estadoDi(it);
+        const url = await g.fin; it.oyendo = false; if (actual !== it) return soltar(url);
+        it.url = url; estadoDi(it, url ? u('¡Listo! Escúchate y compárate con 🔊.', 'Done! Hear yourself and compare with 🔊.') : '');
+      }
     }
 
     function responder(ok, correcta) {
@@ -91,10 +163,11 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
       const it = actual;
       let msg;
       if (ok) {
-        aciertos++; hechos++; sonido.ok(); vibrar(25);
+        aciertos++; hechos++; racha++; mejorRacha = Math.max(mejorRacha, racha); vibrar(25);
+        if (racha >= 3) sonido.racha(racha); else sonido.ok();
         msg = al(OK);
       } else {
-        errores++; sonido.mal(); vibrar([40, 40, 40]);
+        errores++; racha = 0; sonido.mal(); vibrar([40, 40, 40]);
         if (usarVidas && it.tipo !== 'pares') { perderVida(); perdioTortilla(); }
         if (!it.reintento) { cola.push({ ...it, reintento: true }); } else hechos++;
         msg = al(MAL);
@@ -102,10 +175,12 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
       const [quien, variante, es, en] = msg;
       const pie = raiz.querySelector('[data-pie]') || (() => { const d = document.createElement('div'); d.dataset.pie = ''; raiz.append(d); return d; })();
       pie.className = 'retro ' + (ok ? 'ok' : 'mal');
-      pie.innerHTML = `${pj(quien, variante)}<div class="msg" role="alert">${u(es, en)}${!ok && correcta ? `<br><small>${u('Respuesta', 'Answer')}: <strong>${esc(correcta)}</strong></small>` : ''}</div><button class="btn ${ok ? 'verde' : ''}" data-seguir>${u('Continuar', 'Continue')}</button>`;
+      pie.innerHTML = `${pj(quien, variante)}<div class="msg" role="alert">${u(es, en)}${ok && racha >= 3 ? ` <span class="racha-msg">🔥 ${racha} ${u('seguidas', 'in a row')}</span>` : ''}${!ok && correcta ? `<br><small>${u('Respuesta', 'Answer')}: <strong>${esc(correcta)}</strong></small>` : ''}</div><button class="btn ${ok ? 'verde' : ''}" data-seguir>${u('Continuar', 'Continue')}</button>`;
       pie.querySelector('[data-seguir]').focus();
       if (ok) reaccion(pie.querySelector('.pj'), quien === 'granma' ? 'aplauso' : 'asiente');
       const barra = raiz.querySelector('.barra>i'); if (barra) barra.style.transform = `scaleX(${hechos / total})`;
+      const combo = raiz.querySelector('[data-combo]');
+      if (combo) { combo.hidden = racha < 3; combo.textContent = `🔥 ${racha}`; if (racha >= 3) { combo.classList.remove('pop'); void combo.offsetWidth; combo.classList.add('pop'); } }
     }
 
     // La tortillita que acaba de perderse (la de índice = vidas actuales) se desinfla y cae
@@ -118,6 +193,16 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
       if (!actual || bloqueado) return;
       if (b.hasAttribute('data-voz')) return void hablar(actual.voz, tgt());
       const it = actual, boton = raiz.querySelector('[data-comprobar]');
+      if (it.tipo === 'di') {
+        if (b.hasAttribute('data-micro')) return void micro(it);
+        if (b.hasAttribute('data-mivoz')) { if (it.url) new Audio(it.url).play().catch(() => {}); return; }
+        if (b.hasAttribute('data-yadije')) return responder(true);
+        if (b.hasAttribute('data-nohablo')) {       // sin castigo: se quitan los de voz y la lección sigue
+          pausarHablar(); const quedan = cola.filter((x) => x.tipo !== 'di'); total -= 1 + (cola.length - quedan.length); cola.length = 0; cola.push(...quedan);
+          return siguiente();
+        }
+        return;
+      }
       if (it.tipo === 'mcq') {
         if (b.hasAttribute('data-op')) { raiz.querySelectorAll('.opcion').forEach((o) => { o.classList.remove('sel'); o.setAttribute('aria-pressed', 'false'); }); b.classList.add('sel'); b.setAttribute('aria-pressed', 'true'); boton.disabled = false; }
         else if (b.hasAttribute('data-comprobar')) {
@@ -131,7 +216,7 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
         if (b.hasAttribute('data-ficha')) { const k = it.tokens.find((t) => String(t.i) === b.dataset.ficha); it.armado.push(k); b.classList.add('usada'); b.tabIndex = -1; }
         else if (b.hasAttribute('data-quitar')) { const i = +b.dataset.quitar; const [k] = it.armado.splice(i, 1); raiz.querySelector(`[data-ficha="${k.i}"]`).classList.remove('usada'); raiz.querySelector(`[data-ficha="${k.i}"]`).tabIndex = 0; }
         else if (b.hasAttribute('data-comprobar')) {
-          const ok = it.armado.map((k) => k.t).join(' ') === it.respuesta;
+          const ok = it.armado.map((k) => k.t).join(it.letras ? '' : ' ') === it.respuesta;
           raiz.querySelector('[data-comprobar]')?.remove(); responder(ok, it.respuesta); return;
         }
         zona.innerHTML = it.armado.map((k, i) => `<button class="ficha" data-quitar="${i}" aria-label="${u('Quitar', 'Remove')} ${esc(k.t)}">${esc(k.t)}</button>`).join('');

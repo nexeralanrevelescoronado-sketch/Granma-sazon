@@ -86,6 +86,10 @@ if (existsSync(j('assets', 'audio', 'abuelo'))) for (const f of readdirSync(j('a
 }
 escribir(j('data', 'audios.json'), audios);
 
+// ---- glosario al toque (cada palabra del contenido con su significado; fuente: scripts/datos/glosario/)
+const glos = (l) => JSON.parse(readFileSync(j('scripts', 'datos', 'glosario', `${l}.json`), 'utf8'));
+escribir(j('data', 'glosario.json'), { en: glos('en'), es: glos('es') });
+
 // ---- 4) paquetes descargables (con su peso real)
 const peso = (rutas) => rutas.reduce((s, r) => s + statSync(j(r)).size, 0);
 const bibliaFiles = [...listar(j('data', 'biblia'), (f) => f.endsWith('.json')).map(url)].sort();
@@ -105,7 +109,7 @@ escribir(j('sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmln
 
 // ---- 3) nucleo (cache de la app) + version por contenido
 const nucleo = [
-  'index.html', 'manifest.webmanifest', 'data/paquetes.json', 'data/audios.json',
+  'index.html', 'manifest.webmanifest', 'data/paquetes.json', 'data/audios.json', 'data/glosario.json',
   'demo-animaciones.html', ...listar(j('css')).map(url), ...listar(j('js')).map(url), ...listar(j('assets', 'animaciones')).map(url),
   ...listar(j('assets', 'personajes'), (f) => /\/(granma-(contenta|hablando|carinosa|pensando|aplaudiendo)|abuelo-(serio|hablando|sonrisa|asintiendo|aconsejando))\.svg$/.test(f.split(sep).join('/'))).map(url),
   ...listar(j('assets', 'logo')).map(url),

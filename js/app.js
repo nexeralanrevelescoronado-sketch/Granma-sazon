@@ -6,6 +6,7 @@ import { sonido } from './sound.js';
 import { SinDescargar } from './datos.js';
 import { pj } from './personajes.js';
 import { iniciarAnimaciones } from '../assets/animaciones/index.js';
+import { iniciarGlosario } from './glosario.js';
 import { vigilarDialogos, detenerHabla, alternarVoz, vozDisponible } from './habla.js';
 
 const rutas = {
@@ -126,5 +127,6 @@ if ('serviceWorker' in navigator) addEventListener('load', () => navigator.servi
 
 iniciarAnimaciones();
 vigilarDialogos(main);
+iniciarGlosario();
 addEventListener('hashchange', navegar);
 navegar();

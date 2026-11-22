@@ -45,6 +45,14 @@ html[data-oculta] *,html[data-oculta] *::before,html[data-oculta] *::after{anima
   .pj-svg.anim-mano [data-g="chispas"]{animation:aparece .3s var(--ease-out) .25s both}
   @keyframes mano{from{opacity:0;transform:translateY(30px) rotate(14deg)}to{opacity:1;transform:none}}
   @keyframes aparece{from{opacity:0}to{opacity:1}}
+  /* Glosario, racha y micrófono: entradas cortas, una vez; el micrófono late solo mientras escucha (lo detiene la persona o el tiempo) */
+  .glosa{animation:glosa-entra .16s ease-out}
+  @keyframes glosa-entra{from{opacity:0;transform:translateY(6px) scale(.96)}to{opacity:1;transform:none}}
+  .combo.pop{animation:combo-pop .28s ease-out}
+  @keyframes combo-pop{0%{transform:scale(.7)}60%{transform:scale(1.18)}100%{transform:scale(1)}}
+  .btn-micro.oyendo{animation:late 1s ease-in-out infinite}
+  @keyframes late{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+  .estrellas{animation:combo-pop .3s ease-out}
 
   /* Vapor de la olla: 3 capas (cada hilo es su propio <svg> = caja CSS → compositor), suben y se desvanecen en loop suave */
   .vapor .hilo{opacity:0;transform-origin:50% 60%;animation:vapor 3.4s ease-out infinite}

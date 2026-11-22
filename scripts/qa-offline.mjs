@@ -63,10 +63,16 @@ await page.screenshot({ path: join(CAPT, '05-relato.png'), fullPage: true });
 await page.click('[data-accion="palabras"]'); await page.click('[data-accion="ejercicios"]');
 const cap = hist.capitulos[0], propias = Object.values(cap.palabrasInteres).flat(), pal = [...cap.palabras, ...propias], ejs = [...Object.values(cap.ejemplos).flat(), ...propias.map((p) => ({ en: p.f.en, es: p.f.es, we: p.en, ws: p.es }))];
 const nativoDe = (t) => (ejs.find((e) => e[T] === t) || {})[N];
-for (let i = 0; i < 12; i++) {
+for (let i = 0; i < 24; i++) {
   await page.waitForTimeout(150);
   if (await page.locator('[data-seguir]').count()) { await page.click('[data-seguir]'); continue; }
   if (await page.locator('.celebra, h1:has-text("Capítulo terminado")').count()) break;
+  if (await page.locator('[data-nohablo]').count()) { await page.click('[data-nohablo]'); continue; }        // hablar se salta sin castigo
+  if (await page.locator('.armado.letras').count()) {                                                         // deletrear
+    const w = (await page.locator('.pregunta').innerText()).match(/«(.+?)»/)[1], p = pal.find((x) => x[N] === w);
+    for (const letra of [...p[T]]) await page.locator('[data-ficha]:not(.usada)').filter({ hasText: new RegExp(`^${letra}$`) }).first().click();
+    await page.click('[data-comprobar]'); continue;
+  }
   const tipo = (await page.locator('[data-pares]').count()) ? 'pares' : (await page.locator('[data-armado]').count()) ? 'orden' : (await page.locator('.opcion').count()) ? 'mcq' : null;
   if (!tipo) { if (await page.locator('h1:has-text("consejo")').count()) break; continue; }
   if (i === 0) await page.screenshot({ path: join(CAPT, '06-ejercicio.png') });

@@ -214,3 +214,26 @@ mark.clave:empty{display:none}
 .mapa li.li-prueba{padding:4px 0}.mapa li.li-prueba::after{top:60px}
 .arranque{min-height:70dvh;display:grid;place-content:center;justify-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:1.4rem;color:var(--terra-osc)}
 .arranque img{border-radius:24px}
+/* ---------- glosario al toque, hablar y racha ---------- */
+html[data-tgt="en"] main [lang="en"]:not(button),html[data-tgt="es"] main [lang="es"]:not(button){cursor:help;-webkit-tap-highlight-color:transparent}
+::highlight(glosa){background:#FBE3A6;color:inherit}
+.glosa{position:fixed;z-index:70;max-width:min(20rem,calc(100vw - 16px));display:flex;gap:10px;align-items:center;padding:10px 14px 10px 10px;border-radius:14px;background:var(--cafe);color:#fff;box-shadow:var(--sombra)}
+.glosa strong{display:block;font-size:1.1rem}
+.glosa span{display:block;color:#FFF4E2;line-height:1.3}
+.glosa .btn-icono{flex:none;background:#fff}
+.pista-glosa{display:flex;gap:8px;align-items:center;background:#FFF4E2;border:2px dashed var(--linea);border-radius:14px;padding:10px 14px;font-weight:700;color:var(--cafe)}
+.decir{display:inline-block;font-size:1.6rem;margin-top:6px}
+.hablar{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;margin-top:6px}
+.btn-micro{width:96px;height:96px;border-radius:50%;border:3px solid var(--verde-ink);border-bottom-width:6px;background:#E6F3F2;font-size:2.6rem;cursor:pointer;transition:transform .12s ease-out}
+.btn-micro:active{transform:translateY(2px)}
+.btn-micro.oyendo{background:var(--mal-bg);border-color:var(--mal)}
+.oido{min-height:2.8em;margin:0;font-weight:700;color:var(--cafe)}
+.btn-liga{min-height:44px;padding:0 12px;border:0;background:none;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit}
+.chico{font-size:.85rem;margin:0}
+.combo{flex:none;min-width:52px;text-align:center;padding:4px 8px;border-radius:999px;background:var(--olla);color:var(--cafe);font-weight:800}
+.racha-msg{display:inline-block;white-space:nowrap}
+.estrellas{font-size:2rem;letter-spacing:.2em;margin:4px 0}
+.armado.letras,.fichas.letras{gap:6px}
+.fichas.letras .ficha,.armado.letras .ficha{min-width:44px;padding:8px 0;text-align:center;font-size:1.2rem;text-transform:lowercase}
+.cuaderno{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.cuaderno li{display:flex;gap:8px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--linea)}

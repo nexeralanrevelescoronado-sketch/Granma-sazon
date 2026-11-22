@@ -87,11 +87,13 @@ const malas = pal.filter((p) => p.es !== correcta).map((p) => p.es);
 let incorrecta = null; for (const m of malas) if (await pg.locator(`.opcion[data-op="${m}"]`).count()) { incorrecta = m; break; }
 await pg.click(`.opcion[data-op="${incorrecta}"]`); await pg.click('[data-comprobar]'); await pg.waitForTimeout(150); l = await anims(pg);
 ok(l.some((a) => a.dur === 520 && a.props.includes('transform')), 'error: la tortillita se desinfla y cae'); await pg.waitForTimeout(700); ok((await pg.locator('.vidas .tortilla.vacia').count()) === 1, 'la tortillita queda vacía');
-await pg.click('[data-seguir]'); await pg.waitForSelector('.opcion,.ficha,.par');
+await pg.click('[data-seguir]'); await pg.waitForSelector('.opcion,.ficha,.par,[data-nohablo]');
 // ahora un acierto: primer ejercicio repetido o el siguiente; resolvemos lo que toque con datos conocidos
 const ejs = [...Object.values(hist.capitulos[0].ejemplos).flat(), ...propias.map((p) => ({ en: p.f.en, es: p.f.es, we: p.en, ws: p.es }))];
 async function resolverUno() {
   if (await pg.locator('[data-pares]').count()) { const izq = await pg.locator('[data-lado="i"]').evaluateAll((b) => b.map((x) => x.dataset.v)); for (const a of izq) { const p = pal.find((x) => x.en === a); await pg.click(`[data-lado="i"][data-v="${a}"]`); await pg.click(`[data-lado="d"][data-v="${p.es}"]`); } return; }
+  if (await pg.locator('[data-nohablo]').count()) { await pg.click('[data-nohablo]'); await pg.waitForTimeout(150); return resolverUno(); }
+  if (await pg.locator('.armado.letras').count()) { const w = (await pg.locator('.pregunta').innerText()).match(/«(.+?)»/)[1], p = pal.find((x) => x.es === w); for (const l of [...p.en]) await pg.locator('[data-ficha]:not(.usada)').filter({ hasText: new RegExp(`^${l}$`) }).first().click(); await pg.click('[data-comprobar]'); return; }
   if (await pg.locator('[data-armado]').count()) { const ay = await pg.locator('.pregunta small').textContent(); const e = ejs.find((x) => x.es === ay); for (const pa of e.en.split(/\s+/)) await pg.locator('[data-ficha]:not(.usada)').filter({ hasText: new RegExp(`^${pa.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`) }).first().click(); await pg.click('[data-comprobar]'); return; }
   const q = await pg.locator('.pregunta').innerText(); let c; const m = q.match(/«(.+?)»/);
   if (m && /significa/.test(q)) c = pal.find((p) => p.en === m[1]).es; else if (q.includes('_____')) { const ay = await pg.locator('.pregunta small').textContent(); const e = ejs.find((x) => x.es === ay); c = pal.find((p) => p.en.toLowerCase() === e.we.toLowerCase()).en; } else { const fr = q.split('\n')[1].trim(); c = ejs.find((x) => x.en === fr).es; }

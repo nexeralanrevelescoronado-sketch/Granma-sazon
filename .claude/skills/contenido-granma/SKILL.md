@@ -14,7 +14,7 @@ Esta app enseña inglés y español a gente de todas las edades (familias, abuel
 3. **Valida:** guarda la tanda como JSON y corre
    `node .claude/skills/contenido-granma/scripts/validar.mjs <tipo> tanda.json` (tipos: `consejos`, `cotorreos`, `capitulos`, `recetas`, `biblia`; o `tanda` con un objeto de varios tipos). Corrige hasta quedar sin errores y lee cada ⚠: son dudas que una persona debe decidir.
 4. **Cierra con el checklist** (abajo) pegado en tu respuesta, marcando cada punto de verdad.
-5. **Integrar (solo si el usuario lo pide):** la fuente de verdad NO es `data/*.json` (se genera), son `scripts/datos/*.mjs`. Agrega ahí con los mismos ayudantes (`K(...)` consejos, `T(...)` cotorreos, `E(...)` ejemplos de capítulo, `I(...)`/`S(...)` receta), luego `npm run build` y `npm test`. Si no pidieron integrar, entrega la tanda como JSON y di que falta ese paso.
+5. **Integrar (solo si el usuario lo pide):** la fuente de verdad NO es `data/*.json` (se genera), son `scripts/datos/*.mjs`. Agrega ahí con los mismos ayudantes (`K(...)` consejos, `T(...)` cotorreos, `E(...)` ejemplos de capítulo, `I(...)`/`S(...)` receta), luego agrega al glosario (`scripts/datos/glosario/en.json` y `es.json`) cada palabra nueva que traiga la tanda, y corre `npm run build` y `npm test` (la prueba dice qué palabras faltan). Si no pidieron integrar, entrega la tanda como JSON y di que falta ese paso.
 
 ## Voces
 

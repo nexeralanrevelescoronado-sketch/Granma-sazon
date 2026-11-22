@@ -65,3 +65,7 @@ Los `id` los pone el build (posición + 1): en una tanda nueva déjalos fuera. T
 - `libro`: id de `data/biblia/libros.json` (`gen, sal, jua, mat…`). Pasaje corto (1–3 versículos).
 - `pares[i] = [palabra en RV1909, palabra en KJV]`, **tal como aparecen** en esos versículos (el validador los busca).
 - No guardes el texto del versículo. Fuente: `scripts/datos/biblia.mjs`.
+
+## Glosario al toque (obligatorio al agregar contenido)
+
+Cada palabra nueva que aparezca en un texto (`es`/`en`) necesita su entrada en `scripts/datos/glosario/en.json` (inglés → significado en español) o `es.json` (español → significado en inglés). La clave es la forma exacta en minúsculas (`cooked`, `manzanas`, `don't`); el valor, un significado corto (≤ 45 caracteres, sin punto final; dos sentidos se separan con `; `). `npm test` dice qué palabras faltan.

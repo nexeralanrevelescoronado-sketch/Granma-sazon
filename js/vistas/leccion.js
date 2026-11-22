@@ -55,7 +55,7 @@ export async function montar(main, { args }) {
     main.innerHTML = `<h1>${u('El consejo del Abuelo', 'Grandpa\'s advice')}</h1>
       <div class="dialogo der">${pj('abuelo', 'aconsejando', { ancho: 120 })}<div class="globo abuelo"><span class="quien">${u('El Abuelo', 'Grandpa')}</span>
         <p class="bilingue"><span class="l1" lang="${T}" style="font-size:1.15rem">${resaltar(c[T], claves.map((k) => k[T]))}</span> <button class="btn-icono" data-vozc aria-label="${u('Escuchar', 'Listen')}">🔊</button><br><span class="l2" lang="${N}">${resaltar(c[N], claves.map((k) => k[N]))}</span></p></div></div>
-      <div class="tarjeta"><h2>${u('Palabras clave', 'Key words')}</h2><ul>${claves.map((k) => `<li><mark class="clave">${esc(k[T])}</mark> = ${esc(k[N])}</li>`).join('')}</ul></div>
+      <div class="tarjeta"><h2>${u('Palabras clave', 'Key words')}</h2><ul>${claves.map((k) => `<li><mark class="clave" lang="${T}">${esc(k[T])}</mark> = ${esc(k[N])}</li>`).join('')}</ul></div>
       ${boton(u('Terminar capítulo', 'Finish chapter'), 'fin', 'verde')}`;
   }
   async function fin() {

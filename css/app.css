@@ -225,6 +225,7 @@ html[data-tgt="en"] main [lang="en"]:not(button),html[data-tgt="es"] main [lang=
 .decir{display:inline-block;font-size:1.6rem;margin-top:6px}
 .decir .pal{border-radius:8px;padding:0 3px;transition:background-color .2s ease-out,color .2s ease-out}
 .decir .pal.ok{background:var(--ok-bg);color:#1E4F33}
+.decir .pal.casi{background:#FBE3A6;color:#5A3D00;text-decoration:underline dotted}
 .hablar{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;margin-top:6px}
 .btn-micro{width:96px;height:96px;border-radius:50%;border:3px solid var(--verde-ink);border-bottom-width:6px;background:#E6F3F2;font-size:2.6rem;cursor:pointer;transition:transform .12s ease-out}
 .btn-micro:active{transform:translateY(2px)}

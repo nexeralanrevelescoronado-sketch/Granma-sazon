@@ -48,6 +48,13 @@ if (hayVoz) {
   ok(r2.todo === false && r2.dichas / r2.total < 0.6, `si la persona dice otra cosa, no lo da por bueno (${r2.dichas} de ${r2.total})`);
   await b.close();
 
+  ({ b, pg } = await abrir(wav('bed.wav', 'the bed is warm')));
+  await bajarOido(pg);
+  const r3 = await pg.evaluate(async () => { const m = await import('./js/oido-propio.js'); const e = await m.escucharPropio('en', 'The bread is warm.'); const f = await e.fin; URL.revokeObjectURL(f.url); return f; });
+  const pan = r3.palabras.find((x) => x.w === 'bread');
+  ok(pan.estado === 'casi' && pan.sono === 'bed' && r3.estrellas < 3, `pronunciación: dijo «bed» en vez de «bread» y lo notó (sonó como «${pan.sono}», ${r3.estrellas} estrellas)`);
+  await b.close();
+
   console.log('3) En la lección: palabras en verde, «¡Viva México!» y fiesta de tortillas');
   // El archivo de voz se escribe después de leer la frase que tocó: el navegador lo abre hasta que se enciende el micrófono.
   const archivo = wav('leccion.wav', 'uno'); ({ b, pg } = await abrir(archivo)); await bajarOido(pg); await hastaHablar(pg);

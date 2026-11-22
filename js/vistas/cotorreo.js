@@ -36,7 +36,7 @@ function detalle(main, lista, id) {
     <div class="dialogo">${pj('granma', 'contento', { ancho: 120, clase: 'anim-brinca' })}<div class="globo"><span class="quien">Granma · ${esc(u(...TIPOS[c.tipo]))}</span>
       <h1 style="font-size:1.25rem" lang="${T}">${resaltar(c[T], claves.map((k) => k[T]))}</h1><p class="muted" lang="${N}">${resaltar(c[N], claves.map((k) => k[N]))}</p></div></div>
     <div class="fila"><button class="btn-icono" data-voz aria-label="${u('Escuchar', 'Listen')}">🔊</button>${botonWhatsApp(texto)}</div>
-    <div class="tarjeta mt"><h2>${u('3 palabras clave', '3 key words')}</h2><ul>${claves.map((k) => `<li><mark class="clave">${esc(k[T])}</mark> = ${esc(k[N])}</li>`).join('')}</ul></div>
+    <div class="tarjeta mt"><h2>${u('3 palabras clave', '3 key words')}</h2><ul>${claves.map((k) => `<li><mark class="clave" lang="${T}">${esc(k[T])}</mark> = ${esc(k[N])}</li>`).join('')}</ul></div>
     <div id="juego" class="mt">${S.cotorreos[c.id] ? `<p class="estado-ok">✓ ${u('Ya lo resolviste.', 'You already solved this one.')}</p>` : ''}<button class="btn grande" data-probar>${esc(c.q.p[N])}</button></div>`;
   main.onclick = async (e) => {
     if (e.target.closest('[data-voz]')) return void hablar(c[T], T);

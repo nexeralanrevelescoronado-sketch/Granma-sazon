@@ -138,7 +138,12 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
     // Pinta de verde las palabras ya reconocidas (y suena un «tic» por cada palabra nueva).
     function pintarPalabras(it, palabras) {
       const els = raiz.querySelectorAll('.decir .pal'); let k = 0, nuevas = 0;
-      it.fichas.forEach((f, i) => { const mias = palabras.slice(k, k + f.n); k += f.n; const ok = f.n === 0 || (mias.length === f.n && mias.every((x) => x.ok)); if (ok && f.n && els[i] && !els[i].classList.contains('ok')) { els[i].classList.add('ok'); nuevas++; } });
+      it.fichas.forEach((f, i) => {
+        const mias = palabras.slice(k, k + f.n); k += f.n; if (!f.n || !els[i] || mias.length !== f.n) return;
+        const clara = mias.every((x) => x.estado === 'clara' || (x.ok && !x.estado)), casi = !clara && mias.every((x) => x.ok);
+        if (clara && !els[i].classList.contains('ok')) { els[i].classList.remove('casi'); els[i].classList.add('ok'); nuevas++; }
+        else if (casi && !els[i].classList.contains('ok')) els[i].classList.add('casi');
+      });
       if (nuevas) sonido.tic();
     }
     function borrarLuego(it) {
@@ -199,8 +204,11 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
         const r = await e.fin; it.oyendo = false; if (boton) boton.style.transform = '';
         if (actual !== it || bloqueado) return soltar(r.url);
         it.url = r.url; borrarLuego(it); pintarPalabras(it, r.palabras);
-        if (r.total && r.dichas / r.total >= UMBRAL) { it.verificado = true; it.completita = r.todo; return responder(true); }
+        const casi = r.palabras.find((x) => x.sono);          // la pista de pronunciación: qué palabra pareció decir
+        it.pista = casi ? u(`«${casi.w}» sonó como «${casi.sono}». Escucha 🔊 y fíjate en ese sonido.`, `«${casi.w}» sounded like «${casi.sono}». Listen to 🔊 and notice that sound.`) : '';
+        if (r.pasa) { it.verificado = true; it.completita = r.claras === r.total; it.estrellasVoz = r.estrellas; return responder(true); }
         it.intentos++;
+        if (r.dichas && it.pista) return estadoDi(it, it.pista);
         return estadoDi(it, !r.oyoAlgo ? u('No alcancé a oír tu voz. Acércate tantito y dilo más fuerte.', 'I could not hear your voice. Come a bit closer and say it louder.')
           : r.dichas ? u(`Te oí ${r.dichas} de ${r.total} palabras: las verdes ya salieron. Dila otra vez, completa.`, `I heard ${r.dichas} of ${r.total} words: the green ones are done. Say it again, all of it.`)
           : u('Oí tu voz, pero no las palabras de la frase. Escucha 🔊 y repite despacito.', 'I heard your voice, but not the words of the sentence. Listen to 🔊 and repeat slowly.'));
@@ -235,7 +243,8 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
         aciertos++; hechos++; racha++; mejorRacha = Math.max(mejorRacha, racha); vibrar(25);
         if (it.tipo === 'di' && it.verificado) {            // la app SÍ oyó las palabras: grito, confeti tricolor y Granma lo celebra
           sonido.viva(); confetiMexicano(); if (estado().ajustes.voz) hablar('¡Viva México!', 'es', 'granma');
-          msg = ['granma', 'aplaudiendo', it.completita ? '¡Viva México! Lo dijiste completito, mijo.' : '¡Viva México! Ya casi te sale todo, mija.', it.completita ? 'Viva México! You said every word, mijo.' : 'Viva México! You almost have it all, mija.'];
+          const est = it.estrellasVoz ? ` ${'⭐'.repeat(it.estrellasVoz)}` : '', pista = it.pista ? ` ${it.pista}` : '';
+          msg = ['granma', 'aplaudiendo', (it.completita ? '¡Viva México! Lo dijiste clarito, mijo.' : '¡Viva México! Ya casi te sale todo, mija.') + est + (it.completita ? '' : pista), (it.completita ? 'Viva México! You said it clearly, mijo.' : 'Viva México! You almost have it all, mija.') + est + (it.completita ? '' : pista)];
         } else { if (racha >= 3) sonido.racha(racha); else sonido.ok(); msg = al(OK); }
       } else {
         errores++; racha = 0; sonido.mal(); vibrar([40, 40, 40]);

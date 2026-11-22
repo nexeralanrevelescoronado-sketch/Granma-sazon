@@ -106,7 +106,7 @@ async function pasajeRuta(main, id) {
   main.innerHTML = `<p><a class="volver" href="#/biblia">← ${u('Biblia', 'Bible')}</a></p><h1>${esc(p.titulo[N])}</h1><p class="muted">${esc(libros.find((l) => l.id === p.ref.libro)[N])} ${p.ref.cap}:${p.ref.desde}</p>
     <div class="versos lado"><div class="verso-fila"><p lang="es"><strong>RV1909</strong><br>${resaltado(txtEs, 0)}</p><p lang="en"><strong>KJV</strong><br>${resaltado(txtEn, 1)}</p></div></div>
     <p class="atrib">${esc(versionPorId('rv1909').attribution[N])} ${esc(versionPorId('kjv').attribution[N])}</p>
-    <div class="tarjeta mt"><h2>${u('Frases y palabras clave', 'Key words and phrases')}</h2><ul>${p.pares.map((x) => `<li><mark class="clave">${esc(x[T === 'es' ? 0 : 1])}</mark> = ${esc(x[T === 'es' ? 1 : 0])}</li>`).join('')}</ul></div>
+    <div class="tarjeta mt"><h2>${u('Frases y palabras clave', 'Key words and phrases')}</h2><ul>${p.pares.map((x) => `<li><mark class="clave" lang="${T}">${esc(x[T === 'es' ? 0 : 1])}</mark> = ${esc(x[T === 'es' ? 1 : 0])}</li>`).join('')}</ul></div>
     <div id="juego" class="mt">${S.biblia[p.id] ? `<p class="estado-ok">✓ ${u('Ya lo completaste.', 'You already completed this.')}</p>` : ''}<button class="btn grande" data-probar>${u('Practicar', 'Practice')}</button></div>`;
   main.onclick = async (e) => {
     if (!e.target.closest('[data-probar]')) return;

@@ -80,6 +80,7 @@ async function navegar() {
   detenerHabla();
   if (limpiar) { try { limpiar(); } catch { /* ya no existe */ } limpiar = null; }
   document.documentElement.lang = S.perfil.listo ? nat() : 'es';
+  const saltar = document.querySelector('.saltar'); if (saltar) saltar.textContent = S.perfil.listo ? u('Saltar al contenido', 'Skip to content') : 'Saltar al contenido · Skip to content';
   const carga = rutas[base] || rutas[''];
   main.innerHTML = '';
   try {

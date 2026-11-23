@@ -84,16 +84,21 @@ mark.clave{background:var(--olla);color:var(--cafe);border-radius:6px;padding:0 
 .barra.olla>i{background:var(--olla)}
 .vidas{display:inline-flex;gap:4px;align-items:center}
 .tortilla{position:relative;width:22px;height:22px;display:inline-block;border-radius:49% 51% 52% 48% / 50% 47% 53% 50%;
+  /* capas, de arriba a abajo: luz, burbujas tostadas (núcleo oscuro + aro), grano de masa y color base con borde dorado */
   background:
-    radial-gradient(circle at 31% 27%,rgba(255,247,218,.95) 0,rgba(255,247,218,0) 34%),
-    radial-gradient(circle at 63% 67%,rgba(122,64,16,.62) 0 6%,transparent 10%),
-    radial-gradient(circle at 72% 29%,rgba(140,76,22,.55) 0 4.5%,transparent 8%),
-    radial-gradient(circle at 36% 74%,rgba(140,76,22,.5) 0 5.5%,transparent 9%),
-    radial-gradient(circle at 20% 55%,rgba(150,84,26,.35) 0 3.5%,transparent 6%),
-    radial-gradient(circle at 50% 50%,#F5D88F 0 52%,#E6BA68 76%,#C58B38 100%);
-  /* el canto: una sombra sólida más oscura, justo debajo, da el grosor de la tortilla */
-  box-shadow:0 var(--canto,2px) 0 #A56E2A,inset 0 -2px 3px rgba(118,62,16,.5),inset 0 1px 2px rgba(255,249,224,.85),inset 0 0 0 1px rgba(150,92,30,.35)}
-.tortilla.vacia{background:transparent;box-shadow:none;border:2px dashed #B98737;opacity:.6}
+    radial-gradient(ellipse at 29% 24%,rgba(255,248,222,.9) 0,rgba(255,248,222,0) 30%),
+    radial-gradient(ellipse 9% 7% at 66% 68%,rgba(96,48,10,.78) 0 55%,rgba(140,78,22,.45) 80%,transparent 100%),
+    radial-gradient(ellipse 12% 9% at 66% 68%,rgba(176,108,36,.4) 0,transparent 100%),
+    radial-gradient(ellipse 6% 5% at 73% 28%,rgba(104,52,12,.72) 0 55%,rgba(150,84,24,.4) 85%,transparent 100%),
+    radial-gradient(ellipse 8% 6% at 36% 76%,rgba(110,56,14,.7) 0 50%,rgba(150,84,24,.4) 85%,transparent 100%),
+    radial-gradient(ellipse 10% 5% at 19% 52%,rgba(140,80,24,.5) 0,transparent 100%),
+    radial-gradient(ellipse 7% 9% at 52% 22%,rgba(150,86,26,.38) 0,transparent 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .24 0 0 0 0 .07 0 0 0 .9 -.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/45px 45px,
+    radial-gradient(ellipse at 46% 44%,#F6DB95 0 46%,#E8BF6E 70%,#CF9440 88%,#B87D2E 100%);
+  /* luz desde arriba a la izquierda: brillo en ese lado, sombra y canto del lado contrario */
+  box-shadow:0 var(--canto,2px) 0 #A56E2A,0 calc(var(--canto,2px) * 2.2) calc(var(--canto,2px) * 2.4) rgba(70,36,8,.28),
+    inset 2px 3px 4px rgba(255,250,228,.75),inset -3px -4px 6px rgba(112,58,14,.5),inset 0 0 0 1px rgba(146,88,28,.45)}
+.tortilla.vacia{background:none;box-shadow:none;border:2px dashed #B98737;opacity:.6}
 
 /* Mapa de capítulos */
 .mapa{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}

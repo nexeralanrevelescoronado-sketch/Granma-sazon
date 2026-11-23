@@ -6,7 +6,7 @@
  * - Los cachés viejos se limpian en `activate`.
  */
 /*NUCLEO:INICIO*/
-const VERSION = 'dd1d6bf4ae';
+const VERSION = '8f650e2d1d';
 const NUCLEO = [
  "assets/animaciones/animaciones.css",
  "assets/animaciones/confeti.js",
@@ -110,7 +110,7 @@ async function buscar(req) {
     if (!nombre.startsWith('granma-')) continue;
     const cache = await caches.open(nombre);
     const hit = await cache.match(req);
-    if (hit) return { hit, cache };
+    if (hit) return { hit, cache, nombre };
   }
   return null;
 }
@@ -142,7 +142,8 @@ self.addEventListener('fetch', (ev) => {
       }
     }
     const encontrado = await buscar(req);
-    if (encontrado) { ev.waitUntil(revalidar(req, encontrado.cache)); return encontrado.hit; } // cache-first + SWR
+    // Los paquetes que la persona descargó son de una versión fija: se sirven tal cual, sin volver a bajarlos.
+    if (encontrado) { if (!encontrado.nombre.startsWith(PKG)) ev.waitUntil(revalidar(req, encontrado.cache)); return encontrado.hit; } // cache-first + SWR (núcleo)
     try {
       const res = await fetch(req);
       // Solo el núcleo se guarda al navegar; los paquetes se guardan únicamente al descargarlos.

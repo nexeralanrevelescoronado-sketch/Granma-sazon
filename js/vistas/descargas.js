@@ -13,7 +13,7 @@ export async function montar(main) {
 
   const fila = (p) => {
     const e = estados[p.id], pct = e.total ? Math.round((e.hechos / e.total) * 100) : 0;
-    const estado = { listo: `<span class="estado-ok">✓ ${u('Descargado', 'Downloaded')}</span>`, bajando: u('Descargando…', 'Downloading…'), pausa: e.msg === 'corte' ? u('Se cortó el internet. Se reanudará solo al volver.', 'The internet dropped. It will resume on its own when it returns.') : u('En pausa', 'Paused'), parcial: u('Incompleto', 'Incomplete'), no: u('No descargado', 'Not downloaded'), proximamente: u('Próximamente', 'Coming soon') }[e.estado];
+    const estado = { listo: `<span class="estado-ok">✓ ${u('Descargado', 'Downloaded')}</span>`, bajando: u('Descargando…', 'Downloading…'), pausa: e.msg === 'corte' ? u('Se cortó el internet. Se reanudará solo al volver.', 'The internet dropped. It will resume on its own when it returns.') : e.msg === 'error' ? u('No se pudo bajar. Toca Reanudar: lo ya bajado se conserva.', 'Could not download. Tap Resume: what is already downloaded is kept.') : u('En pausa', 'Paused'), parcial: u('Incompleto', 'Incomplete'), no: u('No descargado', 'Not downloaded'), proximamente: u('Próximamente', 'Coming soon') }[e.estado];
     const botones = e.estado === 'proximamente' ? '' : e.estado === 'bajando' ? `<button class="btn sec" data-pausar="${p.id}">⏸ ${u('Pausar', 'Pause')}</button>`
       : e.estado === 'listo' ? `<button class="btn sec" data-borrar="${p.id}">🗑 ${u('Borrar', 'Delete')}</button>`
       : `<button class="btn" data-bajar="${p.id}">${e.estado === 'no' ? '⬇ ' + u('Descargar', 'Download') : '▶ ' + u('Reanudar', 'Resume')}</button>${e.hechos ? `<button class="btn sec" data-borrar="${p.id}">🗑 ${u('Borrar', 'Delete')}</button>` : ''}`;

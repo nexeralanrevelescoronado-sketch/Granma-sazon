@@ -20,11 +20,39 @@ export async function estadoDe(p) {
   if (p.proximamente) return { estado: 'proximamente', hechos: 0, total: 0, bytes: 0 };
   const vivo = info.get(p.id); if (vivo && (vivo.estado === 'bajando' || vivo.estado === 'pausa')) return { ...vivo };
   if (!hayCaches() || !(await caches.has(nombreCache(p.id)))) return { estado: 'no', hechos: 0, total: p.archivos.length, bytes: 0 };
-  const cache = await caches.open(nombreCache(p.id)); const hechos = (await cache.keys()).length;
+  const cache = await caches.open(nombreCache(p.id)); const hechos = (await cache.keys()).filter((r) => !esPieza(r.url)).length;
   const listo = hechos >= p.archivos.length;
   return { estado: listo ? 'listo' : hechos ? 'parcial' : 'no', hechos, total: p.archivos.length, bytes: listo ? (marcas[p.id]?.bytes ?? p.bytes) : (marcas[p.id]?.bytes ?? 0) };
 }
 function emitir(id, datos) { info.set(id, { ...(info.get(id) || {}), ...datos }); bus.dispatchEvent(new CustomEvent('p', { detail: { id, ...info.get(id) } })); }
+
+const PIEZA = 4 * 1024 * 1024;            // 4 MB: si se corta la red, solo se pierde el pedazo que iba bajando
+const esPieza = (url) => /\?parte=\d+&de=\d+$/.test(url);
+/** Baja un archivo por pedazos (HTTP Range). Lo ya bajado se guarda y, si se corta, al reanudar solo falta lo que no llegó. */
+async function bajarArchivo(url, cache, signal, alBajar) {
+  const primero = await fetch(url, { signal, cache: 'reload', headers: { Range: `bytes=0-${PIEZA - 1}` } });
+  if (primero.status === 200) {                                   // el servidor no acepta pedazos: se baja completo de una vez
+    const blob = await primero.blob(); await cache.put(url, new Response(blob, { headers: { 'Content-Type': primero.headers.get('Content-Type') || 'application/octet-stream' } }));
+    alBajar(blob.size); return blob.size;
+  }
+  if (primero.status !== 206) throw new Error('http ' + primero.status);
+  const total = +(primero.headers.get('Content-Range') || '').split('/')[1]; if (!(total > 0)) throw new Error('sin tamaño');
+  const n = Math.ceil(total / PIEZA), tipo = primero.headers.get('Content-Type') || 'application/octet-stream';
+  for (let i = 0; i < n; i++) {
+    const clave = `${url}?parte=${i}&de=${n}`;
+    if (await cache.match(clave)) continue;
+    const res = i === 0 ? primero : await fetch(url, { signal, cache: 'reload', headers: { Range: `bytes=${i * PIEZA}-${Math.min(total, (i + 1) * PIEZA) - 1}` } });
+    if (res.status !== 206) throw new Error('http ' + res.status);
+    const blob = await res.blob(); if (!blob.size) throw new Error('pedazo vacío');
+    await cache.put(clave, new Response(blob, { headers: { 'Content-Type': tipo } })); alBajar(blob.size);
+  }
+  const piezas = []; for (let i = 0; i < n; i++) piezas.push(await (await cache.match(`${url}?parte=${i}&de=${n}`)).blob());
+  const completo = new Blob(piezas, { type: tipo });
+  if (completo.size !== total) throw new Error('tamaño distinto');
+  await cache.put(url, new Response(completo, { headers: { 'Content-Type': tipo } }));
+  for (let i = 0; i < n; i++) await cache.delete(`${url}?parte=${i}&de=${n}`);
+  return total;
+}
 
 export async function descargar(p, { manual = false } = {}) {
   if (!hayCaches()) return emitir(p.id, { estado: 'pausa', msg: 'noCaches' });
@@ -40,11 +68,8 @@ export async function descargar(p, { manual = false } = {}) {
     while (i < faltan.length && !fallo && !ctrl.signal.aborted) {
       const ruta = faltan[i++];
       try {
-        const res = await fetch(abs(ruta), { signal: ctrl.signal, cache: 'reload' });
-        if (!res.ok) throw new Error('http ' + res.status);
-        const blob = await res.blob();
-        await cache.put(abs(ruta), new Response(blob, { headers: { 'Content-Type': res.headers.get('Content-Type') || 'application/octet-stream' } }));
-        hechos++; bytes += blob.size; marcas[p.id] = { ...(marcas[p.id] || {}), bytes };
+        const tamano = await bajarArchivo(abs(ruta), cache, ctrl.signal, (n) => { bytes += n; marcas[p.id] = { ...(marcas[p.id] || {}), bytes }; guardarMarcas(); emitir(p.id, { estado: 'bajando', hechos, bytes }); });
+        hechos++; marcas[p.id] = { ...(marcas[p.id] || {}), bytes };
         emitir(p.id, { estado: 'bajando', hechos, bytes });
       } catch (e) { if (!ctrl.signal.aborted) fallo = e; }
     }
@@ -52,7 +77,7 @@ export async function descargar(p, { manual = false } = {}) {
   await Promise.all(Array.from({ length: Math.min(4, faltan.length || 1) }, obrero));
   activos.delete(p.id);
   if (ctrl.signal.aborted) { emitir(p.id, { estado: 'pausa', msg: 'pausa' }); return; }
-  if (fallo) { emitir(p.id, { estado: 'pausa', msg: 'corte' }); esperarInternet(p); return; }
+  if (fallo) { const sinRed = !navigator.onLine || /fetch|network|Failed|Load failed/i.test(String(fallo.message || fallo)); emitir(p.id, { estado: 'pausa', msg: sinRed ? 'corte' : 'error' }); if (sinRed) esperarInternet(p); return; }
   marcas[p.id] = { bytes, ver: FMT, fecha: Date.now() }; guardarMarcas();
   emitir(p.id, { estado: 'listo', hechos: p.archivos.length, bytes });
   pedirPersistencia();

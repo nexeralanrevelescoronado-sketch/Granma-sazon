@@ -2,6 +2,10 @@
 
 Responde siempre en español. El SPEC del producto está en `SPEC.md` y el mapa del repo en `README.md`.
 
+## Regla permanente: este repositorio es lo único que se toca
+
+El dueño pidió (nov 2026) que en las conversaciones de Granma Sazón **solo se trabaje en Granma Sazón**. No se abren, editan, suben ni unen cambios en otros repositorios (por ejemplo Genesis), ni se crean entornos, PR o sesiones para otros proyectos. Si algo parece necesitar otro repositorio, se dice y se espera su «sí» explícito.
+
 ## Regla permanente: empezar recomendando modelo y esfuerzo
 
 El dueño lo pidió para no gastar tokens de más. **Antes de trabajar en cada petición**, la primera línea de la respuesta dice qué modelo y qué esfuerzo conviene para esa tarea y por qué, en una sola línea. Si la sesión está en un modelo más caro de lo necesario, se dice ahí mismo para que el dueño lo cambie antes de seguir.

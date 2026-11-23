@@ -1,0 +1,10 @@
+data/
+assets/oido/
+recetas/
+node_modules/
+.qa/
+.cache-biblia/
+.claude/skills/contenido-granma/evals/
+graphify-out/
+scripts/datos/glosario/
+scripts/datos/biblia-huella.json

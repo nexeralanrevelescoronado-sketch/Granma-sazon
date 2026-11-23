@@ -2,3 +2,8 @@
 node_modules/
 .qa/
 .DS_Store
+
+# Mapa de Graphify: se guardan el reporte y el grafo; lo demás se regenera
+graphify-out/*
+!graphify-out/GRAPH_REPORT.md
+!graphify-out/graph.json

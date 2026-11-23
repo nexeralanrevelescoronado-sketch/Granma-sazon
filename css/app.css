@@ -83,8 +83,17 @@ mark.clave{background:var(--olla);color:var(--cafe);border-radius:6px;padding:0 
 .barra>i{display:block;height:100%;width:100%;background:var(--verde);border-radius:999px;transform:scaleX(0);transform-origin:0 50%;transition:transform .25s var(--ease-out,ease-out)}
 .barra.olla>i{background:var(--olla)}
 .vidas{display:inline-flex;gap:4px;align-items:center}
-.tortilla{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FBE3A5,#E9B866 70%);border:2px solid #B98737;display:inline-block}
-.tortilla.vacia{background:transparent;border:2px dashed #B98737;opacity:.6}
+.tortilla{position:relative;width:22px;height:22px;display:inline-block;border-radius:49% 51% 52% 48% / 50% 47% 53% 50%;
+  background:
+    radial-gradient(circle at 31% 27%,rgba(255,247,218,.95) 0,rgba(255,247,218,0) 34%),
+    radial-gradient(circle at 63% 67%,rgba(122,64,16,.62) 0 6%,transparent 10%),
+    radial-gradient(circle at 72% 29%,rgba(140,76,22,.55) 0 4.5%,transparent 8%),
+    radial-gradient(circle at 36% 74%,rgba(140,76,22,.5) 0 5.5%,transparent 9%),
+    radial-gradient(circle at 20% 55%,rgba(150,84,26,.35) 0 3.5%,transparent 6%),
+    radial-gradient(circle at 50% 50%,#F5D88F 0 52%,#E6BA68 76%,#C58B38 100%);
+  /* el canto: una sombra sólida más oscura, justo debajo, da el grosor de la tortilla */
+  box-shadow:0 var(--canto,2px) 0 #A56E2A,inset 0 -2px 3px rgba(118,62,16,.5),inset 0 1px 2px rgba(255,249,224,.85),inset 0 0 0 1px rgba(150,92,30,.35)}
+.tortilla.vacia{background:transparent;box-shadow:none;border:2px dashed #B98737;opacity:.6}
 
 /* Mapa de capítulos */
 .mapa{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
@@ -207,7 +216,7 @@ dialog::backdrop{background:rgba(74,46,27,.55)}
 
 .volver{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
 mark.clave:empty{display:none}
-.tortilla.mini{width:13px;height:13px;border-width:1.5px}
+.tortilla.mini{--canto:1px;width:13px;height:13px}
 .sesion-top .vidas{gap:3px}
 .nodo.prueba{width:52px;height:52px;margin:0 8px;background:var(--olla);color:var(--cafe);box-shadow:0 4px 0 #C98511;font-size:1.3rem}
 .nodo.prueba.hecho{background:var(--verde-ink);box-shadow:0 4px 0 #1B5450}
@@ -240,8 +249,8 @@ html[data-tgt="en"] main [lang="en"]:not(button),html[data-tgt="es"] main [lang=
 .armado.letras,.fichas.letras{gap:6px}
 .fichas.letras .ficha,.armado.letras .ficha{min-width:44px;padding:8px 0;text-align:center;font-size:1.2rem;text-transform:lowercase}
 .privacidad{margin:0;padding-left:1.2em;display:grid;gap:8px}
-.tortillas-cap{position:fixed;inset:0;z-index:65;pointer-events:none;overflow:hidden}
-.tortillas-cap .tortilla{position:absolute;width:26px;height:26px;opacity:0}
+.tortillas-cap{position:fixed;inset:0;z-index:65;pointer-events:none;overflow:hidden;perspective:700px}
+.tortillas-cap .tortilla{position:absolute;width:96px;height:96px;opacity:0;transform-style:preserve-3d;--canto:5px;will-change:transform,opacity}   /* se dibuja a su tamaño final: así no se ve borrosa al crecer */
 .premio{font-size:1.15rem;font-weight:800;color:var(--cafe)}
 .cuaderno{list-style:none;padding:0;margin:0;display:grid;gap:6px}
 .cuaderno li{display:flex;gap:8px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--linea)}

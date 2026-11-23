@@ -1,4 +1,5 @@
 // Fiesta mexicana: confeti tricolor y Granma aventando tortillas hacia la persona (como bolo de fiesta).
+// Las tortillas se voltean en 3D (perspectiva en .tortillas-cap) y de canto se ve su grosor.
 // Solo transform + opacity (WAAPI), una sola vez, con tope de partículas; nada se mueve con «reducir movimiento».
 import { confeti, MAX_CONFETI } from './confeti.js';
 
@@ -15,13 +16,16 @@ export function lluviaTortillas(origen, cant = 18) {
   cap.replaceChildren();
   for (let i = 0; i < n; i++) {
     const t = document.createElement('i'); t.className = 'tortilla'; t.style.left = `${x0}px`; t.style.top = `${y0}px`; cap.append(t);
-    const dx = (Math.random() - 0.5) * vw * 0.95, dy = (0.1 + Math.random() * 0.75) * vh - y0, alto = -(60 + Math.random() * 120), tam = 2.2 + Math.random() * 1.8, giro = (Math.random() - 0.5) * 540;
+    const dx = (Math.random() - 0.5) * vw * 0.95, dy = (0.1 + Math.random() * 0.75) * vh - y0, alto = -(60 + Math.random() * 120), tam = 0.55 + Math.random() * 0.45;
+    // Voltereta 3D: cada tortilla gira sobre su eje X (de canto se ve el grosor) y se ladea un poco en Y; siempre la misma lista de transformaciones para que interpole bien
+    const vueltas = (Math.random() < 0.5 ? -1 : 1) * (360 + Math.floor(Math.random() * 2) * 360), ladeo = (Math.random() - 0.5) * 70, giro = (Math.random() - 0.5) * 300;
+    const f = (x, y, e, rx, ry, rz) => `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${e}) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)`;
     t.animate([
-      { opacity: 0, transform: 'translate(-50%,-50%) scale(.3) rotate(0deg)' },
-      { opacity: 1, transform: `translate(calc(-50% + ${dx * 0.45}px), calc(-50% + ${alto}px)) scale(${tam * 0.55}) rotate(${giro * 0.5}deg)`, offset: 0.35 },
-      { opacity: 1, transform: `translate(calc(-50% + ${dx * 0.9}px), calc(-50% + ${dy * 0.8}px)) scale(${tam}) rotate(${giro * 0.9}deg)`, offset: 0.82 },
-      { opacity: 0, transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(${tam * 1.25}) rotate(${giro}deg)` },
-    ], { duration: 1000 + Math.random() * 350, delay: i * 55, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'both' }).onfinish = () => t.remove();
+      { opacity: 0, transform: f(0, 0, 0.1, 0, 0, 0) },
+      { opacity: 1, transform: f(dx * 0.45, alto, tam * 0.5, vueltas * 0.45, ladeo * 0.5, giro * 0.4), offset: 0.35 },
+      { opacity: 1, transform: f(dx * 0.9, dy * 0.8, tam, vueltas * 0.9, ladeo, giro * 0.9), offset: 0.82 },
+      { opacity: 0, transform: f(dx, dy, tam * 1.25, vueltas, ladeo, giro) },
+    ], { duration: 1000 + Math.random() * 350, delay: i * 45, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'both' }).onfinish = () => t.remove();
   }
   return n;
 }

@@ -1,7 +1,7 @@
 # Graph Report - granma-sazon  (2026-11-23)
 
 ## Corpus Check
-- 91 files · ~86,526 words
+- 91 files · ~86,656 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 7 file(s) not represented in the graph (top: (none) 3, .css 2, .webmanifest 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c98746d0`
+- Built from commit: `16c2a3cd`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

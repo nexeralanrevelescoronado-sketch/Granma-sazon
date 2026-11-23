@@ -431,6 +431,9 @@ test('Oído de Granma: califica palabra por palabra, es opcional, con licencia a
   const { MAX_TORTILLAS, TRICOLOR } = await import('../assets/animaciones/fiesta.js'); assert.ok(MAX_TORTILLAS <= 24 && TRICOLOR.length >= 3);
   const f = leer('assets/animaciones/fiesta.js'); assert.ok(/prefers-reduced-motion/.test(f) && !/(left|top|width|height|margin)\s*:/.test(f.slice(f.indexOf('t.animate'))), 'solo transform y opacity');
   assert.ok(/Te ganaste 1 kilo de tortillas hechas con mucho amor/.test(leer('js/vistas/leccion.js')));
+  assert.ok(/rotateX\(/.test(f) && /perspective:\s*\d+px/.test(leer('css/app.css')), 'las tortillas giran en 3D (perspectiva + rotateX)');
+  const css = leer('css/app.css'); assert.ok(/\.tortilla\{[^}]*radial-gradient[\s\S]*?--canto/.test(css), 'la tortilla lleva manchas tostadas y grosor');
+  assert.ok(!/\.tortillas-cap \.tortilla\{[^}]*filter:/.test(css), 'sin filtros: se ven borrosas al crecer');
 });
 
 test('derechos: nada de terceros fuera del Oído, sin peticiones externas y con inventario escrito', () => {

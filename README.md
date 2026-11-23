@@ -14,7 +14,9 @@
 | **Cotorreo con Granma** | 33 chistes, adivinanzas, refranes, trabalenguas y juegos de palabras sanos · «¿Qué quiso decir?» · el Abuelo de remate serio · chiste del día + WhatsApp |
 | **Biblia** | Lado a lado o una versión · **RV1909, KJV y WEB** (dominio público, offline) · búsqueda · ruta de ejercicios con versículos ES/EN · NTV/NLT preparadas como proveedores con licencia (apagadas) |
 | **Juego** | Racha diaria, XP, **energía del día** (10 «tortillitas»: con más de 10 errores la lección se repite mañana), **pruebas acumulativas** tras cada capítulo (primero en español, luego en inglés), mapa de capítulos, retos de 60 s, misiones diarias, 5 insignias, sonidos opcionales, confeti, **Constancia Granma** (PNG generado en el dispositivo) |
-| **Sin internet** | Pantalla «Descargas»: paquetes con su peso, progreso, **pausa/reanudación**, reanuda sola al volver el internet, espacio usado, borrar por paquete |
+| **Palabras al toque** | Toca cualquier palabra del idioma que aprendes y sale su significado (con 🔊) · glosario general de 2,326 palabras y **glosario bíblico completo** (toda palabra de RV1909, KJV y WEB) · «Mi cuaderno» en el perfil |
+| **Hablar** | Ejercicios «Dilo en voz alta» con tres caminos: servicio de voz del teléfono (con permiso), **Oído de Granma** (reconocimiento dentro del teléfono, sin internet, califica palabra por palabra y da estrellas de pronunciación) y medidor de voz propio · «¡Viva México!» y lluvia de tortillas al terminar el capítulo |
+| **Sin internet** | Pantalla «Descargas»: paquetes con su peso, progreso, **pausa/reanudación** (los archivos grandes se bajan por pedazos de 4 MB y se retoman donde se cortaron), reanuda sola al volver el internet, espacio usado, borrar por paquete |
 
 ## Personajes y voz
 
@@ -62,14 +64,16 @@ node scripts/servidor.mjs 8080     # http://localhost:8080
 index.html · manifest.webmanifest · sw.js     PWA y service worker
 css/app.css                                    estilos (móvil primero, variables de marca)
 js/                                            app.js (router) · state.js (juego) · ejercicios.js · descargas.js ·
-                                               sound.js · fx.js · constancia.js · compartir.js · vistas/ · biblia/
+                                               sound.js · fx.js · constancia.js · compartir.js · vistas/ · biblia/ ·
+                                               glosario.js · voz.js · oido.js · oido-propio.js · pruebas.js
 data/                                          historia, recetas, consejos, cotorreo, paquetes (generados) y biblia/
 assets/personajes · logo · iconos              SVG de los abuelos, logo y PNG 192/512/maskable
+assets/oido/                                   Oído de Granma (Vosk + modelos, Apache-2.0; paquete opcional)
 api/biblia.js                                  proxy serverless para versiones con licencia
 scripts/                                       generadores y pruebas con navegador real
 scripts/datos/*.mjs                            ★ FUENTE del contenido (se edita aquí)
 test/contenido.test.mjs                        pruebas del contenido y de las reglas del SPEC
-docs/                                          BIBLIA.md · EXTENDER.md
+docs/                                          BIBLIA.md · EXTENDER.md · CAMBIOS-AL-SPEC.md · DERECHOS-Y-LICENCIAS.md · GUION-ABUELO.md/.pdf
 ```
 
 ### Flujo de trabajo
@@ -89,7 +93,7 @@ Otros scripts: `npm run personajes` (SVG de Granma y el Abuelo), `npm run logo` 
 - Se pide `navigator.storage.persist()` y se explica cómo instalarla en la pantalla de inicio (en iOS protege mejor lo descargado).
 - Indicador visible «Sin internet — modo descargado» y mensajes claros si algo no está descargado.
 - Progreso, racha, XP, insignias y la Constancia viven en `localStorage` y se generan en el dispositivo: 100 % offline.
-- **Peso:** todo el paquete ≈ **12 MB** (meta < 50 MB). Personajes en SVG; no hay fotos, audio ni video (los sonidos se sintetizan con WebAudio). Si más adelante se agregan fotos, deben ir en WebP.
+- **Peso:** el paquete base ≈ **13.6 MB** (meta < 50 MB; los dos «Oído de Granma» son opcionales, ≈ 45 MB cada uno). Personajes en SVG; no hay fotos, audio ni video (los sonidos se sintetizan con WebAudio). Si más adelante se agregan fotos, deben ir en WebP.
 
 ## Calidad medida
 

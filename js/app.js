@@ -94,6 +94,7 @@ async function navegar() {
   versionPintada = ''; pintarCromo();
   if (!location.hash.includes('noscroll')) scrollTo({ top: 0 });
   main.focus({ preventScroll: true });
+  window.__granmaListo = true;                    // el vigilante de index.html deja de esperar
 }
 export function vistaSinDescargar(paquete) {
   const off = !navigator.onLine;
@@ -124,7 +125,13 @@ addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); promptInsta
 export const instalar = async () => { if (!promptInstalar) return false; promptInstalar.prompt(); const r = await promptInstalar.userChoice; promptInstalar = null; return r.outcome === 'accepted'; };
 
 /* Service worker */
-if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch((e) => console.warn('SW', e)));
+// El service worker se registra hasta que la app ya abrió y pasaron unos segundos: así su instalación (70 archivos) nunca compite con la carga de la primera visita.
+if ('serviceWorker' in navigator) {
+  const registrar = () => setTimeout(() => navigator.serviceWorker.register('sw.js')
+    .then(() => navigator.serviceWorker.ready).then((reg) => { if (!navigator.serviceWorker.controller) setTimeout(() => reg.active?.postMessage('tomar-control'), 1500); })
+    .catch((e) => console.warn('SW', e)), 3000);
+  if (document.readyState === 'complete') registrar(); else addEventListener('load', registrar);
+}
 
 iniciarAnimaciones();
 vigilarDialogos(main);

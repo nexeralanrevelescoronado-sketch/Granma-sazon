@@ -6,7 +6,7 @@
  * - Los cachés viejos se limpian en `activate`.
  */
 /*NUCLEO:INICIO*/
-const VERSION = '3730b2cf84';
+const VERSION = '173ecee6bd';
 const NUCLEO = [
  "assets/animaciones/animaciones.css",
  "assets/animaciones/confeti.js",
@@ -101,7 +101,8 @@ self.addEventListener('activate', (ev) => {
       const viejoPaquete = nombre.startsWith(PKG) && !nombre.endsWith(`-f${FMT}`);
       if (viejoNucleo || viejoPaquete) await caches.delete(nombre);
     }
-    await self.clients.claim();
+    // Sin clients.claim(): en la primera visita el service worker NO toma el control de la página que ya está cargando
+    // (en WebKit eso puede dejar peticiones colgadas). Controla desde la siguiente vez que se abre; las actualizaciones sí pasan solas.
   })());
 });
 
@@ -134,7 +135,7 @@ self.addEventListener('fetch', (ev) => {
     // Navegación: la app es una sola página; las recetas estáticas se sirven de su caché si existen.
     if (req.mode === 'navigate') {
       const exacto = await buscar(req);
-      if (exacto) { ev.waitUntil(revalidar(req, exacto.cache)); return exacto.hit; }
+      if (exacto) return exacto.hit;
       try { return await fetch(req); }
       catch {
         const inicio = await buscar(new Request(aUrl('index.html')));
@@ -143,7 +144,9 @@ self.addEventListener('fetch', (ev) => {
     }
     const encontrado = await buscar(req);
     // Los paquetes que la persona descargó son de una versión fija: se sirven tal cual, sin volver a bajarlos.
-    if (encontrado) { if (!encontrado.nombre.startsWith(PKG)) ev.waitUntil(revalidar(req, encontrado.cache)); return encontrado.hit; } // cache-first + SWR (núcleo)
+    // Código (js/css/html) y paquetes: se sirven tal cual; el código solo cambia con una versión nueva del service worker, para no mezclar archivos viejos con nuevos.
+    // Solo los datos sueltos se refrescan en segundo plano.
+    if (encontrado) { if (!encontrado.nombre.startsWith(PKG) && !/\.(js|css|html)$/.test(url.pathname) && url.pathname !== new URL(ALCANCE).pathname) ev.waitUntil(revalidar(req, encontrado.cache)); return encontrado.hit; }
     try {
       const res = await fetch(req);
       // Solo el núcleo se guarda al navegar; los paquetes se guardan únicamente al descargarlos.
@@ -156,6 +159,10 @@ self.addEventListener('fetch', (ev) => {
     }
   })());
 });
+
+// La página pide tomar el control cuando ya abrió y pasaron unos segundos (nunca durante la carga): así la primera visita
+// también funciona sin internet sin que el service worker se meta a media carga.
+self.addEventListener('message', (ev) => { if (ev.data === 'tomar-control') ev.waitUntil(self.clients.claim()); });
 
 // Notificación del cronómetro: al tocarla se enfoca la app (o se abre si estaba cerrada).
 self.addEventListener('notificationclick', (ev) => {

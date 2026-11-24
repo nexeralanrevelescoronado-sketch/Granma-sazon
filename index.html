@@ -61,6 +61,48 @@
 <nav id="nav" class="nav" aria-label="Secciones" hidden></nav>
 <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
 <noscript><p style="padding:1rem">Granma Sazón necesita JavaScript para funcionar. · Granma Sazón needs JavaScript to run.</p></noscript>
+<script>
+/* Vigilante de arranque: si la app no abre, nunca se queda cargando sin salida.
+   1) navegador demasiado viejo -> aviso claro; 2) un módulo falla o pasan 8 s -> se repara solo una vez (quita el service worker y la caché del núcleo y recarga);
+   3) si sigue sin abrir -> mensaje con el motivo exacto y un botón. app.js pone window.__granmaListo = true cuando pinta su primera pantalla. */
+(function () {
+  var errores = [], yaReparo = /[?&]reparado=1/.test(location.search), timer = 0;
+  var texto = function (e) { try { return String((e && (e.message || e.reason || e)) || 'error').slice(0, 140); } catch (x) { return 'error'; } };
+  addEventListener('error', function (e) {
+    var t = e.target, fuente = t && (t.src || t.href);
+    errores.push(fuente && t !== window ? 'no cargó: ' + String(fuente).replace(/^.*\/Granma-sazon\//, '') : texto(e.error || e.message));
+    if (fuente && t !== window && /SCRIPT|LINK/.test(t.tagName || '') && !window.__granmaListo) agendar(1500);
+  }, true);
+  addEventListener('unhandledrejection', function (e) { errores.push(texto(e.reason)); });
+  function fallidos() {   // archivos que el navegador pidió y no llegaron (mejor esfuerzo: depende de lo que el navegador reporte)
+    try { return performance.getEntriesByType('resource').filter(function (e) { return e.responseStatus >= 400 || (e.responseStatus === 0 && e.decodedBodySize === 0 && /\.(js|css|json|svg)(\?|$)/.test(e.name)); }).map(function (e) { return 'sin respuesta: ' + e.name.replace(/^.*\/Granma-sazon\//, '').replace(/^https?:\/\/[^/]+\//, ''); }); } catch (x) { return []; }
+  }
+  function limpiar() {
+    var p = [];
+    try { if (navigator.serviceWorker) p.push(navigator.serviceWorker.getRegistrations().then(function (r) { return Promise.all(r.map(function (x) { return x.unregister(); })); })); } catch (x) {}
+    try { if (window.caches) p.push(caches.keys().then(function (k) { return Promise.all(k.filter(function (n) { return n.indexOf('granma-core') === 0; }).map(function (n) { return caches.delete(n); })); })); } catch (x) {}
+    return Promise.all(p.map(function (q) { return q.catch(function () {}); }));
+  }
+  function mostrar(motivo) {
+    var m = document.getElementById('main'); if (!m || window.__granmaListo) return;
+    var ua = (navigator.userAgent.match(/(iPhone OS|CPU OS) [\d_]+/) || [''])[0].replace(/_/g, '.');
+    m.innerHTML = '<div class="vacio" style="padding:1.5rem;text-align:center"><h1 style="font-size:1.4rem">' + (motivo === 'viejo' ? 'Tu teléfono necesita actualizarse' : 'No pude abrir la app') + '</h1>' +
+      '<p>' + (motivo === 'viejo' ? 'Esta app necesita iOS 14 o más nuevo (Ajustes → General → Actualización de software).' : 'Toca el botón para intentarlo otra vez. Si vuelve a pasar, manda una captura de esta pantalla.') + '</p>' +
+      '<p lang="en" style="color:#6B5748">' + (motivo === 'viejo' ? 'This app needs iOS 14 or newer (Settings → General → Software Update).' : 'Tap the button to try again. If it happens again, send a screenshot of this screen.') + '</p>' +
+      (motivo === 'viejo' ? '' : '<p><button id="granma-reintentar" class="btn grande" style="min-height:48px;padding:0 1.5rem">Reintentar · Try again</button></p>') +
+      '<details style="text-align:left;margin-top:1rem;font-size:.8rem;color:#6B5748"><summary>Detalle técnico</summary><p>' + (ua || navigator.userAgent.slice(0, 80)) + '</p><p>' + (errores.concat(fallidos()).slice(-6).map(function (e) { return e.replace(/</g, '&lt;'); }).join('<br>') || 'sin errores registrados') + '</p></details></div>';
+    var b = document.getElementById('granma-reintentar'); if (b) b.onclick = function () { limpiar().then(function () { location.replace(location.pathname + '?reparado=1' + location.hash); }); };
+  }
+  function actuar() {
+    if (window.__granmaListo) return;
+    if (!yaReparo) limpiar().then(function () { location.replace(location.pathname + '?reparado=1' + location.hash); }); else mostrar('falla');
+  }
+  function agendar(ms) { clearTimeout(timer); timer = setTimeout(actuar, ms); }
+  var moderno = true; try { new Function('var a={b:1};var c=a?.b??0;var d;d||=1;return c+d'); moderno = 'noModule' in HTMLScriptElement.prototype; } catch (x) { moderno = false; }
+  if (!moderno) { document.addEventListener('DOMContentLoaded', function () { mostrar('viejo'); }); return; }
+  agendar(yaReparo ? 12000 : 8000);
+})();
+</script>
 <script type="module" src="js/app.js"></script>
 </body>
 </html>

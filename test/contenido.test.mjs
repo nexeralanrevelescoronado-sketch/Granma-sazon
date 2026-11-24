@@ -445,3 +445,14 @@ test('derechos: nada de terceros fuera del Oído, sin peticiones externas y con 
   const lic = leer('assets/oido/LICENCIAS.md'); assert.ok(/vosk-model-small-es-0\.42/.test(lic) && !/modelo-es\.tar\.gz` \| `vosk-model-small-es-0\.3/.test(lic), 'el español que se distribuye es el 0.42, con licencia publicada');
   for (const f of readdirSync(join(RAIZ, 'js'), { recursive: true }).filter((x) => String(x).endsWith('.js'))) { const t = leer('js/' + f); assert.ok(!/google-analytics|googletagmanager|facebook\.net|doubleclick|hotjar/.test(t), `${f}: sin rastreadores`); }
 });
+
+test('arranque a prueba de iPhone nuevo: vigilante, service worker sin tomar control a media carga y sin mezclar versiones', () => {
+  const html = leer('index.html'), app = leer('js/app.js'), sw = leer('sw.js');
+  assert.ok(html.indexOf('__granmaListo') > 0 && html.indexOf('granma-reintentar') > 0 && html.indexOf('<script>') < html.indexOf('type="module"'), 'el vigilante va antes del módulo y ofrece «Reintentar»');
+  assert.ok(/reparado=1/.test(html) && /8000/.test(html), 'se repara solo una vez a los 8 s');
+  assert.ok(/window\.__granmaListo = true/.test(app), 'la app avisa que abrió');
+  assert.ok(/setTimeout\(\(\) => navigator\.serviceWorker\.register/.test(app), 'el service worker se registra después de abrir');
+  const act = sw.slice(sw.indexOf("addEventListener('activate'"), sw.indexOf('async function buscar')); assert.ok(!/clients\.claim\(\)\s*;?\s*$/m.test(act.replace(/\/\/.*$/gm, '')), 'activate no toma el control a media carga');
+  assert.ok(/'tomar-control'/.test(sw) && /'tomar-control'/.test(app), 'toma el control cuando la página lo pide, ya abierta');
+  assert.ok(/\(js\|css\|html\)/.test(sw), 'el código no se refresca archivo por archivo');
+});

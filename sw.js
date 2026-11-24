@@ -101,14 +101,16 @@ self.addEventListener('activate', (ev) => {
       const viejoPaquete = nombre.startsWith(PKG) && !nombre.endsWith(`-f${FMT}`);
       if (viejoNucleo || viejoPaquete) await caches.delete(nombre);
     }
+    // Respuesta adelantada de navegación: la página empieza a bajar mientras el service worker despierta.
+    try { if (self.registration.navigationPreload) await self.registration.navigationPreload.enable(); } catch { /* sin soporte */ }
     // Sin clients.claim(): en la primera visita el service worker NO toma el control de la página que ya está cargando
     // (en WebKit eso puede dejar peticiones colgadas). Controla desde la siguiente vez que se abre; las actualizaciones sí pasan solas.
   })());
 });
 
 async function buscar(req) {
-  for (const nombre of await caches.keys()) {
-    if (!nombre.startsWith('granma-')) continue;
+  const nombres = (await caches.keys()).filter((n) => n.startsWith('granma-')).sort((a, b) => (b === CORE) - (a === CORE));
+  for (const nombre of nombres) {
     const cache = await caches.open(nombre);
     const hit = await cache.match(req);
     if (hit) return { hit, cache, nombre };
@@ -133,13 +135,20 @@ self.addEventListener('fetch', (ev) => {
 
   ev.respondWith((async () => {
     // Navegación: la app es una sola página; las recetas estáticas se sirven de su caché si existen.
+    // Navegación: primero la red (con la respuesta adelantada del navegador si existe), pero NUNCA esperando sin límite:
+    // si en 4 s no contesta, se sirve la copia guardada de la página. Así la página nunca queda en blanco esperando.
     if (req.mode === 'navigate') {
-      const exacto = await buscar(req);
-      if (exacto) return exacto.hit;
-      try { return await fetch(req); }
-      catch {
-        const inicio = await buscar(new Request(aUrl('index.html')));
-        return inicio ? inicio.hit : new Response('Sin internet', { status: 503 });
+      const copia = async () => { const n = await caches.open(CORE); return (await n.match(req, { ignoreSearch: true })) || (await buscar(req))?.hit || (await n.match(aUrl('index.html'))); };
+      const red = (async () => { const pre = await ev.preloadResponse; return pre || fetch(req); })();
+      const limite = new Promise((ok) => setTimeout(ok, 4000, 'tiempo'));
+      try {
+        const r = await Promise.race([red, limite]);
+        if (r !== 'tiempo' && r) return r;
+        const guardada = await copia(); if (guardada) return guardada;
+        return await red;                                   // sin copia: se espera a la red (como sin service worker)
+      } catch {
+        const guardada = await copia();
+        return guardada || new Response('Sin internet', { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
       }
     }
     const encontrado = await buscar(req);

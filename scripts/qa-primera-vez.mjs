@@ -43,6 +43,17 @@ async function conFalla(nombre, hacerFallar, esperado) {
   console.log(`${bien ? '✔' : '✘'} ${nombre}: ${r} en ${((Date.now() - t0) / 1000).toFixed(0)} s${detalle ? ' · ' + detalle.replace(/\s+/g, ' ').slice(-170) : ''}`); if (!bien) fallas.push(nombre);
   await ctx.close();
 }
+{ // con el service worker ya instalado, la red se queda colgada al pedir la página: no puede quedar en blanco
+  const ctx = await b.newContext({ viewport: { width: 390, height: 844 } }); const pg = await ctx.newPage();
+  await pg.goto(B); await pg.waitForFunction(() => navigator.serviceWorker?.controller, null, { timeout: 30000 }).catch(() => {});
+  const controlado = await pg.evaluate(() => !!navigator.serviceWorker.controller);
+  await ctx.route((u) => u.pathname === '/' || u.pathname.endsWith('/index.html'), () => {});   // nunca contesta
+  const t0 = Date.now(); await pg.reload({ waitUntil: 'commit', timeout: 30000 }).catch(() => {});
+  const abrio = await pg.waitForFunction(() => window.__granmaListo === true, null, { timeout: 20000 }).then(() => true).catch(() => false);
+  const ok = controlado && abrio && Date.now() - t0 < 15000;
+  console.log(`${ok ? '✔' : '✘'} red colgada al pedir la página con service worker instalado: ${abrio ? 'abrió desde la copia en ' + ((Date.now() - t0) / 1000).toFixed(1) + ' s' : 'NO abrió'}${controlado ? '' : ' (el service worker no tomó el control)'}`);
+  if (!ok) fallas.push('red colgada'); await ctx.close();
+}
 await conFalla('un archivo no carga la primera vez: se repara solo', (n) => n === 1, 'abrio');
 await conFalla('un archivo no carga nunca: mensaje claro con el motivo', () => true, 'mensaje');
 await b.close(); srv.close(); console.log(fallas.length ? `\n✘ ${fallas.length} entornos donde se queda cargando` : '\n✔ ABRE EN TODOS LOS ENTORNOS'); process.exit(fallas.length ? 1 : 0);

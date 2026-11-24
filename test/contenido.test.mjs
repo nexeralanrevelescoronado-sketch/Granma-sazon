@@ -455,4 +455,5 @@ test('arranque a prueba de iPhone nuevo: vigilante, service worker sin tomar con
   const act = sw.slice(sw.indexOf("addEventListener('activate'"), sw.indexOf('async function buscar')); assert.ok(!/clients\.claim\(\)\s*;?\s*$/m.test(act.replace(/\/\/.*$/gm, '')), 'activate no toma el control a media carga');
   assert.ok(/'tomar-control'/.test(sw) && /'tomar-control'/.test(app), 'toma el control cuando la página lo pide, ya abierta');
   assert.ok(/\(js\|css\|html\)/.test(sw), 'el código no se refresca archivo por archivo');
+  assert.ok(/setTimeout\(ok, 4000, 'tiempo'\)/.test(sw) && /preloadResponse/.test(sw), 'la página nunca espera a la red sin límite dentro del service worker');
 });

@@ -458,15 +458,21 @@ test('arranque a prueba de iPhone nuevo: vigilante, service worker sin tomar con
   assert.ok(/setTimeout\(ok, 4000, 'tiempo'\)/.test(sw) && /preloadResponse/.test(sw), 'la página nunca espera a la red sin límite dentro del service worker');
 });
 
-test('Cloudflare Pages: ningún archivo pasa de 25 MiB, los modelos van en R2 y el puente solo entrega los dos modelos', async () => {
+test('Cloudflare Pages: ningún archivo pasa de 25 MiB, los modelos van partidos y el puente solo entrega los dos modelos', async () => {
   const { execFileSync } = await import('node:child_process');
   execFileSync(process.execPath, [join(RAIZ, 'scripts/publicar-pages.mjs')], { stdio: 'pipe' });
   const lista = []; const andar = (d) => { for (const n of readdirSync(d)) { const r = join(d, n); statSync(r).isDirectory() ? andar(r) : lista.push(r); } }; andar(join(RAIZ, 'dist'));
   assert.ok(lista.length > 100 && lista.length <= 20000, `${lista.length} archivos`);
   for (const f of lista) assert.ok(statSync(f).size <= 25 * 1024 * 1024, `${f} pasa de 25 MiB`);
   assert.ok(!existsSync(join(RAIZ, 'dist/assets/oido/modelo-en.tar.gz')) && existsSync(join(RAIZ, 'dist/assets/oido/vosk.js')) && existsSync(join(RAIZ, 'dist/index.html')));
+  for (const m of ['modelo-en.tar.gz', 'modelo-es.tar.gz']) {   // los pedazos juntos son el modelo original, byte por byte
+    const man = JSON.parse(leer(`dist/assets/oido/partes/${m}.json`)), orig = readFileSync(join(RAIZ, 'assets/oido', m));
+    const junto = Buffer.concat(Array.from({ length: man.n }, (_, i) => readFileSync(join(RAIZ, `dist/assets/oido/partes/${m}.${i}`))));
+    assert.ok(junto.equals(orig) && man.tam === orig.length && man.pedazo === 4 * 1024 * 1024, m);
+  }
+  assert.ok(/PIEZA = 4 \* 1024 \* 1024/.test(leer('js/descargas.js')), 'el pedazo de Pages mide lo mismo que el que pide la app');
   assert.ok(!existsSync(join(RAIZ, 'dist/scripts')) && !existsSync(join(RAIZ, 'dist/graphify-out')) && !existsSync(join(RAIZ, 'dist/.claude')), 'nada interno se publica');
   const rutas = JSON.parse(leer('dist/_routes.json')); assert.deepEqual(rutas.include, ['/assets/oido/modelo-en.tar.gz', '/assets/oido/modelo-es.tar.gz']);
-  const fn = leer('functions/assets/oido/[archivo].js'); assert.ok(/PERMITIDOS = new Set\(\['modelo-en\.tar\.gz', 'modelo-es\.tar\.gz'\]\)/.test(fn) && /status: 206/.test(fn) && /content-range/.test(fn));
-  const w = leer('wrangler.toml'); assert.ok(/pages_build_output_dir = "\.\/dist"/.test(w) && /binding = "MODELOS"/.test(w));
+  const fn = leer('functions/assets/oido/[archivo].js'); assert.ok(/PERMITIDOS = new Set\(\['modelo-en\.tar\.gz', 'modelo-es\.tar\.gz'\]\)/.test(fn) && /206/.test(fn) && /content-range/.test(fn));
+  const w = leer('wrangler.toml'); assert.ok(/pages_build_output_dir = "\.\/dist"/.test(w) && !/r2_buckets/.test(w), 'no hace falta R2');
 });

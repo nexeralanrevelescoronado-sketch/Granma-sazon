@@ -1,9 +1,6 @@
-# Configuración de Cloudflare Pages (la app) + R2 (modelos del Oído de Granma).
+# Configuración de Cloudflare Pages para Granma Sazón.
 # Comando de build en Pages: node scripts/publicar-pages.mjs   ·   Carpeta de salida: dist
+# Los modelos del Oído (más de 25 MiB) se publican partidos en pedazos de 4 MiB y los junta functions/assets/oido/[archivo].js.
 name = "granma-sazon"
 pages_build_output_dir = "./dist"
 compatibility_date = "2026-11-01"
-
-[[r2_buckets]]
-binding = "MODELOS"
-bucket_name = "granma-sazon-modelos"

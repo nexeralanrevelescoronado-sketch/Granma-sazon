@@ -1,17 +1,17 @@
 # Graph Report - granma-sazon  (2026-11-25)
 
 ## Corpus Check
-- 94 files · ~89,971 words
+- 94 files · ~90,397 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 7 file(s) not represented in the graph (top: (none) 3, .css 2, .webmanifest 1)
 
 ## Summary
-- 859 nodes · 2199 edges · 41 communities (39 shown, 2 thin omitted)
+- 860 nodes · 2201 edges · 41 communities (39 shown, 2 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 30 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0156f573`
+- Built from commit: `29638f62`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -160,8 +160,8 @@ Cohesion: 0.14
 Nodes (11): cap1, dic, errores, fallas, hist, pal, pregunta(), RAIZ (+3 more)
 
 ### Community 19 - "ref_node_path"
-Cohesion: 0.15
-Nodes (6): RAIZ, SALIDA, B, formas, G, RAIZ
+Cohesion: 0.14
+Nodes (8): RAIZ, SALIDA, B, formas, G, RAIZ, RAIZ, TIPOS
 
 ### Community 20 - "qa-offline.mjs"
 Cohesion: 0.14
@@ -172,8 +172,8 @@ Cohesion: 0.11
 Nodes (28): COLORES, MAX_CONFETI, MAX_TORTILLAS, TRICOLOR, iniciarAnimaciones(), ANTIGUOS, CERRADOS, crearSvg() (+20 more)
 
 ### Community 22 - "qa-primera-vez.mjs"
-Cohesion: 0.17
-Nodes (7): { chromium }, ENTORNOS, fallas, R, srv, TIPOS, {chromium}
+Cohesion: 0.22
+Nodes (6): { chromium }, ENTORNOS, fallas, R, srv, TIPOS
 
 ### Community 23 - "build-biblia.py"
 Cohesion: 0.31
@@ -184,8 +184,8 @@ Cohesion: 0.22
 Nodes (6): errores, fallas, librosDistintos, RAIZ, srv, TIPOS
 
 ### Community 25 - "ref_node_http"
-Cohesion: 0.20
-Nodes (7): boton, { chromium }, errs, srv, T, RAIZ, TIPOS
+Cohesion: 0.29
+Nodes (5): boton, { chromium }, errs, srv, T
 
 ### Community 26 - "Esquemas exactos (copiados de `data/*.json`)"
 Cohesion: 0.22
@@ -204,8 +204,8 @@ Cohesion: 0.25
 Nodes (7): C, { chromium }, icono(), ICONOS, LOGO, olla(), RAIZ
 
 ### Community 30 - "publicar-pages.mjs"
-Cohesion: 0.20
-Nodes (9): andar(), DIST, fuera, grandes, INCLUIR, lista, MODELOS, RAIZ (+1 more)
+Cohesion: 0.18
+Nodes (10): andar(), DIST, fuera, grandes, INCLUIR, lista, MODELOS, PEDAZO (+2 more)
 
 ### Community 31 - "api/biblia.js"
 Cohesion: 0.43
@@ -232,12 +232,12 @@ Cohesion: 0.29
 Nodes (6): Contenido de la app: usa siempre la skill `contenido-granma`, Granma Sazón — instrucciones para Claude, Mapa de Graphify, Regla permanente: empezar recomendando modelo y esfuerzo, Regla permanente: este repositorio es lo único que se toca, Reglas del repo
 
 ### Community 38 - "guion-pdf.mjs"
-Cohesion: 0.29
-Nodes (5): {chromium}, DOCS, esc(), fmt(), md
+Cohesion: 0.22
+Nodes (6): {chromium}, DOCS, esc(), fmt(), md, {chromium}
 
 ### Community 39 - "[archivo].js"
 Cohesion: 0.67
-Nodes (3): cabeceras(), onRequest(), PERMITIDOS
+Nodes (3): onRequest(), pedirEstatico(), PERMITIDOS
 
 ### Community 44 - "Guion del Abuelo: 51 frases para grabar"
 Cohesion: 0.50
@@ -245,7 +245,7 @@ Nodes (3): Cómo grabar, Frases, Guion del Abuelo: 51 frases para grabar
 
 ## Knowledge Gaps
 - **1 isolated node(s):** `./js/oido-propio.js`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 394 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 395 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions

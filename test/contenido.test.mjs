@@ -457,3 +457,16 @@ test('arranque a prueba de iPhone nuevo: vigilante, service worker sin tomar con
   assert.ok(/\(js\|css\|html\)/.test(sw), 'el código no se refresca archivo por archivo');
   assert.ok(/setTimeout\(ok, 4000, 'tiempo'\)/.test(sw) && /preloadResponse/.test(sw), 'la página nunca espera a la red sin límite dentro del service worker');
 });
+
+test('Cloudflare Pages: ningún archivo pasa de 25 MiB, los modelos van en R2 y el puente solo entrega los dos modelos', async () => {
+  const { execFileSync } = await import('node:child_process');
+  execFileSync(process.execPath, [join(RAIZ, 'scripts/publicar-pages.mjs')], { stdio: 'pipe' });
+  const lista = []; const andar = (d) => { for (const n of readdirSync(d)) { const r = join(d, n); statSync(r).isDirectory() ? andar(r) : lista.push(r); } }; andar(join(RAIZ, 'dist'));
+  assert.ok(lista.length > 100 && lista.length <= 20000, `${lista.length} archivos`);
+  for (const f of lista) assert.ok(statSync(f).size <= 25 * 1024 * 1024, `${f} pasa de 25 MiB`);
+  assert.ok(!existsSync(join(RAIZ, 'dist/assets/oido/modelo-en.tar.gz')) && existsSync(join(RAIZ, 'dist/assets/oido/vosk.js')) && existsSync(join(RAIZ, 'dist/index.html')));
+  assert.ok(!existsSync(join(RAIZ, 'dist/scripts')) && !existsSync(join(RAIZ, 'dist/graphify-out')) && !existsSync(join(RAIZ, 'dist/.claude')), 'nada interno se publica');
+  const rutas = JSON.parse(leer('dist/_routes.json')); assert.deepEqual(rutas.include, ['/assets/oido/modelo-en.tar.gz', '/assets/oido/modelo-es.tar.gz']);
+  const fn = leer('functions/assets/oido/[archivo].js'); assert.ok(/PERMITIDOS = new Set\(\['modelo-en\.tar\.gz', 'modelo-es\.tar\.gz'\]\)/.test(fn) && /status: 206/.test(fn) && /content-range/.test(fn));
+  const w = leer('wrangler.toml'); assert.ok(/pages_build_output_dir = "\.\/dist"/.test(w) && /binding = "MODELOS"/.test(w));
+});

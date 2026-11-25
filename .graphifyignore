@@ -8,3 +8,5 @@ node_modules/
 graphify-out/
 scripts/datos/glosario/
 scripts/datos/biblia-huella.json
+dist/
+wrangler.toml

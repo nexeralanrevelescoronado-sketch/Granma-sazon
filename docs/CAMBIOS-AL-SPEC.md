@@ -85,3 +85,11 @@
 - **Prueba** (`scripts/qa-primera-vez.mjs`): abre la app de primera vez con funciones del navegador desactivadas, y comprueba que un archivo que falla una vez se repara solo y que uno que falla siempre muestra el mensaje con el motivo.
 - **Si vuelve a pasar:** pedir una captura de la pantalla «No pude abrir la app»: el detalle técnico dice qué falló.
 - **Página en blanco con la barra de carga detenida** (captura del 24 nov): al teléfono no le llegaba ni el HTML. El service worker de una visita anterior esperaba a la red sin límite al pedir la página. Ahora la navegación usa la respuesta adelantada del navegador y, si la red no contesta en 4 s, sirve la copia guardada; además busca primero en el núcleo y no en los paquetes grandes. Lo prueba `qa-primera-vez.mjs` («red colgada»). Si le pasa a alguien que **nunca** había abierto la app, el problema es de su red hacia github.io (probar con Wi-Fi o con datos) y la salida sería hospedar la app en otro dominio.
+
+## Publicación en Cloudflare Pages (para que abra también con datos móviles)
+
+- **Por qué:** varios iPhone no abrían la app con datos móviles y sí con Wi-Fi: el camino de su operador hacia `github.io` falla. Cloudflare tiene servidores en México y es mucho menos probable que un operador lo bloquee (no se puede garantizar).
+- **Cómo:** `node scripts/publicar-pages.mjs` arma `dist/` (312 archivos, ~19 MB) sin los modelos del Oído, porque Pages no acepta archivos de más de 25 MiB. Los modelos viven en R2 (almacén `granma-sazon-modelos`) y `functions/assets/oido/[archivo].js` los entrega en la misma dirección de siempre, por pedazos (Range), así el service worker y la descarga reanudable no cambian. `_routes.json` hace que solo esas dos rutas usen la función; todo lo demás es estático. Configuración en `wrangler.toml`.
+- **Probado** con el simulador oficial (wrangler 4): pedazos idénticos byte por byte al original, descarga del Oído desde la pantalla Descargas y reconocimiento de una frase.
+- **Plan gratis** (verificado en la documentación de Cloudflare): Pages 20,000 archivos y 25 MiB por archivo; R2 10 GB, 1 M escrituras y 10 M lecturas al mes, sin cobro por descarga.
+- GitHub Pages sigue publicándose igual; los dos sitios funcionan a la vez.

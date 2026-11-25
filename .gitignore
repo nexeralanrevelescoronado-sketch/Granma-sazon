@@ -7,3 +7,7 @@ node_modules/
 graphify-out/*
 !graphify-out/GRAPH_REPORT.md
 !graphify-out/graph.json
+
+# Cloudflare Pages: se genera con scripts/publicar-pages.mjs
+dist/
+.wrangler/

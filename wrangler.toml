@@ -1,0 +1,9 @@
+# Configuración de Cloudflare Pages (la app) + R2 (modelos del Oído de Granma).
+# Comando de build en Pages: node scripts/publicar-pages.mjs   ·   Carpeta de salida: dist
+name = "granma-sazon"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-11-01"
+
+[[r2_buckets]]
+binding = "MODELOS"
+bucket_name = "granma-sazon-modelos"

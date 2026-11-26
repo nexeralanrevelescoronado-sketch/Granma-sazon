@@ -2,7 +2,7 @@
 import { porraHTML, fiesta } from '../porras.js';
 import { estado, guardar, u, tgt, nat, Ln, Lt, ganarXP, evento, sinEnergia, marcarRepetir, limpiarRepetir, tocaRepetir } from '../state.js';
 import { sinEnergiaHTML } from './sin-energia.js';
-import { historiaDe, recetas as cargarRecetas } from '../datos.js';
+import { historiaDe, mapaDe, recetas as cargarRecetas } from '../datos.js';
 import { ejerciciosDeCapitulo, jugar } from '../ejercicios.js';
 import { pj } from '../personajes.js';
 import { esc, resaltar, mmss } from '../util.js';
@@ -12,7 +12,7 @@ import { sonido } from '../sound.js';
 export async function montar(main, { args }) {
   const S = estado(), id = +args[0] || 1, h = await historiaDe(id), cap = h.capitulos.find((c) => c.id === id);
   // Historia 2 («Granma a los 25») es sobria: sin tortillas ni gritos; su mapa vive en #/historia/2
-  const sobria = !!h.sobria, mapa = h.id === 'historia-2' ? '#/historia/2' : '#/historia', num = h.capitulos.indexOf(cap) + 1;
+  const sobria = !!h.sobria, mapa = mapaDe(h), num = h.capitulos.indexOf(cap) + 1;
   if (!cap) { location.hash = '#/historia'; return; }
   if (num > 1 && !S.caps[id - 1]?.hecho && !S.caps[id]?.hecho) { location.hash = mapa; return; }
   const T = tgt(), N = nat();
@@ -89,7 +89,7 @@ export async function montar(main, { args }) {
     if (primera) { ganarXP(xp); evento('lecciones'); } else ganarXP(5);
     S.stats.kilos = (S.stats.kilos || 0) + 1; guardar();
     sonido.logro(); if (!sobria) confeti(40);
-    const sig = h.capitulos.find((c) => c.id === id + 1), todos = !sobria && h.capitulos.every((c) => S.caps[c.id]?.hecho);
+    const sig = h.capitulos.find((c) => c.id === id + 1), todos = h.id === 'historia-1' && h.capitulos.every((c) => S.caps[c.id]?.hecho);
     let rec = null; try { rec = (await cargarRecetas()).find((r) => r.id === cap.receta); } catch { /* receta sin descargar */ }
     main.innerHTML = `<div class="centro"><div class="pareja">${pj('granma', 'aplaudiendo', { ancho: 140, clase: 'anim-aplaude' })}${pj('abuelo', 'contento', { ancho: 112, clase: 'anim-asiente' })}</div><h1>${u('¡Capítulo terminado!', 'Chapter complete!')}</h1>
       ${sobria ? cierreSobrio() : porraHTML('tortillas', { conPj: false })}

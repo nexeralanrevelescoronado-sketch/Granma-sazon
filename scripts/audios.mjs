@@ -19,7 +19,7 @@ const SALIDA = join(RAIZ, 'assets', 'audio', 'abuelo');
 /** El guion completo, en orden: primero los consejos, luego el consejo de cada capítulo. */
 export const guion = () => [
   ...consejos.map((c) => ({ archivo: `consejo-${c.id}`, es: c.es, en: c.en })),
-  ...[...historia.capitulos, ...JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'datos', 'historia2.json'), 'utf8')).capitulos].map((c) => ({ archivo: `cap-${c.id}`, es: c.consejo.es, en: c.consejo.en })),
+  ...[...historia.capitulos, ...['historia2', 'historia3'].flatMap((n) => JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'datos', `${n}.json`), 'utf8')).capitulos)].map((c) => ({ archivo: `cap-${c.id}`, es: c.consejo.es, en: c.consejo.en })),
 ];
 
 const [, , orden, ...resto] = process.argv;

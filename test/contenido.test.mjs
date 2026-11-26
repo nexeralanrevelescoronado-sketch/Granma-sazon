@@ -497,8 +497,10 @@ test('hablar y escuchar: sección propia, bocina lenta, parejas con voz, turnos 
   const m = material(caps, 'viajes'); assert.equal(new Set(m.palabras.map((p) => p.en.toLowerCase())).size, m.palabras.length, 'sin palabras repetidas');
   assert.ok(/usarVidas: false/.test(leer('js/vistas/hablar.js')), 'practicar aquí no gasta energía');
   // 2) bocina lenta junto a cada bocina, y voces pausadas
-  const { PERFIL, LENTA } = await import('../js/voz.js');
-  assert.ok(PERFIL.granma.rate <= 0.85 && PERFIL.abuelo.rate <= 0.78 && LENTA <= 0.7 && PERFIL.abuelo.rate * LENTA >= 0.45, 'voz pausada, y la lenta sigue siendo entendible');
+  const { PERFIL, LENTA, PISO_LENTA } = await import('../js/voz.js');
+  assert.ok(PERFIL.granma.rate <= 0.85 && PERFIL.abuelo.rate <= 0.78, 'voz normal pausada');
+  assert.ok(LENTA <= 0.31 && PERFIL.granma.rate * LENTA <= 0.27 && PERFIL.abuelo.rate * LENTA >= PISO_LENTA && PISO_LENTA >= 0.2, 'modo perezoso: la mitad de la velocidad anterior, sin bajar del piso en que la voz se entrecorta');
+  assert.ok(/playbackRate = 0\.39/.test(leer('js/voz.js')), 'las grabaciones del Abuelo también van a la mitad');
   const lento = leer('js/lento.js'); assert.ok(/MutationObserver/.test(lento) && /pedirLenta\(\); bocina\.click\(\)/.test(lento) && /Escuchar despacio/.test(lento) && /Listen slowly/.test(lento));
   assert.ok(/PEREZOSO = '<svg/.test(lento) && !/🐢/.test(lento + leer('js/escucha.js') + leer('js/vistas/hablar.js')), 'el modo lento es un perezoso dibujado (no tortuga, no emoji)');
   assert.ok(/modo perezoso/.test(lento) && /sloth mode/.test(lento), 'el botón dice «modo perezoso»');

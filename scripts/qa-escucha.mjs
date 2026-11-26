@@ -49,7 +49,7 @@ await pg.evaluate(() => { window.__voz.length = 0; });
 await pg.locator('[data-voz="0"]').click(); await pg.waitForTimeout(120); await pg.locator('[data-voz="0"] + [data-lento]').click(); await pg.waitForTimeout(120);
 let v = await voces(pg); const [normal, lenta] = v.slice(-2);
 ok(normal.texto === cap.relato.en[0] && lenta.texto === normal.texto, 'las dos dicen la misma frase');
-ok(Math.abs(normal.rate - 0.84) < 0.01 && lenta.rate < normal.rate * 0.7 && lenta.rate >= 0.45, `normal a ${normal.rate.toFixed(2)} y despacio a ${lenta.rate.toFixed(2)}`);
+ok(Math.abs(normal.rate - 0.84) < 0.01 && lenta.rate <= normal.rate * 0.32 && lenta.rate >= 0.2, `normal a ${normal.rate.toFixed(2)} y despacio a ${lenta.rate.toFixed(2)}`);
 await pg.locator('[data-voz="1"]').click(); await pg.waitForTimeout(120); v = await voces(pg);
 ok(Math.abs(v.at(-1).rate - 0.84) < 0.01, 'después del 🦥, la bocina normal vuelve a su velocidad');
 const z = await pg.locator('[data-voz="0"] + [data-lento]').boundingBox(); ok(z.width >= 44 && z.height >= 44, 'el 🦥 mide ≥ 44 px');
@@ -59,7 +59,7 @@ pares = await pg.evaluate(() => { const bs = [...document.querySelectorAll('butt
 ok(pares.n >= 8 && pares.n === pares.conLento && !pares.desborde, `palabras nuevas: ${pares.n} bocinas con 🦥 y sin desborde`);
 await pg.screenshot({ path: join(CAPT, '42-palabras-lenta.png') });
 await pg.locator('[data-vozp="0"] + [data-lento]').click(); await pg.waitForTimeout(120); v = await voces(pg);
-ok(v.at(-1).texto === cap.palabras[0].en && v.at(-1).rate < 0.6, `la palabra «${cap.palabras[0].en}» se oye despacio`);
+ok(v.at(-1).texto === cap.palabras[0].en && v.at(-1).rate < 0.3, `la palabra «${cap.palabras[0].en}» se oye despacio`);
 
 console.log('3) Parejas: la palabra en inglés suena al tocarla');
 await pg.click('[data-accion="ejercicios"]');
@@ -124,7 +124,7 @@ for (const ap of ['en', 'es']) {
       v = await voces(pg); const dicho = v.at(-1).texto;
       const tipo = await pg.evaluate(() => (document.querySelector('.decir') ? 'di' : document.querySelector('.fichas') ? 'orden' : 'mcq'));
       if (k === 0) { ok(v.at(-1).lang.startsWith(T) && (await pg.locator('.sesion [data-voz] + [data-lento]').count()) === 1, `${ap}/${modo}: se oye solo al aparecer, en el idioma que se aprende, y trae 🦥`);
-        await pg.locator('.sesion [data-lento]').click(); await pg.waitForTimeout(120); const w = await voces(pg); if (w.at(-1).texto === dicho && w.at(-1).rate < 0.6) lentas++;
+        await pg.locator('.sesion [data-lento]').click(); await pg.waitForTimeout(120); const w = await voces(pg); if (w.at(-1).texto === dicho && w.at(-1).rate < 0.3) lentas++;
         if (ap === 'en') await pg.screenshot({ path: join(CAPT, `44-hablar-${modo}.png`) }); }
       if (tipo === 'mcq') {
         const ops = await pg.locator('.opcion').allTextContents(), p = palabras.find((x) => x[T] === dicho);

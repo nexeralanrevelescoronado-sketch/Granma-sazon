@@ -9,7 +9,8 @@ export const PERFIL = {
   granma: { pitch: 1.12, rate: 0.84 },
 };
 // Botón del perezoso («escuchar despacio»): la misma frase, bastante más lenta, para apreciar cada sonido.
-export const LENTA = 0.62;
+export const LENTA = 0.31;      // el dueño pidió la mitad de la velocidad anterior (0.62): Granma queda en 0.26 y el Abuelo en 0.24
+export const PISO_LENTA = 0.2;   // por debajo de esto las voces de los teléfonos ya se entrecortan
 let lentaHasta = 0;
 /** El botón del perezoso avisa que lo siguiente que se diga (en el próximo instante) va despacio. */
 export const pedirLenta = () => { lentaHasta = Date.now() + 500; };
@@ -52,7 +53,7 @@ async function tocarGrabacion(ruta, lenta) {
   const r = await fetch(ruta); if (!r.ok) return false;
   const url = URL.createObjectURL(await r.blob()), audio = new Audio(url);
   pararGrabacion(); sonando = { audio, url };
-  if (lenta) { try { audio.preservesPitch = true; audio.playbackRate = 0.78; } catch { /* velocidad fija */ } }
+  if (lenta) { try { audio.preservesPitch = true; audio.playbackRate = 0.39; } catch { /* velocidad fija */ } }
   return new Promise((ok) => {
     const fin = (v) => { if (sonando?.audio === audio) pararGrabacion(); ok(v); };
     audio.onended = () => fin(true); audio.onerror = () => fin(false);
@@ -83,12 +84,12 @@ function decirSintetica(texto, idioma, quien, lenta = false) {
       cancelarVoz();
       const ut = new SpeechSynthesisUtterance(texto), perfil = PERFIL[quien] || PERFIL.granma, voz = elegirVoz(speechSynthesis.getVoices(), idioma, quien);
       ut.lang = voz?.lang || (LANG[idioma] || LANG.es)[0]; if (voz) ut.voice = voz;
-      ut.pitch = perfil.pitch; ut.rate = Math.max(0.45, perfil.rate * (lenta ? LENTA : 1));
+      ut.pitch = perfil.pitch; ut.rate = Math.max(lenta ? PISO_LENTA : 0.45, perfil.rate * (lenta ? LENTA : 1));
       // Si la voz no arranca pronto (sin voces, o el navegador la bloquea hasta el primer toque), no se espera:
       // así los globos nunca se quedan detenidos por una voz que no va a sonar.
       let arranco = false;
       const sinArranque = setTimeout(() => { if (!arranco) ok(false); }, 900);
-      const tope = setTimeout(() => ok(true), Math.min(lenta ? 40000 : 25000, 1500 + texto.length * (lenta ? 190 : 120)));
+      const tope = setTimeout(() => ok(true), Math.min(lenta ? 90000 : 25000, 1500 + texto.length * (lenta ? 400 : 120)));
       ut.onstart = () => { arranco = true; };
       ut.onend = ut.onerror = () => { clearTimeout(sinArranque); clearTimeout(tope); ok(arranco); };
       speechSynthesis.speak(ut);

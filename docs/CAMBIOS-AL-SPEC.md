@@ -143,3 +143,5 @@ Pedido por el dueño, con sus propios recuerdos como guion. Lo escribieron cuatr
 - **La app admite tres historias:** `historiaN`, `mapaDe` y `historiaDe` en `js/datos.js`; desde cada mapa se asoman las otras dos.
 - **Glosario:** 2,971 palabras en español y 2,363 en inglés. **Guion del Abuelo:** 63 frases.
 - **Pruebas:** `npm test` (35) y `node scripts/qa-historia2.mjs` (ahora con la Historia 3 y las recetas).
+
+- **Modo perezoso más lento (26 nov):** el dueño lo sintió todavía rápido en su teléfono y pidió la mitad. La velocidad pasó de × 0.62 a × 0.31 (Granma 0.26, el Abuelo 0.24; piso 0.2) y las grabaciones del Abuelo de 0.78 a 0.39. Si el motor de voz de un teléfono no baja de cierto mínimo, lo siguiente es decir la frase palabra por palabra con pausas.

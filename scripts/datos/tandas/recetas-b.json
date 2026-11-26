@@ -1,0 +1,711 @@
+[
+  {
+    "id": "birria",
+    "icono": "birria",
+    "insignia": null,
+    "nombre": {
+      "es": "Birria de fiesta",
+      "en": "Party birria"
+    },
+    "resumen": {
+      "es": "Carne de res adobada con chiles secos y cocida despacito hasta deshacerse, con su consomé. Es la que la abuelita de Granma preparó para sus quince años.",
+      "en": "Beef marinated in dried chilies and cooked slowly until it falls apart, served with its broth. Birria is a Mexican party stew; this is the one Granma's grandmother made for her fifteenth birthday."
+    },
+    "porciones": 8,
+    "tiempoPrep": 60,
+    "tiempoCoccion": 210,
+    "nivel": {
+      "es": "Para un día de fiesta",
+      "en": "For a party day"
+    },
+    "nota": {
+      "es": "Lávate las manos después de tocar los chiles y no te toques los ojos. Pide ayuda a un adulto para licuar líquidos calientes y para mover la olla grande.",
+      "en": "Wash your hands after touching the chilies and do not touch your eyes. Ask an adult to help blend hot liquids and move the big pot."
+    },
+    "ingredientes": [
+      {
+        "cant": 2,
+        "un": "kg",
+        "es": "chambarete o falda de res, en trozos grandes",
+        "en": "beef shank or flank, in large chunks"
+      },
+      {
+        "cant": 6,
+        "un": "pza",
+        "es": "chiles guajillo, sin semillas ni venas",
+        "en": "guajillo chilies, seeds and veins removed"
+      },
+      {
+        "cant": 3,
+        "un": "pza",
+        "es": "chiles ancho, sin semillas ni venas",
+        "en": "ancho chilies, seeds and veins removed"
+      },
+      {
+        "cant": 2,
+        "un": "pza",
+        "es": "chiles de árbol, sin semillas",
+        "en": "chile de árbol, seeds removed"
+      },
+      {
+        "cant": 3,
+        "un": "pza",
+        "es": "jitomates medianos (300 g)",
+        "en": "medium tomatoes (300 g)"
+      },
+      {
+        "cant": 0.5,
+        "un": "pza",
+        "es": "cebolla, para el adobo",
+        "en": "onion, for the marinade"
+      },
+      {
+        "cant": 6,
+        "un": "dientes",
+        "es": "ajo",
+        "en": "garlic cloves"
+      },
+      {
+        "cant": 3,
+        "un": "cda",
+        "es": "vinagre de manzana",
+        "en": "apple cider vinegar"
+      },
+      {
+        "cant": 1,
+        "un": "cda",
+        "es": "orégano seco",
+        "en": "dried oregano"
+      },
+      {
+        "cant": 1,
+        "un": "cdta",
+        "es": "comino molido",
+        "en": "ground cumin"
+      },
+      {
+        "cant": 5,
+        "un": "cm",
+        "es": "raja de canela",
+        "en": "cinnamon stick"
+      },
+      {
+        "cant": 4,
+        "un": "pza",
+        "es": "clavos de olor",
+        "en": "whole cloves"
+      },
+      {
+        "cant": 8,
+        "un": "pza",
+        "es": "pimientas negras",
+        "en": "black peppercorns"
+      },
+      {
+        "cant": 2,
+        "un": "cm",
+        "es": "jengibre fresco",
+        "en": "fresh ginger"
+      },
+      {
+        "cant": 3,
+        "un": "pza",
+        "es": "hojas de laurel",
+        "en": "bay leaves"
+      },
+      {
+        "cant": 2,
+        "un": "cda",
+        "es": "sal, o al gusto",
+        "en": "salt, or to taste"
+      },
+      {
+        "cant": 2.5,
+        "un": "L",
+        "es": "agua",
+        "en": "water"
+      },
+      {
+        "cant": 1,
+        "un": "pza",
+        "es": "cebolla blanca, picada, para servir",
+        "en": "white onion, chopped, to serve"
+      },
+      {
+        "cant": 1,
+        "un": "tazas",
+        "es": "cilantro fresco, picado, para servir",
+        "en": "fresh cilantro, chopped, to serve"
+      },
+      {
+        "cant": 6,
+        "un": "pza",
+        "es": "limones, en gajos",
+        "en": "limes, in wedges"
+      },
+      {
+        "cant": 16,
+        "un": "pza",
+        "es": "tortillas de maíz",
+        "en": "corn tortillas"
+      }
+    ],
+    "pasos": [
+      {
+        "es": "Calienta un comal a fuego medio y tuesta los chiles 15 segundos por lado, sin que se quemen. Ponlos en un tazón con agua muy caliente y déjalos remojar.",
+        "en": "Heat a griddle over medium heat and toast the chilies 15 seconds per side, without burning them. Put them in a bowl of very hot water and let them soak.",
+        "min": 15
+      },
+      {
+        "es": "Con ayuda de un adulto, licúa los chiles escurridos con los jitomates, la media cebolla, el ajo, el vinagre, el orégano, el comino, la canela, los clavos, la pimienta, el jengibre y 1 taza del agua del remojo. Cuela el adobo.",
+        "en": "With an adult's help, blend the drained chilies with the tomatoes, the half onion, garlic, vinegar, oregano, cumin, cinnamon, cloves, pepper, ginger and 1 cup of the soaking water. Strain the marinade.",
+        "min": 5
+      },
+      {
+        "es": "Mezcla la carne con la sal y el adobo, cubriéndola bien por todos lados. Déjala reposar para que tome sabor.",
+        "en": "Mix the beef with the salt and the marinade, coating it well on all sides. Let it rest so it soaks up the flavor.",
+        "min": 30
+      },
+      {
+        "es": "Pon la carne con todo el adobo en una olla grande y agrega los 2.5 litros de agua y las hojas de laurel. Tapa y cuece a fuego bajo, sin que hierva fuerte, hasta que la carne se deshaga con un tenedor.",
+        "en": "Put the beef with all the marinade in a large pot and add the 2.5 liters of water and the bay leaves. Cover and cook on low heat, without a hard boil, until the beef falls apart with a fork.",
+        "min": 180
+      },
+      {
+        "es": "Con ayuda de un adulto, saca la carne a un plato y deshébrala con dos tenedores. Retira el laurel y quita con una cuchara la grasa que flota en el consomé.",
+        "en": "With an adult's help, lift the beef out onto a plate and shred it with two forks. Remove the bay leaves and spoon off the grease that floats on the broth.",
+        "min": 15
+      },
+      {
+        "es": "Regresa la carne al consomé, caliéntalo a fuego bajo y prueba la sal.",
+        "en": "Return the beef to the broth, warm it on low heat and taste the salt.",
+        "min": 10
+      },
+      {
+        "es": "Mientras tanto, pica la cebolla y el cilantro, parte los limones y calienta las tortillas en el comal.",
+        "en": "Meanwhile, chop the onion and cilantro, cut the limes and warm the tortillas on the griddle.",
+        "min": 10
+      },
+      {
+        "es": "Sirve la birria en tazones con su consomé caliente. Que cada quien le ponga cebolla, cilantro y limón, con tortillas calientitas. ¡Buen provecho, mijo!",
+        "en": "Serve the birria in bowls with its hot broth. Let everyone add onion, cilantro and lime, with warm tortillas. Enjoy, mijo!",
+        "min": 5
+      }
+    ]
+  },
+  {
+    "id": "chiles-en-nogada",
+    "icono": "chiles-en-nogada",
+    "insignia": null,
+    "nombre": {
+      "es": "Chiles en nogada",
+      "en": "Chiles en nogada"
+    },
+    "resumen": {
+      "es": "Chiles poblanos rellenos de picadillo con fruta, bañados en salsa de nuez y adornados con granada y perejil: verde, blanco y rojo. Son de Puebla y de septiembre.",
+      "en": "Poblano chilies stuffed with fruity meat filling, covered in walnut sauce and topped with pomegranate and parsley: green, white and red. They come from Puebla and belong to September."
+    },
+    "porciones": 6,
+    "tiempoPrep": 75,
+    "tiempoCoccion": 45,
+    "nivel": {
+      "es": "Para un día de fiesta",
+      "en": "For a party day"
+    },
+    "nota": {
+      "es": "Lleva nueces y almendras: avisa si alguien es alérgico. Lávate las manos después de tocar los chiles y no te toques los ojos. Pide ayuda a un adulto con el fuego y la sartén caliente.",
+      "en": "It has walnuts and almonds: tell everyone if someone is allergic. Wash your hands after touching the chilies and do not touch your eyes. Ask an adult to help with the flame and the hot pan."
+    },
+    "ingredientes": [
+      {
+        "cant": 6,
+        "un": "pza",
+        "es": "chiles poblanos grandes y parejitos",
+        "en": "large, even poblano chilies"
+      },
+      {
+        "cant": 200,
+        "un": "g",
+        "es": "carne de cerdo molida",
+        "en": "ground pork"
+      },
+      {
+        "cant": 200,
+        "un": "g",
+        "es": "carne de res molida",
+        "en": "ground beef"
+      },
+      {
+        "cant": 0.5,
+        "un": "pza",
+        "es": "cebolla picada",
+        "en": "chopped onion"
+      },
+      {
+        "cant": 3,
+        "un": "dientes",
+        "es": "ajo picado",
+        "en": "chopped garlic cloves"
+      },
+      {
+        "cant": 3,
+        "un": "pza",
+        "es": "jitomates medianos, picados (300 g)",
+        "en": "medium tomatoes, chopped (300 g)"
+      },
+      {
+        "cant": 1,
+        "un": "pza",
+        "es": "manzana, en cubitos",
+        "en": "apple, in small cubes"
+      },
+      {
+        "cant": 1,
+        "un": "pza",
+        "es": "pera, en cubitos",
+        "en": "pear, in small cubes"
+      },
+      {
+        "cant": 1,
+        "un": "pza",
+        "es": "durazno, en cubitos",
+        "en": "peach, in small cubes"
+      },
+      {
+        "cant": 40,
+        "un": "g",
+        "es": "pasas",
+        "en": "raisins"
+      },
+      {
+        "cant": 40,
+        "un": "g",
+        "es": "almendras picadas",
+        "en": "chopped almonds"
+      },
+      {
+        "cant": 2,
+        "un": "cda",
+        "es": "aceite",
+        "en": "oil"
+      },
+      {
+        "cant": 1,
+        "un": "cda",
+        "es": "azúcar",
+        "en": "sugar"
+      },
+      {
+        "cant": 0.5,
+        "un": "cdta",
+        "es": "canela molida",
+        "en": "ground cinnamon"
+      },
+      {
+        "cant": 1,
+        "un": "pizca",
+        "es": "clavo molido",
+        "en": "ground clove"
+      },
+      {
+        "cant": 2,
+        "un": "cdta",
+        "es": "sal, o al gusto",
+        "en": "salt, or to taste"
+      },
+      {
+        "cant": 150,
+        "un": "g",
+        "es": "nueces peladas",
+        "en": "shelled walnuts"
+      },
+      {
+        "cant": 250,
+        "un": "ml",
+        "es": "leche",
+        "en": "milk"
+      },
+      {
+        "cant": 100,
+        "un": "g",
+        "es": "queso crema o queso de cabra",
+        "en": "cream cheese or goat cheese"
+      },
+      {
+        "cant": 150,
+        "un": "ml",
+        "es": "crema",
+        "en": "cream"
+      },
+      {
+        "cant": 1,
+        "un": "cda",
+        "es": "azúcar para la salsa",
+        "en": "sugar for the sauce"
+      },
+      {
+        "cant": 1,
+        "un": "pza",
+        "es": "granada, solo los granos",
+        "en": "pomegranate, just the seeds"
+      },
+      {
+        "cant": 0.25,
+        "un": "tazas",
+        "es": "hojas de perejil",
+        "en": "parsley leaves"
+      }
+    ],
+    "pasos": [
+      {
+        "es": "Remoja las nueces en la leche. Déjalas ahí mientras haces los siguientes pasos; así la salsa queda más suave y blanca.",
+        "en": "Soak the walnuts in the milk. Leave them there while you do the next steps; this makes the sauce smoother and whiter.",
+        "min": 30
+      },
+      {
+        "es": "Con ayuda de un adulto, ase los chiles directo a la flama o en un comal caliente, dándoles vuelta con unas pinzas, hasta que la piel se ponga negra y con ampollas.",
+        "en": "With an adult's help, roast the chilies right over the flame or on a hot griddle, turning them with tongs, until the skin turns black and blistered.",
+        "min": 15
+      },
+      {
+        "es": "Mete los chiles en una bolsa cerrada o en una olla tapada para que suden. Después pélalos con los dedos, hazles un corte a lo largo y quita con cuidado las semillas y las venas, sin romperlos ni quitarles el rabito. Lávate las manos.",
+        "en": "Put the chilies in a closed bag or a covered pot so they sweat. Then peel them with your fingers, cut a slit along each one and carefully remove the seeds and veins, without tearing them or removing the stem. Wash your hands.",
+        "min": 20
+      },
+      {
+        "es": "En una sartén con el aceite, sofríe la cebolla y el ajo 3 minutos. Agrega la carne de cerdo y la de res y cuécelas, moviendo, hasta que no quede nada rosa.",
+        "en": "In a pan with the oil, sauté the onion and garlic for 3 minutes. Add the pork and the beef and cook, stirring, until nothing is pink.",
+        "min": 15
+      },
+      {
+        "es": "Agrega el jitomate, la manzana, la pera, el durazno, las pasas, las almendras, el azúcar, la canela, el clavo y la sal. Cuece a fuego bajo hasta que la fruta esté suave y casi no quede caldo.",
+        "en": "Add the tomato, apple, pear, peach, raisins, almonds, sugar, cinnamon, clove and salt. Cook on low heat until the fruit is soft and almost no liquid is left.",
+        "min": 20
+      },
+      {
+        "es": "Rellena cada chile con el picadillo sin apretarlo, y junta los bordes. Ponlos en una sartén ancha tapada a fuego muy bajo para que se calienten.",
+        "en": "Fill each chili with the meat filling without packing it tight, and bring the edges together. Put them in a wide covered pan on very low heat to warm up.",
+        "min": 10
+      },
+      {
+        "es": "Licúa las nueces con la leche donde se remojaron, el queso, la crema, 1 cucharada de azúcar y una pizca de sal hasta que quede muy suave. Si queda muy espesa, agrega un poco más de leche.",
+        "en": "Blend the walnuts with the milk they soaked in, the cheese, the cream, 1 tablespoon of sugar and a pinch of salt until very smooth. If it is too thick, add a little more milk.",
+        "min": 5
+      },
+      {
+        "es": "Pon cada chile en un plato, báñalo con la salsa de nuez y adórnalo con granos de granada y hojitas de perejil. Se come tibio, con la salsa fría. ¡Buen provecho, mijo!",
+        "en": "Set each chili on a plate, cover it with the walnut sauce and top it with pomegranate seeds and parsley leaves. Eat it warm, with the sauce cold. Enjoy, mijo!",
+        "min": 5
+      }
+    ]
+  },
+  {
+    "id": "chiles-rellenos",
+    "icono": "chiles-rellenos",
+    "insignia": null,
+    "nombre": {
+      "es": "Chiles rellenos de queso",
+      "en": "Cheese-stuffed chiles rellenos"
+    },
+    "resumen": {
+      "es": "Chiles poblanos asados y rellenos de queso, cubiertos con huevo esponjoso y servidos en un caldillo de jitomate.",
+      "en": "Roasted poblano chilies stuffed with cheese, coated in fluffy egg batter and served in a tomato broth."
+    },
+    "porciones": 6,
+    "tiempoPrep": 47,
+    "tiempoCoccion": 43,
+    "nivel": {
+      "es": "Con ayuda de un adulto",
+      "en": "With an adult's help"
+    },
+    "nota": {
+      "es": "El aceite caliente salpica: la fritura es trabajo de un adulto. Seca bien los chiles para que no salpique. Lávate las manos después de tocar los chiles y no te toques los ojos. Pide ayuda para licuar el caldillo.",
+      "en": "Hot oil splatters: frying is an adult's job. Dry the chilies well so they do not splatter. Wash your hands after touching the chilies and do not touch your eyes. Ask for help to blend the broth."
+    },
+    "ingredientes": [
+      {
+        "cant": 6,
+        "un": "pza",
+        "es": "chiles poblanos grandes y parejitos",
+        "en": "large, even poblano chilies"
+      },
+      {
+        "cant": 360,
+        "un": "g",
+        "es": "queso Oaxaca o chihuahua, en 6 tiras",
+        "en": "Oaxaca or chihuahua cheese, in 6 strips"
+      },
+      {
+        "cant": 4,
+        "un": "pza",
+        "es": "huevos, separados",
+        "en": "eggs, separated"
+      },
+      {
+        "cant": 60,
+        "un": "g",
+        "es": "harina de trigo, para cubrir los chiles",
+        "en": "all-purpose flour, to coat the chilies"
+      },
+      {
+        "cant": 0.5,
+        "un": "cdta",
+        "es": "sal para el huevo",
+        "en": "salt for the eggs"
+      },
+      {
+        "cant": 400,
+        "un": "ml",
+        "es": "aceite para freír",
+        "en": "oil for frying"
+      },
+      {
+        "cant": 5,
+        "un": "pza",
+        "es": "jitomates medianos (500 g)",
+        "en": "medium tomatoes (500 g)"
+      },
+      {
+        "cant": 0.25,
+        "un": "pza",
+        "es": "cebolla",
+        "en": "onion"
+      },
+      {
+        "cant": 2,
+        "un": "dientes",
+        "es": "ajo",
+        "en": "garlic cloves"
+      },
+      {
+        "cant": 2,
+        "un": "cda",
+        "es": "aceite, para el caldillo",
+        "en": "oil, for the broth"
+      },
+      {
+        "cant": 250,
+        "un": "ml",
+        "es": "agua o caldo de pollo",
+        "en": "water or chicken broth"
+      },
+      {
+        "cant": 1,
+        "un": "cdta",
+        "es": "sal para el caldillo, o al gusto",
+        "en": "salt for the broth, or to taste"
+      },
+      {
+        "cant": 1,
+        "un": "pizca",
+        "es": "orégano seco",
+        "en": "dried oregano"
+      },
+      {
+        "cant": 6,
+        "un": "pza",
+        "es": "palillos de madera",
+        "en": "wooden toothpicks"
+      }
+    ],
+    "pasos": [
+      {
+        "es": "Con ayuda de un adulto, ase los chiles directo a la flama o en un comal caliente, dándoles vuelta con unas pinzas, hasta que la piel se ponga negra y con ampollas.",
+        "en": "With an adult's help, roast the chilies right over the flame or on a hot griddle, turning them with tongs, until the skin turns black and blistered.",
+        "min": 12
+      },
+      {
+        "es": "Mete los chiles en una bolsa cerrada o en una olla tapada para que suden. Después pélalos con los dedos, hazles un corte a lo largo y quita con cuidado las semillas y las venas, sin romperlos ni quitarles el rabito. Lávate las manos.",
+        "en": "Put the chilies in a closed bag or a covered pot so they sweat. Then peel them with your fingers, cut a slit along each one and carefully remove the seeds and veins, without tearing them or removing the stem. Wash your hands.",
+        "min": 20
+      },
+      {
+        "es": "Seca muy bien los chiles con papel de cocina. Mete una tira de queso en cada uno, junta los bordes y ciérralos con un palillo.",
+        "en": "Dry the chilies very well with paper towels. Put a strip of cheese in each one, bring the edges together and close them with a toothpick.",
+        "min": 10
+      },
+      {
+        "es": "Pon en una olla los jitomates con la cebolla y el ajo, cúbrelos con agua y hiérvelos a fuego medio hasta que los jitomates estén suaves y se les abra la piel.",
+        "en": "Put the tomatoes with the onion and garlic in a pot, cover them with water and boil on medium heat until the tomatoes are soft and their skins split.",
+        "min": 15
+      },
+      {
+        "es": "Deja enfriar 5 minutos. Con ayuda de un adulto, licúa los jitomates, la cebolla y el ajo con el agua o el caldo (llena la licuadora a la mitad y sujeta bien la tapa con un trapo).",
+        "en": "Let it cool for 5 minutes. With an adult's help, blend the tomatoes, onion and garlic with the water or broth (fill the blender only halfway and hold the lid down firmly with a towel).",
+        "min": 3
+      },
+      {
+        "es": "Calienta las 2 cucharadas de aceite en una cazuela, vierte la salsa con cuidado, agrega la sal y el orégano y cuece a fuego bajo hasta que espese un poco.",
+        "en": "Heat the 2 tablespoons of oil in a casserole, pour in the sauce carefully, add the salt and oregano and cook on low heat until it thickens a little.",
+        "min": 10
+      },
+      {
+        "es": "Bate las claras con la sal hasta que formen picos firmes y no se caigan al voltear el tazón. Agrega las yemas de una en una y mezcla suavecito.",
+        "en": "Beat the egg whites with the salt until they form stiff peaks and do not fall when you turn the bowl over. Add the yolks one at a time and mix gently.",
+        "min": 5
+      },
+      {
+        "es": "(Con un adulto) Calienta el aceite para freír en una sartén honda. Pasa cada chile por la harina y luego por el huevo, y fríelo 2 minutos por lado hasta que esté dorado. Escúrrelo en papel de cocina y quítale el palillo.",
+        "en": "(With an adult) Heat the frying oil in a deep pan. Coat each chili in flour and then in the egg batter, and fry it 2 minutes per side until golden. Drain it on paper towels and remove the toothpick.",
+        "min": 10
+      },
+      {
+        "es": "Pasa los chiles al caldillo y déjalos 5 minutos a fuego bajo para que tomen sabor. Sirve calientitos con un poco de caldillo. ¡Buen provecho, mijo!",
+        "en": "Move the chilies into the tomato broth and let them sit 5 minutes on low heat to soak up the flavor. Serve hot with some broth. Enjoy, mijo!",
+        "min": 5
+      }
+    ]
+  },
+  {
+    "id": "pipian",
+    "icono": "pipian",
+    "insignia": null,
+    "nombre": {
+      "es": "Pipián verde con pollo",
+      "en": "Green pipián with chicken"
+    },
+    "resumen": {
+      "es": "Pollo en una salsa espesa de pepita de calabaza, tomate verde y chiles: cremosa, verde y con mucho sabor.",
+      "en": "Chicken in a thick sauce of pumpkin seeds, green tomatoes and chilies: creamy, green and full of flavor. Pipián is a traditional Mexican seed sauce."
+    },
+    "porciones": 6,
+    "tiempoPrep": 20,
+    "tiempoCoccion": 70,
+    "nivel": {
+      "es": "Fácil",
+      "en": "Easy"
+    },
+    "nota": {
+      "es": "Las pepitas saltan al tostarse: tapa la sartén a medias. Pide ayuda a un adulto para licuar líquidos calientes y lávate las manos después de tocar los chiles. No te toques los ojos.",
+      "en": "The seeds jump when they toast: half-cover the pan. Ask an adult to help blend hot liquids and wash your hands after touching the chilies. Do not touch your eyes."
+    },
+    "ingredientes": [
+      {
+        "cant": 1,
+        "un": "kg",
+        "es": "pollo en piezas",
+        "en": "chicken, in pieces"
+      },
+      {
+        "cant": 0.5,
+        "un": "pza",
+        "es": "cebolla, para el caldo",
+        "en": "onion, for the broth"
+      },
+      {
+        "cant": 2,
+        "un": "dientes",
+        "es": "ajo, para el caldo",
+        "en": "garlic cloves, for the broth"
+      },
+      {
+        "cant": 2,
+        "un": "cdta",
+        "es": "sal, o al gusto",
+        "en": "salt, or to taste"
+      },
+      {
+        "cant": 1,
+        "un": "L",
+        "es": "agua",
+        "en": "water"
+      },
+      {
+        "cant": 150,
+        "un": "g",
+        "es": "pepitas de calabaza peladas, sin sal",
+        "en": "hulled pumpkin seeds, unsalted"
+      },
+      {
+        "cant": 500,
+        "un": "g",
+        "es": "tomates verdes, sin la cáscara",
+        "en": "green tomatoes (tomatillos), husks removed"
+      },
+      {
+        "cant": 2,
+        "un": "pza",
+        "es": "chiles serranos",
+        "en": "serrano chilies"
+      },
+      {
+        "cant": 1,
+        "un": "tazas",
+        "es": "hojas de cilantro",
+        "en": "cilantro leaves"
+      },
+      {
+        "cant": 3,
+        "un": "pza",
+        "es": "hojas de lechuga romana",
+        "en": "romaine lettuce leaves"
+      },
+      {
+        "cant": 0.5,
+        "un": "pza",
+        "es": "cebolla, para la salsa",
+        "en": "onion, for the sauce"
+      },
+      {
+        "cant": 2,
+        "un": "dientes",
+        "es": "ajo, para la salsa",
+        "en": "garlic cloves, for the sauce"
+      },
+      {
+        "cant": 1,
+        "un": "pizca",
+        "es": "comino molido",
+        "en": "ground cumin"
+      },
+      {
+        "cant": 2,
+        "un": "cda",
+        "es": "aceite",
+        "en": "oil"
+      }
+    ],
+    "pasos": [
+      {
+        "es": "Pon el pollo en una olla con el litro de agua, la media cebolla, 2 dientes de ajo y 1 cucharadita de sal. Cuécelo a fuego medio hasta que esté suave. Guarda el caldo.",
+        "en": "Put the chicken in a pot with the liter of water, the half onion, 2 garlic cloves and 1 teaspoon of salt. Cook it over medium heat until tender. Keep the broth.",
+        "min": 35
+      },
+      {
+        "es": "Mientras tanto, hierve los tomates verdes con los chiles serranos en agua a fuego medio hasta que cambien de color y se vean suaves.",
+        "en": "Meanwhile, boil the green tomatoes with the serrano chilies in water over medium heat until they change color and look soft.",
+        "min": 8
+      },
+      {
+        "es": "Tuesta las pepitas en una sartén seca a fuego bajo, moviendo siempre y con la sartén tapada a medias, hasta que se inflen y suenen. Que no se pongan oscuras, o la salsa amarga.",
+        "en": "Toast the pumpkin seeds in a dry pan on low heat, stirring all the time and with the pan half-covered, until they puff up and pop. Do not let them get dark, or the sauce turns bitter.",
+        "min": 5
+      },
+      {
+        "es": "Deja enfriar los tomates 5 minutos. Con ayuda de un adulto, licúa las pepitas con 2 tazas del caldo, y luego agrega los tomates, los chiles, el cilantro, la lechuga, la cebolla, 2 dientes de ajo y el comino hasta que quede muy suave. Licúa en dos tandas y llena la licuadora solo a la mitad.",
+        "en": "Let the tomatoes cool for 5 minutes. With an adult's help, blend the seeds with 2 cups of the broth, then add the tomatoes, chilies, cilantro, lettuce, onion, 2 garlic cloves and cumin until very smooth. Blend in two batches and fill the blender only halfway.",
+        "min": 7
+      },
+      {
+        "es": "Calienta el aceite en una cazuela y vierte la salsa con cuidado, porque salpica. Fríela a fuego bajo, moviendo sin parar, hasta que se oscurezca un poquito y espese.",
+        "en": "Heat the oil in a casserole and pour in the sauce carefully, because it splatters. Fry it on low heat, stirring constantly, until it darkens a little and thickens.",
+        "min": 12
+      },
+      {
+        "es": "Agrega las piezas de pollo y 1 taza del caldo. Cuece a fuego bajo, moviendo de vez en cuando, y no dejes que hierva fuerte. Si queda muy espesa, agrega un poco más de caldo.",
+        "en": "Add the chicken pieces and 1 cup of the broth. Simmer on low heat, stirring now and then, and do not let it boil hard. If it is too thick, add a little more broth.",
+        "min": 15
+      },
+      {
+        "es": "Prueba y ajusta la sal. Apaga el fuego y deja reposar 5 minutos con la cazuela tapada.",
+        "en": "Taste and adjust the salt. Turn off the heat and let it rest for 5 minutes with the casserole covered.",
+        "min": 5
+      },
+      {
+        "es": "Sirve el pipián caliente con arroz y tortillas. ¡Buen provecho, mijo!",
+        "en": "Serve the pipián hot with rice and tortillas. Enjoy, mijo!",
+        "min": 3
+      }
+    ]
+  }
+]

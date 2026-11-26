@@ -1,0 +1,131 @@
+[
+  {
+    "id": "rosca", "icono": "rosca", "insignia": null,
+    "nombre": { "es": "Rosca de Reyes", "en": "Rosca de Reyes (Three Kings' bread)" },
+    "resumen": { "es": "El pan dulce del 6 de enero, con fruta cristalizada y un monito escondido.", "en": "The sweet bread of January 6, with candied fruit and a little figure hidden inside." },
+    "porciones": 10, "tiempoPrep": 165, "tiempoCoccion": 30,
+    "nivel": { "es": "Para un día de fiesta", "en": "For a party day" },
+    "nota": { "es": "Pide ayuda a un adulto con el horno y la charola caliente. Avisa a todos los invitados que hay una figurita dentro, para que nadie la muerda sin querer. Si hay niños muy pequeños, mejor corta la rosca en porciones y revisa cada una.", "en": "Ask an adult to help with the oven and the hot tray. Tell all the guests there is a little figure inside, so nobody bites it by accident. If there are very small children, cut the rosca into portions and check each one first." },
+    "ingredientes": [
+      { "cant": 500, "un": "g", "es": "harina de trigo, más un poco para amasar", "en": "wheat flour, plus a little for kneading" },
+      { "cant": 2, "un": "cdta", "es": "levadura seca instantánea", "en": "instant dry yeast" },
+      { "cant": 100, "un": "g", "es": "azúcar", "en": "sugar" },
+      { "cant": 1, "un": "cdta", "es": "sal", "en": "salt" },
+      { "cant": 120, "un": "ml", "es": "leche tibia", "en": "warm milk" },
+      { "cant": 3, "un": "pza", "es": "huevos para la masa", "en": "eggs for the dough" },
+      { "cant": 120, "un": "g", "es": "mantequilla suave para la masa", "en": "soft butter for the dough" },
+      { "cant": 1, "un": "cda", "es": "ralladura de naranja", "en": "orange zest" },
+      { "cant": 1, "un": "cdta", "es": "vainilla", "en": "vanilla" },
+      { "cant": 80, "un": "g", "es": "mantequilla suave para la pasta del adorno", "en": "soft butter for the topping paste" },
+      { "cant": 80, "un": "g", "es": "harina de trigo para la pasta del adorno", "en": "wheat flour for the topping paste" },
+      { "cant": 80, "un": "g", "es": "azúcar glas para la pasta del adorno", "en": "powdered sugar for the topping paste" },
+      { "cant": 1, "un": "pza", "es": "yema de huevo para la pasta del adorno", "en": "egg yolk for the topping paste" },
+      { "cant": 1, "un": "pza", "es": "huevo batido para barnizar", "en": "beaten egg for brushing" },
+      { "cant": 60, "un": "g", "es": "fruta cristalizada en tiras (higo, naranja o cereza)", "en": "candied fruit strips (fig, orange or cherry)" },
+      { "cant": 2, "un": "cda", "es": "azúcar para espolvorear", "en": "sugar for sprinkling" },
+      { "cant": 1, "un": "pza", "es": "figurita pequeña, limpia, de las que se usan en la rosca", "en": "small clean figure, the kind used for the rosca" }
+    ],
+    "pasos": [
+      { "es": "Mezcla la leche tibia (que puedas meter el dedo sin quemarte) con la levadura y una cucharada del azúcar. Déjala reposar hasta que haga espuma.", "en": "Mix the warm milk (you should be able to dip a finger in without burning it) with the yeast and one spoonful of the sugar. Let it rest until it gets foamy.", "min": 10 },
+      { "es": "En un tazón grande junta la harina, el resto del azúcar, la sal y la ralladura. Agrega los 3 huevos, la vainilla y la leche con levadura, y mezcla hasta que no quede harina seca.", "en": "In a big bowl put the flour, the rest of the sugar, the salt and the zest. Add the 3 eggs, the vanilla and the milk with yeast, and mix until there is no dry flour left.", "min": 5 },
+      { "es": "Agrega la mantequilla en trozos y amasa sobre la mesa enharinada hasta que la masa quede lisa, suave y elástica, y se despegue de tus manos.", "en": "Add the butter in pieces and knead on the floured table until the dough is smooth, soft and stretchy, and comes away from your hands.", "min": 12 },
+      { "es": "Pon la masa en un tazón engrasado, tápala con un trapo limpio y déjala en un lugar tibio hasta que doble su tamaño.", "en": "Put the dough in a greased bowl, cover it with a clean cloth and leave it in a warm place until it doubles in size.", "min": 60 },
+      { "es": "Saca el aire de la masa con el puño, forma un rollo y únelo por las puntas para hacer una rosca ovalada. Ponla en una charola con papel para hornear.", "en": "Press the air out of the dough with your fist, shape a rope and join the ends to make an oval ring. Put it on a tray lined with baking paper.", "min": 5 },
+      { "es": "Tapa la rosca y déjala reposar de nuevo hasta que se vea esponjada. Mientras, mezcla con las manos la mantequilla, la harina, el azúcar glas y la yema hasta tener una pasta suave, y haz tiras delgadas.", "en": "Cover the rosca and let it rest again until it looks puffy. Meanwhile, mix the butter, flour, powdered sugar and yolk with your hands into a soft paste, and make thin strips.", "min": 40 },
+      { "es": "Calienta el horno a 180 °C. Barniza la rosca con el huevo batido, pon encima las tiras de pasta y la fruta cristalizada, y espolvorea el azúcar.", "en": "Heat the oven to 180 °C (350 °F). Brush the rosca with the beaten egg, place the paste strips and the candied fruit on top, and sprinkle the sugar.", "min": 3 },
+      { "es": "Hornea en el centro del horno hasta que esté dorada y suene hueca al golpearla suavemente por abajo. Sácala con guantes de cocina o pide ayuda a un adulto.", "en": "Bake in the middle of the oven until golden and it sounds hollow when you tap the bottom gently. Take it out with oven mitts or ask an adult to help.", "min": 30 },
+      { "es": "Déjala enfriar por completo sobre una rejilla. Ya fría, haz un corte pequeño por abajo, mete la figurita en la masa y tapa el corte: así no se derrite y nadie la ve.", "en": "Let it cool completely on a rack. When it is cold, make a small cut on the bottom, push the figure into the bread and close the cut: this way it does not melt and nobody sees it.", "min": 30 },
+      { "es": "Avisa a los invitados que hay una figurita escondida, corta la rosca y sírvela con chocolate caliente. ¡Buen provecho, mijo! A quien le toque el monito, ¡le toca ser el padrino!", "en": "Tell the guests there is a figure hidden inside, slice the rosca and serve it with hot chocolate. Enjoy, mijo! Whoever finds the little figure gets to host the next party!" }
+    ]
+  },
+  {
+    "id": "tamales", "icono": "tamales", "insignia": null,
+    "nombre": { "es": "Tamales de la Candelaria", "en": "Candlemas tamales" },
+    "resumen": { "es": "Tamales de pollo en salsa verde, envueltos en hoja de maíz y cocidos al vapor.", "en": "Chicken tamales in green sauce, wrapped in corn husks and steamed." },
+    "porciones": 8, "tiempoPrep": 90, "tiempoCoccion": 115,
+    "nivel": { "es": "Para un día de fiesta", "en": "For a party day" },
+    "nota": { "es": "Pide ayuda a un adulto con el vapor, la olla caliente y la licuadora. Lávate las manos después de tocar los chiles y no te toques los ojos. Para salsa roja, cambia los tomates y serranos por 6 chiles guajillo hervidos y licuados.", "en": "Ask an adult to help with the steam, the hot pot and the blender. Wash your hands after touching the chiles and do not touch your eyes. For red sauce, swap the tomatillos and serranos for 6 boiled and blended guajillo chiles." },
+    "ingredientes": [
+      { "cant": 30, "un": "pza", "es": "hojas secas de maíz para tamales", "en": "dried corn husks for tamales" },
+      { "cant": 800, "un": "g", "es": "pechuga de pollo", "en": "chicken breast" },
+      { "cant": 1.5, "un": "L", "es": "agua para el caldo", "en": "water for the broth" },
+      { "cant": 0.5, "un": "pza", "es": "cebolla", "en": "onion" },
+      { "cant": 3, "un": "dientes", "es": "ajo", "en": "garlic" },
+      { "cant": 500, "un": "g", "es": "tomates verdes", "en": "tomatillos" },
+      { "cant": 3, "un": "pza", "es": "chiles serranos, o al gusto", "en": "serrano chiles, or to taste" },
+      { "cant": 20, "un": "g", "es": "cilantro", "en": "cilantro" },
+      { "cant": 1, "un": "cda", "es": "aceite", "en": "oil" },
+      { "cant": 500, "un": "g", "es": "masa harina de maíz para tamales", "en": "corn masa flour for tamales" },
+      { "cant": 200, "un": "g", "es": "manteca vegetal", "en": "vegetable shortening" },
+      { "cant": 2, "un": "cdta", "es": "polvo para hornear", "en": "baking powder" },
+      { "cant": 650, "un": "ml", "es": "caldo de pollo tibio", "en": "warm chicken broth" },
+      { "cant": 2, "un": "cdta", "es": "sal, o al gusto", "en": "salt, or to taste" }
+    ],
+    "pasos": [
+      { "es": "Cubre las hojas de maíz con agua muy caliente, ponles un plato encima para que no floten y déjalas remojar hasta que estén suaves. Escúrrelas y sécalas con un trapo.", "en": "Cover the corn husks with very hot water, put a plate on top so they do not float and let them soak until they are soft. Drain them and dry them with a cloth.", "min": 30 },
+      { "es": "Cuece la pechuga en el agua con un cuarto de cebolla, 1 diente de ajo y una cucharadita de sal, a fuego medio, hasta que ya no esté rosada por dentro. Guarda el caldo.", "en": "Cook the chicken breast in the water with a quarter of the onion, 1 garlic clove and a teaspoon of salt, over medium heat, until it is no longer pink inside. Keep the broth.", "min": 25 },
+      { "es": "Hierve los tomates y los chiles serranos en agua hasta que cambien de color. Lícualos con el resto de la cebolla, 2 dientes de ajo, el cilantro y un poco de sal. Deja enfriar un poco antes y pide ayuda a un adulto.", "en": "Boil the tomatillos and the serrano chiles in water until they change color. Blend them with the rest of the onion, 2 garlic cloves, the cilantro and a little salt. Let it cool a little first and ask an adult for help.", "min": 10 },
+      { "es": "Calienta el aceite en una sartén, vierte la salsa y cocínala hasta que espese un poco. Deshebra el pollo, mézclalo con la salsa y deja el relleno a un lado.", "en": "Heat the oil in a pan, pour in the sauce and cook it until it thickens a little. Shred the chicken, mix it with the sauce and set the filling aside.", "min": 10 },
+      { "es": "Bate la manteca vegetal hasta que quede blanca y esponjosa.", "en": "Beat the shortening until it is white and fluffy.", "min": 5 },
+      { "es": "Agrega la masa harina, el polvo para hornear y la sal, alternando con el caldo tibio poco a poco. Bate hasta que la masa parezca crema espesa y una bolita flote en un vaso con agua fría.", "en": "Add the masa flour, the baking powder and the salt, alternating with the warm broth little by little. Beat until the dough looks like thick cream and a small ball floats in a glass of cold water.", "min": 10 },
+      { "es": "Arma los tamales: en una hoja extiende 3 cucharadas de masa, pon 2 cucharadas de relleno en el centro, dobla los lados y luego la punta hacia arriba.", "en": "Assemble the tamales: spread 3 spoonfuls of dough on a husk, put 2 spoonfuls of filling in the center, fold the sides and then fold the tip up.", "min": 25 },
+      { "es": "Pon hojas sobrantes en el fondo de la vaporera y agua sin que toque los tamales. Acomódalos parados, tápalos con un trapo y la tapa, y cuécelos a vapor a fuego medio. Agrega agua hirviendo si hace falta y pide ayuda a un adulto con el vapor.", "en": "Put leftover husks at the bottom of the steamer and water that does not touch the tamales. Stand them upright, cover them with a cloth and the lid, and steam over medium heat. Add boiling water if needed and ask an adult to help with the steam.", "min": 75 },
+      { "es": "Apaga el fuego y déjalos reposar con la tapa puesta. Están listos cuando la masa se despega fácil de la hoja.", "en": "Turn off the heat and let them rest with the lid on. They are ready when the dough comes away easily from the husk.", "min": 15 },
+      { "es": "Sírvelos calientitos, con su hoja abierta y un poco de salsa. ¡Buen provecho, mijo!", "en": "Serve them nice and warm, with the husk opened and a little sauce. Enjoy, mijo!" }
+    ]
+  },
+  {
+    "id": "chocolate", "icono": "chocolate", "insignia": null,
+    "nombre": { "es": "Chocolate caliente de la abuelita", "en": "Granny's hot chocolate" },
+    "resumen": { "es": "Chocolate de mesa con leche y mucha espuma, para acompañar la rosca.", "en": "Table chocolate with milk and lots of foam, to enjoy with the rosca." },
+    "porciones": 6, "tiempoPrep": 5, "tiempoCoccion": 16,
+    "nivel": { "es": "Muy fácil", "en": "Very easy" },
+    "nota": { "es": "Pide ayuda a un adulto con el cuchillo y la leche caliente. No lo licues caliente. Vigila la olla: la leche sube rápido al hervir. Sírvelo cuando ya no queme.", "en": "Ask an adult to help with the knife and the hot milk. Do not blend it while hot. Watch the pot: milk rises fast when it boils. Serve it once it is no longer scalding." },
+    "ingredientes": [
+      { "cant": 1, "un": "L", "es": "leche", "en": "milk" },
+      { "cant": 180, "un": "g", "es": "chocolate de mesa (2 tabletas)", "en": "Mexican table chocolate (2 tablets)" },
+      { "cant": 1, "un": "pza", "es": "raja de canela (5 cm)", "en": "cinnamon stick (5 cm)" },
+      { "cant": 1, "un": "cda", "es": "azúcar, o al gusto", "en": "sugar, or to taste" }
+    ],
+    "pasos": [
+      { "es": "Pica el chocolate en trozos pequeños para que se derrita parejo. Pide ayuda a un adulto con el cuchillo.", "en": "Chop the chocolate into small pieces so it melts evenly. Ask an adult to help with the knife.", "min": 3 },
+      { "es": "Calienta la leche con la canela en una olla a fuego medio-bajo, hasta que suelte vapor y salgan burbujitas en el borde.", "en": "Heat the milk with the cinnamon in a pot over medium-low heat, until it steams and little bubbles show at the edge.", "min": 6 },
+      { "es": "Agrega el chocolate y el azúcar. Mueve con una cuchara de madera hasta que todo se disuelva.", "en": "Add the chocolate and the sugar. Stir with a wooden spoon until everything dissolves.", "min": 5 },
+      { "es": "Deja que dé un hervor suave, sin dejar de moverlo, y apaga el fuego enseguida para que no se derrame.", "en": "Let it come to a gentle boil, stirring all the time, and turn off the heat right away so it does not spill.", "min": 2 },
+      { "es": "Quita la canela y bate con un molinillo (frótalo entre tus palmas) o con un batidor, hasta que haga mucha espuma.", "en": "Remove the cinnamon and whisk with a molinillo (roll it between your palms) or a whisk, until it gets very foamy.", "min": 3 },
+      { "es": "Déjalo reposar un poquito y sírvelo en tazas, con una rebanada de rosca. ¡Buen provecho, mijo!", "en": "Let it rest a little and serve it in cups, with a slice of rosca. Enjoy, mijo!", "min": 2 }
+    ]
+  },
+  {
+    "id": "enchiladas", "icono": "enchiladas", "insignia": null,
+    "nombre": { "es": "Enchiladas rojas de fiesta", "en": "Festive red enchiladas" },
+    "resumen": { "es": "Tortillas bañadas en salsa de chile guajillo, rellenas de pollo y cubiertas de crema, queso y cebolla.", "en": "Tortillas dipped in guajillo chile sauce, filled with chicken and topped with cream, cheese and onion." },
+    "porciones": 4, "tiempoPrep": 40, "tiempoCoccion": 41,
+    "nivel": { "es": "Con paciencia", "en": "With patience" },
+    "nota": { "es": "Pide ayuda a un adulto con el aceite caliente, los chiles hirviendo y la licuadora. Lávate las manos después de tocar los chiles y no te toques los ojos. Si la salsa pica mucho, quítales bien las semillas.", "en": "Ask an adult to help with the hot oil, the boiling chiles and the blender. Wash your hands after touching the chiles and do not touch your eyes. If the sauce is too spicy, remove the seeds well." },
+    "ingredientes": [
+      { "cant": 500, "un": "g", "es": "pechuga de pollo", "en": "chicken breast" },
+      { "cant": 1, "un": "L", "es": "agua para cocer el pollo", "en": "water to cook the chicken" },
+      { "cant": 1, "un": "pza", "es": "cebolla blanca (la mitad para la salsa y el caldo, la mitad para servir)", "en": "white onion (half for the sauce and broth, half for serving)" },
+      { "cant": 8, "un": "pza", "es": "chiles guajillo sin rabo ni semillas", "en": "guajillo chiles without stems or seeds" },
+      { "cant": 500, "un": "ml", "es": "agua para hervir los chiles", "en": "water to boil the chiles" },
+      { "cant": 2, "un": "dientes", "es": "ajo", "en": "garlic" },
+      { "cant": 1, "un": "pizca", "es": "comino molido", "en": "ground cumin" },
+      { "cant": 2, "un": "cdta", "es": "sal, o al gusto", "en": "salt, or to taste" },
+      { "cant": 12, "un": "pza", "es": "tortillas de maíz", "en": "corn tortillas" },
+      { "cant": 100, "un": "ml", "es": "aceite para freír", "en": "oil for frying" },
+      { "cant": 150, "un": "ml", "es": "crema", "en": "cream" },
+      { "cant": 150, "un": "g", "es": "queso fresco desmoronado", "en": "crumbled fresh cheese" }
+    ],
+    "pasos": [
+      { "es": "Cuece la pechuga en el agua con un cuarto de cebolla y una cucharadita de sal, a fuego medio, hasta que ya no esté rosada por dentro. Déjala enfriar.", "en": "Cook the chicken breast in the water with a quarter of the onion and a teaspoon of salt, over medium heat, until it is no longer pink inside. Let it cool.", "min": 25 },
+      { "es": "Hierve los chiles guajillo en el agua hasta que estén suaves. Pide ayuda a un adulto con la olla caliente.", "en": "Boil the guajillo chiles in the water until they are soft. Ask an adult to help with the hot pot.", "min": 10 },
+      { "es": "Licúa los chiles con una taza del agua en que hirvieron, el ajo, un cuarto de cebolla, el comino y una cucharadita de sal. Deja enfriar un poco antes y cuela la salsa.", "en": "Blend the chiles with a cup of the water they boiled in, the garlic, a quarter of the onion, the cumin and a teaspoon of salt. Let it cool a little first and strain the sauce.", "min": 3 },
+      { "es": "Cocina la salsa en una olla a fuego bajo, moviendo, hasta que espese y cubra la cuchara.", "en": "Cook the sauce in a pot over low heat, stirring, until it thickens and coats the spoon.", "min": 8 },
+      { "es": "Deshebra el pollo y mézclalo con 4 cucharadas de la salsa para que quede jugoso.", "en": "Shred the chicken and mix it with 4 spoonfuls of the sauce so it stays juicy.", "min": 5 },
+      { "es": "Calienta el aceite en una sartén. Fríe cada tortilla unos segundos por lado, hasta que se suavice sin dorarse, y pásala por la salsa tibia. Pon 2 cucharadas de pollo, enróllala y acomódala en un platón. Pide ayuda a un adulto con el aceite caliente.", "en": "Heat the oil in a pan. Fry each tortilla a few seconds per side, until it softens without browning, and dip it in the warm sauce. Put 2 spoonfuls of chicken, roll it up and arrange it on a platter. Ask an adult to help with the hot oil.", "min": 20 },
+      { "es": "Baña las enchiladas con la salsa que sobró y calienta el platón en el horno a 180 °C, para que queden bien calientitas.", "en": "Cover the enchiladas with the leftover sauce and warm the platter in the oven at 180 °C (350 °F), so they are nice and hot.", "min": 10 },
+      { "es": "Pica la media cebolla que queda. Sirve las enchiladas con crema, queso y cebolla encima. ¡Buen provecho, mijo!", "en": "Chop the remaining half onion. Serve the enchiladas with cream, cheese and onion on top. Enjoy, mijo!" }
+    ]
+  }
+]

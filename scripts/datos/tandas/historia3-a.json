@@ -1,0 +1,932 @@
+[
+ {
+  "id": 13,
+  "receta": "rosca",
+  "titulo": {
+   "es": "La rosca y el monito",
+   "en": "The rosca and the little figure"
+  },
+  "relato": {
+   "es": [
+    "Mijo, cada seis de enero, el Día de Reyes, mi familia se juntaba en la casa de mi abuelita. Los tíos, los primos y los vecinos llegaban con frío en las manos y sonrisas en la cara.",
+    "Mi abuelita ponía la rosca en el centro de la mesa. Adentro había un monito escondido, una figura muy pequeña. Nadie sabía dónde estaba.",
+    "Mientras tanto, ella preparaba chocolate caliente y café en la cocina. El olor llenaba toda la casa. Los niños esperábamos con los ojos bien abiertos.",
+    "Mi tío cortaba cada rebanada con un cuchillo grande, despacito. Todos mirábamos y nadie hablaba. ¿A quién le tocaría la suerte?",
+    "¡Zas! A mi primo le salió el monito. Qué sorpresa, todos aplaudimos y reímos. A él le tocaba hacer los tamales el día de la Candelaria. Mijo, lo más bonito no era la rosca, era estar todos juntos."
+   ],
+   "en": [
+    "Mijo, every sixth of January, Three Kings Day, my family gathered at my grandmother's house. The uncles, cousins and neighbors arrived with cold hands and smiles on their faces.",
+    "My grandmother put the rosca in the middle of the table. Inside there was a hidden little figure, a very small monkey. Nobody knew where it was.",
+    "Meanwhile, she made hot chocolate and coffee in the kitchen. The smell filled the whole house. We kids waited with our eyes wide open.",
+    "My uncle cut each slice with a big knife, very slowly. We all watched and nobody spoke. Whose luck would it be?",
+    "Zas! My cousin got the little figure. What a surprise, we all clapped and laughed. He had to make the tamales on Candlemas day. Mijo, the nicest thing was not the rosca, it was being all together."
+   ]
+  },
+  "palabras": [
+   {
+    "en": "January",
+    "es": "enero"
+   },
+   {
+    "en": "slice",
+    "es": "rebanada"
+   },
+   {
+    "en": "knife",
+    "es": "cuchillo"
+   },
+   {
+    "en": "figure",
+    "es": "figura"
+   },
+   {
+    "en": "luck",
+    "es": "suerte"
+   },
+   {
+    "en": "surprise",
+    "es": "sorpresa"
+   },
+   {
+    "en": "hidden",
+    "es": "escondido"
+   },
+   {
+    "en": "monkey",
+    "es": "monito"
+   }
+  ],
+  "ejemplos": {
+   "trabajo": [
+    {
+     "en": "I start work in January.",
+     "es": "Empiezo a trabajar en enero.",
+     "we": "January",
+     "ws": "enero"
+    },
+    {
+     "en": "Use a knife to cut the paper.",
+     "es": "Usa un cuchillo para cortar el papel.",
+     "we": "knife",
+     "ws": "cuchillo"
+    },
+    {
+     "en": "Good luck at your new job.",
+     "es": "Buena suerte en tu nuevo trabajo.",
+     "we": "luck",
+     "ws": "suerte"
+    }
+   ],
+   "amigos": [
+    {
+     "en": "I have a surprise for you.",
+     "es": "Tengo una sorpresa para ti.",
+     "we": "surprise",
+     "ws": "sorpresa"
+    },
+    {
+     "en": "Please give me a slice.",
+     "es": "Dame una rebanada, por favor.",
+     "we": "slice",
+     "ws": "rebanada"
+    },
+    {
+     "en": "My friend has a small figure.",
+     "es": "Mi amigo tiene una figura pequeña.",
+     "we": "figure",
+     "ws": "figura"
+    }
+   ],
+   "biblia": [
+    {
+     "en": "January is the first month.",
+     "es": "Enero es el primer mes.",
+     "we": "January",
+     "ws": "enero"
+    },
+    {
+     "en": "A hidden treasure brings joy.",
+     "es": "Un tesoro escondido trae alegría.",
+     "we": "hidden",
+     "ws": "escondido"
+    },
+    {
+     "en": "Every day is a surprise from God.",
+     "es": "Cada día es una sorpresa de Dios.",
+     "we": "surprise",
+     "ws": "sorpresa"
+    }
+   ],
+   "viajes": [
+    {
+     "en": "I bought a small figure as a souvenir.",
+     "es": "Compré una figura pequeña de recuerdo.",
+     "we": "figure",
+     "ws": "figura"
+    },
+    {
+     "en": "Luck was with us on the trip.",
+     "es": "La suerte estuvo con nosotros en el viaje.",
+     "we": "luck",
+     "ws": "suerte"
+    },
+    {
+     "en": "In January it is cold in the mountains.",
+     "es": "En enero hace frío en las montañas.",
+     "we": "January",
+     "ws": "enero"
+    }
+   ],
+   "cocina": [
+    {
+     "en": "Cut a slice of cake.",
+     "es": "Corta una rebanada de pastel.",
+     "we": "slice",
+     "ws": "rebanada"
+    },
+    {
+     "en": "Use a sharp knife.",
+     "es": "Usa un cuchillo afilado.",
+     "we": "knife",
+     "ws": "cuchillo"
+    },
+    {
+     "en": "The surprise is inside the bread.",
+     "es": "La sorpresa está dentro del pan.",
+     "we": "surprise",
+     "ws": "sorpresa"
+    }
+   ]
+  },
+  "palabrasInteres": {
+   "trabajo": [
+    {
+     "en": "calendar",
+     "es": "calendario",
+     "f": {
+      "en": "The calendar is on the wall.",
+      "es": "El calendario está en la pared."
+     }
+    },
+    {
+     "en": "holiday",
+     "es": "feriado",
+     "f": {
+      "en": "Monday is a holiday.",
+      "es": "El lunes es feriado."
+     }
+    },
+    {
+     "en": "list",
+     "es": "lista",
+     "f": {
+      "en": "The list is very long.",
+      "es": "La lista es muy larga."
+     }
+    }
+   ],
+   "amigos": [
+    {
+     "en": "cousin",
+     "es": "primo",
+     "f": {
+      "en": "My cousin lives near me.",
+      "es": "Mi primo vive cerca de mí."
+     }
+    },
+    {
+     "en": "uncle",
+     "es": "tío",
+     "f": {
+      "en": "My uncle tells good stories.",
+      "es": "Mi tío cuenta buenas historias."
+     }
+    },
+    {
+     "en": "applause",
+     "es": "aplauso",
+     "f": {
+      "en": "The applause was loud.",
+      "es": "El aplauso fue fuerte."
+     }
+    }
+   ],
+   "biblia": [
+    {
+     "en": "king",
+     "es": "rey",
+     "f": {
+      "en": "The king was kind.",
+      "es": "El rey fue amable."
+     }
+    },
+    {
+     "en": "gold",
+     "es": "oro",
+     "f": {
+      "en": "The gold shines in the light.",
+      "es": "El oro brilla con la luz."
+     }
+    },
+    {
+     "en": "wise",
+     "es": "sabio",
+     "f": {
+      "en": "The wise man listens first.",
+      "es": "El hombre sabio escucha primero."
+     }
+    }
+   ],
+   "viajes": [
+    {
+     "en": "mountain",
+     "es": "montaña",
+     "f": {
+      "en": "We see a mountain from the bus.",
+      "es": "Vemos una montaña desde el autobús."
+     }
+    },
+    {
+     "en": "tourist",
+     "es": "turista",
+     "f": {
+      "en": "The tourist asks for a map.",
+      "es": "El turista pide un mapa."
+     }
+    },
+    {
+     "en": "passport",
+     "es": "pasaporte",
+     "f": {
+      "en": "My passport is in my bag.",
+      "es": "Mi pasaporte está en mi bolsa."
+     }
+    }
+   ],
+   "cocina": [
+    {
+     "en": "cocoa",
+     "es": "cacao",
+     "f": {
+      "en": "The cocoa smells wonderful.",
+      "es": "El cacao huele maravilloso."
+     }
+    },
+    {
+     "en": "cream",
+     "es": "crema",
+     "f": {
+      "en": "Add a little cream.",
+      "es": "Agrega un poco de crema."
+     }
+    },
+    {
+     "en": "tray",
+     "es": "charola",
+     "f": {
+      "en": "Put the bread on the tray.",
+      "es": "Pon el pan en la charola."
+     }
+    }
+   ]
+  },
+  "consejo": {
+   "es": "La mejor rosca es la que se parte para todos.",
+   "en": "The best rosca is the one we cut for everyone.",
+   "clave": [
+    {
+     "en": "cut",
+     "es": "parte"
+    },
+    {
+     "en": "everyone",
+     "es": "todos"
+    }
+   ]
+  }
+ },
+ {
+  "id": 14,
+  "receta": "tamales",
+  "titulo": {
+   "es": "Los tamales de la Candelaria",
+   "en": "The Candlemas tamales"
+  },
+  "relato": {
+   "es": [
+    "Mija, el dos de febrero era el día de la Candelaria. A mi primo le tocaba invitar los tamales, porque a él le salió el monito.",
+    "Pero en mi familia nadie cocinaba solo. Desde temprano, todos llegaban a la cocina de mi abuelita con muchas ganas de ayudar.",
+    "Unos amasaban la masa en una tina grande. Otros untaban la masa en las hojas, una por una. Mi tío contaba chistes y las risas llenaban la casa.",
+    "Después envolvíamos los tamales y los poníamos en la olla grande. El vapor subía y olía a maíz. Un adulto cuidaba el fuego.",
+    "Cuando estuvieron listos, comimos todos juntos con atole. Mija, los tamales estaban ricos, pero lo mejor era hacerlos entre todos."
+   ],
+   "en": [
+    "Mija, the second of February was Candlemas day. My cousin had to invite everyone for tamales, because he got the little figure.",
+    "But in my family nobody cooked alone. From early on, everyone came to my grandmother's kitchen, eager to help.",
+    "Some kneaded the dough in a big tub. Others spread the dough on the leaves, one by one. My uncle told jokes and laughter filled the house.",
+    "Then we wrapped the tamales and put them in the big pot. The steam rose and it smelled like corn. A grown-up watched the fire.",
+    "When they were ready, we all ate together with atole. Mija, the tamales were delicious, but the best part was making them all together."
+   ]
+  },
+  "palabras": [
+   {
+    "en": "February",
+    "es": "febrero"
+   },
+   {
+    "en": "tamale",
+    "es": "tamal"
+   },
+   {
+    "en": "leaf",
+    "es": "hoja"
+   },
+   {
+    "en": "dough",
+    "es": "masa"
+   },
+   {
+    "en": "steam",
+    "es": "vapor"
+   },
+   {
+    "en": "knead",
+    "es": "amasar"
+   },
+   {
+    "en": "spread",
+    "es": "untar"
+   },
+   {
+    "en": "wrap",
+    "es": "envolver"
+   },
+   {
+    "en": "joke",
+    "es": "chiste"
+   }
+  ],
+  "ejemplos": {
+   "trabajo": [
+    {
+     "en": "February is a short month.",
+     "es": "Febrero es un mes corto.",
+     "we": "February",
+     "ws": "febrero"
+    },
+    {
+     "en": "I need to wrap this package.",
+     "es": "Necesito envolver este paquete.",
+     "we": "wrap",
+     "ws": "envolver"
+    },
+    {
+     "en": "Tell a joke before the meeting.",
+     "es": "Cuenta un chiste antes de la reunión.",
+     "we": "joke",
+     "ws": "chiste"
+    }
+   ],
+   "amigos": [
+    {
+     "en": "Let's knead together today.",
+     "es": "Hoy vamos a amasar juntos.",
+     "we": "knead",
+     "ws": "amasar"
+    },
+    {
+     "en": "Can you spread the butter?",
+     "es": "¿Puedes untar la mantequilla?",
+     "we": "spread",
+     "ws": "untar"
+    },
+    {
+     "en": "Bring a tamale for me.",
+     "es": "Trae un tamal para mí.",
+     "we": "tamale",
+     "ws": "tamal"
+    }
+   ],
+   "biblia": [
+    {
+     "en": "February is a month to give thanks.",
+     "es": "Febrero es un mes para dar gracias.",
+     "we": "February",
+     "ws": "febrero"
+    },
+    {
+     "en": "A green leaf is a sign of life.",
+     "es": "Una hoja verde es señal de vida.",
+     "we": "leaf",
+     "ws": "hoja"
+    },
+    {
+     "en": "Share your tamale with a neighbor.",
+     "es": "Comparte tu tamal con un vecino.",
+     "we": "tamale",
+     "ws": "tamal"
+    }
+   ],
+   "viajes": [
+    {
+     "en": "I tried a tamale on the road.",
+     "es": "Probé un tamal en el camino.",
+     "we": "tamale",
+     "ws": "tamal"
+    },
+    {
+     "en": "The steam fogs the bus window.",
+     "es": "El vapor empaña la ventana del autobús.",
+     "we": "steam",
+     "ws": "vapor"
+    },
+    {
+     "en": "Remember to wrap the souvenir.",
+     "es": "Recuerda envolver el recuerdo.",
+     "we": "wrap",
+     "ws": "envolver"
+    }
+   ],
+   "cocina": [
+    {
+     "en": "Mix the dough with warm broth.",
+     "es": "Mezcla la masa con caldo tibio.",
+     "we": "dough",
+     "ws": "masa"
+    },
+    {
+     "en": "You must spread the dough on the leaf.",
+     "es": "Hay que untar la masa en la hoja.",
+     "we": "spread",
+     "ws": "untar"
+    },
+    {
+     "en": "Cook the tamales in the steam.",
+     "es": "Cocina los tamales con vapor.",
+     "we": "steam",
+     "ws": "vapor"
+    }
+   ]
+  },
+  "palabrasInteres": {
+   "trabajo": [
+    {
+     "en": "task",
+     "es": "tarea",
+     "f": {
+      "en": "This task is easy.",
+      "es": "Esta tarea es fácil."
+     }
+    },
+    {
+     "en": "order",
+     "es": "pedido",
+     "f": {
+      "en": "The order arrives on Monday.",
+      "es": "El pedido llega el lunes."
+     }
+    },
+    {
+     "en": "helper",
+     "es": "ayudante",
+     "f": {
+      "en": "I need a helper today.",
+      "es": "Necesito un ayudante hoy."
+     }
+    }
+   ],
+   "amigos": [
+    {
+     "en": "host",
+     "es": "anfitrión",
+     "f": {
+      "en": "The host opens the door.",
+      "es": "El anfitrión abre la puerta."
+     }
+    },
+    {
+     "en": "tradition",
+     "es": "tradición",
+     "f": {
+      "en": "This is our family tradition.",
+      "es": "Esta es nuestra tradición familiar."
+     }
+    },
+    {
+     "en": "fun",
+     "es": "diversión",
+     "f": {
+      "en": "The party was pure fun.",
+      "es": "La fiesta fue pura diversión."
+     }
+    }
+   ],
+   "biblia": [
+    {
+     "en": "gratitude",
+     "es": "gratitud",
+     "f": {
+      "en": "I feel gratitude every morning.",
+      "es": "Siento gratitud cada mañana."
+     }
+    },
+    {
+     "en": "unity",
+     "es": "unidad",
+     "f": {
+      "en": "Unity makes us strong.",
+      "es": "La unidad nos hace fuertes."
+     }
+    },
+    {
+     "en": "generous",
+     "es": "generoso",
+     "f": {
+      "en": "My neighbor is generous.",
+      "es": "Mi vecino es generoso."
+     }
+    }
+   ],
+   "viajes": [
+    {
+     "en": "highway",
+     "es": "carretera",
+     "f": {
+      "en": "The highway is very long.",
+      "es": "La carretera es muy larga."
+     }
+    },
+    {
+     "en": "guide",
+     "es": "guía",
+     "f": {
+      "en": "The guide knows the town.",
+      "es": "La guía conoce el pueblo."
+     }
+    },
+    {
+     "en": "countryside",
+     "es": "campo",
+     "f": {
+      "en": "The countryside is green.",
+      "es": "El campo está verde."
+     }
+    }
+   ],
+   "cocina": [
+    {
+     "en": "lard",
+     "es": "manteca",
+     "f": {
+      "en": "Mix the lard with the dough.",
+      "es": "Mezcla la manteca con la masa."
+     }
+    },
+    {
+     "en": "filling",
+     "es": "relleno",
+     "f": {
+      "en": "The filling is spicy.",
+      "es": "El relleno es picante."
+     }
+    },
+    {
+     "en": "tub",
+     "es": "tina",
+     "f": {
+      "en": "The tub is full of dough.",
+      "es": "La tina está llena de masa."
+     }
+    }
+   ]
+  },
+  "consejo": {
+   "es": "Muchas manos hacen ligero el trabajo y alegre la cocina.",
+   "en": "Many hands make the work light and the kitchen happy.",
+   "clave": [
+    {
+     "en": "hands",
+     "es": "manos"
+    },
+    {
+     "en": "work",
+     "es": "trabajo"
+    }
+   ]
+  }
+ },
+ {
+  "id": 15,
+  "receta": "enchiladas",
+  "titulo": {
+   "es": "Dale, dale, dale",
+   "en": "Hit it, hit it, hit it"
+  },
+  "relato": {
+   "es": [
+    "Mijo, en las fiestas siempre había piñata. Mi papá la colgaba de una cuerda en el patio y los niños la mirábamos con muchas ganas.",
+    "Me tapaban los ojos con una venda y me daban el palo. Todos cantaban: «Dale, dale, dale, no pierdas el tino, porque si lo pierdes, pierdes el camino».",
+    "Yo esperaba mi turno con el corazón contento. Le daba dos o tres golpes, pero nunca la rompía. ¡Ay, qué cerquita!",
+    "Luego llegaba mi hermano mayor y, con un solo movimiento, ¡crac! La piñata se abría. Todos los niños corrían a agarrar los dulces.",
+    "Yo reía y corría con ellos. Mijo, nunca la rompí, pero para mí todo era perfecto: la música, las risas y toda mi familia."
+   ],
+   "en": [
+    "Mijo, at the parties there was always a piñata. My dad hung it from a rope in the yard and we kids looked at it with great excitement.",
+    "They covered my eyes with a blindfold and gave me the stick. Everyone sang: \"Dale, dale, dale, no pierdas el tino, porque si lo pierdes, pierdes el camino,\" which means \"Hit it, hit it, hit it, do not lose your aim, because if you lose it, you lose your way.\"",
+    "I waited for my turn with a happy heart. I gave it two or three hits, but I never broke it. Oh, so close!",
+    "Then my big brother came and, with one single swing, crack! The piñata opened. All the kids ran to grab the sweets.",
+    "I laughed and ran with them. Mijo, I never broke it, but for me everything was perfect: the music, the laughter and my whole family."
+   ]
+  },
+  "palabras": [
+   {
+    "en": "stick",
+    "es": "palo"
+   },
+   {
+    "en": "blindfold",
+    "es": "venda"
+   },
+   {
+    "en": "rope",
+    "es": "cuerda"
+   },
+   {
+    "en": "hit",
+    "es": "golpe"
+   },
+   {
+    "en": "sweets",
+    "es": "dulces"
+   },
+   {
+    "en": "run",
+    "es": "correr"
+   },
+   {
+    "en": "brother",
+    "es": "hermano"
+   },
+   {
+    "en": "smash",
+    "es": "romper"
+   },
+   {
+    "en": "aim",
+    "es": "tino"
+   },
+   {
+    "en": "wait",
+    "es": "esperar"
+   }
+  ],
+  "ejemplos": {
+   "trabajo": [
+    {
+     "en": "I need to wait for my boss.",
+     "es": "Necesito esperar a mi jefe.",
+     "we": "wait",
+     "ws": "esperar"
+    },
+    {
+     "en": "Tie the box with a rope.",
+     "es": "Amarra la caja con una cuerda.",
+     "we": "rope",
+     "ws": "cuerda"
+    },
+    {
+     "en": "My brother works with me.",
+     "es": "Mi hermano trabaja conmigo.",
+     "we": "brother",
+     "ws": "hermano"
+    }
+   ],
+   "amigos": [
+    {
+     "en": "Let's run to the park.",
+     "es": "Vamos a correr al parque.",
+     "we": "run",
+     "ws": "correr"
+    },
+    {
+     "en": "My brother is my best friend.",
+     "es": "Mi hermano es mi mejor amigo.",
+     "we": "brother",
+     "ws": "hermano"
+    },
+    {
+     "en": "Share the sweets with everyone.",
+     "es": "Comparte los dulces con todos.",
+     "we": "sweets",
+     "ws": "dulces"
+    }
+   ],
+   "biblia": [
+    {
+     "en": "Be kind to your brother.",
+     "es": "Sé amable con tu hermano.",
+     "we": "brother",
+     "ws": "hermano"
+    },
+    {
+     "en": "We wait with patience and faith.",
+     "es": "Hay que esperar con paciencia y fe.",
+     "we": "wait",
+     "ws": "esperar"
+    },
+    {
+     "en": "Good aim needs a calm heart.",
+     "es": "El buen tino pide un corazón tranquilo.",
+     "we": "aim",
+     "ws": "tino"
+    }
+   ],
+   "viajes": [
+    {
+     "en": "I buy sweets at the station.",
+     "es": "Compro dulces en la estación.",
+     "we": "sweets",
+     "ws": "dulces"
+    },
+    {
+     "en": "You should not run in the airport.",
+     "es": "No hay que correr en el aeropuerto.",
+     "we": "run",
+     "ws": "correr"
+    },
+    {
+     "en": "My brother travels with me.",
+     "es": "Mi hermano viaja conmigo.",
+     "we": "brother",
+     "ws": "hermano"
+    }
+   ],
+   "cocina": [
+    {
+     "en": "These sweets are made of sugar.",
+     "es": "Estos dulces son de azúcar.",
+     "we": "sweets",
+     "ws": "dulces"
+    },
+    {
+     "en": "Stir with a wooden stick.",
+     "es": "Mueve con un palo de madera.",
+     "we": "stick",
+     "ws": "palo"
+    },
+    {
+     "en": "I need to wait for the water to boil.",
+     "es": "Hay que esperar a que hierva el agua.",
+     "we": "wait",
+     "ws": "esperar"
+    }
+   ]
+  },
+  "palabrasInteres": {
+   "trabajo": [
+    {
+     "en": "skill",
+     "es": "habilidad",
+     "f": {
+      "en": "Cooking is a useful skill.",
+      "es": "Cocinar es una habilidad útil."
+     }
+    },
+    {
+     "en": "practice",
+     "es": "práctica",
+     "f": {
+      "en": "Practice makes you better.",
+      "es": "La práctica te hace mejor."
+     }
+    },
+    {
+     "en": "result",
+     "es": "resultado",
+     "f": {
+      "en": "The result was very good.",
+      "es": "El resultado fue muy bueno."
+     }
+    }
+   ],
+   "amigos": [
+    {
+     "en": "kid",
+     "es": "niño",
+     "f": {
+      "en": "The kid laughs at the party.",
+      "es": "El niño ríe en la fiesta."
+     }
+    },
+    {
+     "en": "birthday",
+     "es": "cumpleaños",
+     "f": {
+      "en": "Today is my birthday.",
+      "es": "Hoy es mi cumpleaños."
+     }
+    },
+    {
+     "en": "balloon",
+     "es": "globo",
+     "f": {
+      "en": "The balloon is red.",
+      "es": "El globo es rojo."
+     }
+    }
+   ],
+   "biblia": [
+    {
+     "en": "courage",
+     "es": "valor",
+     "f": {
+      "en": "Courage grows with love.",
+      "es": "El valor crece con el amor."
+     }
+    },
+    {
+     "en": "lesson",
+     "es": "lección",
+     "f": {
+      "en": "Every day brings a lesson.",
+      "es": "Cada día trae una lección."
+     }
+    },
+    {
+     "en": "learn",
+     "es": "aprender",
+     "f": {
+      "en": "We learn from our family.",
+      "es": "Podemos aprender de nuestra familia."
+     }
+    }
+   ],
+   "viajes": [
+    {
+     "en": "park",
+     "es": "parque",
+     "f": {
+      "en": "The park is near the plaza.",
+      "es": "El parque está cerca de la plaza."
+     }
+    },
+    {
+     "en": "yard",
+     "es": "patio",
+     "f": {
+      "en": "The yard has a big tree.",
+      "es": "El patio tiene un árbol grande."
+     }
+    },
+    {
+     "en": "bench",
+     "es": "banca",
+     "f": {
+      "en": "Sit on the bench.",
+      "es": "Siéntate en la banca."
+     }
+    }
+   ],
+   "cocina": [
+    {
+     "en": "cheese",
+     "es": "queso",
+     "f": {
+      "en": "Add cheese to the enchiladas.",
+      "es": "Agrega queso a las enchiladas."
+     }
+    },
+    {
+     "en": "tomato",
+     "es": "jitomate",
+     "f": {
+      "en": "The tomato is ripe.",
+      "es": "El jitomate está maduro."
+     }
+    },
+    {
+     "en": "fork",
+     "es": "tenedor",
+     "f": {
+      "en": "Use a fork, please.",
+      "es": "Usa un tenedor, por favor."
+     }
+    }
+   ]
+  },
+  "consejo": {
+   "es": "No siempre se rompe la piñata, pero siempre se comparte la alegría.",
+   "en": "You do not always break the piñata, but you always share the joy.",
+   "clave": [
+    {
+     "en": "share",
+     "es": "comparte"
+    },
+    {
+     "en": "joy",
+     "es": "alegría"
+    }
+   ]
+  }
+ }
+]

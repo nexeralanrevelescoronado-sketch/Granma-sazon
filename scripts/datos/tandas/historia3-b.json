@@ -1,0 +1,924 @@
+[
+  {
+    "id": 16,
+    "receta": "birria",
+    "titulo": {
+      "es": "Mis quince años",
+      "en": "My fifteenth birthday"
+    },
+    "relato": {
+      "es": [
+        "Mijo, mi fiesta de cumpleaños número quince fue en Durango, porque ahí vivía mi abuelita. Toda la familia hizo un viaje largo desde Puebla.",
+        "Mi mamá cosió mi vestido blanco durante muchas noches. Yo me puse zapatos nuevos y me sentí como una reina.",
+        "Mi abuelita preparó birria para toda la gente de la fiesta. La olla grande olía a chile y a especias, y la casa se llenó de familia.",
+        "Después bailé el vals con mi papá. Yo temblaba un poquito, y él me dijo bajito: «Tranquila, hija, aquí todos te quieren».",
+        "Mijo, no recuerdo cada regalo, pero recuerdo las caras de mi familia. Me sentí muy querida, y eso vale más que todo."
+      ],
+      "en": [
+        "Mijo, my fifteenth birthday party was in Durango, because my grandmother lived there. The whole family made a long trip from Puebla.",
+        "My mom sewed my white dress for many nights. I put on new shoes and felt like a queen.",
+        "My grandmother made birria for all the people at the party. The big pot smelled like chili and spices, and the house filled up with family.",
+        "Then I danced the waltz with my dad. I trembled a little, and he said softly, \"Easy, my girl, everyone here loves you.\"",
+        "Mijo, I do not remember every gift, but I remember my family's faces. I felt so loved, and that is worth more than anything."
+      ]
+    },
+    "palabras": [
+      {
+        "en": "dress",
+        "es": "vestido"
+      },
+      {
+        "en": "waltz",
+        "es": "vals"
+      },
+      {
+        "en": "grandmother",
+        "es": "abuelita"
+      },
+      {
+        "en": "shoes",
+        "es": "zapatos"
+      },
+      {
+        "en": "trip",
+        "es": "viaje"
+      },
+      {
+        "en": "birthday",
+        "es": "cumpleaños"
+      },
+      {
+        "en": "queen",
+        "es": "reina"
+      },
+      {
+        "en": "loved",
+        "es": "querida"
+      }
+    ],
+    "ejemplos": {
+      "trabajo": [
+        {
+          "en": "My work trip starts on Monday.",
+          "es": "Mi viaje de trabajo empieza el lunes.",
+          "we": "trip",
+          "ws": "viaje"
+        },
+        {
+          "en": "I wear comfortable shoes at work.",
+          "es": "Uso zapatos cómodos en el trabajo.",
+          "we": "shoes",
+          "ws": "zapatos"
+        },
+        {
+          "en": "My boss has a birthday today.",
+          "es": "Mi jefe tiene su cumpleaños hoy.",
+          "we": "birthday",
+          "ws": "cumpleaños"
+        }
+      ],
+      "amigos": [
+        {
+          "en": "Your dress is very pretty.",
+          "es": "Tu vestido es muy bonito.",
+          "we": "dress",
+          "ws": "vestido"
+        },
+        {
+          "en": "Let us learn the waltz together.",
+          "es": "Vamos a aprender el vals juntos.",
+          "we": "waltz",
+          "ws": "vals"
+        },
+        {
+          "en": "She is the queen of the party.",
+          "es": "Ella es la reina de la fiesta.",
+          "we": "queen",
+          "ws": "reina"
+        }
+      ],
+      "biblia": [
+        {
+          "en": "My grandmother prays every night.",
+          "es": "Mi abuelita ora cada noche.",
+          "we": "grandmother",
+          "ws": "abuelita"
+        },
+        {
+          "en": "I feel loved by God.",
+          "es": "Me siento querida por Dios.",
+          "we": "loved",
+          "ws": "querida"
+        },
+        {
+          "en": "Thank God for my birthday.",
+          "es": "Gracias a Dios por mi cumpleaños.",
+          "we": "birthday",
+          "ws": "cumpleaños"
+        }
+      ],
+      "viajes": [
+        {
+          "en": "The trip to Durango is long.",
+          "es": "El viaje a Durango es largo.",
+          "we": "trip",
+          "ws": "viaje"
+        },
+        {
+          "en": "Bring comfortable shoes for the walk.",
+          "es": "Lleva zapatos cómodos para la caminata.",
+          "we": "shoes",
+          "ws": "zapatos"
+        },
+        {
+          "en": "We visit my grandmother in Durango.",
+          "es": "Visitamos a mi abuelita en Durango.",
+          "we": "grandmother",
+          "ws": "abuelita"
+        }
+      ],
+      "cocina": [
+        {
+          "en": "My grandmother makes the best birria.",
+          "es": "Mi abuelita hace la mejor birria.",
+          "we": "grandmother",
+          "ws": "abuelita"
+        },
+        {
+          "en": "Wear an apron over your dress.",
+          "es": "Ponte un delantal sobre el vestido.",
+          "we": "dress",
+          "ws": "vestido"
+        },
+        {
+          "en": "I cook birria on my birthday.",
+          "es": "Cocino birria en mi cumpleaños.",
+          "we": "birthday",
+          "ws": "cumpleaños"
+        }
+      ]
+    },
+    "palabrasInteres": {
+      "trabajo": [
+        {
+          "en": "contract",
+          "es": "contrato",
+          "f": {
+            "en": "I read the contract today.",
+            "es": "Hoy leo el contrato."
+          }
+        },
+        {
+          "en": "promotion",
+          "es": "ascenso",
+          "f": {
+            "en": "She got a promotion this year.",
+            "es": "Ella recibió un ascenso este año."
+          }
+        },
+        {
+          "en": "task",
+          "es": "tarea",
+          "f": {
+            "en": "My first task is easy.",
+            "es": "Mi primera tarea es fácil."
+          }
+        }
+      ],
+      "amigos": [
+        {
+          "en": "cousin",
+          "es": "primo",
+          "f": {
+            "en": "My cousin lives in Durango.",
+            "es": "Mi primo vive en Durango."
+          }
+        },
+        {
+          "en": "message",
+          "es": "mensaje",
+          "f": {
+            "en": "I sent you a message.",
+            "es": "Te mandé un mensaje."
+          }
+        },
+        {
+          "en": "greeting",
+          "es": "saludo",
+          "f": {
+            "en": "Send my greeting to your family.",
+            "es": "Manda mi saludo a tu familia."
+          }
+        }
+      ],
+      "biblia": [
+        {
+          "en": "angel",
+          "es": "ángel",
+          "f": {
+            "en": "The angel brings good news.",
+            "es": "El ángel trae buenas noticias."
+          }
+        },
+        {
+          "en": "choir",
+          "es": "coro",
+          "f": {
+            "en": "The choir sings on Sunday.",
+            "es": "El coro canta el domingo."
+          }
+        },
+        {
+          "en": "worship",
+          "es": "adoración",
+          "f": {
+            "en": "Worship fills our home with peace.",
+            "es": "La adoración llena nuestra casa de paz."
+          }
+        }
+      ],
+      "viajes": [
+        {
+          "en": "passport",
+          "es": "pasaporte",
+          "f": {
+            "en": "Do not forget your passport.",
+            "es": "No olvides tu pasaporte."
+          }
+        },
+        {
+          "en": "highway",
+          "es": "carretera",
+          "f": {
+            "en": "The highway is very long.",
+            "es": "La carretera es muy larga."
+          }
+        },
+        {
+          "en": "return",
+          "es": "regreso",
+          "f": {
+            "en": "Our return is on Friday.",
+            "es": "Nuestro regreso es el viernes."
+          }
+        }
+      ],
+      "cocina": [
+        {
+          "en": "garlic",
+          "es": "ajo",
+          "f": {
+            "en": "Add a little garlic.",
+            "es": "Agrega un poco de ajo."
+          }
+        },
+        {
+          "en": "vinegar",
+          "es": "vinagre",
+          "f": {
+            "en": "The birria needs a little vinegar.",
+            "es": "La birria lleva un poco de vinagre."
+          }
+        },
+        {
+          "en": "cumin",
+          "es": "comino",
+          "f": {
+            "en": "Add cumin to the stew.",
+            "es": "Agrega comino al guiso."
+          }
+        }
+      ]
+    },
+    "consejo": {
+      "es": "Lo que más vale de una fiesta es la gente que la llena.",
+      "en": "What matters most at a party is the people who fill it.",
+      "clave": [
+        {
+          "en": "party",
+          "es": "fiesta"
+        },
+        {
+          "en": "people",
+          "es": "gente"
+        }
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "receta": "chiles-en-nogada",
+    "titulo": {
+      "es": "Septiembre tricolor",
+      "en": "Tricolor September"
+    },
+    "relato": {
+      "es": [
+        "Mijo, en septiembre mi pueblo se llenaba de banderas. Había fiestas patrias, y en mi casa se hacía algo muy especial: chiles en nogada.",
+        "Los chiles en nogada son de Puebla. Se hacen en septiembre, cuando hay nueces frescas y granadas.",
+        "Toda la familia se sentaba a la mesa a pelar nueces. Mis hermanos y yo pelábamos y pelábamos, y siempre nos comíamos algunas.",
+        "El chile era verde, la nogada blanca y las granadas rojas, como la bandera. Mi mamá llenaba cada chile con el relleno, y todos decían: «¡Qué bonito!»",
+        "Mijo, esa mesa llena de colores y de risas era nuestra propia bandera de familia."
+      ],
+      "en": [
+        "Mijo, in September my town filled up with flags. There were national holiday parties, and at my house we made something very special: chiles en nogada.",
+        "Chiles en nogada come from Puebla. We make them in September, when there are fresh walnuts and pomegranates.",
+        "The whole family sat at the table to peel walnuts. My brothers and I peeled and peeled, and we always ate a few.",
+        "The chile was green, the walnut sauce white, and the pomegranates red, like the flag. My mom filled each chile with the stuffing, and everybody said, \"How pretty!\"",
+        "Mijo, that table full of colors and laughter was our own family flag."
+      ]
+    },
+    "palabras": [
+      {
+        "en": "flag",
+        "es": "bandera"
+      },
+      {
+        "en": "September",
+        "es": "septiembre"
+      },
+      {
+        "en": "walnuts",
+        "es": "nueces"
+      },
+      {
+        "en": "pomegranates",
+        "es": "granadas"
+      },
+      {
+        "en": "green",
+        "es": "verde"
+      },
+      {
+        "en": "white",
+        "es": "blanca"
+      },
+      {
+        "en": "red",
+        "es": "rojas"
+      },
+      {
+        "en": "peel",
+        "es": "pelar"
+      },
+      {
+        "en": "stuffing",
+        "es": "relleno"
+      }
+    ],
+    "ejemplos": {
+      "trabajo": [
+        {
+          "en": "The new project starts in September.",
+          "es": "El proyecto nuevo empieza en septiembre.",
+          "we": "September",
+          "ws": "septiembre"
+        },
+        {
+          "en": "Please use the green folder.",
+          "es": "Por favor usa la carpeta verde.",
+          "we": "green",
+          "ws": "verde"
+        },
+        {
+          "en": "Wear a white shirt to work.",
+          "es": "Usa una camisa blanca para el trabajo.",
+          "we": "white",
+          "ws": "blanca"
+        }
+      ],
+      "amigos": [
+        {
+          "en": "Bring the flag to the party.",
+          "es": "Trae la bandera a la fiesta.",
+          "we": "flag",
+          "ws": "bandera"
+        },
+        {
+          "en": "Her red roses are beautiful.",
+          "es": "Sus rosas rojas son hermosas.",
+          "we": "red",
+          "ws": "rojas"
+        },
+        {
+          "en": "Let us peel oranges together.",
+          "es": "Vamos a pelar naranjas juntos.",
+          "we": "peel",
+          "ws": "pelar"
+        }
+      ],
+      "biblia": [
+        {
+          "en": "The white dove brings peace.",
+          "es": "La paloma blanca trae paz.",
+          "we": "white",
+          "ws": "blanca"
+        },
+        {
+          "en": "The green field gives me peace.",
+          "es": "El campo verde me da paz.",
+          "we": "green",
+          "ws": "verde"
+        },
+        {
+          "en": "I thank God every September.",
+          "es": "Doy gracias a Dios cada septiembre.",
+          "we": "September",
+          "ws": "septiembre"
+        }
+      ],
+      "viajes": [
+        {
+          "en": "The flag is in the main square.",
+          "es": "La bandera está en la plaza principal.",
+          "we": "flag",
+          "ws": "bandera"
+        },
+        {
+          "en": "Travel is cheaper in September.",
+          "es": "Viajar es más barato en septiembre.",
+          "we": "September",
+          "ws": "septiembre"
+        },
+        {
+          "en": "The red backpacks are ours.",
+          "es": "Las mochilas rojas son nuestras.",
+          "we": "red",
+          "ws": "rojas"
+        }
+      ],
+      "cocina": [
+        {
+          "en": "Add walnuts to the sauce.",
+          "es": "Agrega nueces a la salsa.",
+          "we": "walnuts",
+          "ws": "nueces"
+        },
+        {
+          "en": "Open the pomegranates carefully.",
+          "es": "Abre las granadas con cuidado.",
+          "we": "pomegranates",
+          "ws": "granadas"
+        },
+        {
+          "en": "The stuffing needs more salt.",
+          "es": "El relleno necesita más sal.",
+          "we": "stuffing",
+          "ws": "relleno"
+        }
+      ]
+    },
+    "palabrasInteres": {
+      "trabajo": [
+        {
+          "en": "deadline",
+          "es": "plazo",
+          "f": {
+            "en": "The deadline is next week.",
+            "es": "El plazo es la próxima semana."
+          }
+        },
+        {
+          "en": "invoice",
+          "es": "factura",
+          "f": {
+            "en": "I need the invoice today.",
+            "es": "Necesito la factura hoy."
+          }
+        },
+        {
+          "en": "calendar",
+          "es": "calendario",
+          "f": {
+            "en": "Check the calendar, please.",
+            "es": "Revisa el calendario, por favor."
+          }
+        }
+      ],
+      "amigos": [
+        {
+          "en": "parade",
+          "es": "desfile",
+          "f": {
+            "en": "We watch the parade together.",
+            "es": "Vemos el desfile juntos."
+          }
+        },
+        {
+          "en": "dinner",
+          "es": "cena",
+          "f": {
+            "en": "Dinner is at eight.",
+            "es": "La cena es a las ocho."
+          }
+        },
+        {
+          "en": "music",
+          "es": "música",
+          "f": {
+            "en": "I love this music.",
+            "es": "Me encanta esta música."
+          }
+        }
+      ],
+      "biblia": [
+        {
+          "en": "garden",
+          "es": "jardín",
+          "f": {
+            "en": "The garden is full of flowers.",
+            "es": "El jardín está lleno de flores."
+          }
+        },
+        {
+          "en": "dove",
+          "es": "paloma",
+          "f": {
+            "en": "A dove sits on the roof.",
+            "es": "Una paloma está en el techo."
+          }
+        },
+        {
+          "en": "mountain",
+          "es": "montaña",
+          "f": {
+            "en": "We climb the mountain slowly.",
+            "es": "Subimos la montaña despacio."
+          }
+        }
+      ],
+      "viajes": [
+        {
+          "en": "guide",
+          "es": "guía",
+          "f": {
+            "en": "The guide speaks two languages.",
+            "es": "La guía habla dos idiomas."
+          }
+        },
+        {
+          "en": "luggage",
+          "es": "equipaje",
+          "f": {
+            "en": "My luggage is very heavy.",
+            "es": "Mi equipaje es muy pesado."
+          }
+        },
+        {
+          "en": "sunrise",
+          "es": "amanecer",
+          "f": {
+            "en": "We watch the sunrise.",
+            "es": "Vemos el amanecer."
+          }
+        }
+      ],
+      "cocina": [
+        {
+          "en": "apple",
+          "es": "manzana",
+          "f": {
+            "en": "Cut the apple in small pieces.",
+            "es": "Corta la manzana en trozos pequeños."
+          }
+        },
+        {
+          "en": "peach",
+          "es": "durazno",
+          "f": {
+            "en": "The peach is soft and sweet.",
+            "es": "El durazno está suave y dulce."
+          }
+        },
+        {
+          "en": "pear",
+          "es": "pera",
+          "f": {
+            "en": "The pear is still hard.",
+            "es": "La pera todavía está dura."
+          }
+        }
+      ]
+    },
+    "consejo": {
+      "es": "Una mesa con la familia es la bandera más bonita de una casa.",
+      "en": "A table with family is the prettiest flag in a home.",
+      "clave": [
+        {
+          "en": "table",
+          "es": "mesa"
+        },
+        {
+          "en": "family",
+          "es": "familia"
+        }
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "receta": "pipian",
+    "titulo": {
+      "es": "El pipián de los domingos",
+      "en": "Sunday pipián"
+    },
+    "relato": {
+      "es": [
+        "Mijo, todos los domingos mi mamá hacía pipián. Lo molía con pepitas de calabaza y chile, y toda la casa olía a fiesta.",
+        "Mi mesa era larga, pero los domingos se hacía todavía más larga. Siempre llegaba un primo, un vecino o un amigo, y mi mamá decía: «Aquí siempre va a caber uno más».",
+        "Nos sentábamos en sillas y en una banca, apretaditos y felices. Siempre había lugar y pipián suficiente para todos.",
+        "Las fiestas se acaban, mijo, pero la familia se queda. Siempre es bonito quedarse un rato más con la gente que uno quiere.",
+        "Ahora te toca a ti, mijo. Pronto vas a poner tu propia mesa, y yo sé que también vas a hacer lugar para uno más."
+      ],
+      "en": [
+        "Mijo, every Sunday my mom made pipián. She ground pumpkin seeds and chili, and the whole house smelled like a party.",
+        "My table was long, but on Sundays it got even longer. A cousin, a neighbor or a friend always showed up, and my mom said, \"One more will always fit here.\"",
+        "We sat on chairs and on a bench, squeezed together and happy. There was always a place and enough pipián for everyone.",
+        "The parties end, mijo, but the family stays. It is always nice to stay a little longer with the people you love.",
+        "Now it is your turn, mijo. Soon you will set your own table, and I know you will make a place for one more too."
+      ]
+    },
+    "palabras": [
+      {
+        "en": "long",
+        "es": "larga"
+      },
+      {
+        "en": "fit",
+        "es": "caber"
+      },
+      {
+        "en": "stay",
+        "es": "quedarse"
+      },
+      {
+        "en": "bench",
+        "es": "banca"
+      },
+      {
+        "en": "place",
+        "es": "lugar"
+      },
+      {
+        "en": "soon",
+        "es": "pronto"
+      },
+      {
+        "en": "pumpkin",
+        "es": "calabaza"
+      },
+      {
+        "en": "enough",
+        "es": "suficiente"
+      }
+    ],
+    "ejemplos": {
+      "trabajo": [
+        {
+          "en": "The meeting was very long.",
+          "es": "La reunión fue muy larga.",
+          "we": "long",
+          "ws": "larga"
+        },
+        {
+          "en": "I will send the report soon.",
+          "es": "Voy a mandar el informe pronto.",
+          "we": "soon",
+          "ws": "pronto"
+        },
+        {
+          "en": "We have enough time today.",
+          "es": "Tenemos tiempo suficiente hoy.",
+          "we": "enough",
+          "ws": "suficiente"
+        }
+      ],
+      "amigos": [
+        {
+          "en": "This place has good coffee.",
+          "es": "Este lugar tiene buen café.",
+          "we": "place",
+          "ws": "lugar"
+        },
+        {
+          "en": "Let us sit on that bench.",
+          "es": "Sentémonos en esa banca.",
+          "we": "bench",
+          "ws": "banca"
+        },
+        {
+          "en": "It is good to stay with friends.",
+          "es": "Es bueno quedarse con amigos.",
+          "we": "stay",
+          "ws": "quedarse"
+        }
+      ],
+      "biblia": [
+        {
+          "en": "God has a place for everyone.",
+          "es": "Dios tiene un lugar para todos.",
+          "we": "place",
+          "ws": "lugar"
+        },
+        {
+          "en": "A long prayer can bring peace.",
+          "es": "Una oración larga puede dar paz.",
+          "we": "long",
+          "ws": "larga"
+        },
+        {
+          "en": "It is good to stay in prayer.",
+          "es": "Es bueno quedarse en oración.",
+          "we": "stay",
+          "ws": "quedarse"
+        }
+      ],
+      "viajes": [
+        {
+          "en": "We rest on a bench.",
+          "es": "Descansamos en una banca.",
+          "we": "bench",
+          "ws": "banca"
+        },
+        {
+          "en": "The train arrives soon.",
+          "es": "El tren llega pronto.",
+          "we": "soon",
+          "ws": "pronto"
+        },
+        {
+          "en": "Will all the bags fit?",
+          "es": "¿Van a caber todas las maletas?",
+          "we": "fit",
+          "ws": "caber"
+        }
+      ],
+      "cocina": [
+        {
+          "en": "Add pumpkin seeds to the sauce.",
+          "es": "Agrega pepitas de calabaza a la salsa.",
+          "we": "pumpkin",
+          "ws": "calabaza"
+        },
+        {
+          "en": "Is there enough rice?",
+          "es": "¿Hay suficiente arroz?",
+          "we": "enough",
+          "ws": "suficiente"
+        },
+        {
+          "en": "Everything will fit in this pot.",
+          "es": "Todo va a caber en esta olla.",
+          "we": "fit",
+          "ws": "caber"
+        }
+      ]
+    },
+    "palabrasInteres": {
+      "trabajo": [
+        {
+          "en": "colleague",
+          "es": "colega",
+          "f": {
+            "en": "My colleague helps me.",
+            "es": "Mi colega me ayuda."
+          }
+        },
+        {
+          "en": "raise",
+          "es": "aumento",
+          "f": {
+            "en": "I asked for a raise.",
+            "es": "Pedí un aumento."
+          }
+        },
+        {
+          "en": "training",
+          "es": "capacitación",
+          "f": {
+            "en": "The training is on Friday.",
+            "es": "La capacitación es el viernes."
+          }
+        }
+      ],
+      "amigos": [
+        {
+          "en": "uncle",
+          "es": "tío",
+          "f": {
+            "en": "My uncle tells funny stories.",
+            "es": "Mi tío cuenta historias graciosas."
+          }
+        },
+        {
+          "en": "aunt",
+          "es": "tía",
+          "f": {
+            "en": "My aunt brings the dessert.",
+            "es": "Mi tía trae el postre."
+          }
+        },
+        {
+          "en": "host",
+          "es": "anfitrión",
+          "f": {
+            "en": "The host opens the door.",
+            "es": "El anfitrión abre la puerta."
+          }
+        }
+      ],
+      "biblia": [
+        {
+          "en": "heaven",
+          "es": "cielo",
+          "f": {
+            "en": "We look up to heaven.",
+            "es": "Miramos hacia el cielo."
+          }
+        },
+        {
+          "en": "gratitude",
+          "es": "gratitud",
+          "f": {
+            "en": "I feel gratitude today.",
+            "es": "Hoy siento gratitud."
+          }
+        },
+        {
+          "en": "Lord",
+          "es": "Señor",
+          "f": {
+            "en": "I thank the Lord for my family.",
+            "es": "Doy gracias al Señor por mi familia."
+          }
+        }
+      ],
+      "viajes": [
+        {
+          "en": "arrival",
+          "es": "llegada",
+          "f": {
+            "en": "Our arrival is at noon.",
+            "es": "Nuestra llegada es al mediodía."
+          }
+        },
+        {
+          "en": "departure",
+          "es": "salida",
+          "f": {
+            "en": "The departure is at six.",
+            "es": "La salida es a las seis."
+          }
+        },
+        {
+          "en": "route",
+          "es": "ruta",
+          "f": {
+            "en": "This route is very pretty.",
+            "es": "Esta ruta es muy bonita."
+          }
+        }
+      ],
+      "cocina": [
+        {
+          "en": "pepper",
+          "es": "pimienta",
+          "f": {
+            "en": "Add a little pepper.",
+            "es": "Agrega un poco de pimienta."
+          }
+        },
+        {
+          "en": "avocado",
+          "es": "aguacate",
+          "f": {
+            "en": "The avocado is ripe.",
+            "es": "El aguacate está maduro."
+          }
+        },
+        {
+          "en": "tomato",
+          "es": "jitomate",
+          "f": {
+            "en": "Cut the tomato in half.",
+            "es": "Corta el jitomate por la mitad."
+          }
+        }
+      ]
+    },
+    "consejo": {
+      "es": "Las fiestas se acaban, pero la familia se queda.",
+      "en": "Parties end, but the family stays.",
+      "clave": [
+        {
+          "es": "fiestas",
+          "en": "parties"
+        },
+        {
+          "es": "familia",
+          "en": "family"
+        }
+      ]
+    }
+  }
+]

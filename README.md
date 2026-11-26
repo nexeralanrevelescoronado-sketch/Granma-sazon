@@ -46,7 +46,7 @@ Los personajes se convierten en SVG en línea al cargar (así cada parte —ojos
 
 ## Publicación
 
-Está publicada en GitHub Pages: <https://nexeralanrevelescoronado-sketch.github.io/Granma-sazon/>. Cada push a `main` corre las pruebas y copia `main` a la rama `gh-pages` (`.github/workflows/publicar.yml`); **no edites `gh-pages` a mano**. La dirección pública vive en `scripts/sitio.mjs` (y en `index.html`); si se cambia de dominio, se cambia ahí.
+Está publicada en GitHub Pages: <https://granma-sazon.pages.dev/> (copia de respaldo en GitHub Pages: <https://nexeralanrevelescoronado-sketch.github.io/Granma-sazon/>). Cada push a `main` corre las pruebas y copia `main` a la rama `gh-pages` (`.github/workflows/publicar.yml`); **no edites `gh-pages` a mano**. La dirección pública vive en `scripts/sitio.mjs` (y en `index.html`); si se cambia de dominio, se cambia ahí.
 
 ## Ejecutar
 

@@ -1,6 +1,6 @@
 // Prueba del capítulo n: lo aprendido hasta aquí, primero en el idioma propio y después en el que se aprende.
 import { estado, guardar, u, tgt, nat, Ln, ganarXP, evento, vidas, sinEnergia, marcarRepetir, limpiarRepetir, MAX_VIDAS } from '../state.js';
-import { historia, historiaDe } from '../datos.js';
+import { historia, historiaDe, mapaDe } from '../datos.js';
 import { armarPrueba, estrellasDe, NOTA_MINIMA } from '../pruebas.js';
 import { jugar } from '../ejercicios.js';
 import { pj } from '../personajes.js';
@@ -16,7 +16,7 @@ export async function montar(main, { args }) {
   const S = estado(), h1 = await historia();
   const hechos = h1.capitulos.filter((c) => S.caps[c.id]?.hecho).map((c) => c.id);
   const n = +args[0] || Math.max(0, ...hechos), h = await historiaDe(n), cap = h.capitulos.find((c) => c.id === n);
-  const sobria = !!h.sobria, mapa = h.id === 'historia-2' ? '#/historia/2' : '#/historia';
+  const sobria = !!h.sobria, mapa = mapaDe(h);
   if (!cap || !S.caps[n]?.hecho) { location.hash = mapa; return; }
   const T = tgt(), N = nat(), nombre = `${u('Prueba', 'Quiz')} ${h.capitulos.indexOf(cap) + 1}`;
   let activo = true;

@@ -6,6 +6,14 @@ Responde siempre en español. El SPEC del producto está en `SPEC.md` y el mapa 
 
 El dueño pidió (nov 2026) que en las conversaciones de Granma Sazón **solo se trabaje en Granma Sazón**. No se abren, editan, suben ni unen cambios en otros repositorios (por ejemplo Genesis), ni se crean entornos, PR o sesiones para otros proyectos. Si algo parece necesitar otro repositorio, se dice y se espera su «sí» explícito.
 
+## Regla permanente: todo va en granmasazon.app
+
+El dueño lo pidió (nov 2026): el dominio principal y único que se comparte es **https://granmasazon.app** (Cloudflare Pages, se publica solo desde `main`).
+
+- Todo trabajo terminado y probado (`npm run build`, `npm test` y las pruebas de navegador que apliquen) **se une a `main`** para que se vea en granmasazon.app, sin esperar otro «únelo». Al terminar se avisa qué se unió y se comprueba que Cloudflare lo publicó.
+- Se pregunta antes solo si las pruebas fallan, si falta una decisión del dueño que cambie el contenido, o si el cambio no tiene vuelta atrás (borrar datos de las personas, cambiar de dominio, licencias).
+- En mensajes, documentos, enlaces canónicos, sitemap y lo que se comparta va siempre granmasazon.app. Las direcciones `pages.dev` y `github.io` son técnicas o de respaldo: no se le dan a la gente como la dirección de la app.
+
 ## Regla permanente: empezar recomendando modelo y esfuerzo
 
 El dueño lo pidió para no gastar tokens de más. **Antes de trabajar en cada petición**, la primera línea de la respuesta dice qué modelo y qué esfuerzo conviene para esa tarea y por qué, en una sola línea. Si la sesión está en un modelo más caro de lo necesario, se dice ahí mismo para que el dueño lo cambie antes de seguir.

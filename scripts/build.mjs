@@ -27,7 +27,8 @@ escribir(j('data', 'historia.json'), historia);
 // Contenido que se escribe directo en JSON (scripts/datos/*.json): Historia 2, frases coloquiales, reglas y pláticas con Granma.
 const fuente = (n) => JSON.parse(readFileSync(j('scripts', 'datos', `${n}.json`), 'utf8'));
 const historia2 = fuente('historia2');
-for (const n of ['historia2', 'coloquial', 'reglas', 'platicas']) escribir(j('data', `${n}.json`), n === 'historia2' ? historia2 : fuente(n));
+const historia3 = fuente('historia3');
+for (const n of ['historia2', 'historia3', 'coloquial', 'reglas', 'platicas']) escribir(j('data', `${n}.json`), n === 'historia2' ? historia2 : n === 'historia3' ? historia3 : fuente(n));
 escribir(j('data', 'recetas.json'), recetas);
 escribir(j('data', 'consejos.json'), consejos);
 escribir(j('data', 'cotorreo.json'), cotorreos);
@@ -84,7 +85,7 @@ const audios = { abuelo: { es: {}, en: {} } }, audioFiles = [];
 const claveAudio = (t) => String(t).toLowerCase().replace(/\s+/g, ' ').trim();
 if (existsSync(j('assets', 'audio', 'abuelo'))) for (const f of readdirSync(j('assets', 'audio', 'abuelo')).sort()) {
   const m = /^(consejo|cap)-(\d+)\.(es|en)\.m4a$/.exec(f); if (!m) continue;
-  const de = m[1] === 'consejo' ? consejos.find((c) => c.id === +m[2]) : [...historia.capitulos, ...historia2.capitulos].find((c) => c.id === +m[2])?.consejo;
+  const de = m[1] === 'consejo' ? consejos.find((c) => c.id === +m[2]) : [...historia.capitulos, ...historia2.capitulos, ...historia3.capitulos].find((c) => c.id === +m[2])?.consejo;
   if (!de) throw new Error(`Grabación sin consejo: ${f}`);
   audios.abuelo[m[3]][claveAudio(de[m[3]])] = `assets/audio/abuelo/${f}`; audioFiles.push(`assets/audio/abuelo/${f}`);
 }
@@ -103,7 +104,7 @@ escribir(j('data', 'biblia', 'glosario.json'), { en: capas('en'), es: capas('es'
 const peso = (rutas) => rutas.reduce((s, r) => s + statSync(j(r)).size, 0);
 const bibliaFiles = [...listar(j('data', 'biblia'), (f) => f.endsWith('.json')).map(url)].sort();
 const paquetes = [
-  { id: 'historia', nombre: { es: 'Historia de Granma', en: 'Granma\'s story' }, icono: '📖', archivos: ['data/historia.json', 'data/historia2.json'] },
+  { id: 'historia', nombre: { es: 'Historia de Granma', en: 'Granma\'s story' }, icono: '📖', archivos: ['data/historia.json', 'data/historia2.json', 'data/historia3.json'] },
   { id: 'recetas', nombre: { es: 'Recetas mexicanas', en: 'Mexican recipes' }, icono: '🍲', archivos: ['data/recetas.json', ...recetas.map((r) => `recetas/${r.id}.html`)] },
   { id: 'cotorreo', nombre: { es: 'Cotorreo con Granma', en: 'Chat with Granma' }, icono: '😄', archivos: ['data/cotorreo.json'] },
   { id: 'consejos', nombre: { es: 'Consejos del Abuelo', en: 'Grandpa\'s advice' }, icono: '🎩', archivos: ['data/consejos.json', ...audioFiles] },

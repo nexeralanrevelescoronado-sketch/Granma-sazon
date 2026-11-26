@@ -20,8 +20,8 @@ const ir = async (pg, hash, sel) => { await pg.goto(B + hash); await pg.waitForS
 console.log('1) Historia 2: mapa propio, título claro y primer capítulo libre');
 let pg = await abrir('en');
 await ir(pg, '#/historia', '.otra-historia');
-ok(/Granma a los 25: cómo conocí a Dios/.test(await pg.locator('.otra-historia').textContent()), 'la Historia 1 asoma la Historia 2 con su título completo');
-await pg.click('.otra-historia'); await pg.waitForSelector('.mapa'); await pg.waitForTimeout(200);
+ok(/Granma a los 25: cómo conocí a Dios/.test(await pg.locator('.otra-historia').first().textContent()), 'la Historia 1 asoma la Historia 2 con su título completo');
+await pg.locator('.otra-historia').first().click(); await pg.waitForSelector('.mapa'); await pg.waitForTimeout(200);
 ok(pg.url().endsWith('#/historia/2') && (await pg.locator('h1').textContent()) === h2.titulo.es, 'abre el mapa de la Historia 2');
 const nodos = await pg.evaluate(() => [...document.querySelectorAll('.mapa > li:not(.li-prueba) .nodo')].map((n) => ({ t: n.textContent.trim(), a: n.tagName, h: n.getAttribute('href') })));
 ok(nodos.length === 6 && nodos[0].a === 'A' && nodos[0].h === '#/leccion/7' && nodos[0].t === '1' && nodos.slice(1).every((n) => n.a === 'SPAN'), 'seis capítulos numerados del 1 al 6; solo el primero está abierto');
@@ -115,5 +115,29 @@ for (const ap of ['en', 'es']) {
   ok(f3.xp > 0 && f3.hechas === 1 && f3.vidas === '10', `${ap}: regla aprendida, con porra, XP y sin gastar energía`);
   await pg.context().close();
 }
+console.log('7) Historia 3 (las fiestas) y las recetas de fiesta');
+{ const h3 = J('data/historia3.json'), recs = J('data/recetas.json');
+  pg = await abrir('en'); await ir(pg, '#/historia', '.otra-historia');
+  ok((await pg.locator('.otra-historia').count()) === 2 && /Las fiestas de mi familia/.test(await pg.locator('.otra-historia').last().textContent()), 'desde la Historia 1 se asoman las otras dos');
+  await pg.locator('.otra-historia').last().click(); await pg.waitForSelector('.mapa'); await pg.waitForTimeout(200);
+  const n3 = await pg.evaluate(() => [...document.querySelectorAll('.mapa > li:not(.li-prueba) .nodo')].map((n) => ({ a: n.tagName, h: n.getAttribute('href') })));
+  ok(pg.url().endsWith('#/historia/3') && n3.length === 6 && n3[0].h === '#/leccion/13' && n3.slice(1).every((x) => x.a === 'SPAN') && await sinDesborde(pg), 'mapa de la Historia 3: seis capítulos, el primero abierto');
+  await pg.screenshot({ path: join(CAPT, '56-historia3-mapa.png'), fullPage: true });
+  await ir(pg, '#/leccion/13', '.pista-glosa');
+  ok((await pg.locator('.etiqueta').first().textContent()).includes('1 / 6') && (await pg.locator('h1').textContent()) === h3.capitulos[0].titulo.en && (await pg.locator('[data-versiculo]').count()) === 0, 'abre «La rosca y el monito» como capítulo 1 de 6');
+  await pg.context().close();
+  pg = await abrir('en', { 13: { hecho: true }, 14: { hecho: true } }); await ir(pg, '#/leccion/15', '.pista-glosa');
+  ok((await pg.locator('.globo .l2').allTextContents()).join(' ').includes('Dale, dale, dale, no pierdas el tino, porque si lo pierdes, pierdes el camino'), 'la piñata trae su verso completo');
+  await pg.screenshot({ path: join(CAPT, '57-pinata.png'), fullPage: true });
+  await ir(pg, '#/recetas', '.enlace-tarjeta');
+  ok((await pg.locator('.enlace-tarjeta').count()) === recs.length && recs.length === 13 && /fiestas|celebration/.test(await pg.locator('main h2.mt2').textContent()) && await sinDesborde(pg), '13 recetas; las de fiesta van juntas con su título');
+  for (const id of ['rosca', 'chiles-en-nogada', 'birria']) {
+    const r = recs.find((x) => x.id === id); await ir(pg, `#/receta/${id}`, '.pasos .paso');
+    const v = await pg.evaluate(() => ({ pasos: document.querySelectorAll('.pasos .paso').length, texto: document.querySelector('main').textContent, cronos: document.querySelectorAll('[data-crono], .crono, [data-reset]').length }));
+    ok(v.pasos === r.pasos.length && v.texto.includes(r.nota.en.slice(0, 40)) && v.cronos > 0 && await sinDesborde(pg), `${id}: ${r.pasos.length} pasos, nota de seguridad y cronómetros`);
+    if (id === 'rosca') await pg.screenshot({ path: join(CAPT, '58-receta-rosca.png'), fullPage: true });
+  }
+  await pg.context().close(); }
+
 ok(errores.length === 0, 'sin errores de JS' + (errores.length ? ': ' + errores.slice(0, 3).join(' | ') : ''));
 await b.close(); srv.close(); console.log(fallas.length ? `\n✘ ${fallas.length} fallas` : '\n✔ HISTORIA 2, PLÁTICAS, FRASES Y REGLAS OK'); process.exit(fallas.length ? 1 : 0);

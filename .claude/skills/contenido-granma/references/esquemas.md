@@ -69,6 +69,7 @@ Los `id` los pone el build (posición + 1): en una tanda nueva déjalos fuera. T
 ## Historia 2, pláticas, frases coloquiales y reglas (fuente directa en JSON: `scripts/datos/*.json`)
 
 - **Historia 2** — `scripts/datos/historia2.json`: mismo esquema de capítulo (ids 7 a 12), más `versiculo: { libro, cap, desde, hasta }` (solo la cita; el texto sale de `data/biblia/`). Es sobria: fe con respeto, desde una relación con Dios y no desde reglas, sin presión, sin prometer curas ni dinero, sin hablar mal de ninguna iglesia ni persona.
+- **Historia 3** — `scripts/datos/historia3.json` (ids 13 a 18, alegre, sin `versiculo`) y sus recetas en `scripts/datos/recetas-fiestas.json` (mismo esquema de receta). «Monito» es la figurita de la rosca: en inglés, *little figure*, nunca *monkey*.
 - **Plática** — `scripts/datos/platicas.json`: `{ id, tema:{es,en}, turnos:[ { granma:{es,en}, respuestas:[ { t:{es,en}, r:{es,en} } ×3 ] } ×3 ], cierre:{es,en} }`. No hay respuestas malas; Granma contesta alegre a las tres.
 - **Frase coloquial** — `scripts/datos/coloquial.json`: `{ id, idioma, region, frase, significa:{es,en}, uso:{es,en}, ejemplo:{es,en} }`. `uso` dice cuándo sí y cuándo no. Solo expresiones sanas y comprobables; cero burlas a regiones o acentos.
 - **Regla** — `scripts/datos/reglas.json`: `{ id, para, titulo, resumen, puntos:[ { regla:{es,en}, ejemplos:[{en,es}] } ], practica:[ { p:{es,en}, frase, ok, mal:[2] } ×4 ] }`.

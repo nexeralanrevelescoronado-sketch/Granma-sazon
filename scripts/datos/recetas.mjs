@@ -1,4 +1,6 @@
 // Recetas mexicanas. Cantidades en gramos / mililitros / cucharadas / piezas.
+// Las recetas de las fiestas (Historia 3) se escriben directo en JSON: scripts/datos/recetas-fiestas.json; se suman al final.
+import { readFileSync } from 'node:fs';
 // pasos: min = minutos del cronometro del paso (omitido si no hay espera).
 const I = (cant, un, es, en) => ({ cant, un, es, en });
 const S = (es, en, min) => (min ? { es, en, min } : { es, en });
@@ -192,3 +194,4 @@ export const recetas = [
     ]
   },
 ];
+recetas.push(...JSON.parse(readFileSync(new URL('./recetas-fiestas.json', import.meta.url), 'utf8')));

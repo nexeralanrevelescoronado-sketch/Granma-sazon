@@ -1,7 +1,7 @@
 // «Aprender hablando y escuchando»: rondas de puro oído y voz (escoger lo que se oyó, repetir en voz alta, dictado).
 // No gasta energía. Usa las palabras y frases de los capítulos que la persona ya abrió.
 import { estado, u, tgt, nat, ganarXP, evento } from '../state.js';
-import { historia, historia2 } from '../datos.js';
+import { historia, historia2, historia3 } from '../datos.js';
 import { armarEscucha } from '../escucha.js';
 import { jugar, hablarPausado } from '../ejercicios.js';
 import { pj } from '../personajes.js';
@@ -18,7 +18,7 @@ export async function montar(main) {
   const S = estado(), h = await historia(), T = tgt(), N = nat();
   // Los capítulos ya terminados y el que sigue (al menos el primero): así siempre hay con qué practicar.
   const hechos = h.capitulos.filter((c) => S.caps[c.id]?.hecho).length, caps = h.capitulos.slice(0, Math.min(h.capitulos.length, hechos + 1));
-  try { caps.push(...(await historia2()).capitulos.filter((c) => S.caps[c.id]?.hecho)); } catch { /* la Historia 2 aún no está descargada */ }
+  for (const f of [historia2, historia3]) { try { caps.push(...(await f()).capitulos.filter((c) => S.caps[c.id]?.hecho)); } catch { /* esa historia aún no está descargada */ } }
   let activo = true, soltar = null;
   const MODOS = [
     ['elige', '👂', u('Escucha y elige', 'Listen and choose'), u('Oyes una palabra y eliges cuál fue o qué significa.', 'You hear a word and choose which one it was or what it means.')],

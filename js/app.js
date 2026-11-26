@@ -8,6 +8,7 @@ import { pj } from './personajes.js';
 import { iniciarAnimaciones } from '../assets/animaciones/index.js';
 import { iniciarGlosario } from './glosario.js';
 import { vigilarDialogos, detenerHabla, alternarVoz, vozDisponible } from './habla.js';
+import { iniciarLento } from './lento.js';
 
 const rutas = {
   '': () => import('./vistas/inicio.js'),
@@ -18,6 +19,10 @@ const rutas = {
   consejos: () => import('./vistas/consejos.js'),
   consejo: () => import('./vistas/consejos.js'),
   cotorreo: () => import('./vistas/cotorreo.js'),
+  hablar: () => import('./vistas/hablar.js'),
+  platica: () => import('./vistas/platica.js'),
+  asi: () => import('./vistas/asi.js'),
+  reglas: () => import('./vistas/reglas.js'),
   biblia: () => import('./vistas/biblia.js'),
   descargas: () => import('./vistas/descargas.js'),
   prueba: () => import('./vistas/prueba.js'),
@@ -32,6 +37,7 @@ const ICONOS = {
   recetas: '<path d="M5 10h14v2a7 7 0 0 1-14 0zM3 10h18M9 3c-1 2 1 2 0 4M13 3c-1 2 1 2 0 4"/>',
   consejos: '<path d="M2 14c0-2 3-3 6-3 0-4 2-7 4-7s4 3 4 7c3 0 6 1 6 3 0 1-2 2-10 2S2 15 2 14zM6 19h12"/>',
   cotorreo: '<path d="M4 5h16v11H9l-5 4zM8 10h8"/>',
+  hablar: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/>',
   biblia: '<path d="M6 3h12v18H6zM12 7v8M9 10h6"/>',
   descargas: '<path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16"/>',
   perfil: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
@@ -58,9 +64,9 @@ function pintarCromo() {
       <button class="chip" id="btn-sonido" aria-pressed="${S.ajustes.sonido}" aria-label="${u('Sonido', 'Sound')}">${S.ajustes.sonido ? '🔊' : '🔇'}</button>
       ${vozDisponible() ? `<button class="chip" id="btn-voz" aria-pressed="${!!S.ajustes.voz}" aria-label="${u('Voz de Granma y el Abuelo', 'Voice of Granma and Grandpa')}" title="${u('Voz de los abuelos', 'Grandparents\' voice')}">🗣${S.ajustes.voz ? '' : '<span aria-hidden="true" style="position:absolute;width:22px;border-top:3px solid #fff;transform:rotate(-40deg)"></span>'}</button>` : ''}
     </div>`;
-  const items = [['', 'inicio', u('Inicio', 'Home')], ['historia', 'historia', u('Historia', 'Story')], ['recetas', 'recetas', u('Recetas', 'Recipes')], ['consejos', 'consejos', u('Abuelo', 'Grandpa')], ['cotorreo', 'cotorreo', u('Cotorreo', 'Chat')], ['biblia', 'biblia', u('Biblia', 'Bible')]];
+  const items = [['', 'inicio', u('Inicio', 'Home')], ['historia', 'historia', u('Historia', 'Story')], ['recetas', 'recetas', u('Recetas', 'Recipes')], ['consejos', 'consejos', u('Abuelo', 'Grandpa')], ['cotorreo', 'cotorreo', u('Cotorreo', 'Chat')], ['hablar', 'hablar', u('Hablar', 'Speak')], ['biblia', 'biblia', u('Biblia', 'Bible')]];
   const ruta = rutaActual().base;
-  nav.innerHTML = items.map(([r, ic, tx]) => `<a href="#/${r}" ${(r === ruta || (r === 'consejos' && ruta === 'consejo') || (r === 'recetas' && ruta === 'receta') || (r === 'historia' && (ruta === 'leccion' || ruta === 'prueba'))) ? 'aria-current="page"' : ''}>${icono(ic)}<span>${tx}</span></a>`).join('');
+  nav.innerHTML = items.map(([r, ic, tx]) => `<a href="#/${r}" ${(r === ruta || (r === 'consejos' && ruta === 'consejo') || (r === 'recetas' && ruta === 'receta') || (r === 'historia' && (ruta === 'leccion' || ruta === 'prueba')) || (r === 'hablar' && ['platica', 'asi', 'reglas'].includes(ruta))) ? 'aria-current="page"' : ''}>${icono(ic)}<span>${tx}</span></a>`).join('');
 }
 $('#encabezado').addEventListener('click', (e) => {
   if (e.target.closest('#btn-sonido')) { sonido.alternar(); versionPintada = ''; pintarCromo(); }
@@ -136,5 +142,6 @@ if ('serviceWorker' in navigator) {
 iniciarAnimaciones();
 vigilarDialogos(main);
 iniciarGlosario();
+iniciarLento();
 addEventListener('hashchange', navegar);
 navegar();

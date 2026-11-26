@@ -11,6 +11,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { consejos } from './datos/consejos.mjs';
 import { historia } from './datos/historia.mjs';
+import { readFileSync } from 'node:fs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SALIDA = join(RAIZ, 'assets', 'audio', 'abuelo');
@@ -18,7 +19,7 @@ const SALIDA = join(RAIZ, 'assets', 'audio', 'abuelo');
 /** El guion completo, en orden: primero los consejos, luego el consejo de cada capítulo. */
 export const guion = () => [
   ...consejos.map((c) => ({ archivo: `consejo-${c.id}`, es: c.es, en: c.en })),
-  ...historia.capitulos.map((c) => ({ archivo: `cap-${c.id}`, es: c.consejo.es, en: c.consejo.en })),
+  ...[...historia.capitulos, ...JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'datos', 'historia2.json'), 'utf8')).capitulos].map((c) => ({ archivo: `cap-${c.id}`, es: c.consejo.es, en: c.consejo.en })),
 ];
 
 const [, , orden, ...resto] = process.argv;

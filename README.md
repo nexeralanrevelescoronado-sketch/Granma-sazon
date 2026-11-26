@@ -42,7 +42,7 @@ CSS y JS ligeros, sin librerías. Reglas: solo `transform` y `opacity` (nunca la
 
 **Rendimiento (revisión de animaciones):** la respiración corre en el `<svg>` raíz y cada hilo de vapor es su propia capa (se animan en el compositor, sin repintar); el parpadeo es una animación corta programada cada 3–7 s (no un loop); el efecto de escritura revela letras/palabras con `opacity` sobre un texto ya maquetado (cero reflujo); las barras de progreso usan `scaleX`; nada de `width`, `height` ni `box-shadow` animados; con la pestaña oculta o con movimiento reducido no arranca ninguna animación nueva. Banco: `node scripts/qa-rendimiento.mjs` (CPU frenada 4×, personaje hablando + confeti + reacciones + vapor).
 
-Los personajes se convierten en SVG en línea al cargar (así cada parte —ojos, boca, sombrero, manos— se anima con CSS y se pausa). **Demo para el iPhone:** `demo-animaciones.html` tiene un botón por animación. Prueba automática: `node scripts/qa-animaciones.mjs`.
+Los personajes se convierten en SVG en línea al cargar (así cada parte —ojos, boca, sombrero, manos— se anima con CSS y se pausa). **Demo para el iPhone:** `demo-animaciones.html` tiene un botón por animación. Prueba automática: `node scripts/qa-animaciones.mjs`. La sección «Hablar», el modo perezoso, los turnos de voz y las tortillas estrelladas se prueban con `node scripts/qa-escucha.mjs`. La Historia 2, las pláticas con Granma, «Así se habla» y «Reglas claras», con `node scripts/qa-historia2.mjs`.
 
 ## Publicación
 

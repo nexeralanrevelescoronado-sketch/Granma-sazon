@@ -25,7 +25,7 @@ let pg = await abrir('en', 'reco');
 await pg.goto(B + '#/leccion/1'); await pg.waitForSelector('.pista-glosa'); await pg.waitForTimeout(2600);
 const caja = await pg.evaluate(() => { const el = document.querySelector('.globo .l1'), w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let n; const r = document.createRange(); while ((n = w.nextNode())) { const i = n.data.search(/[A-Za-z]{4,}/); if (i >= 0) { r.setStart(n, i); r.setEnd(n, i + 1); const c = r.getBoundingClientRect(); return { x: c.left + c.width / 2, y: c.top + c.height / 2, texto: el.textContent }; } } });
 await pg.touchscreen.tap(caja.x, caja.y); await pg.waitForSelector('.glosa');
-const tocada = await pg.locator('.glosa strong').textContent(), sig = await pg.locator('.glosa span').textContent();
+const tocada = await pg.locator('.glosa strong').textContent(), sig = await pg.locator('.glosa div > span').textContent();
 ok(caja.texto.includes(tocada) && glos.en[tocada.toLowerCase()] === sig, `al tocar «${tocada}» sale «${sig}»`);
 const g = await pg.locator('.glosa').boundingBox(); ok(g.x >= 0 && g.x + g.width <= 390 && g.y >= 0, 'la burbuja cabe en la pantalla (390 px)');
 await pg.screenshot({ path: join(CAPT, '20-glosario.png') });

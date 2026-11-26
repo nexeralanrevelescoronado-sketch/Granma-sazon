@@ -98,3 +98,34 @@
 - Registrado en Cloudflare (1.er año 8.20 USD; renueva a 14.20 USD/año, renovación automática). Conectado al proyecto de Pages `granma-sazon` con un CNAME en la zona.
 - Canonical, Open Graph, `sitemap.xml`, `robots.txt` y recetas apuntan a `https://granmasazon.app/` (fuente: `scripts/sitio.mjs`).
 - `granma-sazon.pages.dev` redirige a `granmasazon.app` con un script al inicio de `index.html` (solo en ese host; conserva ruta y hash). Quien llegue por la dirección vieja pierde su avance local, que vive en el teléfono por dirección.
+
+## Aprender hablando y escuchando, modo perezoso, porras y turnos de voz (26 nov)
+
+Pedido por el dueño. Todo es código propio, sin librerías ni archivos de terceros.
+
+- **Sección nueva «Hablar»** (`#/hablar`, en la barra justo antes de Biblia; `js/vistas/hablar.js` y `js/escucha.js`): rondas de 8 ejercicios de puro oído y voz con las palabras y frases de los capítulos que la persona ya abrió (y las de su interés). Cuatro formas: **Escucha y elige** (se oye una palabra y se escoge cuál fue o qué significa; la palabra no se muestra), **Escucha y repite** (decir en voz alta, con el Oído de Granma si está descargado), **Escucha y arma la frase** (dictado) y **De todo un poco**. No gasta energía y da XP.
+- **Modo perezoso** (`js/lento.js`): junto a **cada** bocina 🔊 de la app aparece sola otra con un perezoso y el letrero «modo perezoso», que dice lo mismo despacio (velocidad × 0.62; las grabaciones del Abuelo a 0.78). El perezoso es un dibujo SVG propio, no un emoji, para que se vea igual en todos los teléfonos.
+- **Voces más pausadas:** Granma pasó de 0.90 a 0.84 y el Abuelo de 0.80 a 0.76.
+- **Parejas con voz:** al tocar la palabra del idioma que se aprende, se oye (inglés para quien aprende inglés, español para quien aprende español). Se apaga con el botón 🗣.
+- **Turnos:** entre que habla Granma y habla el Abuelo (o al revés) pasan **5 segundos como mínimo**; entre dos globos de la misma persona, 0.7 s. Mientras espera, el globo no aparece. Si la pantalla cambia, el globo que hablaba se calla (antes podía seguir hablando encima de lo nuevo). Solo aplica con la voz encendida.
+- **Porras** (`js/porras.js`): al completar una lección, una prueba aprobada, un reto, un repaso, una receta o una ronda de Hablar, Granma grita «¡Épale!» con una porra (6, van en orden), lo dice en voz alta y anuncia el premio: el kilo de tortillas en la lección y **«¡Te ganaste unos taquitos de barbacoa, mijo!»** en lo demás.
+- **Tortillas estrelladas** (`assets/animaciones/fiesta.js`): de las que avienta Granma, 2 o 3 se estrellan contra la pantalla, quedan pegadas medio saliéndose por la orilla, resbalan y caen (con un «plaf» y una vibración corta). Solo `transform` y `opacity`, una vez; con «reducir movimiento» no vuela nada.
+- **Lo que se dejó igual a propósito:** la Biblia no lleva porras ni tortillas (se pidió formal), y los mini-ejercicios de una sola pregunta de Consejos y Cotorreo tampoco, para que la fiesta no canse.
+- **De paso:** el botón «Comprobar» ya no flota translúcido encima de la barra de abajo.
+- **Pruebas:** `npm test` (32) y `node scripts/qa-escucha.mjs` en navegador real a 360, 390 y 1280 px (voz simulada que anota texto, idioma, velocidad y momento).
+- **Palabras coloquiales explicadas** (`js/coloquial.js`): debajo de cada porra hay un recuadro «¿Qué significa «¡Épale!»?» que explica, en el idioma de la persona, qué quiere decir, de dónde es y cuándo se usa (y cuándo no) cada palabra coloquial de esa porra: «épale», «ándale», «mijo/mija» y la porra «a la bio, a la bao». También entraron al glosario al toque, en los dos idiomas. Es la base para la sección de habla regional que pidió el dueño.
+
+## Historia 2, pláticas, frases coloquiales y reglas (26 nov)
+
+Pedido por el dueño. El contenido lo escribieron seis ayudantes con la skill `contenido-granma` y un guion fijo; se revisó a mano antes de integrarlo.
+
+- **Historia 2: «Granma a los 25: cómo conocí a Dios»** (`scripts/datos/historia2.json` → `data/historia2.json`; capítulos 7 a 12, mapa en `#/historia/2`). Granma cuenta en primera persona cómo su mamá le hablaba de Dios y de Jesús, cómo ella no creía y cómo empezó a hablar con Dios. La fe entra poco a poco (el primer capítulo no trae versículo), desde una relación y no desde reglas; se anima a hablar lo difícil con la familia y los amigos, a acompañar a los demás en sus debilidades y, sin presión, a leer la Biblia. «Sanidad» es consuelo del corazón: no se prometen curas físicas ni dinero.
+  - **Versículos:** cada capítulo guarda solo la cita (`versiculo`). El texto se lee de `data/biblia/` (Reina-Valera 1909 y KJV, dominio público) y se muestra en una tarjeta formal, sin botones ni ejercicio. Una prueba vigila que el relato no copie el versículo.
+  - **Es sobria** (`sobria: true`): al terminar un capítulo o su prueba no hay porra, confeti ni tortillas; Granma agradece con calma. Los ejercicios son de vocabulario, no de versículos.
+  - El primer capítulo de cada historia está abierto; la Historia 2 no exige terminar la 1. La constancia sigue siendo de la Historia 1.
+- **Platica con Granma** (`#/platica`, `data/platicas.json`, 14 temas): Granma saca conversación; la persona escoge qué contestar (se oye cómo suena) y Granma responde alegre. No hay respuestas malas ni energía. En «un día pesado» escucha y anima a platicarlo con alguien de confianza y a pedir ayuda. También se entra desde el inicio.
+- **Así se habla** (`#/asi`, `data/coloquial.json`, 94 frases): para quien aprende español, México por región (todo el país, Jalisco y Guadalajara, Sinaloa y Mazatlán, Ciudad de México, Monterrey) y cómo funciona el humor mexicano; para quien aprende inglés, el inglés de todos los días, frases hechas, humor y regiones. Cada frase dice qué significa, cuándo se usa y cuándo no, con un ejemplo que se oye. Solo expresiones sanas: quedaron fuera las que son o vienen de una grosería. **El dueño debe revisar las de Jalisco y las demás regiones antes de darlas por definitivas.**
+- **Reglas claras** (`#/reglas`, `data/reglas.json`, 12 lecciones): seis para quien aprende inglés (empieza por el verbo «to be») y seis para quien aprende español (empieza por ser y estar; tú y usted, género, diminutivos, signos y acentos, presente). Se explican en el idioma de la persona, con ejemplos y cuatro preguntas de práctica.
+- **Glosario al toque:** pasó de 1,229 a 2,519 palabras en español y de 1,126 a 2,032 en inglés; toda palabra del contenido nuevo tiene su glosa (`node scripts/glosario-faltan.mjs <archivo>` dice cuáles faltan, sin IA).
+- **Guion del Abuelo:** ahora son 57 frases (se sumaron los 6 consejos de la Historia 2); `docs/GUION-ABUELO.md` y `.pdf` regenerados.
+- **Pruebas:** `npm test` (34) y `node scripts/qa-historia2.mjs` en navegador real.

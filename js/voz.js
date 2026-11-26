@@ -5,9 +5,20 @@
 // con voces del sistema: para eso haría falta audio grabado por una persona (ver docs/CAMBIOS-AL-SPEC.md).
 const LANG = { es: ['es-MX', 'es-US', 'es-419', 'es'], en: ['en-US', 'en'] };
 export const PERFIL = {
-  abuelo: { pitch: 0.55, rate: 0.8 },
-  granma: { pitch: 1.12, rate: 0.9 },
+  abuelo: { pitch: 0.55, rate: 0.76 },
+  granma: { pitch: 1.12, rate: 0.84 },
 };
+// Botón del perezoso («escuchar despacio»): la misma frase, bastante más lenta, para apreciar cada sonido.
+export const LENTA = 0.62;
+let lentaHasta = 0;
+/** El botón del perezoso avisa que lo siguiente que se diga (en el próximo instante) va despacio. */
+export const pedirLenta = () => { lentaHasta = Date.now() + 500; };
+const tomarLenta = () => { const si = Date.now() < lentaHasta; lentaHasta = 0; return si; };
+// Quién habló al último y cuándo terminó (fin = Infinity mientras sigue hablando): con esto los globos esperan su turno.
+let ultima = { quien: null, fin: 0 }, turno = 0;
+export const ultimaVoz = () => ultima;
+/** Si lo que suena ahora es un globo (no una bocina que la persona tocó), se calla: su globo ya no está en pantalla. */
+export const callarGlobo = () => { if (ultima.fin === Infinity && ultima.globo) callar(); };
 const HOMBRE = /(juan|jorge|diego|carlos|enrique|pablo|andr[eé]s|miguel|ra[uú]l|reed|eddy|rocko|grandpa|abuelo|\bmale\b|hombre|masculin|daniel|aaron|arthur|gordon|fred|\btom\b|alex|david|mark|guy)/i;
 const MUJER = /(paulina|m[oó]nica|ang[eé]lica|marisol|sabina|esperanza|paloma|luciana|francisca|helena|laura|flo|sandy|shelley|grandma|abuela|female|mujer|femenin|samantha|karen|victoria|susan|allison|ava|moira|tessa|zira|jenny|aria)/i;
 
@@ -26,7 +37,7 @@ export function elegirVoz(voces, idioma, quien) {
 }
 export function hayVozPara(idioma) { try { return speechSynthesis.getVoices().some((v) => normal(v.lang).startsWith(idioma)); } catch { return false; } }
 export const cancelarVoz = () => { try { speechSynthesis.cancel(); } catch { /* sin voz */ } };
-export const callar = () => { pararGrabacion(); cancelarVoz(); };
+export const callar = () => { pararGrabacion(); cancelarVoz(); turno++; if (ultima.fin === Infinity) ultima = { ...ultima, fin: Date.now() }; };
 
 /* ---------- grabaciones (voz real del Abuelo) ----------
    data/audios.json lo arma el build con lo que haya en assets/audio/: { abuelo: { es: { "<frase>": "ruta" } } }.
@@ -36,11 +47,12 @@ let mapa = null, sonando = null;
 const cargarMapa = () => (mapa ||= fetch('data/audios.json').then((r) => (r.ok ? r.json() : {})).catch(() => ({})));
 export async function rutaGrabada(texto, idioma, quien) { return (await cargarMapa())?.[quien]?.[idioma]?.[claveAudio(texto)] || null; }
 function pararGrabacion() { if (sonando) { try { sonando.audio.pause(); } catch { /* ya paró */ } URL.revokeObjectURL(sonando.url); sonando = null; } }
-async function tocarGrabacion(ruta) {
+async function tocarGrabacion(ruta, lenta) {
   // Se baja completa y se toca desde memoria: así funciona igual con el paquete guardado y sin internet.
   const r = await fetch(ruta); if (!r.ok) return false;
   const url = URL.createObjectURL(await r.blob()), audio = new Audio(url);
   pararGrabacion(); sonando = { audio, url };
+  if (lenta) { try { audio.preservesPitch = true; audio.playbackRate = 0.78; } catch { /* velocidad fija */ } }
   return new Promise((ok) => {
     const fin = (v) => { if (sonando?.audio === audio) pararGrabacion(); ok(v); };
     audio.onended = () => fin(true); audio.onerror = () => fin(false);
@@ -49,32 +61,34 @@ async function tocarGrabacion(ruta) {
 }
 
 /** Dice un texto con la voz del personaje (grabada si existe). Termina cuando acaba de hablar. */
-export async function decir(texto, idioma, quien = 'granma') {
+export async function decir(texto, idioma, quien = 'granma', { lenta = tomarLenta(), globo = false } = {}) {
+  const mio = ++turno; ultima = { quien, fin: Infinity, globo };
+  const cerrar = (sono) => { if (mio === turno) ultima = { quien: sono ? quien : null, fin: Date.now() }; return sono; };
   try {
     pararGrabacion();
     const ruta = typeof fetch === 'function' && typeof Audio === 'function' ? await rutaGrabada(texto, idioma, quien) : null;
-    if (ruta) { cancelarVoz(); if (await tocarGrabacion(ruta)) return true; }
+    if (ruta) { cancelarVoz(); if (await tocarGrabacion(ruta, lenta)) return cerrar(true); }
   } catch { /* sin grabación: sigue la voz del dispositivo */ }
-  return decirSintetica(texto, idioma, quien);
+  return cerrar(await decirSintetica(texto, idioma, quien, lenta));
 }
 /** De varias versiones de la misma frase ([texto, idioma]) dice la que tenga grabación; si ninguna, la primera. */
-export async function decirPreferido(versiones, quien) {
-  for (const [t, l] of versiones) if (await rutaGrabada(t, l, quien).catch(() => null)) return decir(t, l, quien);
-  return decir(versiones[0][0], versiones[0][1], quien);
+export async function decirPreferido(versiones, quien, opciones) {
+  for (const [t, l] of versiones) if (await rutaGrabada(t, l, quien).catch(() => null)) return decir(t, l, quien, opciones);
+  return decir(versiones[0][0], versiones[0][1], quien, opciones);
 }
-function decirSintetica(texto, idioma, quien) {
+function decirSintetica(texto, idioma, quien, lenta = false) {
   return new Promise((ok) => {
     try {
       if (!vozDisponible() || !texto) return ok(false);
       cancelarVoz();
       const ut = new SpeechSynthesisUtterance(texto), perfil = PERFIL[quien] || PERFIL.granma, voz = elegirVoz(speechSynthesis.getVoices(), idioma, quien);
       ut.lang = voz?.lang || (LANG[idioma] || LANG.es)[0]; if (voz) ut.voice = voz;
-      ut.pitch = perfil.pitch; ut.rate = perfil.rate;
+      ut.pitch = perfil.pitch; ut.rate = Math.max(0.45, perfil.rate * (lenta ? LENTA : 1));
       // Si la voz no arranca pronto (sin voces, o el navegador la bloquea hasta el primer toque), no se espera:
       // así los globos nunca se quedan detenidos por una voz que no va a sonar.
       let arranco = false;
       const sinArranque = setTimeout(() => { if (!arranco) ok(false); }, 900);
-      const tope = setTimeout(() => ok(true), Math.min(25000, 1500 + texto.length * 110));
+      const tope = setTimeout(() => ok(true), Math.min(lenta ? 40000 : 25000, 1500 + texto.length * (lenta ? 190 : 120)));
       ut.onstart = () => { arranco = true; };
       ut.onend = ut.onerror = () => { clearTimeout(sinArranque); clearTimeout(tope); ok(arranco); };
       speechSynthesis.speak(ut);

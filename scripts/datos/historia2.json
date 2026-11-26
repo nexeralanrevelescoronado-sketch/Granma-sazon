@@ -1,0 +1,1905 @@
+{
+ "id": "historia-2",
+ "titulo": {
+  "en": "Granma at 25: how I came to know God",
+  "es": "Granma a los 25: cómo conocí a Dios"
+ },
+ "resumen": {
+  "en": "Here I share something very dear to me, mijo: how I began to talk with God. No rush, and with much respect.",
+  "es": "Aquí te cuento algo muy mío, mijo: cómo empecé a hablar con Dios. Sin prisa y con mucho respeto."
+ },
+ "nivel": "A2",
+ "sobria": true,
+ "capitulos": [
+  {
+   "id": 7,
+   "receta": "champurrado",
+   "titulo": {
+    "es": "A mis veinticinco",
+    "en": "When I was twenty-five"
+   },
+   "relato": {
+    "es": [
+     "Mijo, a mis veinticinco años me casé y nos mudamos a la ciudad, porque tu abuelo consiguió trabajo allá. La mudanza fue sencilla: pocas cajas y mi olla de barro.",
+     "Nuestro departamento era chico, con una ventana que daba a la esquina. Había mucho ruido y una escalera larga, pero yo estaba contenta de empezar mi vida con él.",
+     "Pero, mijo, ¡qué difícil era extrañar a mi mamá! Extrañaba su cocina, su voz y su champurrado de las mañanas. Los domingos preparaba uno en mi estufa chiquita, y el olor me traía el rancho.",
+     "Mi mamá siempre me decía: «Dios te cuida, hija». Yo sonreía por cariño, pero no podía creer eso. Pensaba que bastaba con trabajar duro y echarle ganas.",
+     "Así que trabajé y trabajé. Cada tarde, tu abuelo y yo tomábamos una taza de champurrado y platicábamos del día. Era poquito, pero era nuestro."
+    ],
+    "en": [
+     "Mijo, when I was twenty-five I got married and we moved to the city, because your grandfather found a job there. The move was easy: a few boxes and my clay pot.",
+     "Our apartment was small, with a window that looked out on the corner. There was a lot of noise and a long flight of stairs, but I was happy to start my life with him.",
+     "But, mijo, how hard it was to miss my mom! I missed her kitchen, her voice and her morning champurrado. On Sundays I made one on my tiny stove, and the smell brought the ranch back to me.",
+     "My mom always told me: \"God takes care of you, my dear.\" I smiled out of love, but I could not believe that. I thought working hard and giving it my all was enough.",
+     "So I worked and worked. Every afternoon, your grandfather and I drank a cup of champurrado and chatted about our day. It was little, but it was ours."
+    ]
+   },
+   "palabras": [
+    {
+     "en": "city",
+     "es": "ciudad"
+    },
+    {
+     "en": "move",
+     "es": "mudanza"
+    },
+    {
+     "en": "apartment",
+     "es": "departamento"
+    },
+    {
+     "en": "miss",
+     "es": "extrañar"
+    },
+    {
+     "en": "believe",
+     "es": "creer"
+    },
+    {
+     "en": "window",
+     "es": "ventana"
+    },
+    {
+     "en": "stairs",
+     "es": "escalera"
+    },
+    {
+     "en": "noise",
+     "es": "ruido"
+    },
+    {
+     "en": "corner",
+     "es": "esquina"
+    }
+   ],
+   "ejemplos": {
+    "trabajo": [
+     {
+      "en": "I take the stairs to work.",
+      "es": "Subo la escalera al trabajo.",
+      "we": "stairs",
+      "ws": "escalera"
+     },
+     {
+      "en": "There is a lot of noise in my office.",
+      "es": "Hay mucho ruido en mi oficina.",
+      "we": "noise",
+      "ws": "ruido"
+     },
+     {
+      "en": "Open the window, please.",
+      "es": "Abre la ventana, por favor.",
+      "we": "window",
+      "ws": "ventana"
+     }
+    ],
+    "amigos": [
+     {
+      "en": "Help me with the move.",
+      "es": "Ayúdame con la mudanza.",
+      "we": "move",
+      "ws": "mudanza"
+     },
+     {
+      "en": "I will miss my friends.",
+      "es": "Voy a extrañar a mis amigos.",
+      "we": "miss",
+      "ws": "extrañar"
+     },
+     {
+      "en": "Come see my new apartment.",
+      "es": "Ven a ver mi departamento nuevo.",
+      "we": "apartment",
+      "ws": "departamento"
+     }
+    ],
+    "biblia": [
+     {
+      "en": "I want to believe in God.",
+      "es": "Quiero creer en Dios.",
+      "we": "believe",
+      "ws": "creer"
+     },
+     {
+      "en": "I pray for the city.",
+      "es": "Rezo por la ciudad.",
+      "we": "city",
+      "ws": "ciudad"
+     },
+     {
+      "en": "I read a psalm in my apartment.",
+      "es": "Leo un salmo en mi departamento.",
+      "we": "apartment",
+      "ws": "departamento"
+     }
+    ],
+    "viajes": [
+     {
+      "en": "Turn left at the corner.",
+      "es": "Da vuelta a la izquierda en la esquina.",
+      "we": "corner",
+      "ws": "esquina"
+     },
+     {
+      "en": "The city is beautiful at night.",
+      "es": "La ciudad es bonita de noche.",
+      "we": "city",
+      "ws": "ciudad"
+     },
+     {
+      "en": "Our move is next week.",
+      "es": "Nuestra mudanza es la próxima semana.",
+      "we": "move",
+      "ws": "mudanza"
+     }
+    ],
+    "cocina": [
+     {
+      "en": "The blender makes noise.",
+      "es": "La licuadora hace ruido.",
+      "we": "noise",
+      "ws": "ruido"
+     },
+     {
+      "en": "My apartment has a small stove.",
+      "es": "Mi departamento tiene una estufa chica.",
+      "we": "apartment",
+      "ws": "departamento"
+     },
+     {
+      "en": "The kitchen window is open.",
+      "es": "La ventana de la cocina está abierta.",
+      "we": "window",
+      "ws": "ventana"
+     }
+    ]
+   },
+   "palabrasInteres": {
+    "trabajo": [
+     {
+      "en": "salary",
+      "es": "sueldo",
+      "f": {
+       "en": "My salary arrives on Friday.",
+       "es": "Mi sueldo llega el viernes."
+      }
+     },
+     {
+      "en": "factory",
+      "es": "fábrica",
+      "f": {
+       "en": "The factory opens early.",
+       "es": "La fábrica abre temprano."
+      }
+     },
+     {
+      "en": "tool",
+      "es": "herramienta",
+      "f": {
+       "en": "Bring the tool, please.",
+       "es": "Trae la herramienta, por favor."
+      }
+     }
+    ],
+    "amigos": [
+     {
+      "en": "coffee",
+      "es": "café",
+      "f": {
+       "en": "Let us have coffee together.",
+       "es": "Tomemos café juntos."
+      }
+     },
+     {
+      "en": "sofa",
+      "es": "sillón",
+      "f": {
+       "en": "Sit on the sofa.",
+       "es": "Siéntate en el sillón."
+      }
+     },
+     {
+      "en": "photo",
+      "es": "foto",
+      "f": {
+       "en": "Send me a photo.",
+       "es": "Mándame una foto."
+      }
+     }
+    ],
+    "biblia": [
+     {
+      "en": "kindness",
+      "es": "bondad",
+      "f": {
+       "en": "Kindness costs nothing.",
+       "es": "La bondad no cuesta nada."
+      }
+     },
+     {
+      "en": "blessed",
+      "es": "bendecido",
+      "f": {
+       "en": "I feel blessed today.",
+       "es": "Me siento bendecido hoy."
+      }
+     },
+     {
+      "en": "grateful",
+      "es": "agradecido",
+      "f": {
+       "en": "I am grateful for today.",
+       "es": "Estoy agradecido por hoy."
+      }
+     }
+    ],
+    "viajes": [
+     {
+      "en": "train",
+      "es": "tren",
+      "f": {
+       "en": "The train leaves at noon.",
+       "es": "El tren sale al mediodía."
+      }
+     },
+     {
+      "en": "station",
+      "es": "estación",
+      "f": {
+       "en": "The station is very busy.",
+       "es": "La estación está muy llena."
+      }
+     },
+     {
+      "en": "driver",
+      "es": "chofer",
+      "f": {
+       "en": "The driver is kind.",
+       "es": "El chofer es amable."
+      }
+     }
+    ],
+    "cocina": [
+     {
+      "en": "blender",
+      "es": "licuadora",
+      "f": {
+       "en": "The blender is very loud.",
+       "es": "La licuadora es muy ruidosa."
+      }
+     },
+     {
+      "en": "lid",
+      "es": "tapa",
+      "f": {
+       "en": "Put the lid on.",
+       "es": "Pon la tapa."
+      }
+     },
+     {
+      "en": "jar",
+      "es": "frasco",
+      "f": {
+       "en": "The jar is empty.",
+       "es": "El frasco está vacío."
+      }
+     }
+    ]
+   },
+   "consejo": {
+    "es": "Quien sabe extrañar sabe querer, y eso nunca es debilidad.",
+    "en": "Those who know how to miss know how to love, and that is never weakness.",
+    "clave": [
+     {
+      "es": "extrañar",
+      "en": "miss"
+     },
+     {
+      "es": "querer",
+      "en": "love"
+     }
+    ]
+   }
+  },
+  {
+   "id": 8,
+   "receta": "bunuelos",
+   "titulo": {
+    "es": "Las cartas de mi mamá",
+    "en": "My mother's letters"
+   },
+   "relato": {
+    "es": [
+     "Cada mes, mijo, llegaba una carta de mi mamá. Yo corría al correo, abría el sobre con cuidado y desdoblaba el papel despacito.",
+     "Ella me contaba del rancho, de las gallinas y de los vecinos. Y siempre me hablaba de Dios y de Jesús como de alguien muy cercano, casi de la familia.",
+     "En una carta me copió un versículo de Mateo, con su letra grande y redonda. Lo leí dos veces. No dije nada, porque todavía no creía, pero me quedé pensando.",
+     "Eran tiempos difíciles. Había poco dinero y mucho trabajo, y yo llegaba tan cansada que casi me dormía sentada.",
+     "Aun así, decidí guardar cada carta en una caja de lata. Los domingos hacía buñuelos con la receta de mi mamá y leía una carta más. Ándale, mijo, así se sentía su abrazo."
+    ],
+    "en": [
+     "Every month, mijo, a letter came from my mom. I ran to the mail, opened the envelope carefully and unfolded the paper slowly.",
+     "She told me about the ranch, the hens and the neighbors. And she always spoke of God and of Jesus as someone very close, almost like family.",
+     "In one letter she copied a verse from Matthew for me, in her big, round handwriting. I read it twice. I said nothing, because I still did not believe, but I kept thinking about it.",
+     "Those were hard times. There was little money and a lot of work, and I came home so tired that I almost fell asleep sitting up.",
+     "Even so, I decided to save every letter in a tin box. On Sundays I made buñuelos with my mom's recipe and read one more letter. Ándale, mijo, that is how her hug felt."
+    ]
+   },
+   "palabras": [
+    {
+     "en": "mail",
+     "es": "correo"
+    },
+    {
+     "en": "envelope",
+     "es": "sobre"
+    },
+    {
+     "en": "box",
+     "es": "caja"
+    },
+    {
+     "en": "tin",
+     "es": "lata"
+    },
+    {
+     "en": "money",
+     "es": "dinero"
+    },
+    {
+     "en": "tired",
+     "es": "cansada"
+    },
+    {
+     "en": "month",
+     "es": "mes"
+    },
+    {
+     "en": "save",
+     "es": "guardar"
+    },
+    {
+     "en": "paper",
+     "es": "papel"
+    }
+   ],
+   "ejemplos": {
+    "trabajo": [
+     {
+      "en": "The month ends on Friday.",
+      "es": "El mes termina el viernes.",
+      "we": "month",
+      "ws": "mes"
+     },
+     {
+      "en": "Please send the paper today.",
+      "es": "Envía el papel hoy, por favor.",
+      "we": "paper",
+      "ws": "papel"
+     },
+     {
+      "en": "Put the box on the desk.",
+      "es": "Pon la caja en el escritorio.",
+      "we": "box",
+      "ws": "caja"
+     }
+    ],
+    "amigos": [
+     {
+      "en": "I have mail for you.",
+      "es": "Tengo correo para ti.",
+      "we": "mail",
+      "ws": "correo"
+     },
+     {
+      "en": "I am tired, but happy to see you.",
+      "es": "Estoy cansada, pero feliz de verte.",
+      "we": "tired",
+      "ws": "cansada"
+     },
+     {
+      "en": "Thank you for lending me money.",
+      "es": "Gracias por prestarme dinero.",
+      "we": "money",
+      "ws": "dinero"
+     }
+    ],
+    "biblia": [
+     {
+      "en": "I want to save this prayer.",
+      "es": "Quiero guardar esta oración.",
+      "we": "save",
+      "ws": "guardar"
+     },
+     {
+      "en": "Each month I learn something new about God.",
+      "es": "Cada mes aprendo algo nuevo de Dios.",
+      "we": "month",
+      "ws": "mes"
+     },
+     {
+      "en": "The envelope has a prayer.",
+      "es": "El sobre trae una oración.",
+      "we": "envelope",
+      "ws": "sobre"
+     }
+    ],
+    "viajes": [
+     {
+      "en": "Pack the bread in a tin.",
+      "es": "Lleva el pan en una lata.",
+      "we": "tin",
+      "ws": "lata"
+     },
+     {
+      "en": "How much money do I need?",
+      "es": "¿Cuánto dinero necesito?",
+      "we": "money",
+      "ws": "dinero"
+     },
+     {
+      "en": "I will stay one month.",
+      "es": "Me quedo un mes.",
+      "we": "month",
+      "ws": "mes"
+     }
+    ],
+    "cocina": [
+     {
+      "en": "Keep the sugar in the tin.",
+      "es": "Guarda el azúcar en la lata.",
+      "we": "tin",
+      "ws": "lata"
+     },
+     {
+      "en": "Wrap it in paper.",
+      "es": "Envuélvelo en papel.",
+      "we": "paper",
+      "ws": "papel"
+     },
+     {
+      "en": "Open the box of cinnamon.",
+      "es": "Abre la caja de canela.",
+      "we": "box",
+      "ws": "caja"
+     }
+    ]
+   },
+   "palabrasInteres": {
+    "trabajo": [
+     {
+      "en": "desk",
+      "es": "escritorio",
+      "f": {
+       "en": "The desk is by the door.",
+       "es": "El escritorio está junto a la puerta."
+      }
+     },
+     {
+      "en": "report",
+      "es": "informe",
+      "f": {
+       "en": "I finish the report today.",
+       "es": "Termino el informe hoy."
+      }
+     },
+     {
+      "en": "shift",
+      "es": "turno",
+      "f": {
+       "en": "My shift ends at six.",
+       "es": "Mi turno termina a las seis."
+      }
+     }
+    ],
+    "amigos": [
+     {
+      "en": "news",
+      "es": "noticias",
+      "f": {
+       "en": "I have good news.",
+       "es": "Tengo buenas noticias."
+      }
+     },
+     {
+      "en": "friendship",
+      "es": "amistad",
+      "f": {
+       "en": "Friendship is a treasure.",
+       "es": "La amistad es un tesoro."
+      }
+     },
+     {
+      "en": "story",
+      "es": "historia",
+      "f": {
+       "en": "I like your story.",
+       "es": "Me gusta tu historia."
+      }
+     }
+    ],
+    "biblia": [
+     {
+      "en": "word",
+      "es": "palabra",
+      "f": {
+       "en": "A kind word helps.",
+       "es": "Una palabra amable ayuda."
+      }
+     },
+     {
+      "en": "verse",
+      "es": "versículo",
+      "f": {
+       "en": "I read one verse today.",
+       "es": "Hoy leo un versículo."
+      }
+     },
+     {
+      "en": "humble",
+      "es": "humilde",
+      "f": {
+       "en": "He is a humble man.",
+       "es": "Él es un hombre humilde."
+      }
+     }
+    ],
+    "viajes": [
+     {
+      "en": "address",
+      "es": "dirección",
+      "f": {
+       "en": "What is your address?",
+       "es": "¿Cuál es tu dirección?"
+      }
+     },
+     {
+      "en": "postcard",
+      "es": "postal",
+      "f": {
+       "en": "I send a postcard home.",
+       "es": "Envío una postal a casa."
+      }
+     },
+     {
+      "en": "stamp",
+      "es": "estampilla",
+      "f": {
+       "en": "I need a stamp.",
+       "es": "Necesito una estampilla."
+      }
+     }
+    ],
+    "cocina": [
+     {
+      "en": "oven",
+      "es": "horno",
+      "f": {
+       "en": "The oven is very hot.",
+       "es": "El horno está muy caliente."
+      }
+     },
+     {
+      "en": "napkin",
+      "es": "servilleta",
+      "f": {
+       "en": "Bring me a napkin.",
+       "es": "Tráeme una servilleta."
+      }
+     },
+     {
+      "en": "honey",
+      "es": "miel",
+      "f": {
+       "en": "Add honey to the tea.",
+       "es": "Agrega miel al té."
+      }
+     }
+    ]
+   },
+   "consejo": {
+    "es": "Lo que se guarda con cariño nunca se pierde del todo.",
+    "en": "What is kept with love is never completely lost.",
+    "clave": [
+     {
+      "es": "guarda",
+      "en": "kept"
+     },
+     {
+      "es": "cariño",
+      "en": "love"
+     }
+    ]
+   },
+   "versiculo": {
+    "libro": "mat",
+    "cap": 11,
+    "desde": 28,
+    "hasta": 28
+   }
+  },
+  {
+   "id": 9,
+   "receta": "ponche",
+   "titulo": {
+    "es": "La noche que hablé con Dios",
+    "en": "The night I talked to God"
+   },
+   "relato": {
+    "es": [
+     "Una noche, mijo, tu abuelo se quedó trabajando hasta tarde y yo me quedé sola en el departamento. Me senté en una silla de la cocina, en silencio.",
+     "De pronto me dio miedo el futuro. ¿Y si el dinero no alcanzaba? ¿Y si pasaba mucho tiempo sin ver a mi mamá? Sin darme cuenta, empecé a llorar.",
+     "Entonces, por primera vez, le hablé a Dios con mis propias palabras, bajito, como a alguien de confianza: «Aquí estoy. Me siento muy sola y tengo miedo. Ayúdame, por favor».",
+     "No hubo un trueno ni una luz, mijo. Solo hubo paz: una paz tranquila en el pecho, como una mano suave. Me sequé la cara y me fui a dormir.",
+     "Al otro día mi problema seguía ahí. Pero yo ya no me sentía sola. Esa tarde preparé un ponche caliente y se lo serví a tu abuelo cuando llegó."
+    ],
+    "en": [
+     "One night, mijo, your grandfather stayed late at work and I was left alone in the apartment. I sat on a chair in the kitchen, in silence.",
+     "Suddenly fear of the future came over me. What if the money was not enough? What if a long time went by without seeing my mom? Without realizing it, I started to cry.",
+     "Then, for the first time, I spoke to God in my own words, softly, like to someone I trust: \"Here I am. I feel very alone and I am afraid. Please help me.\"",
+     "There was no thunder and no light, mijo. There was only peace: a quiet peace in my chest, like a gentle hand. I dried my face and went to sleep.",
+     "The next day my problem was still there. But I no longer felt alone. That afternoon I made a hot punch and served it to your grandfather when he got home."
+    ]
+   },
+   "palabras": [
+    {
+     "en": "alone",
+     "es": "sola"
+    },
+    {
+     "en": "fear",
+     "es": "miedo"
+    },
+    {
+     "en": "cry",
+     "es": "llorar"
+    },
+    {
+     "en": "future",
+     "es": "futuro"
+    },
+    {
+     "en": "thunder",
+     "es": "trueno"
+    },
+    {
+     "en": "light",
+     "es": "luz"
+    },
+    {
+     "en": "silence",
+     "es": "silencio"
+    },
+    {
+     "en": "chair",
+     "es": "silla"
+    },
+    {
+     "en": "problem",
+     "es": "problema"
+    }
+   ],
+   "ejemplos": {
+    "trabajo": [
+     {
+      "en": "We solve the problem together.",
+      "es": "Resolvemos el problema juntos.",
+      "we": "problem",
+      "ws": "problema"
+     },
+     {
+      "en": "This chair is very comfortable.",
+      "es": "Esta silla es muy cómoda.",
+      "we": "chair",
+      "ws": "silla"
+     },
+     {
+      "en": "I work alone today.",
+      "es": "Hoy trabajo sola.",
+      "we": "alone",
+      "ws": "sola"
+     }
+    ],
+    "amigos": [
+     {
+      "en": "It is okay to cry.",
+      "es": "Está bien llorar.",
+      "we": "cry",
+      "ws": "llorar"
+     },
+     {
+      "en": "A good friend helps with fear.",
+      "es": "Una buena amiga ayuda con el miedo.",
+      "we": "fear",
+      "ws": "miedo"
+     },
+     {
+      "en": "We talk about the future together.",
+      "es": "Hablamos del futuro juntas.",
+      "we": "future",
+      "ws": "futuro"
+     }
+    ],
+    "biblia": [
+     {
+      "en": "I talk to God when I am alone.",
+      "es": "Hablo con Dios cuando estoy sola.",
+      "we": "alone",
+      "ws": "sola"
+     },
+     {
+      "en": "A small light helps.",
+      "es": "Una luz pequeña ayuda.",
+      "we": "light",
+      "ws": "luz"
+     },
+     {
+      "en": "I pray in silence.",
+      "es": "Rezo en silencio.",
+      "we": "silence",
+      "ws": "silencio"
+     }
+    ],
+    "viajes": [
+     {
+      "en": "I hear thunder on the road.",
+      "es": "Oigo un trueno en el camino.",
+      "we": "thunder",
+      "ws": "trueno"
+     },
+     {
+      "en": "There is no problem at the hotel.",
+      "es": "No hay problema en el hotel.",
+      "we": "problem",
+      "ws": "problema"
+     },
+     {
+      "en": "I like the silence of the mountain.",
+      "es": "Me gusta el silencio de la montaña.",
+      "we": "silence",
+      "ws": "silencio"
+     }
+    ],
+    "cocina": [
+     {
+      "en": "Onions make me cry.",
+      "es": "La cebolla me hace llorar.",
+      "we": "cry",
+      "ws": "llorar"
+     },
+     {
+      "en": "The kitchen light is warm.",
+      "es": "La luz de la cocina es cálida.",
+      "we": "light",
+      "ws": "luz"
+     },
+     {
+      "en": "Sit in the kitchen chair.",
+      "es": "Siéntate en la silla de la cocina.",
+      "we": "chair",
+      "ws": "silla"
+     }
+    ]
+   },
+   "palabrasInteres": {
+    "trabajo": [
+     {
+      "en": "rent",
+      "es": "renta",
+      "f": {
+       "en": "Rent is due on Monday.",
+       "es": "La renta vence el lunes."
+      }
+     },
+     {
+      "en": "budget",
+      "es": "presupuesto",
+      "f": {
+       "en": "We have a small budget.",
+       "es": "Tenemos un presupuesto pequeño."
+      }
+     },
+     {
+      "en": "clock",
+      "es": "reloj",
+      "f": {
+       "en": "The clock says ten.",
+       "es": "El reloj dice las diez."
+      }
+     }
+    ],
+    "amigos": [
+     {
+      "en": "shoulder",
+      "es": "hombro",
+      "f": {
+       "en": "Lean on my shoulder.",
+       "es": "Apóyate en mi hombro."
+      }
+     },
+     {
+      "en": "tissue",
+      "es": "pañuelo",
+      "f": {
+       "en": "Here is a tissue.",
+       "es": "Aquí tienes un pañuelo."
+      }
+     },
+     {
+      "en": "call",
+      "es": "llamada",
+      "f": {
+       "en": "Your call made me happy.",
+       "es": "Tu llamada me hizo feliz."
+      }
+     }
+    ],
+    "biblia": [
+     {
+      "en": "whisper",
+      "es": "susurro",
+      "f": {
+       "en": "I pray in a whisper.",
+       "es": "Rezo en un susurro."
+      }
+     },
+     {
+      "en": "voice",
+      "es": "voz",
+      "f": {
+       "en": "I speak with a soft voice.",
+       "es": "Hablo con voz suave."
+      }
+     },
+     {
+      "en": "answer",
+      "es": "respuesta",
+      "f": {
+       "en": "Not every answer comes quickly.",
+       "es": "No toda respuesta llega rápido."
+      }
+     }
+    ],
+    "viajes": [
+     {
+      "en": "moon",
+      "es": "luna",
+      "f": {
+       "en": "The moon is full tonight.",
+       "es": "La luna está llena esta noche."
+      }
+     },
+     {
+      "en": "sunset",
+      "es": "atardecer",
+      "f": {
+       "en": "The sunset is beautiful here.",
+       "es": "El atardecer es hermoso aquí."
+      }
+     },
+     {
+      "en": "bridge",
+      "es": "puente",
+      "f": {
+       "en": "We cross the bridge slowly.",
+       "es": "Cruzamos el puente despacio."
+      }
+     }
+    ],
+    "cocina": [
+     {
+      "en": "tea",
+      "es": "té",
+      "f": {
+       "en": "A cup of hot tea.",
+       "es": "Una taza de té caliente."
+      }
+     },
+     {
+      "en": "kettle",
+      "es": "tetera",
+      "f": {
+       "en": "The kettle is boiling.",
+       "es": "La tetera está hirviendo."
+      }
+     },
+     {
+      "en": "apron",
+      "es": "delantal",
+      "f": {
+       "en": "Put on your apron.",
+       "es": "Ponte el delantal."
+      }
+     }
+    ]
+   },
+   "consejo": {
+    "es": "El miedo pesa menos cuando lo dices en voz alta.",
+    "en": "Fear weighs less when you say it out loud.",
+    "clave": [
+     {
+      "es": "miedo",
+      "en": "Fear"
+     },
+     {
+      "es": "pesa",
+      "en": "weighs"
+     }
+    ]
+   },
+   "versiculo": {
+    "libro": "jer",
+    "cap": 29,
+    "desde": 13,
+    "hasta": 13
+   }
+  },
+  {
+   "id": 10,
+   "receta": "pozole",
+   "titulo": {
+    "es": "Hablar lo difícil",
+    "en": "Talking about the hard things"
+   },
+   "relato": {
+    "es": [
+     "Mijo, a los veinticinco yo era muy callada con lo que me dolía. Me guardaba las penas para no preocupar a nadie. Pensaba que así no ponía una carga sobre las personas que quería.",
+     "Pero una tarde, mientras cocinaba pozole, tu abuelo me vio la cara. Dejó su sombrero en la mesa y me dijo con su voz pausada: «Cuéntame, aquí estoy». Yo le conté todo, poco a poco, y él me escuchó sin prisa.",
+     "Después le conté también a mi amiga, la de la esquina. Me abrazó y me dijo que a ella le pasaba parecido. Ese día entendí que mi amiga también tenía cosas muy pesadas, y que nadie se las había preguntado.",
+     "Y yo aprendí a escuchar, mijo. Cuando alguien te cuenta lo que le duele, no hace falta arreglarlo todo; basta con quedarse a su lado. Poder compartir lo difícil nos hace sentir acompañados.",
+     "Esa tarde el pozole nos supo mejor que nunca. Cuando las penas se comparten, mijo, pesan menos."
+    ],
+    "en": [
+     "Mijo, at twenty-five I was very quiet about what hurt me. I kept my troubles inside so I would not worry anyone. I thought that way I was not putting a burden on the people I loved.",
+     "But one afternoon, while I was cooking pozole, your grandfather saw my face. He left his hat on the table and said in his calm voice: \"Tell me, I am here\". I told him everything, little by little, and he listened without hurry.",
+     "Later I also told my friend, the one from the corner. She hugged me and said the same kind of thing happened to her. That day I understood that my friend also carried very heavy things, and that nobody had asked her about them.",
+     "And I learned to listen, mijo. When someone tells you what hurts, you do not need to fix everything; it is enough to stay by their side. To share the hard things makes us feel accompanied.",
+     "That afternoon the pozole tasted better than ever. When troubles are shared, mijo, they weigh less."
+    ]
+   },
+   "palabras": [
+    {
+     "en": "quiet",
+     "es": "callada"
+    },
+    {
+     "en": "hurt",
+     "es": "doler"
+    },
+    {
+     "en": "worry",
+     "es": "preocupar"
+    },
+    {
+     "en": "burden",
+     "es": "carga"
+    },
+    {
+     "en": "tell",
+     "es": "contar"
+    },
+    {
+     "en": "listen",
+     "es": "escuchar"
+    },
+    {
+     "en": "friend",
+     "es": "amiga"
+    },
+    {
+     "en": "heavy",
+     "es": "pesado"
+    },
+    {
+     "en": "share",
+     "es": "compartir"
+    }
+   ],
+   "ejemplos": {
+    "trabajo": [
+     {
+      "en": "I like to listen to my coworkers.",
+      "es": "Me gusta escuchar a mis compañeros.",
+      "we": "listen",
+      "ws": "escuchar"
+     },
+     {
+      "en": "Let us share the work.",
+      "es": "Vamos a compartir el trabajo.",
+      "we": "share",
+      "ws": "compartir"
+     },
+     {
+      "en": "Today the work was heavy.",
+      "es": "Hoy el trabajo fue pesado.",
+      "we": "heavy",
+      "ws": "pesado"
+     }
+    ],
+    "amigos": [
+     {
+      "en": "My friend lives near me.",
+      "es": "Mi amiga vive cerca de mí.",
+      "we": "friend",
+      "ws": "amiga"
+     },
+     {
+      "en": "I can tell you a secret.",
+      "es": "Te puedo contar un secreto.",
+      "we": "tell",
+      "ws": "contar"
+     },
+     {
+      "en": "She is quiet and calm today.",
+      "es": "Hoy ella está callada y tranquila.",
+      "we": "quiet",
+      "ws": "callada"
+     }
+    ],
+    "biblia": [
+     {
+      "en": "I like to listen to a Bible story.",
+      "es": "Me gusta escuchar una historia de la Biblia.",
+      "we": "listen",
+      "ws": "escuchar"
+     },
+     {
+      "en": "Jesus helps us with our burden.",
+      "es": "Jesús nos ayuda con nuestra carga.",
+      "we": "burden",
+      "ws": "carga"
+     },
+     {
+      "en": "Let us share a Bible story.",
+      "es": "Vamos a compartir una historia bíblica.",
+      "we": "share",
+      "ws": "compartir"
+     }
+    ],
+    "viajes": [
+     {
+      "en": "I want to tell my family about my trip.",
+      "es": "Quiero contar mi viaje a mi familia.",
+      "we": "tell",
+      "ws": "contar"
+     },
+     {
+      "en": "The luggage is very heavy.",
+      "es": "El equipaje es muy pesado.",
+      "we": "heavy",
+      "ws": "pesado"
+     },
+     {
+      "en": "I do not want to worry my family.",
+      "es": "No quiero preocupar a mi familia.",
+      "we": "worry",
+      "ws": "preocupar"
+     }
+    ],
+    "cocina": [
+     {
+      "en": "Let us share the pozole.",
+      "es": "Vamos a compartir el pozole.",
+      "we": "share",
+      "ws": "compartir"
+     },
+     {
+      "en": "My friend tastes the pozole.",
+      "es": "Mi amiga prueba el pozole.",
+      "we": "friend",
+      "ws": "amiga"
+     },
+     {
+      "en": "I like to listen to the soup boil.",
+      "es": "Me gusta escuchar la sopa hervir.",
+      "we": "listen",
+      "ws": "escuchar"
+     }
+    ]
+   },
+   "palabrasInteres": {
+    "trabajo": [
+     {
+      "en": "schedule",
+      "es": "horario",
+      "f": {
+       "en": "The schedule is full today.",
+       "es": "El horario está lleno hoy."
+      }
+     },
+     {
+      "en": "meeting",
+      "es": "reunión",
+      "f": {
+       "en": "The meeting starts at nine.",
+       "es": "La reunión empieza a las nueve."
+      }
+     },
+     {
+      "en": "team",
+      "es": "equipo",
+      "f": {
+       "en": "Our team helps each other.",
+       "es": "Nuestro equipo se ayuda."
+      }
+     }
+    ],
+    "amigos": [
+     {
+      "en": "hug",
+      "es": "abrazo",
+      "f": {
+       "en": "A hug helps a lot.",
+       "es": "Un abrazo ayuda mucho."
+      }
+     },
+     {
+      "en": "trust",
+      "es": "confianza",
+      "f": {
+       "en": "I have trust in you.",
+       "es": "Tengo confianza en ti."
+      }
+     },
+     {
+      "en": "coffee",
+      "es": "café",
+      "f": {
+       "en": "Let us have coffee together.",
+       "es": "Tomemos café juntos."
+      }
+     }
+    ],
+    "biblia": [
+     {
+      "en": "prayer",
+      "es": "oración",
+      "f": {
+       "en": "Prayer gives me calm.",
+       "es": "La oración me da calma."
+      }
+     },
+     {
+      "en": "faith",
+      "es": "fe",
+      "f": {
+       "en": "Faith grows little by little.",
+       "es": "La fe crece poco a poco."
+      }
+     },
+     {
+      "en": "hope",
+      "es": "esperanza",
+      "f": {
+       "en": "Hope gets me up each morning.",
+       "es": "La esperanza me levanta cada mañana."
+      }
+     }
+    ],
+    "viajes": [
+     {
+      "en": "train",
+      "es": "tren",
+      "f": {
+       "en": "The train leaves at noon.",
+       "es": "El tren sale al mediodía."
+      }
+     },
+     {
+      "en": "ticket",
+      "es": "boleto",
+      "f": {
+       "en": "I have my ticket.",
+       "es": "Tengo mi boleto."
+      }
+     },
+     {
+      "en": "station",
+      "es": "estación",
+      "f": {
+       "en": "The station is big.",
+       "es": "La estación es grande."
+      }
+     }
+    ],
+    "cocina": [
+     {
+      "en": "broth",
+      "es": "caldo",
+      "f": {
+       "en": "The broth is hot.",
+       "es": "El caldo está caliente."
+      }
+     },
+     {
+      "en": "cabbage",
+      "es": "repollo",
+      "f": {
+       "en": "Add the cabbage on top.",
+       "es": "Agrega el repollo encima."
+      }
+     },
+     {
+      "en": "bowl",
+      "es": "tazón",
+      "f": {
+       "en": "A big bowl of pozole.",
+       "es": "Un tazón grande de pozole."
+      }
+     }
+    ]
+   },
+   "consejo": {
+    "es": "Una carga compartida pesa la mitad.",
+    "en": "A shared burden weighs half.",
+    "clave": [
+     {
+      "es": "carga",
+      "en": "burden"
+     },
+     {
+      "es": "compartida",
+      "en": "shared"
+     }
+    ]
+   },
+   "versiculo": {
+    "libro": "gal",
+    "cap": 6,
+    "desde": 2,
+    "hasta": 2
+   }
+  },
+  {
+   "id": 11,
+   "receta": "mole",
+   "titulo": {
+    "es": "Amar como Él nos amó",
+    "en": "To love as He loved us"
+   },
+   "relato": {
+    "es": [
+     "Mijo, en la ciudad teníamos una vecina que siempre andaba malhumorada. Casi no saludaba, y a veces cerraba la puerta con fuerza. Yo también sentí ganas de juzgar.",
+     "Pero un día supe que ella pasaba un mal momento y estaba muy cansada. Entonces pensé: en vez de juzgar, mejor voy a acompañarla. Hice mole con calma y decidí traerle un plato.",
+     "Fui a tocar a su puerta y ella abrió despacio. No dijo mucho, pero quiso sentarse conmigo. Comimos juntas, y al final me dio las gracias con los ojos mojados.",
+     "Su mal genio era solo una debilidad de ese día, mijo. Todos tenemos las nuestras. Yo recordé que conmigo también habían tenido paciencia, cuando todavía no creía.",
+     "Jesús nos amó con paciencia y nos enseñó a perdonar. Amar a los demás en sus debilidades, como Él nos amó, es de lo más bonito que he aprendido. Casi siempre empieza con un poco de amabilidad: un plato de comida y un rato de compañía."
+    ],
+    "en": [
+     "Mijo, in the city we had a neighbor who was always grumpy. She hardly said hello, and sometimes she closed her door hard. I also felt like I wanted to judge.",
+     "But one day I found out she was going through a hard time and was very tired. Then I thought: instead of judging, I will accompany her. I made mole calmly and decided to bring her a plate.",
+     "I went to knock on her door and she opened it slowly. She did not say much, but she wanted to sit with me. We ate together, and at the end she thanked me with wet eyes.",
+     "Her bad mood was only a weakness of that day, mijo. We all have our own. I remembered that people had been patient with me too, back when I still did not believe.",
+     "Jesus loved us with patience and taught us to forgive. To love others in their weaknesses, as He loved us, is one of the most beautiful things I have learned. It almost always begins with a little kindness: a plate of food and a while of company."
+    ]
+   },
+   "palabras": [
+    {
+     "en": "grumpy",
+     "es": "malhumorada"
+    },
+    {
+     "en": "judge",
+     "es": "juzgar"
+    },
+    {
+     "en": "accompany",
+     "es": "acompañar"
+    },
+    {
+     "en": "bring",
+     "es": "traer"
+    },
+    {
+     "en": "knock",
+     "es": "tocar"
+    },
+    {
+     "en": "sit",
+     "es": "sentarse"
+    },
+    {
+     "en": "weakness",
+     "es": "debilidad"
+    },
+    {
+     "en": "forgive",
+     "es": "perdonar"
+    },
+    {
+     "en": "kindness",
+     "es": "amabilidad"
+    }
+   ],
+   "ejemplos": {
+    "trabajo": [
+     {
+      "en": "Please bring the report tomorrow.",
+      "es": "Puedes traer el informe mañana.",
+      "we": "bring",
+      "ws": "traer"
+     },
+     {
+      "en": "Always knock before you enter.",
+      "es": "Siempre conviene tocar antes de entrar.",
+      "we": "knock",
+      "ws": "tocar"
+     },
+     {
+      "en": "Kindness helps at work.",
+      "es": "La amabilidad ayuda en el trabajo.",
+      "we": "kindness",
+      "ws": "amabilidad"
+     }
+    ],
+    "amigos": [
+     {
+      "en": "I want to accompany my friend.",
+      "es": "Quiero acompañar a mi amiga.",
+      "we": "accompany",
+      "ws": "acompañar"
+     },
+     {
+      "en": "My friend is grumpy today.",
+      "es": "Mi amiga está malhumorada hoy.",
+      "we": "grumpy",
+      "ws": "malhumorada"
+     },
+     {
+      "en": "Good friends know how to forgive.",
+      "es": "Los buenos amigos saben perdonar.",
+      "we": "forgive",
+      "ws": "perdonar"
+     }
+    ],
+    "biblia": [
+     {
+      "en": "Jesus taught us to forgive.",
+      "es": "Jesús nos enseñó a perdonar.",
+      "we": "forgive",
+      "ws": "perdonar"
+     },
+     {
+      "en": "Jesus showed us kindness.",
+      "es": "Jesús nos mostró amabilidad.",
+      "we": "kindness",
+      "ws": "amabilidad"
+     },
+     {
+      "en": "God is near in our weakness.",
+      "es": "Dios está cerca en nuestra debilidad.",
+      "we": "weakness",
+      "ws": "debilidad"
+     }
+    ],
+    "viajes": [
+     {
+      "en": "It is better to sit near the window.",
+      "es": "Es mejor sentarse cerca de la ventana.",
+      "we": "sit",
+      "ws": "sentarse"
+     },
+     {
+      "en": "Remember to bring your ticket.",
+      "es": "Recuerda traer tu boleto.",
+      "we": "bring",
+      "ws": "traer"
+     },
+     {
+      "en": "I will knock on the room door.",
+      "es": "Voy a tocar la puerta del cuarto.",
+      "we": "knock",
+      "ws": "tocar"
+     }
+    ],
+    "cocina": [
+     {
+      "en": "Bring the mole to the table.",
+      "es": "Voy a traer el mole a la mesa.",
+      "we": "bring",
+      "ws": "traer"
+     },
+     {
+      "en": "Rice can accompany the mole well.",
+      "es": "El arroz suele acompañar bien al mole.",
+      "we": "accompany",
+      "ws": "acompañar"
+     },
+     {
+      "en": "It is time to sit and eat.",
+      "es": "Es hora de sentarse a comer.",
+      "we": "sit",
+      "ws": "sentarse"
+     }
+    ]
+   },
+   "palabrasInteres": {
+    "trabajo": [
+     {
+      "en": "break",
+      "es": "descanso",
+      "f": {
+       "en": "Take a break, please.",
+       "es": "Toma un descanso, por favor."
+      }
+     },
+     {
+      "en": "help",
+      "es": "ayuda",
+      "f": {
+       "en": "I need help today.",
+       "es": "Necesito ayuda hoy."
+      }
+     },
+     {
+      "en": "mistake",
+      "es": "error",
+      "f": {
+       "en": "A mistake is normal.",
+       "es": "Un error es normal."
+      }
+     }
+    ],
+    "amigos": [
+     {
+      "en": "visit",
+      "es": "visita",
+      "f": {
+       "en": "A visit makes her smile.",
+       "es": "Una visita la hace sonreír."
+      }
+     },
+     {
+      "en": "tea",
+      "es": "té",
+      "f": {
+       "en": "Let us have tea together.",
+       "es": "Tomemos té juntos."
+      }
+     },
+     {
+      "en": "laughter",
+      "es": "risa",
+      "f": {
+       "en": "Her laughter is back.",
+       "es": "Su risa volvió."
+      }
+     }
+    ],
+    "biblia": [
+     {
+      "en": "mercy",
+      "es": "misericordia",
+      "f": {
+       "en": "God has mercy.",
+       "es": "Dios tiene misericordia."
+      }
+     },
+     {
+      "en": "love",
+      "es": "amor",
+      "f": {
+       "en": "His love is great.",
+       "es": "Su amor es grande."
+      }
+     },
+     {
+      "en": "grace",
+      "es": "gracia",
+      "f": {
+       "en": "Grace is a gift.",
+       "es": "La gracia es un regalo."
+      }
+     }
+    ],
+    "viajes": [
+     {
+      "en": "road",
+      "es": "camino",
+      "f": {
+       "en": "The road is long.",
+       "es": "El camino es largo."
+      }
+     },
+     {
+      "en": "suitcase",
+      "es": "maleta",
+      "f": {
+       "en": "My suitcase is blue.",
+       "es": "Mi maleta es azul."
+      }
+     },
+     {
+      "en": "window",
+      "es": "ventana",
+      "f": {
+       "en": "The window is clean.",
+       "es": "La ventana está limpia."
+      }
+     }
+    ],
+    "cocina": [
+     {
+      "en": "sesame",
+      "es": "ajonjolí",
+      "f": {
+       "en": "Sprinkle the sesame on top.",
+       "es": "Espolvorea el ajonjolí encima."
+      }
+     },
+     {
+      "en": "rice",
+      "es": "arroz",
+      "f": {
+       "en": "The rice is warm.",
+       "es": "El arroz está tibio."
+      }
+     },
+     {
+      "en": "slowly",
+      "es": "despacio",
+      "f": {
+       "en": "Stir the mole slowly.",
+       "es": "Mueve el mole despacio."
+      }
+     }
+    ]
+   },
+   "consejo": {
+    "es": "Antes de juzgar a alguien, acompáñalo un rato.",
+    "en": "Before judging someone, keep them company for a while.",
+    "clave": [
+     {
+      "es": "juzgar",
+      "en": "judging"
+     },
+     {
+      "es": "acompáñalo",
+      "en": "company"
+     }
+    ]
+   },
+   "versiculo": {
+    "libro": "jua",
+    "cap": 13,
+    "desde": 34,
+    "hasta": 34
+   }
+  },
+  {
+   "id": 12,
+   "receta": "champurrado",
+   "titulo": {
+    "es": "El libro sobre la mesa",
+    "en": "The book on the table"
+   },
+   "relato": {
+    "es": [
+     "Un día, mijo, mi mamá me regaló su Biblia. Tenía una página doblada y las orillas suaves de tanto usarla. La puse sobre la mesa de la cocina, junto a mi taza.",
+     "Desde entonces me gusta leer cada mañana, con mi café y sin prisa. No lo hago por obligación, sino porque ahí me encontré con Alguien que me quiere. Es un libro, sí, pero también es como una plática.",
+     "Ahí encontré consuelo cuando mi corazón estaba cansado. Jesús no me dio una lista de reglas; me ofreció su amistad. Para mí la sanidad fue eso: un corazón más tranquilo, aunque algunos problemas siguieran ahí.",
+     "Si un día quieres, mijo, puedes abrir esa Biblia. No hay prisa ni presión. Empieza por un salmo cortito y léelo despacio, como quien toma un champurrado calientito.",
+     "Y si quieres platicarlo, aquí estaré, con otra taza. Me encantaría invitar a todos a esa mesa, porque ahí siempre hay lugar para ti."
+    ],
+    "en": [
+     "One day, mijo, my mother gave me her Bible. It had a folded page and edges soft from so much use. I put it on the kitchen table, next to my cup.",
+     "Since then I like to read every morning, with my coffee and without hurry. I do not do it out of duty, but because there I met Someone who loves me. It is a book, yes, but it is also like a conversation.",
+     "There I found comfort when my heart was tired. Jesus did not give me a list of rules; He offered me His friendship. For me healing was that: a calmer heart, even if some problems were still there.",
+     "If one day you want to, mijo, you can open that Bible. There is no hurry and no pressure. Begin with a short psalm and read it slowly, like someone sipping warm champurrado.",
+     "And if you want to talk about it, I will be here, with another cup. I would love to invite everyone to that table, because there is always room for you."
+    ]
+   },
+   "palabras": [
+    {
+     "en": "book",
+     "es": "libro"
+    },
+    {
+     "en": "read",
+     "es": "leer"
+    },
+    {
+     "en": "comfort",
+     "es": "consuelo"
+    },
+    {
+     "en": "healing",
+     "es": "sanidad"
+    },
+    {
+     "en": "invite",
+     "es": "invitar"
+    },
+    {
+     "en": "psalm",
+     "es": "salmo"
+    },
+    {
+     "en": "open",
+     "es": "abrir"
+    },
+    {
+     "en": "page",
+     "es": "página"
+    },
+    {
+     "en": "table",
+     "es": "mesa"
+    }
+   ],
+   "ejemplos": {
+    "trabajo": [
+     {
+      "en": "I need to read the report today.",
+      "es": "Necesito leer el informe hoy.",
+      "we": "read",
+      "ws": "leer"
+     },
+     {
+      "en": "The work table is clean.",
+      "es": "La mesa de trabajo está limpia.",
+      "we": "table",
+      "ws": "mesa"
+     },
+     {
+      "en": "I want to invite my team to lunch.",
+      "es": "Quiero invitar a mi equipo a comer.",
+      "we": "invite",
+      "ws": "invitar"
+     }
+    ],
+    "amigos": [
+     {
+      "en": "My friend lent me a book.",
+      "es": "Mi amiga me prestó un libro.",
+      "we": "book",
+      "ws": "libro"
+     },
+     {
+      "en": "My friends give me comfort.",
+      "es": "Mis amigos me dan consuelo.",
+      "we": "comfort",
+      "ws": "consuelo"
+     },
+     {
+      "en": "There is room at the table for everyone.",
+      "es": "Hay lugar en la mesa para todos.",
+      "we": "table",
+      "ws": "mesa"
+     }
+    ],
+    "biblia": [
+     {
+      "en": "I read a psalm every morning.",
+      "es": "Leo un salmo cada mañana.",
+      "we": "psalm",
+      "ws": "salmo"
+     },
+     {
+      "en": "Jesus brings healing to the heart.",
+      "es": "Jesús trae sanidad al corazón.",
+      "we": "healing",
+      "ws": "sanidad"
+     },
+     {
+      "en": "I want to open the Bible today.",
+      "es": "Quiero abrir la Biblia hoy.",
+      "we": "open",
+      "ws": "abrir"
+     }
+    ],
+    "viajes": [
+     {
+      "en": "I take a book on the trip.",
+      "es": "Llevo un libro en el viaje.",
+      "we": "book",
+      "ws": "libro"
+     },
+     {
+      "en": "I like to read on the train.",
+      "es": "Me gusta leer en el tren.",
+      "we": "read",
+      "ws": "leer"
+     },
+     {
+      "en": "I mark the page with a paper.",
+      "es": "Marco la página con un papel.",
+      "we": "page",
+      "ws": "página"
+     }
+    ],
+    "cocina": [
+     {
+      "en": "I will read the recipe first.",
+      "es": "Voy a leer la receta primero.",
+      "we": "read",
+      "ws": "leer"
+     },
+     {
+      "en": "Put the champurrado on the table.",
+      "es": "Pon el champurrado en la mesa.",
+      "we": "table",
+      "ws": "mesa"
+     },
+     {
+      "en": "Ask an adult to open the can.",
+      "es": "Pídele a un adulto abrir la lata.",
+      "we": "open",
+      "ws": "abrir"
+     }
+    ]
+   },
+   "palabrasInteres": {
+    "trabajo": [
+     {
+      "en": "lunch",
+      "es": "almuerzo",
+      "f": {
+       "en": "Lunch is at noon.",
+       "es": "El almuerzo es al mediodía."
+      }
+     },
+     {
+      "en": "desk",
+      "es": "escritorio",
+      "f": {
+       "en": "My desk is tidy.",
+       "es": "Mi escritorio está ordenado."
+      }
+     },
+     {
+      "en": "calm",
+      "es": "calma",
+      "f": {
+       "en": "Calm helps me work.",
+       "es": "La calma me ayuda a trabajar."
+      }
+     }
+    ],
+    "amigos": [
+     {
+      "en": "story",
+      "es": "historia",
+      "f": {
+       "en": "Her story is beautiful.",
+       "es": "Su historia es bonita."
+      }
+     },
+     {
+      "en": "chat",
+      "es": "plática",
+      "f": {
+       "en": "We have a nice chat.",
+       "es": "Tenemos una plática bonita."
+      }
+     },
+     {
+      "en": "company",
+      "es": "compañía",
+      "f": {
+       "en": "Your company is a joy.",
+       "es": "Tu compañía es una alegría."
+      }
+     }
+    ],
+    "biblia": [
+     {
+      "en": "promise",
+      "es": "promesa",
+      "f": {
+       "en": "I keep a promise in my heart.",
+       "es": "Guardo una promesa en mi corazón."
+      }
+     },
+     {
+      "en": "friendship",
+      "es": "amistad",
+      "f": {
+       "en": "Jesus offers friendship.",
+       "es": "Jesús ofrece amistad."
+      }
+     },
+     {
+      "en": "joy",
+      "es": "alegría",
+      "f": {
+       "en": "Joy comes quietly.",
+       "es": "La alegría llega en silencio."
+      }
+     }
+    ],
+    "viajes": [
+     {
+      "en": "airport",
+      "es": "aeropuerto",
+      "f": {
+       "en": "The airport is busy.",
+       "es": "El aeropuerto está lleno."
+      }
+     },
+     {
+      "en": "seat",
+      "es": "asiento",
+      "f": {
+       "en": "My seat is near the window.",
+       "es": "Mi asiento está cerca de la ventana."
+      }
+     },
+     {
+      "en": "backpack",
+      "es": "mochila",
+      "f": {
+       "en": "My backpack is light.",
+       "es": "Mi mochila es ligera."
+      }
+     }
+    ],
+    "cocina": [
+     {
+      "en": "foam",
+      "es": "espuma",
+      "f": {
+       "en": "The foam is on top.",
+       "es": "La espuma está encima."
+      }
+     },
+     {
+      "en": "thick",
+      "es": "espeso",
+      "f": {
+       "en": "The champurrado is thick.",
+       "es": "El champurrado está espeso."
+      }
+     },
+     {
+      "en": "stove",
+      "es": "estufa",
+      "f": {
+       "en": "Turn off the stove.",
+       "es": "Apaga la estufa."
+      }
+     }
+    ]
+   },
+   "consejo": {
+    "es": "Quien abre un libro con calma encuentra buena compañía.",
+    "en": "Whoever opens a book calmly finds good company.",
+    "clave": [
+     {
+      "es": "libro",
+      "en": "book"
+     },
+     {
+      "es": "compañía",
+      "en": "company"
+     }
+    ]
+   },
+   "versiculo": {
+    "libro": "sal",
+    "cap": 147,
+    "desde": 3,
+    "hasta": 3
+   }
+  }
+ ]
+}

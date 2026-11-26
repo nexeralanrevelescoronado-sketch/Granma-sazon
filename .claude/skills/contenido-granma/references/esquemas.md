@@ -66,9 +66,16 @@ Los `id` los pone el build (posición + 1): en una tanda nueva déjalos fuera. T
 - `pares[i] = [palabra en RV1909, palabra en KJV]`, **tal como aparecen** en esos versículos (el validador los busca).
 - No guardes el texto del versículo. Fuente: `scripts/datos/biblia.mjs`.
 
+## Historia 2, pláticas, frases coloquiales y reglas (fuente directa en JSON: `scripts/datos/*.json`)
+
+- **Historia 2** — `scripts/datos/historia2.json`: mismo esquema de capítulo (ids 7 a 12), más `versiculo: { libro, cap, desde, hasta }` (solo la cita; el texto sale de `data/biblia/`). Es sobria: fe con respeto, desde una relación con Dios y no desde reglas, sin presión, sin prometer curas ni dinero, sin hablar mal de ninguna iglesia ni persona.
+- **Plática** — `scripts/datos/platicas.json`: `{ id, tema:{es,en}, turnos:[ { granma:{es,en}, respuestas:[ { t:{es,en}, r:{es,en} } ×3 ] } ×3 ], cierre:{es,en} }`. No hay respuestas malas; Granma contesta alegre a las tres.
+- **Frase coloquial** — `scripts/datos/coloquial.json`: `{ id, idioma, region, frase, significa:{es,en}, uso:{es,en}, ejemplo:{es,en} }`. `uso` dice cuándo sí y cuándo no. Solo expresiones sanas y comprobables; cero burlas a regiones o acentos.
+- **Regla** — `scripts/datos/reglas.json`: `{ id, para, titulo, resumen, puntos:[ { regla:{es,en}, ejemplos:[{en,es}] } ], practica:[ { p:{es,en}, frase, ok, mal:[2] } ×4 ] }`.
+
 ## Glosario al toque (obligatorio al agregar contenido)
 
-Cada palabra nueva que aparezca en un texto (`es`/`en`) necesita su entrada en `scripts/datos/glosario/en.json` (inglés → significado en español) o `es.json` (español → significado en inglés). La clave es la forma exacta en minúsculas (`cooked`, `manzanas`, `don't`); el valor, un significado corto (≤ 45 caracteres, sin punto final; dos sentidos se separan con `; `). `npm test` dice qué palabras faltan.
+Cada palabra nueva que aparezca en un texto (`es`/`en`) necesita su entrada en `scripts/datos/glosario/en.json` (inglés → significado en español) o `es.json` (español → significado en inglés). La clave es la forma exacta en minúsculas (`cooked`, `manzanas`, `don't`); el valor, un significado corto (≤ 45 caracteres, sin punto final; dos sentidos se separan con `; `). `npm test` dice qué palabras faltan, y `node scripts/glosario-faltan.mjs <archivo.json>` lo dice para un archivo suelto.
 
 ### Glosario bíblico (completo)
 

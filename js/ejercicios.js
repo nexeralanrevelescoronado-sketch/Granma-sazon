@@ -101,6 +101,7 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
       } else if (it.tipo === 'orden') {
         it.tokens = mezclar((it.letras ? [...it.respuesta] : it.respuesta.split(/\s+/)).map((t, i) => ({ t, i }))); it.armado = [];
         cuerpo = `<p class="pregunta">${esc(it.prompt)}<small>${esc(it.ayuda)}</small></p>
+          ${it.oir && it.voz ? `<button class="btn-icono" data-voz aria-label="${u('Escuchar', 'Listen')}">🔊</button>` : ''}
           <div class="armado ${it.letras ? 'letras' : ''}" data-armado aria-live="polite" aria-label="${it.letras ? u('Tu palabra', 'Your word') : u('Tu frase', 'Your sentence')}"></div>
           <div class="fichas ${it.letras ? 'letras' : ''}" data-fichas>${it.tokens.map((k) => `<button class="ficha" data-ficha="${k.i}">${esc(k.t)}</button>`).join('')}</div>`;
       } else if (it.tipo === 'pares') {
@@ -307,6 +308,8 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
         boton.disabled = it.armado.length !== it.tokens.length;
       } else if (it.tipo === 'pares' && b.dataset.lado) {
         if (b.classList.contains('hecho')) return;
+        // Al tocar la palabra del idioma que se aprende, se oye (inglés para quien aprende inglés; español para quien aprende español).
+        if (b.dataset.lado === 'i' && it.sel !== b && estado().ajustes.voz) hablar(b.dataset.v, T);
         if (!it.sel) { it.sel = b; b.classList.add('sel'); return; }
         if (it.sel === b) { b.classList.remove('sel'); it.sel = null; return; }
         if (it.sel.dataset.lado === b.dataset.lado) { it.sel.classList.remove('sel'); it.sel = b; b.classList.add('sel'); return; }

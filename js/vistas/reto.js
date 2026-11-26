@@ -5,6 +5,7 @@ import { pj } from '../personajes.js';
 import { esc, mezclar, mmss, al } from '../util.js';
 import { sonido } from '../sound.js';
 import { confeti, vibrar, hablar } from '../fx.js';
+import { porraHTML, fiesta } from '../porras.js';
 
 const todasLasPalabras = (h, interes) => h.capitulos.flatMap((c) => [...c.palabras, ...(c.palabrasInteres?.[interes] || [])]);
 
@@ -52,8 +53,10 @@ function reto(main, pool, S) {
     main.innerHTML = `<div class="centro">${pj(aciertos >= 8 ? 'granma' : 'abuelo', aciertos >= 8 ? 'aplaudiendo' : 'contento', { ancho: 150, clase: 'anim-aplaude' })}<h1>${u('¡Se acabó el tiempo!', 'Time is up!')}</h1>
       <p style="font-size:1.4rem"><strong>${aciertos}</strong> ${u('aciertos', 'correct')} · ${fallos} ${u('fallos', 'misses')}</p><p class="estrella">+${aciertos * 2} XP ${nuevo ? '· 🏅 ' + u('¡nueva mejor marca!', 'new best!') : ''}</p>
       <p>${aciertos >= 8 ? u('¡Ándale, mijo, qué rápido!', 'Wow, mijo, so fast!') : u('Quien persevera, alcanza.', 'Whoever perseveres, achieves.')}</p></div>
+      ${porraHTML('taquitos', { conPj: aciertos < 8 })}
       <button class="btn grande olla" data-otra>${u('Otro reto', 'Another challenge')}</button><p class="mt centro"><a href="#/">${u('Ir al inicio', 'Go home')}</a></p>`;
     main.onclick = (e) => { if (e.target.closest('[data-otra]')) jugar(); };
+    fiesta(main, aciertos >= 8 ? '.pj' : '[data-premio] .pj');
   }
   portada();
   main.onclick = (e) => { if (e.target.closest('[data-ir]')) jugar(); };
@@ -65,7 +68,7 @@ function repaso(main, pool, S) {
   const pintar = () => {
     if (i >= cartas.length) {
       sonido.logro();
-      main.innerHTML = `<div class="vacio">${pj('granma', 'aplaudiendo', { ancho: 150, clase: 'anim-aplaude' })}<h1>${u('¡Repaso listo!', 'Review done!')}</h1><p>${u('Repasar no gasta energía y deja las palabras fresquitas.', 'Reviewing uses no energy and keeps the words fresh.')}</p><a class="btn olla" href="#/historia">${u('Volver a la historia', 'Back to the story')}</a></div>`; return;
+      main.innerHTML = `<div class="vacio">${pj('granma', 'aplaudiendo', { ancho: 150, clase: 'anim-aplaude' })}<h1>${u('¡Repaso listo!', 'Review done!')}</h1>${porraHTML('taquitos', { conPj: false })}<p>${u('Repasar no gasta energía y deja las palabras fresquitas.', 'Reviewing uses no energy and keeps the words fresh.')}</p><a class="btn olla" href="#/historia">${u('Volver a la historia', 'Back to the story')}</a></div>`; fiesta(main); return;
     }
     const c = cartas[i];
     main.innerHTML = `<h1>${u('Repaso de palabras', 'Word review')}</h1><p class="muted">${i + 1} / ${cartas.length}</p>

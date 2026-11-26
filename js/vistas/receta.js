@@ -5,6 +5,7 @@ import { pj } from '../personajes.js';
 import { esc, mmss } from '../util.js';
 import { sonido } from '../sound.js';
 import { confeti } from '../fx.js';
+import { porraHTML, fiesta } from '../porras.js';
 import { timers, nuevo, restante, alternar, reiniciar, pedirPermisoDeAviso, avisosDisponibles } from '../cronometros.js';
 
 const cant = (i) => `${Number.isInteger(i.cant) ? i.cant : i.cant === 0.5 ? '½' : String(i.cant).replace('.', ',')} ${i.un}`;
@@ -58,6 +59,8 @@ export async function montar(main, { args }) {
   }
   function terminar() {
     if (reg.hecha) return; reg.hecha = true; guardar(); ganarXP(30); revisarInsignias(); sonido.logro(); confeti(150); pintar();
+    // Granma lo celebra: porra, premio y tortillas
+    main.querySelector('.tarjeta.verde')?.insertAdjacentHTML('afterend', porraHTML('taquitos')); fiesta(main, '[data-premio] .pj');
   }
   main.onclick = (e) => {
     const b = e.target.closest('button'); if (!b) return;

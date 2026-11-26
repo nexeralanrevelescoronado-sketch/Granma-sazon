@@ -1,4 +1,4 @@
-# Guion del Abuelo: 51 frases para grabar
+# Guion del Abuelo: 57 frases para grabar
 
 Generado con `node scripts/audios.mjs guion`. No lo edites a mano: sale de `scripts/datos/`.
 
@@ -65,3 +65,9 @@ Generado con `node scripts/audios.mjs guion`. No lo edites a mano: sale de `scri
 49. La paciencia es la mejor especia.
 50. Quien promete con el corazón, cumple con las manos.
 51. Una puerta abierta calienta más que una fogata.
+52. Quien sabe extrañar sabe querer, y eso nunca es debilidad.
+53. Lo que se guarda con cariño nunca se pierde del todo.
+54. El miedo pesa menos cuando lo dices en voz alta.
+55. Una carga compartida pesa la mitad.
+56. Antes de juzgar a alguien, acompáñalo un rato.
+57. Quien abre un libro con calma encuentra buena compañía.

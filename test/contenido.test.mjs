@@ -306,7 +306,7 @@ test('grabaciones del Abuelo: guion completo, índice coherente y respaldo con l
     assert.ok(frases.has(frase), `grabación de una frase que ya no existe: ${ruta}`);
     assert.ok(existsSync(join(RAIZ, ruta)) && paquete.archivos.includes(ruta), `${ruta} debe existir y viajar en el paquete de consejos`);
   }
-  const v = leer('js/voz.js'); assert.ok(/tocarGrabacion\(ruta\)\) return true;[\s\S]*return decirSintetica/.test(v), 'si la grabación falla, habla la voz del dispositivo');
+  const v = leer('js/voz.js'); assert.ok(/tocarGrabacion\(ruta, lenta\)\) return cerrar\(true\);[\s\S]*await decirSintetica/.test(v), 'si la grabación falla, habla la voz del dispositivo');
   const { claveAudio } = await import('../js/voz.js'); assert.equal(claveAudio('  Hola   Mijo. '), 'hola mijo.');
 });
 
@@ -430,7 +430,7 @@ test('Oído de Granma: califica palabra por palabra, es opcional, con licencia a
   assert.deepEqual(o.match(/fetch\([^)]*\)/g), ["fetch('data/glosario.json')"], 'lo único que pide por red es leer el vocabulario de la propia app');
   const { MAX_TORTILLAS, TRICOLOR } = await import('../assets/animaciones/fiesta.js'); assert.ok(MAX_TORTILLAS <= 24 && TRICOLOR.length >= 3);
   const f = leer('assets/animaciones/fiesta.js'); assert.ok(/prefers-reduced-motion/.test(f) && !/(left|top|width|height|margin)\s*:/.test(f.slice(f.indexOf('t.animate'))), 'solo transform y opacity');
-  assert.ok(/Te ganaste 1 kilo de tortillas hechas con mucho amor/.test(leer('js/vistas/leccion.js')));
+  assert.ok(/Te ganaste 1 kilo de tortillas hechas con mucho amor/.test(leer('js/porras.js')) && /porraHTML\('tortillas'/.test(leer('js/vistas/leccion.js')), 'la lección premia con el kilo de tortillas');
   assert.ok(/rotateX\(/.test(f) && /perspective:\s*\d+px/.test(leer('css/app.css')), 'las tortillas giran en 3D (perspectiva + rotateX)');
   const css = leer('css/app.css'); assert.ok(/\.tortilla\{[^}]*radial-gradient[\s\S]*?--canto/.test(css), 'la tortilla lleva manchas tostadas y grosor');
   assert.ok(!/\.tortillas-cap \.tortilla\{[^}]*filter:/.test(css), 'sin filtros: se ven borrosas al crecer');
@@ -475,4 +475,54 @@ test('Cloudflare Pages: ningún archivo pasa de 25 MiB, los modelos van partidos
   const rutas = JSON.parse(leer('dist/_routes.json')); assert.deepEqual(rutas.include, ['/assets/oido/modelo-en.tar.gz', '/assets/oido/modelo-es.tar.gz']);
   const fn = leer('functions/assets/oido/[archivo].js'); assert.ok(/PERMITIDOS = new Set\(\['modelo-en\.tar\.gz', 'modelo-es\.tar\.gz'\]\)/.test(fn) && /206/.test(fn) && /content-range/.test(fn));
   const w = leer('wrangler.toml'); assert.ok(/pages_build_output_dir = "\.\/dist"/.test(w) && !/r2_buckets/.test(w), 'no hace falta R2');
+});
+
+test('hablar y escuchar: sección propia, bocina lenta, parejas con voz, turnos de 5 s y porras con tortillas estrelladas', async () => {
+  // 1) sección nueva, antes de la Biblia en la barra
+  const app = leer('js/app.js'); assert.ok(/hablar: \(\) => import\('\.\/vistas\/hablar\.js'\)/.test(app));
+  assert.ok(app.indexOf("['hablar', 'hablar'") > 0 && app.indexOf("['hablar', 'hablar'") < app.indexOf("['biblia', 'biblia'"), 'Hablar va antes de Biblia');
+  const { armarEscucha, material } = await import('../js/escucha.js'), caps = historia.capitulos.slice(0, 2);
+  for (const [T, N] of [['en', 'es'], ['es', 'en']]) {
+    for (const modo of ['elige', 'repite', 'arma', 'mixto']) {
+      const r = armarEscucha(caps, 'cocina', modo, T, N, 8); assert.equal(r.length, 8, `${modo}: 8 ejercicios`);
+      for (const it of r) {
+        assert.ok(it.voz, 'todo ejercicio de esta sección se oye');
+        if (it.tipo === 'mcq') { assert.ok(it.oir && it.opciones.includes(it.correcta) && new Set(it.opciones).size === it.opciones.length); }
+        if (it.tipo === 'orden') assert.ok(it.oir && it.respuesta === it.voz, 'dictado: se arma lo que se oye');
+        if (it.tipo === 'di') assert.equal(it.frase, it.voz);
+      }
+    }
+    assert.ok(armarEscucha(caps, 'cocina', 'mixto', T, N).some((x) => x.tipo === 'di') && armarEscucha(caps, 'cocina', 'mixto', T, N).some((x) => x.tipo === 'orden'));
+  }
+  const m = material(caps, 'viajes'); assert.equal(new Set(m.palabras.map((p) => p.en.toLowerCase())).size, m.palabras.length, 'sin palabras repetidas');
+  assert.ok(/usarVidas: false/.test(leer('js/vistas/hablar.js')), 'practicar aquí no gasta energía');
+  // 2) bocina lenta junto a cada bocina, y voces pausadas
+  const { PERFIL, LENTA } = await import('../js/voz.js');
+  assert.ok(PERFIL.granma.rate <= 0.85 && PERFIL.abuelo.rate <= 0.78 && LENTA <= 0.7 && PERFIL.abuelo.rate * LENTA >= 0.45, 'voz pausada, y la lenta sigue siendo entendible');
+  const lento = leer('js/lento.js'); assert.ok(/MutationObserver/.test(lento) && /pedirLenta\(\); bocina\.click\(\)/.test(lento) && /Escuchar despacio/.test(lento) && /Listen slowly/.test(lento));
+  assert.ok(/PEREZOSO = '<svg/.test(lento) && !/🐢/.test(lento + leer('js/escucha.js') + leer('js/vistas/hablar.js')), 'el modo lento es un perezoso dibujado (no tortuga, no emoji)');
+  assert.ok(/modo perezoso/.test(lento) && /sloth mode/.test(lento), 'el botón dice «modo perezoso»');
+  assert.ok(/iniciarLento\(\)/.test(app));
+  // 3) parejas: la palabra del idioma que se aprende suena al tocarla; dictado con bocina
+  const ej = leer('js/ejercicios.js'); assert.ok(/b\.dataset\.lado === 'i'[^\n]*hablar\(b\.dataset\.v, T\)/.test(ej), 'las parejas suenan');
+  assert.ok(/it\.oir && it\.voz \? `<button class="btn-icono" data-voz/.test(ej), 'el dictado trae bocina');
+  // 4) entre Granma y el Abuelo pasan al menos 5 segundos
+  const { faltaParaHablar, PAUSA_CAMBIO, PAUSA_MISMA } = await import('../js/habla.js');
+  assert.ok(PAUSA_CAMBIO >= 5000 && PAUSA_MISMA >= 500);
+  assert.equal(faltaParaHablar({ quien: 'granma', fin: 10000 }, 'abuelo', 11000), 4000);
+  assert.equal(faltaParaHablar({ quien: 'granma', fin: 10000 }, 'abuelo', 15000), 0);
+  assert.equal(faltaParaHablar({ quien: 'abuelo', fin: 10000 }, 'granma', 10100), 4900);
+  assert.equal(faltaParaHablar({ quien: 'granma', fin: Infinity }, 'abuelo', 99999), Infinity, 'mientras Granma habla, el Abuelo espera');
+  assert.equal(faltaParaHablar({ quien: 'granma', fin: 10000 }, 'granma', 10100), PAUSA_MISMA - 100);
+  assert.equal(faltaParaHablar({ quien: null, fin: 0 }, 'abuelo', 5), 0);
+  // 5) porras, premio de taquitos y tortillas que se estrellan (2 o 3, con tope, solo transform y opacity)
+  const { PORRAS, PREMIOS } = await import('../js/porras.js');
+  assert.ok(PORRAS.length >= 5 && PORRAS.filter(([es]) => /épale/i.test(es)).length >= 4, 'Granma grita «¡Épale!»');
+  for (const [es, en] of [...PORRAS, ...Object.values(PREMIOS)]) { assert.ok(es && en); for (const p of PROHIBIDAS) assert.ok(!(es + ' ' + en).toLowerCase().includes(p), p); }
+  assert.match(PREMIOS.taquitos[0], /Te ganaste unos taquitos de barbacoa/);
+  const { MAX_PEGADAS, GOLPE } = await import('../assets/animaciones/fiesta.js'); assert.ok(MAX_PEGADAS <= 3 && GOLPE > 0 && GOLPE < 0.5);
+  assert.ok(/lluviaTortillas\([^\n]*2 \+ \(Math\.random\(\) < 0\.5 \? 1 : 0\)/.test(leer('js/porras.js')), 'se estrellan 2 o 3');
+  for (const v of ['leccion', 'prueba', 'reto', 'receta', 'hablar']) assert.ok(/porraHTML\(/.test(leer(`js/vistas/${v}.js`)) && /fiesta\(main/.test(leer(`js/vistas/${v}.js`)), `${v}: porra y fiesta al completar`);
+  assert.ok(!/porraHTML/.test(leer('js/vistas/biblia.js')), 'la Biblia se queda formal, sin tortillas');
+  assert.ok(/\.tortilla\.pegada\{width:\d+px/.test(leer('css/app.css')), 'la estrellada se dibuja grande, no se agranda borrosa');
 });

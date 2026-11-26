@@ -8,6 +8,7 @@ import { esc, fechaLocal } from '../util.js';
 import { sonido } from '../sound.js';
 import { confeti } from '../fx.js';
 import { sinEnergiaHTML } from './sin-energia.js';
+import { porraHTML, fiesta } from '../porras.js';
 
 const IDIOMA = { es: { es: 'español', en: 'Spanish' }, en: { es: 'inglés', en: 'English' } };
 
@@ -65,9 +66,11 @@ export async function montar(main, { args }) {
       <p style="font-size:1.6rem">${estrellas(est)}</p>
       <p><strong>${Math.round(pct * 100)}%</strong> · ${prueba.total - Math.min(errores, prueba.total)} / ${prueba.total} ${u('a la primera', 'on the first try')} · ${errores} ${u('errores', 'mistakes')}</p>
       <p class="estrella">+${xp} XP</p>
+      ${aprobada ? porraHTML('taquitos', { conPj: false }) : ''}
       <p>${aprobada ? u('Cada prueba es un poquito más grande que la anterior: así vas creciendo.', 'Each quiz is a little bigger than the last one: that is how you grow.') : u('Quien persevera, alcanza. Repásala cuando quieras; lo que fallaste es justo lo que más vas a recordar.', 'Whoever perseveres, achieves. Try it again whenever you like; what you missed is exactly what you will remember best.')}</p></div>
       ${aprobada && sig ? `<a class="btn grande" href="#/leccion/${sig.id}">${u('Siguiente capítulo', 'Next chapter')} →</a>` : ''}
       <div class="fila mt" style="justify-content:center"><button class="btn sec" data-otra>${u('Repetir la prueba', 'Retake the quiz')}</button><a class="btn sec" href="#/historia">${u('Volver al mapa', 'Back to the map')}</a></div>`;
+    if (aprobada) fiesta(main);
   }
 
   main.onclick = (e) => {

@@ -4,6 +4,7 @@
 import { estado, guardar, tgt, nat, u } from './state.js';
 import { esc } from './util.js';
 import { hablar } from './fx.js';
+import { ponerLentos } from './lento.js';
 
 let datos = null, biblico = null, burbuja = null;
 const cargar = () => (datos ||= fetch('data/glosario.json').then((r) => (r.ok ? r.json() : { en: {}, es: {} })).catch(() => ({ en: {}, es: {} })));
@@ -57,6 +58,7 @@ function mostrar(palabra, hallado, caja, idioma, enBiblia) {
   cerrarGlosa();
   burbuja = document.createElement('div'); burbuja.className = 'glosa'; burbuja.setAttribute('role', 'dialog'); burbuja.setAttribute('aria-live', 'polite');
   burbuja.innerHTML = `<button class="btn-icono" data-glosa-voz aria-label="${u('Escuchar', 'Listen')}">🔊</button><div><strong lang="${idioma}">${esc(palabra)}</strong><span lang="${nat()}">${hallado ? esc(hallado.significado) : (enBiblia ? u('Esta palabra aún no está en el glosario bíblico.', 'This word is not in the Bible glossary yet.') : u('Todavía no tengo esta palabra en mi cuaderno.', 'I do not have this word in my notebook yet.'))}</span></div>`;
+  ponerLentos(burbuja);            // el perezoso se pone antes de medir la burbuja, para que no se salga de la pantalla
   document.body.append(burbuja);
   const ancho = burbuja.offsetWidth, alto = burbuja.offsetHeight, vw = document.documentElement.clientWidth;
   const izq = Math.max(8, Math.min(vw - ancho - 8, caja.left + caja.width / 2 - ancho / 2)), arriba = caja.top - alto - 10;

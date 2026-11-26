@@ -3,10 +3,10 @@
 import { estado, guardar, u } from './state.js';
 import { reducirMovimiento } from './util.js';
 import { toast } from './fx.js';
-import { vozDisponible, hayVozPara, callar, decirPreferido } from './voz.js';
+import { vozDisponible, hayVozPara, callar, callarGlobo, decirPreferido, ultimaVoz } from './voz.js';
 import { estadoPj, reaccion, hablando, listoPj } from '../assets/animaciones/index.js';
 
-let epoca = 0, cola = Promise.resolve();
+let epoca = 0, cola = Promise.resolve(), enTurno = null;   // enTurno: el globo que está hablando ahora
 
 /* ---------- voz ---------- */
 export { vozDisponible };
@@ -55,6 +55,18 @@ function escribir(globo, mio) {
     })();
   });
 }
+/* ---------- turnos ---------- */
+// Entre que habla Granma y habla el Abuelo (o al revés) pasan, como mínimo, 5 segundos; entre dos globos de la misma
+// persona, una pausa corta para que no se encimen las frases. Solo aplica con la voz encendida.
+export const PAUSA_CAMBIO = 5000, PAUSA_MISMA = 700;
+export const faltaParaHablar = (ultima, quien, ahora = Date.now()) => (!ultima?.quien ? 0 : ultima.fin === Infinity ? Infinity : Math.max(0, (ultima.quien === quien ? PAUSA_MISMA : PAUSA_CAMBIO) - (ahora - ultima.fin)));
+async function esperarTurno(quien, mio, dialogo) {
+  for (;;) {
+    if (mio !== epoca || !dialogo.isConnected) return false;   // cambió la pantalla mientras esperaba: ya no habla
+    const falta = faltaParaHablar(ultimaVoz(), quien); if (falta <= 0) return true;
+    await new Promise((r) => setTimeout(r, Math.min(falta, 200)));
+  }
+}
 const GESTO = new Set(['contenta', 'serio']);   // estados en reposo que pasan a «hablando» (con ademán) mientras se escribe
 async function conBoca(dialogo, hablandoAhora) {
   const span = dialogo.querySelector('.pj'); if (!span) return;
@@ -69,19 +81,24 @@ async function hablar(dialogo, mio) {
   const l1 = globo.querySelector('[lang]'), idioma = (l1?.getAttribute('lang') || document.documentElement.lang || 'es').slice(0, 2);
   const copia = (l1 || globo).cloneNode(true); copia.querySelectorAll('.quien,button,mark svg').forEach((x) => x.remove());
   const texto = copia.textContent.replace(/\s+/g, ' ').trim();
-  await conBoca(dialogo, true);
   const quien = globo.classList.contains('abuelo') ? 'abuelo' : 'granma';          // el Abuelo habla grave y pausado; Granma, cálida
+  if (!dialogo.isConnected) return;
+  if (vozActiva() && texto && !(await esperarTurno(quien, mio, dialogo))) return;
+  enTurno = dialogo;
+  await conBoca(dialogo, true);
   // Si el Abuelo tiene esa frase grabada con su voz real (aunque sea en el otro idioma del globo), se oye la grabación.
   const limpio = (el) => { const c = el.cloneNode(true); c.querySelectorAll('.quien,button,mark svg').forEach((x) => x.remove()); return c.textContent.replace(/\s+/g, ' ').trim(); };
   const otras = [...globo.querySelectorAll('[lang]')].filter((el) => el !== l1).map((el) => [limpio(el), el.getAttribute('lang').slice(0, 2)]).filter(([t]) => t);
-  const voz = vozActiva() && texto ? decirPreferido([[texto, idioma], ...otras], quien) : Promise.resolve();
+  const voz = vozActiva() && texto ? decirPreferido([[texto, idioma], ...otras], quien, { globo: true }) : Promise.resolve();
   await Promise.all([escribir(globo, mio), voz]);
+  if (enTurno === dialogo) enTurno = null;
   await conBoca(dialogo, false);
 }
 
 /** Observa `raiz`: cada diálogo nuevo se «habla» en orden. Tocar un globo lo completa. */
 export function vigilarDialogos(raiz) {
   const cuando = () => {
+    if (enTurno && !enTurno.isConnected) { enTurno = null; callarGlobo(); }   // el globo que hablaba ya no está: se calla (sin tocar una bocina recién apretada)
     const nuevos = [...raiz.querySelectorAll('.dialogo:not([data-habla])')]; if (!nuevos.length) return;
     const mio = epoca;
     for (const d of nuevos) { d.dataset.habla = '1'; const g = d.querySelector('.globo'); if (g) g.style.visibility = 'hidden'; }

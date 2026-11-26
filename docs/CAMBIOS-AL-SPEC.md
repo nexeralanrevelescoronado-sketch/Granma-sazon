@@ -98,3 +98,18 @@
 - Registrado en Cloudflare (1.er año 8.20 USD; renueva a 14.20 USD/año, renovación automática). Conectado al proyecto de Pages `granma-sazon` con un CNAME en la zona.
 - Canonical, Open Graph, `sitemap.xml`, `robots.txt` y recetas apuntan a `https://granmasazon.app/` (fuente: `scripts/sitio.mjs`).
 - `granma-sazon.pages.dev` redirige a `granmasazon.app` con un script al inicio de `index.html` (solo en ese host; conserva ruta y hash). Quien llegue por la dirección vieja pierde su avance local, que vive en el teléfono por dirección.
+
+## Aprender hablando y escuchando, modo perezoso, porras y turnos de voz (26 nov)
+
+Pedido por el dueño. Todo es código propio, sin librerías ni archivos de terceros.
+
+- **Sección nueva «Hablar»** (`#/hablar`, en la barra justo antes de Biblia; `js/vistas/hablar.js` y `js/escucha.js`): rondas de 8 ejercicios de puro oído y voz con las palabras y frases de los capítulos que la persona ya abrió (y las de su interés). Cuatro formas: **Escucha y elige** (se oye una palabra y se escoge cuál fue o qué significa; la palabra no se muestra), **Escucha y repite** (decir en voz alta, con el Oído de Granma si está descargado), **Escucha y arma la frase** (dictado) y **De todo un poco**. No gasta energía y da XP.
+- **Modo perezoso** (`js/lento.js`): junto a **cada** bocina 🔊 de la app aparece sola otra con un perezoso y el letrero «modo perezoso», que dice lo mismo despacio (velocidad × 0.62; las grabaciones del Abuelo a 0.78). El perezoso es un dibujo SVG propio, no un emoji, para que se vea igual en todos los teléfonos.
+- **Voces más pausadas:** Granma pasó de 0.90 a 0.84 y el Abuelo de 0.80 a 0.76.
+- **Parejas con voz:** al tocar la palabra del idioma que se aprende, se oye (inglés para quien aprende inglés, español para quien aprende español). Se apaga con el botón 🗣.
+- **Turnos:** entre que habla Granma y habla el Abuelo (o al revés) pasan **5 segundos como mínimo**; entre dos globos de la misma persona, 0.7 s. Mientras espera, el globo no aparece. Si la pantalla cambia, el globo que hablaba se calla (antes podía seguir hablando encima de lo nuevo). Solo aplica con la voz encendida.
+- **Porras** (`js/porras.js`): al completar una lección, una prueba aprobada, un reto, un repaso, una receta o una ronda de Hablar, Granma grita «¡Épale!» con una porra (6, van en orden), lo dice en voz alta y anuncia el premio: el kilo de tortillas en la lección y **«¡Te ganaste unos taquitos de barbacoa, mijo!»** en lo demás.
+- **Tortillas estrelladas** (`assets/animaciones/fiesta.js`): de las que avienta Granma, 2 o 3 se estrellan contra la pantalla, quedan pegadas medio saliéndose por la orilla, resbalan y caen (con un «plaf» y una vibración corta). Solo `transform` y `opacity`, una vez; con «reducir movimiento» no vuela nada.
+- **Lo que se dejó igual a propósito:** la Biblia no lleva porras ni tortillas (se pidió formal), y los mini-ejercicios de una sola pregunta de Consejos y Cotorreo tampoco, para que la fiesta no canse.
+- **De paso:** el botón «Comprobar» ya no flota translúcido encima de la barra de abajo.
+- **Pruebas:** `npm test` (32) y `node scripts/qa-escucha.mjs` en navegador real a 360, 390 y 1280 px (voz simulada que anota texto, idioma, velocidad y momento).

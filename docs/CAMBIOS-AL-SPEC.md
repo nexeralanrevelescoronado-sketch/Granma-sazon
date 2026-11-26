@@ -97,4 +97,4 @@
 ## Dominio propio: granmasazon.app (26 nov)
 - Registrado en Cloudflare (1.er año 8.20 USD; renueva a 14.20 USD/año, renovación automática). Conectado al proyecto de Pages `granma-sazon` con un CNAME en la zona.
 - Canonical, Open Graph, `sitemap.xml`, `robots.txt` y recetas apuntan a `https://granmasazon.app/` (fuente: `scripts/sitio.mjs`).
-- `granma-sazon.pages.dev` sigue vivo; falta redirigirlo cuando se confirme que el dominio abre con datos móviles. El avance vive en el teléfono por dirección: al cambiar de dirección se ve en cero.
+- `granma-sazon.pages.dev` redirige a `granmasazon.app` con un script al inicio de `index.html` (solo en ese host; conserva ruta y hash). Quien llegue por la dirección vieja pierde su avance local, que vive en el teléfono por dirección.

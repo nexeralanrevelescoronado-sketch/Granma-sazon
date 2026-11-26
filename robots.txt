@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /demo-animaciones.html
-Sitemap: https://granma-sazon.pages.dev/sitemap.xml
+Sitemap: https://granmasazon.app/sitemap.xml

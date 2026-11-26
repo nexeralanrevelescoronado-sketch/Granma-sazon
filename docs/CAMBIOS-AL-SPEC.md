@@ -93,3 +93,8 @@
 - **Probado** con el simulador oficial (wrangler 4): rangos y archivo completo idénticos byte por byte al original, descarga del Oído desde la pantalla Descargas y reconocimiento de una frase.
 - **Plan gratis** (verificado en la documentación de Cloudflare): Pages 20,000 archivos y 25 MiB por archivo; las peticiones a archivos estáticos son gratis e ilimitadas; la función solo corre al bajar los modelos.
 - GitHub Pages sigue publicándose igual; los dos sitios funcionan a la vez.
+
+## Dominio propio: granmasazon.app (26 nov)
+- Registrado en Cloudflare (1.er año 8.20 USD; renueva a 14.20 USD/año, renovación automática). Conectado al proyecto de Pages `granma-sazon` con un CNAME en la zona.
+- Canonical, Open Graph, `sitemap.xml`, `robots.txt` y recetas apuntan a `https://granmasazon.app/` (fuente: `scripts/sitio.mjs`).
+- `granma-sazon.pages.dev` sigue vivo; falta redirigirlo cuando se confirme que el dominio abre con datos móviles. El avance vive en el teléfono por dirección: al cambiar de dirección se ve en cero.

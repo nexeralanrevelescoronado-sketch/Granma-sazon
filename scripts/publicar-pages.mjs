@@ -30,7 +30,7 @@ for (const m of MODELOS) {
   writeFileSync(join(DIST, 'assets/oido/partes', `${nombre}.json`), JSON.stringify({ tam: datos.length, pedazo: PEDAZO, n, huella: createHash('sha256').update(datos).digest('hex').slice(0, 32) }));
 }
 // Las funciones solo corren en la ruta de los modelos: todo lo demás es estático (gratis e ilimitado en Pages)
-writeFileSync(join(DIST, '_routes.json'), JSON.stringify({ version: 1, include: MODELOS.map((m) => '/' + m), exclude: [] }, null, 1));
+writeFileSync(join(DIST, '_routes.json'), JSON.stringify({ version: 1, include: [...MODELOS.map((m) => '/' + m), '/api/avisos/*'], exclude: [] }, null, 1));
 // El service worker y la página siempre se revisan contra el servidor (si no, una versión vieja podría quedarse pegada)
 writeFileSync(join(DIST, '_headers'), ['/sw.js', '  Cache-Control: no-cache', '/', '  Cache-Control: no-cache', '/index.html', '  Cache-Control: no-cache', ''].join('\n'));
 

@@ -158,3 +158,16 @@ Pedido por el dueño.
 - **La app en tu teléfono** (`js/permisos.js`, en Perfil): un renglón con su botón para la versión, instalar en la pantalla de inicio, avisos, micrófono y proteger las descargas. Cada botón hace aparecer la autorización del propio teléfono; la app nunca pide nada sola al abrir. Si algo quedó bloqueado, no se insiste: se explica cómo activarlo en los ajustes. El inicio invita con «Deja lista tu app» mientras falte instalarla o decidir sobre los avisos.
   - **Límite real de los avisos:** la app no tiene servidor, así que hoy solo puede avisar del cronómetro de las recetas mientras está abierta o en segundo plano. Los recordatorios diarios («no pierdas tu racha») necesitarían un servidor de avisos; en iPhone, además, los avisos solo existen con la app instalada en la pantalla de inicio (iOS 16.4 o más reciente).
 - **Pruebas:** `npm test` (36) y `node scripts/qa-app.mjs`, que publica versiones nuevas contra un service worker real y comprueba el aviso, el botón y la recarga.
+
+## Recordatorio diario con servidor propio (26 nov)
+
+Pedido y aprobado por el dueño, sabiendo que la app deja de ser «sin servidor». Detalle técnico en `servidor/avisos/README.md`.
+
+- **Qué hace:** en Perfil → «La app en tu teléfono» → **Recordatorio diario**, la persona elige una hora y Granma le manda un aviso al día para invitarla a practicar, aunque la app esté cerrada. Se cambia de hora o se quita con un botón.
+- **Cómo:** función de Cloudflare Pages `functions/api/avisos/[[ruta]].js` (alta, baja, clave pública y envío), base D1 `granma-avisos` y un Worker «despertador» con cron cada 5 minutos. Código propio, sin librerías.
+- **Privacidad por diseño:** el aviso viaja **sin contenido**. El servidor solo «toca el timbre»; el texto lo arma el teléfono (`sw.js`) con lo que la app dejó anotado localmente: idioma, «mijo/mija» y si hoy ya practicó. Por eso el servidor guarda únicamente la dirección de avisos del navegador y la hora en UTC. Ni nombre, ni idioma, ni avance, ni ubicación.
+- **Se borra** al quitar el recordatorio, al «Borrar mi progreso», cuando el servicio de avisos dice que el teléfono ya no existe, o tras 7 días de fallos.
+- **Seguridad:** solo se aceptan direcciones de los servicios de avisos de los navegadores (Google, Apple, Mozilla, Microsoft), solo desde `https://granmasazon.app`, y el envío solo lo puede pedir el despertador con su secreto. La clave privada se generó dentro de Cloudflare y no está en el repositorio ni la ha visto nadie.
+- **Tono:** seis avisos que invitan («Ya está el café, mijo. ¿Platicamos cinco minutitos?»). Nada de «vas a perder tu racha». Si ese día ya practicó, el aviso la felicita.
+- **Límites:** en iPhone solo funciona con la app en la pantalla de inicio (iOS 16.4 o más reciente). En el plan gratis caben unos 480 avisos por cada hora del día. El aviso sin contenido se probó contra un servicio simulado; **falta confirmarlo en un iPhone y un Android reales**.
+- **Pruebas:** `test/avisos.test.mjs` (la función real contra SQLite y un servicio de avisos de mentiras que revisa la firma), el simulador de Cloudflare y `scripts/qa-app.mjs`.

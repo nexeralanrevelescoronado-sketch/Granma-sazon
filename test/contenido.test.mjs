@@ -472,7 +472,7 @@ test('Cloudflare Pages: ningún archivo pasa de 25 MiB, los modelos van partidos
   }
   assert.ok(/PIEZA = 4 \* 1024 \* 1024/.test(leer('js/descargas.js')), 'el pedazo de Pages mide lo mismo que el que pide la app');
   assert.ok(!existsSync(join(RAIZ, 'dist/scripts')) && !existsSync(join(RAIZ, 'dist/graphify-out')) && !existsSync(join(RAIZ, 'dist/.claude')), 'nada interno se publica');
-  const rutas = JSON.parse(leer('dist/_routes.json')); assert.deepEqual(rutas.include, ['/assets/oido/modelo-en.tar.gz', '/assets/oido/modelo-es.tar.gz']);
+  const rutas = JSON.parse(leer('dist/_routes.json')); assert.deepEqual(rutas.include, ['/assets/oido/modelo-en.tar.gz', '/assets/oido/modelo-es.tar.gz', '/api/avisos/*'], 'solo los modelos y el recordatorio pasan por funciones; lo demás es estático');
   const fn = leer('functions/assets/oido/[archivo].js'); assert.ok(/PERMITIDOS = new Set\(\['modelo-en\.tar\.gz', 'modelo-es\.tar\.gz'\]\)/.test(fn) && /206/.test(fn) && /content-range/.test(fn));
   const w = leer('wrangler.toml'); assert.ok(/pages_build_output_dir = "\.\/dist"/.test(w) && !/r2_buckets/.test(w), 'no hace falta R2');
 });
@@ -688,4 +688,32 @@ test('trato, actualización y permisos: «mijo» o «mija» en toda la app, bot�
   assert.ok(/no manda publicidad/.test(per), 'dice para qué son los avisos');
   for (const f of ['js/app.js', 'js/vistas/inicio.js']) assert.ok(!/requestPermission|getUserMedia/.test(leer(f)), `${f}: nada de permisos al abrir`);
   assert.ok(/data-permisos/.test(leer('js/vistas/perfil.js')) && /data-app-lista/.test(leer('js/vistas/inicio.js')));
+});
+
+test('recordatorio diario: el teléfono arma el aviso (idioma, mijo/mija, si ya practicó), sin regaños, y la privacidad lo dice', async () => {
+  // el texto del aviso vive en el service worker: se corre aquí con un «self» de mentiras
+  const vm = await import('node:vm'), escuchas = {};
+  const ctx = { self: { addEventListener: (n, f) => { escuchas[n] = f; }, registration: { scope: 'https://granmasazon.app/' }, clients: {}, skipWaiting() {} }, URL, caches: {}, fetch() {}, Date, Promise, JSON, Math, String, console };
+  vm.runInNewContext(leer('sw.js') + '\n;globalThis.__t = textoDelRecordatorio; globalThis.__R = RECORDATORIOS; globalThis.__Y = YA_PRACTICO;', ctx);
+  const texto = ctx.__t, R = ctx.__R, hoy = new Date(2026, 10, 26, 19, 0), hoyTxt = '2026-11-26';
+  assert.ok(escuchas.push && escuchas.notificationclick, 'el service worker atiende el aviso y el toque');
+  assert.ok(R.es.length >= 6 && R.en.length === R.es.length);
+  const es = texto({ idioma: 'es', trato: '', dia: '2026-11-25' }, hoy), en = texto({ idioma: 'en', trato: '', dia: '' }, hoy);
+  assert.ok(R.es.some(([t, c]) => t === es.titulo && c === es.cuerpo) && R.en.some(([t, c]) => t === en.titulo && c === en.cuerpo), 'un aviso de la lista, en el idioma de la persona');
+  assert.notEqual(texto({ idioma: 'es' }, new Date(2026, 10, 27)).cuerpo, es.cuerpo, 'cada día toca uno distinto');
+  const mija = texto({ idioma: 'es', trato: 'mija', dia: '' }, hoy); assert.ok(/mija/.test(mija.cuerpo) && !/mijo/i.test(mija.titulo + mija.cuerpo), 'con «mija», el aviso dice mija');
+  const ya = texto({ idioma: 'es', trato: 'mija', dia: hoyTxt }, hoy); assert.ok(/ya practicaste/.test(ya.cuerpo) && /mija/.test(ya.titulo), 'si hoy ya practicó, la felicita en vez de insistir');
+  assert.ok(texto(null, hoy).titulo, 'sin datos guardados, sale el texto general');
+  for (const [t, c] of [...R.es, ...R.en, ctx.__Y.es, ctx.__Y.en]) { assert.ok(t.length <= 40 && c.length <= 90, `corto: ${t}`); for (const p of [...PROHIBIDAS, 'pierdas', 'perder', 'olvid', 'última oportunidad', 'lose', 'miss out', 'last chance', 'forgot']) assert.ok(!(t + ' ' + c).toLowerCase().includes(p), `sin culpa ni presión: «${p}»`); }
+  // la app: suscripción solo al tocar el botón, y lo único que manda es la dirección de avisos y la hora
+  const rec = leer('js/recordatorios.js');
+  assert.ok(/userVisibleOnly: true/.test(rec) && /enviar\('\/alta', \{ endpoint: sub\.endpoint, hora: utc \}\)/.test(rec) && /enviar\('\/baja', \{ endpoint: sub\.endpoint \}\)/.test(rec) && /sub\.unsubscribe\(\)/.test(rec));
+  assert.deepEqual([...rec.matchAll(/JSON\.stringify\(\{([^}]*)\}\)/g)].map((m) => m[1].trim()), ['idioma: nat(), trato: S.perfil.trato || \'\', dia: S.racha.ultimo || \'\''], 'idioma, trato y día se anotan solo en el teléfono (caché local), no en lo que se envía');
+  const { horaUTC, horaBonita } = await import('../js/recordatorios.js');
+  assert.equal(horaUTC(19, 360), 1, '7 p. m. en México (UTC-6) es la 1 UTC'); assert.equal(horaUTC(7, -60), 6); assert.equal(horaUTC(23, 300), 4); assert.equal(horaUTC(0, -540), 15); assert.equal(horaUTC(19, -330), 13, 'zonas con media hora: se redondea hacia abajo');
+  assert.equal(horaBonita(19, 'es'), '7:00 p. m.'); assert.equal(horaBonita(12, 'en'), '12:00 PM'); assert.equal(horaBonita(6, 'es'), '6:00 a. m.');
+  assert.ok(!/requestPermission|pushManager\.subscribe/.test(leer('js/app.js')), 'al abrir no se pide nada: solo se revisa un recordatorio ya activado');
+  const per = leer('js/permisos.js'); assert.ok(/data-p="recordar"/.test(per) && /data-p="no-recordar"/.test(per) && /solo la dirección de avisos de este teléfono y la hora/.test(per), 'botón para activarlo y para quitarlo, diciendo qué se guarda');
+  const perfil = leer('js/vistas/perfil.js'); assert.ok(/Solo si activas el recordatorio diario/.test(perfil) && /quitarRecordatorio\(\)/.test(perfil), 'la privacidad lo explica y «Borrar mi progreso» también lo quita');
+  assert.ok(/Único dato que sale del teléfono/.test(leer('docs/DERECHOS-Y-LICENCIAS.md')));
 });

@@ -135,7 +135,7 @@ export const instalar = async () => { if (!promptInstalar) return false; promptI
 // El service worker se registra hasta que la app ya abrió y pasaron unos segundos: así su instalación (70 archivos) nunca compite con la carga de la primera visita.
 if ('serviceWorker' in navigator) {
   const registrar = () => setTimeout(() => navigator.serviceWorker.register('sw.js')
-    .then(() => navigator.serviceWorker.ready).then((reg) => { vigilarActualizaciones(reg); if (!navigator.serviceWorker.controller) setTimeout(() => reg.active?.postMessage('tomar-control'), 1500); })
+    .then(() => navigator.serviceWorker.ready).then((reg) => { vigilarActualizaciones(reg); import('./recordatorios.js').then((m) => m.sincronizarRecordatorio()).catch(() => {}); if (!navigator.serviceWorker.controller) setTimeout(() => reg.active?.postMessage('tomar-control'), 1500); })
     .catch((e) => console.warn('SW', e)), 3000);
   if (document.readyState === 'complete') registrar(); else addEventListener('load', registrar);
 }

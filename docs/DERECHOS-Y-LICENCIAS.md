@@ -44,7 +44,14 @@ El modelo de español es el **0.42**, bajado de la página oficial, donde consta
 | WhatsApp (compartir) | Solo si la persona toca «compartir» | Abre WhatsApp con un texto; la app no envía datos por su cuenta |
 | GitHub Pages (hospedaje) | Al abrir la app con internet | GitHub registra las visitas como cualquier hospedaje |
 
-La app **no tiene cuentas, servidor propio, analítica, anuncios ni cookies de rastreo**. Todo el avance vive en el teléfono.
+| Cloudflare (hospedaje y recordatorio) | Al abrir la app, y solo si se activa el recordatorio diario | Cloudflare registra las visitas como cualquier hospedaje. El recordatorio guarda en una base propia (D1) la dirección de avisos del teléfono y la hora |
+| Servicio de avisos del navegador | Solo con el recordatorio diario activado | Google, Apple, Mozilla o Microsoft entregan el aviso al teléfono. El aviso viaja sin contenido |
+
+La app **no tiene cuentas, analítica, anuncios ni cookies de rastreo**. Todo el avance vive en el teléfono.
+
+**Único dato que sale del teléfono** (y solo si la persona activa el recordatorio diario): la dirección de avisos que genera su navegador y la hora
+elegida, en UTC. No se guarda nombre, correo, idioma ni avance; el texto del aviso lo arma el propio teléfono. Se borra al quitar el recordatorio,
+al borrar el progreso, cuando el teléfono deja de existir para el servicio de avisos, o tras 7 días de fallos. Código: `servidor/avisos/`.
 
 ## 5. Privacidad y voz
 
@@ -56,7 +63,7 @@ La app **no tiene cuentas, servidor propio, analítica, anuncios ni cookies de r
 
 1. **Marca «Granma Sazón».** Buscarla y registrarla en el IMPI (clases 9 y 41, por ser app y educación) antes de invertir en publicidad.
    Si se va a ofrecer en Estados Unidos, buscar también en USPTO. Desde aquí no se pudo consultar ninguna de las dos bases.
-2. **Aviso de privacidad integral y términos de uso** revisados por un abogado si la app se publica en tiendas, cobra, o se dirige a
+2. **Aviso de privacidad integral y términos de uso** revisados por un abogado (ahora con más razón: el recordatorio diario guarda un dato en un servidor) si la app se publica en tiendas, cobra, o se dirige a
    menores (en México, LFPDPPP; en Estados Unidos, COPPA para menores de 13 años).
 3. **Tiendas de apps:** Apple y Google piden declarar el uso del micrófono y una política de privacidad en una dirección pública.
 4. **Frase «¡Viva México!» y símbolos patrios:** la frase y los colores son de uso libre. El **Escudo y la Bandera** tienen reglas

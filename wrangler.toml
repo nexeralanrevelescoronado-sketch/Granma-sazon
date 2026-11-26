@@ -4,3 +4,14 @@
 name = "granma-sazon"
 pages_build_output_dir = "./dist"
 compatibility_date = "2026-11-01"
+
+# Recordatorio diario (functions/api/avisos/). La base D1 guarda solo la dirección de avisos de cada teléfono y su hora.
+# Los secretos VAPID_PRIVADA y CRON_SECRETO viven en Cloudflare (Workers y Pages → granma-sazon → Configuración → Variables y secretos); nunca en el repositorio.
+[[d1_databases]]
+binding = "DB"
+database_name = "granma-avisos"
+database_id = "5d9ba687-5ca9-4792-bba2-f643e0ec783b"
+
+[vars]
+# Clave PÚBLICA de avisos (se le entrega al navegador; no es un secreto).
+VAPID_PUBLICA = "BKv4rsSwut8pNXL1Bc2IjLEh3vZ1F6o_mXJAkdnbGAIHnxuBQ1H94ekDZY7py5y6H82MBoZz4TwoRK2nNYfjw_8"

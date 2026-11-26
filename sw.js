@@ -6,7 +6,7 @@
  * - Los cachés viejos se limpian en `activate`.
  */
 /*NUCLEO:INICIO*/
-const VERSION = 'c1cc4099e7';
+const VERSION = '892920627a';
 const NUCLEO = [
  "assets/animaciones/animaciones.css",
  "assets/animaciones/confeti.js",
@@ -68,6 +68,7 @@ const NUCLEO = [
  "js/personajes.js",
  "js/porras.js",
  "js/pruebas.js",
+ "js/recordatorios.js",
  "js/sound.js",
  "js/state.js",
  "js/util.js",
@@ -192,7 +193,31 @@ self.addEventListener('message', (ev) => {
   else if (ev.data === 'version') ev.ports?.[0]?.postMessage(VERSION);            // para mostrar la versión en el perfil
 });
 
-// Notificación del cronómetro: al tocarla se enfoca la app (o se abre si estaba cerrada).
+// Recordatorio diario. El servidor solo «toca el timbre» (el aviso llega sin contenido); el texto se arma aquí, en el teléfono,
+// con lo que la app dejó anotado: idioma, si le dicen «mijo» o «mija» y si hoy ya practicó. Granma invita, nunca regaña.
+const RECORDATORIOS = {
+  es: [['Granma te espera ☕', 'Ya está el café, mijo. ¿Platicamos cinco minutitos?'], ['Tu palabra de hoy', 'Mijo, hoy tengo una palabra nueva para ti. Ven tantito.'], ['Cinco minutitos', 'Con poquito diario se llega lejos, mijo. Aquí te espero.'],
+    ['La cocina está abierta', 'Mijo, ya prendí el fogón. Ven a practicar un ratito.'], ['Te guardé tu lugar', 'Tu silla está lista, mijo. ¿Seguimos donde nos quedamos?'], ['¿Cómo va tu día?', 'Cuéntame cómo va tu día, mijo. Yo te escucho.']],
+  en: [['Granma is waiting ☕', 'The coffee is ready, mijo. Shall we chat for five little minutes?'], ['Your word for today', 'Mijo, I have a new word for you today. Come by for a moment.'], ['Five little minutes', 'A little every day goes a long way, mijo. I am right here.'],
+    ['The kitchen is open', 'Mijo, the stove is lit. Come practice for a little while.'], ['I saved your seat', 'Your chair is ready, mijo. Shall we pick up where we left off?'], ['How is your day going?', 'Tell me how your day is going, mijo. I am listening.']],
+};
+const YA_PRACTICO = { es: ['¡Qué gusto, mijo!', 'Hoy ya practicaste. Descansa, que mañana seguimos.'], en: ['So happy, mijo!', 'You already practiced today. Rest, and we continue tomorrow.'] };
+function textoDelRecordatorio(datos, ahora = new Date()) {
+  const idioma = datos?.idioma === 'en' ? 'en' : 'es', hoy = `${ahora.getFullYear()}-${String(ahora.getMonth() + 1).padStart(2, '0')}-${String(ahora.getDate()).padStart(2, '0')}`;
+  const dia = Math.floor((Date.UTC(ahora.getFullYear(), ahora.getMonth(), ahora.getDate()) - Date.UTC(ahora.getFullYear(), 0, 0)) / 86400000);
+  const [titulo, cuerpo] = datos?.dia === hoy ? YA_PRACTICO[idioma] : RECORDATORIOS[idioma][dia % RECORDATORIOS[idioma].length];
+  const trato = (t) => (datos?.trato === 'mija' ? t.replace(/\b([Mm])ijo\b/g, '$1ija') : t);
+  return { titulo: trato(titulo), cuerpo: trato(cuerpo) };
+}
+self.addEventListener('push', (ev) => {
+  ev.waitUntil((async () => {
+    let datos = null; try { const r = await (await caches.open('granma-avisos')).match('datos'); if (r) datos = await r.json(); } catch { /* sin datos: texto general */ }
+    const { titulo, cuerpo } = textoDelRecordatorio(datos);
+    await self.registration.showNotification(titulo, { body: cuerpo, icon: aUrl('assets/iconos/icon-192.png'), badge: aUrl('assets/iconos/icon-192.png'), tag: 'recordatorio', renotify: true });
+  })());
+});
+
+// Notificación (del cronómetro o del recordatorio): al tocarla se enfoca la app (o se abre si estaba cerrada).
 self.addEventListener('notificationclick', (ev) => {
   ev.notification.close();
   ev.waitUntil((async () => {

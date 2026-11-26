@@ -1,5 +1,5 @@
 // QA en navegador: «mijo» o «mija» en toda la app, aviso de versión nueva con el botón «Actualizar» (con un service
-// worker de verdad) y la tarjeta «La app en tu teléfono» con un botón por autorización.
+// worker de verdad), la tarjeta «La app en tu teléfono» con un botón por autorización y el recordatorio diario.
 // Uso: node scripts/qa-app.mjs
 import { createRequire } from 'node:module'; const { chromium } = createRequire('/opt/node-tools/x.js')('playwright');
 import { createServer } from 'node:http'; import { readFileSync, existsSync, statSync, mkdirSync } from 'node:fs'; import { join, extname, dirname } from 'node:path'; import { fileURLToPath } from 'node:url';
@@ -84,18 +84,46 @@ ok(await pg.locator('[data-app-lista]').isVisible(), 'el inicio invita a dejar l
 const pedidos = await pg.evaluate(() => window.__pedidos);
 await pg.click('[data-app-lista]'); await pg.waitForSelector('[data-permisos] .permisos');
 const filas = await pg.locator('.permisos li strong').allTextContents();
-ok(filas.length === 5 && /Versión/.test(filas[0]) && /pantalla de inicio/.test(filas[1]) && /Avisos/.test(filas[2]) && /Micrófono/.test(filas[3]) && /Guardado/.test(filas[4]), 'cinco renglones: ' + filas.map((f) => f.replace(/^\S+\s/, '')).join(' · '));
+ok(filas.length === 6 && /Versión/.test(filas[0]) && /pantalla de inicio/.test(filas[1]) && /Avisos/.test(filas[2]) && /Recordatorio/.test(filas[3]) && /Micrófono/.test(filas[4]) && /Guardado/.test(filas[5]), 'seis renglones: ' + filas.map((f) => f.replace(/^\S+\s/, '')).join(' · '));
 ok(pedidos === 0 && (await pg.evaluate(() => window.__pedidos)) === 0 && (await pg.locator('[data-p="avisos"]').count()) === 1, 'los avisos no se piden solos: hay un botón «Permitir avisos»');
 ok(await pg.evaluate(() => document.documentElement.scrollWidth <= innerWidth) && (await pg.locator('.permisos .btn').evaluateAll((bs) => bs.every((x) => x.getBoundingClientRect().height >= 44))), 'cabe a 390 px y los botones miden ≥ 44 px');
 await pg.locator('[data-permisos]').scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(CAPT, '62-permisos.png') });
 if (await pg.locator('[data-p="micro"]').count()) { await pg.click('[data-p="micro"]'); await pg.waitForSelector('[data-permisos] [role="status"]'); ok(/Ya puedo oírte/.test(await pg.locator('[data-permisos] [role="status"]').textContent()), 'micrófono: al tocar el botón se pide y queda permitido'); }
-else ok(/✓ Permitido/.test(await pg.locator('.permisos li').nth(3).textContent()), 'micrófono: ya estaba permitido');
+else ok(/✓ Permitido/.test(await pg.locator('.permisos li').nth(4).textContent()), 'micrófono: ya estaba permitido');
 await pg.click('[data-p="avisos"]'); await pg.waitForFunction(() => /✓ Permitidos|✓ Allowed/.test(document.querySelector('.permisos')?.textContent || ''));
 ok((await pg.evaluate(() => window.__pedidos)) === 1 && /aviso de prueba/.test(await pg.locator('[data-permisos] [role="status"]').textContent()) && (await pg.locator('[data-p="avisos"]').count()) === 0, 'avisos: al tocar el botón se pide una vez, queda «✓ Permitidos» y manda un aviso de prueba');
 await pg.context().close();
 pg = await nueva(); await pg.context().addInitScript(() => { Object.defineProperty(Notification, 'permission', { get: () => 'denied', configurable: true }); }); await pg.goto(B); await pg.evaluate((e) => localStorage.setItem('granma:v1', e), estado({ trato: '' })); await pg.reload(); await pg.waitForSelector('.nav a'); await pg.goto(B + '#/perfil'); await pg.waitForSelector('[data-permisos] .permisos');
 ok(/Bloqueados/.test(await pg.locator('.permisos li').nth(2).textContent()) && /ajustes de tu teléfono/.test(await pg.locator('.permisos li').nth(2).textContent()) && (await pg.locator('[data-p="avisos"]').count()) === 0, 'si alguien bloqueó los avisos, no se insiste: se explica cómo activarlos en los ajustes');
 await pg.context().close();
+
+console.log('5) Recordatorio diario: activar, cambiar de hora y quitar');
+{ pg = await nueva({ timezoneId: 'America/Mexico_City' }); const pedidos = [];
+  // El navegador de pruebas no tiene servicio de avisos: se simulan el permiso, la suscripción y el servidor, y se revisa qué se le manda.
+  await pg.context().addInitScript(() => { Object.defineProperty(Notification, 'permission', { get: () => 'granted', configurable: true }); let sub = null;
+    PushManager.prototype.getSubscription = async () => sub; PushManager.prototype.subscribe = async (op) => { window.__opciones = { visible: op.userVisibleOnly, bytes: op.applicationServerKey.length }; sub = { endpoint: 'https://fcm.googleapis.com/fcm/send/telefono-de-prueba-0123456789', unsubscribe: async () => { sub = null; window.__baja = true; return true; } }; return sub; }; });
+  await pg.route('**/api/avisos/**', async (ruta) => { const q = ruta.request(), u = new URL(q.url()); pedidos.push({ ruta: u.pathname, metodo: q.method(), cuerpo: q.postData() ? JSON.parse(q.postData()) : null });
+    await ruta.fulfill({ contentType: 'application/json', body: JSON.stringify(u.pathname.endsWith('/clave') ? { ok: true, clave: 'BKv4rsSwut8pNXL1Bc2IjLEh3vZ1F6o_mXJAkdnbGAIHnxuBQ1H94ekDZY7py5y6H82MBoZz4TwoRK2nNYfjw_8' } : { ok: true }) }); });
+  await pg.goto(B); await pg.evaluate((e) => localStorage.setItem('granma:v1', e), estado({ trato: 'mija' })); await pg.reload(); await pg.waitForSelector('.nav a');
+  await pg.waitForFunction(() => navigator.serviceWorker.getRegistration().then((r) => !!r?.active), null, { timeout: 30000 });
+  await pg.goto(B + '#/perfil'); await pg.waitForSelector('[data-p="recordar"]');
+  const fila = pg.locator('.permisos li').nth(3);
+  ok(/Recordatorio diario/.test(await fila.textContent()) && /Apagado/.test(await fila.textContent()) && (await pg.locator('#hora-rec').inputValue()) === '19' && pedidos.length === 0, 'empieza apagado, con las 7:00 p. m. sugeridas, y no se ha mandado nada al servidor');
+  await pg.locator('#hora-rec').selectOption('20'); await pg.click('[data-p="recordar"]'); await pg.waitForSelector('[data-p="no-recordar"]');
+  const alta = pedidos.find((x) => x.ruta.endsWith('/alta'));
+  ok(/✓ Todos los días a las 8:00 p\. m\./.test(await pg.locator('.permisos li').nth(3).textContent()) && /Te aviso todos los días a las 8:00 p\. m\./.test(await pg.locator('[data-permisos] [role="status"]').textContent()), 'al activar: «✓ Todos los días a las 8:00 p. m.»');
+  ok(alta && alta.metodo === 'POST' && JSON.stringify(Object.keys(alta.cuerpo).sort()) === '["endpoint","hora"]' && alta.cuerpo.hora === 2 && /^https:\/\/fcm\.googleapis\.com\//.test(alta.cuerpo.endpoint), 'al servidor solo van la dirección de avisos y la hora en UTC (8 p. m. de México = 2 UTC)');
+  ok(await pg.evaluate(() => window.__opciones.visible === true && window.__opciones.bytes === 65), 'la suscripción se crea con la clave pública del servidor y avisos visibles');
+  const anotado = await pg.evaluate(async () => { const r = await (await caches.open('granma-avisos')).match('datos'); return r ? r.json() : null; });
+  ok(anotado && anotado.idioma === 'es' && anotado.trato === 'mija' && 'dia' in anotado && Object.keys(anotado).length === 3, 'el idioma, el trato y el día de práctica se anotan solo en el teléfono');
+  await pg.locator('[data-permisos]').scrollIntoViewIfNeeded(); await pg.locator('.permisos li').nth(3).scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(CAPT, '63-recordatorio.png') });
+  await pg.locator('#hora-rec').selectOption('7'); await pg.click('[data-p="recordar"]'); await pg.waitForFunction(() => /7:00 a\. m\./.test(document.querySelector('.permisos')?.textContent || ''));
+  ok(pedidos.filter((x) => x.ruta.endsWith('/alta')).at(-1).cuerpo.hora === 13, 'cambiar la hora avisa al servidor (7 a. m. de México = 13 UTC)');
+  await pg.click('[data-p="no-recordar"]'); await pg.waitForFunction(() => !document.querySelector('[data-p="no-recordar"]'));
+  const baja = pedidos.find((x) => x.ruta.endsWith('/baja')), queda = await pg.evaluate(async () => ({ estado: JSON.parse(localStorage.getItem('granma:v1')).ajustes.recordatorio, caja: (await caches.keys()).includes('granma-avisos'), baja: window.__baja }));
+  ok(baja && baja.cuerpo.endpoint === alta.cuerpo.endpoint && queda.baja === true && queda.estado === undefined && queda.caja === false, 'al quitarlo: se borra del servidor, el navegador olvida la dirección y no queda nada anotado');
+  ok(/Apagado/.test(await pg.locator('.permisos li').nth(3).textContent()) && await pg.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'vuelve a «Apagado» y todo cabe a 390 px');
+  await pg.context().close(); }
 
 ok(errores.length === 0, 'sin errores de JS' + (errores.length ? ': ' + errores.slice(0, 3).join(' | ') : ''));
 await b.close(); srv.close(); console.log(fallas.length ? `\n✘ ${fallas.length} fallas` : '\n✔ TRATO, ACTUALIZACIÓN Y PERMISOS OK'); process.exit(fallas.length ? 1 : 0);

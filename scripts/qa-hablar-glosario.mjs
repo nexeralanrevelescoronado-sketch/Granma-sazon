@@ -101,7 +101,7 @@ const dicho = await pg.locator('[data-oido]').textContent(); ok((await pg.locato
 ok(/completa|cortita|No alcancé|Listo/.test(dicho), 'da su veredicto sin internet y sin servicio de voz');
 await pg.clock.runFor(61000); await pg.waitForFunction(() => !document.querySelector('[data-mivoz]'));
 ok(/ya se borró/.test(await pg.locator('[data-oido]').textContent()), 'pasado 1 minuto la grabación se borra sola y lo avisa');
-await pg.goto(B + '#/perfil'); await pg.clock.runFor(1500); await pg.waitForSelector('.privacidad', { timeout: 8000 }).catch(() => {}); ok((await pg.locator('.privacidad li').count()) === 4 && (await pg.locator('[data-probar-micro]').count()) === 1, 'el perfil trae el aviso de privacidad y «Probar mi micrófono»');
+await pg.goto(B + '#/perfil'); await pg.clock.runFor(1500); await pg.waitForSelector('.privacidad', { timeout: 8000 }).catch(() => {}); ok((await pg.locator('.privacidad li').count()) === 5 && (await pg.locator('[data-probar-micro]').count()) === 1, 'el perfil trae el aviso de privacidad y «Probar mi micrófono»');
 await pg.context().close();
 
 ok(errores.length === 0, 'sin errores de JS' + (errores.length ? ': ' + errores.slice(0, 3).join(' | ') : ''));

@@ -524,5 +524,12 @@ test('hablar y escuchar: sección propia, bocina lenta, parejas con voz, turnos 
   assert.ok(/lluviaTortillas\([^\n]*2 \+ \(Math\.random\(\) < 0\.5 \? 1 : 0\)/.test(leer('js/porras.js')), 'se estrellan 2 o 3');
   for (const v of ['leccion', 'prueba', 'reto', 'receta', 'hablar']) assert.ok(/porraHTML\(/.test(leer(`js/vistas/${v}.js`)) && /fiesta\(main/.test(leer(`js/vistas/${v}.js`)), `${v}: porra y fiesta al completar`);
   assert.ok(!/porraHTML/.test(leer('js/vistas/biblia.js')), 'la Biblia se queda formal, sin tortillas');
+  // 6) las palabras coloquiales se explican en los dos idiomas, y están en el glosario al toque
+  const { COLOQUIAL, coloquialesEn } = await import('../js/coloquial.js'), glo = json('data/glosario.json');
+  for (const k of ['épale', 'ándale', 'mijo', 'a la bio']) { assert.ok(COLOQUIAL[k].es.length > 60 && COLOQUIAL[k].en.length > 60, `${k}: explicado con contexto en español e inglés`); for (const p of PROHIBIDAS) assert.ok(!(COLOQUIAL[k].es + COLOQUIAL[k].en).toLowerCase().includes(p), p); }
+  assert.ok(/México/.test(COLOQUIAL.épale.es) && /Mexican/.test(COLOQUIAL.épale.en) && /confianza/.test(COLOQUIAL.épale.es) && /informal/.test(COLOQUIAL.épale.en), '«épale»: de dónde es y cuándo se usa');
+  for (const [es] of PORRAS) assert.ok(coloquialesEn(es).length >= 1, `la porra «${es}» trae su explicación`);
+  assert.ok(/notaColoquial\(es\)/.test(leer('js/porras.js')));
+  for (const [i, l] of [[0, 'es'], [1, 'en']]) for (const t of [...PORRAS, ...Object.values(PREMIOS)]) for (const w of t[i].toLowerCase().match(/[\p{L}']+/gu)) assert.ok(w in glo[l], `falta en el glosario (${l}): «${w}»`);
   assert.ok(/\.tortilla\.pegada\{width:\d+px/.test(leer('css/app.css')), 'la estrellada se dibuja grande, no se agranda borrosa');
 });

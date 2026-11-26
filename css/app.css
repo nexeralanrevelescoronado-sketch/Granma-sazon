@@ -277,3 +277,7 @@ html[data-tgt="en"] main [lang="en"]:not(button),html[data-tgt="es"] main [lang=
 /* tortilla que se estrella contra la pantalla: se dibuja ya grande (no se agranda con scale) para que no salga borrosa */
 .tortillas-cap .tortilla.pegada{width:200px;height:200px;--canto:8px}
 @media (max-width:420px){.nav a{font-size:.66rem}}
+/* ---------- palabras coloquiales explicadas ---------- */
+.coloquial{margin:8px 0 14px;padding:4px 14px;border:2px dashed var(--linea);border-radius:14px;background:var(--blanco);text-align:left}
+.coloquial summary{min-height:44px;display:flex;align-items:center;font-weight:700;color:var(--terra-ink);cursor:pointer}
+.coloquial p{margin:6px 0 10px;line-height:1.45}

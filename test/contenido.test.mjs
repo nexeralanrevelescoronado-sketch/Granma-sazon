@@ -41,7 +41,7 @@ test('cotorreos de Granma: ≥ 30, 5 temas, 3 claves y pregunta', () => {
 });
 
 test('contenido sano: cero groserías, burlas, culpa ni miedo', () => {
-  const todo = textoDe([consejos, cotorreos, historia, recetas]);
+  const todo = textoDe([consejos, cotorreos, historia, recetas, ...['historia2', 'coloquial', 'reglas', 'platicas'].map((f) => json(`data/${f}.json`))]);
   const RAICES = ['estúpid', 'pendej', 'imbécil', 'maric', 'stupid'];
   for (const p of PROHIBIDAS) assert.ok(!new RegExp(`(^|[^\\p{L}])${p}${RAICES.some((r) => p.startsWith(r)) ? '' : '($|[^\\p{L}])'}`, 'u').test(todo), `palabra no permitida: «${p}»`);
 });
@@ -296,7 +296,7 @@ test('manos: el Abuelo levanta la mano abierta (palma, 4 dedos y pulgar), nunca 
 });
 
 test('grabaciones del Abuelo: guion completo, índice coherente y respaldo con la voz del dispositivo', async () => {
-  const guion = leer('docs/GUION-ABUELO.md'), consejos = JSON.parse(leer('data/consejos.json')), caps = JSON.parse(leer('data/historia.json')).capitulos;
+  const guion = leer('docs/GUION-ABUELO.md'), consejos = JSON.parse(leer('data/consejos.json')), caps = [...JSON.parse(leer('data/historia.json')).capitulos, ...JSON.parse(leer('data/historia2.json')).capitulos];
   for (const c of consejos) assert.ok(guion.includes(c.es), `falta en el guion el consejo ${c.id}`);
   for (const c of caps) assert.ok(guion.includes(c.consejo.es), `falta en el guion el consejo del capítulo ${c.id}`);
   assert.equal((guion.match(/^\d+\. /gm) || []).length - 5, consejos.length + caps.length, 'el guion se regenera con: node scripts/audios.mjs guion');
@@ -316,7 +316,7 @@ test('glosario al toque: toda palabra del contenido tiene su significado, en los
   const anda = (o) => { if (!o || typeof o !== 'object') return; if (Array.isArray(o)) return o.forEach(anda);
     for (const [k, v] of Object.entries(o)) { const l = k === 'en' || k === 'we' ? 'en' : k === 'es' || k === 'ws' ? 'es' : null;
       if (l) (Array.isArray(v) ? v : [v]).forEach((x) => (typeof x === 'string' ? suma(l, x) : anda(x))); else anda(v); } };
-  for (const f of ['historia', 'consejos', 'cotorreo', 'recetas', 'biblia/ruta']) anda(JSON.parse(leer(`data/${f}.json`)));
+  for (const f of ['historia', 'historia2', 'coloquial', 'reglas', 'platicas', 'consejos', 'cotorreo', 'recetas', 'biblia/ruta']) anda(JSON.parse(leer(`data/${f}.json`)));
   for (const l of ['en', 'es']) assert.equal(faltan[l].size, 0, `faltan en scripts/datos/glosario/${l}.json: ${[...faltan[l]].join(', ')}`);
   for (const l of ['en', 'es']) for (const [w, s] of Object.entries(g[l])) assert.ok(s && s.length <= 60 && w === w.toLowerCase(), `glosa rara: ${w}`);
   globalThis.localStorage ||= { _d: {}, getItem(k) { return this._d[k] ?? null; }, setItem(k, v) { this._d[k] = v; } };
@@ -532,4 +532,64 @@ test('hablar y escuchar: sección propia, bocina lenta, parejas con voz, turnos 
   assert.ok(/notaColoquial\(es\)/.test(leer('js/porras.js')));
   for (const [i, l] of [[0, 'es'], [1, 'en']]) for (const t of [...PORRAS, ...Object.values(PREMIOS)]) for (const w of t[i].toLowerCase().match(/[\p{L}']+/gu)) assert.ok(w in glo[l], `falta en el glosario (${l}): «${w}»`);
   assert.ok(/\.tortilla\.pegada\{width:\d+px/.test(leer('css/app.css')), 'la estrellada se dibuja grande, no se agranda borrosa');
+});
+
+test('Historia 2 (Granma a los 25): 6 capítulos sobrios, fe con respeto y versículos solo de dominio público', async () => {
+  const h2 = json('data/historia2.json'), libros = json('data/biblia/libros.json').libros;
+  assert.equal(h2.id, 'historia-2'); assert.equal(h2.sobria, true, 'sin porras ni tortillas'); assert.ok(/Dios/.test(h2.titulo.es) && /God/.test(h2.titulo.en), 'el título dice claro de qué trata');
+  assert.deepEqual(h2.capitulos.map((c) => c.id), [7, 8, 9, 10, 11, 12], 'la numeración sigue a la Historia 1: el avance no choca');
+  const vistas = new Set(historia.capitulos.flatMap((c) => c.palabras.map((p) => p.en.toLowerCase())));
+  for (const c of h2.capitulos) {
+    assert.ok(c.palabras.length >= 8 && c.palabras.length <= 10 && c.relato.es.length >= 3 && c.relato.es.length === c.relato.en.length, `cap ${c.id}`);
+    assert.ok(/mij[oa]/i.test(c.relato.es.join(' ')), `cap ${c.id}: lo cuenta Granma`);
+    assert.equal(c.consejo.clave.length, 2); for (const k of c.consejo.clave) { assert.ok(norm(c.consejo.es).includes(norm(k.es))); assert.ok(norm(c.consejo.en).includes(norm(k.en))); }
+    assert.ok(c.consejo.es.length <= 100 && !/[!¡]|mij[oa]/i.test(c.consejo.es), `cap ${c.id}: el Abuelo, sereno`);
+    assert.ok(recetas.some((r) => r.id === c.receta));
+    for (const p of c.palabras) { assert.ok(!vistas.has(p.en.toLowerCase()), `cap ${c.id}: «${p.en}» ya salió antes`); vistas.add(p.en.toLowerCase()); }
+    for (const interes of ['trabajo', 'amigos', 'biblia', 'viajes', 'cocina']) {
+      const ej = c.ejemplos[interes]; assert.equal(ej.length, 3); assert.equal(new Set(ej.map((e) => e.we)).size, 3);
+      for (const e of ej) { assert.ok(c.palabras.some((p) => norm(p.en) === norm(e.we) && norm(p.es) === norm(e.ws)), `cap ${c.id}: «${e.we}/${e.ws}»`); assert.ok(new RegExp(`\\b${e.we}\\b`, 'i').test(e.en) && new RegExp(`(^|[^\\p{L}])${e.ws}([^\\p{L}]|$)`, 'iu').test(e.es), `cap ${c.id}: «${e.we}» en su frase`); }
+      const pi = c.palabrasInteres[interes]; assert.equal(pi.length, 3);
+      for (const w of pi) assert.ok(new RegExp(`\\b${w.en}\\b`, 'i').test(w.f.en) && new RegExp(`(^|[^\\p{L}])${w.es}([^\\p{L}]|$)`, 'iu').test(w.f.es), `cap ${c.id} ${interes}: «${w.en}/${w.es}» en su frase`);
+    }
+    // el versículo es solo una referencia: el texto sale de RV1909 y KJV, nunca se escribe a mano
+    if (c.versiculo) { const l = libros.find((x) => x.id === c.versiculo.libro); assert.ok(l && c.versiculo.desde <= l.caps[c.versiculo.cap - 1], `cap ${c.id}: la cita existe`);
+      for (const v of ['rv1909', 'kjv']) { const t = json(`data/biblia/${v}/${c.versiculo.libro}.json`).c[c.versiculo.cap - 1][c.versiculo.desde - 1]; assert.ok(t && t.length > 20); assert.ok(!JSON.stringify(c.relato).includes(t.slice(0, 40)), `cap ${c.id}: el relato no copia el versículo`); } }
+  }
+  assert.equal(h2.capitulos[0].versiculo, undefined, 'la fe entra poco a poco: el primer capítulo no trae versículo');
+  assert.ok(h2.capitulos.slice(1).every((c) => c.versiculo), 'del segundo en adelante, cada capítulo trae su versículo');
+  const todo = JSON.stringify(h2).toLowerCase();
+  for (const mala of ['ntv', 'nlt', 'reina-valera 1960', 'rv1960', 'pecador', 'condena', 'tienes que creer', 'debes creer', 'te vas a', 'falsa religión', 'religiosos']) assert.ok(!todo.includes(mala), `Historia 2: «${mala}» no va con el tono`);
+  assert.ok(/sin prisa|no hay prisa/.test(todo) && /si un día quieres/.test(todo), 'la invitación a leer la Biblia es sin presión');
+  const lec = leer('js/vistas/leccion.js'); assert.ok(/if \(!sobria\) fiesta\(/.test(lec) && /sobria \? cierreSobrio\(\)/.test(lec) && /class="versos"/.test(lec), 'cierre sobrio y versículo en tarjeta formal');
+  assert.ok(/'rv1909'/.test(lec) && /'kjv'/.test(lec) && !/rv1960|ntv|nlt/i.test(lec));
+});
+
+test('Así se habla, Reglas claras y Platica con Granma: esquema completo, sano y bilingüe', () => {
+  const col = json('data/coloquial.json'), reg = json('data/reglas.json'), pla = json('data/platicas.json'), par = (o) => o && typeof o.es === 'string' && typeof o.en === 'string' && o.es.trim() && o.en.trim();
+  // frases coloquiales: México por región e inglés de todos los días, cada una con contexto
+  assert.equal(new Set(col.map((x) => x.id)).size, col.length);
+  for (const x of col) { assert.ok(['es', 'en'].includes(x.idioma) && x.frase && par(x.significa) && par(x.uso) && par(x.ejemplo), x.id); assert.ok(x.significa.es.length <= 160 && x.uso.es.length <= 240 && x.uso.en.length <= 240, `${x.id}: corto`); assert.deepEqual(Object.keys(x).sort(), ['ejemplo', 'frase', 'id', 'idioma', 'region', 'significa', 'uso']); }
+  for (const r of ['mexico', 'jalisco', 'sinaloa', 'cdmx', 'monterrey', 'humor']) assert.ok(col.filter((x) => x.idioma === 'es' && x.region === r).length >= 4, `México: región ${r}`);
+  for (const r of ['diario', 'modismos', 'humor', 'sur', 'regiones']) assert.ok(col.filter((x) => x.idioma === 'en' && x.region === r).length >= 4, `inglés: ${r}`);
+  for (const f of ['güey', 'wey', 'no mames', 'pex', 'naco', 'gringo', 'chingón', 'cabrón']) assert.ok(!col.some((x) => x.frase.toLowerCase().includes(f)), `«${f}» no entra`);
+  assert.ok(/nunca para hablar de una persona/.test(col.find((x) => x.frase === 'cochi').uso.es), 'ninguna frase se presta a burlas del cuerpo');
+  // reglas: 6 para quien aprende inglés (empieza por «to be») y 6 para quien aprende español (empieza por ser y estar)
+  assert.equal(reg.filter((l) => l.para === 'en').length, 6); assert.equal(reg.filter((l) => l.para === 'es').length, 6);
+  assert.equal(reg.find((l) => l.para === 'en').id, 'to-be'); assert.equal(reg.find((l) => l.para === 'es').id, 'ser-estar');
+  for (const l of reg) { assert.ok(par(l.titulo) && par(l.resumen) && l.puntos.length >= 3 && l.puntos.length <= 4, l.id);
+    for (const p of l.puntos) { assert.ok(par(p.regla) && p.ejemplos.length >= 2 && p.ejemplos.every(par), l.id); }
+    assert.equal(l.practica.length, 4, l.id);
+    for (const q of l.practica) assert.ok(par(q.p) && q.frase.includes('___') && q.ok && q.mal.length === 2 && !q.mal.includes(q.ok) && new Set(q.mal).size === 2, `${l.id}: ${q.frase}`); }
+  // pláticas: 3 turnos de 3 respuestas, todas válidas, y Granma siempre contesta
+  assert.ok(pla.length >= 12 && new Set(pla.map((p) => p.id)).size === pla.length);
+  for (const p of pla) { assert.ok(par(p.tema) && par(p.cierre) && p.turnos.length === 3, p.id);
+    for (const t of p.turnos) { assert.ok(par(t.granma) && t.respuestas.length === 3, p.id); for (const r of t.respuestas) assert.ok(par(r.t) && par(r.r) && r.t.es.length <= 70 && r.r.es.length <= 120, p.id); } }
+  const pesado = JSON.stringify(pla.find((p) => p.id === 'un-dia-pesado')); assert.ok(/confianza/.test(pesado) && /Pedir ayuda/.test(pesado), 'cuando el día fue pesado, Granma escucha y anima a platicarlo y a pedir ayuda');
+  // pantallas y enlaces
+  const app = leer('js/app.js'); for (const r of ['platica', 'asi', 'reglas']) assert.ok(new RegExp(`${r}: \\(\\) => import\\('\\./vistas/${r}\\.js'\\)`).test(app), `ruta ${r}`);
+  const hab = leer('js/vistas/hablar.js'); for (const h of ['#/platica', '#/asi', '#/reglas']) assert.ok(hab.includes(h), `Hablar enlaza ${h}`);
+  assert.ok(leer('js/vistas/inicio.js').includes('#/platica'), 'Granma saca plática desde el inicio');
+  const sw = leer('sw.js'); for (const f of ['data/coloquial.json', 'data/reglas.json', 'data/platicas.json']) assert.ok(sw.includes(f), `${f} funciona sin internet`);
+  assert.ok(json('data/paquetes.json').paquetes.find((p) => p.id === 'historia').archivos.includes('data/historia2.json'), 'la Historia 2 se descarga con la historia');
 });

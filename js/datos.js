@@ -11,6 +11,14 @@ export async function cargarJSON(ruta, paquete) {
   memo.set(ruta, datos); return datos;
 }
 export const historia = () => cargarJSON('data/historia.json', 'historia');
+// Historia 2 («Granma a los 25»): sus capítulos siguen la numeración (7 a 12), así el avance de las dos historias vive junto sin chocar.
+export const historia2 = () => cargarJSON('data/historia2.json', 'historia');
+export const historias = async () => [await historia(), await historia2()];
+/** La historia a la que pertenece un capítulo (por su número). */
+export async function historiaDe(capId) { const h1 = await historia(); if (h1.capitulos.some((c) => c.id === capId)) return h1; const h2 = await historia2(); return h2.capitulos.some((c) => c.id === capId) ? h2 : h1; }
+export const coloquial = () => cargarJSON('data/coloquial.json');
+export const reglas = () => cargarJSON('data/reglas.json');
+export const platicas = () => cargarJSON('data/platicas.json');
 export const recetas = () => cargarJSON('data/recetas.json', 'recetas');
 export const consejos = () => cargarJSON('data/consejos.json', 'consejos');
 export const cotorreos = () => cargarJSON('data/cotorreo.json', 'cotorreo');

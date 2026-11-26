@@ -69,7 +69,7 @@ async function avanzarHasta(tipo) {
     const t = await pg.evaluate(() => (document.querySelector('.pares') ? 'pares' : document.querySelector('.decir') ? 'di' : document.querySelector('.fichas') ? 'orden' : 'mcq'));
     if (t === tipo) return true;
     if (t === 'di') await pg.click('[data-nohablo]');
-    else { if (t === 'mcq') { await pg.locator('.opcion').first().click(); } else { for (const f of await pg.locator('[data-fichas] .ficha:not(.usada)').all()) await f.click(); } await pg.click('[data-comprobar]'); await pg.click('[data-seguir]'); }
+    else { if (t === 'mcq') { await pg.locator('.opcion').first().click(); } else { while (await pg.locator('[data-fichas] .ficha:not(.usada)').count()) await pg.locator('[data-fichas] .ficha:not(.usada)').first().click(); } await pg.click('[data-comprobar]'); await pg.click('[data-seguir]'); }
   }
   return false;
 }
@@ -113,7 +113,7 @@ console.log('5) Sección «Aprender hablando y escuchando»');
 for (const ap of ['en', 'es']) {
   pg = await abrir(ap, { caps: { 1: { hecho: true, palabras: true, estrellas: 3 } } }); const T = ap, N = ap === 'en' ? 'es' : 'en';
   await pg.goto(B + '#/hablar'); await pg.waitForSelector('.modo');
-  ok((await pg.locator('h1').textContent()) === (ap === 'en' ? 'Aprender hablando y escuchando' : 'Learn by speaking and listening') && (await pg.locator('.modo').count()) === 4, `${ap}: portada con 4 formas de practicar`);
+  ok((await pg.locator('h1').textContent()) === (ap === 'en' ? 'Aprender hablando y escuchando' : 'Learn by speaking and listening') && (await pg.locator('button.modo').count()) === 4 && (await pg.locator('a.modo').count()) === 3, `${ap}: portada con 4 formas de practicar y los enlaces a pláticas, frases y reglas`);
   ok(await pg.evaluate(() => document.querySelector('.nav a[aria-current="page"]')?.getAttribute('href') === '#/hablar' && document.documentElement.scrollWidth <= innerWidth), `${ap}: la barra marca la sección y no hay desborde`);
   if (ap === 'en') await pg.screenshot({ path: join(CAPT, '43-hablar-portada.png'), fullPage: true });
   for (const modo of ['elige', 'arma', 'repite']) {

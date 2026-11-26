@@ -1,0 +1,1678 @@
+[
+ {
+  "id": "to-be",
+  "para": "en",
+  "titulo": {
+   "es": "El verbo «to be»: am, is, are",
+   "en": "The verb \"to be\": am, is, are"
+  },
+  "resumen": {
+   "es": "«To be» es el verbo más usado del inglés y equivale a «ser» y a «estar». Con calma se aprende, mija.",
+   "en": "\"To be\" is the most used verb in English, and it means both \"ser\" and \"estar\". Take it slowly, you can do it."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "Con «I» se usa «am».",
+     "en": "Use \"am\" with \"I\"."
+    },
+    "ejemplos": [
+     {
+      "en": "I am happy.",
+      "es": "Estoy contenta."
+     },
+     {
+      "en": "I am Ana.",
+      "es": "Soy Ana."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Con «he», «she» e «it» se usa «is».",
+     "en": "Use \"is\" with \"he\", \"she\" and \"it\"."
+    },
+    "ejemplos": [
+     {
+      "en": "She is my friend.",
+      "es": "Ella es mi amiga."
+     },
+     {
+      "en": "He is at home.",
+      "es": "Él está en casa."
+     },
+     {
+      "en": "It is hot today.",
+      "es": "Hoy hace calor."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Con «you», «we», «they» y los plurales se usa «are».",
+     "en": "Use \"are\" with \"you\", \"we\", \"they\" and plural nouns."
+    },
+    "ejemplos": [
+     {
+      "en": "You are kind.",
+      "es": "Eres amable."
+     },
+     {
+      "en": "We are in the kitchen.",
+      "es": "Estamos en la cocina."
+     },
+     {
+      "en": "They are my cousins.",
+      "es": "Son mis primos."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Un solo verbo hace de «ser» y de «estar»: el contexto dice cuál.",
+     "en": "One verb does the work of \"ser\" and \"estar\": the context tells you which."
+    },
+    "ejemplos": [
+     {
+      "en": "My house is big.",
+      "es": "Mi casa es grande."
+     },
+     {
+      "en": "The soup is hot.",
+      "es": "La sopa está caliente."
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "I ___ happy.",
+    "ok": "am",
+    "mal": [
+     "is",
+     "are"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "She ___ my friend.",
+    "ok": "is",
+    "mal": [
+     "am",
+     "are"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "We ___ at home.",
+    "ok": "are",
+    "mal": [
+     "is",
+     "am"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "The soup ___ hot.",
+    "ok": "is",
+    "mal": [
+     "are",
+     "am"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "to-be-no-preguntas",
+  "para": "en",
+  "titulo": {
+   "es": "«To be»: negar, preguntar y contraer",
+   "en": "\"To be\": negatives, questions and contractions"
+  },
+  "resumen": {
+   "es": "Para negar se pone «not» y para preguntar se cambia el orden. Poco a poco, mijo, ya casi lo tienes.",
+   "en": "To make a negative add \"not\", and to ask a question swap the order. Little by little, you are almost there."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "Para negar, pon «not» después de am, is o are: «I am not», «she is not».",
+     "en": "To make a negative, put \"not\" after am, is or are: \"I am not\", \"she is not\"."
+    },
+    "ejemplos": [
+     {
+      "en": "I am not tired.",
+      "es": "No estoy cansada."
+     },
+     {
+      "en": "She is not here.",
+      "es": "Ella no está aquí."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Para preguntar, el verbo va primero: «Are you…?», «Is he…?», «Am I…?».",
+     "en": "To ask a question, the verb goes first: \"Are you...?\", \"Is he...?\", \"Am I...?\"."
+    },
+    "ejemplos": [
+     {
+      "en": "Are you ready?",
+      "es": "¿Estás listo?"
+     },
+     {
+      "en": "Is he at home?",
+      "es": "¿Está él en casa?"
+     },
+     {
+      "en": "Am I right?",
+      "es": "¿Tengo razón?"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Las contracciones juntan las palabras: I'm, you're, she's, it's, we're, they're. Así se habla todos los días.",
+     "en": "Contractions join the words: I'm, you're, she's, it's, we're, they're. This is how people talk every day."
+    },
+    "ejemplos": [
+     {
+      "en": "I'm hungry.",
+      "es": "Tengo hambre."
+     },
+     {
+      "en": "She's kind.",
+      "es": "Ella es amable."
+     },
+     {
+      "en": "They're ready.",
+      "es": "Ya están listos."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Al negar también se contrae: isn't y aren't. Con «I» solo se dice «I'm not».",
+     "en": "Negatives contract too: isn't and aren't. With \"I\" you only say \"I'm not\"."
+    },
+    "ejemplos": [
+     {
+      "en": "He isn't here.",
+      "es": "Él no está aquí."
+     },
+     {
+      "en": "We aren't late.",
+      "es": "No vamos tarde."
+     },
+     {
+      "en": "It isn't cold.",
+      "es": "No hace frío."
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "I ___ not hungry.",
+    "ok": "am",
+    "mal": [
+     "is",
+     "are"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "___ you ready?",
+    "ok": "Are",
+    "mal": [
+     "Is",
+     "Am"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "She ___ at home.",
+    "ok": "isn't",
+    "mal": [
+     "aren't",
+     "don't"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "___ happy to see you.",
+    "ok": "I'm",
+    "mal": [
+     "I's",
+     "I're"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a-an-the",
+  "para": "en",
+  "titulo": {
+   "es": "A, an y the",
+   "en": "A, an and the"
+  },
+  "resumen": {
+   "es": "«A», «an» y «the» son los artículos del inglés. Pequeños pero muy útiles, ¡ándale, tú puedes!",
+   "en": "\"A\", \"an\" and \"the\" are the articles in English. Small but very useful, you can do it."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "Usa «a» antes de un sonido de consonante: a dog, a house, a taco.",
+     "en": "Use \"a\" before a consonant sound: a dog, a house, a taco."
+    },
+    "ejemplos": [
+     {
+      "en": "a taco",
+      "es": "un taco"
+     },
+     {
+      "en": "a house",
+      "es": "una casa"
+     },
+     {
+      "en": "a cat",
+      "es": "un gato"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Usa «an» antes de un sonido de vocal: an apple, an egg. Cuenta el sonido, no la letra: an hour.",
+     "en": "Use \"an\" before a vowel sound: an apple, an egg. Count the sound, not the letter: an hour."
+    },
+    "ejemplos": [
+     {
+      "en": "an orange",
+      "es": "una naranja"
+     },
+     {
+      "en": "an egg",
+      "es": "un huevo"
+     },
+     {
+      "en": "an hour",
+      "es": "una hora"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "«A» y «an» van con una sola cosa, y también con profesiones. En español no siempre se dice «un».",
+     "en": "\"A\" and \"an\" go with one thing, and also with jobs. In Spanish you do not always say \"un\"."
+    },
+    "ejemplos": [
+     {
+      "en": "I have a dog.",
+      "es": "Tengo un perro."
+     },
+     {
+      "en": "She is a teacher.",
+      "es": "Ella es maestra."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Usa «the» cuando ya se sabe de cuál cosa hablamos. Sirve para uno o para varios.",
+     "en": "Use \"the\" when it is clear which thing we mean. It works for one or for many."
+    },
+    "ejemplos": [
+     {
+      "en": "The dog is big.",
+      "es": "El perro es grande."
+     },
+     {
+      "en": "Close the door.",
+      "es": "Cierra la puerta."
+     },
+     {
+      "en": "The moon is beautiful.",
+      "es": "La luna es bonita."
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "She has ___ orange.",
+    "ok": "an",
+    "mal": [
+     "a",
+     "two"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "He is ___ doctor.",
+    "ok": "a",
+    "mal": [
+     "an",
+     "two"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "I have a dog. ___ dog is very big.",
+    "ok": "The",
+    "mal": [
+     "An",
+     "Two"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "We live in ___ big house.",
+    "ok": "a",
+    "mal": [
+     "an",
+     "two"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "plurales",
+  "para": "en",
+  "titulo": {
+   "es": "Plurales: -s, -es y los irregulares",
+   "en": "Plurals: -s, -es and irregular ones"
+  },
+  "resumen": {
+   "es": "Para decir «más de uno» casi siempre basta una «s», pero hay trucos. Con práctica sale solito, mijo.",
+   "en": "To say \"more than one\" you usually just add an \"s\", but there are a few tricks. With practice it comes naturally."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "Casi siempre se agrega -s: cat → cats, taco → tacos, friend → friends.",
+     "en": "Most of the time you add -s: cat → cats, taco → tacos, friend → friends."
+    },
+    "ejemplos": [
+     {
+      "en": "two cats",
+      "es": "dos gatos"
+     },
+     {
+      "en": "three tacos",
+      "es": "tres tacos"
+     },
+     {
+      "en": "my friends",
+      "es": "mis amigos"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Si termina en s, x, ch o sh, se agrega -es: bus → buses, box → boxes, dish → dishes.",
+     "en": "If it ends in s, x, ch or sh, add -es: bus → buses, box → boxes, dish → dishes."
+    },
+    "ejemplos": [
+     {
+      "en": "two boxes",
+      "es": "dos cajas"
+     },
+     {
+      "en": "five dishes",
+      "es": "cinco platos"
+     },
+     {
+      "en": "many buses",
+      "es": "muchos autobuses"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Si termina en consonante + y, la y cambia a -ies: baby → babies, city → cities.",
+     "en": "If it ends in a consonant + y, the y changes to -ies: baby → babies, city → cities."
+    },
+    "ejemplos": [
+     {
+      "en": "two babies",
+      "es": "dos bebés"
+     },
+     {
+      "en": "big cities",
+      "es": "ciudades grandes"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Algunos plurales son irregulares: man → men, woman → women, child → children, foot → feet, person → people.",
+     "en": "Some plurals are irregular: man → men, woman → women, child → children, foot → feet, person → people."
+    },
+    "ejemplos": [
+     {
+      "en": "Two men are here.",
+      "es": "Dos hombres están aquí."
+     },
+     {
+      "en": "The children play.",
+      "es": "Los niños juegan."
+     },
+     {
+      "en": "My feet are cold.",
+      "es": "Tengo los pies fríos."
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "I have two ___.",
+    "ok": "boxes",
+    "mal": [
+     "boxs",
+     "box"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "The ___ are playing.",
+    "ok": "children",
+    "mal": [
+     "childs",
+     "childrens"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "She has three ___.",
+    "ok": "babies",
+    "mal": [
+     "babys",
+     "babyies"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Two ___ are at the door.",
+    "ok": "men",
+    "mal": [
+     "mans",
+     "mens"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "do-does",
+  "para": "en",
+  "titulo": {
+   "es": "Do y does: preguntas y negaciones",
+   "en": "Do and does: questions and negatives"
+  },
+  "resumen": {
+   "es": "En presente, «do» y «does» ayudan a preguntar y a negar. Una vez que lo entiendes, ¡todo se acomoda, mija!",
+   "en": "In the present tense, \"do\" and \"does\" help you ask and say no. Once you get it, everything falls into place."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "Para preguntar usa «do» con I, you, we y they, y «does» con he, she e it.",
+     "en": "To ask a question use \"do\" with I, you, we and they, and \"does\" with he, she and it."
+    },
+    "ejemplos": [
+     {
+      "en": "Do you like tacos?",
+      "es": "¿Te gustan los tacos?"
+     },
+     {
+      "en": "Does she cook?",
+      "es": "¿Ella cocina?"
+     },
+     {
+      "en": "Do they live here?",
+      "es": "¿Viven aquí?"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Para negar usa «don't» o «doesn't» antes del verbo: «I don't like soup».",
+     "en": "To make a negative use \"don't\" or \"doesn't\" before the verb: \"I don't like soup\"."
+    },
+    "ejemplos": [
+     {
+      "en": "I don't like soup.",
+      "es": "No me gusta la sopa."
+     },
+     {
+      "en": "He doesn't work today.",
+      "es": "Él no trabaja hoy."
+     },
+     {
+      "en": "We don't have time.",
+      "es": "No tenemos tiempo."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Después de does y doesn't el verbo queda sin -s: «Does she want coffee?», no «Does she wants».",
+     "en": "After does and doesn't the verb has no -s: \"Does she want coffee?\", not \"Does she wants\"."
+    },
+    "ejemplos": [
+     {
+      "en": "Does he need help?",
+      "es": "¿Necesita ayuda?"
+     },
+     {
+      "en": "She doesn't want coffee.",
+      "es": "Ella no quiere café."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Las respuestas cortas repiten «do» o «does»: «Yes, I do» o «No, she doesn't».",
+     "en": "Short answers repeat \"do\" or \"does\": \"Yes, I do\" or \"No, she doesn't\"."
+    },
+    "ejemplos": [
+     {
+      "en": "Yes, I do.",
+      "es": "Sí, cocino."
+     },
+     {
+      "en": "No, he doesn't.",
+      "es": "No, él no."
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "___ you like tea?",
+    "ok": "Do",
+    "mal": [
+     "Does",
+     "Are"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "She ___ like coffee.",
+    "ok": "doesn't",
+    "mal": [
+     "don't",
+     "isn't"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Does he ___ here?",
+    "ok": "work",
+    "mal": [
+     "works",
+     "working"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "We ___ have a car.",
+    "ok": "don't",
+    "mal": [
+     "doesn't",
+     "aren't"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pasado-simple",
+  "para": "en",
+  "titulo": {
+   "es": "Pasado simple: -ed y verbos irregulares",
+   "en": "Simple past: -ed and irregular verbs"
+  },
+  "resumen": {
+   "es": "Para contar lo que ya pasó se usa el pasado simple. Cuéntame tu día, mijo, que yo te escucho.",
+   "en": "To tell what already happened you use the simple past. Tell me about your day, I am listening."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "Los verbos regulares agregan -ed: walk → walked, cook → cooked, call → called.",
+     "en": "Regular verbs add -ed: walk → walked, cook → cooked, call → called."
+    },
+    "ejemplos": [
+     {
+      "en": "I cooked rice.",
+      "es": "Cociné arroz."
+     },
+     {
+      "en": "We walked home.",
+      "es": "Caminamos a casa."
+     },
+     {
+      "en": "She called me.",
+      "es": "Ella me llamó."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Si ya termina en -e, solo agrega -d (like → liked). Si termina en consonante + y, cambia a -ied (study → studied).",
+     "en": "If it already ends in -e, just add -d (like → liked). If it ends in consonant + y, it becomes -ied (study → studied)."
+    },
+    "ejemplos": [
+     {
+      "en": "He liked the soup.",
+      "es": "Le gustó la sopa."
+     },
+     {
+      "en": "I studied English.",
+      "es": "Estudié inglés."
+     },
+     {
+      "en": "They danced.",
+      "es": "Bailaron."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Los irregulares cambian y hay que aprenderlos: go → went, eat → ate, have → had, see → saw.",
+     "en": "Irregular verbs change and you just learn them: go → went, eat → ate, have → had, see → saw."
+    },
+    "ejemplos": [
+     {
+      "en": "We went to the market.",
+      "es": "Fuimos al mercado."
+     },
+     {
+      "en": "She ate a taco.",
+      "es": "Ella comió un taco."
+     },
+     {
+      "en": "I had a big dinner.",
+      "es": "Tuve una cena grande."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "El pasado de «to be» es «was» (I, he, she, it) y «were» (you, we, they).",
+     "en": "The past of \"to be\" is \"was\" (I, he, she, it) and \"were\" (you, we, they)."
+    },
+    "ejemplos": [
+     {
+      "en": "I was tired.",
+      "es": "Estaba cansada."
+     },
+     {
+      "en": "They were at home.",
+      "es": "Estaban en casa."
+     },
+     {
+      "en": "It was a good day.",
+      "es": "Fue un buen día."
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Yesterday I ___ to the market.",
+    "ok": "went",
+    "mal": [
+     "go",
+     "goed"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "She ___ rice for dinner.",
+    "ok": "cooked",
+    "mal": [
+     "cook",
+     "cooks"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "We ___ at home last night.",
+    "ok": "were",
+    "mal": [
+     "was",
+     "are"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Yesterday he ___ a big taco.",
+    "ok": "ate",
+    "mal": [
+     "eated",
+     "eats"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ser-estar",
+  "para": "es",
+  "titulo": {
+   "es": "Ser y estar: los dos son «to be»",
+   "en": "Ser and estar: both mean \"to be\""
+  },
+  "resumen": {
+   "es": "En inglés basta «to be», pero en español hay dos verbos. No te apures, mijo: con ejemplos se aprende.",
+   "en": "English only needs \"to be\", but Spanish has two verbs. Do not worry, with examples you will get it."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "«Ser» sirve para decir quién eres, de dónde eres, tu oficio y cómo es algo de manera estable.",
+     "en": "\"Ser\" tells who you are, where you are from, your job and what something is like in a lasting way."
+    },
+    "ejemplos": [
+     {
+      "en": "I am Ana.",
+      "es": "Yo soy Ana."
+     },
+     {
+      "en": "She is from Puebla.",
+      "es": "Ella es de Puebla."
+     },
+     {
+      "en": "My grandmother is kind.",
+      "es": "Mi abuela es amable."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "«Estar» sirve para decir cómo te sientes ahora y dónde está algo.",
+     "en": "\"Estar\" tells how you feel right now and where something is."
+    },
+    "ejemplos": [
+     {
+      "en": "I am tired.",
+      "es": "Estoy cansada."
+     },
+     {
+      "en": "The coffee is on the table.",
+      "es": "El café está en la mesa."
+     },
+     {
+      "en": "We are happy.",
+      "es": "Estamos contentos."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "«Ser» también dice el día y la hora: «Hoy es lunes», «Son las tres».",
+     "en": "\"Ser\" also tells the day and the time: \"Hoy es lunes\", \"Son las tres\"."
+    },
+    "ejemplos": [
+     {
+      "en": "Today is Monday.",
+      "es": "Hoy es lunes."
+     },
+     {
+      "en": "It is three o'clock.",
+      "es": "Son las tres."
+     },
+     {
+      "en": "It is late.",
+      "es": "Es tarde."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Algunas palabras cambian de sentido: «es lista» (inteligente) y «está lista» (preparada).",
+     "en": "Some words change meaning: \"es lista\" (smart) and \"está lista\" (ready)."
+    },
+    "ejemplos": [
+     {
+      "en": "She is smart.",
+      "es": "Ella es lista."
+     },
+     {
+      "en": "She is ready.",
+      "es": "Ella está lista."
+     },
+     {
+      "en": "The soup tastes good right now.",
+      "es": "La sopa está rica."
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Yo ___ maestra.",
+    "ok": "soy",
+    "mal": [
+     "estoy",
+     "eres"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Mi mamá ___ en la cocina.",
+    "ok": "está",
+    "mal": [
+     "es",
+     "son"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Ellos ___ de México.",
+    "ok": "son",
+    "mal": [
+     "están",
+     "es"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Nosotros ___ cansados.",
+    "ok": "estamos",
+    "mal": [
+     "estoy",
+     "están"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "tu-usted",
+  "para": "es",
+  "titulo": {
+   "es": "Tú y usted: confianza y respeto",
+   "en": "Tú and usted: trust and respect"
+  },
+  "resumen": {
+   "es": "Hay dos formas de decir «you»: una de confianza y otra de respeto. Con cariño y buena educación, siempre acertarás, mija.",
+   "en": "There are two ways to say \"you\": a friendly one and a respectful one. With warmth and good manners you will do fine."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "«Tú» es para amigos, familia, niños y personas de tu edad.",
+     "en": "\"Tú\" is for friends, family, children and people your age."
+    },
+    "ejemplos": [
+     {
+      "en": "How are you?",
+      "es": "¿Cómo estás?"
+     },
+     {
+      "en": "You cook very well.",
+      "es": "Tú cocinas muy bien."
+     },
+     {
+      "en": "Do you want coffee?",
+      "es": "¿Quieres café?"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "«Usted» es más respetuoso: se usa con mayores, desconocidos y en situaciones formales.",
+     "en": "\"Usted\" is more respectful: use it with older people, strangers and in formal situations."
+    },
+    "ejemplos": [
+     {
+      "en": "How are you? (formal)",
+      "es": "¿Cómo está usted?"
+     },
+     {
+      "en": "You cook very well. (formal)",
+      "es": "Usted cocina muy bien."
+     },
+     {
+      "en": "Would you like coffee, ma'am?",
+      "es": "¿Quiere café, señora?"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Con «usted» el verbo cambia: se usa la forma de «él» y «ella». Tú quieres, usted quiere.",
+     "en": "With \"usted\" the verb changes: use the \"él\" and \"ella\" form. Tú quieres, usted quiere."
+    },
+    "ejemplos": [
+     {
+      "en": "You have a pretty house. (friendly)",
+      "es": "Tú tienes una casa bonita."
+     },
+     {
+      "en": "You have a pretty house. (formal)",
+      "es": "Usted tiene una casa bonita."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "En México se usa «usted» con mayores y desconocidos. Si te dicen «tutéame», ya puedes usar «tú».",
+     "en": "In Mexico people use \"usted\" with older people and strangers. If they say \"tutéame\", you can use \"tú\"."
+    },
+    "ejemplos": [
+     {
+      "en": "Good morning, sir. How are you?",
+      "es": "Buenos días, señor. ¿Cómo está usted?"
+     },
+     {
+      "en": "You can call me \"tú\".",
+      "es": "Puede tutearme."
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Señora, ¿usted ___ un café?",
+    "ok": "quiere",
+    "mal": [
+     "quieres",
+     "quiero"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Amigo, ¿tú ___ tacos?",
+    "ok": "quieres",
+    "mal": [
+     "quiere",
+     "quieren"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Señor, ¿cómo ___ usted?",
+    "ok": "está",
+    "mal": [
+     "estás",
+     "estoy"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "¿Tú ___ cansado, Luis?",
+    "ok": "estás",
+    "mal": [
+     "está",
+     "estoy"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "el-la",
+  "para": "es",
+  "titulo": {
+   "es": "El género: el, la, un, una",
+   "en": "Gender: el, la, un, una"
+  },
+  "resumen": {
+   "es": "En español todas las cosas son masculinas o femeninas. Al principio parece raro, mijo, pero lo vas a agarrar rapidito.",
+   "en": "In Spanish every noun is masculine or feminine. It feels odd at first, but you will pick it up quickly."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "Cada sustantivo es masculino («el», «un») o femenino («la», «una»). El género va con la palabra.",
+     "en": "Every noun is masculine (\"el\", \"un\") or feminine (\"la\", \"una\"). The gender goes with the word."
+    },
+    "ejemplos": [
+     {
+      "en": "the book",
+      "es": "el libro"
+     },
+     {
+      "en": "the house",
+      "es": "la casa"
+     },
+     {
+      "en": "the taco",
+      "es": "el taco"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Casi siempre -o es masculino y -a es femenino, pero hay excepciones que se aprenden de memoria.",
+     "en": "Usually -o is masculine and -a is feminine, but there are exceptions you learn by heart."
+    },
+    "ejemplos": [
+     {
+      "en": "the day",
+      "es": "el día"
+     },
+     {
+      "en": "the hand",
+      "es": "la mano"
+     },
+     {
+      "en": "the map",
+      "es": "el mapa"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "«El» y «la» son «the»; «un» y «una» son «a». En plural: los, las, unos, unas.",
+     "en": "\"El\" and \"la\" mean \"the\"; \"un\" and \"una\" mean \"a\". In the plural: los, las, unos, unas."
+    },
+    "ejemplos": [
+     {
+      "en": "a dog",
+      "es": "un perro"
+     },
+     {
+      "en": "the flowers",
+      "es": "las flores"
+     },
+     {
+      "en": "some friends",
+      "es": "unos amigos"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "El adjetivo concuerda con el sustantivo: cambia a -o, -a, -os o -as y va después.",
+     "en": "The adjective agrees with the noun: it changes to -o, -a, -os or -as and goes after it."
+    },
+    "ejemplos": [
+     {
+      "en": "the black cat",
+      "es": "el gato negro"
+     },
+     {
+      "en": "the white house",
+      "es": "la casa blanca"
+     },
+     {
+      "en": "the red flowers",
+      "es": "las flores rojas"
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "___ casa es grande.",
+    "ok": "La",
+    "mal": [
+     "El",
+     "Los"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Tengo ___ perro.",
+    "ok": "un",
+    "mal": [
+     "una",
+     "unas"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Tengo un gato ___.",
+    "ok": "negro",
+    "mal": [
+     "negra",
+     "negros"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "___ libros son nuevos.",
+    "ok": "Los",
+    "mal": [
+     "Las",
+     "La"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "diminutivos",
+  "para": "es",
+  "titulo": {
+   "es": "Diminutivos: -ito e -ita",
+   "en": "Diminutives: -ito and -ita"
+  },
+  "resumen": {
+   "es": "Los diminutivos hacen todo más chiquito y más cariñoso. Así hablamos en casa, mija, con dulzura.",
+   "en": "Diminutives make everything smaller and sweeter. This is how we talk at home, with tenderness."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "Se agrega -ito o -ita para decir «pequeño» o «cariñoso». A veces la palabra cambia: café → cafecito, pan → panecito.",
+     "en": "Add -ito or -ita to say \"small\" or \"sweet\". Sometimes the word changes: café → cafecito, pan → panecito."
+    },
+    "ejemplos": [
+     {
+      "en": "I have a little dog.",
+      "es": "Tengo un perrito."
+     },
+     {
+      "en": "My little house is small.",
+      "es": "Mi casita es pequeña."
+     },
+     {
+      "en": "A little coffee, please.",
+      "es": "Un cafecito, por favor."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "También muestran cariño, sobre todo con la familia: abuelita, mijito.",
+     "en": "They also show affection, especially with family: abuelita, mijito."
+    },
+    "ejemplos": [
+     {
+      "en": "My grandma cooks deliciously.",
+      "es": "Mi abuelita cocina rico."
+     },
+     {
+      "en": "Come here, sweetie.",
+      "es": "Ven, mijito."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "En México suavizan una petición y la hacen más amable: «un momentito», «un poquito».",
+     "en": "In Mexico they soften a request and make it friendlier: \"un momentito\", \"un poquito\"."
+    },
+    "ejemplos": [
+     {
+      "en": "Just a moment, please.",
+      "es": "Un momentito, por favor."
+     },
+     {
+      "en": "Can you give me a little more?",
+      "es": "¿Me das un poquito más?"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Los adverbios también los usan: «ahorita» (ahora o en un rato) y «despacito» (muy despacio).",
+     "en": "Adverbs use them too: \"ahorita\" (now or in a little while) and \"despacito\" (very slowly)."
+    },
+    "ejemplos": [
+     {
+      "en": "I will be right back.",
+      "es": "Ahorita vengo."
+     },
+     {
+      "en": "Walk nice and slow.",
+      "es": "Camina despacito."
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Quiero un ___ caliente.",
+    "ok": "cafecito",
+    "mal": [
+     "cafecita",
+     "cafecitos"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Mi abuela es amable: ella es mi ___.",
+    "ok": "abuelita",
+    "mal": [
+     "abuelito",
+     "abuelitos"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Camina ___, el piso está mojado.",
+    "ok": "despacito",
+    "mal": [
+     "despacita",
+     "despacitos"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Vivo en una ___ muy bonita.",
+    "ok": "casita",
+    "mal": [
+     "casito",
+     "casitas"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "preguntas-acentos",
+  "para": "es",
+  "titulo": {
+   "es": "Signos ¿? ¡! y acentos que cambian el sentido",
+   "en": "¿? ¡! marks and accents that change meaning"
+  },
+  "resumen": {
+   "es": "En español los signos van al principio y al final, y un acento puede cambiar todo. Con paciencia, mijo, se logra.",
+   "en": "In Spanish the marks go at the start and at the end, and one accent can change everything. With patience you will get it."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "Las preguntas y exclamaciones se abren y se cierran: ¿Cómo estás? ¡Qué rico!",
+     "en": "Questions and exclamations open and close: ¿Cómo estás? ¡Qué rico!"
+    },
+    "ejemplos": [
+     {
+      "en": "How are you?",
+      "es": "¿Cómo estás?"
+     },
+     {
+      "en": "How tasty!",
+      "es": "¡Qué rico!"
+     },
+     {
+      "en": "Do you want coffee?",
+      "es": "¿Quieres café?"
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Las palabras de pregunta llevan acento: qué, quién, cómo, dónde, cuándo.",
+     "en": "Question words have an accent: qué, quién, cómo, dónde, cuándo."
+    },
+    "ejemplos": [
+     {
+      "en": "Where do you live?",
+      "es": "¿Dónde vives?"
+     },
+     {
+      "en": "What do you want?",
+      "es": "¿Qué quieres?"
+     },
+     {
+      "en": "Tell me what you want.",
+      "es": "Dime qué quieres."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "«Qué» con acento pregunta o exclama; «que» sin acento une ideas.",
+     "en": "\"Qué\" with an accent asks or exclaims; \"que\" without an accent joins ideas."
+    },
+    "ejemplos": [
+     {
+      "en": "What do you say?",
+      "es": "¿Qué dices?"
+     },
+     {
+      "en": "He says yes.",
+      "es": "Él dice que sí."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Pares que cambian: sí (afirmar) y si (condición); tú (you) y tu (your); él (he) y el (the).",
+     "en": "Pairs that change: sí (yes) and si (if); tú (you) and tu (your); él (he) and el (the)."
+    },
+    "ejemplos": [
+     {
+      "en": "Yes, I am hungry.",
+      "es": "Sí, tengo hambre."
+     },
+     {
+      "en": "If it rains, I stay.",
+      "es": "Si llueve, me quedo."
+     },
+     {
+      "en": "You have your cup.",
+      "es": "Tú tienes tu taza."
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "¿___ quieres comer?",
+    "ok": "Qué",
+    "mal": [
+     "Que",
+     "Quién"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Me quedo en casa ___ llueve.",
+    "ok": "si",
+    "mal": [
+     "sí",
+     "sin"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "¿Es ___ taza, Luis?",
+    "ok": "tu",
+    "mal": [
+     "tú",
+     "te"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Dime ___ te llamas.",
+    "ok": "cómo",
+    "mal": [
+     "cuándo",
+     "quién"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "presente",
+  "para": "es",
+  "titulo": {
+   "es": "El presente de los verbos regulares",
+   "en": "The present tense of regular verbs"
+  },
+  "resumen": {
+   "es": "Los verbos terminan en -ar, -er o -ir, y cada uno tiene sus terminaciones. Repítelas en voz alta, mija, ¡y listo!",
+   "en": "Verbs end in -ar, -er or -ir, and each has its own endings. Say them out loud and you are set."
+  },
+  "puntos": [
+   {
+    "regla": {
+     "es": "Hay tres grupos: -ar (hablar), -er (comer) y -ir (vivir).",
+     "en": "There are three groups: -ar (hablar), -er (comer) and -ir (vivir)."
+    },
+    "ejemplos": [
+     {
+      "en": "I speak Spanish.",
+      "es": "Hablo español."
+     },
+     {
+      "en": "I eat tacos.",
+      "es": "Como tacos."
+     },
+     {
+      "en": "I live in a big house.",
+      "es": "Vivo en una casa grande."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Las terminaciones: -ar → o, as, a, amos, an; -er → o, es, e, emos, en; -ir → o, es, e, imos, en.",
+     "en": "The endings: -ar → o, as, a, amos, an; -er → o, es, e, emos, en; -ir → o, es, e, imos, en."
+    },
+    "ejemplos": [
+     {
+      "en": "She sings.",
+      "es": "Ella canta."
+     },
+     {
+      "en": "They eat.",
+      "es": "Ellos comen."
+     },
+     {
+      "en": "We live here.",
+      "es": "Nosotros vivimos aquí."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "Se quita -ar, -er o -ir y se agrega la terminación: hablar → habl- + amos = hablamos.",
+     "en": "Remove -ar, -er or -ir and add the ending: hablar → habl- + amos = hablamos."
+    },
+    "ejemplos": [
+     {
+      "en": "We talk a lot.",
+      "es": "Hablamos mucho."
+     },
+     {
+      "en": "You eat well.",
+      "es": "Tú comes bien."
+     },
+     {
+      "en": "You live nearby.",
+      "es": "Ustedes viven cerca."
+     }
+    ]
+   },
+   {
+    "regla": {
+     "es": "La terminación ya dice quién hace la acción, por eso casi siempre se omite «yo», «tú» o «nosotros».",
+     "en": "The ending already tells who does the action, so \"yo\", \"tú\" or \"nosotros\" is usually left out."
+    },
+    "ejemplos": [
+     {
+      "en": "I cook every day.",
+      "es": "Cocino todos los días."
+     },
+     {
+      "en": "Do you dance?",
+      "es": "¿Bailas?"
+     },
+     {
+      "en": "We eat together.",
+      "es": "Comemos juntos."
+     }
+    ]
+   }
+  ],
+  "practica": [
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Yo ___ español.",
+    "ok": "hablo",
+    "mal": [
+     "hablas",
+     "habla"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Nosotros ___ tacos.",
+    "ok": "comemos",
+    "mal": [
+     "comen",
+     "como"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Ellos ___ en una casa.",
+    "ok": "viven",
+    "mal": [
+     "vive",
+     "vivimos"
+    ]
+   },
+   {
+    "p": {
+     "es": "Completa la frase",
+     "en": "Complete the sentence"
+    },
+    "frase": "Tú ___ muy bien.",
+    "ok": "cocinas",
+    "mal": [
+     "cocino",
+     "cocinamos"
+    ]
+   }
+  ]
+ }
+]

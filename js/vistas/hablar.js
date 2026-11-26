@@ -1,7 +1,7 @@
 // «Aprender hablando y escuchando»: rondas de puro oído y voz (escoger lo que se oyó, repetir en voz alta, dictado).
 // No gasta energía. Usa las palabras y frases de los capítulos que la persona ya abrió.
 import { estado, u, tgt, nat, ganarXP, evento } from '../state.js';
-import { historia } from '../datos.js';
+import { historia, historia2 } from '../datos.js';
 import { armarEscucha } from '../escucha.js';
 import { jugar, hablarPausado } from '../ejercicios.js';
 import { pj } from '../personajes.js';
@@ -18,6 +18,7 @@ export async function montar(main) {
   const S = estado(), h = await historia(), T = tgt(), N = nat();
   // Los capítulos ya terminados y el que sigue (al menos el primero): así siempre hay con qué practicar.
   const hechos = h.capitulos.filter((c) => S.caps[c.id]?.hecho).length, caps = h.capitulos.slice(0, Math.min(h.capitulos.length, hechos + 1));
+  try { caps.push(...(await historia2()).capitulos.filter((c) => S.caps[c.id]?.hecho)); } catch { /* la Historia 2 aún no está descargada */ }
   let activo = true, soltar = null;
   const MODOS = [
     ['elige', '👂', u('Escucha y elige', 'Listen and choose'), u('Oyes una palabra y eliges cuál fue o qué significa.', 'You hear a word and choose which one it was or what it means.')],
@@ -34,7 +35,11 @@ export async function montar(main) {
       <p class="muted">${u(`Con las palabras y frases de ${caps.length === 1 ? 'tu primer capítulo' : `tus ${caps.length} capítulos`}. Aquí no se gasta energía.`, `With the words and sentences from ${caps.length === 1 ? 'your first chapter' : `your ${caps.length} chapters`}. No energy is used here.`)}</p>
       <p class="pista-voces"><span><span class="btn-icono falso" aria-hidden="true">🔊</span> ${u('se oye normal', 'plays at normal speed')}</span><span><span class="btn-icono falso" aria-hidden="true">${PEREZOSO}</span> ${u('modo perezoso: se oye despacito', 'sloth mode: plays slowly')}</span></p>
       ${sinVoz ? `<div class="tarjeta crema2" role="status">${u(`Tu teléfono no tiene instalada una voz en ${IDIOMA[T][0]}. Puedes practicar «Escucha y repite» leyendo la frase; para oírla, instala una voz en los ajustes de tu teléfono.`, `Your phone has no ${IDIOMA[T][1]} voice installed. You can practice "Listen and repeat" by reading the sentence; to hear it, install a voice in your phone settings.`)}</div>` : ''}
-      <div class="modos">${MODOS.map(([id, ic, t, d]) => `<button class="opcion modo" data-modo="${id}"><span class="modo-ic" aria-hidden="true">${ic}</span><span><strong>${t}</strong><br><small>${d}</small></span></button>`).join('')}</div>
+      <div class="modos"><a class="opcion modo destacado" href="#/platica"><span class="modo-ic" aria-hidden="true">💬</span><span><strong>${u('Platica con Granma', 'Chat with Granma')}</strong><br><small>${u('Granma te saca plática: ella pregunta, tú contestas y se ríen juntos.', 'Granma starts the chat: she asks, you answer and you laugh together.')}</small></span></a>
+        ${MODOS.map(([id, ic, t, d]) => `<button class="opcion modo" data-modo="${id}"><span class="modo-ic" aria-hidden="true">${ic}</span><span><strong>${t}</strong><br><small>${d}</small></span></button>`).join('')}</div>
+      <h2 class="mt2">${u('Para entender mejor', 'To understand better')}</h2>
+      <div class="modos"><a class="opcion modo" href="#/asi"><span class="modo-ic" aria-hidden="true">🗺️</span><span><strong>${u('Así se habla', 'How people really talk')}</strong><br><small>${T === 'es' ? u('Frases de México por región: Jalisco, Sinaloa, Ciudad de México, Monterrey…', 'Phrases from Mexico by region: Jalisco, Sinaloa, Mexico City, Monterrey…') : u('El inglés de todos los días, sus frases hechas y su humor.', 'Everyday English, its idioms and its humor.')}</small></span></a>
+        <a class="opcion modo" href="#/reglas"><span class="modo-ic" aria-hidden="true">📐</span><span><strong>${u('Reglas claras', 'Clear rules')}</strong><br><small>${T === 'es' ? u('Ser y estar, tú y usted, los diminutivos y más.', 'Ser and estar, tú and usted, diminutives and more.') : u('El verbo «to be», a/an/the, plurales, preguntas y más.', 'The verb "to be", a/an/the, plurals, questions and more.')}</small></span></a></div>
       <p class="muted chico" data-oido-aviso hidden>👂 ${u('Para que Granma reconozca tus palabras sin internet, baja el «Oído de Granma» en', 'So Granma can recognize your words offline, get "Granma\'s ear" in')} <a href="#/descargas">${u('Descargas', 'Downloads')}</a>.</p>`;
     oidoPropioListo(T).then((si) => { const a = main.querySelector('[data-oido-aviso]'); if (a && !si) a.hidden = false; }).catch(() => {});
   }

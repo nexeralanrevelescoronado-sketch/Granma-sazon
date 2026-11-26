@@ -18,6 +18,7 @@ export function montar(main) {
     <a class="btn grande olla" id="cta" href="#/historia">▶ ${u('Historia de Granma', 'Granma\'s story')}</a>
     <a class="btn sec bloque mt" id="cta-prueba" href="#/historia" hidden></a>
     <div class="rejilla mt"><a class="btn sec" href="#/reto">⏱ ${u('Reto de 60 s', '60-second challenge')}</a><a class="btn sec" href="#/descargas">⬇ ${u('Sin internet', 'Offline')}</a></div>
+    <a class="btn sec bloque mt" href="#/platica">💬 ${u('Granma quiere platicar contigo', 'Granma wants to chat with you')}</a>
     <section class="tarjeta mt2" aria-labelledby="h-misiones"><h2 id="h-misiones">${u('Misiones de hoy', 'Today\'s missions')}</h2><ul style="list-style:none;padding:0;margin:0">${misiones}</ul>
       <p class="muted" style="margin-top:8px"><span class="vidas" aria-hidden="true">${Array.from({ length: MAX_VIDAS }, (_, i) => `<i class="tortilla ${i < vidas() ? '' : 'vacia'}"></i>`).join('')}</span> ${u(`energía de hoy: ${vidas()} / ${MAX_VIDAS}`, `energy today: ${vidas()} / ${MAX_VIDAS}`)}</p>
       ${sinEnergia() ? `<p role="status"><strong>${u('Se acabó la energía por hoy.', 'Out of energy for today.')}</strong> ${u('Mañana repetimos con calma.', 'Tomorrow we repeat calmly.')}</p>` : ''}</section>

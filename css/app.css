@@ -262,7 +262,7 @@ html[data-tgt="en"] main [lang="en"]:not(button),html[data-tgt="es"] main [lang=
 .voces{display:inline-flex;gap:8px;align-items:center;flex:none;vertical-align:middle}
 .sesion>.voces{align-self:flex-start}
 .btn-icono.lento{background:var(--crema);display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:3px 6px 2px}
-.lento-txt{font-size:.6rem;font-weight:800;line-height:1.05;letter-spacing:.01em;color:var(--terra-ink);white-space:nowrap}
+.lento-txt{font-family:var(--sans);font-size:.6rem;font-weight:800;line-height:1.05;letter-spacing:.01em;color:var(--terra-ink);white-space:nowrap}
 .btn-icono.lento .perezoso{width:26px;height:26px}
 .perezoso{display:block}
 .btn-icono.falso .perezoso{width:24px;height:24px}
@@ -281,3 +281,25 @@ html[data-tgt="en"] main [lang="en"]:not(button),html[data-tgt="es"] main [lang=
 .coloquial{margin:8px 0 14px;padding:4px 14px;border:2px dashed var(--linea);border-radius:14px;background:var(--blanco);text-align:left}
 .coloquial summary{min-height:44px;display:flex;align-items:center;font-weight:700;color:var(--terra-ink);cursor:pointer}
 .coloquial p{margin:6px 0 10px;line-height:1.45}
+/* ---------- Historia 2, pláticas, «Así se habla» y «Reglas claras» ---------- */
+.otra-historia{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit}
+.otra-historia .ir{font-weight:800;color:var(--terra-ink)}
+.versiculo{border-left:6px solid var(--verde);background:var(--blanco)}
+.versiculo .versos p{font-family:Georgia,serif;font-size:1.12rem;line-height:1.55;margin:8px 0}
+a.modo{text-decoration:none;color:inherit}
+.modo.destacado{border-color:var(--olla);background:var(--crema-2)}
+.charla{display:flex;flex-direction:column;gap:2px}
+.yo-dice{align-self:flex-end;max-width:86%;margin:6px 0;padding:10px 14px;border-radius:18px 18px 4px 18px;background:var(--verde-ink);color:#fff}
+.yo-dice .l2{color:#E6F3F2}
+.yo-dice p{margin:0}
+.chips-region{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip-region{min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--linea);background:var(--blanco);font-weight:700;cursor:pointer;color:var(--cafe)}
+.chip-region[aria-pressed="true"]{background:var(--terra-ink);border-color:var(--terra-ink);color:#fff}
+.frases{display:grid;gap:12px}
+.frase h2{margin:0 0 6px;font-size:1.3rem}
+.frase p{margin:6px 0}
+.frase .ejemplo{padding:8px 12px;border-radius:12px;background:var(--crema)}
+.regla h2{font-size:1.05rem;font-family:inherit;line-height:1.4;margin:0 0 8px}
+.num-regla{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--olla);color:var(--cafe);font-weight:800;margin-right:4px}
+.ejemplos{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.ejemplos li{padding:8px 12px;border-radius:12px;background:var(--crema)}

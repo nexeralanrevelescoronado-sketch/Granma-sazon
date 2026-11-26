@@ -23,6 +23,12 @@ Esta app enseña inglés y español a gente de todas las edades (familias, abuel
 
 Por qué: los niños copian el tono. Un Abuelo que regaña o una Granma sarcástica rompen la promesa de la marca («calma y cariño»).
 
+## «Mijo» o «mija»: lo elige la persona
+
+La app cambia sola «mijo» por «mija» (o al revés) según lo que la persona eligió, en todo lo que Granma le dice. Para que salga bien:
+- Lo que **otro personaje** le dice a Granma va **entre comillas** («Mija, el mole no tiene prisa»): lo que está entre comillas no se cambia.
+- Evita adjetivos con género dirigidos a la persona («estás cansado», «bienvenido»); usa formas neutras («qué valiente», «qué gusto verte»). Si no hay remedio, agrega la frase a `EN_FEMENINO` en `js/state.js`.
+
 ## Reglas de contenido (no negociables)
 
 - **Siempre bilingüe** español/inglés, completo en los dos idiomas. Natural, no traducción palabra por palabra (si el juego de palabras no pasa, adáptalo o cambia de chiste, no lo expliques).

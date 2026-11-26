@@ -643,3 +643,49 @@ test('Historia 3 (las fiestas de mi familia): 6 capítulos alegres con sus tradi
   assert.ok(json('data/paquetes.json').paquetes.find((p) => p.id === 'historia').archivos.includes('data/historia3.json'));
   assert.ok(/FIESTA/.test(leer('js/vistas/recetas.js')));
 });
+
+test('trato, actualización y permisos: «mijo» o «mija» en toda la app, botón «Actualizar» y un botón por autorización', async () => {
+  globalThis.localStorage ||= { _d: {}, getItem(k) { return this._d[k] ?? null; }, setItem(k, v) { this._d[k] = v; } };
+  // 1) mijo / mija
+  const { tratarComo, conTrato, estado } = await import('../js/state.js');
+  assert.equal(tratarComo('¡Hola, Ana, mijo! Mijo, mijo, ra.', 'mija'), '¡Hola, Ana, mija! Mija, mija, ra.');
+  assert.equal(tratarComo('Aquel joven era tu abuelo, mija.', 'mijo'), 'Aquel joven era tu abuelo, mijo.');
+  assert.equal(tratarComo('Ella me dijo: «Mija, el mole no tiene prisa». Qué rico, mija.', 'mijo'), 'Ella me dijo: «Mija, el mole no tiene prisa». Qué rico, mijo.', 'lo que va entre comillas lo dice otra persona: no se toca');
+  assert.equal(tratarComo('My mom said "Mija, wait". Now, mija, listen.', 'mijo'), 'My mom said "Mija, wait". Now, mijo, listen.');
+  assert.equal(tratarComo('«Mijo» y «mija» vienen de «mi hijo» y «mi hija».', 'mija'), '«Mijo» y «mija» vienen de «mi hijo» y «mi hija».', 'las explicaciones de las dos palabras quedan igual');
+  assert.equal(tratarComo('Ven, mijito. Dios te cuida, hija.', 'mijo'), 'Ven, mijito. Dios te cuida, hija.', '«hija» y «mijito» no se tocan');
+  assert.equal(tratarComo('Hola, mija.', ''), 'Hola, mija.'); assert.equal(tratarComo('Hola, mija.', undefined), 'Hola, mija.', 'sin elegir, queda como está escrito');
+  assert.equal(tratarComo('No estás solo, mijo. ¡Qué sabio, mijo!', 'mija'), 'No estás sola, mija. ¡Qué sabia, mija!', 'con «mija», lo dirigido a la persona va en femenino');
+  assert.equal(tratarComo('No estás solo, mijo.', 'mijo'), 'No estás solo, mijo.');
+  // la mamá le habla a Granma niña: esa frase del capítulo 4 no cambia para nadie
+  const cap4 = historia.capitulos[3].relato.es.find((p) => p.includes('«Mija, el mole'));
+  assert.ok(cap4 && tratarComo(cap4, 'mijo').includes('«Mija, el mole no tiene prisa'));
+  // en todo el contenido: con «mija» no queda ningún «mijo» fuera de comillas, y al revés
+  const sinCitas = (t) => t.replace(/«[^»]*»|“[^”]*”|"[^"]*"/g, '');
+  for (const f of ['historia', 'historia2', 'historia3', 'cotorreo', 'platicas', 'reglas', 'recetas']) {
+    const textos = []; (function anda(o) { if (typeof o === 'string') textos.push(o); else if (o && typeof o === 'object') Object.values(o).forEach(anda); })(json(`data/${f}.json`));
+    for (const t of textos) { if (/mijo/i.test(t) && /mija/i.test(t)) continue;
+      assert.ok(!/(^|[^\p{L}])mijo(?![\p{L}])/iu.test(sinCitas(tratarComo(t, 'mija'))), `${f}: quedó «mijo» con trato mija: ${t.slice(0, 60)}`);
+      assert.ok(!/(^|[^\p{L}])mija(?![\p{L}])/iu.test(sinCitas(tratarComo(t, 'mijo'))), `${f}: quedó «mija» con trato mijo: ${t.slice(0, 60)}`); }
+  }
+  estado().perfil.trato = 'mija'; assert.deepEqual(conTrato({ a: ['Ándale, mijo.'], n: 3 }), { a: ['Ándale, mija.'], n: 3 }); estado().perfil.trato = undefined;
+  assert.deepEqual(conTrato({ a: 'Ándale, mijo.' }), { a: 'Ándale, mijo.' });
+  const datos = leer('js/datos.js'); assert.ok(/CON_TRATO\.test\(ruta\)/.test(datos) && !/glosario/.test(datos.match(/CON_TRATO = .*/)[0]), 'se aplica al contenido, no a los glosarios ni a la Biblia');
+  const onb = leer('js/vistas/onboarding.js'); assert.ok(/data-trato="mijo"/.test(onb) && /data-trato="mija"/.test(onb) && /data-trato=""/.test(onb) && /Como salga/.test(onb), 'la bienvenida lo pregunta, y se puede dejar «como salga»');
+  assert.ok(/data-trato-card/.test(leer('js/vistas/inicio.js')), 'a quien ya tenía la app se le pregunta en el inicio');
+  // 2) actualización: la versión nueva espera al botón «Actualizar» (o a que se cierre la app)
+  const sw = leer('sw.js'), act = leer('js/actualizar.js'), html = leer('index.html');
+  assert.ok(/if \(!self\.registration\.active\) await self\.skipWaiting\(\)/.test(sw), 'solo la primera instalación entra de una vez');
+  assert.ok(/ev\.data === 'actualizar'\) ev\.waitUntil\(self\.skipWaiting\(\)\)/.test(sw) && /postMessage\(VERSION\)/.test(sw));
+  assert.ok(/id="aviso-version"[^>]*hidden/.test(html) && /id="btn-actualizar"/.test(html), 'el aviso existe y empieza oculto');
+  assert.ok(/registro\.waiting\.postMessage\('actualizar'\)/.test(act) && /controllerchange/.test(act) && /location\.reload\(\)/.test(act) && /visibilitychange/.test(act) && /reg\.update\(\)/.test(act), 'botón, recarga sola y búsqueda al volver a la app');
+  assert.ok(/vigilarActualizaciones\(reg\)/.test(leer('js/app.js')));
+  // 3) permisos: cada uno con su botón; la app nunca pide nada sola al abrir
+  const per = leer('js/permisos.js');
+  for (const b of ['buscar', 'instalar', 'avisos', 'micro', 'guardar']) assert.ok(per.includes(`data-p="${b}"`), `botón ${b}`);
+  assert.ok(/pedirPermisoDeAviso\(\)/.test(per) && /getUserMedia\(\{ audio: true \}\)/.test(per) && /getTracks\(\)\.forEach\(\(t\) => t\.stop\(\)\)/.test(per), 'pide avisos y micrófono solo al tocar, y suelta el micrófono enseguida');
+  assert.ok(/Agregar a inicio/.test(per) && /solo se pueden permitir con la app en tu pantalla de inicio/.test(per), 'explica el caso del iPhone');
+  assert.ok(/no manda publicidad/.test(per), 'dice para qué son los avisos');
+  for (const f of ['js/app.js', 'js/vistas/inicio.js']) assert.ok(!/requestPermission|getUserMedia/.test(leer(f)), `${f}: nada de permisos al abrir`);
+  assert.ok(/data-permisos/.test(leer('js/vistas/perfil.js')) && /data-app-lista/.test(leer('js/vistas/inicio.js')));
+});

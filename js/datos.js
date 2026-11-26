@@ -1,4 +1,7 @@
 // Carga de datos: primero lo que haya en Cache Storage (descargado), si no, la red.
+import { conTrato } from './state.js';
+// Contenido donde Granma le habla a la persona: ahí se aplica «mijo» o «mija» según lo que eligió. Los glosarios y la Biblia no se tocan.
+const CON_TRATO = /data\/(historia\d?|consejos|cotorreo|recetas|platicas|coloquial|reglas)\.json$/;
 export class SinDescargar extends Error { constructor(ruta, paquete) { super('Sin descargar: ' + ruta); this.ruta = ruta; this.paquete = paquete; } }
 const memo = new Map();
 export async function cargarJSON(ruta, paquete) {
@@ -8,6 +11,7 @@ export async function cargarJSON(ruta, paquete) {
   if (!res.ok) throw new SinDescargar(ruta, paquete);
   let datos; try { datos = await res.json(); } catch { throw new SinDescargar(ruta, paquete); }
   if (datos && datos.sinInternet) throw new SinDescargar(ruta, paquete);
+  if (CON_TRATO.test(ruta)) datos = conTrato(datos);
   memo.set(ruta, datos); return datos;
 }
 export const historia = () => cargarJSON('data/historia.json', 'historia');

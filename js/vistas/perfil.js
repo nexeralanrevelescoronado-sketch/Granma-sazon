@@ -1,5 +1,6 @@
 // Perfil: insignias, constancia, ajustes y créditos.
 import { puedeReconocer, escuchar, grabar, soltar } from '../oido.js';
+import { conectarPermisos } from '../permisos.js';
 import { estado, guardar, reiniciar, u, nat, tgt, Ln, INSIGNIAS, rachaVigente } from '../state.js';
 import { generarConstancia } from '../constancia.js';
 import { sonido } from '../sound.js';
@@ -22,11 +23,14 @@ export async function montar(main) {
     ${(S.cuaderno || []).length ? `<p class="muted">${u('Las últimas palabras que tocaste para ver qué significan.', 'The last words you tapped to see what they mean.')}</p><ul class="cuaderno">${S.cuaderno.slice(0, 20).map((x) => `<li><strong lang="${x.l}">${esc(x.p)}</strong><span class="muted">= ${esc(x.s)}</span></li>`).join('')}</ul>` : `<p class="muted">${u('Toca cualquier palabra en una lección y aquí se va guardando.', 'Tap any word in a lesson and it will be saved here.')}</p>`}
     <h2 class="mt2">🏆 ${u('Constancia Granma', 'Granma Certificate')}</h2>
     <div class="tarjeta">${hecha ? `<p>${u('¡La ganaste! Escribe tu nombre para tu constancia (se hace en tu teléfono).', 'You earned it! Type your name for your certificate (made on your phone).')}</p>
-      <label class="muted" for="nombre">${u('Tu nombre', 'Your name')}</label><input type="text" id="nombre" maxlength="40" value="${esc(S.perfil.nombre)}" autocomplete="name" style="margin-bottom:10px"><button class="btn grande olla" data-const>${u('Crear mi constancia', 'Create my certificate')}</button><div id="const-out" class="mt"></div>` : `<p>${u('Termina los 5 capítulos de la Historia 1 para ganarla.', 'Finish the 5 chapters of Story 1 to earn it.')}</p><a class="btn" href="#/historia">${u('Ir a la historia', 'Go to the story')}</a>`}</div>
+      <label class="muted" for="nombre">${u('Tu nombre', 'Your name')}</label><input type="text" id="nombre" maxlength="40" value="${esc(S.perfil.nombre)}" autocomplete="name" style="margin-bottom:10px"><button class="btn grande olla" data-const>${u('Crear mi constancia', 'Create my certificate')}</button><div id="const-out" class="mt"></div>` : `<p>${u('Termina los 6 capítulos de la Historia 1 para ganarla.', 'Finish the 6 chapters of Story 1 to earn it.')}</p><a class="btn" href="#/historia">${u('Ir a la historia', 'Go to the story')}</a>`}</div>
+    <h2 class="mt2">📲 ${u('La app en tu teléfono', 'The app on your phone')}</h2>
+    <div class="tarjeta" data-permisos></div>
     <h2 class="mt2">${u('Ajustes', 'Settings')}</h2>
     <div class="tarjeta"><div class="fila"><button class="btn sec" data-sonido>${S.ajustes.sonido ? '🔊 ' + u('Sonido: sí', 'Sound: on') : '🔇 ' + u('Sonido: no', 'Sound: off')}</button>
       ${vozDisponible() ? `<button class="btn sec" data-voz aria-pressed="${!!S.ajustes.voz}">🗣 ${S.ajustes.voz ? u('Voz: sí', 'Voice: on') : u('Voz: no', 'Voice: off')}</button>` : ''}
-      <a class="btn sec" href="#/onboarding?cambiar">${u('Cambiar interés o cocina', 'Change interest or cuisine')}</a></div>
+      <a class="btn sec" href="#/onboarding?cambiar">${u('Cambiar interés, cocina o cómo me dice Granma', 'Change interest, cuisine or what Granma calls me')}</a></div>
+      <p class="muted mt">${u('Granma te dice', 'Granma calls you')}: <strong>${S.perfil.trato === 'mija' ? '«mija»' : S.perfil.trato === 'mijo' ? '«mijo»' : u('de las dos formas', 'either way')}</strong></p>
       <p class="muted mt">${u('La voz de Granma y el Abuelo se apaga con 🗣. Usa las voces instaladas en tu dispositivo (es-MX y en-US).', 'Turn the voice of Granma and Grandpa off with 🗣. It uses the voices installed on your device (es-MX and en-US).')}</p>
       <p class="muted">${u('Idioma que aprendes', 'Language you are learning')}: <strong>${S.perfil.aprende === 'es' ? 'Español' : 'English'}</strong> · ${u('Interés', 'Interest')}: <strong>${esc(S.perfil.interes)}</strong></p>
       <button class="btn sec" data-borrar style="margin-top:6px">${u('Borrar mi progreso', 'Delete my progress')}</button></div>
@@ -45,6 +49,7 @@ export async function montar(main) {
     <div class="tarjeta"><p class="atrib">${u('Personajes, logo, textos, chistes y consejos: creación original de Granma Sazón.', 'Characters, logo, texts, jokes and advice: original creations of Granma Sazón.')}</p>
       <p class="atrib"><strong>${u('Oído de Granma', 'Granma\'s ear')}</strong> — ${u('usa Vosk y sus modelos de voz (Alpha Cephei Inc.), con licencia Apache 2.0.', 'uses Vosk and its speech models (Alpha Cephei Inc.), under the Apache 2.0 license.')}</p>
       ${VERSIONES.map((v) => `<p class="atrib"><strong>${esc(v.corto)}</strong> — ${esc(v.attribution[nat()])}${v.activa ? '' : ' (' + u('apagada', 'switched off') + ')'}</p>`).join('')}</div>`;
+  conectarPermisos(main.querySelector('[data-permisos]'));
   main.onclick = async (e) => {
     const b = e.target.closest('button'); if (!b) return;
     if (b.hasAttribute('data-sonido')) { sonido.alternar(); montar(main); }

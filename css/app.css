@@ -303,3 +303,12 @@ a.modo{text-decoration:none;color:inherit}
 .num-regla{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--olla);color:var(--cafe);font-weight:800;margin-right:4px}
 .ejemplos{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 .ejemplos li{padding:8px 12px;border-radius:12px;background:var(--crema)}
+/* ---------- aviso de versión nueva y permisos ---------- */
+.aviso-version{position:fixed;left:12px;right:12px;bottom:calc(var(--alto-nav) + var(--seguro-inf) + 16px);z-index:45;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 16px;border-radius:16px;background:var(--cafe);color:#fff;font-weight:700;box-shadow:var(--sombra);max-width:var(--ancho);margin:0 auto}
+.aviso-version[hidden]{display:none}
+.aviso-version .btn{flex:none;min-height:44px;background:var(--olla);color:var(--cafe);border-color:var(--olla)}
+.permisos{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.permisos li{display:grid;gap:6px;padding-bottom:12px;border-bottom:1px solid var(--linea)}
+.permisos li:last-child{border-bottom:0;padding-bottom:0}
+.permisos .estado{font-weight:700}
+.permisos .estado.ok{color:var(--verde-ink)}

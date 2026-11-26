@@ -1,6 +1,6 @@
 // Lección: relato de Granma → palabras → 5 ejercicios → consejo del Abuelo → resultado.
 import { porraHTML, fiesta } from '../porras.js';
-import { estado, guardar, u, tgt, nat, Ln, Lt, ganarXP, evento, sinEnergia, marcarRepetir, limpiarRepetir, tocaRepetir } from '../state.js';
+import { estado, guardar, u, tratar, tgt, nat, Ln, Lt, ganarXP, evento, sinEnergia, marcarRepetir, limpiarRepetir, tocaRepetir } from '../state.js';
 import { sinEnergiaHTML } from './sin-energia.js';
 import { historiaDe, mapaDe, recetas as cargarRecetas } from '../datos.js';
 import { ejerciciosDeCapitulo, jugar } from '../ejercicios.js';
@@ -71,7 +71,7 @@ export async function montar(main, { args }) {
   }
   let resultado = { aciertos: 0, errores: 0 };
   // Cierre de los capítulos de la Historia 2: Granma agradece con calma (sin porra ni tortillas)
-  const cierreSobrio = () => `<div class="dialogo" data-premio><div class="globo"><span class="quien">Granma</span><p class="bilingue"><span class="l1 premio" lang="${N}">${u('Gracias por escucharme, mijo. Te ganaste un cafecito conmigo.', 'Thank you for listening, mijo. You earned a little coffee with me.')}</span><br><span class="l2" lang="${T}">${T === 'en' ? 'Thank you for listening, mijo. You earned a little coffee with me.' : 'Gracias por escucharme, mijo. Te ganaste un cafecito conmigo.'}</span></p></div></div>`;
+  const cierreSobrio = () => `<div class="dialogo" data-premio><div class="globo"><span class="quien">Granma</span><p class="bilingue"><span class="l1 premio" lang="${N}">${u('Gracias por escucharme, mijo. Te ganaste un cafecito conmigo.', 'Thank you for listening, mijo. You earned a little coffee with me.')}</span><br><span class="l2" lang="${T}">${tratar(T === 'en' ? 'Thank you for listening, mijo. You earned a little coffee with me.' : 'Gracias por escucharme, mijo. Te ganaste un cafecito conmigo.')}</span></p></div></div>`;
   function consejo() {
     const c = cap.consejo, claves = c.clave;
     main.innerHTML = `<h1>${u('El consejo del Abuelo', 'Grandpa\'s advice')}</h1>

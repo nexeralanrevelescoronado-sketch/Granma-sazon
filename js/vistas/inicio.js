@@ -1,4 +1,4 @@
-import { estado, u, tgt, nat, Ln, vidas, rachaVigente, misionesDeHoy, progresoMision, MAX_VIDAS, sinEnergia, tocaRepetir } from '../state.js';
+import { estado, guardar, u, tgt, nat, Ln, vidas, rachaVigente, misionesDeHoy, progresoMision, MAX_VIDAS, sinEnergia, tocaRepetir } from '../state.js';
 import { pj } from '../personajes.js';
 import { esc, delDia, resaltar } from '../util.js';
 import { consejos, cotorreos, historia } from '../datos.js';
@@ -15,6 +15,8 @@ export function montar(main) {
     <section class="dialogo">${pj('granma', 'contenta')}<div class="globo"><span class="quien">Granma</span>
       <h1 style="font-size:1.25rem;margin:0">${u(`¡Hola${nombre}, mijo!`, `Hello${nombre}, mijo!`)}</h1>
       <p>${u(rachaVigente() ? `Llevas <strong>${rachaVigente()}</strong> día(s) de racha. ¡Qué orgullo!` : 'Hoy es un buen día para empezar tu racha.', rachaVigente() ? `You have a <strong>${rachaVigente()}</strong>-day streak. So proud!` : 'Today is a great day to start your streak.')}</p></div></section>
+    ${S.perfil.trato === undefined ? `<section class="tarjeta crema2" data-trato-card><h2 style="font-size:1.05rem">${u('¿Cómo quieres que te diga?', 'What should I call you?')}</h2><div class="fila"><button class="btn sec" data-trato="mijo">Mijo</button><button class="btn sec" data-trato="mija">Mija</button><button class="btn sec" data-trato="">${u('Como salga', 'Either one')}</button></div></section>` : ''}
+    <a class="tarjeta enlace-tarjeta" href="#/perfil" data-app-lista hidden><strong>📲 ${u('Deja lista tu app', 'Get your app ready')}</strong><span class="muted">${u('Ponla en tu pantalla de inicio y permite los avisos, con un botón cada cosa.', 'Put it on your home screen and allow notifications, one button each.')}</span></a>
     <a class="btn grande olla" id="cta" href="#/historia">▶ ${u('Historia de Granma', 'Granma\'s story')}</a>
     <a class="btn sec bloque mt" id="cta-prueba" href="#/historia" hidden></a>
     <div class="rejilla mt"><a class="btn sec" href="#/reto">⏱ ${u('Reto de 60 s', '60-second challenge')}</a><a class="btn sec" href="#/descargas">⬇ ${u('Sin internet', 'Offline')}</a></div>
@@ -25,6 +27,10 @@ export function montar(main) {
     <section class="tarjeta" id="tarjeta-consejo" style="min-height:11.5rem" aria-labelledby="h-consejo"><h2 id="h-consejo" class="solo-lector">${u('Consejo del día', 'Advice of the day')}</h2><div data-cont></div></section>
     <section class="tarjeta" id="tarjeta-chiste" style="min-height:11.5rem" aria-labelledby="h-chiste"><h2 id="h-chiste" class="solo-lector">${u('Chiste del día', 'Joke of the day')}</h2><div data-cont></div></section>`;
 
+  // «¿Cómo quieres que te diga?»: se pregunta una sola vez a quien ya tenía la app; al elegir, todo se vuelve a leer con ese trato.
+  main.querySelector('[data-trato-card]')?.addEventListener('click', (e) => { const b = e.target.closest('[data-trato]'); if (!b) return; S.perfil.trato = b.dataset.trato; guardar(); location.reload(); });
+  // «Deja lista tu app»: aparece mientras falte instalarla o decidir sobre los avisos
+  import('../permisos.js').then(({ faltaAlgo }) => { const a = main.querySelector('[data-app-lista]'); if (a && faltaAlgo()) a.hidden = false; }).catch(() => {});
   const poner = (id, html) => { const c = main.querySelector(`#${id} [data-cont]`); if (c) { c.innerHTML = html; c.closest('section').style.minHeight = ''; } };
   consejos().then((lista) => {
     const c = delDia(lista), claves = c.clave;

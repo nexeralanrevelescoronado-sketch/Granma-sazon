@@ -145,3 +145,16 @@ Pedido por el dueño, con sus propios recuerdos como guion. Lo escribieron cuatr
 - **Pruebas:** `npm test` (35) y `node scripts/qa-historia2.mjs` (ahora con la Historia 3 y las recetas).
 
 - **Modo perezoso más lento (26 nov):** el dueño lo sintió todavía rápido en su teléfono y pidió la mitad. La velocidad pasó de × 0.62 a × 0.31 (Granma 0.26, el Abuelo 0.24; piso 0.2) y las grabaciones del Abuelo de 0.78 a 0.39. Si el motor de voz de un teléfono no baja de cierto mínimo, lo siguiente es decir la frase palabra por palabra con pausas.
+
+## «Mijo» o «mija», botón «Actualizar» y permisos con un botón (26 nov)
+
+Pedido por el dueño.
+
+- **Trato** (`tratarComo`, `conTrato` en `js/state.js`): la bienvenida pregunta «¿Cómo quieres que te diga Granma?» (Mijo, Mija o «como salga»). No se pregunta nada personal: solo la palabra de cariño. Con eso cambia todo lo que Granma le dice a la persona: los textos de la interfaz (pasan por `u()`), el contenido al cargarse (historias, pláticas, recetas, cotorreo, reglas, frases) y la voz.
+  - No se toca lo que va entre comillas (lo dice otro personaje: «Mija, el mole no tiene prisa», de su mamá a Granma), ni «hijo/hija», ni los textos que explican las dos palabras, ni los glosarios ni la Biblia.
+  - Con «mija», 13 frases dirigidas a la persona pasan a femenino («No estás sola», «¡Bienvenida!», «Estoy muy cansada»…). La lista está en `EN_FEMENINO`; si se escribe contenido nuevo con un adjetivo dirigido a la persona, hay que sumarlo ahí.
+  - A quien ya tenía la app se le pregunta una vez, en una tarjeta del inicio. Se cambia en Perfil.
+- **Actualización** (`js/actualizar.js`, `sw.js`): antes la versión nueva entraba a media sesión; ahora, si ya había una versión funcionando, la nueva **espera**. Aparece el aviso «Hay una versión nueva» con el botón **Actualizar**: al tocarlo entra y la app se recarga sola. Si no se toca, entra la próxima vez que se abre la app. Se busca versión nueva al volver a la app y cada 30 minutos; también hay «Buscar actualización» en Perfil, que muestra la versión instalada. Funciona igual con la app en la pantalla de inicio.
+- **La app en tu teléfono** (`js/permisos.js`, en Perfil): un renglón con su botón para la versión, instalar en la pantalla de inicio, avisos, micrófono y proteger las descargas. Cada botón hace aparecer la autorización del propio teléfono; la app nunca pide nada sola al abrir. Si algo quedó bloqueado, no se insiste: se explica cómo activarlo en los ajustes. El inicio invita con «Deja lista tu app» mientras falte instalarla o decidir sobre los avisos.
+  - **Límite real de los avisos:** la app no tiene servidor, así que hoy solo puede avisar del cronómetro de las recetas mientras está abierta o en segundo plano. Los recordatorios diarios («no pierdas tu racha») necesitarían un servidor de avisos; en iPhone, además, los avisos solo existen con la app instalada en la pantalla de inicio (iOS 16.4 o más reciente).
+- **Pruebas:** `npm test` (36) y `node scripts/qa-app.mjs`, que publica versiones nuevas contra un service worker real y comprueba el aviso, el botón y la recarga.

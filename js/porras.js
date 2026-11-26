@@ -1,7 +1,7 @@
 // Porras de Granma: cada vez que la persona completa un área, Granma grita «¡Épale!», echa una porra, avienta
 // tortillas (dos o tres se estrellan contra la pantalla) y anuncia el premio. Los textos siguen la voz de Granma:
 // tierna, con «mijo/mija», siempre anima.
-import { estado, guardar, u, tgt, nat } from './state.js';
+import { estado, guardar, u, tgt, nat, tratar } from './state.js';
 import { pj } from './personajes.js';
 import { sonido } from './sound.js';
 import { vibrar } from './fx.js';
@@ -32,7 +32,7 @@ export function porra() {
 export function porraHTML(premio = 'taquitos', { conPj = true } = {}) {
   const N = nat(), T = tgt(), [pEs, pEn] = porra(), [gEs, gEn] = PREMIOS[premio] || PREMIOS.taquitos;
   const en = `${pEn} ${gEn}`, es = `${pEs} ${gEs}`;
-  return `<div class="dialogo" data-premio>${conPj ? pj('granma', 'aplaudiendo', { ancho: 84, clase: 'anim-aplaude' }) : ''}<div class="globo"><span class="quien">Granma</span><p class="bilingue"><span class="l1 premio" lang="${N}">${u(es, en)}</span><br><span class="l2" lang="${T}">${T === 'en' ? en : es}</span></p></div></div>${notaColoquial(es)}`;
+  return `<div class="dialogo" data-premio>${conPj ? pj('granma', 'aplaudiendo', { ancho: 84, clase: 'anim-aplaude' }) : ''}<div class="globo"><span class="quien">Granma</span><p class="bilingue"><span class="l1 premio" lang="${N}">${u(es, en)}</span><br><span class="l2" lang="${T}">${tratar(T === 'en' ? en : es)}</span></p></div></div>${notaColoquial(es)}`;
 }
 
 /** La fiesta: tortillas desde Granma (2 o 3 se estrellan en la pantalla), confeti tricolor y el grito. Devuelve cómo cancelarla. */

@@ -6,7 +6,7 @@
  * - Los cachés viejos se limpian en `activate`.
  */
 /*NUCLEO:INICIO*/
-const VERSION = '4c5c13fa86';
+const VERSION = 'c1cc4099e7';
 const NUCLEO = [
  "assets/animaciones/animaciones.css",
  "assets/animaciones/confeti.js",
@@ -43,6 +43,7 @@ const NUCLEO = [
  "data/reglas.json",
  "demo-animaciones.html",
  "index.html",
+ "js/actualizar.js",
  "js/app.js",
  "js/biblia/base.js",
  "js/biblia/config.js",
@@ -63,6 +64,7 @@ const NUCLEO = [
  "js/lento.js",
  "js/oido-propio.js",
  "js/oido.js",
+ "js/permisos.js",
  "js/personajes.js",
  "js/porras.js",
  "js/pruebas.js",
@@ -101,7 +103,9 @@ self.addEventListener('install', (ev) => {
   ev.waitUntil((async () => {
     const cache = await caches.open(CORE);
     await cache.addAll(NUCLEO.map((r) => new Request(aUrl(r), { cache: 'reload' })));
-    await self.skipWaiting();
+    // Primera instalación: entra de una vez. Si ya había una versión funcionando, la nueva ESPERA: se activa cuando la persona
+    // toca «Actualizar» (mensaje 'actualizar') o cuando cierra la app. Así nunca se mezclan dos versiones a media sesión.
+    if (!self.registration.active) await self.skipWaiting();
   })());
 });
 
@@ -182,7 +186,11 @@ self.addEventListener('fetch', (ev) => {
 
 // La página pide tomar el control cuando ya abrió y pasaron unos segundos (nunca durante la carga): así la primera visita
 // también funciona sin internet sin que el service worker se meta a media carga.
-self.addEventListener('message', (ev) => { if (ev.data === 'tomar-control') ev.waitUntil(self.clients.claim()); });
+self.addEventListener('message', (ev) => {
+  if (ev.data === 'tomar-control') ev.waitUntil(self.clients.claim());
+  else if (ev.data === 'actualizar') ev.waitUntil(self.skipWaiting());            // botón «Actualizar»: la versión nueva entra ya
+  else if (ev.data === 'version') ev.ports?.[0]?.postMessage(VERSION);            // para mostrar la versión en el perfil
+});
 
 // Notificación del cronómetro: al tocarla se enfoca la app (o se abre si estaba cerrada).
 self.addEventListener('notificationclick', (ev) => {

@@ -28,7 +28,34 @@ export function reiniciar() { S = base(); guardar(); }
 /* Idiomas: el usuario aprende `tgt`; la interfaz va en su idioma `nat`. */
 export const tgt = () => S.perfil.aprende || 'en';
 export const nat = () => (tgt() === 'en' ? 'es' : 'en');
-export const u = (es, en) => (nat() === 'es' ? es : en);
+/* Trato: Granma le dice «mijo» o «mija» a la persona, según lo que eligió (perfil.trato = 'mijo' | 'mija'; vacío = como venga escrito).
+   No se toca lo que va entre comillas (ahí habla otra persona: «Mija, el mole no tiene prisa», le dijo su mamá a Granma),
+   ni los textos que explican las dos palabras. Tampoco «hijo/hija»: eso lo dicen otros personajes de la historia. */
+const CITA = /«[^»]*»|“[^”]*”|"[^"]*"/g;
+// Frases en las que Granma (o la propia persona, al contestarle) usa una palabra en masculino: con «mija» van en femenino.
+const EN_FEMENINO = [['¡Bienvenido, mij', '¡Bienvenida, mij'], ['fuerte y contento', 'fuerte y contenta'], ['¡Qué sabio, mij', '¡Qué sabia, mij'], ['Qué sabio eres', 'Qué sabia eres'],
+  ['No estás solo', 'No estás sola'], ['estás agradecido', 'estás agradecida'], ['un gran trabajador', 'una gran trabajadora'], ['mi campeón', 'mi campeona'],
+  ['para el cocinero', 'para la cocinera'], ['un cocinero!', 'una cocinera!'], ['Me siento nervioso.', 'Me siento nerviosa.'], ['Estoy muy cansado.', 'Estoy muy cansada.'], ['Voy solo.', 'Voy sola.']];
+export function tratarComo(texto, trato) {
+  if ((trato !== 'mijo' && trato !== 'mija') || typeof texto !== 'string') return texto;
+  if (trato === 'mija') for (const [m, f] of EN_FEMENINO) if (texto.includes(m)) texto = texto.split(m).join(f);
+  if (!/mij[oa]/i.test(texto)) return texto;
+  if (/mijo/i.test(texto) && /mija/i.test(texto)) return texto;
+  const fin = trato === 'mija' ? 'a' : 'o', cambia = (t) => t.replace(/(^|[^\p{L}])(mij)[oa](?![\p{L}])/giu, (_m, antes, mij) => antes + mij + fin);
+  let sal = '', i = 0;
+  for (const m of texto.matchAll(CITA)) { sal += cambia(texto.slice(i, m.index)) + m[0]; i = m.index + m[0].length; }
+  return sal + cambia(texto.slice(i));
+}
+export const tratar = (texto) => tratarComo(texto, S.perfil.trato);
+/** Aplica el trato a todos los textos de un contenido ya cargado (historias, pláticas, recetas…). */
+export function conTrato(o) {
+  if (S.perfil.trato !== 'mijo' && S.perfil.trato !== 'mija') return o;
+  if (typeof o === 'string') return tratar(o);
+  if (Array.isArray(o)) return o.map(conTrato);
+  if (o && typeof o === 'object') return Object.fromEntries(Object.entries(o).map(([k, v]) => [k, conTrato(v)]));
+  return o;
+}
+export const u = (es, en) => tratar(nat() === 'es' ? es : en);
 export const Ln = (o) => o[nat()];      // texto en el idioma nativo
 export const Lt = (o) => o[tgt()];      // texto en el idioma que aprende
 

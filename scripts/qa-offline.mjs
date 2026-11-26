@@ -29,6 +29,7 @@ await page.goto(BASE);
 
 console.log('1) Onboarding');
 await page.click('[data-aprende="en"]'); await page.click('[data-sig]');
+await page.click('[data-trato="mija"]'); await page.click('[data-sig]');
 await page.click('[data-interes="trabajo"]'); await page.click('[data-sig]');
 await page.click('[data-cocina="mexicana"]'); await page.click('[data-sig]');
 await page.screenshot({ path: join(CAPT, '01-bienvenida.png') });

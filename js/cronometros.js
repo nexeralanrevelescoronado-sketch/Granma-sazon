@@ -18,7 +18,7 @@ export async function pedirPermisoDeAviso() {
   try { if (avisosDisponibles() && Notification.permission === 'default') return (await Notification.requestPermission()) === 'granted'; } catch { /* sin avisos */ }
   return avisosDisponibles() && Notification.permission === 'granted';
 }
-async function notificar(titulo, cuerpo) {
+export async function notificar(titulo, cuerpo) {
   try {
     if (!avisosDisponibles() || Notification.permission !== 'granted') return false;
     const opciones = { body: cuerpo, icon: 'assets/iconos/icon-192.png', badge: 'assets/iconos/icon-192.png', tag: 'cronometro', renotify: true };

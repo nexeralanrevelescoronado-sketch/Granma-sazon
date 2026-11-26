@@ -129,3 +129,17 @@ Pedido por el dueño. El contenido lo escribieron seis ayudantes con la skill `c
 - **Glosario al toque:** pasó de 1,229 a 2,519 palabras en español y de 1,126 a 2,032 en inglés; toda palabra del contenido nuevo tiene su glosa (`node scripts/glosario-faltan.mjs <archivo>` dice cuáles faltan, sin IA).
 - **Guion del Abuelo:** ahora son 57 frases (se sumaron los 6 consejos de la Historia 2); `docs/GUION-ABUELO.md` y `.pdf` regenerados.
 - **Pruebas:** `npm test` (34) y `node scripts/qa-historia2.mjs` en navegador real.
+
+## Historia 3 «Las fiestas de mi familia» y ocho recetas de fiesta (26 nov)
+
+Pedido por el dueño, con sus propios recuerdos como guion. Lo escribieron cuatro ayudantes con la skill `contenido-granma`; se revisó a mano.
+
+- **Historia 3** (`scripts/datos/historia3.json` → `data/historia3.json`; capítulos 13 a 18, mapa en `#/historia/3`): la rosca y el monito (todos expectantes mientras la abuelita prepara chocolate caliente y café), los tamales de la Candelaria (los hacen entre todos), las piñatas (dos o tres golpes sin romperla, y el hermano mayor que la rompe de un solo movimiento), los quince años en Durango con la birria de la abuelita, los chiles en nogada de septiembre y el pipián de los domingos. La idea que la atraviesa: esas fiestas reunían a la familia. Es alegre: lleva porras y tortillas como la Historia 1.
+  - **Puebla y Durango:** Granma creció en un rancho de Puebla (Historia 1); su abuelita vivía en Durango y la familia viajó allá para los quince años. Así no choca con lo ya publicado.
+  - **Verso de la piñata:** «Dale, dale, dale, no pierdas el tino, porque si lo pierdes, pierdes el camino» es un canto tradicional sin autor; va completo, y en inglés con su sentido. No se cita ninguna otra canción.
+  - **Chiles en nogada:** se dice que son de Puebla, de septiembre y con los colores de la bandera. No se cuenta la leyenda de su origen ni se dan años o nombres históricos (una prueba lo vigila).
+  - En inglés, «monito» es la figurita de la rosca (no «monkey»).
+- **Ocho recetas** (`scripts/datos/recetas-fiestas.json`, se suman a las cinco de siempre): rosca de Reyes, tamales, chocolate caliente, enchiladas, birria, chiles en nogada, chiles rellenos y pipián. Medidas exactas, pasos con cronómetro, aviso de pedir ayuda a un adulto, cuidado con los chiles y aviso de alergia a nueces en la nogada. En la rosca, la figurita (apta para alimentos) se mete ya fría por abajo y se avisa a los invitados. En la lista van juntas bajo «Las recetas de las fiestas».
+- **La app admite tres historias:** `historiaN`, `mapaDe` y `historiaDe` en `js/datos.js`; desde cada mapa se asoman las otras dos.
+- **Glosario:** 2,971 palabras en español y 2,363 en inglés. **Guion del Abuelo:** 63 frases.
+- **Pruebas:** `npm test` (35) y `node scripts/qa-historia2.mjs` (ahora con la Historia 3 y las recetas).

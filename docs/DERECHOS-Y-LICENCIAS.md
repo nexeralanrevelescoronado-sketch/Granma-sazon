@@ -11,6 +11,7 @@ la app se vende, un abogado) sepa qué hay, de quién es y qué falta. Se actual
 | Personajes Granma y el Abuelo, logo e íconos | `assets/personajes/`, `assets/logo/`, `assets/iconos/` | Dibujados por código (`scripts/gen-personajes.mjs`, `gen-logo.mjs`). No imitan personajes ni marcas existentes |
 | Relatos, capítulos, consejos, cotorreos, vocabulario, glosarios | `scripts/datos/` | Escritos para la app. Los refranes son dichos populares de uso común, sin atribuir a personas |
 | Historia 2, pláticas, frases coloquiales y reglas | `scripts/datos/*.json` | Escritas para la app. Los versículos de la Historia 2 no se escriben: solo se guarda la cita y el texto se lee de RV1909/KJV. Los chistes de ejemplo son juegos de palabras populares, sin autor |
+| Historia 3 y recetas de fiesta | `scripts/datos/historia3.json`, `recetas-fiestas.json` | Escritas para la app con los recuerdos del dueño. El verso de la piñata («Dale, dale, dale…») es un canto tradicional mexicano sin autor conocido; es la única letra de canción que se cita |
 | Recetas | `scripts/datos/recetas.mjs` | Redacción propia de platillos tradicionales (la lista de ingredientes de un platillo tradicional no tiene dueño; la redacción sí es nuestra) |
 | Animaciones, sonidos | `assets/animaciones/`, `js/sound.js` | Los sonidos se sintetizan en el teléfono: no hay archivos de audio ni música de terceros |
 | Tipografías | — | Solo las del sistema del teléfono (Georgia, system-ui). No se distribuye ninguna fuente |

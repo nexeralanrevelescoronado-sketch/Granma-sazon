@@ -1,4 +1,4 @@
-# Guion del Abuelo: 57 frases para grabar
+# Guion del Abuelo: 63 frases para grabar
 
 Generado con `node scripts/audios.mjs guion`. No lo edites a mano: sale de `scripts/datos/`.
 
@@ -71,3 +71,9 @@ Generado con `node scripts/audios.mjs guion`. No lo edites a mano: sale de `scri
 55. Una carga compartida pesa la mitad.
 56. Antes de juzgar a alguien, acompáñalo un rato.
 57. Quien abre un libro con calma encuentra buena compañía.
+58. La mejor rosca es la que se parte para todos.
+59. Muchas manos hacen ligero el trabajo y alegre la cocina.
+60. No siempre se rompe la piñata, pero siempre se comparte la alegría.
+61. Lo que más vale de una fiesta es la gente que la llena.
+62. Una mesa con la familia es la bandera más bonita de una casa.
+63. Las fiestas se acaban, pero la familia se queda.

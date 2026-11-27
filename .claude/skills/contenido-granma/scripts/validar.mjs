@@ -152,6 +152,16 @@ function validarReceta(r) {
     if (/(?:\d+)\s?(?:minutos?|min)\b/i.test(texto) && !r.pasos.some((p) => p.min)) a.push('el texto menciona minutos pero ningún paso tiene «min»');
   }
   if (r.historia !== undefined || r.aprende !== undefined) { const [e2, a2] = validarHistoria(r); e.push(...e2); a.push(...a2); }
+  if (r.cuento !== undefined) {   // «Cuento de Granma»: inventado y marcado como cuento; sin años ni datos que parezcan historia comprobada
+    const c = r.cuento;
+    if (!par(c?.titulo) || !par(c?.texto)) e.push('cuento: titulo y texto con es/en');
+    else {
+      if (c.titulo.es.length > 50 || c.titulo.en.length > 50) e.push('cuento.titulo: máx. 50 caracteres');
+      if (c.texto.es.length > 650 || c.texto.en.length > 650) e.push('cuento.texto: máx. ~550 caracteres');
+      if (/\b1[5-9]\d\d\b|\b20\d\d\b/.test(c.texto.es + c.texto.en)) e.push('cuento: sin años (es un recuerdo inventado, no historia)');
+      if (!/mij[oa]/i.test(c.texto.es)) a.push('cuento: Granma suele decir «mijo» una vez');
+    }
+  }
   return [e, a];
 }
 /* Historia de una receta (recetas por región): por qué se llama así, dónde nació (solo hechos comprobados), la leyenda
@@ -201,7 +211,7 @@ const CAMPOS = {
   consejos: ['id', 'tema', 'es', 'en', 'clave', 'q'],
   cotorreos: ['id', 'tema', 'tipo', 'es', 'en', 'clave', 'q', 'abuelo'],
   capitulos: ['id', 'receta', 'titulo', 'relato', 'palabras', 'palabrasInteres', 'ejemplos', 'consejo'],
-  recetas: ['id', 'icono', 'estrella', 'insignia', 'nombre', 'resumen', 'porciones', 'tiempoPrep', 'tiempoCoccion', 'nivel', 'nota', 'ingredientes', 'pasos', 'historia', 'aprende'],
+  recetas: ['id', 'icono', 'estrella', 'insignia', 'nombre', 'resumen', 'porciones', 'tiempoPrep', 'tiempoCoccion', 'nivel', 'nota', 'ingredientes', 'pasos', 'historia', 'aprende', 'cuento'],
   biblia: ['id', 'ref', 'titulo', 'pares'],
 };
 /* gentilicios y apodos regionales: no son error por sí solos (puede haber un «poblano» legítimo), pero un chiste con ellos casi siempre es una burla */

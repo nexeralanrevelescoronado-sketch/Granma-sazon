@@ -201,4 +201,8 @@ recetas.push(...JSON.parse(readFileSync(new URL('./recetas-regiones.json', impor
 for (const [id, extra] of Object.entries(JSON.parse(readFileSync(new URL('./recetas-historias.json', import.meta.url), 'utf8')))) {
   const r = recetas.find((x) => x.id === id); if (!r) throw new Error(`Historia de una receta que no existe: ${id}`); Object.assign(r, extra);
 }
+// «Cuento de Granma»: un recuerdo INVENTADO de su familia para cada receta (se muestra marcado como cuento, aparte de la historia real).
+for (const [id, cuento] of Object.entries(JSON.parse(readFileSync(new URL('./recetas-cuentos.json', import.meta.url), 'utf8')))) {
+  const r = recetas.find((x) => x.id === id); if (!r) throw new Error(`Cuento de una receta que no existe: ${id}`); r.cuento = cuento;
+}
 { const ids = recetas.map((r) => r.id); const rep = ids.find((x, i) => ids.indexOf(x) !== i); if (rep) throw new Error(`Receta repetida: ${rep}`); }

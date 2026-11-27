@@ -80,9 +80,10 @@ for (const r of recetas) {
 <p>${esc(r.resumen.es)}</p><p lang="en">${esc(r.resumen.en)}</p>
 <p>${r.porciones} porciones · Preparación ${r.tiempoPrep} min · Cocción ${r.tiempoCoccion} min</p>
 ${historiaHTML(r, 'es')}
+${r.cuento ? `<h2>Cuento de Granma <small>(inventado para ti)</small></h2><h3>${esc(r.cuento.titulo.es)}</h3><p>${esc(r.cuento.texto.es)}</p>` : ''}
 <h2>Ingredientes</h2><ul>${r.ingredientes.map((i) => `<li>${esc(ing(i))}</li>`).join('')}</ul>
 <h2>Preparación</h2><ol>${r.pasos.map((p) => `<li>${esc(p.es)}${p.min ? ` <em>(${p.min} min)</em>` : ''}</li>`).join('')}</ol>
-<section lang="en">${historiaHTML(r, 'en')}<h2>Ingredients</h2><ul>${r.ingredientes.map((i) => `<li>${esc(ingEn(i))}</li>`).join('')}</ul>
+<section lang="en">${historiaHTML(r, 'en')}${r.cuento ? `<h2>Granma's tale <small>(made up for you)</small></h2><h3>${esc(r.cuento.titulo.en)}</h3><p>${esc(r.cuento.texto.en)}</p>` : ''}<h2>Ingredients</h2><ul>${r.ingredientes.map((i) => `<li>${esc(ingEn(i))}</li>`).join('')}</ul>
 <h2>Method</h2><ol>${r.pasos.map((p) => `<li>${esc(p.en)}${p.min ? ` <em>(${p.min} min)</em>` : ''}</li>`).join('')}</ol></section>
 </main></body></html>
 `;

@@ -46,6 +46,8 @@ export async function montar(main, { args }) {
         <span class="muted">⏱ ${r.tiempoPrep} + ${r.tiempoCoccion} min · 🍽 ${r.porciones}</span></div>
       <div class="tarjeta crema2 mt"><strong>⚠ ${u('Ojo', 'Careful')}:</strong> <span lang="${L}">${esc(r.nota[L])}</span></div>
       ${historiaHTML(r, L, otro)}
+      ${r.cuento ? `<section class="tarjeta cuento-granma" aria-labelledby="h-cuento"><span class="etiqueta">📖 ${L === 'es' ? 'Cuento de Granma: lo inventó para ti' : 'Granma\'s tale: she made it up for you'}</span>
+        <h2 id="h-cuento" lang="${L}">${esc(r.cuento.titulo[L])}</h2><p lang="${L}">${esc(r.cuento.texto[L])}</p><p class="muted" lang="${otro}">${esc(r.cuento.texto[otro])}</p></section>` : ''}
       <h2 lang="${L}">${L === 'es' ? 'Ingredientes' : 'Ingredients'}</h2>
       <ul class="ing">${r.ingredientes.map((i) => `<li><span class="cant">${esc(cant(i))}</span><span lang="${L}">${esc(i[L])}</span></li>`).join('')}</ul>
       <h2 class="mt2" lang="${L}">${L === 'es' ? 'Preparación' : 'Method'}</h2>

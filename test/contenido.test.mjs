@@ -782,3 +782,17 @@ test('recetas por región: cada botón lleva a recetas que existen, y cada histo
   // La horchata explica cómo se prepara paso a paso, y la de fresa lava y desinfecta la fruta.
   assert.ok(recetas.find((r) => r.id === 'horchata').pasos.length >= 5 && /desinfect/.test(JSON.stringify(recetas.find((r) => r.id === 'horchata-fresa'))));
 });
+
+test('cuentos de Granma: uno por receta, inventados y marcados, sin años ni personas o negocios reales', () => {
+  const v = leer('js/vistas/receta.js'); assert.ok(/Cuento de Granma: lo inventó para ti/.test(v), 'la app lo marca como cuento inventado');
+  const con = recetas.filter((r) => r.cuento);
+  assert.equal(con.length, recetas.length, `faltan cuentos: ${recetas.filter((r) => !r.cuento).map((r) => r.id).join(', ')}`);
+  const vistos = new Set();
+  for (const r of con) {
+    const c = r.cuento, todo = c.texto.es + ' ' + c.texto.en;
+    assert.ok(c.titulo.es && c.titulo.en && c.texto.es.length >= 200 && c.texto.es.length <= 650 && c.texto.en.length >= 200 && c.texto.en.length <= 650, `${r.id}: largo del cuento`);
+    assert.ok(!/\b1[5-9]\d\d\b|\b20\d\d\b/.test(todo), `${r.id}: sin años`);
+    assert.ok(!/restaurante|taquería|marca|restaurant|brand|Iturbide|Guinness/i.test(todo), `${r.id}: sin negocios, marcas ni personajes reales`);
+    assert.ok(!vistos.has(c.titulo.es), `${r.id}: título repetido`); vistos.add(c.titulo.es);
+  }
+});

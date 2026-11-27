@@ -24,6 +24,8 @@ if (S.ajustes.vozV !== 2) { S.ajustes = { ...S.ajustes, voz: true, vozV: 2 }; }
 export const estado = () => S;
 export function guardar() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch { /* sin espacio o modo privado: el juego sigue en memoria */ } bus.dispatchEvent(new Event('cambio')); }
 export function reiniciar() { S = base(); guardar(); }
+/** Pone en este teléfono el avance que llegó de la cuenta (conserva lo que es solo de este teléfono: avisos, cuenta y nombre). */
+export function adoptar(datos) { const propio = { avisos: S.ajustes.avisos, cuenta: S.cuenta, nombre: S.perfil.nombre }; S = { ...base(), ...datos, v: 1 }; S.ajustes = { ...S.ajustes, avisos: propio.avisos }; if (!S.ajustes.avisos) delete S.ajustes.avisos; S.cuenta = propio.cuenta; S.perfil = { ...S.perfil, nombre: propio.nombre || '' }; guardar(); }
 
 /* Idiomas: el usuario aprende `tgt`; la interfaz va en su idioma `nat`. */
 export const tgt = () => S.perfil.aprende || 'en';

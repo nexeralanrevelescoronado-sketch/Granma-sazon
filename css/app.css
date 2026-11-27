@@ -330,3 +330,7 @@ a.modo{text-decoration:none;color:inherit}
 .acepto{display:flex;gap:12px;align-items:flex-start;margin:16px 0;padding:12px 14px;border-radius:14px;background:var(--blanco);border:2px solid var(--linea);font-weight:700;cursor:pointer}
 .acepto input,.aviso-opc input{width:26px;height:26px;flex:none;margin:2px 0 0;accent-color:var(--verde-ink)}
 .aviso-opc{gap:12px;cursor:pointer}
+/* cuenta con Google */
+.btn-google{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid #747775;background:#fff;color:#1F1F1F;font:600 1rem/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;cursor:pointer}
+.cuenta .estado{font-weight:700}
+.cuenta .estado.ok{color:var(--verde-ink)}

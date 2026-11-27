@@ -14,4 +14,6 @@ database_id = "5d9ba687-5ca9-4792-bba2-f643e0ec783b"
 
 [vars]
 # Clave PÚBLICA de avisos (se le entrega al navegador; no es un secreto).
+# Identificador de la app web de Google para «Entrar con Google» (es público, no es secreto). Vacío = el botón no aparece.
+GOOGLE_CLIENT_ID = ""
 VAPID_PUBLICA = "BKv4rsSwut8pNXL1Bc2IjLEh3vZ1F6o_mXJAkdnbGAIHnxuBQ1H94ekDZY7py5y6H82MBoZz4TwoRK2nNYfjw_8"

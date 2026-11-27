@@ -472,7 +472,7 @@ test('Cloudflare Pages: ningún archivo pasa de 25 MiB, los modelos van partidos
   }
   assert.ok(/PIEZA = 4 \* 1024 \* 1024/.test(leer('js/descargas.js')), 'el pedazo de Pages mide lo mismo que el que pide la app');
   assert.ok(!existsSync(join(RAIZ, 'dist/scripts')) && !existsSync(join(RAIZ, 'dist/graphify-out')) && !existsSync(join(RAIZ, 'dist/.claude')), 'nada interno se publica');
-  const rutas = JSON.parse(leer('dist/_routes.json')); assert.deepEqual(rutas.include, ['/assets/oido/modelo-en.tar.gz', '/assets/oido/modelo-es.tar.gz', '/api/avisos/*'], 'solo los modelos y el recordatorio pasan por funciones; lo demás es estático');
+  const rutas = JSON.parse(leer('dist/_routes.json')); assert.deepEqual(rutas.include, ['/assets/oido/modelo-en.tar.gz', '/assets/oido/modelo-es.tar.gz', '/api/avisos/*', '/api/cuenta', '/api/cuenta/*'], 'solo los modelos, los avisos y la cuenta pasan por funciones; lo demás es estático');
   const fn = leer('functions/assets/oido/[archivo].js'); assert.ok(/PERMITIDOS = new Set\(\['modelo-en\.tar\.gz', 'modelo-es\.tar\.gz'\]\)/.test(fn) && /206/.test(fn) && /content-range/.test(fn));
   const w = leer('wrangler.toml'); assert.ok(/pages_build_output_dir = "\.\/dist"/.test(w) && !/r2_buckets/.test(w), 'no hace falta R2');
 });
@@ -731,7 +731,7 @@ test('recordatorio diario: el teléfono arma el aviso (idioma, mijo/mija, si ya 
   assert.ok(/borrador\[tipo\] \|\|=/.test(per) && /aviso-local/.test(per), 'lo elegido no se pierde al volver a pintar, y el resultado sale junto al botón');
   assert.ok(/Ajustes<\/b> del iPhone → <b>Notificaciones<\/b> → <b>Granma Sazón<\/b>/.test(per) && /data-p="revisar"/.test(per), 'si están bloqueados, dice cómo permitirlos en el iPhone');
   const perfil = leer('js/vistas/perfil.js'); assert.ok(/Solo si activas los avisos de Granma/.test(perfil) && /quitarRecordatorio\(\)/.test(perfil), 'la privacidad lo explica y «Borrar mi progreso» también lo quita');
-  assert.ok(/Único dato que sale del teléfono/.test(leer('docs/DERECHOS-Y-LICENCIAS.md')));
+  assert.ok(/Datos que salen del teléfono\*\*, solo si la persona los activa/.test(leer('docs/DERECHOS-Y-LICENCIAS.md')) && /Cuenta con Google \(opcional\)/.test(leer('docs/DERECHOS-Y-LICENCIAS.md')), 'los datos que salen del teléfono están en DERECHOS, incluida la cuenta');
 });
 
 test('aviso de privacidad y términos: se aceptan al empezar, dicen lo que la app hace de verdad y se vuelven a pedir si cambian', async () => {

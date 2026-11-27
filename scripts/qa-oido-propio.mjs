@@ -82,6 +82,41 @@ if (hayVoz) {
   await pg.screenshot({ path: join(CAPT, '26-fiesta-tortillas.png') });
   ok((await pg.evaluate(() => JSON.parse(localStorage.getItem('granma:v1')).stats.kilos)) === 1, 'se suma 1 kg al perfil');
   await b.close();
+
+  console.log('4) Tocar, pausar y volver a tocar el micrófono no lo traba (como en Android)');
+  // Como en Android: el audio solo despierta si se pide en el mismo toque; si no, se queda dormido para siempre.
+  ({ b, pg } = await abrir(wav('pausa.wav', 'uno'))); await bajarOido(pg);
+  await pg.context().addInitScript(() => {
+    let gesto = false; for (const ev of ['pointerdown', 'click', 'touchend']) addEventListener(ev, () => { gesto = true; setTimeout(() => { gesto = false; }, 0); }, true);
+    const Orig = window.AudioContext;
+    window.AudioContext = class extends Orig {
+      constructor(...a) { super(...a); if (!gesto) { this.__dormido = true; Orig.prototype.suspend.call(this); } }
+      resume() { if (gesto) { this.__dormido = false; return super.resume(); } return new Promise(() => {}); }
+      get state() { return this.__dormido ? 'suspended' : super.state; }
+    };
+    const gum = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices); window.__pistas = [];
+    navigator.mediaDevices.getUserMedia = async (c) => { const f = await gum(c); window.__pistas.push(...f.getTracks()); return f; };
+  });
+  await pg.reload(); await hastaHablar(pg);
+  const texto = () => pg.locator('[data-oido]').textContent(), vivas = () => pg.evaluate(() => window.__pistas.filter((x) => x.readyState === 'live').length);
+  const oyendo = (ms) => pg.waitForFunction(() => /Te escucho/.test(document.querySelector('[data-oido]')?.textContent || ''), null, { timeout: ms }).then(() => true, () => false);
+  await pg.waitForFunction(() => /palabra por palabra/.test(document.querySelector('[data-oido]')?.textContent || ''), null, { timeout: 15000 });
+  await pg.click('[data-micro]'); ok(await oyendo(20000), 'primer toque: «Te escucho…»');
+  await pg.waitForTimeout(700); await pg.click('[data-micro]');
+  ok(await pg.waitForFunction(() => !/Te escucho|Preparando/.test(document.querySelector('[data-oido]')?.textContent || ''), null, { timeout: 5000 }).then(() => true, () => false), `segundo toque: se pausa («${(await texto()).slice(0, 60)}»)`);
+  ok((await vivas()) === 0, 'al pausar, el micrófono se apaga');
+  for (let vez = 1; vez <= 3; vez++) {
+    await pg.click('[data-micro]'); const si = await oyendo(6000);
+    ok(si, `toque ${vez + 2}: vuelve a escuchar, sin quedarse en «Preparando el oído…»${si ? '' : ` (se quedó en «${await texto()}»)`}`);
+    ok((await vivas()) === 1, `toque ${vez + 2}: un solo micrófono abierto (${await vivas()})`);
+    await pg.waitForTimeout(500); await pg.click('[data-micro]');
+    await pg.waitForFunction(() => !/Te escucho|Preparando/.test(document.querySelector('[data-oido]')?.textContent || ''), null, { timeout: 5000 }).catch(() => {});
+  }
+  // Dos toques seguidos: el segundo cancela la preparación; no quedan dos micrófonos abiertos.
+  await pg.locator('[data-micro]').dblclick(); await pg.waitForTimeout(1500);
+  ok((await vivas()) === 0 && !/Preparando|Te escucho/.test(await texto()), `dos toques seguidos: el segundo cancela y no queda el micrófono abierto («${(await texto()).slice(0, 50)}»)`);
+  await pg.click('[data-micro]'); ok(await oyendo(6000) && (await vivas()) === 1, 'y el siguiente toque vuelve a escuchar normal');
+  await pg.click('[data-micro]'); await b.close();
 } else { console.log('  (sin espeak-ng: se saltan las pruebas con voz)'); await b.close(); }
 ok(errores.length === 0, 'sin errores de JS' + (errores.length ? ': ' + errores.slice(0, 3).join(' | ') : ''));
 srv.close(); console.log(fallas.length ? `\n✘ ${fallas.length} fallas` : '\n✔ OÍDO DE GRANMA Y FIESTA OK'); process.exit(fallas.length ? 1 : 0);

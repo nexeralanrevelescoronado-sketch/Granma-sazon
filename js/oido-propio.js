@@ -111,11 +111,38 @@ const vocabularioDe = (idioma) => (vocab ||= fetch('data/glosario.json').then((r
  * → { ok: true, fin: Promise<{ palabras, dichas, total, todo, exacta, oyoAlgo, url }>, parar }  |  { ok: false, motivo }
  * La grabación (url local, en memoria) es para que la persona se oiga; quien la usa la libera.
  */
-export async function escucharPropio(idioma, frase, { ms = 12000, alParcial, alNivel } = {}) {
-  let modelo, flujo;
+/* ---------- Arranque a prueba de trabones ----------
+   En Android, el audio solo «despierta» si se pide en el mismo toque. Antes se pedía después de esperar al modelo y al
+   micrófono, y a veces nunca despertaba: se quedaba en «Preparando el oído…». Ahora el toque abre el audio al instante
+   (`audioDelToque`), nada se espera para siempre (cada paso tiene su tope) y un toque mientras prepara lo cancela. */
+const conTope = (promesa, ms) => Promise.race([promesa, new Promise((k) => setTimeout(() => k('tope'), ms))]);
+let audioListo = null;
+/** Llamar SIN await, dentro del toque del micrófono: abre el audio mientras el teléfono todavía cuenta el toque. */
+export function audioDelToque() {
+  try {
+    if (audioListo && audioListo.state !== 'closed') audioListo.close().catch(() => {});
+    const AC = window.AudioContext || window.webkitAudioContext; audioListo = AC ? new AC() : null;
+    if (audioListo?.state === 'suspended') audioListo.resume().catch(() => {});
+  } catch { audioListo = null; }
+}
+const tomarAudio = () => { const c = audioListo; audioListo = null; if (c && c.state !== 'closed') return c; const AC = window.AudioContext || window.webkitAudioContext; return new AC(); };
+
+export async function escucharPropio(idioma, frase, { ms = 12000, alParcial, alNivel, senal = {} } = {}) {
+  let modelo, flujo, ctx = null;
+  const soltarTodo = () => { try { flujo?.getTracks().forEach((x) => x.stop()); } catch { /* ya */ } try { if (ctx && ctx.state !== 'closed') ctx.close().catch(() => {}); } catch { /* ya */ } };
+  const cancelado = () => { if (!senal.cancelado) return false; soltarTodo(); return true; };
   try { modelo = await prepararOido(idioma); } catch { return { ok: false, motivo: 'sin-oido' }; }
-  try { flujo = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, channelCount: 1 } }); } catch { return { ok: false, motivo: 'permiso' }; }
-  const AC = window.AudioContext || window.webkitAudioContext, ctx = new AC(); if (ctx.state === 'suspended') await ctx.resume().catch(() => {});
+  if (cancelado()) return { ok: false, motivo: 'cancelado' };
+  try {
+    const pedido = navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, channelCount: 1 } });
+    flujo = await conTope(pedido, 10000);
+    if (flujo === 'tope') { flujo = null; pedido.then((f) => f.getTracks().forEach((x) => x.stop())).catch(() => {}); return { ok: false, motivo: 'audio' }; }
+  } catch { return { ok: false, motivo: 'permiso' }; }
+  if (cancelado()) return { ok: false, motivo: 'cancelado' };
+  try { ctx = tomarAudio(); } catch { soltarTodo(); return { ok: false, motivo: 'audio' }; }
+  if (ctx.state !== 'running') await conTope(ctx.resume().catch(() => {}), 1500);
+  if (ctx.state !== 'running') { soltarTodo(); return { ok: false, motivo: 'audio' }; }     // el audio no despertó: que se toque otra vez
+  if (cancelado()) return { ok: false, motivo: 'cancelado' };
   const esp = limpiar(frase).split(' ').filter(Boolean), rivales = rivalesDeFrase(frase, idioma, await vocabularioDe(idioma));
   const dichoAsi = paraOir(frase).split(' ').filter(Boolean);            // con acentos, como las conoce el reconocedor
   const guiado = new modelo.KaldiRecognizer(ctx.sampleRate, JSON.stringify([dichoAsi.join(' '), ...new Set(dichoAsi), ...new Set(Object.values(rivales).flat()), '[unk]'])), libre = new modelo.KaldiRecognizer(ctx.sampleRate);
@@ -132,9 +159,9 @@ export async function escucharPropio(idioma, frase, { ms = 12000, alParcial, alN
   const trozos = []; let mr = null;
   try { mr = new MediaRecorder(flujo); mr.ondataavailable = (e) => { if (e.data.size) trozos.push(e.data); }; mr.start(); } catch { mr = null; }
   const fuente = ctx.createMediaStreamSource(flujo), nodo = ctx.createScriptProcessor(4096, 1, 1), mudo = ctx.createGain(); mudo.gain.value = 0;
-  let vivo = true, hablo = 0, ultimaVoz = 0, cerrar; const t0 = performance.now();
+  let vivo = true, hablo = 0, ultimaVoz = 0, cerrar, cuadros = 0; const t0 = performance.now();
   nodo.onaudioprocess = (ev) => {
-    if (!vivo) return;
+    if (!vivo) return; cuadros++;
     try { guiado.acceptWaveform(ev.inputBuffer); libre.acceptWaveform(ev.inputBuffer); } catch { /* el reconocedor ya cerró */ }
     const d = ev.inputBuffer.getChannelData(0); let s = 0; for (let i = 0; i < d.length; i++) s += d[i] * d[i];
     const v = Math.sqrt(s / d.length), t = performance.now() - t0; alNivel?.(v);
@@ -143,12 +170,15 @@ export async function escucharPropio(idioma, frase, { ms = 12000, alParcial, alN
     if ((hablo > 2 && t - ultimaVoz > (yaTodo ? 500 : 1300)) || t > ms) cerrar();       // terminó de hablar (o se acabó el tiempo)
   };
   fuente.connect(nodo); nodo.connect(mudo); mudo.connect(ctx.destination);
+  // Respaldo con reloj: si el audio deja de llegar, también se cierra (antes solo se cerraba desde el audio y podía quedarse esperando).
+  const reloj = setInterval(() => { const t = performance.now() - t0; if (t > ms + 800 || (!cuadros && t > 3000)) cerrar(); }, 500);
 
   const fin = new Promise((ok) => {
     cerrar = () => {
-      if (!vivo) return; vivo = false;
+      if (!vivo) return; vivo = false; clearInterval(reloj);
       try { guiado.retrieveFinalResult(); libre.retrieveFinalResult(); } catch { /* ya cerró */ }
-      const grabado = new Promise((k) => { if (!mr || mr.state === 'inactive') return k(); mr.onstop = () => k(); mr.stop(); });
+      // la grabadora a veces no avisa que paró: se espera a lo mucho 1.5 s
+      const grabado = conTope(new Promise((k) => { if (!mr || mr.state === 'inactive') return k(); mr.onstop = () => k(); try { mr.stop(); } catch { k(); } }), 1500);
       Promise.all([grabado, new Promise((k) => setTimeout(k, 450))]).then(() => {          // un momento para que lleguen los resultados finales
         try { nodo.disconnect(); fuente.disconnect(); } catch { /* ya */ } flujo.getTracks().forEach((x) => x.stop()); ctx.close().catch(() => {});
         try { guiado.remove(); libre.remove(); } catch { /* ya */ }

@@ -1,7 +1,7 @@
 # Graph Report - granma-sazon  (2026-11-27)
 
 ## Corpus Check
-- 134 files · ~194,555 words
+- 134 files · ~224,779 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 7 file(s) not represented in the graph (top: (none) 3, .css 2, .webmanifest 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6afdf5ae`
+- Built from commit: `4a718c39`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -80,14 +80,14 @@
 ## Surprising Connections (you probably didn't know these)
 - `Micrófono que se trababa y modo perezoso palabra por palabra (27 nov)` --references--> `audioDelToque()`  [INFERRED]
   docs/CAMBIOS-AL-SPEC.md → js/oido-propio.js
-- `Premium de $50 MXN` --references--> `descargar()`  [INFERRED]
-  docs/EXTENDER.md → js/descargas.js
 - `«Mijo» o «mija», botón «Actualizar» y permisos con un botón (26 nov)` --references--> `tratarComo()`  [INFERRED]
   docs/CAMBIOS-AL-SPEC.md → js/state.js
 - `«Mijo» o «mija», botón «Actualizar» y permisos con un botón (26 nov)` --references--> `u()`  [INFERRED]
   docs/CAMBIOS-AL-SPEC.md → js/state.js
-- `Historia 3 «Las fiestas de mi familia» y ocho recetas de fiesta (26 nov)` --references--> `historiaN()`  [INFERRED]
-  docs/CAMBIOS-AL-SPEC.md → js/datos.js
+- `Premium de $50 MXN` --references--> `descargar()`  [INFERRED]
+  docs/EXTENDER.md → js/descargas.js
+- `Verificador propio de voz («que me escuche Granma, aquí en mi teléfono»)` --references--> `analizarVoz()`  [INFERRED]
+  docs/CAMBIOS-AL-SPEC.md → js/oido.js
 
 ## Import Cycles
 - None detected.
@@ -291,16 +291,16 @@ Nodes (5): Cómo saber si están llegando, Límites del plan gratis, Recordatori
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `pj()` connect `u` to `js/descargas.js`, `vistas/biblia.js`, `estado`, `ejercicios.js`, `app.js`?**
-  _High betweenness centrality (0.066) - this node is a cross-community bridge._
+  _High betweenness centrality (0.051) - this node is a cross-community bridge._
 - **What connects `./js/oido-propio.js` to the rest of the system?**
   _1 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `avisos.test.mjs` be split into smaller, more focused modules?**
   _Cohesion score 0.06265664160401002 - nodes in this community are weakly interconnected._
-- **Why does `Cambios frente al SPEC original` connect `Granma Sazón` to `u`, `ejercicios.js`?**
-  _High betweenness centrality (0.050) - this node is a cross-community bridge._
+- **Why does `u()` connect `u` to `habla.js`, `js/descargas.js`, `vistas/biblia.js`, `estado`, `ejercicios.js`, `Granma Sazón`, `app.js`?**
+  _High betweenness centrality (0.042) - this node is a cross-community bridge._
 - **Should `u` be split into smaller, more focused modules?**
   _Cohesion score 0.05593419506462985 - nodes in this community are weakly interconnected._
-- **Why does `u()` connect `u` to `habla.js`, `js/descargas.js`, `vistas/biblia.js`, `estado`, `ejercicios.js`, `Granma Sazón`, `app.js`?**
-  _High betweenness centrality (0.049) - this node is a cross-community bridge._
+- **Why does `estado()` connect `estado` to `u`, `habla.js`, `vistas/biblia.js`, `ejercicios.js`, `app.js`?**
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Should `habla.js` be split into smaller, more focused modules?**
   _Cohesion score 0.05194805194805195 - nodes in this community are weakly interconnected._

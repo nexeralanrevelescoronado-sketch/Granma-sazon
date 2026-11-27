@@ -94,7 +94,7 @@ test('los ejercicios cambian según el interés (5 por capítulo, en ambos idiom
 });
 
 test('recetas: mole, pozole, champurrado, buñuelos y ponche con medidas, pasos y cronómetro', () => {
-  assert.deepEqual(recetas.map((r) => r.id).sort(), ['agua-jamaica', 'agua-limon-chia', 'agua-tamarindo', 'arroz-con-leche', 'birria', 'bunuelos', 'capirotada', 'carne-en-su-jugo', 'champurrado', 'chiles-en-nogada', 'chiles-rellenos', 'chocolate', 'cocada', 'enchiladas', 'flan', 'horchata', 'horchata-fresa', 'jericalla', 'mole', 'pipian', 'ponche', 'pozole', 'pozole-blanco', 'pozole-verde', 'rosca', 'tamales', 'tejuino', 'torta-ahogada']);
+  assert.deepEqual(recetas.map((r) => r.id).sort(), ['agua-jamaica', 'agua-limon-chia', 'agua-tamarindo', 'aguachile-camaron-cocido', 'arroz-con-leche', 'asado-de-boda', 'ate-de-membrillo', 'barbacoa-borrego-hidalgo', 'barbacoa-chivo', 'barbacoa-res', 'birria', 'bunuelos', 'cabrito-al-horno', 'caldillo-duranguense', 'capirotada', 'carne-en-su-jugo', 'cemitas', 'chalupas-poblanas', 'champurrado', 'chilaquiles-rojos', 'chiles-en-nogada', 'chiles-rellenos', 'chilorio', 'chocolate', 'churros-chocolate', 'cocada', 'discada', 'enchiladas', 'esquites', 'flan', 'frijoles-charros', 'glorias-de-linares', 'gorditas-de-horno', 'gorditas-laguneras', 'horchata', 'horchata-fresa', 'jericalla', 'machacado-con-huevo', 'memelas', 'mole', 'mole-negro', 'patoles', 'pescado-zarandeado', 'pipian', 'ponche', 'pozole', 'pozole-blanco', 'pozole-verde', 'rollos-de-membrillo', 'rosca', 'tacos-al-pastor', 'tacos-envenenados', 'tamales', 'tejate', 'tejuino', 'tlayudas', 'torta-ahogada', 'tortitas-santa-clara']);
   assert.equal(recetas.find((r) => r.id === 'mole').estrella, true);
   assert.equal(recetas.find((r) => r.id === 'pozole').insignia, 'dia-festivo'); assert.equal(recetas.find((r) => r.id === 'mole').insignia, 'maestro-mole');
   for (const r of recetas) {
@@ -628,7 +628,8 @@ test('Historia 3 (las fiestas de mi familia): 6 capítulos alegres con sus tradi
   assert.ok(/Puebla/.test(septiembre) && /bandera/.test(septiembre) && /septiembre/.test(septiembre), 'chiles en nogada: de Puebla y de septiembre');
   // Las leyendas solo van en historia.leyenda, marcadas (pedido del dueño, nov 2026); fuera de ahí, nada de fechas ni personajes sin prueba.
   const sinLeyendas = recetas.map(({ historia: h, ...r }) => ({ ...r, historia: h && { ...h, leyenda: undefined } }));
-  assert.ok(!/iturbide|1821|agustin|monjas?|convento/i.test(JSON.stringify(h3) + JSON.stringify(sinLeyendas)), 'sin leyendas ni datos históricos inventados fuera de historia.leyenda');
+  assert.ok(!/iturbide|1821|agust[ií]n/i.test(JSON.stringify(h3) + JSON.stringify(sinLeyendas)), 'sin personajes ni fechas sin prueba fuera de historia.leyenda');
+  assert.ok(!/monjas?|convento/i.test(JSON.stringify(h3)), 'la Historia 3 no cuenta la leyenda del convento');
   assert.ok(/la familia se queda/.test(pipian), 'el cierre: las fiestas se acaban, la familia se queda');
   // recetas de fiesta: seguras y completas
   const R = Object.fromEntries(recetas.map((r) => [r.id, r]));
@@ -773,7 +774,8 @@ test('recetas por región: cada botón lleva a recetas que existen, y cada histo
     assert.ok(!/^Se cuenta|leyenda/i.test(h.origen.es), `${r.id}: el origen es solo lo comprobado`);
     assert.ok(r.aprende?.length >= 3 && r.aprende.every((w) => JSON.stringify(r).toLowerCase().includes(w.es.toLowerCase())), `${r.id}: palabras para aprender que salen en la receta`);
   }
-  assert.ok(recetas.filter((x) => x.historia).length >= 21, 'las 15 recetas nuevas y 6 de las que ya estaban traen su historia');
+  assert.ok(recetas.filter((x) => x.historia).length >= 57, 'las 45 recetas por región y 12 de las que ya estaban traen su historia');
+  assert.ok([...g.regiones, ...g.temas].every((x) => x.recetas.length >= 3), 'ninguna región ni tema se queda en «Muy pronto»');
   // Tejuino: bebida fermentada para familias, con todos sus cuidados.
   const tej = recetas.find((r) => r.id === 'tejuino'), todo = JSON.stringify(tej).toLowerCase();
   for (const t of ['alcohol', 'embarazada', 'bebés', 'refrigerador', 'moho', 'pizca']) assert.ok(todo.includes(t), `tejuino: falta el cuidado «${t}»`);

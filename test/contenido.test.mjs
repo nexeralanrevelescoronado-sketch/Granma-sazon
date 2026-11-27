@@ -94,7 +94,7 @@ test('los ejercicios cambian según el interés (5 por capítulo, en ambos idiom
 });
 
 test('recetas: mole, pozole, champurrado, buñuelos y ponche con medidas, pasos y cronómetro', () => {
-  assert.deepEqual(recetas.map((r) => r.id).sort(), ['birria', 'bunuelos', 'champurrado', 'chiles-en-nogada', 'chiles-rellenos', 'chocolate', 'enchiladas', 'mole', 'pipian', 'ponche', 'pozole', 'rosca', 'tamales']);
+  assert.deepEqual(recetas.map((r) => r.id).sort(), ['agua-jamaica', 'agua-limon-chia', 'agua-tamarindo', 'arroz-con-leche', 'birria', 'bunuelos', 'capirotada', 'carne-en-su-jugo', 'champurrado', 'chiles-en-nogada', 'chiles-rellenos', 'chocolate', 'cocada', 'enchiladas', 'flan', 'horchata', 'horchata-fresa', 'jericalla', 'mole', 'pipian', 'ponche', 'pozole', 'pozole-blanco', 'pozole-verde', 'rosca', 'tamales', 'tejuino', 'torta-ahogada']);
   assert.equal(recetas.find((r) => r.id === 'mole').estrella, true);
   assert.equal(recetas.find((r) => r.id === 'pozole').insignia, 'dia-festivo'); assert.equal(recetas.find((r) => r.id === 'mole').insignia, 'maestro-mole');
   for (const r of recetas) {
@@ -626,7 +626,9 @@ test('Historia 3 (las fiestas de mi familia): 6 capítulos alegres con sus tradi
   assert.ok(/dos o tres golpes/.test(pinata) && /nunca la romp/.test(pinata) && /hermano mayor/.test(pinata) && /un solo movimiento/.test(pinata) && /dulces/.test(pinata), 'la piñata, como la recuerda Granma');
   assert.ok(/Durango/.test(quince) && /Puebla/.test(quince) && /abuelita preparó birria/.test(quince) && /vals/.test(quince), 'los quince años: en Durango, con la birria de la abuelita');
   assert.ok(/Puebla/.test(septiembre) && /bandera/.test(septiembre) && /septiembre/.test(septiembre), 'chiles en nogada: de Puebla y de septiembre');
-  assert.ok(!/iturbide|1821|agustin|monjas|convento/i.test(JSON.stringify(h3) + JSON.stringify(recetas)), 'sin leyendas ni datos históricos inventados');
+  // Las leyendas solo van en historia.leyenda, marcadas (pedido del dueño, nov 2026); fuera de ahí, nada de fechas ni personajes sin prueba.
+  const sinLeyendas = recetas.map(({ historia: h, ...r }) => ({ ...r, historia: h && { ...h, leyenda: undefined } }));
+  assert.ok(!/iturbide|1821|agustin|monjas?|convento/i.test(JSON.stringify(h3) + JSON.stringify(sinLeyendas)), 'sin leyendas ni datos históricos inventados fuera de historia.leyenda');
   assert.ok(/la familia se queda/.test(pipian), 'el cierre: las fiestas se acaban, la familia se queda');
   // recetas de fiesta: seguras y completas
   const R = Object.fromEntries(recetas.map((r) => [r.id, r]));
@@ -757,4 +759,24 @@ test('aviso de privacidad y términos: se aceptan al empezar, dicen lo que la ap
   assert.ok(/data-quiere="practicar" \$\{quiere\.practicar \? 'checked' : ''\}/.test(onb) && /quiere = \{ practicar: false, clase: false \}/.test(onb) && /Ahora no/.test(onb), 'los avisos son opcionales y empiezan sin marcar');
   const app = leer('js/app.js'); assert.ok(/debeAceptar = S\.perfil\.listo && S\.perfil\.legal !== VERSION_LEGAL/.test(app) && /#\/onboarding\?aceptar/.test(app) && /base === 'privacidad' \|\| base === 'terminos'/.test(app), 'si cambia la versión, se vuelve a pedir; los textos se pueden leer antes de aceptar');
   assert.ok(/#\/privacidad/.test(leer('js/vistas/perfil.js')) && /#\/terminos/.test(leer('js/vistas/perfil.js')), 'se pueden releer desde Perfil');
+});
+
+test('recetas por región: cada botón lleva a recetas que existen, y cada historia separa los hechos de la leyenda', () => {
+  const g = JSON.parse(leer('scripts/datos/regiones.json')), ids = new Set(recetas.map((r) => r.id));
+  assert.equal(g.regiones.length, 9, 'Torreón, Sinaloa, Guadalajara, Monterrey, Puebla, Oaxaca, CDMX, Zacatecas y Durango');
+  assert.deepEqual(g.temas.map((x) => x.id), ['aguas', 'pozoles', 'postres', 'barbacoas']);
+  for (const x of [...g.regiones, ...g.temas]) for (const id of x.recetas) assert.ok(ids.has(id), `${x.id}: la receta «${id}» no existe`);
+  for (const r of recetas.filter((x) => x.historia)) {
+    const h = r.historia;
+    assert.ok(h.nombre?.es && h.nombre?.en && h.origen?.es && h.origen?.en && h.curiosos?.length >= 2, `${r.id}: historia completa`);
+    if (h.leyenda) assert.ok(/^Se cuenta que/.test(h.leyenda.es) && /^Legend says/.test(h.leyenda.en) && !/\b1[5-9]\d\d\b/.test(h.leyenda.es + h.leyenda.en), `${r.id}: la leyenda se nota (y sin años)`);
+    assert.ok(!/^Se cuenta|leyenda/i.test(h.origen.es), `${r.id}: el origen es solo lo comprobado`);
+    assert.ok(r.aprende?.length >= 3 && r.aprende.every((w) => JSON.stringify(r).toLowerCase().includes(w.es.toLowerCase())), `${r.id}: palabras para aprender que salen en la receta`);
+  }
+  assert.ok(recetas.filter((x) => x.historia).length >= 21, 'las 15 recetas nuevas y 6 de las que ya estaban traen su historia');
+  // Tejuino: bebida fermentada para familias, con todos sus cuidados.
+  const tej = recetas.find((r) => r.id === 'tejuino'), todo = JSON.stringify(tej).toLowerCase();
+  for (const t of ['alcohol', 'embarazada', 'bebés', 'refrigerador', 'moho', 'pizca']) assert.ok(todo.includes(t), `tejuino: falta el cuidado «${t}»`);
+  // La horchata explica cómo se prepara paso a paso, y la de fresa lava y desinfecta la fruta.
+  assert.ok(recetas.find((r) => r.id === 'horchata').pasos.length >= 5 && /desinfect/.test(JSON.stringify(recetas.find((r) => r.id === 'horchata-fresa'))));
 });

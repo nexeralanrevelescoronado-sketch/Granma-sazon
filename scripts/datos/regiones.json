@@ -1,0 +1,19 @@
+{
+  "regiones": [
+    { "id": "guadalajara", "icono": "🌵", "nombre": { "es": "Guadalajara", "en": "Guadalajara" }, "lugar": { "es": "Jalisco", "en": "Jalisco" }, "recetas": ["tejuino", "torta-ahogada", "carne-en-su-jugo", "birria", "pozole", "jericalla"] },
+    { "id": "torreon", "icono": "🏜️", "nombre": { "es": "Torreón", "en": "Torreón" }, "lugar": { "es": "Coahuila", "en": "Coahuila" }, "recetas": [] },
+    { "id": "sinaloa", "icono": "🌊", "nombre": { "es": "Sinaloa", "en": "Sinaloa" }, "lugar": { "es": "el Pacífico", "en": "the Pacific coast" }, "recetas": [] },
+    { "id": "monterrey", "icono": "⛰️", "nombre": { "es": "Monterrey", "en": "Monterrey" }, "lugar": { "es": "Nuevo León", "en": "Nuevo León" }, "recetas": [] },
+    { "id": "puebla", "icono": "⛪", "nombre": { "es": "Puebla", "en": "Puebla" }, "lugar": { "es": "Puebla", "en": "Puebla" }, "recetas": ["mole", "chiles-en-nogada"] },
+    { "id": "oaxaca", "icono": "🍫", "nombre": { "es": "Oaxaca", "en": "Oaxaca" }, "lugar": { "es": "Oaxaca", "en": "Oaxaca" }, "recetas": [] },
+    { "id": "cdmx", "icono": "🏙️", "nombre": { "es": "Ciudad de México", "en": "Mexico City" }, "lugar": { "es": "la capital", "en": "the capital" }, "recetas": [] },
+    { "id": "zacatecas", "icono": "⛏️", "nombre": { "es": "Zacatecas", "en": "Zacatecas" }, "lugar": { "es": "Zacatecas", "en": "Zacatecas" }, "recetas": [] },
+    { "id": "durango", "icono": "🐎", "nombre": { "es": "Durango", "en": "Durango" }, "lugar": { "es": "Durango", "en": "Durango" }, "recetas": [] }
+  ],
+  "temas": [
+    { "id": "aguas", "icono": "🥤", "nombre": { "es": "Aguas y bebidas", "en": "Drinks" }, "recetas": ["horchata", "horchata-fresa", "agua-jamaica", "agua-tamarindo", "agua-limon-chia", "tejuino", "champurrado", "chocolate"] },
+    { "id": "pozoles", "icono": "🍲", "nombre": { "es": "Pozoles", "en": "Pozoles" }, "recetas": ["pozole", "pozole-blanco", "pozole-verde"] },
+    { "id": "postres", "icono": "🍮", "nombre": { "es": "Postres", "en": "Desserts" }, "recetas": ["arroz-con-leche", "flan", "jericalla", "capirotada", "cocada", "bunuelos", "rosca"] },
+    { "id": "barbacoas", "icono": "🔥", "nombre": { "es": "Barbacoas", "en": "Barbacoas" }, "recetas": [] }
+  ]
+}

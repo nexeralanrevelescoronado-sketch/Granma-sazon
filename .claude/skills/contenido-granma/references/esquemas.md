@@ -56,6 +56,10 @@ Los `id` los pone el build (posición + 1): en una tanda nueva déjalos fuera. T
 - `nota`: seguridad (aceite caliente → «ayuda de un adulto»).
 - Fuente: `scripts/datos/recetas.mjs` → `I(cant, un, es, en)` y `S(es, en, min?)`. El build crea además `recetas/<id>.html` con JSON-LD.
 
+- **Recetas por región y por tema** — `scripts/datos/recetas-regiones.json` (mismo esquema de receta + `historia` y `aprende`). Los grupos (Guadalajara, Torreón… y Aguas, Pozoles, Postres, Barbacoas) están en `scripts/datos/regiones.json` (`{ regiones:[ {id, icono, nombre, lugar, recetas:[ids]} ], temas:[ {id, icono, nombre, recetas} ] }`). La historia de recetas que ya existían va en `scripts/datos/recetas-historias.json` (`{ "<id>": { historia, aprende } }`).
+  - `historia`: `{ nombre:{es,en} (por qué se llama así), origen:{es,en} (solo hechos comprobables), leyenda?:{es,en} (empieza con «Se cuenta que…» / «Legend says…», sin años ni nombres de personas), curiosos:[{es,en} ×2-3] }`. Máx. ~420 caracteres por idioma.
+  - `aprende`: 3 a 5 `{ es, en }`; la palabra en español aparece en la receta.
+
 ## Ruta Biblia — `data/biblia/ruta.json`
 ```json
 { "id": "sal23", "ref": { "libro": "sal", "cap": 23, "desde": 1, "hasta": 1 },

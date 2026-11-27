@@ -1,0 +1,2366 @@
+[
+ {
+  "id": "tejuino",
+  "icono": "tejuino",
+  "insignia": null,
+  "nombre": {
+   "es": "Tejuino de Guadalajara",
+   "en": "Guadalajara tejuino"
+  },
+  "resumen": {
+   "es": "Bebida fría de masa de maíz fermentada con piloncillo, con limón, sal y nieve de limón. Solo para quien puede tomar alcohol.",
+   "en": "A cold drink of fermented corn masa and piloncillo, with lime, salt and lime sorbet. Only for people who can have alcohol."
+  },
+  "porciones": 8,
+  "tiempoPrep": 30,
+  "tiempoCoccion": 40,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Al fermentar puede formarse un poquito de alcohol: NO es para bebés ni niños pequeños, embarazadas ni quien no deba tomar alcohol (si dudas, pregunta a tu médico). Todo bien limpio y con agua purificada. Fermenta tapado en un lugar fresco 24 horas (máximo 48), luego al refrigerador y tómalo en máximo 3 días. Tíralo si tiene mal olor, moho, color raro o burbujea de más. La sal va en pizca. Pide ayuda a un adulto con la estufa y la olla caliente.",
+   "en": "While it ferments it can form a little alcohol: it is NOT for babies, young children, pregnant women or anyone who should not have alcohol (if in doubt, ask their doctor). Keep everything very clean and use purified water. Ferment it covered in a cool place for 24 hours (48 at most), then refrigerate it and drink it within 3 days. Throw it away if it has a bad smell, mold, an odd color or bubbles too much. Salt goes in by the pinch. Ask an adult to help with the stove and the hot pot."
+  },
+  "ingredientes": [
+   {
+    "cant": 500,
+    "un": "g",
+    "es": "masa de maíz fresca, sin conservadores",
+    "en": "fresh corn masa, with no preservatives"
+   },
+   {
+    "cant": 2.5,
+    "un": "L",
+    "es": "agua purificada",
+    "en": "purified water"
+   },
+   {
+    "cant": 300,
+    "un": "g",
+    "es": "piloncillo (2 conos pequeños)",
+    "en": "piloncillo (2 small cones)"
+   },
+   {
+    "cant": 120,
+    "un": "ml",
+    "es": "jugo de limón",
+    "en": "lime juice"
+   },
+   {
+    "cant": 2,
+    "un": "tazas",
+    "es": "nieve de limón",
+    "en": "lime sorbet"
+   },
+   {
+    "cant": 8,
+    "un": "pizca",
+    "es": "sal (una pizca por vaso)",
+    "en": "salt (one pinch per glass)"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Lávate las manos con agua y jabón. Lava la olla, la cuchara, la jarra de vidrio y el cernidor con agua caliente y jabón, y enjuágalos con agua purificada. Todo debe quedar muy limpio.",
+    "en": "Wash your hands with soap and water. Wash the pot, spoon, glass jar and strainer with hot soapy water and rinse them with purified water. Everything must be very clean.",
+    "min": 5
+   },
+   {
+    "es": "En la olla, disuelve la masa en 1 litro de agua purificada con las manos limpias, hasta que no queden grumos. Cuélala.",
+    "en": "In the pot, dissolve the masa in 1 liter of purified water with clean hands until there are no lumps. Strain it.",
+    "min": 5
+   },
+   {
+    "es": "Agrega el piloncillo y el litro y medio de agua que falta. Con ayuda de un adulto, cuece a fuego medio moviendo siempre hasta que hierva y quede como un atole ligero.",
+    "en": "Add the piloncillo and the remaining 1.5 liters of water. With an adult's help, cook over medium heat, stirring all the time, until it boils and is like a light atole.",
+    "min": 30
+   },
+   {
+    "es": "Apaga el fuego, tapa la olla y deja enfriar hasta que esté a temperatura ambiente. No lo pases caliente al frasco.",
+    "en": "Turn off the heat, cover the pot and let it cool to room temperature. Do not pour it hot into the jar.",
+    "min": 60
+   },
+   {
+    "es": "Pásalo a la jarra de vidrio limpia y tápala con una tela limpia sujeta con una liga. Déjala en un lugar fresco, a la sombra, 24 horas. Si hace calor, no pases de 48 horas.",
+    "en": "Pour it into the clean glass jar and cover it with a clean cloth held with a rubber band. Leave it in a cool, shaded place for 24 hours. If it is hot, never go past 48 hours.",
+    "min": 1440
+   },
+   {
+    "es": "Revísalo con una cuchara limpia: debe oler agridulce y limpio, con burbujitas finas. Si huele a podrido, tiene moho, color gris, rosa o verde, mucha espuma o huele fuerte a alcohol, tíralo todo y empieza de nuevo.",
+    "en": "Check it with a clean spoon: it should smell sweet-sour and clean, with fine little bubbles. If it smells rotten, has mold, a gray, pink or green color, lots of foam or a strong alcohol smell, throw it all away and start again.",
+    "min": 2
+   },
+   {
+    "es": "Cuando esté bien, pásalo al refrigerador, tapado, hasta que esté bien frío. Dura máximo 3 días en el refrigerador; después, tíralo.",
+    "en": "When it looks right, put it in the refrigerator, covered, until very cold. It keeps 3 days at most in the refrigerator; after that, throw it away.",
+    "min": 120
+   },
+   {
+    "es": "Sirve en vasos con un chorrito de jugo de limón, una pizca de sal y una bola de nieve de limón. Solo para quien puede tomar alcohol.",
+    "en": "Serve in glasses with a splash of lime juice, one pinch of salt and a scoop of lime sorbet. Only for people who can have alcohol.",
+    "min": 5
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Muchas fuentes ligan el nombre al náhuatl, pero el origen exacto de la palabra no está confirmado. Existe una forma parecida, «tesgüino», para una bebida de maíz fermentado que casi no lleva azúcar ni limón.",
+    "en": "Many sources link the name to Nahuatl, but the exact origin of the word is not confirmed. A similar word, «tesgüino», names a fermented corn drink that has almost no sugar or lime."
+   },
+   "origen": {
+    "es": "El tejuino es una bebida fría de maíz fermentado que se toma en Jalisco, Colima, Nayarit y Oaxaca. En Guadalajara se endulza con piloncillo y se sirve con limón, sal y nieve de limón. No hay una fecha comprobada de su inicio.",
+    "en": "Tejuino is a cold drink of fermented corn enjoyed in Jalisco, Colima, Nayarit and Oaxaca. In Guadalajara it is sweetened with piloncillo and served with lime, salt and lime sorbet. There is no proven date for when it began."
+   },
+   "curiosos": [
+    {
+     "es": "Investigadores del CIATEJ, en Jalisco, reportan menos de 1 % de alcohol en el tejuino y muchas bacterias ácido-lácticas.",
+     "en": "Researchers at CIATEJ, in Jalisco, report less than 1% alcohol in tejuino and lots of lactic acid bacteria."
+    },
+    {
+     "es": "El tejuino lleva piloncillo, limón y sal; el tesgüino casi nunca lleva azúcar ni limón.",
+     "en": "Tejuino has piloncillo, lime and salt; tesgüino almost never has sugar or lime."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "maíz",
+    "en": "corn"
+   },
+   {
+    "es": "piloncillo",
+    "en": "unrefined cane sugar"
+   },
+   {
+    "es": "limón",
+    "en": "lime"
+   },
+   {
+    "es": "refrigerador",
+    "en": "refrigerator"
+   }
+  ]
+ },
+ {
+  "id": "torta-ahogada",
+  "icono": "torta-ahogada",
+  "insignia": null,
+  "nombre": {
+   "es": "Torta ahogada",
+   "en": "Torta ahogada (drowned sandwich)"
+  },
+  "resumen": {
+   "es": "Birote salado relleno de carnitas y bañado en salsa de jitomate, con salsa de chile de árbol para quien aguanta el picante.",
+   "en": "A salty birote roll filled with carnitas and bathed in tomato sauce, with chile de árbol sauce for those who like it hot."
+  },
+  "porciones": 6,
+  "tiempoPrep": 25,
+  "tiempoCoccion": 35,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "La salsa de chile de árbol pica mucho: lávate las manos después de tocar los chiles y no te toques los ojos. Pide ayuda a un adulto con el fuego, el horno y para licuar líquidos calientes.",
+   "en": "The chile de árbol sauce is very hot: wash your hands after touching the chilies and do not touch your eyes. Ask an adult to help with the stove, the oven and blending hot liquids."
+  },
+  "ingredientes": [
+   {
+    "cant": 6,
+    "un": "pza",
+    "es": "birotes salados (o bolillos firmes)",
+    "en": "salty birote rolls (or firm bolillo rolls)"
+   },
+   {
+    "cant": 600,
+    "un": "g",
+    "es": "carnitas de cerdo ya cocidas",
+    "en": "cooked pork carnitas"
+   },
+   {
+    "cant": 600,
+    "un": "g",
+    "es": "jitomates (6 medianos)",
+    "en": "tomatoes (6 medium)"
+   },
+   {
+    "cant": 4,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic cloves"
+   },
+   {
+    "cant": 0.25,
+    "un": "pza",
+    "es": "cebolla, para la salsa",
+    "en": "onion, for the sauce"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal, para la salsa de jitomate",
+    "en": "salt, for the tomato sauce"
+   },
+   {
+    "cant": 250,
+    "un": "ml",
+    "es": "agua, para la salsa de jitomate",
+    "en": "water, for the tomato sauce"
+   },
+   {
+    "cant": 15,
+    "un": "pza",
+    "es": "chiles de árbol secos, sin rabito",
+    "en": "dried chile de árbol, stems removed"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "vinagre blanco",
+    "en": "white vinegar"
+   },
+   {
+    "cant": 0.5,
+    "un": "cdta",
+    "es": "sal, para la salsa picante",
+    "en": "salt, for the hot sauce"
+   },
+   {
+    "cant": 250,
+    "un": "ml",
+    "es": "agua, para la salsa picante",
+    "en": "water, for the hot sauce"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "cebolla en rodajas finas, para servir",
+    "en": "onion in thin slices, to serve"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "limones, en gajos",
+    "en": "limes, in wedges"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, hierve los jitomates con 2 dientes de ajo y el cuarto de cebolla en agua que los cubra, hasta que se suavicen.",
+    "en": "With an adult's help, boil the tomatoes with 2 garlic cloves and the quarter onion in enough water to cover them, until soft.",
+    "min": 10
+   },
+   {
+    "es": "Licúa los jitomates con el ajo, la cebolla, 250 ml de agua y 1 cucharadita de sal. Pasa la salsa a una cazuela y cuécela a fuego bajo, sin tapar.",
+    "en": "Blend the tomatoes with the garlic, onion, 250 ml of water and 1 teaspoon of salt. Pour the sauce into a pot and cook it over low heat, uncovered.",
+    "min": 10
+   },
+   {
+    "es": "En otra olla pequeña, hierve los chiles de árbol con 2 dientes de ajo en un poco de agua hasta que se suavicen.",
+    "en": "In another small pot, boil the chiles de árbol with 2 garlic cloves in a little water until soft.",
+    "min": 5
+   },
+   {
+    "es": "Con ayuda de un adulto, licúa los chiles con el ajo, el vinagre, la sal y 250 ml de agua. Esta salsa es muy picante: déjala aparte.",
+    "en": "With an adult's help, blend the chilies with the garlic, vinegar, salt and 250 ml of water. This sauce is very hot: keep it aside.",
+    "min": 3
+   },
+   {
+    "es": "Calienta las carnitas en una sartén a fuego medio y los birotes en el horno o en el comal, hasta que estén calientitos y crujientes.",
+    "en": "Warm the carnitas in a pan over medium heat and the birote rolls in the oven or on the griddle until warm and crusty.",
+    "min": 8
+   },
+   {
+    "es": "Abre cada birote por un lado, sin separarlo, y rellénalo con carnitas.",
+    "en": "Open each birote on one side, without separating it, and fill it with carnitas.",
+    "min": 3
+   },
+   {
+    "es": "Baña cada torta con la salsa de jitomate hasta que quede casi «ahogada». Sirve con cebolla, limón y la salsa de chile de árbol aparte, para que cada quien le ponga lo que aguante.",
+    "en": "Bathe each torta with the tomato sauce until it is almost «drowned». Serve with onion, lime and the chile de árbol sauce on the side, so everyone adds what they can handle.",
+    "min": 5
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "En México, una «torta» es un pan relleno, y «ahogada» quiere decir que va bañada en salsa hasta quedar casi sumergida, como si se ahogara en ella.",
+    "en": "In Mexico, a «torta» is a filled sandwich, and «ahogada» means «drowned»: it is covered in sauce until it is almost swimming in it."
+   },
+   "origen": {
+    "es": "Es un platillo de Guadalajara. Su base es el birote salado, un pan de corteza crujiente y centro firme que aguanta la salsa sin deshacerse. Hay varias versiones sobre dónde y cuándo nació la torta, y no hay acuerdo.",
+    "en": "It is a dish from Guadalajara. Its base is the birote salado, a roll with a crusty outside and a firm inside that holds up to the sauce without falling apart. There are several versions of where and when the torta began, and no agreement."
+   },
+   "leyenda": {
+    "es": "Se cuenta que una torta cayó por accidente en un plato de salsa y que a quien la probó le gustó tanto que así empezó la costumbre de bañarlas.",
+    "en": "Legend says a torta fell into a plate of sauce by accident, and whoever tasted it liked it so much that the habit of bathing them began."
+   },
+   "curiosos": [
+    {
+     "es": "La torta ahogada se sirve con dos salsas: una de jitomate, suave, y otra de chile de árbol, picante.",
+     "en": "The torta ahogada comes with two sauces: a mild tomato one and a hot chile de árbol one."
+    },
+    {
+     "es": "Guadalajara tiene un Día municipal de la torta ahogada.",
+     "en": "Guadalajara has a municipal Torta Ahogada Day."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "torta",
+    "en": "sandwich"
+   },
+   {
+    "es": "salsa",
+    "en": "sauce"
+   },
+   {
+    "es": "jitomate",
+    "en": "tomato"
+   },
+   {
+    "es": "cebolla",
+    "en": "onion"
+   }
+  ]
+ },
+ {
+  "id": "carne-en-su-jugo",
+  "icono": "carne-en-su-jugo",
+  "insignia": null,
+  "nombre": {
+   "es": "Carne en su jugo",
+   "en": "Carne en su jugo (beef in its own broth)"
+  },
+  "resumen": {
+   "es": "Caldo tapatío de carne de res en trocitos con tocino dorado, tomate verde y frijoles, servido con cilantro, cebolla y limón.",
+   "en": "A Guadalajara broth of tiny beef pieces with crispy bacon, tomatillo and beans, served with cilantro, onion and lime."
+  },
+  "porciones": 6,
+  "tiempoPrep": 20,
+  "tiempoCoccion": 75,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "El tocino salpica al freírse y el caldo está muy caliente: pide ayuda a un adulto con el fuego y para licuar. Lávate las manos después de tocar el chile serrano y no te toques los ojos.",
+   "en": "Bacon splatters while frying and the broth is very hot: ask an adult to help with the stove and with blending. Wash your hands after touching the serrano chili and do not touch your eyes."
+  },
+  "ingredientes": [
+   {
+    "cant": 500,
+    "un": "g",
+    "es": "tomates verdes, sin cáscara",
+    "en": "tomatillos, husks removed"
+   },
+   {
+    "cant": 3,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic cloves"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla, para la salsa",
+    "en": "onion, for the sauce"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "chile serrano, sin semillas",
+    "en": "serrano chili, seeds removed"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "tocino en trocitos",
+    "en": "bacon, in small pieces"
+   },
+   {
+    "cant": 600,
+    "un": "g",
+    "es": "bistec de res (aguayón o cuete) en cubitos pequeños",
+    "en": "beef steak (top round or sirloin) in small cubes"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal, o al gusto",
+    "en": "salt, or to taste"
+   },
+   {
+    "cant": 3,
+    "un": "tazas",
+    "es": "frijoles de la olla, con su caldo",
+    "en": "cooked beans, with their broth"
+   },
+   {
+    "cant": 0.5,
+    "un": "taza",
+    "es": "cilantro picado",
+    "en": "chopped cilantro"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "cebolla picada, para servir",
+    "en": "chopped onion, to serve"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "limones, en gajos",
+    "en": "limes, in wedges"
+   },
+   {
+    "cant": 12,
+    "un": "pza",
+    "es": "tortillas de maíz",
+    "en": "corn tortillas"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, hierve los tomates verdes con el ajo, la media cebolla y el chile serrano en 300 ml del agua hasta que cambien de color y se suavicen.",
+    "en": "With an adult's help, boil the tomatillos with the garlic, the half onion and the serrano chili in 300 ml of the water until they change color and soften.",
+    "min": 10
+   },
+   {
+    "es": "Licúa todo con el agua de la cocción hasta que quede una salsa lisa. Pide ayuda a un adulto porque está caliente.",
+    "en": "Blend everything with the cooking water until you have a smooth sauce. Ask an adult to help because it is hot.",
+    "min": 3
+   },
+   {
+    "es": "En una olla grande, fríe el tocino a fuego medio, sin aceite extra, hasta que se dore y suelte su grasa.",
+    "en": "In a large pot, fry the bacon over medium heat, with no extra oil, until golden and its grease melts out.",
+    "min": 8
+   },
+   {
+    "es": "Agrega la carne en cubitos y la sal. Muévela hasta que cambie de color por todos lados.",
+    "en": "Add the beef cubes and the salt. Stir until the meat changes color on all sides.",
+    "min": 10
+   },
+   {
+    "es": "Vierte la salsa y los 700 ml de agua restantes. Tapa y cuece a fuego bajo hasta que la carne esté suave.",
+    "en": "Pour in the sauce and the remaining 700 ml of water. Cover and cook over low heat until the beef is tender.",
+    "min": 40
+   },
+   {
+    "es": "Agrega los frijoles con su caldo y calienta todo junto. Prueba la sal.",
+    "en": "Add the beans with their broth and heat everything together. Taste the salt.",
+    "min": 8
+   },
+   {
+    "es": "Sirve en tazones y pon encima cilantro y cebolla picada. Acompaña con limón y tortillas calientes.",
+    "en": "Serve in bowls and top with cilantro and chopped onion. Serve with lime and warm tortillas.",
+    "min": 5
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Se llama así porque la carne se sirve en su propio caldo, su «jugo», junto con el tocino y los frijoles.",
+    "en": "It is called this because the meat is served in its own broth, its «jugo», together with the bacon and the beans."
+   },
+   "origen": {
+    "es": "Es un guiso popular de Guadalajara. Las fuentes no se ponen de acuerdo en cuándo ni quién lo creó; hablan del siglo XX. Sí coinciden en que fue un platillo económico, muy querido por la gente trabajadora.",
+    "en": "It is a popular stew from Guadalajara. Sources do not agree on when or who created it; they speak of the 20th century. They do agree it was an affordable dish, much loved by working people."
+   },
+   "leyenda": {
+    "es": "Se cuenta que una mamá juntó carne, tocino y frijoles, con lo que tenía a la mano, para dar de comer a sus hijos, y así nació el guiso.",
+    "en": "Legend says a mother put together beef, bacon and beans, with whatever she had at hand, to feed her children, and that is how the stew began."
+   },
+   "curiosos": [
+    {
+     "es": "Lleva carne picada en cubitos pequeños, tocino dorado, frijoles y tomate verde: una mezcla poco común en un caldo.",
+     "en": "It has tiny beef cubes, crispy bacon, beans and tomatillo: an uncommon mix for a broth."
+    },
+    {
+     "es": "En Jalisco existe una Ruta de la Carne en su Jugo para visitar los lugares donde la preparan.",
+     "en": "In Jalisco there is a Carne en su Jugo Route to visit the places that make it."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "carne",
+    "en": "meat"
+   },
+   {
+    "es": "frijoles",
+    "en": "beans"
+   },
+   {
+    "es": "tocino",
+    "en": "bacon"
+   },
+   {
+    "es": "cilantro",
+    "en": "cilantro"
+   },
+   {
+    "es": "limón",
+    "en": "lime"
+   }
+  ]
+ },
+ {
+  "id": "jericalla",
+  "icono": "jericalla",
+  "insignia": null,
+  "nombre": {
+   "es": "Jericalla",
+   "en": "Jericalla (Guadalajara baked custard)"
+  },
+  "resumen": {
+   "es": "Postre tapatío de leche, huevo, vainilla y canela, horneado hasta dorarse arriba.",
+   "en": "A Guadalajara dessert of milk, egg, vanilla and cinnamon, baked until golden on top."
+  },
+  "porciones": 6,
+  "tiempoPrep": 20,
+  "tiempoCoccion": 60,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "El horno, la leche caliente y el agua del baño maría queman: pide ayuda a un adulto para meter y sacar el molde.",
+   "en": "The oven, the hot milk and the water bath can burn: ask an adult to help put the dish in and take it out."
+  },
+  "ingredientes": [
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "leche entera",
+    "en": "whole milk"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "raja de canela",
+    "en": "cinnamon stick"
+   },
+   {
+    "cant": 5,
+    "un": "pza",
+    "es": "huevos",
+    "en": "eggs"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 2,
+    "un": "cdta",
+    "es": "vainilla",
+    "en": "vanilla"
+   },
+   {
+    "cant": 0.5,
+    "un": "cdta",
+    "es": "canela molida, para espolvorear",
+    "en": "ground cinnamon, to sprinkle"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "agua caliente, para el baño maría",
+    "en": "hot water, for the water bath"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Calienta el horno a 180 °C. Con ayuda de un adulto, calienta la leche con la raja de canela a fuego bajo, sin que hierva, hasta que suelte aroma.",
+    "en": "Heat the oven to 180 °C. With an adult's help, warm the milk with the cinnamon stick over low heat, without boiling, until it smells fragrant.",
+    "min": 10
+   },
+   {
+    "es": "Retira la canela y deja enfriar la leche hasta que esté tibia.",
+    "en": "Remove the cinnamon and let the milk cool until it is warm.",
+    "min": 15
+   },
+   {
+    "es": "Bate los huevos con el azúcar y la vainilla hasta que se mezclen bien, sin hacer mucha espuma.",
+    "en": "Beat the eggs with the sugar and vanilla until well mixed, without making a lot of foam.",
+    "min": 3
+   },
+   {
+    "es": "Agrega la leche tibia poco a poco, moviendo siempre. Cuela la mezcla y vierte en un refractario.",
+    "en": "Add the warm milk little by little, stirring all the time. Strain the mixture and pour it into a baking dish.",
+    "min": 3
+   },
+   {
+    "es": "Pon el refractario dentro de una charola honda y llénala con el agua caliente hasta la mitad. Espolvorea canela molida.",
+    "en": "Set the baking dish inside a deep tray and fill the tray halfway with the hot water. Sprinkle ground cinnamon on top.",
+    "min": 3
+   },
+   {
+    "es": "Con ayuda de un adulto, hornea hasta que cuaje y la superficie esté dorada.",
+    "en": "With an adult's help, bake until it sets and the top is golden.",
+    "min": 45
+   },
+   {
+    "es": "Saca con cuidado, deja enfriar y sirve tibia o fría.",
+    "en": "Take it out carefully, let it cool and serve warm or cold.",
+    "min": 30
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Una explicación muy repetida liga la palabra con Jérica, un pueblo de España, pero no está comprobada. También se encuentra escrita «jericaya».",
+    "en": "A much repeated explanation links the word to Jérica, a town in Spain, but it is not proven. It is also found spelled «jericaya»."
+   },
+   "origen": {
+    "es": "La jericalla es un postre tradicional de Guadalajara que mezcla ingredientes de Europa y de América: leche, huevo, azúcar, canela y vainilla. Su origen exacto no está documentado; las historias que se cuentan son tradición oral.",
+    "en": "Jericalla is a traditional dessert from Guadalajara that mixes ingredients from Europe and the Americas: milk, egg, sugar, cinnamon and vanilla. Its exact origin is not documented; the stories told about it are oral tradition."
+   },
+   "leyenda": {
+    "es": "Se cuenta que una monja cocinaba para los niños del Hospicio Cabañas y que dejó la mezcla en el horno más tiempo del debido; la capa de arriba se doró y a todos les gustó.",
+    "en": "Legend says a nun cooked for the children of the Hospicio Cabañas and left the mixture in the oven too long; the top layer turned golden brown and everyone liked it."
+   },
+   "curiosos": [
+    {
+     "es": "La vainilla es originaria de México.",
+     "en": "Vanilla is native to Mexico."
+    },
+    {
+     "es": "Se parece al flan, pero no lleva caramelo y se dora en la superficie.",
+     "en": "It is like flan, but it has no caramel and it browns on top."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "leche",
+    "en": "milk"
+   },
+   {
+    "es": "huevos",
+    "en": "eggs"
+   },
+   {
+    "es": "vainilla",
+    "en": "vanilla"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "horno",
+    "en": "oven"
+   }
+  ]
+ },
+ {
+  "id": "horchata",
+  "icono": "horchata",
+  "insignia": null,
+  "nombre": {
+   "es": "Agua de horchata",
+   "en": "Horchata rice drink"
+  },
+  "resumen": {
+   "es": "El agua fresca cremosa de arroz y canela que no falta en la mesa.",
+   "en": "The creamy, cool rice and cinnamon drink that is always on the table."
+  },
+  "porciones": 8,
+  "tiempoPrep": 15,
+  "tiempoCoccion": 240,
+  "nivel": {
+   "es": "Fácil",
+   "en": "Easy"
+  },
+  "nota": {
+   "es": "Usa agua purificada o hervida y enfriada. Pide ayuda a un adulto con la licuadora y para partir la canela. Guárdala tapada en el refrigerador y tómala en 3 días.",
+   "en": "Use purified water, or boiled water that has cooled. Ask an adult to help with the blender and to break the cinnamon. Keep it covered in the refrigerator and drink it within 3 days."
+  },
+  "ingredientes": [
+   {
+    "cant": 200,
+    "un": "g",
+    "es": "arroz blanco (1 taza)",
+    "en": "white rice (1 cup)"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "rajas de canela (5 cm cada una)",
+    "en": "cinnamon sticks (5 cm each)"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "agua purificada, para el remojo",
+    "en": "purified water, for soaking"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "agua purificada fría, para completar",
+    "en": "cold purified water, to finish"
+   },
+   {
+    "cant": 100,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "extracto de vainilla",
+    "en": "vanilla extract"
+   },
+   {
+    "cant": 1,
+    "un": "pizca",
+    "es": "canela molida, para servir",
+    "en": "ground cinnamon, to serve"
+   },
+   {
+    "cant": 2,
+    "un": "tazas",
+    "es": "hielo",
+    "en": "ice"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Pon el arroz en un colador y lávalo bajo el chorro de agua purificada hasta que el agua salga casi clara.",
+    "en": "Put the rice in a strainer and rinse it under purified running water until the water runs almost clear.",
+    "min": 3
+   },
+   {
+    "es": "Con ayuda de un adulto, parte la canela en trozos de 2 cm. Pon el arroz y la canela en un tazón con los 500 ml de agua del remojo, tapa y deja reposar mínimo 4 horas (o toda la noche en el refrigerador) para que el arroz se ablande.",
+    "en": "With an adult's help, break the cinnamon into 2 cm pieces. Put the rice and the cinnamon in a bowl with the 500 ml of soaking water, cover and let it rest at least 4 hours (or overnight in the refrigerator) so the rice softens.",
+    "min": 240
+   },
+   {
+    "es": "Un adulto licúa todo, con el agua del remojo, hasta que quede muy fino y sin granitos. Si tu licuadora es pequeña, hazlo en dos tandas.",
+    "en": "An adult blends everything, with the soaking water, until it is very smooth with no little bits. If your blender is small, do it in two batches.",
+    "min": 4
+   },
+   {
+    "es": "Cuela la mezcla por un colador fino cubierto con una tela limpia, sobre una jarra, y exprime bien para sacar toda la leche del arroz. Tira la pasta que quede.",
+    "en": "Strain the mixture through a fine strainer lined with a clean cloth, over a pitcher, and squeeze well to get all the milk out of the rice. Throw away the pulp that is left.",
+    "min": 6
+   },
+   {
+    "es": "Agrega el azúcar, la vainilla y los otros 500 ml de agua fría, y mueve hasta que el azúcar se disuelva. Si la quieres menos dulce, usa solo 60 g de azúcar.",
+    "en": "Add the sugar, the vanilla and the other 500 ml of cold water, and stir until the sugar dissolves. If you want it less sweet, use only 60 g of sugar.",
+    "min": 3
+   },
+   {
+    "es": "Tápala y deja enfriar en el refrigerador por lo menos 1 hora.",
+    "en": "Cover it and let it chill in the refrigerator for at least 1 hour.",
+    "min": 60
+   },
+   {
+    "es": "Muévela bien antes de servir, porque el arroz se asienta. Sirve con hielo y una pizca de canela molida. ¡Salud, mijo!",
+    "en": "Stir it well before serving, because the rice settles. Serve with ice and a pinch of ground cinnamon. Cheers, mijo!",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "La palabra horchata viene del latín «hordeata», que quiere decir «hecha con cebada». Así se llamaba la bebida al principio: de cebada. Con el tiempo cambió de grano, pero el nombre se quedó.",
+    "en": "The word horchata comes from the Latin «hordeata», meaning «made with barley». That is what the drink was first made of. Over time the grain changed, but the name stayed."
+   },
+   "origen": {
+    "es": "En España la horchata se hacía con cebada y, después, con chufa, un tubérculo pequeño de Valencia. Como la chufa no se cultivaba en México, aquí la bebida se hace sobre todo con arroz y canela, y hoy es la versión más común.",
+    "en": "In Spain, horchata was made with barley and later with chufa, a small tuber from Valencia. Since chufa was not grown in Mexico, here the drink is made mostly with rice and cinnamon, and today it is the most common version."
+   },
+   "curiosos": [
+    {
+     "es": "En Valencia todavía se toma la horchata de chufa, que es otra bebida distinta de la de arroz.",
+     "en": "In Valencia people still drink chufa horchata, which is a different drink from the rice one."
+    },
+    {
+     "es": "Aunque su nombre viene de la cebada, la horchata mexicana casi nunca lleva cebada.",
+     "en": "Although its name comes from barley, Mexican horchata almost never has barley in it."
+    },
+    {
+     "es": "La horchata de arroz es la más común en México.",
+     "en": "Rice horchata is the most common kind in Mexico."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "arroz",
+    "en": "rice"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "colador",
+    "en": "strainer"
+   },
+   {
+    "es": "hielo",
+    "en": "ice"
+   }
+  ]
+ },
+ {
+  "id": "horchata-fresa",
+  "icono": "horchata-fresa",
+  "insignia": null,
+  "nombre": {
+   "es": "Horchata de fresa",
+   "en": "Strawberry horchata"
+  },
+  "resumen": {
+   "es": "La horchata de arroz y canela con fresas frescas, rosita y muy cremosa.",
+   "en": "Rice and cinnamon horchata with fresh strawberries, pink and very creamy."
+  },
+  "porciones": 8,
+  "tiempoPrep": 25,
+  "tiempoCoccion": 240,
+  "nivel": {
+   "es": "Fácil",
+   "en": "Easy"
+  },
+  "nota": {
+   "es": "Lava y desinfecta bien las fresas. Usa agua purificada o hervida y enfriada. Pide ayuda a un adulto con el cuchillo y la licuadora. Guárdala tapada en el refrigerador y tómala en 2 días.",
+   "en": "Wash and disinfect the strawberries well. Use purified water, or boiled water that has cooled. Ask an adult to help with the knife and the blender. Keep it covered in the refrigerator and drink it within 2 days."
+  },
+  "ingredientes": [
+   {
+    "cant": 200,
+    "un": "g",
+    "es": "arroz blanco (1 taza)",
+    "en": "white rice (1 cup)"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "rajas de canela (5 cm cada una)",
+    "en": "cinnamon sticks (5 cm each)"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "agua purificada, para el remojo",
+    "en": "purified water, for soaking"
+   },
+   {
+    "cant": 750,
+    "un": "ml",
+    "es": "agua purificada fría, para completar",
+    "en": "cold purified water, to finish"
+   },
+   {
+    "cant": 250,
+    "un": "g",
+    "es": "fresas frescas",
+    "en": "fresh strawberries"
+   },
+   {
+    "cant": 100,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 2,
+    "un": "tazas",
+    "es": "hielo",
+    "en": "ice"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Lava el arroz en un colador bajo el chorro de agua purificada hasta que el agua salga casi clara.",
+    "en": "Rinse the rice in a strainer under purified running water until the water runs almost clear.",
+    "min": 3
+   },
+   {
+    "es": "Con ayuda de un adulto, parte la canela en trozos de 2 cm. Pon el arroz y la canela en un tazón con los 500 ml de agua del remojo, tapa y deja reposar mínimo 4 horas (o toda la noche en el refrigerador).",
+    "en": "With an adult's help, break the cinnamon into 2 cm pieces. Put the rice and the cinnamon in a bowl with the 500 ml of soaking water, cover and let it rest at least 4 hours (or overnight in the refrigerator).",
+    "min": 240
+   },
+   {
+    "es": "Lava las fresas con agua y déjalas en agua con desinfectante para frutas y verduras, siguiendo las instrucciones del envase. Enjuágalas bien, quítales el rabito y, con ayuda de un adulto, pártelas por la mitad.",
+    "en": "Wash the strawberries with water and leave them in water with a fruit and vegetable disinfectant, following the package directions. Rinse them well, remove the stems and, with an adult's help, cut them in half.",
+    "min": 10
+   },
+   {
+    "es": "Un adulto licúa el arroz, la canela y el agua del remojo hasta que quede muy fino. Si tu licuadora es pequeña, hazlo en dos tandas.",
+    "en": "An adult blends the rice, the cinnamon and the soaking water until it is very smooth. If your blender is small, do it in two batches.",
+    "min": 4
+   },
+   {
+    "es": "Cuela por un colador fino cubierto con una tela limpia, sobre una jarra, exprimiendo bien. Tira la pasta que quede.",
+    "en": "Strain through a fine strainer lined with a clean cloth, over a pitcher, squeezing well. Throw away the pulp that is left.",
+    "min": 6
+   },
+   {
+    "es": "Un adulto licúa el líquido colado con las fresas, el azúcar y 250 ml de agua fría, hasta que quede parejo y rosita. Si la quieres menos dulce, usa solo 60 g de azúcar.",
+    "en": "An adult blends the strained liquid with the strawberries, the sugar and 250 ml of cold water, until it is smooth and pink. If you want it less sweet, use only 60 g of sugar.",
+    "min": 3
+   },
+   {
+    "es": "Pásala por el colador otra vez para quitar las semillitas, agrega los otros 500 ml de agua fría y mueve. Tápala y deja enfriar en el refrigerador por lo menos 1 hora.",
+    "en": "Strain it once more to remove the tiny seeds, add the other 500 ml of cold water and stir. Cover it and let it chill in the refrigerator for at least 1 hour.",
+    "min": 60
+   },
+   {
+    "es": "Muévela bien antes de servir, porque el arroz se asienta. Sirve con hielo.",
+    "en": "Stir it well before serving, because the rice settles. Serve with ice.",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Horchata viene del latín «hordeata», que quiere decir «hecha con cebada». La fresa solo le pone su color rosita y su sabor, pero el nombre de la bebida sigue siendo el de siempre.",
+    "en": "Horchata comes from the Latin «hordeata», meaning «made with barley». The strawberry only adds its pink color and flavor, but the name of the drink is still the same as ever."
+   },
+   "origen": {
+    "es": "La horchata de arroz con canela es la más común en México. La de fresa es una variación de esa bebida, y no hay registro de quién la inventó ni cuándo. Cada casa le puede dar su toque con la fruta que tenga.",
+    "en": "Rice and cinnamon horchata is the most common kind in Mexico. The strawberry one is a variation of that drink, and there is no record of who invented it or when. Each home can give it its own touch with the fruit it has."
+   },
+   "curiosos": [
+    {
+     "es": "Las fresas crecen cerca del suelo, por eso se lavan y se desinfectan muy bien antes de usarlas.",
+     "en": "Strawberries grow close to the ground, so they are washed and disinfected very well before using them."
+    },
+    {
+     "es": "El arroz le da lo cremoso y la fresa le da el color rosa.",
+     "en": "The rice gives it the creaminess and the strawberry gives it the pink color."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "fresas",
+    "en": "strawberries"
+   },
+   {
+    "es": "arroz",
+    "en": "rice"
+   },
+   {
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "es": "colador",
+    "en": "strainer"
+   }
+  ]
+ },
+ {
+  "id": "agua-jamaica",
+  "icono": "agua-jamaica",
+  "insignia": null,
+  "nombre": {
+   "es": "Agua de jamaica",
+   "en": "Hibiscus flower drink"
+  },
+  "resumen": {
+   "es": "El agua fresca roja y agridulce hecha con flor de jamaica.",
+   "en": "The red, sweet and tart cool drink made with hibiscus flowers."
+  },
+  "porciones": 8,
+  "tiempoPrep": 5,
+  "tiempoCoccion": 25,
+  "nivel": {
+   "es": "Muy fácil",
+   "en": "Very easy"
+  },
+  "nota": {
+   "es": "El agua caliente quema: pide ayuda a un adulto para hervirla y colarla. Usa agua purificada para completar. Guárdala tapada en el refrigerador y tómala en 3 días.",
+   "en": "Hot water burns: ask an adult to help boil and strain it. Use purified water to finish. Keep it covered in the refrigerator and drink it within 3 days."
+  },
+  "ingredientes": [
+   {
+    "cant": 50,
+    "un": "g",
+    "es": "flor de jamaica seca (unas 2 tazas)",
+    "en": "dried hibiscus flowers (about 2 cups)"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "agua, para hervir la flor",
+    "en": "water, to boil the flowers"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "agua purificada fría, para completar",
+    "en": "cold purified water, to finish"
+   },
+   {
+    "cant": 120,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 2,
+    "un": "tazas",
+    "es": "hielo",
+    "en": "ice"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Pon la flor en un colador y enjuágala bien con agua limpia para quitarle el polvito.",
+    "en": "Put the flowers in a strainer and rinse them well with clean water to remove the dust.",
+    "min": 2
+   },
+   {
+    "es": "Un adulto hierve 1 L de agua en una olla. Agrega la flor, baja el fuego y cuece 10 minutos.",
+    "en": "An adult boils 1 L of water in a pot. Add the flowers, lower the heat and cook for 10 minutes.",
+    "min": 10
+   },
+   {
+    "es": "Apaga el fuego, tapa la olla y deja reposar para que el color y el sabor salgan por completo.",
+    "en": "Turn off the heat, cover the pot and let it rest so the color and flavor come out fully.",
+    "min": 15
+   },
+   {
+    "es": "Un adulto cuela la infusión sobre una jarra grande, presionando la flor con una cuchara. Tira la flor.",
+    "en": "An adult strains the infusion over a large pitcher, pressing the flowers with a spoon. Throw the flowers away.",
+    "min": 3
+   },
+   {
+    "es": "Agrega el azúcar mientras está tibia y mueve hasta que se disuelva. Si la quieres menos dulce, usa solo 80 g de azúcar.",
+    "en": "Add the sugar while it is still warm and stir until it dissolves. If you want it less sweet, use only 80 g of sugar.",
+    "min": 2
+   },
+   {
+    "es": "Agrega el litro de agua purificada fría, tapa la jarra y deja enfriar en el refrigerador por lo menos 1 hora.",
+    "en": "Add the liter of cold purified water, cover the pitcher and let it chill in the refrigerator for at least 1 hour.",
+    "min": 60
+   },
+   {
+    "es": "Mueve y sirve con hielo. ¡Qué refrescante!",
+    "en": "Stir and serve with ice. How refreshing!",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "En español la llamamos «flor de jamaica», pero la planta no viene de esa isla. Su nombre científico es Hibiscus sabdariffa. Para el agua no se usan los pétalos, sino el cáliz rojo, que es la parte que envuelve a la flor.",
+    "en": "In Spanish we call it «flor de jamaica», but the plant does not come from that island. Its scientific name is Hibiscus sabdariffa. The drink is not made with the petals but with the red calyx, the part that wraps around the flower."
+   },
+   "origen": {
+    "es": "La planta es de origen africano, aunque los estudiosos no coinciden en el lugar exacto. Llegó a México en la época colonial. Hoy se cultiva en tierras cálidas, y Guerrero y Oaxaca son de los estados que más producen.",
+    "en": "The plant is of African origin, although scholars do not agree on the exact place. It reached Mexico in colonial times. Today it is grown in warm lands, and Guerrero and Oaxaca are among the states that produce the most."
+   },
+   "curiosos": [
+    {
+     "es": "Lo que echamos a la olla es el cáliz de la flor, no los pétalos.",
+     "en": "What we put in the pot is the calyx of the flower, not the petals."
+    },
+    {
+     "es": "En países de África como Sudán y Senegal también se toman bebidas hechas con esta flor.",
+     "en": "In African countries like Sudan and Senegal, people also drink beverages made with this flower."
+    },
+    {
+     "es": "Colima y Campeche también están entre los productores de México.",
+     "en": "Colima and Campeche are also among Mexico's producers."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "flor",
+    "en": "flower"
+   },
+   {
+    "es": "olla",
+    "en": "pot"
+   },
+   {
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "es": "hielo",
+    "en": "ice"
+   }
+  ]
+ },
+ {
+  "id": "agua-tamarindo",
+  "icono": "agua-tamarindo",
+  "insignia": null,
+  "nombre": {
+   "es": "Agua de tamarindo",
+   "en": "Tamarind drink"
+  },
+  "resumen": {
+   "es": "El agua fresca café, dulce y ácida, hecha con la pulpa de las vainas.",
+   "en": "The brown, sweet and tangy cool drink made with the pulp of the pods."
+  },
+  "porciones": 8,
+  "tiempoPrep": 15,
+  "tiempoCoccion": 35,
+  "nivel": {
+   "es": "Fácil",
+   "en": "Easy"
+  },
+  "nota": {
+   "es": "El agua caliente quema: pide ayuda a un adulto para hervir y colar. Quita todas las semillas, que son duras. Usa agua purificada para completar. Guárdala tapada en el refrigerador y tómala en 3 días.",
+   "en": "Hot water burns: ask an adult to help boil and strain. Remove all the seeds, which are hard. Use purified water to finish. Keep it covered in the refrigerator and drink it within 3 days."
+  },
+  "ingredientes": [
+   {
+    "cant": 250,
+    "un": "g",
+    "es": "vainas de tamarindo maduras (unas 15)",
+    "en": "ripe tamarind pods (about 15)"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "agua, para hervir la pulpa",
+    "en": "water, to boil the pulp"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "agua purificada fría, para completar",
+    "en": "cold purified water, to finish"
+   },
+   {
+    "cant": 120,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 2,
+    "un": "tazas",
+    "es": "hielo",
+    "en": "ice"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Quita la cáscara quebradiza de las vainas y las hebritas que cubren la pulpa.",
+    "en": "Remove the brittle shell from the pods and the little strings that cover the pulp.",
+    "min": 10
+   },
+   {
+    "es": "Enjuaga la pulpa con agua limpia.",
+    "en": "Rinse the pulp with clean water.",
+    "min": 2
+   },
+   {
+    "es": "Un adulto hierve la pulpa con los 500 ml de agua hasta que se ablande y se empiece a deshacer.",
+    "en": "An adult boils the pulp with the 500 ml of water until it softens and starts to fall apart.",
+    "min": 15
+   },
+   {
+    "es": "Apaga el fuego y deja entibiar la mezcla.",
+    "en": "Turn off the heat and let the mixture cool down.",
+    "min": 20
+   },
+   {
+    "es": "Deshaz la pulpa con el dorso de una cuchara y cuela sobre una jarra, presionando para separar las semillas. Tira las semillas.",
+    "en": "Mash the pulp with the back of a spoon and strain over a pitcher, pressing to separate the seeds. Throw the seeds away.",
+    "min": 8
+   },
+   {
+    "es": "Agrega el azúcar y mueve hasta que se disuelva. Si la quieres menos dulce, usa solo 80 g. Añade el litro de agua purificada fría.",
+    "en": "Add the sugar and stir until it dissolves. If you want it less sweet, use only 80 g. Add the liter of cold purified water.",
+    "min": 3
+   },
+   {
+    "es": "Tapa la jarra y deja enfriar en el refrigerador por lo menos 1 hora.",
+    "en": "Cover the pitcher and let it chill in the refrigerator for at least 1 hour.",
+    "min": 60
+   },
+   {
+    "es": "Mueve bien y sirve con hielo.",
+    "en": "Stir well and serve with ice.",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Tamarindo viene del árabe «tamr hindi», que significa «dátil de la India». Pasó por el latín de la Edad Media y llegó al español ya acortado como «tamarindo».",
+    "en": "Tamarind comes from the Arabic «tamr hindi», which means «date of India». It passed through medieval Latin and reached Spanish already shortened to «tamarindo»."
+   },
+   "origen": {
+    "es": "El árbol es originario de África, aunque el lugar exacto se discute y su nombre científico dice «indica». Llegó a México en la época colonial. Hoy crece en zonas cálidas, y Jalisco, Colima y Guerrero son de los estados que más producen.",
+    "en": "The tree is native to Africa, although the exact place is debated and its scientific name says «indica». It reached Mexico in colonial times. Today it grows in warm areas, and Jalisco, Colima and Guerrero are among the states that produce the most."
+   },
+   "curiosos": [
+    {
+     "es": "Su nombre científico es Tamarindus indica, aunque se cree que el árbol es africano.",
+     "en": "Its scientific name is Tamarindus indica, although the tree is believed to be African."
+    },
+    {
+     "es": "Con la pulpa de las vainas se hacen aguas frescas, dulces y salsas.",
+     "en": "The pulp of the pods is used to make cool drinks, candies and sauces."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "vainas",
+    "en": "pods"
+   },
+   {
+    "es": "pulpa",
+    "en": "pulp"
+   },
+   {
+    "es": "semillas",
+    "en": "seeds"
+   },
+   {
+    "es": "cuchara",
+    "en": "spoon"
+   }
+  ]
+ },
+ {
+  "id": "agua-limon-chia",
+  "icono": "agua-limon-chia",
+  "insignia": null,
+  "nombre": {
+   "es": "Agua de limón con chía",
+   "en": "Lime drink with chia"
+  },
+  "resumen": {
+   "es": "El agua fresca de limón con semillitas de chía que parecen gelatina.",
+   "en": "The cool lime drink with little chia seeds that feel like jelly."
+  },
+  "porciones": 6,
+  "tiempoPrep": 15,
+  "tiempoCoccion": 15,
+  "nivel": {
+   "es": "Muy fácil",
+   "en": "Very easy"
+  },
+  "nota": {
+   "es": "Lava bien los limones y pide ayuda a un adulto con el cuchillo. Usa agua purificada o hervida y enfriada. Guárdala tapada en el refrigerador y tómala en 2 días.",
+   "en": "Wash the limes well and ask an adult to help with the knife. Use purified water, or boiled water that has cooled. Keep it covered in the refrigerator and drink it within 2 days."
+  },
+  "ingredientes": [
+   {
+    "cant": 3,
+    "un": "cda",
+    "es": "semillas de chía",
+    "en": "chia seeds"
+   },
+   {
+    "cant": 250,
+    "un": "ml",
+    "es": "agua purificada, para remojar la chía",
+    "en": "purified water, to soak the chia"
+   },
+   {
+    "cant": 8,
+    "un": "pza",
+    "es": "limones, para sacar el jugo (unos 200 ml)",
+    "en": "limes, to squeeze for juice (about 200 ml)"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "agua purificada fría",
+    "en": "cold purified water"
+   },
+   {
+    "cant": 100,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 2,
+    "un": "tazas",
+    "es": "hielo",
+    "en": "ice"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Pon la chía en un vaso con los 250 ml de agua y muévela. Al minuto vuelve a moverla para que no se pegue, y déjala reposar hasta que forme una capita de gel.",
+    "en": "Put the chia in a glass with the 250 ml of water and stir it. After a minute stir it again so it does not clump, and let it rest until it forms a little layer of gel.",
+    "min": 15
+   },
+   {
+    "es": "Lava los limones tallándolos con las manos bajo el chorro de agua. Con ayuda de un adulto, pártelos por la mitad y exprímelos.",
+    "en": "Wash the limes by rubbing them with your hands under running water. With an adult's help, cut them in half and squeeze them.",
+    "min": 8
+   },
+   {
+    "es": "Cuela el jugo para quitar las semillas y la pulpa.",
+    "en": "Strain the juice to remove the seeds and the pulp.",
+    "min": 2
+   },
+   {
+    "es": "En una jarra, disuelve el azúcar en el litro de agua fría. Si la quieres menos dulce, usa solo 60 g de azúcar.",
+    "en": "In a pitcher, dissolve the sugar in the liter of cold water. If you want it less sweet, use only 60 g of sugar.",
+    "min": 3
+   },
+   {
+    "es": "Agrega el jugo de limón y la chía con su gel, y mezcla bien.",
+    "en": "Add the lime juice and the chia with its gel, and mix well.",
+    "min": 1
+   },
+   {
+    "es": "Tapa la jarra y deja enfriar en el refrigerador por lo menos 30 minutos.",
+    "en": "Cover the pitcher and let it chill in the refrigerator for at least 30 minutes.",
+    "min": 30
+   },
+   {
+    "es": "Mueve bien antes de servir, porque la chía se asienta. Sirve con hielo.",
+    "en": "Stir well before serving, because the chia settles. Serve with ice.",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Chía viene del náhuatl «chian», el nombre de una semilla de la que se sacaba aceite. Así aparece en un diccionario del náhuatl de 1571. Y en español, limón es el nombre que le damos en México a la fruta verde y ácida.",
+    "en": "Chia comes from the Nahuatl «chian», the name of a seed from which oil was pressed. It appears that way in a Nahuatl dictionary from 1571. In Mexican Spanish, «limón» is the word we use for the small, green, tart fruit."
+   },
+   "origen": {
+    "es": "La chía es nativa del sur de México y del norte de Guatemala, y se cultiva desde hace miles de años. En los códices de los mexicas aparece como tributo y se vendía en los mercados. El agua de limón con chía es una bebida muy común hoy.",
+    "en": "Chia is native to southern Mexico and northern Guatemala, and it has been grown for thousands of years. In the Mexica codices it appears as tribute and it was sold in the markets. Lime water with chia is a very common drink today."
+   },
+   "curiosos": [
+    {
+     "es": "En el agua, la semilla de chía forma una capita de gel y se hincha: por eso se remoja antes de tomarla.",
+     "en": "In water, the chia seed forms a little layer of gel and swells: that is why it is soaked before drinking it."
+    },
+    {
+     "es": "Se piensa que fue el tercer cultivo más importante de los mexicas, después del maíz y el frijol.",
+     "en": "It is thought to have been the third most important crop of the Mexica, after corn and beans."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "limones",
+    "en": "limes"
+   },
+   {
+    "es": "jugo",
+    "en": "juice"
+   },
+   {
+    "es": "jarra",
+    "en": "pitcher"
+   },
+   {
+    "es": "chía",
+    "en": "chia"
+   }
+  ]
+ },
+ {
+  "id": "pozole-blanco",
+  "icono": "pozole-blanco",
+  "insignia": null,
+  "nombre": {
+   "es": "Pozole blanco de cerdo",
+   "en": "White pork pozole"
+  },
+  "resumen": {
+   "es": "El caldo claro y sencillo de la fiesta: maíz que florece, cerdo suave y la mesa llena de acompañamientos.",
+   "en": "The clear, simple party stew: blooming hominy, tender pork and a table full of toppings."
+  },
+  "porciones": 8,
+  "tiempoPrep": 30,
+  "tiempoCoccion": 160,
+  "nivel": {
+   "es": "Fácil, pero lleva tiempo",
+   "en": "Easy, but takes time"
+  },
+  "nota": {
+   "es": "La olla grande suelta vapor y el caldo quema: pide ayuda a un adulto para moverla y servir. Lávate las manos después de tocar los chiles y no te toques los ojos.",
+   "en": "The big pot gives off steam and the broth is hot: ask an adult to move it and serve. Wash your hands after touching chilies and do not touch your eyes."
+  },
+  "ingredientes": [
+   {
+    "cant": 1,
+    "un": "kg",
+    "es": "espaldilla de cerdo en trozos",
+    "en": "pork shoulder, in chunks"
+   },
+   {
+    "cant": 500,
+    "un": "g",
+    "es": "costilla de cerdo en trozos",
+    "en": "pork ribs, in chunks"
+   },
+   {
+    "cant": 3,
+    "un": "L",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla",
+    "en": "onion"
+   },
+   {
+    "cant": 6,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic cloves"
+   },
+   {
+    "cant": 2,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 800,
+    "un": "g",
+    "es": "maíz cacahuazintle precocido, escurrido",
+    "en": "pre-cooked cacahuazintle hominy, drained"
+   },
+   {
+    "cant": 2,
+    "un": "tazas",
+    "es": "lechuga o col, finamente picada",
+    "en": "lettuce or cabbage, finely chopped"
+   },
+   {
+    "cant": 8,
+    "un": "pza",
+    "es": "rábanos en rodajas",
+    "en": "radishes, sliced"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla picada, para servir",
+    "en": "chopped onion, to serve"
+   },
+   {
+    "cant": 1,
+    "un": "cda",
+    "es": "orégano seco",
+    "en": "dried oregano"
+   },
+   {
+    "cant": 2,
+    "un": "cdta",
+    "es": "chile piquín molido, para servir",
+    "en": "ground piquín chili, to serve"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "limones, en gajos",
+    "en": "limes, in wedges"
+   },
+   {
+    "cant": 8,
+    "un": "pza",
+    "es": "tostadas",
+    "en": "tostadas"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Pica la lechuga y la cebolla, corta los rábanos y los limones, y pon todo en platitos con el orégano y el chile piquín. Así la mesa queda lista.",
+    "en": "Chop the lettuce and the onion, slice the radishes and the limes, and put everything in little dishes with the oregano and the piquín chili. This way the table is ready.",
+    "min": 15
+   },
+   {
+    "es": "Pon la espaldilla y la costilla en una olla grande con el agua, la media cebolla, 4 dientes de ajo y 1 cucharadita de sal. Cuece a fuego medio y quita la espuma que salga.",
+    "en": "Put the shoulder and the ribs in a large pot with the water, the half onion, 4 garlic cloves and 1 teaspoon of salt. Cook over medium heat and skim off the foam.",
+    "min": 60
+   },
+   {
+    "es": "Agrega el maíz escurrido y los otros 2 dientes de ajo machacados. Cuece a fuego bajo, con la olla medio tapada, hasta que la carne esté suave y el maíz haya florecido.",
+    "en": "Add the drained hominy and the other 2 crushed garlic cloves. Simmer on low heat, with the pot half covered, until the pork is tender and the hominy has bloomed.",
+    "min": 90
+   },
+   {
+    "es": "Prueba el caldo, ajusta la sal con la otra cucharadita y deja reposar con la olla tapada.",
+    "en": "Taste the broth, adjust the salt with the other teaspoon and let it rest with the lid on.",
+    "min": 10
+   },
+   {
+    "es": "Sirve en tazones con carne, maíz y mucho caldo. Pon la mesa y que cada quien arme su pozole, mijo: lechuga, rábanos, cebolla, orégano, limón, chile y tostadas.",
+    "en": "Serve in bowls with pork, hominy and plenty of broth. Set the table and let everyone build their own pozole, mijo: lettuce, radishes, onion, oregano, lime, chili and tostadas.",
+    "min": 5
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Pozole» viene del náhuatl «pozolli», una palabra que se relaciona con «espuma» o «espumoso». Los diccionarios dicen que el nombre alude al maíz que, al cocerse, abre sus granos como florecitas y le da al caldo un aspecto espumoso. La palabra perdió el sonido «tl» al pasar al español.",
+    "en": "«Pozole» comes from the Nahuatl «pozolli», a word related to «foam» or «foamy». Dictionaries say the name refers to the corn that, as it cooks, opens its kernels like little flowers and gives the broth a foamy look. The word lost the «tl» sound when it passed into Spanish."
+   },
+   "origen": {
+    "es": "El pozole es un caldo de maíz que ya se hacía entre los pueblos nahuas antes de la llegada de los españoles; con ellos llegó el cerdo, que hoy es la carne más común. El pozole blanco es el que se sirve claro, sin salsa de chile en el caldo, y cada quien le pone su chile, su orégano y su limón. El estado de Guerrero es muy conocido por su pozole blanco y su pozole verde.",
+    "en": "Pozole is a corn stew that was already made by Nahua peoples before the Spanish arrived; pork came with the Spanish and is now the most common meat. White pozole is served clear, with no chili sauce in the broth, and everyone adds their own chili, oregano and lime. The state of Guerrero is well known for its white and green pozole."
+   },
+   "curiosos": [
+    {
+     "es": "En Guerrero hay una costumbre muy querida: el «jueves pozolero», cuando las familias y los amigos se juntan a comer pozole.",
+     "en": "In Guerrero there is a much-loved custom: «jueves pozolero» (pozole Thursday), when families and friends get together to eat pozole."
+    },
+    {
+     "es": "«Pozole» no es la única palabra que perdió la «tl»: atolli se volvió «atole» y pinolli se volvió «pinole».",
+     "en": "«Pozole» is not the only word that lost its «tl»: atolli became «atole» and pinolli became «pinole»."
+    },
+    {
+     "es": "El maíz cacahuazintle se nixtamaliza, es decir, se cuece con cal para que se ablande y se abra como flor.",
+     "en": "Cacahuazintle corn is nixtamalized, that is, cooked with lime so it softens and blooms like a flower."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "pozole",
+    "en": "pozole (hominy stew)"
+   },
+   {
+    "es": "maíz",
+    "en": "corn"
+   },
+   {
+    "es": "cerdo",
+    "en": "pork"
+   },
+   {
+    "es": "caldo",
+    "en": "broth"
+   },
+   {
+    "es": "rábanos",
+    "en": "radishes"
+   }
+  ]
+ },
+ {
+  "id": "pozole-verde",
+  "icono": "pozole-verde",
+  "insignia": null,
+  "nombre": {
+   "es": "Pozole verde estilo Guerrero",
+   "en": "Guerrero-style green pozole"
+  },
+  "resumen": {
+   "es": "Caldo de cerdo y maíz con una salsa verde de pepita, tomate verde y hierbas, como se come en Guerrero.",
+   "en": "Pork and hominy stew with a green sauce of pumpkin seeds, tomatillos and herbs, the way it is eaten in Guerrero."
+  },
+  "porciones": 8,
+  "tiempoPrep": 30,
+  "tiempoCoccion": 130,
+  "nivel": {
+   "es": "Con paciencia",
+   "en": "With patience"
+  },
+  "nota": {
+   "es": "Hay chiles, aceite caliente y una licuadora con líquido caliente: pide ayuda a un adulto para freír la salsa y para licuar. Lávate las manos después de tocar los chiles y no te toques los ojos. Lleva pepita de calabaza: avisa si alguien es alérgico a las semillas.",
+   "en": "There are chilies, hot oil and a blender with hot liquid: ask an adult to fry the sauce and to blend. Wash your hands after touching chilies and do not touch your eyes. It has pumpkin seeds: tell everyone if someone is allergic to seeds."
+  },
+  "ingredientes": [
+   {
+    "cant": 1,
+    "un": "kg",
+    "es": "espaldilla de cerdo en trozos",
+    "en": "pork shoulder, in chunks"
+   },
+   {
+    "cant": 3,
+    "un": "L",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla",
+    "en": "onion"
+   },
+   {
+    "cant": 4,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic cloves"
+   },
+   {
+    "cant": 2,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 800,
+    "un": "g",
+    "es": "maíz cacahuazintle precocido, escurrido",
+    "en": "pre-cooked cacahuazintle hominy, drained"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "pepita de calabaza pelada, sin sal",
+    "en": "hulled pumpkin seeds, unsalted"
+   },
+   {
+    "cant": 500,
+    "un": "g",
+    "es": "tomate verde sin cáscara",
+    "en": "tomatillos, husks removed"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "chiles serranos",
+    "en": "serrano chilies"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "chile poblano, sin semillas",
+    "en": "poblano chili, seeds removed"
+   },
+   {
+    "cant": 4,
+    "un": "ramas",
+    "es": "epazote",
+    "en": "epazote"
+   },
+   {
+    "cant": 6,
+    "un": "ramas",
+    "es": "cilantro",
+    "en": "cilantro"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "aceite",
+    "en": "oil"
+   },
+   {
+    "cant": 2,
+    "un": "tazas",
+    "es": "lechuga o col, finamente picada",
+    "en": "lettuce or cabbage, finely chopped"
+   },
+   {
+    "cant": 8,
+    "un": "pza",
+    "es": "rábanos en rodajas",
+    "en": "radishes, sliced"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla picada, para servir",
+    "en": "chopped onion, to serve"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "limones, en gajos",
+    "en": "limes, in wedges"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "aguacate en rebanadas",
+    "en": "avocado, sliced"
+   },
+   {
+    "cant": 8,
+    "un": "pza",
+    "es": "tostadas",
+    "en": "tostadas"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Pon la carne en una olla grande con el agua, la media cebolla, 2 dientes de ajo y 1 cucharadita de sal. Cuece a fuego medio y quita la espuma.",
+    "en": "Put the pork in a large pot with the water, the half onion, 2 garlic cloves and 1 teaspoon of salt. Cook over medium heat and skim off the foam.",
+    "min": 60
+   },
+   {
+    "es": "Mientras tanto, cuece en una olla chica con agua los tomates verdes, los chiles serranos y el chile poblano, hasta que los tomates cambien de color y se suavicen. Escúrrelos.",
+    "en": "Meanwhile, in a small pot with water, cook the tomatillos, the serrano chilies and the poblano chili until the tomatillos change color and soften. Drain them.",
+    "min": 10
+   },
+   {
+    "es": "Tuesta la pepita en un sartén seco a fuego bajo, moviéndola siempre y con el sartén tapado a ratos porque brinca, hasta que se infle y huela a tostado. Déjala enfriar un momento.",
+    "en": "Toast the pumpkin seeds in a dry pan over low heat, stirring all the time and covering the pan from time to time because they pop, until they puff up and smell toasted. Let them cool a moment.",
+    "min": 5
+   },
+   {
+    "es": "Licúa la pepita, los tomates, los chiles, el cilantro, el epazote, 2 dientes de ajo y 1 taza del caldo caliente hasta tener una salsa espesa y verde. Pide ayuda a un adulto.",
+    "en": "Blend the pumpkin seeds, tomatillos, chilies, cilantro, epazote, 2 garlic cloves and 1 cup of the hot broth until you have a thick green sauce. Ask an adult to help.",
+    "min": 5
+   },
+   {
+    "es": "(Con un adulto) Calienta el aceite en una cazuela y fríe la salsa moviendo sin parar hasta que cambie a un verde más oscuro y espese.",
+    "en": "(With an adult) Heat the oil in a pot and fry the sauce, stirring nonstop, until it turns a darker green and thickens.",
+    "min": 10
+   },
+   {
+    "es": "Agrega la salsa y el maíz escurrido a la olla de la carne. Cuece a fuego bajo hasta que la carne esté suave y el caldo tome cuerpo. Ajusta la sal con la otra cucharadita.",
+    "en": "Add the sauce and the drained hominy to the pot with the pork. Simmer on low heat until the pork is tender and the broth gets body. Adjust the salt with the other teaspoon.",
+    "min": 40
+   },
+   {
+    "es": "Sirve en tazones y pon en la mesa lechuga, rábanos, cebolla, limón, aguacate y tostadas. ¡Que cada quien arme su pozole!",
+    "en": "Serve in bowls and put lettuce, radishes, onion, lime, avocado and tostadas on the table. Let everyone build their own pozole!",
+    "min": 5
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Pozole» viene del náhuatl «pozolli», que se relaciona con «espumoso» por el maíz que se abre al cocerse. Se llama «verde» por el color de su salsa, hecha con tomate verde, chile verde, hierbas y pepita de calabaza molida. La «pepita» es la semilla de la calabaza.",
+    "en": "«Pozole» comes from the Nahuatl «pozolli», related to «foamy» because of the corn that opens as it cooks. It is called «green» because of the color of its sauce, made with tomatillos, green chilies, herbs and ground pumpkin seeds. The «pepita» is the seed of the pumpkin."
+   },
+   "origen": {
+    "es": "El pozole verde es típico del estado de Guerrero, y la ciudad de Tixtla es de las más citadas por él. Su salsa se muele y se fríe, y lleva tomate verde, chile verde, pepita de calabaza y epazote. Otros lugares de México también lo preparan, cada uno con su variante.",
+    "en": "Green pozole is typical of the state of Guerrero, and the city of Tixtla is one of the most often mentioned for it. Its sauce is ground and fried, and has tomatillos, green chilies, pumpkin seeds and epazote. Other places in Mexico also make it, each with its own version."
+   },
+   "leyenda": {
+    "es": "Se cuenta que el «jueves pozolero» de Tixtla nació porque ese día los jornaleros del valle cobraban al terminar la cosecha y se juntaban a comer pozole.",
+    "en": "Legend says that the «jueves pozolero» (pozole Thursday) of Tixtla began because on that day the field workers of the valley got paid at the end of the harvest and gathered to eat pozole."
+   },
+   "curiosos": [
+    {
+     "es": "«Epazote» viene del náhuatl «epazotl», una hierba de olor fuerte que los cocineros de México usan desde hace siglos.",
+     "en": "«Epazote» comes from the Nahuatl «epazotl», a strong-smelling herb that cooks in Mexico have used for centuries."
+    },
+    {
+     "es": "La pepita no solo da sabor: al molerse espesa la salsa y la hace cremosa.",
+     "en": "The pumpkin seed does not only add flavor: when ground it thickens the sauce and makes it creamy."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "pepita",
+    "en": "pumpkin seed"
+   },
+   {
+    "es": "tomate verde",
+    "en": "tomatillo"
+   },
+   {
+    "es": "epazote",
+    "en": "epazote (Mexican herb)"
+   },
+   {
+    "es": "cilantro",
+    "en": "cilantro"
+   },
+   {
+    "es": "salsa",
+    "en": "sauce"
+   }
+  ]
+ },
+ {
+  "id": "arroz-con-leche",
+  "icono": "arroz-con-leche",
+  "insignia": null,
+  "nombre": {
+   "es": "Arroz con leche con canela",
+   "en": "Cinnamon rice pudding"
+  },
+  "resumen": {
+   "es": "Cremoso, tibio y con olor a canela: el postre que Granma hacía cuando el día pedía un abrazo.",
+   "en": "Creamy, warm and smelling of cinnamon: the dessert Granma made when the day needed a hug."
+  },
+  "porciones": 6,
+  "tiempoPrep": 10,
+  "tiempoCoccion": 45,
+  "nivel": {
+   "es": "Fácil",
+   "en": "Easy"
+  },
+  "nota": {
+   "es": "La leche caliente se pega, salpica y quema: la estufa es trabajo de un adulto. Contiene leche; si alguien es alérgico a la leche, no lo comas.",
+   "en": "Hot milk sticks, splashes and burns: the stove is an adult's job. It contains milk; if someone is allergic to milk, do not eat it."
+  },
+  "ingredientes": [
+   {
+    "cant": 200,
+    "un": "g",
+    "es": "arroz blanco",
+    "en": "white rice"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "rajas de canela",
+    "en": "cinnamon sticks"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "leche entera",
+    "en": "whole milk"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 1,
+    "un": "pizca",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "vainilla",
+    "en": "vanilla"
+   },
+   {
+    "cant": 50,
+    "un": "g",
+    "es": "pasas",
+    "en": "raisins"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "canela molida, para espolvorear",
+    "en": "ground cinnamon, for sprinkling"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Lava el arroz en un colador con agua fría hasta que el agua salga casi clara. Escúrrelo bien.",
+    "en": "Rinse the rice in a strainer with cold water until the water runs almost clear. Drain it well.",
+    "min": 3
+   },
+   {
+    "es": "Pon el arroz en una olla con el agua y las rajas de canela. Cuece a fuego medio hasta que el agua casi se acabe y el arroz esté un poco suave.",
+    "en": "Put the rice in a pot with the water and the cinnamon sticks. Cook over medium heat until the water is almost gone and the rice is a little soft.",
+    "min": 15
+   },
+   {
+    "es": "Agrega la leche, el azúcar y la sal. Cuece a fuego bajo moviendo seguido con la cuchara para que no se pegue, hasta que espese y se vea cremoso.",
+    "en": "Add the milk, the sugar and the salt. Cook over low heat, stirring often with the spoon so it does not stick, until it thickens and looks creamy.",
+    "min": 25
+   },
+   {
+    "es": "Apaga el fuego, quita las rajas de canela y mezcla la vainilla y las pasas.",
+    "en": "Turn off the heat, take out the cinnamon sticks and stir in the vanilla and the raisins.",
+    "min": 2
+   },
+   {
+    "es": "Deja reposar, porque al enfriarse espesa un poco más. Sirve tibio o frío, con canela molida encima. ¡Buen provecho, mijo!",
+    "en": "Let it rest, because it thickens a little more as it cools. Serve warm or cold, with ground cinnamon on top. Enjoy, mijo!",
+    "min": 15
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Se llama como lo que lleva: arroz y leche. La palabra «arroz» llegó al español desde el árabe «ar-ruzz», y «azúcar» también viene del árabe. Cuando lo comes, estás diciendo palabras que viajaron mucho.",
+    "en": "It is named for what it has: rice and milk. The word «arroz» came into Spanish from the Arabic «ar-ruzz», and «azúcar» (sugar) also comes from Arabic. When you eat it, you are saying words that traveled a long way."
+   },
+   "origen": {
+    "es": "El arroz llegó a España con los árabes, y en la península ibérica nació este postre de arroz cocido con leche, azúcar y canela. Llegó a México con los españoles, en el siglo XVI. Hoy en México se prepara con canela y es muy querido en lugares como Guanajuato y Puebla.",
+    "en": "Rice came to Spain with the Arabs, and in the Iberian Peninsula this dessert of rice cooked with milk, sugar and cinnamon was born. It reached Mexico with the Spanish, in the 1500s. Today in Mexico it is made with cinnamon and is much loved in places like Guanajuato and Puebla."
+   },
+   "curiosos": [
+    {
+     "es": "En México se come tibio o frío, y casi siempre lleva canela en raja y canela molida.",
+     "en": "In Mexico it is eaten warm or cold, and almost always has cinnamon sticks and ground cinnamon."
+    },
+    {
+     "es": "Hay palabras de este postre que vienen del árabe: «arroz» y «azúcar» empiezan con «ar-» y «a-» por el artículo «al» del árabe.",
+     "en": "Some words of this dessert come from Arabic: «arroz» and «azúcar» begin with «ar-» and «a-» because of the Arabic article «al»."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "arroz",
+    "en": "rice"
+   },
+   {
+    "es": "leche",
+    "en": "milk"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "es": "pasas",
+    "en": "raisins"
+   }
+  ]
+ },
+ {
+  "id": "capirotada",
+  "icono": "capirotada",
+  "insignia": null,
+  "nombre": {
+   "es": "Capirotada de Cuaresma",
+   "en": "Lenten capirotada (bread pudding)"
+  },
+  "resumen": {
+   "es": "Pan tostado, miel de piloncillo con canela, queso, cacahuate y pasas: el postre de la Cuaresma y la Semana Santa.",
+   "en": "Toasted bread, piloncillo and cinnamon syrup, cheese, peanuts and raisins: the dessert of Lent and Holy Week."
+  },
+  "porciones": 8,
+  "tiempoPrep": 20,
+  "tiempoCoccion": 60,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "El horno y la miel caliente queman: pide ayuda a un adulto. Lleva cacahuate, queso (leche) y pan (trigo): avisa a quien tenga alergias.",
+   "en": "The oven and the hot syrup burn: ask an adult to help. It has peanuts, cheese (milk) and bread (wheat): tell anyone with allergies."
+  },
+  "ingredientes": [
+   {
+    "cant": 8,
+    "un": "rebanadas",
+    "es": "bolillo de un día antes, en rebanadas gruesas",
+    "en": "day-old bolillo roll, in thick slices"
+   },
+   {
+    "cant": 300,
+    "un": "g",
+    "es": "piloncillo",
+    "en": "piloncillo (raw cane sugar)"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "rajas de canela",
+    "en": "cinnamon sticks"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "clavos de olor",
+    "en": "whole cloves"
+   },
+   {
+    "cant": 250,
+    "un": "g",
+    "es": "queso tipo Chihuahua rallado",
+    "en": "Chihuahua-style cheese, grated"
+   },
+   {
+    "cant": 80,
+    "un": "g",
+    "es": "cacahuate pelado, sin sal",
+    "en": "peeled peanuts, unsalted"
+   },
+   {
+    "cant": 60,
+    "un": "g",
+    "es": "pasas",
+    "en": "raisins"
+   },
+   {
+    "cant": 30,
+    "un": "g",
+    "es": "mantequilla, para engrasar el refractario",
+    "en": "butter, to grease the baking dish"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Calienta el horno a 180 °C. Pon las rebanadas de pan en una charola y tuéstalas, volteándolas a la mitad, hasta que estén doradas y duras. Pide ayuda a un adulto.",
+    "en": "Heat the oven to 180 °C (350 °F). Put the bread slices on a tray and toast them, turning them halfway, until they are golden and hard. Ask an adult to help.",
+    "min": 15
+   },
+   {
+    "es": "Mientras tanto, hierve el agua con el piloncillo, la canela y los clavos hasta que el piloncillo se deshaga y se haga una miel ligera. Cuélala.",
+    "en": "Meanwhile, boil the water with the piloncillo, the cinnamon and the cloves until the piloncillo melts and becomes a light syrup. Strain it.",
+    "min": 20
+   },
+   {
+    "es": "Engrasa un refractario con la mantequilla. Arma capas: pan, queso, cacahuate y pasas, y repite hasta terminar. Deja un poco de queso para la capa de arriba.",
+    "en": "Grease a baking dish with the butter. Make layers: bread, cheese, peanuts and raisins, and repeat until done. Keep a little cheese for the top layer.",
+    "min": 10
+   },
+   {
+    "es": "Baña despacio con la miel tibia para que el pan la absorba. Tapa con papel aluminio y hornea.",
+    "en": "Pour the warm syrup over slowly so the bread soaks it up. Cover with aluminum foil and bake.",
+    "min": 20
+   },
+   {
+    "es": "Destapa, pon el queso que guardaste y hornea hasta que se derrita y se dore ligeramente.",
+    "en": "Uncover, add the cheese you saved and bake until it melts and turns lightly golden.",
+    "min": 5
+   },
+   {
+    "es": "Deja reposar antes de servir, para que la miel termine de repartirse. Sírvela tibia.",
+    "en": "Let it rest before serving, so the syrup finishes spreading. Serve it warm.",
+    "min": 10
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Muchas fuentes relacionan «capirotada» con «capirote», el gorro alto y puntiagudo que usan los penitentes en las procesiones de Semana Santa en España y otros países. No se sabe con certeza cómo pasó la palabra del gorro al platillo.",
+    "en": "Many sources link «capirotada» with «capirote», the tall, pointed hat penitents wear in Holy Week processions in Spain and other countries. It is not known for sure how the word passed from the hat to the dish."
+   },
+   "origen": {
+    "es": "La capirotada viene de España, donde se menciona en libros de cocina medievales como un guiso salado de pan. En México se hizo dulce, con piloncillo, canela, queso, cacahuate y pasas, y se come en Cuaresma y Semana Santa. Los ingredientes eran económicos y sin carne, algo que ayudaba en los días de abstinencia.",
+    "en": "Capirotada comes from Spain, where it appears in medieval cookbooks as a savory bread dish. In Mexico it became sweet, with piloncillo, cinnamon, cheese, peanuts and raisins, and it is eaten in Lent and Holy Week. The ingredients were affordable and meatless, which helped on days of abstinence."
+   },
+   "leyenda": {
+    "es": "Se cuenta que cada ingrediente de la capirotada guarda un significado de la Semana Santa: el pan, la miel, la canela en raja y los clavos.",
+    "en": "Legend says that each ingredient of capirotada holds a meaning of Holy Week: the bread, the syrup, the cinnamon stick and the cloves."
+   },
+   "curiosos": [
+    {
+     "es": "Cada región tiene su capirotada: unas llevan jitomate y cacahuate, otras llevan pan frito y queso de cabra.",
+     "en": "Every region has its own capirotada: some have tomato and peanuts, others have fried bread and goat cheese."
+    },
+    {
+     "es": "Se hace con pan del día anterior: el pan duro absorbe mejor la miel sin deshacerse.",
+     "en": "It is made with day-old bread: hard bread soaks up the syrup better without falling apart."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "pan",
+    "en": "bread"
+   },
+   {
+    "es": "queso",
+    "en": "cheese"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "cacahuate",
+    "en": "peanut"
+   },
+   {
+    "es": "horno",
+    "en": "oven"
+   }
+  ]
+ },
+ {
+  "id": "flan",
+  "icono": "flan",
+  "insignia": null,
+  "nombre": {
+   "es": "Flan casero con caramelo",
+   "en": "Homemade caramel flan"
+  },
+  "resumen": {
+   "es": "Suave, brillante y con su caramelo encima: un flan de leche y huevo cocido a baño María.",
+   "en": "Soft, shiny and topped with caramel: a milk and egg flan cooked in a water bath."
+  },
+  "porciones": 8,
+  "tiempoPrep": 20,
+  "tiempoCoccion": 65,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "El caramelo y el horno queman muchísimo: el caramelo y el baño María son trabajo de un adulto. Lleva huevo y leche: avisa a quien tenga alergias.",
+   "en": "Caramel and the oven burn badly: the caramel and the water bath are an adult's job. It has eggs and milk: tell anyone with allergies."
+  },
+  "ingredientes": [
+   {
+    "cant": 120,
+    "un": "g",
+    "es": "azúcar para el caramelo",
+    "en": "sugar for the caramel"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "agua para el caramelo",
+    "en": "water for the caramel"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "leche entera",
+    "en": "whole milk"
+   },
+   {
+    "cant": 5,
+    "un": "pza",
+    "es": "huevos",
+    "en": "eggs"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "azúcar para el flan",
+    "en": "sugar for the flan"
+   },
+   {
+    "cant": 2,
+    "un": "cdta",
+    "es": "vainilla",
+    "en": "vanilla"
+   },
+   {
+    "cant": 1,
+    "un": "pizca",
+    "es": "sal",
+    "en": "salt"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "(Con un adulto) Pon el azúcar y el agua del caramelo en una cacerola a fuego medio, sin mover, hasta que tome un color dorado oscuro. Vierte enseguida en un molde de 22 cm y gíralo para cubrir el fondo.",
+    "en": "(With an adult) Put the caramel sugar and water in a saucepan over medium heat, without stirring, until it turns a deep golden color. Pour it right away into a 22 cm mold and tilt it to cover the bottom.",
+    "min": 8
+   },
+   {
+    "es": "Calienta la leche con la vainilla y la sal a fuego bajo, hasta que salga vapor pero sin que hierva. Apaga y deja entibiar.",
+    "en": "Heat the milk with the vanilla and the salt over low heat until steam rises but it does not boil. Turn off and let it cool slightly.",
+    "min": 8
+   },
+   {
+    "es": "Bate los huevos con el azúcar del flan, sin hacer espuma. Agrega la leche tibia poco a poco, mezclando, y cuela la mezcla para que quede lisa.",
+    "en": "Beat the eggs with the flan sugar, without making foam. Add the warm milk little by little, mixing, and strain the mixture so it is smooth.",
+    "min": 5
+   },
+   {
+    "es": "Calienta el horno a 160 °C. Vierte la mezcla en el molde con caramelo, tapa con papel aluminio y mételo en una charola honda con agua caliente que le llegue a la mitad. Hornea a baño María hasta que el centro tiemble apenas. Pide ayuda a un adulto.",
+    "en": "Heat the oven to 160 °C (320 °F). Pour the mixture into the caramel mold, cover with aluminum foil and set it in a deep tray with hot water coming halfway up. Bake in a water bath until the center barely jiggles. Ask an adult to help.",
+    "min": 50
+   },
+   {
+    "es": "Saca el molde del agua con cuidado, déjalo enfriar y luego mételo al refrigerador hasta que esté bien firme.",
+    "en": "Carefully take the mold out of the water, let it cool and then put it in the refrigerator until it is firm.",
+    "min": 240
+   },
+   {
+    "es": "Pasa un cuchillo por la orilla, pon un plato encima y voltea de un solo movimiento. Deja que el caramelo escurra por los lados y sirve.",
+    "en": "Run a knife around the edge, put a plate on top and flip in one move. Let the caramel drip down the sides and serve.",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Flan» viene del francés antiguo «flaon» y, antes, del latín medieval «flado», que quería decir algo como «pastel plano». Según los diccionarios, esa palabra latina viene a su vez de una raíz germánica.",
+    "en": "«Flan» comes from the Old French «flaon» and, before that, from the medieval Latin «flado», which meant something like «flat cake». According to dictionaries, that Latin word comes in turn from a Germanic root."
+   },
+   "origen": {
+    "es": "Desde la antigüedad, griegos y romanos hacían cremas de huevo y leche, a veces saladas y a veces con miel. El flan con caramelo que conocemos se asocia con la cocina de España y de Francia, y llegó a México con los españoles. En la cocina mexicana hoy hay muchos flanes, uno de ellos con queso crema.",
+    "en": "Since antiquity, Greeks and Romans made egg and milk custards, sometimes savory and sometimes with honey. The caramel flan we know is linked with the cooking of Spain and France, and it came to Mexico with the Spanish. In Mexican cooking today there are many flans, one of them with cream cheese."
+   },
+   "curiosos": [
+    {
+     "es": "Cocer a baño María, con agua caliente alrededor del molde, hace que el flan quede suave y sin burbujas.",
+     "en": "Cooking in a water bath, with hot water around the mold, makes the flan smooth and bubble-free."
+    },
+    {
+     "es": "El flan napolitano mexicano lleva queso crema y leche condensada; nadie sabe bien por qué se llama «napolitano».",
+     "en": "The Mexican «napolitano» flan has cream cheese and condensed milk; nobody knows exactly why it is called «Neapolitan»."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "flan",
+    "en": "flan (caramel custard)"
+   },
+   {
+    "es": "caramelo",
+    "en": "caramel"
+   },
+   {
+    "es": "huevos",
+    "en": "eggs"
+   },
+   {
+    "es": "molde",
+    "en": "mold"
+   },
+   {
+    "es": "baño María",
+    "en": "water bath"
+   }
+  ]
+ },
+ {
+  "id": "cocada",
+  "icono": "cocada",
+  "insignia": null,
+  "nombre": {
+   "es": "Cocada de coco rallado",
+   "en": "Grated coconut cocada"
+  },
+  "resumen": {
+   "es": "Montoncitos dorados de coco, leche y canela: un dulce de playa hecho en casa.",
+   "en": "Golden little mounds of coconut, milk and cinnamon: a beach sweet made at home."
+  },
+  "porciones": 12,
+  "tiempoPrep": 15,
+  "tiempoCoccion": 38,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "El azúcar caliente quema mucho y el horno también: la cazuela y el horno son trabajo de un adulto. Contiene coco, leche y huevo: avisa a quien tenga alergias.",
+   "en": "Hot sugar burns badly and so does the oven: the pot and the oven are an adult's job. It contains coconut, milk and egg: tell anyone with allergies."
+  },
+  "ingredientes": [
+   {
+    "cant": 250,
+    "un": "ml",
+    "es": "leche entera",
+    "en": "whole milk"
+   },
+   {
+    "cant": 200,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "raja de canela",
+    "en": "cinnamon stick"
+   },
+   {
+    "cant": 250,
+    "un": "g",
+    "es": "coco rallado sin azúcar",
+    "en": "unsweetened grated coconut"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "yemas de huevo",
+    "en": "egg yolks"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "vainilla",
+    "en": "vanilla"
+   },
+   {
+    "cant": 1,
+    "un": "pizca",
+    "es": "sal",
+    "en": "salt"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "(Con un adulto) En una cazuela pon la leche, el azúcar, la canela y la sal. Cuece a fuego medio, moviendo, hasta que el azúcar se disuelva y suelte el hervor.",
+    "en": "(With an adult) In a pot put the milk, the sugar, the cinnamon and the salt. Cook over medium heat, stirring, until the sugar dissolves and it starts to boil.",
+    "min": 8
+   },
+   {
+    "es": "Baja el fuego, agrega el coco rallado y cuece moviendo sin parar hasta que la mezcla espese y se despegue del fondo.",
+    "en": "Lower the heat, add the grated coconut and cook, stirring nonstop, until the mixture thickens and pulls away from the bottom.",
+    "min": 10
+   },
+   {
+    "es": "Revuelve las yemas con 3 cucharadas de la mezcla caliente, para que no se cuajen. Regresa todo a la cazuela con la vainilla y cuece a fuego bajo moviendo.",
+    "en": "Mix the yolks with 3 spoonfuls of the hot mixture, so they do not curdle. Return everything to the pot with the vanilla and cook over low heat, stirring.",
+    "min": 5
+   },
+   {
+    "es": "Quita la canela y deja entibiar. Calienta el horno a 160 °C y forra una charola con papel para hornear. Con dos cucharas forma 12 montoncitos sobre la charola.",
+    "en": "Take out the cinnamon and let it cool slightly. Heat the oven to 160 °C (320 °F) and line a tray with baking paper. With two spoons shape 12 little mounds on the tray.",
+    "min": 10
+   },
+   {
+    "es": "Hornea hasta que las puntitas estén doradas. Saca la charola con guantes o pide ayuda a un adulto y deja enfriar antes de despegar las cocadas.",
+    "en": "Bake until the tips are golden. Take the tray out with oven mitts or ask an adult to help, and let it cool before lifting off the cocadas.",
+    "min": 15
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Cocada» se forma con «coco» y la terminación «-ada», que sirve para nombrar algo hecho con eso. En cuanto a «coco», estudios de filología recuerdan que antiguos cronistas dijeron que los tres agujeros de la nuez parecían una carita; por eso la llamaron así.",
+    "en": "«Cocada» is formed from «coco» and the ending «-ada», used to name something made with it. As for «coco», philology studies recall that early chroniclers said the three holes of the nut looked like a little face; that is why they named it that."
+   },
+   "origen": {
+    "es": "La cocada es un dulce de coco que se vende en playas, mercados y calles de México. No se sabe con certeza dónde nació. Lo que sí se sabe es que el cocotero se extendió por la costa del Pacífico mexicano, en lugares como Colima y Guerrero, en la época del galeón de Manila, cuando había personas de Filipinas viviendo en esas costas.",
+    "en": "Cocada is a coconut sweet sold on beaches, in markets and on streets in Mexico. Nobody knows for sure where it began. What is known is that the coconut palm spread along the Mexican Pacific coast, in places like Colima and Guerrero, in the days of the Manila galleon, when there were people from the Philippines living on those coasts."
+   },
+   "curiosos": [
+    {
+     "es": "En México y en Colombia las cocadas se venden en la calle y en la playa.",
+     "en": "In Mexico and Colombia cocadas are sold in the street and on the beach."
+    },
+    {
+     "es": "El galeón de Manila, o Nao de China, unía Filipinas con Acapulco; hacia 1570 ya hacía un viaje cada año.",
+     "en": "The Manila galleon, or Nao de China, joined the Philippines with Acapulco; by about 1570 it already made one trip a year."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "coco",
+    "en": "coconut"
+   },
+   {
+    "es": "leche",
+    "en": "milk"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "horno",
+    "en": "oven"
+   },
+   {
+    "es": "yemas",
+    "en": "egg yolks"
+   }
+  ]
+ }
+]

@@ -36,6 +36,8 @@ export const coloquial = () => cargarJSON('data/coloquial.json');
 export const reglas = () => cargarJSON('data/reglas.json');
 export const platicas = () => cargarJSON('data/platicas.json');
 export const recetas = () => cargarJSON('data/recetas.json', 'recetas');
+/** Recetas por región y por tema (Guadalajara, aguas, pozoles…): cada grupo con la lista de ids de sus recetas. */
+export const regiones = () => cargarJSON('data/regiones.json');
 export const consejos = () => cargarJSON('data/consejos.json', 'consejos');
 export const cotorreos = () => cargarJSON('data/cotorreo.json', 'cotorreo');
 export const paquetes = () => cargarJSON('data/paquetes.json');

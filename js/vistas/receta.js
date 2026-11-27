@@ -17,6 +17,19 @@ function jsonld(r) {
   s.textContent = JSON.stringify(d);
 }
 
+/** «Su historia»: por qué se llama así, de dónde viene, la leyenda (siempre marcada como leyenda), datos curiosos y palabras para aprender. */
+function historiaHTML(r, L, otro) {
+  const h = r.historia; if (!h) return '';
+  const es = L === 'es', par = (o) => `<p lang="${L}">${esc(o[L])}</p><p class="muted" lang="${otro}">${esc(o[otro])}</p>`;
+  return `<details class="tarjeta historia-receta" open><summary><h2>📜 ${es ? 'Su historia' : 'Its story'}</h2></summary>
+    <h3 lang="${L}">${es ? '¿Por qué se llama así?' : 'Why is it called that?'}</h3>${par(h.nombre)}
+    <h3 lang="${L}">${es ? '¿De dónde viene?' : 'Where does it come from?'}</h3>${par(h.origen)}
+    ${h.leyenda ? `<div class="leyenda"><span class="etiqueta">📖 ${es ? 'Leyenda: no está comprobada' : 'Legend: not proven'}</span>${par(h.leyenda)}</div>` : ''}
+    <h3 lang="${L}">✨ ${es ? 'Datos curiosos' : 'Fun facts'}</h3><ul class="curiosos">${h.curiosos.map((c) => `<li>${par(c)}</li>`).join('')}</ul>
+    ${r.aprende ? `<h3>🗣️ ${u('Palabras para aprender', 'Words to learn')}</h3><ul class="aprende">${r.aprende.map((w) => `<li><span lang="es">${esc(w.es)}</span><span aria-hidden="true">·</span><span lang="en">${esc(w.en)}</span></li>`).join('')}</ul>` : ''}
+  </details>`;
+}
+
 export async function montar(main, { args }) {
   const lista = await recetas(), r = lista.find((x) => x.id === args[0]);
   if (!r) { location.hash = '#/recetas'; return; }
@@ -27,11 +40,12 @@ export async function montar(main, { args }) {
 
   function pintar() {
     const L = idioma, otro = L === 'es' ? 'en' : 'es';
-    main.innerHTML = `<p><a class="volver" href="#/recetas">← ${u('Recetas', 'Recipes')}</a></p>
+    main.innerHTML = `<p><a class="volver" href="${args[1] ? `#/regiones/${esc(args[1])}` : '#/recetas'}">← ${args[1] ? u('Regresar', 'Back') : u('Recetas', 'Recipes')}</a></p>
       <div class="dialogo">${pj('granma', 'contento', { ancho: 100, clase: 'anim-flota' })}<div class="globo"><h1 style="font-size:1.35rem;margin:0" lang="${L}">${esc(r.nombre[L])}</h1><p class="muted" lang="${otro}">${esc(r.nombre[otro])}</p><p lang="${L}">${esc(r.resumen[L])}</p></div></div>
       <div class="fila"><div class="interruptor" role="group" aria-label="${u('Idioma de la receta', 'Recipe language')}"><button data-l="es" aria-pressed="${L === 'es'}">Español</button><button data-l="en" aria-pressed="${L === 'en'}">English</button></div>
         <span class="muted">⏱ ${r.tiempoPrep} + ${r.tiempoCoccion} min · 🍽 ${r.porciones}</span></div>
       <div class="tarjeta crema2 mt"><strong>⚠ ${u('Ojo', 'Careful')}:</strong> <span lang="${L}">${esc(r.nota[L])}</span></div>
+      ${historiaHTML(r, L, otro)}
       <h2 lang="${L}">${L === 'es' ? 'Ingredientes' : 'Ingredients'}</h2>
       <ul class="ing">${r.ingredientes.map((i) => `<li><span class="cant">${esc(cant(i))}</span><span lang="${L}">${esc(i[L])}</span></li>`).join('')}</ul>
       <h2 class="mt2" lang="${L}">${L === 'es' ? 'Preparación' : 'Method'}</h2>

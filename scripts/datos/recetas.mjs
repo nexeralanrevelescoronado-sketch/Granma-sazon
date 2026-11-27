@@ -195,3 +195,10 @@ export const recetas = [
   },
 ];
 recetas.push(...JSON.parse(readFileSync(new URL('./recetas-fiestas.json', import.meta.url), 'utf8')));
+// Recetas por región y por tema (Guadalajara, aguas, pozoles, postres…), con su historia: scripts/datos/recetas-regiones.json.
+recetas.push(...JSON.parse(readFileSync(new URL('./recetas-regiones.json', import.meta.url), 'utf8')));
+// La historia (nombre, origen, leyenda marcada y datos curiosos) de recetas que ya existían: scripts/datos/recetas-historias.json.
+for (const [id, extra] of Object.entries(JSON.parse(readFileSync(new URL('./recetas-historias.json', import.meta.url), 'utf8')))) {
+  const r = recetas.find((x) => x.id === id); if (!r) throw new Error(`Historia de una receta que no existe: ${id}`); Object.assign(r, extra);
+}
+{ const ids = recetas.map((r) => r.id); const rep = ids.find((x, i) => ids.indexOf(x) !== i); if (rep) throw new Error(`Receta repetida: ${rep}`); }

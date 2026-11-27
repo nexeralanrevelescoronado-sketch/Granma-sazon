@@ -1,0 +1,278 @@
+{
+ "birria": {
+  "historia": {
+   "nombre": {
+    "es": "Antes, en Jalisco, «birria» era el nombre de lo que en otras partes llaman barbacoa. De dónde viene la palabra no está confirmado: se ha propuesto la lengua coca, una lengua antigua de la región, pero no hay prueba firme.",
+    "en": "In Jalisco, «birria» was once the name for what other places call barbacoa. Where the word comes from is not confirmed: the Coca language, an ancient language of the region, has been suggested, but there is no firm proof."
+   },
+   "origen": {
+    "es": "La birria es de Jalisco y tradicionalmente se hace con chivo adobado con chiles y cocido bajo tierra. Muchos la ubican en Cocula, pero no hay acuerdo. Un diccionario de mexicanismos de finales del siglo XIX ya la describe como típica de Guadalajara.",
+    "en": "Birria is from Jalisco and is traditionally made with goat marinated in chilies and cooked underground. Many place it in Cocula, but there is no agreement. A dictionary of Mexicanisms from the late 19th century already describes it as typical of Guadalajara."
+   },
+   "leyenda": {
+    "es": "Se cuenta que había tantos chivos en la región que la gente aprendió a adobarlos y a cocerlos bajo tierra, y así nació la birria.",
+    "en": "Legend says there were so many goats in the region that people learned to marinate them and cook them underground, and so birria was born."
+   },
+   "curiosos": [
+    {
+     "es": "La carne se tapaba con hojas de maguey dentro de un hoyo con tierra, y se cocía unas cuatro o cinco horas.",
+     "en": "The meat was covered with maguey leaves in a pit under the earth and cooked for about four or five hours."
+    },
+    {
+     "es": "Hoy muchas familias la hacen en horno de gas o de leña, o en olla, como esta receta.",
+     "en": "Today many families make it in a gas or wood oven, or in a pot, like this recipe."
+    },
+    {
+     "es": "En 2021, los tacos de birria estuvieron entre las comidas más buscadas en internet.",
+     "en": "In 2021, birria tacos were among the most searched foods on the internet."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "chiles",
+    "en": "chilies"
+   },
+   {
+    "es": "consomé",
+    "en": "broth"
+   },
+   {
+    "es": "cilantro",
+    "en": "cilantro"
+   },
+   {
+    "es": "tortillas",
+    "en": "tortillas"
+   },
+   {
+    "es": "limones",
+    "en": "limes"
+   }
+  ]
+ },
+ "pozole": {
+  "historia": {
+   "nombre": {
+    "es": "Viene del náhuatl «pozolli», que se traduce como «espumoso»: así se ve el caldo cuando los granos de maíz se abren al cocerse.",
+    "en": "It comes from the Nahuatl «pozolli», which is translated as «frothy»: that is how the broth looks when the corn kernels open while cooking."
+   },
+   "origen": {
+    "es": "El pozole es un guiso de maíz con raíces prehispánicas. Con el tiempo cada región le dio su versión: rojo, verde o blanco. El rojo, con chile guajillo, se asocia con Jalisco.",
+    "en": "Pozole is a corn stew with pre-Hispanic roots. Over time each region gave it its own version: red, green or white. The red one, with guajillo chili, is linked to Jalisco."
+   },
+   "curiosos": [
+    {
+     "es": "El maíz cacahuazintle tiene un grano grande que se abre como una flor al cocerse.",
+     "en": "Cacahuazintle corn has a big kernel that opens like a flower as it cooks."
+    },
+    {
+     "es": "Muchas familias lo preparan en septiembre, en las fiestas patrias.",
+     "en": "Many families make it in September, during the national holidays."
+    },
+    {
+     "es": "El pozole verde de Guerrero lleva pepita de calabaza y epazote.",
+     "en": "The green pozole from Guerrero has pumpkin seeds and epazote."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "maíz",
+    "en": "corn"
+   },
+   {
+    "es": "caldo",
+    "en": "broth"
+   },
+   {
+    "es": "lechuga",
+    "en": "lettuce"
+   },
+   {
+    "es": "rábano",
+    "en": "radish"
+   }
+  ]
+ },
+ "champurrado": {
+  "historia": {
+   "nombre": {
+    "es": "Champurrado viene del verbo «champurrar», que quiere decir mezclar una bebida con otra. Y eso es: un atole mezclado con chocolate. La palabra atole viene del náhuatl «atolli».",
+    "en": "Champurrado comes from the verb «champurrar», which means to mix one drink with another. And that is just what it is: an atole mixed with chocolate. The word atole comes from the Nahuatl «atolli»."
+   },
+   "origen": {
+    "es": "El atole de maíz y el cacao son bebidas muy antiguas de Mesoamérica. Su mezcla dio el champurrado, aunque no se sabe cuándo ni dónde se hizo por primera vez. Con los españoles llegó la leche de vaca, y cada casa lo prepara a su manera.",
+    "en": "Corn atole and cacao are very old drinks of Mesoamerica. Mixing them gave us champurrado, although nobody knows when or where it was first made. With the Spanish came cow's milk, and each home makes it its own way."
+   },
+   "curiosos": [
+    {
+     "es": "En Filipinas hay un platillo dulce llamado champorado, y su nombre viene de la palabra española champurrado.",
+     "en": "In the Philippines there is a sweet dish called champorado, and its name comes from the Spanish word champurrado."
+    },
+    {
+     "es": "Es una bebida de invierno que no falta en las posadas y en la Navidad.",
+     "en": "It is a winter drink that is always present at the posadas and at Christmas."
+    },
+    {
+     "es": "Se bate con molinillo para que haga espuma.",
+     "en": "It is whisked with a molinillo to make foam."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "leche",
+    "en": "milk"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "espuma",
+    "en": "foam"
+   },
+   {
+    "es": "olla",
+    "en": "pot"
+   }
+  ]
+ },
+ "chocolate": {
+  "historia": {
+   "nombre": {
+    "es": "De dónde viene la palabra chocolate todavía se discute. Se pensaba que venía de «xocolatl», pero los lingüistas de hoy no están seguros. Antes se decía «cacahuatl», agua de cacao, y «chocolate» aparece escrito hasta los años 1570.",
+    "en": "Where the word chocolate comes from is still debated. It was thought to come from «xocolatl», but today's linguists are not sure. Before, people said «cacahuatl», cacao water, and «chocolate» does not appear in writing until the 1570s."
+   },
+   "origen": {
+    "es": "El cacao se cultiva en Mesoamérica desde hace miles de años. Los olmecas, los mayas y los mexicas lo bebían, a veces con chile y maíz, y sin leche. La leche de vaca llegó después con los españoles.",
+    "en": "Cacao has been grown in Mesoamerica for thousands of years. The Olmec, the Maya and the Mexica drank it, sometimes with chili and corn, and without milk. Cow's milk came later with the Spanish."
+   },
+   "curiosos": [
+    {
+     "es": "Los mexicas usaban granos de cacao como moneda.",
+     "en": "The Mexica used cacao beans as money."
+    },
+    {
+     "es": "Se cree que el árbol del cacao es originario de Sudamérica, y se cultivó primero en Centroamérica.",
+     "en": "The cacao tree is thought to come from South America, and it was first grown in Central America."
+    },
+    {
+     "es": "El chocolate de mesa se bate con molinillo para que haga espuma.",
+     "en": "Table chocolate is whisked with a molinillo to make foam."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "hervor",
+    "en": "boil"
+   },
+   {
+    "es": "molinillo",
+    "en": "molinillo"
+   },
+   {
+    "es": "leche",
+    "en": "milk"
+   }
+  ]
+ },
+ "bunuelos": {
+  "historia": {
+   "nombre": {
+    "es": "Los expertos no se ponen de acuerdo en de dónde viene la palabra «buñuelo»: unos la relacionan con «puñuelo», por las bolitas de masa que se hacían a puñados, y otros con el francés «beignet», que es otro dulce frito.",
+    "en": "Experts do not agree on where the word «buñuelo» comes from: some link it with «puñuelo», for the little balls of dough made by the handful, and others with the French «beignet», which is another fried sweet."
+   },
+   "origen": {
+    "es": "Los dulces de masa frita vienen de la cocina árabe de la Edad Media, y se piensa que los buñuelos también. Llegaron a México con los españoles. El buñuelo mexicano es un disco delgado y crujiente bañado en miel de piloncillo, distinto de los buñuelos españoles, que son bolitas.",
+    "en": "Fried dough sweets come from medieval Arab cooking, and it is thought that buñuelos do too. They came to Mexico with the Spanish. The Mexican buñuelo is a thin, crispy disc drizzled with piloncillo syrup, different from the Spanish buñuelos, which are little balls."
+   },
+   "curiosos": [
+    {
+     "es": "En España hay buñuelos «de viento», que son bolitas esponjosas; en México son discos delgados y crujientes.",
+     "en": "In Spain there are «de viento» (wind) buñuelos, which are fluffy little balls; in Mexico they are thin, crispy discs."
+    },
+    {
+     "es": "En México los buñuelos son de los dulces favoritos de las fiestas de diciembre.",
+     "en": "In Mexico buñuelos are among the favorite sweets of the December holidays."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "harina",
+    "en": "flour"
+   },
+   {
+    "es": "piloncillo",
+    "en": "piloncillo (raw cane sugar)"
+   },
+   {
+    "es": "aceite",
+    "en": "oil"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "miel",
+    "en": "syrup; honey"
+   }
+  ]
+ },
+ "rosca": {
+  "historia": {
+   "nombre": {
+    "es": "«Rosca» es un pan en forma de anillo, y «de Reyes» es por los Reyes Magos, que se recuerdan el 6 de enero. El «monito» es la figurita escondida dentro; en México también se le dice «muñeco».",
+    "en": "«Rosca» is a ring-shaped bread, and «de Reyes» is for the Three Kings, remembered on January 6. The «monito» is the little figure hidden inside; in Mexico it is also called «muñeco»."
+   },
+   "origen": {
+    "es": "Nadie sabe con certeza su origen. Algunos lo relacionan con las fiestas de la antigua Roma, donde se repartía un pan con higos, dátiles y miel; otros, con la fiesta cristiana del 6 de enero. Vino de Europa y en México se hizo tradición: quien encuentra el monito invita tamales el 2 de febrero, Día de la Candelaria.",
+    "en": "Nobody knows its origin for sure. Some link it with the festivals of ancient Rome, where a bread with figs, dates and honey was shared; others with the Christian feast of January 6. It came from Europe and in Mexico it became a tradition: whoever finds the little figure treats everyone to tamales on February 2, Candlemas."
+   },
+   "leyenda": {
+    "es": "Se cuenta que la figurita representa al Niño Jesús, a quien sus papás protegieron escondiéndolo de un rey malo.",
+    "en": "Legend says the little figure represents the baby Jesus, whom his parents protected by hiding him from a bad king."
+   },
+   "curiosos": [
+    {
+     "es": "Antes la figurita se hacía de porcelana o de cerámica.",
+     "en": "The little figure used to be made of porcelain or ceramic."
+    },
+    {
+     "es": "A quien le toca el monito le toca invitar los tamales y el atole el 2 de febrero.",
+     "en": "Whoever gets the little figure has to treat everyone to tamales and atole on February 2."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "rosca",
+    "en": "ring-shaped bread"
+   },
+   {
+    "es": "monito",
+    "en": "little figure"
+   },
+   {
+    "es": "figurita",
+    "en": "little figure"
+   },
+   {
+    "es": "levadura",
+    "en": "yeast"
+   },
+   {
+    "es": "tamales",
+    "en": "tamales"
+   }
+  ]
+ }
+}

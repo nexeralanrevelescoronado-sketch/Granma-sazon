@@ -274,5 +274,301 @@
     "en": "tamales"
    }
   ]
+ },
+ "mole": {
+  "historia": {
+   "nombre": {
+    "es": "«Mole» viene del náhuatl «molli», que quiere decir salsa o mezcla. Se llama «poblano» porque es el mole más famoso de Puebla.",
+    "en": "«Mole» comes from the Nahuatl «molli», which means sauce or mixture. It is called «poblano» because it is the most famous mole of Puebla."
+   },
+   "origen": {
+    "es": "El mole poblano es una salsa mestiza: junta chiles, chocolate y pepitas de América con canela, clavo y otras especias que llegaron de otros continentes. Se sirve en fiestas con pollo o guajolote. Su origen exacto no está documentado.",
+    "en": "Mole poblano is a mestizo sauce: it joins chilies, chocolate and seeds from the Americas with cinnamon, cloves and other spices that arrived from other continents. It is served at parties with chicken or turkey. Its exact origin is not documented."
+   },
+   "leyenda": {
+    "es": "Se cuenta que, cuando una visita importante llegó de repente a un convento de Puebla, las monjas no tenían qué ofrecer. Juntaron chiles, chocolate y especias en una cazuela y bañaron un guajolote. Al visitante le encantó.",
+    "en": "Legend says that when an important visitor suddenly arrived at a convent in Puebla, the nuns had nothing to offer. They put chilies, chocolate and spices together in a pot and poured it over a turkey. The visitor loved it."
+   },
+   "curiosos": [
+    {
+     "es": "El chocolate y el guajolote son originarios de México.",
+     "en": "Chocolate and turkey are native to Mexico."
+    },
+    {
+     "es": "Los historiadores dicen que las leyendas del convento no están comprobadas; la receta escrita más antigua conocida es del siglo XVIII.",
+     "en": "Historians say the convent legends are not proven; the oldest known written recipe is from the eighteenth century."
+    },
+    {
+     "es": "Un buen mole puede llevar más de veinte ingredientes.",
+     "en": "A good mole can have more than twenty ingredients."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "chiles",
+    "en": "chilies"
+   },
+   {
+    "es": "chocolate",
+    "en": "chocolate"
+   },
+   {
+    "es": "ajonjolí",
+    "en": "sesame"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "pollo",
+    "en": "chicken"
+   }
+  ]
+ },
+ "chiles-en-nogada": {
+  "historia": {
+   "nombre": {
+    "es": "«Nogada» es la salsa hecha con nueces. «Nogal» es el árbol que las da, y por eso son chiles «en nogada»: chiles cubiertos con salsa de nuez.",
+    "en": "«Nogada» is the sauce made with walnuts. «Nogal» is the tree that gives them, so they are chiles «en nogada»: chilies covered in walnut sauce."
+   },
+   "origen": {
+    "es": "Es un platillo de Puebla que se hace en temporada, cuando hay nuez fresca, granada y fruta, entre agosto y septiembre. Su verde, blanco y rojo recuerdan los colores de la bandera. Sus detalles históricos no están documentados.",
+    "en": "It is a dish from Puebla made in season, when fresh walnuts, pomegranates and fruit are available, between August and September. Its green, white and red recall the colors of the flag. Its historical details are not documented."
+   },
+   "leyenda": {
+    "es": "Se cuenta que, para un banquete patrio en honor de un general que celebraba, unas monjas prepararon un platillo con los colores de la bandera, con lo que daba la temporada. Así nacieron los chiles en nogada.",
+    "en": "Legend says that, for a patriotic banquet honoring a general who was celebrating, some nuns prepared a dish with the colors of the flag, using what the season offered. That is how chiles en nogada were born."
+   },
+   "curiosos": [
+    {
+     "es": "Para una salsa muy blanca, se pelan las nueces una por una para quitarles la piel.",
+     "en": "For a very white sauce, the walnuts are peeled one by one to remove their skins."
+    },
+    {
+     "es": "El picadillo mezcla carne con fruta: manzana, pera y durazno.",
+     "en": "The filling mixes meat with fruit: apple, pear and peach."
+    },
+    {
+     "es": "La granada se pone encima, en granos que brillan como rubíes.",
+     "en": "The pomegranate goes on top, in seeds that shine like rubies."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "chiles",
+    "en": "chilies"
+   },
+   {
+    "es": "nueces",
+    "en": "walnuts"
+   },
+   {
+    "es": "granada",
+    "en": "pomegranate"
+   },
+   {
+    "es": "perejil",
+    "en": "parsley"
+   },
+   {
+    "es": "pasas",
+    "en": "raisins"
+   }
+  ]
+ },
+ "enchiladas": {
+  "historia": {
+   "nombre": {
+    "es": "«Enchilada» viene de «enchilar», que quiere decir cubrir o sazonar con chile. Una enchilada es, entonces, una tortilla «enchilada»: bañada en salsa de chile.",
+    "en": "«Enchilada» comes from «enchilar», which means to coat or season with chile. An enchilada is a «chile-ed» tortilla: bathed in chile sauce."
+   },
+   "origen": {
+    "es": "El maíz y el chile son de México, y las tortillas con salsa de chile se comen desde mucho antes de los españoles. Las enchiladas son tortillas pasadas por salsa, rellenas y cubiertas de crema, queso y cebolla. Cada región tiene las suyas: rojas, verdes, de mole o suizas.",
+    "en": "Corn and chile are from Mexico, and tortillas with chile sauce were eaten long before the Spanish. Enchiladas are tortillas dipped in sauce, filled and topped with cream, cheese and onion. Each region has its own: red, green, mole or Swiss."
+   },
+   "curiosos": [
+    {
+     "es": "El chile guajillo es el chile mirasol seco.",
+     "en": "The guajillo chile is the dried mirasol chile."
+    },
+    {
+     "es": "Se pueden rellenar de pollo, queso o frijoles.",
+     "en": "They can be filled with chicken, cheese or beans."
+    },
+    {
+     "es": "La tortilla se pasa por la salsa para que no se rompa al enrollarla.",
+     "en": "The tortilla is dipped in the sauce so it does not break when rolled."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "pollo",
+    "en": "chicken"
+   },
+   {
+    "es": "tortillas",
+    "en": "tortillas"
+   },
+   {
+    "es": "chiles",
+    "en": "chiles"
+   },
+   {
+    "es": "crema",
+    "en": "cream"
+   },
+   {
+    "es": "cebolla",
+    "en": "onion"
+   }
+  ]
+ },
+ "tamales": {
+  "historia": {
+   "nombre": {
+    "es": "«Tamal» viene del náhuatl «tamalli», que quiere decir «envuelto». «Tamales» es el plural en español; de ahí se formó después «tamal» para uno solo.",
+    "en": "«Tamal» comes from Nahuatl «tamalli», meaning «wrapped». «Tamales» is the Spanish plural; the singular «tamal» was formed from it later."
+   },
+   "origen": {
+    "es": "Los tamales son de México y se hacen desde hace miles de años: masa de maíz, con relleno, envuelta en hojas y cocida al vapor. Se comen en fiestas como el Día de la Candelaria, cuando quien encontró el monito en la rosca invita los tamales.",
+    "en": "Tamales are from Mexico and have been made for thousands of years: corn dough, filled, wrapped in leaves and steamed. They are eaten on holidays like Candlemas, when whoever found the little figure in the rosca treats everyone to tamales."
+   },
+   "curiosos": [
+    {
+     "es": "Hay muchísimas variedades: dulces, de pollo, de rajas, de mole.",
+     "en": "There are very many kinds: sweet, chicken, chile strips, mole."
+    },
+    {
+     "es": "La hoja de maíz no se come: se abre y se tira.",
+     "en": "The corn husk is not eaten: it is opened and discarded."
+    },
+    {
+     "es": "Se cuecen al vapor para que la masa quede suave.",
+     "en": "They are steamed so the dough turns out soft."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "tamales",
+    "en": "tamales"
+   },
+   {
+    "es": "hojas",
+    "en": "husks"
+   },
+   {
+    "es": "masa",
+    "en": "dough"
+   },
+   {
+    "es": "pollo",
+    "en": "chicken"
+   },
+   {
+    "es": "vaporera",
+    "en": "steamer"
+   }
+  ]
+ },
+ "ponche": {
+  "historia": {
+   "nombre": {
+    "es": "«Ponche» viene del inglés «punch». Se cree que esa palabra a su vez viene de una palabra hindi que quiere decir «cinco», por los cinco ingredientes de la bebida original.",
+    "en": "«Ponche» comes from English «punch». That word is believed to come from a Hindi word meaning «five», for the five ingredients of the original drink."
+   },
+   "origen": {
+    "es": "El ponche navideño es una bebida caliente de frutas con piloncillo y canela que se toma en las posadas, los nueve días de fiesta antes de Navidad. Lleva frutas de México y de otros lugares, y se sirve calientito en tazas.",
+    "en": "Christmas fruit punch is a warm drink of fruit with piloncillo and cinnamon served at posadas, the nine days of celebration before Christmas. It uses fruits from Mexico and elsewhere and is served hot in cups."
+   },
+   "curiosos": [
+    {
+     "es": "El tejocote, una fruta mexicana, es de los ingredientes que se usan en muchos ponches.",
+     "en": "The tejocote, a Mexican fruit, is one of the ingredients used in many punches."
+    },
+    {
+     "es": "El piloncillo es azúcar de caña sin refinar.",
+     "en": "Piloncillo is unrefined cane sugar."
+    },
+    {
+     "es": "La guayaba es una fruta de las Américas.",
+     "en": "Guava is a fruit of the Americas."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "guayabas",
+    "en": "guavas"
+   },
+   {
+    "es": "manzanas",
+    "en": "apples"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "piloncillo",
+    "en": "piloncillo"
+   },
+   {
+    "es": "naranjas",
+    "en": "oranges"
+   }
+  ]
+ },
+ "chiles-rellenos": {
+  "historia": {
+   "nombre": {
+    "es": "«Relleno» quiere decir lleno por dentro. El chile poblano se llama así porque se asocia con Puebla, una ciudad de México famosa por su cocina.",
+    "en": "«Relleno» means filled on the inside. The poblano chile is named for its link with Puebla, a city in Mexico famous for its cooking."
+   },
+   "origen": {
+    "es": "El chile poblano es de México. Para esta receta se asa para quitarle la piel, se le sacan las semillas y se rellena de queso; después se cubre con huevo batido y se fríe. Se sirve en un caldillo de jitomate. Es un platillo muy querido en todo el país.",
+    "en": "The poblano chile is from Mexico. For this recipe it is roasted to remove the skin, seeded and filled with cheese; then it is coated with beaten egg and fried. It is served in a tomato broth. It is a much loved dish all over the country."
+   },
+   "curiosos": [
+    {
+     "es": "El chile poblano seco se llama ancho.",
+     "en": "The dried poblano chile is called ancho."
+    },
+    {
+     "es": "Las claras se baten a punto de nieve para que el capeado quede esponjoso.",
+     "en": "The whites are whipped to stiff peaks so the batter turns out fluffy."
+    },
+    {
+     "es": "El chile se sudaba en una bolsa para pelarlo más fácil.",
+     "en": "The chile is sweated in a bag to peel it more easily."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "chiles",
+    "en": "chiles"
+   },
+   {
+    "es": "queso",
+    "en": "cheese"
+   },
+   {
+    "es": "huevos",
+    "en": "eggs"
+   },
+   {
+    "es": "harina",
+    "en": "flour"
+   },
+   {
+    "es": "jitomates",
+    "en": "tomatoes"
+   }
+  ]
  }
 }

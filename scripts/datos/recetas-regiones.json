@@ -2362,5 +2362,5116 @@
     "en": "egg yolks"
    }
   ]
+ },
+ {
+  "id": "discada",
+  "icono": "discada",
+  "insignia": null,
+  "nombre": {
+   "es": "Discada lagunera",
+   "en": "Discada from La Laguna"
+  },
+  "resumen": {
+   "es": "Carnes variadas, tocino, chorizo y verduras guisadas juntas en una sartén grande, como se hace en el campo de La Laguna. Se come en tortilla de harina.",
+   "en": "Mixed meats, bacon, chorizo and vegetables stewed together in one big pan, the way it is made in the fields of La Laguna. You eat it in a flour tortilla."
+  },
+  "porciones": 8,
+  "tiempoPrep": 30,
+  "tiempoCoccion": 45,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Lávate las manos después de tocar los chiles y no te toques los ojos. El fuego y la aceite caliente queman: pide ayuda a un adulto. Cuece toda la carne completa, sin partes rosadas por dentro.",
+   "en": "Wash your hands after touching the chilies and do not touch your eyes. The fire and the hot grease can burn: ask an adult to help. Cook all the meat completely, with no pink parts inside."
+  },
+  "ingredientes": [
+   {
+    "cant": 200,
+    "un": "g",
+    "es": "tocino, picado",
+    "en": "bacon, chopped"
+   },
+   {
+    "cant": 200,
+    "un": "g",
+    "es": "chorizo, sin tripa",
+    "en": "chorizo, casing removed"
+   },
+   {
+    "cant": 400,
+    "un": "g",
+    "es": "bistec de res, en tiras delgadas",
+    "en": "beef steak, in thin strips"
+   },
+   {
+    "cant": 300,
+    "un": "g",
+    "es": "lomo de cerdo, en cubos chicos",
+    "en": "pork loin, in small cubes"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "jamón, en cubos",
+    "en": "ham, in cubes"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "salchichas, en rodajas",
+    "en": "sausages, sliced"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "cebolla grande, en cuadritos",
+    "en": "large onion, diced"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "jitomates, picados",
+    "en": "tomatoes, chopped"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "chiles jalapeños, en rodajas",
+    "en": "jalapeño chilies, sliced"
+   },
+   {
+    "cant": 3,
+    "un": "dientes",
+    "es": "ajo, picado",
+    "en": "garlic cloves, chopped"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "caldo de res",
+    "en": "beef broth"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 0.5,
+    "un": "taza",
+    "es": "cilantro fresco, picado",
+    "en": "fresh cilantro, chopped"
+   },
+   {
+    "cant": 16,
+    "un": "pza",
+    "es": "tortillas de harina",
+    "en": "flour tortillas"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "limones, en gajos",
+    "en": "limes, in wedges"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, calienta una sartén grande o un comal hondo a fuego medio-alto. Pon el tocino y fríelo hasta que suelte su aceite y se dore.",
+    "en": "With an adult's help, heat a big pan or a deep griddle over medium-high heat. Add the bacon and fry it until it gives off its grease and turns golden.",
+    "min": 8
+   },
+   {
+    "es": "Agrega el chorizo y deshazlo con una cuchara de madera. Muévelo hasta que se dore.",
+    "en": "Add the chorizo and break it up with a wooden spoon. Stir until it browns.",
+    "min": 5
+   },
+   {
+    "es": "Echa el cerdo y la res. Mueve de vez en cuando hasta que no quede nada rosado por dentro.",
+    "en": "Add the pork and the beef. Stir now and then until nothing is pink inside.",
+    "min": 15
+   },
+   {
+    "es": "Agrega la cebolla, el ajo y los chiles jalapeños. Guisa hasta que la cebolla se vea transparente.",
+    "en": "Add the onion, garlic and jalapeño chilies. Cook until the onion looks see-through.",
+    "min": 5
+   },
+   {
+    "es": "Suma el jamón, las salchichas, el jitomate y la sal. Vierte el caldo y deja que se cueza a fuego medio hasta que se seque casi todo el líquido.",
+    "en": "Add the ham, sausages, tomato and salt. Pour in the broth and cook over medium heat until almost all the liquid has dried up.",
+    "min": 12
+   },
+   {
+    "es": "Apaga el fuego y revuelve el cilantro. Calienta las tortillas en otro comal.",
+    "en": "Turn off the heat and stir in the cilantro. Warm the tortillas on another griddle.",
+    "min": 3
+   },
+   {
+    "es": "Sirve la discada bien caliente sobre tortillas de harina, con limón al lado. ¡Buen provecho, mijo!",
+    "en": "Serve the discada piping hot on flour tortillas, with lime on the side. Enjoy, mijo!",
+    "min": 3
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "La explicación más repetida es que viene de «disco»: se cocinaba sobre un disco de arado de tractor, puesto sobre el fuego como si fuera una enorme sartén. Esto se cuenta más por tradición oral que por estudios.",
+    "en": "The most repeated explanation is that it comes from «disco»: it was cooked on a tractor plow disc, set over the fire like a huge pan. This is passed on more by oral tradition than by studies."
+   },
+   "origen": {
+    "es": "La discada es un platillo del norte muy ligado a La Laguna y a las jornadas en el campo. No hay registro exacto de dónde ni cuándo nació. Lleva varias carnes y verduras guisadas juntas, y hoy se disfruta en otros estados del norte.",
+    "en": "Discada is a northern dish closely tied to La Laguna and to long days of work in the fields. There is no exact record of where or when it began. It has several meats and vegetables cooked together, and today it is enjoyed in other northern states."
+   },
+   "leyenda": {
+    "es": "Se cuenta que unos trabajadores del campo, lejos de casa, juntaron lo que cada quien traía en su itacate y lo cocinaron todo junto sobre un disco de arado. Les supo tan rico que lo repitieron, y así nació la discada.",
+    "en": "Legend says some field workers, far from home, put together what each one carried in his lunch bundle and cooked it all on a plow disc. It tasted so good they made it again, and so discada was born."
+   },
+   "curiosos": [
+    {
+     "es": "«Itacate» viene del náhuatl y es la comida que se lleva para el camino o el trabajo.",
+     "en": "«Itacate» comes from Nahuatl and means the food you carry for the road or for work."
+    },
+    {
+     "es": "Hay quien busca que la discada reciba denominación de origen como platillo de La Laguna.",
+     "en": "Some people want discada to receive a designation of origin as a dish of La Laguna."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "tocino",
+    "en": "bacon"
+   },
+   {
+    "es": "sartén",
+    "en": "pan"
+   },
+   {
+    "es": "carne",
+    "en": "meat"
+   },
+   {
+    "es": "tortillas",
+    "en": "tortillas"
+   }
+  ]
+ },
+ {
+  "id": "gorditas-laguneras",
+  "icono": "gorditas-laguneras",
+  "insignia": null,
+  "nombre": {
+   "es": "Gorditas laguneras",
+   "en": "Gorditas from La Laguna"
+  },
+  "resumen": {
+   "es": "Gorditas de masa de maíz, doradas en comal y rellenas de papas con chorizo o de frijoles con queso. En La Laguna se cuecen en horno de adobe.",
+   "en": "Corn dough gorditas, browned on a griddle and filled with potatoes and chorizo or beans and cheese. In La Laguna they are baked in an adobe oven."
+  },
+  "porciones": 5,
+  "tiempoPrep": 40,
+  "tiempoCoccion": 30,
+  "nivel": {
+   "es": "Fácil, pero lleva tiempo",
+   "en": "Easy, but takes time"
+  },
+  "nota": {
+   "es": "El comal y el chorizo caliente queman: pide ayuda a un adulto. Cuece el chorizo completo, hasta que no esté rosado.",
+   "en": "The griddle and the hot chorizo can burn: ask an adult to help. Cook the chorizo completely, until it is no longer pink."
+  },
+  "ingredientes": [
+   {
+    "cant": 300,
+    "un": "g",
+    "es": "harina de maíz para masa",
+    "en": "masa harina (corn flour for dough)"
+   },
+   {
+    "cant": 360,
+    "un": "ml",
+    "es": "agua tibia",
+    "en": "warm water"
+   },
+   {
+    "cant": 0.5,
+    "un": "cdta",
+    "es": "sal, para la masa",
+    "en": "salt, for the dough"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "manteca vegetal o aceite, para la masa",
+    "en": "vegetable shortening or oil, for the dough"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "papas medianas (450 g), cocidas y en cubos",
+    "en": "medium potatoes (450 g), cooked and cubed"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "chorizo, sin tripa",
+    "en": "chorizo, casing removed"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "frijoles cocidos y machacados",
+    "en": "cooked, mashed beans"
+   },
+   {
+    "cant": 100,
+    "un": "g",
+    "es": "queso fresco, desmenuzado",
+    "en": "fresh cheese, crumbled"
+   },
+   {
+    "cant": 1,
+    "un": "cda",
+    "es": "aceite, para el comal y el relleno",
+    "en": "oil, for the griddle and the filling"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "lechuga picada, para servir",
+    "en": "chopped lettuce, to serve"
+   },
+   {
+    "cant": 4,
+    "un": "cda",
+    "es": "salsa roja, para servir",
+    "en": "red salsa, to serve"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Mezcla la harina, la sal y la manteca. Agrega el agua tibia poco a poco y amasa hasta que la masa esté suave y no se pegue en las manos. Déjala reposar tapada.",
+    "en": "Mix the flour, salt and shortening. Add the warm water little by little and knead until the dough is soft and does not stick to your hands. Let it rest, covered.",
+    "min": 15
+   },
+   {
+    "es": "Con ayuda de un adulto, dora el chorizo en una sartén con el aceite hasta que no quede rosado. Agrega las papas y mezcla. Aparta.",
+    "en": "With an adult's help, brown the chorizo in a pan with the oil until it is no longer pink. Add the potatoes and mix. Set aside.",
+    "min": 10
+   },
+   {
+    "es": "En un tazón, revuelve los frijoles machacados con el queso.",
+    "en": "In a bowl, stir the mashed beans with the cheese.",
+    "min": 3
+   },
+   {
+    "es": "Forma 10 bolitas de masa. Aplástalas con las palmas o en una prensa hasta que tengan unos 8 cm de ancho y 1 cm de grosor.",
+    "en": "Shape 10 balls of dough. Flatten them with your palms or in a press until they are about 8 cm wide and 1 cm thick.",
+    "min": 10
+   },
+   {
+    "es": "Con ayuda de un adulto, cuece las gorditas en un comal caliente a fuego medio, 5 minutos por lado, hasta que se doren y se inflen un poquito.",
+    "en": "With an adult's help, cook the gorditas on a hot griddle over medium heat, 5 minutes per side, until they brown and puff up a little.",
+    "min": 10
+   },
+   {
+    "es": "Con cuidado, ábrelas por un lado con un cuchillo sin filo, como una bolsita. Rellena la mitad con papas con chorizo y la otra mitad con frijoles con queso.",
+    "en": "Carefully open each one along one side with a blunt knife, like a little pocket. Fill half with potatoes and chorizo and the other half with beans and cheese.",
+    "min": 5
+   },
+   {
+    "es": "Sírvelas calientes con lechuga y salsa. ¡Buen provecho!",
+    "en": "Serve them hot with lettuce and salsa. Enjoy!",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Gordita» viene de su forma gruesa y redondita: una tortilla rellena. «De cocedor» se dice cuando se cuecen en el horno de adobe que llaman cocedor.",
+    "en": "«Gordita» comes from its thick, roundish shape: a filled tortilla. «De cocedor» is said when they are baked in the adobe oven called a cocedor."
+   },
+   "origen": {
+    "es": "Las gorditas son un platillo muy típico de Torreón y de La Laguna. La versión tradicional, de masa de maíz y rellena, nació en el campo y se cuece en horno de adobe o de leña. Se rellenan de chicharrón, frijoles con queso o papas con chorizo.",
+    "en": "Gorditas are a very typical dish of Torreón and La Laguna. The traditional version, made of corn dough and filled, was born in the countryside and is baked in an adobe or wood oven. They are filled with chicharrón, beans with cheese, or potatoes with chorizo."
+   },
+   "curiosos": [
+    {
+     "es": "En La Laguna también hay gorditas de harina de trigo, además de las de maíz.",
+     "en": "In La Laguna there are also wheat-flour gorditas, besides the corn ones."
+    },
+    {
+     "es": "Las gorditas de cocedor se venden más cuando hace frío, porque salen calientitas.",
+     "en": "Cocedor gorditas sell more when it is cold, because they come out nice and warm."
+    },
+    {
+     "es": "El maíz es originario de México, y la masa de maíz es la base de muchos platillos.",
+     "en": "Corn is native to Mexico, and corn dough is the base of many dishes."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "masa",
+    "en": "dough"
+   },
+   {
+    "es": "comal",
+    "en": "griddle"
+   },
+   {
+    "es": "papas",
+    "en": "potatoes"
+   },
+   {
+    "es": "frijoles",
+    "en": "beans"
+   },
+   {
+    "es": "queso",
+    "en": "cheese"
+   }
+  ]
+ },
+ {
+  "id": "rollos-de-membrillo",
+  "icono": "rollos-de-membrillo",
+  "insignia": null,
+  "nombre": {
+   "es": "Rollos de membrillo con nuez",
+   "en": "Quince and pecan rolls"
+  },
+  "resumen": {
+   "es": "Dulce lagunero de pasta de membrillo enrollada con nuez picada. Se corta en rebanadas y se come como golosina.",
+   "en": "A sweet from La Laguna made of quince paste rolled up with chopped pecans. It is cut in slices and eaten as a treat."
+  },
+  "porciones": 12,
+  "tiempoPrep": 40,
+  "tiempoCoccion": 90,
+  "nivel": {
+   "es": "Con paciencia",
+   "en": "Needs patience"
+  },
+  "nota": {
+   "es": "La pasta de azúcar caliente salpica y quema mucho: pide ayuda a un adulto para cocinarla y moverla. Lleva nuez: si alguien tiene alergia a las nueces, no la comas.",
+   "en": "The hot sugar paste splatters and burns badly: ask an adult to help cook and move it. It has pecans: if someone is allergic to nuts, do not eat it."
+  },
+  "ingredientes": [
+   {
+    "cant": 1,
+    "un": "kg",
+    "es": "membrillos maduros",
+    "en": "ripe quinces"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "agua, para cocer",
+    "en": "water, for cooking"
+   },
+   {
+    "cant": 600,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "jugo de limón",
+    "en": "lime juice"
+   },
+   {
+    "cant": 200,
+    "un": "g",
+    "es": "nuez picada",
+    "en": "chopped pecans"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "azúcar extra, para espolvorear",
+    "en": "extra sugar, to sprinkle"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Lava los membrillos y frota la pelusa con un trapo. Pélalos, quítales el centro con las semillas y pártelos en cubos. Un adulto debe ayudar a cortarlos, porque son duros.",
+    "en": "Wash the quinces and rub off the fuzz with a cloth. Peel them, remove the core with the seeds and cut them into cubes. An adult should help cut them, because they are hard.",
+    "min": 15
+   },
+   {
+    "es": "Con ayuda de un adulto, cuece los cubos en el agua a fuego medio, tapados, hasta que se suavicen y cambien de color.",
+    "en": "With an adult's help, cook the cubes in the water over medium heat, covered, until they soften and change color.",
+    "min": 30
+   },
+   {
+    "es": "Escurre y muele los membrillos con un prensapapas o licuadora hasta hacer un puré sin grumos.",
+    "en": "Drain and mash the quinces with a potato masher or blender until you have a smooth puree.",
+    "min": 5
+   },
+   {
+    "es": "Regresa el puré a la olla con el azúcar y el limón. Con ayuda de un adulto, cocina a fuego bajo moviendo siempre, hasta que espese y se despegue del fondo.",
+    "en": "Return the puree to the pot with the sugar and lime. With an adult's help, cook over low heat, stirring all the time, until it thickens and pulls away from the bottom.",
+    "min": 45
+   },
+   {
+    "es": "Extiende la pasta sobre papel encerado ligeramente engrasado, en un rectángulo de 1 cm de grosor. Déjala enfriar y que se firme.",
+    "en": "Spread the paste on lightly greased wax paper in a rectangle 1 cm thick. Let it cool and firm up.",
+    "min": 120
+   },
+   {
+    "es": "Esparce la nuez picada encima y enrolla con ayuda del papel, apretando suave. Pasa el rollo por el azúcar extra.",
+    "en": "Scatter the chopped pecans on top and roll it up with the help of the paper, pressing gently. Roll the log in the extra sugar.",
+    "min": 5
+   },
+   {
+    "es": "Deja reposar el rollo envuelto y luego córtalo en rebanadas.",
+    "en": "Let the wrapped roll rest and then cut it in slices.",
+    "min": 60
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Rollo» porque la pasta de membrillo se enrolla con nuez adentro, como un tronquito dulce. El membrillo es una fruta dura y amarilla que se vuelve dulce al cocerla.",
+    "en": "«Rollo» because the quince paste is rolled up with pecans inside, like a little sweet log. Quince is a hard yellow fruit that turns sweet when cooked."
+   },
+   "origen": {
+    "es": "Los rollos de membrillo con nuez son un dulce muy asociado a Torreón y a La Laguna. Se hacen cociendo el membrillo hasta formar una pasta y enrollándola con nuez picada. No hay registro de cuándo llegaron a la región.",
+    "en": "Quince and pecan rolls are a sweet closely tied to Torreón and La Laguna. They are made by cooking quince into a paste and rolling it with chopped pecans. There is no record of when they came to the region."
+   },
+   "curiosos": [
+    {
+     "es": "El membrillo crudo es duro y agrio; es la cocción lo que lo vuelve dulce y rosadito.",
+     "en": "Raw quince is hard and sour; cooking is what makes it sweet and pinkish."
+    },
+    {
+     "es": "En muchos países el dulce de membrillo se come con queso.",
+     "en": "In many countries quince paste is eaten with cheese."
+    },
+    {
+     "es": "La nuez pecana es originaria del norte de México y del sur de Estados Unidos.",
+     "en": "The pecan is native to northern Mexico and the southern United States."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "membrillo",
+    "en": "quince"
+   },
+   {
+    "es": "nuez",
+    "en": "pecan"
+   },
+   {
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "es": "rebanadas",
+    "en": "slices"
+   }
+  ]
+ },
+ {
+  "id": "cabrito-al-horno",
+  "icono": "cabrito-al-horno",
+  "insignia": null,
+  "nombre": {
+   "es": "Cabrito al horno estilo Monterrey",
+   "en": "Monterrey-style oven-roasted cabrito"
+  },
+  "resumen": {
+   "es": "Cabrito sazonado con ajo y limón, cocido despacio hasta que se separa del hueso y dorado al final. Es el platillo estrella de Monterrey.",
+   "en": "Young goat seasoned with garlic and lime, cooked slowly until it falls off the bone and browned at the end. It is the star dish of Monterrey."
+  },
+  "porciones": 8,
+  "tiempoPrep": 20,
+  "tiempoCoccion": 180,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "El horno, la charola y los jugos calientes queman: pide ayuda a un adulto, y para asar con brasas también. Cuece el cabrito completo, hasta que la carne se separe del hueso y no tenga partes rosadas ni sangre.",
+   "en": "The oven, the tray and the hot juices can burn: ask an adult to help, and also for cooking over coals. Cook the cabrito completely, until the meat pulls away from the bone with no pink parts or blood."
+  },
+  "ingredientes": [
+   {
+    "cant": 2.5,
+    "un": "kg",
+    "es": "cabrito, en cuartos o trozos grandes",
+    "en": "young goat (cabrito), in quarters or large pieces"
+   },
+   {
+    "cant": 6,
+    "un": "dientes",
+    "es": "ajo, machacado",
+    "en": "garlic cloves, crushed"
+   },
+   {
+    "cant": 4,
+    "un": "cda",
+    "es": "jugo de limón",
+    "en": "lime juice"
+   },
+   {
+    "cant": 2,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "pimienta negra molida",
+    "en": "ground black pepper"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "orégano seco",
+    "en": "dried oregano"
+   },
+   {
+    "cant": 3,
+    "un": "cda",
+    "es": "aceite",
+    "en": "oil"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "agua, para la charola",
+    "en": "water, for the tray"
+   },
+   {
+    "cant": 16,
+    "un": "pza",
+    "es": "tortillas de harina, para servir",
+    "en": "flour tortillas, to serve"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "salsa de jitomate y chile, para servir",
+    "en": "tomato and chili salsa, to serve"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Mezcla el ajo, el limón, la sal, la pimienta, el orégano y el aceite. Unta el cabrito por todos lados con esa pasta y déjalo reposar en el refrigerador.",
+    "en": "Mix the garlic, lime, salt, pepper, oregano and oil. Rub the cabrito all over with this paste and let it rest in the refrigerator.",
+    "min": 60
+   },
+   {
+    "es": "Calienta el horno a 160 °C. Pon el cabrito en una charola honda, con las costillas hacia abajo, y vierte el agua en el fondo.",
+    "en": "Heat the oven to 160 °C. Put the cabrito in a deep tray, ribs down, and pour the water in the bottom.",
+    "min": 10
+   },
+   {
+    "es": "Con ayuda de un adulto, tapa la charola con papel de aluminio y hornea hasta que la carne esté muy suave.",
+    "en": "With an adult's help, cover the tray with aluminum foil and bake until the meat is very tender.",
+    "min": 120
+   },
+   {
+    "es": "Con ayuda de un adulto, quita el papel, sube el horno a 200 °C y hornea hasta que la piel se dore y la carne se separe del hueso.",
+    "en": "With an adult's help, take off the foil, raise the oven to 200 °C and bake until the skin browns and the meat pulls away from the bone.",
+    "min": 30
+   },
+   {
+    "es": "Deja reposar el cabrito para que suelte el calor y se asienten los jugos. Córtalo en trozos.",
+    "en": "Let the cabrito rest so the heat settles and the juices come together. Cut it into pieces.",
+    "min": 15
+   },
+   {
+    "es": "Sirve con tortillas de harina calientes y salsa. ¡Buen provecho, mijo!",
+    "en": "Serve with warm flour tortillas and salsa. Enjoy, mijo!",
+    "min": 3
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Cabrito» es la cría de la cabra, de pocas semanas. «Al pastor» es la forma clásica de asarlo: abierto y clavado junto a las brasas, despacito. Esta receta es una versión casera al horno.",
+    "en": "«Cabrito» is the young of a goat, only a few weeks old. «Al pastor» is the classic way of roasting it: opened up and set next to the coals, slowly. This recipe is a home oven version."
+   },
+   "origen": {
+    "es": "El cabrito es el platillo símbolo de Monterrey y de Nuevo León. Las cabras llegaron con los colonos y se criaron bien en estas tierras secas. Algunas fuentes dicen que el platillo tiene más de 450 años.",
+    "en": "Cabrito is the symbol dish of Monterrey and Nuevo León. Goats arrived with the settlers and did well in this dry land. Some sources say the dish is more than 450 years old."
+   },
+   "leyenda": {
+    "es": "Se cuenta que las primeras familias en estas tierras secas trajeron cabras y la costumbre de asar cabrito al aire libre. Se juntaban alrededor de las brasas, y así se volvió comida de fiesta.",
+    "en": "Legend says the first families in this dry land brought goats and the custom of roasting cabrito outdoors. They gathered around the coals, and so it became a party dish."
+   },
+   "curiosos": [
+    {
+     "es": "Tradicionalmente se asa despacio, por varias horas, junto a las brasas.",
+     "en": "It is traditionally roasted slowly, for several hours, next to the coals."
+    },
+    {
+     "es": "Se acostumbra comerlo con tortillas de harina y salsa.",
+     "en": "It is usually eaten with flour tortillas and salsa."
+    },
+    {
+     "es": "El cabrito más tierno es el de leche, que todavía solo toma leche de su mamá.",
+     "en": "The most tender cabrito is the milk-fed one, which still drinks only its mother's milk."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "cabrito",
+    "en": "young goat"
+   },
+   {
+    "es": "horno",
+    "en": "oven"
+   },
+   {
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "es": "brasas",
+    "en": "coals"
+   }
+  ]
+ },
+ {
+  "id": "machacado-con-huevo",
+  "icono": "machacado-con-huevo",
+  "insignia": null,
+  "nombre": {
+   "es": "Machacado con huevo",
+   "en": "Machacado with eggs"
+  },
+  "resumen": {
+   "es": "Desayuno norteño de carne seca deshebrada guisada con huevo, jitomate, cebolla y chile. Se come en tortilla de harina.",
+   "en": "A northern breakfast of shredded dried beef stewed with egg, tomato, onion and chili. You eat it in a flour tortilla."
+  },
+  "porciones": 4,
+  "tiempoPrep": 15,
+  "tiempoCoccion": 20,
+  "nivel": {
+   "es": "Fácil",
+   "en": "Easy"
+  },
+  "nota": {
+   "es": "Lávate las manos después de tocar los chiles y no te toques los ojos. La estufa y el aceite caliente queman: pide ayuda a un adulto. Cuece los huevos completos, sin partes líquidas.",
+   "en": "Wash your hands after touching the chilies and do not touch your eyes. The stove and the hot oil can burn: ask an adult to help. Cook the eggs completely, with no runny parts."
+  },
+  "ingredientes": [
+   {
+    "cant": 200,
+    "un": "g",
+    "es": "machaca de res (carne seca deshebrada)",
+    "en": "beef machaca (shredded dried beef)"
+   },
+   {
+    "cant": 6,
+    "un": "pza",
+    "es": "huevos",
+    "en": "eggs"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "jitomates, picados",
+    "en": "tomatoes, chopped"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla, picada",
+    "en": "onion, chopped"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "chiles serranos, picados",
+    "en": "serrano chilies, chopped"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "aceite",
+    "en": "oil"
+   },
+   {
+    "cant": 1,
+    "un": "pizca",
+    "es": "sal, si hace falta",
+    "en": "salt, if needed"
+   },
+   {
+    "cant": 8,
+    "un": "pza",
+    "es": "tortillas de harina",
+    "en": "flour tortillas"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Remoja la machaca en agua tibia un ratito y escúrrela, apretando para sacar el exceso de sal.",
+    "en": "Soak the machaca in warm water for a little while and drain it, squeezing out the extra salt.",
+    "min": 10
+   },
+   {
+    "es": "Con ayuda de un adulto, calienta el aceite en una sartén a fuego medio. Acitrona la cebolla y los chiles.",
+    "en": "With an adult's help, heat the oil in a pan over medium heat. Cook the onion and chilies until see-through.",
+    "min": 4
+   },
+   {
+    "es": "Agrega los jitomates y cocina hasta que suelten su jugo.",
+    "en": "Add the tomatoes and cook until they release their juice.",
+    "min": 5
+   },
+   {
+    "es": "Suma la machaca y guisa, moviendo, hasta que se caliente bien.",
+    "en": "Add the machaca and stir while it cooks until it is hot.",
+    "min": 4
+   },
+   {
+    "es": "Bate los huevos, viértelos en la sartén y revuelve sin parar hasta que cuajen por completo. Prueba la sal.",
+    "en": "Beat the eggs, pour them into the pan and stir constantly until they are completely set. Taste for salt.",
+    "min": 4
+   },
+   {
+    "es": "Calienta las tortillas en un comal y sirve el machacado bien caliente. ¡Buen provecho!",
+    "en": "Warm the tortillas on a griddle and serve the machacado piping hot. Enjoy!",
+    "min": 3
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Machacado» viene de «machacar»: la carne seca se golpeaba hasta deshebrarla. También se le dice «machaca con huevo» o «huevos con machaca».",
+    "en": "«Machacado» comes from «machacar» (to pound): the dried meat was pounded until it shredded. It is also called «machaca con huevo» or «huevos con machaca»."
+   },
+   "origen": {
+    "es": "Es un desayuno típico de Nuevo León. Secar la carne al sol es una técnica muy antigua para guardarla sin refrigerador. La versión más difundida ubica el platillo en Ciénega de Flores, aunque hay poca prueba de quién lo creó.",
+    "en": "It is a typical breakfast of Nuevo León. Drying meat in the sun is a very old way to keep it without a refrigerator. The most widespread version places the dish in Ciénega de Flores, though there is little proof of who created it."
+   },
+   "leyenda": {
+    "es": "Se cuenta que una señora con un merendero junto al camino quiso ofrecer algo rápido y distinto a los viajeros: guisó carne seca con huevo, tomate y chile. Gustó tanto que se volvió el desayuno de la región.",
+    "en": "Legend says a woman who ran a roadside snack stand wanted to offer travelers something quick and different: she cooked dried beef with egg, tomato and chili. It was so liked that it became the region's breakfast."
+   },
+   "curiosos": [
+    {
+     "es": "La carne seca se conserva por mucho tiempo sin refrigerador.",
+     "en": "Dried meat keeps for a long time without a refrigerator."
+    },
+    {
+     "es": "Hoy se compra la machaca ya deshebrada y lista para guisar.",
+     "en": "Today you can buy machaca already shredded and ready to cook."
+    },
+    {
+     "es": "Se come en taco de tortilla de harina, con frijoles o con salsa.",
+     "en": "It is eaten as a flour tortilla taco, with beans or salsa."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "huevos",
+    "en": "eggs"
+   },
+   {
+    "es": "carne seca",
+    "en": "dried beef"
+   },
+   {
+    "es": "jitomates",
+    "en": "tomatoes"
+   },
+   {
+    "es": "cebolla",
+    "en": "onion"
+   }
+  ]
+ },
+ {
+  "id": "frijoles-charros",
+  "icono": "frijoles-charros",
+  "insignia": null,
+  "nombre": {
+   "es": "Frijoles charros",
+   "en": "Charro beans"
+  },
+  "resumen": {
+   "es": "Frijoles caldosos cocidos con tocino, chorizo y salchicha, con jitomate, cebolla y chile. Son del norte y se comen como plato fuerte o con carne asada.",
+   "en": "Brothy beans cooked with bacon, chorizo and sausage, with tomato, onion and chili. They are from the north and are eaten as a main dish or with grilled meat."
+  },
+  "porciones": 8,
+  "tiempoPrep": 20,
+  "tiempoCoccion": 150,
+  "nivel": {
+   "es": "Fácil, pero lleva tiempo",
+   "en": "Easy, but takes time"
+  },
+  "nota": {
+   "es": "Lávate las manos después de tocar los chiles y no te toques los ojos. La olla y el caldo caliente queman: pide ayuda a un adulto. Cuece bien los frijoles y las carnes, hasta que estén completos.",
+   "en": "Wash your hands after touching the chilies and do not touch your eyes. The pot and the hot broth can burn: ask an adult to help. Cook the beans and the meats well, all the way through."
+  },
+  "ingredientes": [
+   {
+    "cant": 500,
+    "un": "g",
+    "es": "frijol pinto, limpio y lavado",
+    "en": "pinto beans, picked over and rinsed"
+   },
+   {
+    "cant": 2.5,
+    "un": "L",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "tocino, picado",
+    "en": "bacon, chopped"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "chorizo, sin tripa",
+    "en": "chorizo, casing removed"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "salchichas, en rodajas",
+    "en": "sausages, sliced"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "cebolla, picada",
+    "en": "onion, chopped"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "jitomates, picados",
+    "en": "tomatoes, chopped"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "chiles serranos, picados",
+    "en": "serrano chilies, chopped"
+   },
+   {
+    "cant": 4,
+    "un": "dientes",
+    "es": "ajo, picado",
+    "en": "garlic cloves, chopped"
+   },
+   {
+    "cant": 2,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 0.5,
+    "un": "taza",
+    "es": "cilantro fresco, picado",
+    "en": "fresh cilantro, chopped"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Pon los frijoles con el agua en una olla grande. Con ayuda de un adulto, cuécelos a fuego medio, tapados, hasta que estén suaves. Si se acaba el agua, agrega un poco más caliente.",
+    "en": "Put the beans with the water in a big pot. With an adult's help, cook them over medium heat, covered, until soft. If the water runs low, add a little more hot water.",
+    "min": 100
+   },
+   {
+    "es": "Mientras tanto, en una sartén, fríe el tocino hasta que suelte su aceite. Agrega el chorizo y la salchicha y cocínalos hasta que no queden rosados.",
+    "en": "Meanwhile, in a pan, fry the bacon until it releases its grease. Add the chorizo and sausage and cook until they are no longer pink.",
+    "min": 12
+   },
+   {
+    "es": "Añade la cebolla, el ajo y los chiles. Cocina hasta que la cebolla se vea transparente y luego agrega los jitomates.",
+    "en": "Add the onion, garlic and chilies. Cook until the onion looks see-through and then add the tomatoes.",
+    "min": 8
+   },
+   {
+    "es": "Vierte ese guiso a la olla de frijoles, con la sal. Cocina a fuego bajo para que se unan los sabores.",
+    "en": "Pour that stew into the pot of beans, with the salt. Cook over low heat so the flavors come together.",
+    "min": 30
+   },
+   {
+    "es": "Apaga el fuego, revuelve el cilantro y prueba la sal. Sirve bien calientes.",
+    "en": "Turn off the heat, stir in the cilantro and taste the salt. Serve very hot.",
+    "min": 3
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Se llaman así por los charros, los jinetes del campo mexicano. También se les dice «frijoles a la charra» o «frijoles rancheros».",
+    "en": "They are named after the charros, Mexico's horse riders of the countryside. They are also called «frijoles a la charra» or «frijoles rancheros»."
+   },
+   "origen": {
+    "es": "Son un guiso caldoso de frijol con carnes, tomate, cebolla y chile. Es muy popular en el norte de México: Coahuila, Chihuahua, Sonora, Tamaulipas y Nuevo León. El frijol es de América, y por eso es tan antiguo en la cocina mexicana.",
+    "en": "It is a brothy stew of beans with meats, tomato, onion and chili. It is very popular in northern Mexico: Coahuila, Chihuahua, Sonora, Tamaulipas and Nuevo León. The bean comes from the Americas, which is why it is so old in Mexican cooking."
+   },
+   "leyenda": {
+    "es": "Se cuenta que unos charros, después de una larga jornada, juntaron en la olla lo que traían en sus morrales: frijoles, un poco de tocino, chile y tomate. Les supo tan bien que se quedó como un platillo de fiesta.",
+    "en": "Legend says some charros, after a long day, put into one pot what they had in their saddlebags: beans, a bit of bacon, chili and tomato. It tasted so good that it stayed as a party dish."
+   },
+   "curiosos": [
+    {
+     "es": "El frijol es originario de América y se cultiva en México desde hace miles de años.",
+     "en": "The bean is native to the Americas and has been grown in Mexico for thousands of years."
+    },
+    {
+     "es": "Cada familia les pone sus carnes: unas usan jamón, otras chicharrón.",
+     "en": "Each family adds its own meats: some use ham, others chicharrón."
+    },
+    {
+     "es": "Se acostumbran con carne asada, tortillas y salsa.",
+     "en": "They are usually served with grilled meat, tortillas and salsa."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "frijoles",
+    "en": "beans"
+   },
+   {
+    "es": "olla",
+    "en": "pot"
+   },
+   {
+    "es": "chorizo",
+    "en": "chorizo"
+   },
+   {
+    "es": "cilantro",
+    "en": "cilantro"
+   }
+  ]
+ },
+ {
+  "id": "glorias-de-linares",
+  "icono": "glorias-de-linares",
+  "insignia": null,
+  "nombre": {
+   "es": "Glorias de Linares",
+   "en": "Linares glorias (burnt milk and pecan candy)"
+  },
+  "resumen": {
+   "es": "Dulces de leche quemada con nuez, de Linares, Nuevo León. Cremosos por dentro y con sabor a caramelo.",
+   "en": "Burnt milk and pecan candies from Linares, Nuevo León. Creamy inside, with a caramel flavor."
+  },
+  "porciones": 20,
+  "tiempoPrep": 15,
+  "tiempoCoccion": 90,
+  "nivel": {
+   "es": "Con paciencia",
+   "en": "Needs patience"
+  },
+  "nota": {
+   "es": "La leche con azúcar hirviendo salpica y quema mucho: pide ayuda a un adulto para cocinarla y moverla. Lleva nuez: si alguien tiene alergia a las nueces, no la comas.",
+   "en": "Boiling milk with sugar splatters and burns badly: ask an adult to help cook and move it. It has pecans: if someone is allergic to nuts, do not eat it."
+  },
+  "ingredientes": [
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "leche entera",
+    "en": "whole milk"
+   },
+   {
+    "cant": 250,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 3,
+    "un": "cda",
+    "es": "miel de maíz",
+    "en": "corn syrup"
+   },
+   {
+    "cant": 0.5,
+    "un": "cdta",
+    "es": "bicarbonato de sodio",
+    "en": "baking soda"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "vainilla",
+    "en": "vanilla"
+   },
+   {
+    "cant": 100,
+    "un": "g",
+    "es": "nuez picada",
+    "en": "chopped pecans"
+   },
+   {
+    "cant": 1,
+    "un": "cda",
+    "es": "mantequilla, para engrasar",
+    "en": "butter, for greasing"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, pon la leche, el azúcar, la miel de maíz y el bicarbonato en una olla ancha. Calienta a fuego medio, moviendo hasta que el azúcar se disuelva.",
+    "en": "With an adult's help, put the milk, sugar, corn syrup and baking soda in a wide pot. Heat over medium heat, stirring until the sugar dissolves.",
+    "min": 10
+   },
+   {
+    "es": "Baja a fuego medio-bajo y cocina sin dejar de mover con una cuchara de madera. La mezcla irá espesando y tomará color de caramelo.",
+    "en": "Lower to medium-low heat and cook, stirring all the time with a wooden spoon. The mixture will thicken and turn caramel colored.",
+    "min": 70
+   },
+   {
+    "es": "Cuando al mover se vea el fondo de la olla y la pasta se despegue, apaga el fuego. Agrega la vainilla y la nuez y mezcla.",
+    "en": "When you can see the bottom of the pot as you stir and the paste pulls away, turn off the heat. Add the vanilla and pecans and mix.",
+    "min": 3
+   },
+   {
+    "es": "Deja que la pasta se enfríe un poco, hasta que ya no queme, en la misma olla.",
+    "en": "Let the paste cool a little in the same pot, until it no longer burns.",
+    "min": 15
+   },
+   {
+    "es": "Engrasa tus manos y una charola con la mantequilla. Forma bolitas del tamaño de una nuez y ponlas sobre la charola.",
+    "en": "Grease your hands and a tray with the butter. Shape balls the size of a walnut and set them on the tray.",
+    "min": 10
+   },
+   {
+    "es": "Deja enfriar por completo antes de comerlas. Guárdalas en un recipiente tapado.",
+    "en": "Let them cool completely before eating. Keep them in a covered container.",
+    "min": 30
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Se les dice «glorias de Linares» por el pueblo de Nuevo León donde nacieron. La explicación del nombre «gloria» es popular: se dice que saben a gloria.",
+    "en": "They are called «glorias de Linares» after the town in Nuevo León where they were born. The explanation of the name «gloria» is popular: they are said to taste like heaven."
+   },
+   "origen": {
+    "es": "Las glorias son dulces de leche quemada con nuez, nacidos en Linares, Nuevo León. La mayoría de las fuentes los ubican en los años treinta del siglo XX, cuando una dulcera les puso nuez y los hizo individuales. Hoy son un dulce típico de la región.",
+    "en": "Glorias are burnt milk and pecan candies born in Linares, Nuevo León. Most sources place them in the 1930s, when a candy maker added pecans and made them individual. Today they are a typical sweet of the region."
+   },
+   "leyenda": {
+    "es": "Se cuenta que una dulcera de Linares le puso nuez a su dulce de leche quemada y se lo dio a probar a una persona. Al probarlo, dijo que sabía a gloria, y así se quedó el nombre.",
+    "en": "Legend says a candy maker from Linares added pecans to her burnt milk candy and let someone taste it. After one bite, the person said it tasted like glory, and so the name stuck."
+   },
+   "curiosos": [
+    {
+     "es": "La leche se cocina hasta que se «quema» y toma color y sabor a caramelo; por eso se llama leche quemada.",
+     "en": "The milk is cooked until it «burns» and takes on caramel color and flavor; that is why it is called burnt milk."
+    },
+    {
+     "es": "La nuez pecana es originaria del norte de México y del sur de Estados Unidos.",
+     "en": "The pecan is native to northern Mexico and the southern United States."
+    },
+    {
+     "es": "Linares es un pueblo de Nuevo León conocido por sus dulces de leche.",
+     "en": "Linares is a town in Nuevo León known for its milk candies."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "leche",
+    "en": "milk"
+   },
+   {
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "es": "nuez",
+    "en": "pecan"
+   },
+   {
+    "es": "vainilla",
+    "en": "vanilla"
+   },
+   {
+    "es": "bolitas",
+    "en": "little balls"
+   }
+  ]
+ },
+ {
+  "id": "chilorio",
+  "icono": "chilorio",
+  "insignia": null,
+  "nombre": {
+   "es": "Chilorio",
+   "en": "Chilorio (Sinaloa shredded chile pork)"
+  },
+  "resumen": {
+   "es": "Cerdo de Sinaloa cocido, deshebrado y frito en una salsa de chiles secos, para tacos y gorditas.",
+   "en": "Sinaloa pork, boiled, shredded and fried in a dried-chile sauce, for tacos and gorditas."
+  },
+  "porciones": 6,
+  "tiempoPrep": 25,
+  "tiempoCoccion": 100,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Lávate las manos después de tocar los chiles y no te toques los ojos. La estufa, el agua hirviendo y el aceite caliente queman: pide ayuda a un adulto. La carne de cerdo se cuece completa, hasta que quede muy suave.",
+   "en": "Wash your hands after touching chiles and do not touch your eyes. The stove, boiling water and hot oil can burn: ask an adult to help. Cook the pork all the way through until it is very tender."
+  },
+  "ingredientes": [
+   {
+    "cant": 1,
+    "un": "kg",
+    "es": "espaldilla de cerdo, en cubos",
+    "en": "pork shoulder, cubed"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal, para cocer la carne",
+    "en": "salt, for boiling the meat"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "chiles anchos, sin semillas",
+    "en": "ancho chiles, seeded"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "chiles guajillo, sin semillas",
+    "en": "guajillo chiles, seeded"
+   },
+   {
+    "cant": 4,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "comino molido",
+    "en": "ground cumin"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "orégano seco",
+    "en": "dried oregano"
+   },
+   {
+    "cant": 3,
+    "un": "cda",
+    "es": "vinagre blanco",
+    "en": "white vinegar"
+   },
+   {
+    "cant": 3,
+    "un": "cda",
+    "es": "manteca de cerdo o aceite",
+    "en": "lard or oil"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal, para la salsa",
+    "en": "salt, for the sauce"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, cuece el cerdo con el agua y la sal a fuego medio, tapado, hasta que esté muy suave.",
+    "en": "With an adult's help, boil the pork with the water and salt over medium heat, covered, until very tender.",
+    "min": 60
+   },
+   {
+    "es": "Mientras tanto, cubre los chiles con agua caliente y déjalos remojar. Lávate las manos después de tocarlos.",
+    "en": "Meanwhile, cover the chiles with hot water and let them soak. Wash your hands after touching them.",
+    "min": 15
+   },
+   {
+    "es": "Licúa los chiles escurridos con el ajo, el comino, el orégano, el vinagre, la sal y una taza del caldo de la carne hasta que no queden grumos.",
+    "en": "Blend the drained chiles with the garlic, cumin, oregano, vinegar, salt and one cup of the meat broth until smooth.",
+    "min": 3
+   },
+   {
+    "es": "Escurre la carne y deshébrala con dos tenedores.",
+    "en": "Drain the meat and shred it with two forks.",
+    "min": 10
+   },
+   {
+    "es": "Con ayuda de un adulto, calienta la manteca en un sartén grande y fríe la carne deshebrada hasta que se dore en las orillas.",
+    "en": "With an adult's help, heat the lard in a large pan and fry the shredded meat until the edges are golden.",
+    "min": 10
+   },
+   {
+    "es": "Agrega la salsa y cocina a fuego bajo, moviendo de vez en cuando, hasta que espese y la carne quede jugosa.",
+    "en": "Add the sauce and cook over low heat, stirring now and then, until it thickens and the meat is juicy.",
+    "min": 20
+   },
+   {
+    "es": "Sirve caliente en tortillas, en gorditas o con frijoles.",
+    "en": "Serve hot in tortillas, in gorditas or with beans.",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "No hay una explicación documentada de la palabra «chilorio». Lleva «chile» y es de Sinaloa; las historias que se cuentan sobre el resto del nombre son tradición oral y no están comprobadas.",
+    "en": "There is no documented explanation for the word «chilorio». It contains «chile» and it is from Sinaloa; the stories told about the rest of the name are oral tradition and are not proven."
+   },
+   "origen": {
+    "es": "El chilorio es un platillo tradicional de Sinaloa: cerdo cocido, deshebrado y frito en una salsa de chiles secos con comino y vinagre. Varias fuentes lo ligan con Mocorito y con la cocina del campo sinaloense. Cada familia le pone sus especias.",
+    "en": "Chilorio is a traditional dish from Sinaloa: pork that is boiled, shredded and fried in a dried-chile sauce with cumin and vinegar. Several sources link it to Mocorito and to the country cooking of Sinaloa. Every family adds its own spices."
+   },
+   "leyenda": {
+    "es": "Se cuenta que el pueblo yoreme ya guisaba así la carne del monte, antes de que llegara el cerdo, y que después la receta se quedó con la carne de puerco y su salsa roja.",
+    "en": "Legend says the Yoreme people already cooked game this way before pigs arrived, and that later the recipe stayed with pork and its red sauce."
+   },
+   "curiosos": [
+    {
+     "es": "Se come en tacos, en gorditas y en burritos, con tortilla de maíz o de harina.",
+     "en": "It is eaten in tacos, gorditas and burritos, with corn or flour tortillas."
+    },
+    {
+     "es": "En 2024 una guía gastronómica internacional lo puso entre los platillos mejor calificados del mundo.",
+     "en": "In 2024 an international food guide ranked it among the best rated dishes in the world."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "cerdo",
+    "en": "pork"
+   },
+   {
+    "es": "chiles",
+    "en": "chiles"
+   },
+   {
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "es": "vinagre",
+    "en": "vinegar"
+   },
+   {
+    "es": "tortillas",
+    "en": "tortillas"
+   }
+  ]
+ },
+ {
+  "id": "aguachile-camaron-cocido",
+  "icono": "aguachile-camaron-cocido",
+  "insignia": null,
+  "nombre": {
+   "es": "Aguachile de camarón cocido",
+   "en": "Aguachile with cooked shrimp"
+  },
+  "resumen": {
+   "es": "Camarones hervidos y fríos, bañados en una salsa verde de limón, chile y cilantro, con pepino fresco.",
+   "en": "Boiled, chilled shrimp bathed in a green sauce of lime, chile and cilantro, with fresh cucumber."
+  },
+  "porciones": 4,
+  "tiempoPrep": 25,
+  "tiempoCoccion": 5,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Lleva camarón (mariscos): si alguien en casa tiene alergia a los mariscos, no lo prepares. Aquí el camarón se hierve completo: el limón NO cuece de verdad el camarón crudo, solo cambia su aspecto. Lávate las manos después de tocar los chiles y no te toques los ojos. El agua hirviendo quema: pide ayuda a un adulto.",
+   "en": "It has shrimp (shellfish): if anyone at home is allergic to shellfish, do not make it. Here the shrimp is fully boiled: lime juice does NOT truly cook raw shrimp, it only changes how it looks. Wash your hands after touching chiles and do not touch your eyes. Boiling water can burn: ask an adult to help."
+  },
+  "ingredientes": [
+   {
+    "cant": 500,
+    "un": "g",
+    "es": "camarones medianos, pelados y sin vena",
+    "en": "medium shrimp, peeled and deveined"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "agua, para hervir",
+    "en": "water, for boiling"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal, para el agua",
+    "en": "salt, for the water"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "hielo",
+    "en": "ice"
+   },
+   {
+    "cant": 120,
+    "un": "ml",
+    "es": "jugo de limón",
+    "en": "lime juice"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "chiles serranos, sin semillas",
+    "en": "serrano chiles, seeded"
+   },
+   {
+    "cant": 0.5,
+    "un": "taza",
+    "es": "cilantro fresco",
+    "en": "fresh cilantro"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "pepino, en rebanadas finas",
+    "en": "cucumber, thinly sliced"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla morada, en pluma fina",
+    "en": "red onion, thinly sliced"
+   },
+   {
+    "cant": 0.5,
+    "un": "cdta",
+    "es": "sal, para la salsa",
+    "en": "salt, for the sauce"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, hierve el agua con la sal. Echa los camarones y cuécelos hasta que estén rosados y firmes.",
+    "en": "With an adult's help, boil the water with the salt. Add the shrimp and cook until pink and firm.",
+    "min": 3
+   },
+   {
+    "es": "Escúrrelos y pásalos a un tazón con hielo para que se enfríen rápido. Escúrrelos otra vez y sécalos.",
+    "en": "Drain them and move them to a bowl with ice to cool quickly. Drain again and pat dry.",
+    "min": 5
+   },
+   {
+    "es": "Licúa el jugo de limón con los chiles, el cilantro y la sal hasta tener una salsa verde. Lávate las manos después de tocar los chiles.",
+    "en": "Blend the lime juice with the chiles, cilantro and salt into a green sauce. Wash your hands after touching the chiles.",
+    "min": 3
+   },
+   {
+    "es": "Acomoda en un plato el pepino y la cebolla, y pon encima los camarones fríos.",
+    "en": "Arrange the cucumber and onion on a plate and put the cold shrimp on top.",
+    "min": 5
+   },
+   {
+    "es": "Baña todo con la salsa verde, déjalo reposar y sirve de inmediato con tostadas o galletas saladas.",
+    "en": "Pour the green sauce over everything, let it rest and serve right away with tostadas or crackers.",
+    "min": 10
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Aguachile quiere decir «agua de chile». Varias fuentes explican que la versión más antigua no llevaba camarón, sino chiltepín, un chile pequeño y redondo que crece silvestre en Sinaloa.",
+    "en": "Aguachile means «chile water». Several sources explain that the oldest version had no shrimp, only chiltepín, a small round chile that grows wild in Sinaloa."
+   },
+   "origen": {
+    "es": "Es un platillo de Sinaloa y de la costa del Pacífico. Hoy se prepara sobre todo con camarón, limón, chile, pepino y cebolla morada. Dónde nació exactamente se discute y no está documentado.",
+    "en": "It is a dish from Sinaloa and the Pacific coast. Today it is mostly made with shrimp, lime, chile, cucumber and red onion. Where exactly it was born is debated and not documented."
+   },
+   "leyenda": {
+    "es": "Se cuenta que primero se preparaba en la sierra, con carne y chiltepín en agua, y que al bajar a la costa el camarón con limón ocupó su lugar.",
+    "en": "Legend says it was first made in the mountains, with meat and chiltepín in water, and that when it came down to the coast, shrimp with lime took its place."
+   },
+   "curiosos": [
+    {
+     "es": "El chiltepín es un chile silvestre muy pequeño que se cosecha en la sierra.",
+     "en": "The chiltepín is a very small wild chile that is gathered in the mountains."
+    },
+    {
+     "es": "Se sirve frío, con tostadas o galletas saladas.",
+     "en": "It is served cold, with tostadas or crackers."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "camarones",
+    "en": "shrimp"
+   },
+   {
+    "es": "limón",
+    "en": "lime"
+   },
+   {
+    "es": "chiles",
+    "en": "chiles"
+   },
+   {
+    "es": "pepino",
+    "en": "cucumber"
+   },
+   {
+    "es": "cilantro",
+    "en": "cilantro"
+   }
+  ]
+ },
+ {
+  "id": "pescado-zarandeado",
+  "icono": "pescado-zarandeado",
+  "insignia": null,
+  "nombre": {
+   "es": "Pescado zarandeado",
+   "en": "Zarandeado fish (grilled butterflied fish)"
+  },
+  "resumen": {
+   "es": "Pescado abierto como mariposa, untado con chiles y limón y asado hasta quedar jugoso.",
+   "en": "Butterflied fish rubbed with chiles and lime and roasted until juicy."
+  },
+  "porciones": 4,
+  "tiempoPrep": 20,
+  "tiempoCoccion": 60,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Es pescado: ten cuidado con alergias. El horno, las brasas y el pescado caliente queman: pide ayuda a un adulto. Cuece el pescado completo, hasta que la carne esté blanca y se separe fácil. Lávate las manos después de tocar los chiles y no te toques los ojos. Cuida las espinas al comer.",
+   "en": "It is fish: be careful with allergies. The oven, the coals and the hot fish can burn: ask an adult to help. Cook the fish all the way through, until the flesh is white and flakes easily. Wash your hands after touching chiles and do not touch your eyes. Watch out for bones when eating."
+  },
+  "ingredientes": [
+   {
+    "cant": 1.2,
+    "un": "kg",
+    "es": "pescado entero (huachinango o robalo), limpio y abierto en mariposa",
+    "en": "whole fish (snapper or sea bass), cleaned and butterflied"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "chiles guajillo, sin semillas",
+    "en": "guajillo chiles, seeded"
+   },
+   {
+    "cant": 4,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "cant": 80,
+    "un": "ml",
+    "es": "jugo de limón",
+    "en": "lime juice"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "salsa de soya",
+    "en": "soy sauce"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "aceite",
+    "en": "oil"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "agua caliente, para remojar los chiles",
+    "en": "hot water, to soak the chiles"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "cebolla, en rodajas",
+    "en": "onion, sliced"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "limones, en gajos, para servir",
+    "en": "limes, in wedges, to serve"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Cubre los chiles con el agua caliente y déjalos remojar. Lávate las manos después de tocarlos.",
+    "en": "Cover the chiles with the hot water and let them soak. Wash your hands after touching them.",
+    "min": 15
+   },
+   {
+    "es": "Licúa los chiles escurridos con el ajo, el jugo de limón, la salsa de soya, el aceite y la sal hasta que no queden grumos.",
+    "en": "Blend the drained chiles with the garlic, lime juice, soy sauce, oil and salt until smooth.",
+    "min": 3
+   },
+   {
+    "es": "Unta el pescado por dentro y por fuera con la salsa, y déjalo reposar en un lugar fresco.",
+    "en": "Rub the fish inside and out with the sauce and let it rest in a cool place.",
+    "min": 20
+   },
+   {
+    "es": "Con ayuda de un adulto, calienta el horno a 200 °C. Pon el pescado abierto sobre la charola, con la piel hacia abajo, y encima las rodajas de cebolla.",
+    "en": "With an adult's help, heat the oven to 200 °C. Lay the open fish on the tray, skin side down, with the onion slices on top.",
+    "min": 5
+   },
+   {
+    "es": "Con ayuda de un adulto, hornea hasta que la carne esté blanca y se separe fácil con un tenedor. Si hay parrilla con brasas, un adulto puede asarlo ahí, moviéndolo seguido.",
+    "en": "With an adult's help, bake until the flesh is white and flakes easily with a fork. If there is a charcoal grill, an adult can roast it there, moving it often.",
+    "min": 30
+   },
+   {
+    "es": "Sirve con gajos de limón, tortillas y salsa.",
+    "en": "Serve with lime wedges, tortillas and sauce.",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Zarandear» es mover algo de un lado a otro. Según fuentes de cocina, el pescado se abría en mariposa y se sujetaba entre rejillas que se movían sobre las brasas para que no se quemara.",
+    "en": "«Zarandear» means to shake something from side to side. According to cooking sources, the fish was opened like a butterfly and held between grills that were moved over the coals so it would not burn."
+   },
+   "origen": {
+    "es": "Es un platillo de la costa del Pacífico, asado abierto sobre brasas, que se come en Nayarit y en Sinaloa. Los dos estados dicen que es suyo y la disputa sigue sin resolverse. Algunas fuentes lo ligan con los pescadores de la isla de Mexcaltitán.",
+    "en": "It is a dish of the Pacific coast, roasted open over coals, eaten in Nayarit and Sinaloa. Both states say it is theirs and the dispute is still unsettled. Some sources link it to the fishermen of Mexcaltitán island."
+   },
+   "leyenda": {
+    "es": "Se cuenta que los pueblos que vivían en esa costa ya asaban así su pesca, abierta y sujeta entre varas, mucho antes de que existieran las parrillas de metal.",
+    "en": "Legend says the peoples who lived on that coast already roasted their catch this way, open and held between sticks, long before metal grills existed."
+   },
+   "curiosos": [
+    {
+     "es": "Hoy se prepara en parrilla, con brasas, o en el horno de la casa.",
+     "en": "Today it is made on a grill over coals or in the home oven."
+    },
+    {
+     "es": "Por la forma en que se abre, parece un libro o una mariposa.",
+     "en": "Because of the way it is opened, it looks like a book or a butterfly."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "pescado",
+    "en": "fish"
+   },
+   {
+    "es": "horno",
+    "en": "oven"
+   },
+   {
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "es": "cebolla",
+    "en": "onion"
+   },
+   {
+    "es": "limón",
+    "en": "lime"
+   }
+  ]
+ },
+ {
+  "id": "asado-de-boda",
+  "icono": "asado-de-boda",
+  "insignia": null,
+  "nombre": {
+   "es": "Asado de boda",
+   "en": "Asado de boda (wedding pork stew)"
+  },
+  "resumen": {
+   "es": "Cerdo guisado en salsa roja de chiles secos, naranja y especias, el guiso de las fiestas de Zacatecas.",
+   "en": "Pork stewed in a red sauce of dried chiles, orange and spices, the festive stew of Zacatecas."
+  },
+  "porciones": 6,
+  "tiempoPrep": 30,
+  "tiempoCoccion": 100,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Lávate las manos después de tocar los chiles y no te toques los ojos. La estufa y el guiso caliente queman: pide ayuda a un adulto. La carne de cerdo se cuece completa, hasta que quede muy suave.",
+   "en": "Wash your hands after touching chiles and do not touch your eyes. The stove and the hot stew can burn: ask an adult to help. Cook the pork all the way through until it is very tender."
+  },
+  "ingredientes": [
+   {
+    "cant": 1,
+    "un": "kg",
+    "es": "espaldilla de cerdo, en cubos",
+    "en": "pork shoulder, cubed"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "chiles anchos, sin semillas",
+    "en": "ancho chiles, seeded"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "chiles guajillo, sin semillas",
+    "en": "guajillo chiles, seeded"
+   },
+   {
+    "cant": 3,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla",
+    "en": "onion"
+   },
+   {
+    "cant": 100,
+    "un": "ml",
+    "es": "jugo de naranja",
+    "en": "orange juice"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "vinagre blanco",
+    "en": "white vinegar"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "comino molido",
+    "en": "ground cumin"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "clavos de olor",
+    "en": "cloves"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "raja de canela",
+    "en": "cinnamon stick"
+   },
+   {
+    "cant": 6,
+    "un": "pza",
+    "es": "granos de pimienta negra",
+    "en": "black peppercorns"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "manteca de cerdo o aceite",
+    "en": "lard or oil"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 1.5,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Cubre los chiles con agua caliente y déjalos remojar. Lávate las manos después de tocarlos.",
+    "en": "Cover the chiles with hot water and let them soak. Wash your hands after touching them.",
+    "min": 15
+   },
+   {
+    "es": "Licúa los chiles escurridos con el ajo, la cebolla, el jugo de naranja, el vinagre, el comino, el clavo, la canela, la pimienta y un poco del agua hasta que quede una salsa lisa. Cuélala.",
+    "en": "Blend the drained chiles with the garlic, onion, orange juice, vinegar, cumin, cloves, cinnamon, pepper and a little of the water until smooth. Strain it.",
+    "min": 4
+   },
+   {
+    "es": "Con ayuda de un adulto, calienta la manteca en una olla y dora los cubos de cerdo por todos lados.",
+    "en": "With an adult's help, heat the lard in a pot and brown the pork cubes on all sides.",
+    "min": 12
+   },
+   {
+    "es": "Agrega la salsa colada, el resto del agua y la sal. Mezcla bien.",
+    "en": "Add the strained sauce, the rest of the water and the salt. Mix well.",
+    "min": 2
+   },
+   {
+    "es": "Tapa y cuece a fuego bajo, moviendo de vez en cuando, hasta que la carne esté muy suave y la salsa espese.",
+    "en": "Cover and cook over low heat, stirring now and then, until the meat is very tender and the sauce thickens.",
+    "min": 90
+   },
+   {
+    "es": "Prueba la sal y sirve caliente con tortillas, arroz o frijoles.",
+    "en": "Taste for salt and serve hot with tortillas, rice or beans.",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Se llama «de boda» porque era el guiso de las bodas y las fiestas. En varios pueblos, la familia del novio lo ofrecía a la familia de la novia como muestra de respeto y para reafirmar el compromiso.",
+    "en": "It is called «de boda» (wedding) because it was the stew of weddings and parties. In several towns, the groom's family offered it to the bride's family as a sign of respect and to seal the engagement."
+   },
+   "origen": {
+    "es": "Es un guiso de cerdo en salsa roja de chiles secos, jugo de naranja y especias como clavo, canela y pimienta, típico de Zacatecas. También se come en Durango, Coahuila y La Laguna, donde se llama «asado de puerco».",
+    "en": "It is a pork stew in a red sauce of dried chiles, orange juice and spices such as clove, cinnamon and pepper, typical of Zacatecas. It is also eaten in Durango, Coahuila and La Laguna, where it is called «asado de puerco»."
+   },
+   "leyenda": {
+    "es": "Se cuenta que un general de la Revolución pidió un guiso de puerco con chiles rojos para sus soldados, y que de ahí quedó la receta. No hay pruebas de esta historia.",
+    "en": "Legend says a general of the Revolution asked for a pork stew with red chiles for his soldiers, and that is how the recipe stayed. There is no proof of this story."
+   },
+   "curiosos": [
+    {
+     "es": "En La Laguna lo llaman asado de puerco, y dicen que su receta vino de Zacatecas.",
+     "en": "In La Laguna it is called asado de puerco, and people say its recipe came from Zacatecas."
+    },
+    {
+     "es": "Cada familia ajusta sus chiles y sus especias; algunas le agregan chocolate.",
+     "en": "Each family adjusts its chiles and spices; some add chocolate."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "cerdo",
+    "en": "pork"
+   },
+   {
+    "es": "chiles",
+    "en": "chiles"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "naranja",
+    "en": "orange"
+   },
+   {
+    "es": "boda",
+    "en": "wedding"
+   }
+  ]
+ },
+ {
+  "id": "tacos-envenenados",
+  "icono": "tacos-envenenados",
+  "insignia": null,
+  "nombre": {
+   "es": "Tacos envenenados",
+   "en": "Tacos envenenados (fried potato, bean and chorizo tacos)"
+  },
+  "resumen": {
+   "es": "Tacos grandes de frijol, papa y chorizo, dorados en manteca. Tienen nombre de susto, pero son puro sabor.",
+   "en": "Big tacos of beans, potato and chorizo, fried golden in lard. The name sounds scary, but they are pure flavor."
+  },
+  "porciones": 4,
+  "tiempoPrep": 30,
+  "tiempoCoccion": 30,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "No llevan veneno: es solo el nombre. El aceite caliente salpica y quema: pide ayuda a un adulto para freír. El chorizo se cuece completo.",
+   "en": "They have no poison: it is only the name. Hot oil splashes and burns: ask an adult to help with the frying. Cook the chorizo all the way through."
+  },
+  "ingredientes": [
+   {
+    "cant": 300,
+    "un": "g",
+    "es": "papas, peladas y en cubos pequeños",
+    "en": "potatoes, peeled and diced"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "chorizo, sin tripa",
+    "en": "chorizo, casing removed"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "frijoles refritos",
+    "en": "refried beans"
+   },
+   {
+    "cant": 8,
+    "un": "pza",
+    "es": "tortillas grandes de harina",
+    "en": "large flour tortillas"
+   },
+   {
+    "cant": 300,
+    "un": "ml",
+    "es": "manteca de cerdo o aceite, para freír",
+    "en": "lard or oil, for frying"
+   },
+   {
+    "cant": 0.5,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "salsa roja, para servir",
+    "en": "red salsa, to serve"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Cuece las papas en agua con sal hasta que estén suaves. Escúrrelas.",
+    "en": "Boil the potatoes in salted water until soft. Drain them.",
+    "min": 15
+   },
+   {
+    "es": "En un sartén, cocina el chorizo moviéndolo hasta que esté bien cocido. Mézclalo con las papas y aplástalas un poco.",
+    "en": "In a pan, cook the chorizo, stirring, until fully cooked. Mix it with the potatoes and mash them a little.",
+    "min": 8
+   },
+   {
+    "es": "Unta cada tortilla con frijoles, pon encima el relleno de papa y chorizo y enrolla en forma de taco bien apretado.",
+    "en": "Spread each tortilla with beans, add the potato and chorizo filling and roll into a tight taco.",
+    "min": 10
+   },
+   {
+    "es": "Con ayuda de un adulto, calienta la manteca y fríe los tacos hasta que estén dorados por todos lados. Pásalos a un plato con papel.",
+    "en": "With an adult's help, heat the lard and fry the tacos until golden on all sides. Move them to a plate lined with paper.",
+    "min": 12
+   },
+   {
+    "es": "Déjalos reposar un momento y sirve con salsa roja.",
+    "en": "Let them rest a moment and serve with red salsa.",
+    "min": 3
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "No llevan veneno. «Envenenados» es una broma del nombre: son tacos fritos en manteca, grandes y muy llenadores. Hay varias historias sobre cómo se les puso así, pero ninguna está documentada.",
+    "en": "They have no poison. «Envenenados» (poisoned) is a joke in the name: they are large tacos fried in lard and very filling. There are several stories about how they got the name, but none is documented."
+   },
+   "origen": {
+    "es": "Son un antojito de la ciudad de Zacatecas: tortillas grandes rellenas de frijol, papa y chorizo y fritas hasta dorar. Algunas fuentes dicen que tienen más de 80 años; hoy también se hacen con queso o bistec.",
+    "en": "They are a snack from the city of Zacatecas: large tortillas filled with beans, potato and chorizo and fried until golden. Some sources say they are over 80 years old; today they are also made with cheese or steak."
+   },
+   "leyenda": {
+    "es": "Se cuenta que un taquero con un puesto cerca de la estación del tren puso un letrero que decía «si quiere envenenarse, coma tacos», y que la gente se rió tanto que el nombre se quedó.",
+    "en": "Legend says a taco seller with a stand near the train station put up a sign that said «if you want to get poisoned, eat tacos», and people laughed so much that the name stuck."
+   },
+   "curiosos": [
+    {
+     "es": "Aunque se llaman envenenados, están ricos y no hacen daño.",
+     "en": "Although they are called poisoned, they are delicious and harmless."
+    },
+    {
+     "es": "La salsa roja de la mesa es parte de la tradición.",
+     "en": "The red salsa on the table is part of the tradition."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "papas",
+    "en": "potatoes"
+   },
+   {
+    "es": "frijol",
+    "en": "beans"
+   },
+   {
+    "es": "chorizo",
+    "en": "chorizo"
+   },
+   {
+    "es": "manteca",
+    "en": "lard"
+   },
+   {
+    "es": "tacos",
+    "en": "tacos"
+   }
+  ]
+ },
+ {
+  "id": "gorditas-de-horno",
+  "icono": "gorditas-de-horno",
+  "insignia": null,
+  "nombre": {
+   "es": "Gorditas de horno",
+   "en": "Gorditas de horno (baked gorditas)"
+  },
+  "resumen": {
+   "es": "Gorditas de masa de maíz horneadas, rellenas de frijol, chorizo y queso derretido.",
+   "en": "Baked corn-dough gorditas filled with beans, chorizo and melted cheese."
+  },
+  "porciones": 6,
+  "tiempoPrep": 40,
+  "tiempoCoccion": 35,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "El horno y las gorditas recién salidas queman: pide ayuda a un adulto. El chorizo se cuece completo. Lleva queso: cuida las alergias a la leche.",
+   "en": "The oven and freshly baked gorditas can burn: ask an adult to help. Cook the chorizo all the way through. Watch for milk allergies because of the cheese."
+  },
+  "ingredientes": [
+   {
+    "cant": 300,
+    "un": "g",
+    "es": "masa harina de maíz",
+    "en": "corn masa flour"
+   },
+   {
+    "cant": 60,
+    "un": "g",
+    "es": "manteca de cerdo",
+    "en": "lard"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "polvo para hornear",
+    "en": "baking powder"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 300,
+    "un": "ml",
+    "es": "agua tibia",
+    "en": "warm water"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "chorizo, sin tripa",
+    "en": "chorizo, casing removed"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "frijoles refritos",
+    "en": "refried beans"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "queso asadero, rallado",
+    "en": "asadero cheese, grated"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "chiles chilacas o poblanos, asados y en tiras",
+    "en": "chilaca or poblano chiles, roasted and in strips"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Mezcla la masa harina con la manteca, el polvo para hornear y la sal. Agrega el agua tibia poco a poco y amasa hasta que quede suave.",
+    "en": "Mix the masa flour with the lard, baking powder and salt. Add the warm water little by little and knead until smooth.",
+    "min": 10
+   },
+   {
+    "es": "Cocina el chorizo en un sartén hasta que esté bien cocido. Mézclalo con los frijoles refritos.",
+    "en": "Cook the chorizo in a pan until fully cooked. Mix it with the refried beans.",
+    "min": 8
+   },
+   {
+    "es": "Con ayuda de un adulto, calienta el horno a 200 °C. Divide la masa en 12 bolitas y aplánalas en discos gruesos.",
+    "en": "With an adult's help, heat the oven to 200 °C. Divide the dough into 12 balls and flatten them into thick discs.",
+    "min": 10
+   },
+   {
+    "es": "Pon una cucharada del relleno de frijol y chorizo sobre la mitad de los discos, agrega queso y tiras de chile, y tapa con otro disco. Sella las orillas.",
+    "en": "Put a spoonful of the bean and chorizo filling on half of the discs, add cheese and chile strips, and cover with another disc. Seal the edges.",
+    "min": 10
+   },
+   {
+    "es": "Con ayuda de un adulto, hornea las gorditas hasta que estén doradas y firmes.",
+    "en": "With an adult's help, bake the gorditas until golden and firm.",
+    "min": 25
+   },
+   {
+    "es": "Déjalas reposar y sirve calientes con salsa.",
+    "en": "Let them rest and serve hot with salsa.",
+    "min": 5
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Gordita» es el diminutivo cariñoso de una tortilla gruesa y rellena. «De horno» las distingue de las que se cuecen en comal o se fríen: éstas se hornean, tradicionalmente en un horno de leña de adobe.",
+    "en": "«Gordita» is an affectionate name for a thick, filled tortilla. «De horno» (baked) sets them apart from those cooked on a comal or fried: these are baked, traditionally in a wood-fired adobe oven."
+   },
+   "origen": {
+    "es": "Las gorditas de horno son populares en Zacatecas, Durango y Jalisco, y una fuente señala a Zacatecas como su probable origen. En Zacatecas suelen llevar chorizo, frijoles refritos y queso derretido con chile chilaca.",
+    "en": "Gorditas de horno are popular in Zacatecas, Durango and Jalisco, and one source points to Zacatecas as their probable origin. In Zacatecas they are usually filled with chorizo, refried beans and melted cheese with chilaca chile."
+   },
+   "curiosos": [
+    {
+     "es": "Hay otra versión dulce, rellena de cuajada de leche de cabra con canela.",
+     "en": "There is another sweet version, filled with goat-milk cuajada with cinnamon."
+    },
+    {
+     "es": "Las de horno se hornean; la mayoría de las gorditas se cuecen en comal o se fríen.",
+     "en": "These are baked; most gorditas are cooked on a comal or fried."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "masa",
+    "en": "dough"
+   },
+   {
+    "es": "horno",
+    "en": "oven"
+   },
+   {
+    "es": "queso",
+    "en": "cheese"
+   },
+   {
+    "es": "frijoles",
+    "en": "beans"
+   },
+   {
+    "es": "chorizo",
+    "en": "chorizo"
+   }
+  ]
+ },
+ {
+  "id": "caldillo-duranguense",
+  "icono": "caldillo-duranguense",
+  "insignia": null,
+  "nombre": {
+   "es": "Caldillo duranguense",
+   "en": "Caldillo duranguense (Durango dried-beef and chile stew)"
+  },
+  "resumen": {
+   "es": "Caldo espeso de carne seca, papa y tomate con chile pasado, el platillo más querido de Durango.",
+   "en": "A hearty broth of dried beef, potato and tomato with chile pasado, Durango's most loved dish."
+  },
+  "porciones": 4,
+  "tiempoPrep": 20,
+  "tiempoCoccion": 50,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Lávate las manos después de tocar los chiles y no te toques los ojos. La estufa, el caldo y el aceite calientes queman: pide ayuda a un adulto. Si la carne seca está muy dura, cuécela completa hasta que quede suave.",
+   "en": "Wash your hands after touching chiles and do not touch your eyes. The stove, the hot broth and the oil can burn: ask an adult to help. If the dried beef is very tough, cook it all the way until tender."
+  },
+  "ingredientes": [
+   {
+    "cant": 200,
+    "un": "g",
+    "es": "carne seca de res, deshebrada",
+    "en": "dried beef, shredded"
+   },
+   {
+    "cant": 400,
+    "un": "g",
+    "es": "papas, peladas y en cubos",
+    "en": "potatoes, peeled and cubed"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "jitomates",
+    "en": "tomatoes"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla",
+    "en": "onion"
+   },
+   {
+    "cant": 3,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "chiles pasados, hidratados y en tiras",
+    "en": "chile pasado, rehydrated and in strips"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "aceite",
+    "en": "oil"
+   },
+   {
+    "cant": 1,
+    "un": "L",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Cubre los chiles pasados con agua caliente y déjalos remojar. Lávate las manos después de tocarlos.",
+    "en": "Cover the chile pasado with hot water and let it soak. Wash your hands after touching it.",
+    "min": 15
+   },
+   {
+    "es": "Licúa los jitomates con la cebolla y el ajo hasta que no queden grumos.",
+    "en": "Blend the tomatoes with the onion and garlic until smooth.",
+    "min": 3
+   },
+   {
+    "es": "Con ayuda de un adulto, calienta el aceite en una olla y fríe la carne seca un momento.",
+    "en": "With an adult's help, heat the oil in a pot and fry the dried beef for a moment.",
+    "min": 5
+   },
+   {
+    "es": "Agrega la salsa de jitomate y cocina hasta que cambie de color y espese un poco.",
+    "en": "Add the tomato sauce and cook until it changes color and thickens a little.",
+    "min": 8
+   },
+   {
+    "es": "Agrega el agua, las papas, las tiras de chile pasado y la sal. Tapa y cocina a fuego bajo.",
+    "en": "Add the water, potatoes, chile pasado strips and salt. Cover and cook over low heat.",
+    "min": 25
+   },
+   {
+    "es": "Prueba la sal, deja reposar tantito y sirve caliente con tortillas.",
+    "en": "Taste for salt, let it rest a little and serve hot with tortillas.",
+    "min": 5
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Caldillo» es un caldo ligero y sabroso; «duranguense» quiere decir de Durango. El «chile pasado» es un chile verde que se asa, se pela y se seca al sol, una forma de conservarlo típica de Durango y Chihuahua.",
+    "en": "«Caldillo» is a light, tasty broth; «duranguense» means from Durango. «Chile pasado» is a green chile that is roasted, peeled and sun-dried, a way of keeping it that is typical of Durango and Chihuahua."
+   },
+   "origen": {
+    "es": "Es un caldo de carne seca o machaca con chile pasado, papa y tomate, emblema de la cocina de Durango. La carne de res y de venado se secaba al sol para guardarla. Nadie ha documentado quién lo preparó primero.",
+    "en": "It is a broth of dried beef or machaca with chile pasado, potato and tomato, an emblem of Durango cooking. Beef and venison were sun-dried to keep them. Nobody has documented who first made it."
+   },
+   "curiosos": [
+    {
+     "es": "En 2007 Durango preparó un caldillo gigante de unos 5 mil litros y logró un récord Guinness.",
+     "en": "In 2007 Durango made a giant caldillo of about 5,000 liters and set a Guinness record."
+    },
+    {
+     "es": "La carne se seca al sol: así se guardaba antes de que hubiera refrigerador.",
+     "en": "The meat is dried in the sun: that is how it was kept before refrigerators existed."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "caldillo",
+    "en": "broth"
+   },
+   {
+    "es": "papas",
+    "en": "potatoes"
+   },
+   {
+    "es": "jitomates",
+    "en": "tomatoes"
+   },
+   {
+    "es": "carne seca",
+    "en": "dried beef"
+   },
+   {
+    "es": "cebolla",
+    "en": "onion"
+   }
+  ]
+ },
+ {
+  "id": "ate-de-membrillo",
+  "icono": "ate-de-membrillo",
+  "insignia": null,
+  "nombre": {
+   "es": "Ate de membrillo",
+   "en": "Ate de membrillo (quince paste)"
+  },
+  "resumen": {
+   "es": "Dulce firme de membrillo cocido con azúcar, que se corta en cuadritos y se come solo o con queso.",
+   "en": "A firm sweet of quince cooked with sugar, cut into squares and eaten alone or with cheese."
+  },
+  "porciones": 12,
+  "tiempoPrep": 30,
+  "tiempoCoccion": 120,
+  "nivel": {
+   "es": "Con paciencia",
+   "en": "Needs patience"
+  },
+  "nota": {
+   "es": "El agua hirviendo y el dulce de azúcar caliente salpican y queman mucho: pide ayuda a un adulto en toda la cocción y usa cuchara larga. Deja enfriar antes de tocarlo.",
+   "en": "Boiling water and hot sugar paste splash and burn badly: ask an adult to help during all the cooking and use a long spoon. Let it cool before touching it."
+  },
+  "ingredientes": [
+   {
+    "cant": 1,
+    "un": "kg",
+    "es": "membrillos",
+    "en": "quinces"
+   },
+   {
+    "cant": 250,
+    "un": "ml",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 800,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 30,
+    "un": "ml",
+    "es": "jugo de limón",
+    "en": "lime juice"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Lava los membrillos, quítales la pelusa, pélalos y córtalos en trozos sin el corazón.",
+    "en": "Wash the quinces, rub off the fuzz, peel them and cut them into pieces without the core.",
+    "min": 15
+   },
+   {
+    "es": "Con ayuda de un adulto, cuece los trozos con el agua en una olla tapada, hasta que estén muy suaves.",
+    "en": "With an adult's help, cook the pieces with the water in a covered pot until very soft.",
+    "min": 30
+   },
+   {
+    "es": "Licúa o machaca los membrillos con su agua hasta tener un puré liso.",
+    "en": "Blend or mash the quinces with their water into a smooth puree.",
+    "min": 5
+   },
+   {
+    "es": "Con ayuda de un adulto, regresa el puré a la olla y agrega el azúcar y el jugo de limón. Cocina a fuego bajo, moviendo siempre, hasta que se vea el fondo de la olla y el dulce se despegue.",
+    "en": "With an adult's help, return the puree to the pot and add the sugar and lime juice. Cook over low heat, stirring all the time, until you can see the bottom of the pot and the paste pulls away.",
+    "min": 60
+   },
+   {
+    "es": "Vierte el dulce caliente en un molde engrasado y alísalo. Déjalo enfriar y secar hasta que esté firme.",
+    "en": "Pour the hot paste into a greased mold and smooth the top. Let it cool and dry until firm.",
+    "min": 480
+   },
+   {
+    "es": "Desmolda y corta en cuadritos.",
+    "en": "Unmold and cut into little squares.",
+    "min": 5
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Ate» es una pasta dulce de fruta cocida con azúcar. «Membrillo» es la fruta: dura y muy perfumada, que se come cocida. En Europa a este dulce se le llamaba «carne de membrillo».",
+    "en": "«Ate» is a sweet fruit paste cooked with sugar. «Membrillo» is the quince: a hard, very fragrant fruit that is eaten cooked. In Europe this sweet was called «carne de membrillo» (quince meat)."
+   },
+   "origen": {
+    "es": "El ate se relaciona con las técnicas europeas de conservar fruta, sobre todo con el dulce de membrillo español. Durango es muy conocido por sus conservas de fruta, como el dulce de membrillo y la mermelada de durazno.",
+    "en": "Ate is related to European fruit-preserving techniques, especially Spanish quince paste. Durango is well known for its fruit preserves, such as quince sweets and peach jam."
+   },
+   "curiosos": [
+    {
+     "es": "Se come solo o con una rebanada de queso fresco.",
+     "en": "It is eaten alone or with a slice of fresh cheese."
+    },
+    {
+     "es": "Cuando se cocina, el membrillo cambia de color y se vuelve rosado o anaranjado.",
+     "en": "When cooked, quince changes color and turns pink or orange."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "membrillos",
+    "en": "quinces"
+   },
+   {
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "es": "molde",
+    "en": "mold"
+   },
+   {
+    "es": "limón",
+    "en": "lime"
+   }
+  ]
+ },
+ {
+  "id": "patoles",
+  "icono": "patoles",
+  "insignia": null,
+  "nombre": {
+   "es": "Patoles",
+   "en": "Patoles (Durango white bean soup)"
+  },
+  "resumen": {
+   "es": "Caldo de frijol blanco grande con chorizo, tocino y salchicha, servido con chiles en vinagre.",
+   "en": "A soup of large white beans with chorizo, bacon and sausage, served with pickled chiles."
+  },
+  "porciones": 6,
+  "tiempoPrep": 20,
+  "tiempoCoccion": 120,
+  "nivel": {
+   "es": "Con paciencia",
+   "en": "Needs patience"
+  },
+  "nota": {
+   "es": "El frijol seco se cuece completo, nunca crudo ni a medias. La estufa y el caldo caliente queman: pide ayuda a un adulto. Los chiles en vinagre pican: lávate las manos después de tocar los chiles y no te toques los ojos.",
+   "en": "Dried beans must be cooked all the way, never raw or half-cooked. The stove and the hot soup can burn: ask an adult to help. Pickled chiles are hot: wash your hands after touching chiles and do not touch your eyes."
+  },
+  "ingredientes": [
+   {
+    "cant": 400,
+    "un": "g",
+    "es": "frijol blanco grande (patol), remojado desde la noche anterior",
+    "en": "large white beans (patol), soaked from the night before"
+   },
+   {
+    "cant": 2,
+    "un": "L",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "chorizo",
+    "en": "chorizo"
+   },
+   {
+    "cant": 100,
+    "un": "g",
+    "es": "tocino, en trozos",
+    "en": "bacon, in pieces"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "salchichas, en rodajas",
+    "en": "sausages, sliced"
+   },
+   {
+    "cant": 3,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla",
+    "en": "onion"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "manteca de cerdo",
+    "en": "lard"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "chiles güeros en vinagre, para servir",
+    "en": "pickled güero chiles, to serve"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Remoja el frijol en agua desde la noche anterior. Escúrrelo.",
+    "en": "Soak the beans in water from the night before. Drain them.",
+    "min": 480
+   },
+   {
+    "es": "Con ayuda de un adulto, cuece el frijol con el agua, el ajo y la mitad de la cebolla a fuego bajo, tapado, hasta que esté muy suave.",
+    "en": "With an adult's help, cook the beans with the water, garlic and half of the onion over low heat, covered, until very soft.",
+    "min": 90
+   },
+   {
+    "es": "En un sartén, calienta la manteca y fríe la otra mitad de la cebolla picada, el chorizo y el tocino hasta que se doren.",
+    "en": "In a pan, heat the lard and fry the other half of the chopped onion, the chorizo and the bacon until browned.",
+    "min": 10
+   },
+   {
+    "es": "Agrega el sazón frito y las salchichas al frijol, con la sal. Cocina un rato más.",
+    "en": "Add the fried mix and the sausages to the beans, with the salt. Cook a little longer.",
+    "min": 15
+   },
+   {
+    "es": "Sirve caliente con los chiles güeros en vinagre y tortillas.",
+    "en": "Serve hot with the pickled güero chiles and tortillas.",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "En Durango y Chihuahua, «patol» es el nombre de un frijol blanco grande, la semilla de un árbol de la familia de las leguminosas. El caldo toma su nombre de ese frijol.",
+    "en": "In Durango and Chihuahua, «patol» is the name of a large white bean, the seed of a tree in the legume family. The soup takes its name from that bean."
+   },
+   "origen": {
+    "es": "Los patoles son un platillo típico de Durango: un caldo de frijol blanco que se sirve con embutidos (chorizo, salchicha, tocino, jamón) y con tornachiles güeros, que son chiles en vinagre.",
+    "en": "Patoles are a typical Durango dish: a white bean soup served with cured meats (chorizo, sausage, bacon, ham) and with tornachiles güeros, which are pickled chiles."
+   },
+   "curiosos": [
+    {
+     "es": "En otras partes de México «patol» es otro nombre del árbol colorín, que no es el mismo ingrediente.",
+     "en": "In other parts of Mexico «patol» is another name for the colorín tree, which is not the same ingredient."
+    },
+    {
+     "es": "Los chiles güeros se sirven aparte para que cada quien les ponga a su gusto.",
+     "en": "The güero chiles are served on the side so everyone adds them to taste."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "frijol",
+    "en": "bean"
+   },
+   {
+    "es": "caldo",
+    "en": "broth"
+   },
+   {
+    "es": "tocino",
+    "en": "bacon"
+   },
+   {
+    "es": "chorizo",
+    "en": "chorizo"
+   },
+   {
+    "es": "cebolla",
+    "en": "onion"
+   }
+  ]
+ },
+ {
+  "id": "cemitas",
+  "icono": "cemitas",
+  "insignia": null,
+  "nombre": {
+   "es": "Cemitas poblanas",
+   "en": "Cemitas poblanas (Puebla sandwiches)"
+  },
+  "resumen": {
+   "es": "La torta de Puebla: pan con ajonjolí, milanesa, quesillo, aguacate, chipotle y pápalo.",
+   "en": "The sandwich of Puebla: sesame bread with breaded beef, string cheese, avocado, chipotle and papalo herb."
+  },
+  "porciones": 4,
+  "tiempoPrep": 30,
+  "tiempoCoccion": 20,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Pide ayuda a un adulto con el aceite caliente. La carne debe quedar cocida por dentro, sin nada rosa. Lávate las manos después de tocar los chiles y no te toques los ojos. Lleva huevo, ajonjolí y gluten: avisa si alguien es alérgico.",
+   "en": "Ask an adult to help with the hot oil. The meat must be cooked all the way through, with nothing pink. Wash your hands after touching the chilies and do not touch your eyes. It has egg, sesame and gluten: tell everyone if someone is allergic."
+  },
+  "ingredientes": [
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "panes de cemita con ajonjolí (o bollos redondos con ajonjolí)",
+    "en": "cemita rolls with sesame (or round sesame buns)"
+   },
+   {
+    "cant": 400,
+    "un": "g",
+    "es": "bistec de res muy delgado",
+    "en": "very thin beef steak"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "huevos",
+    "en": "eggs"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "pan molido",
+    "en": "breadcrumbs"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "aceite, para freír",
+    "en": "oil, for frying"
+   },
+   {
+    "cant": 200,
+    "un": "g",
+    "es": "quesillo (queso de hebra) deshebrado",
+    "en": "shredded quesillo (string cheese)"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "aguacates maduros",
+    "en": "ripe avocados"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "chiles chipotles en adobo, picados",
+    "en": "chipotle chilies in adobo, chopped"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla en rebanadas finas",
+    "en": "onion, thinly sliced"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "hojas de pápalo (o de cilantro, si no lo hay)",
+    "en": "papalo leaves (or cilantro if you cannot find it)"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Sazona los bistecs con la sal. Bate los huevos en un plato hondo y pon el pan molido en otro. Pasa cada bistec por el huevo y luego por el pan, presionando para que se pegue.",
+    "en": "Season the steaks with the salt. Beat the eggs in one shallow bowl and put the breadcrumbs in another. Dip each steak in the egg and then in the crumbs, pressing so they stick.",
+    "min": 10
+   },
+   {
+    "es": "Con ayuda de un adulto, calienta el aceite en una sartén a fuego medio y fríe cada milanesa hasta que quede dorada y cocida por dentro. Escúrrelas sobre papel absorbente.",
+    "en": "With an adult's help, heat the oil in a pan over medium heat and fry each breaded steak until golden and cooked all the way through. Drain them on paper towels.",
+    "min": 12
+   },
+   {
+    "es": "Machaca los aguacates con un tenedor y mézclalos con una pizca de sal.",
+    "en": "Mash the avocados with a fork and mix in a pinch of salt.",
+    "min": 3
+   },
+   {
+    "es": "Corta los panes por la mitad y caliéntalos un poco en un comal, solo hasta que se tuesten por dentro.",
+    "en": "Cut the rolls in half and warm them a little on a griddle, just until the insides are toasted.",
+    "min": 4
+   },
+   {
+    "es": "Arma cada cemita: aguacate en el pan, la milanesa, el quesillo, la cebolla, el chipotle y varias hojas de pápalo. Tapa con la otra mitad.",
+    "en": "Build each cemita: avocado on the bread, then the breaded steak, quesillo, onion, chipotle and several papalo leaves. Close with the other half.",
+    "min": 5
+   },
+   {
+    "es": "Presiona suavemente, corta por la mitad si quieres y come enseguida. ¡Buen provecho, mijo!",
+    "en": "Press gently, cut in half if you like and eat right away. Enjoy, mijo!",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "La explicación más citada es que «cemita» viene de «acemite», un pan hecho sin levadura; así lo registra la Real Academia. Hay otras versiones, así que el origen exacto de la palabra no está cerrado.",
+    "en": "The most quoted explanation is that «cemita» comes from «acemite», a bread made without yeast, as the Royal Spanish Academy records it. There are other versions, so the exact origin of the word is not settled."
+   },
+   "origen": {
+    "es": "La cemita es una torta típica de Puebla, hecha con un pan redondo de corteza crujiente y ajonjolí por encima. Se relaciona con el pan de la época colonial y hoy se rellena con carne, quesillo, aguacate, chipotle y pápalo.",
+    "en": "The cemita is a typical sandwich of Puebla, made with a round roll with a crisp crust and sesame seeds on top. It is linked to the bread of colonial times and today it is filled with meat, quesillo, avocado, chipotle and papalo."
+   },
+   "curiosos": [
+    {
+     "es": "El pápalo viene de la palabra náhuatl «papalotl», que quiere decir «mariposa».",
+     "en": "The word papalo comes from the Nahuatl «papalotl», which means «butterfly»."
+    },
+    {
+     "es": "La semita de Guerrero es otro pan: es suave, dulce y no lleva ajonjolí.",
+     "en": "The semita bread of Guerrero is a different one: it is soft, sweet and has no sesame."
+    },
+    {
+     "es": "En Puebla se celebra cada año un Festival de la Cemita.",
+     "en": "Puebla holds a Cemita Festival every year."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "pan",
+    "en": "bread"
+   },
+   {
+    "es": "ajonjolí",
+    "en": "sesame"
+   },
+   {
+    "es": "aguacate",
+    "en": "avocado"
+   },
+   {
+    "es": "quesillo",
+    "en": "string cheese"
+   },
+   {
+    "es": "cebolla",
+    "en": "onion"
+   }
+  ]
+ },
+ {
+  "id": "chalupas-poblanas",
+  "icono": "chalupas-poblanas",
+  "insignia": null,
+  "nombre": {
+   "es": "Chalupas poblanas",
+   "en": "Chalupas poblanas (little fried tortillas)"
+  },
+  "resumen": {
+   "es": "Tortillitas fritas bañadas con salsa verde o roja, cerdo deshebrado y cebolla.",
+   "en": "Little fried tortillas topped with green or red salsa, shredded pork and onion."
+  },
+  "porciones": 6,
+  "tiempoPrep": 30,
+  "tiempoCoccion": 75,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Pide ayuda a un adulto con el aceite caliente y con la estufa. El cerdo debe cocerse completo, sin nada rosa. Lávate las manos después de tocar los chiles y no te toques los ojos.",
+   "en": "Ask an adult to help with the hot oil and the stove. The pork must be cooked all the way through, with nothing pink. Wash your hands after touching the chilies and do not touch your eyes."
+  },
+  "ingredientes": [
+   {
+    "cant": 500,
+    "un": "g",
+    "es": "carne de cerdo (pulpa o maciza), en trozos",
+    "en": "pork (shoulder), in chunks"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla (para cocer la carne)",
+    "en": "onion (for cooking the meat)"
+   },
+   {
+    "cant": 2,
+    "un": "dientes",
+    "es": "ajo (para cocer la carne)",
+    "en": "garlic cloves (for cooking the meat)"
+   },
+   {
+    "cant": 250,
+    "un": "g",
+    "es": "tomates verdes",
+    "en": "tomatillos"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "chiles serranos",
+    "en": "serrano chilies"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "jitomates medianos",
+    "en": "medium tomatoes"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "chiles guajillo, sin semillas ni venas",
+    "en": "guajillo chilies, seeds and veins removed"
+   },
+   {
+    "cant": 1,
+    "un": "dientes",
+    "es": "ajo (para las salsas)",
+    "en": "garlic clove (for the salsas)"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla picada, para decorar",
+    "en": "chopped onion, to garnish"
+   },
+   {
+    "cant": 18,
+    "un": "pza",
+    "es": "tortillas de maíz chicas (de 8 cm)",
+    "en": "small corn tortillas (8 cm)"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "aceite, para freír",
+    "en": "oil, for frying"
+   },
+   {
+    "cant": 2,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Pon el cerdo en una olla con agua que lo cubra, la media cebolla, 2 dientes de ajo y 1 cucharadita de sal. Con ayuda de un adulto, cuécelo a fuego medio hasta que se deshaga con un tenedor.",
+    "en": "Put the pork in a pot with enough water to cover it, the half onion, 2 garlic cloves and 1 teaspoon of salt. With an adult's help, cook it over medium heat until it falls apart with a fork.",
+    "min": 60
+   },
+   {
+    "es": "Saca la carne, deja que se enfríe un poco y deshébrala con las manos limpias. Guarda un poco del caldo.",
+    "en": "Take out the meat, let it cool a little and shred it with clean hands. Save a little of the broth.",
+    "min": 10
+   },
+   {
+    "es": "Salsa verde: cuece los tomates verdes con los serranos en agua hasta que cambien de color y queden suaves. Licúalos con medio diente de ajo y una pizca de sal.",
+    "en": "Green salsa: cook the tomatillos and serranos in water until they change color and turn soft. Blend them with half a garlic clove and a pinch of salt.",
+    "min": 10
+   },
+   {
+    "es": "Salsa roja: remoja los guajillo en agua caliente hasta que ablanden. Cuece los jitomates. Licúa todo con medio diente de ajo, un poco de caldo y una pizca de sal.",
+    "en": "Red salsa: soak the guajillos in hot water until soft. Cook the tomatoes. Blend everything with half a garlic clove, a little broth and a pinch of salt.",
+    "min": 12
+   },
+   {
+    "es": "Con ayuda de un adulto, fríe las tortillas en el aceite poco a poco, de 1 minuto por lado, hasta que estén doradas y firmes. Escúrrelas sobre papel absorbente.",
+    "en": "With an adult's help, fry the tortillas in the oil a few at a time, about 1 minute per side, until golden and firm. Drain them on paper towels.",
+    "min": 10
+   },
+   {
+    "es": "Baña cada chalupa con salsa, pon encima carne deshebrada y cebolla. Haz la mitad con salsa verde y la mitad con roja. Come enseguida, mientras estén crujientes.",
+    "en": "Top each chalupa with salsa, then shredded meat and onion. Make half with green salsa and half with red. Eat right away while they are crunchy.",
+    "min": 5
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Chalupa» también es el nombre de una canoa pequeña. Una explicación dice que la tortillita curva parece una barquita, y otra, que viene de una palabra vasca para una barca. No está confirmado cuál es la verdadera.",
+    "en": "«Chalupa» is also the name of a small boat. One explanation says the curved little tortilla looks like a tiny boat, and another says it comes from a Basque word for a small boat. It is not confirmed which one is true."
+   },
+   "origen": {
+    "es": "Las chalupas poblanas son un antojito de Puebla, ligado al barrio de El Alto, en el centro histórico. Se hacen con tortillas pequeñas fritas, salsa verde o roja, cerdo deshebrado y cebolla, y se sirven en tandas.",
+    "en": "Chalupas poblanas are a street snack from Puebla, linked to the El Alto neighborhood in the historic center. They are made with small fried tortillas, green or red salsa, shredded pork and onion, and are served in rounds."
+   },
+   "leyenda": {
+    "es": "Se cuenta que, en los días de una famosa batalla de Puebla, las cocineras del barrio daban de comer a los soldados estas tortillitas fritas, fáciles de hacer y de comer de pie.",
+    "en": "Legend says that, in the days of a famous battle in Puebla, the neighborhood cooks fed the soldiers these little fried tortillas, easy to make and to eat standing up."
+   },
+   "curiosos": [
+    {
+     "es": "Lo tradicional es servirlas en tandas de verdes y rojas mezcladas.",
+     "en": "The tradition is to serve them in rounds of green and red ones mixed."
+    },
+    {
+     "es": "La ciudad de Pachuca también presume la chalupa como suya y la nombró platillo oficial.",
+     "en": "The city of Pachuca also claims the chalupa as its own and named it its official dish."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "tortillas",
+    "en": "tortillas"
+   },
+   {
+    "es": "cebolla",
+    "en": "onion"
+   },
+   {
+    "es": "salsa",
+    "en": "sauce"
+   },
+   {
+    "es": "cerdo",
+    "en": "pork"
+   }
+  ]
+ },
+ {
+  "id": "tortitas-santa-clara",
+  "icono": "tortitas-santa-clara",
+  "insignia": null,
+  "nombre": {
+   "es": "Tortitas de Santa Clara",
+   "en": "Tortitas de Santa Clara (Puebla shortbread cookies)"
+  },
+  "resumen": {
+   "es": "Galletitas de mantequilla y vainilla cubiertas con dulce de pepita de calabaza. Un dulce poblano de convento.",
+   "en": "Butter and vanilla cookies topped with pumpkin seed candy. A Puebla sweet from the convent kitchens."
+  },
+  "porciones": 16,
+  "tiempoPrep": 40,
+  "tiempoCoccion": 35,
+  "nivel": {
+   "es": "Con paciencia",
+   "en": "Needs patience"
+  },
+  "nota": {
+   "es": "El horno y el almíbar caliente queman: pide ayuda a un adulto. Lleva huevo, gluten y semillas de calabaza: avisa si alguien es alérgico.",
+   "en": "The oven and the hot syrup can burn: ask an adult to help. It has egg, gluten and pumpkin seeds: tell everyone if someone is allergic."
+  },
+  "ingredientes": [
+   {
+    "cant": 250,
+    "un": "g",
+    "es": "harina de trigo",
+    "en": "wheat flour"
+   },
+   {
+    "cant": 120,
+    "un": "g",
+    "es": "mantequilla suave",
+    "en": "soft butter"
+   },
+   {
+    "cant": 80,
+    "un": "g",
+    "es": "azúcar glass",
+    "en": "powdered sugar"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "huevo",
+    "en": "egg"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "vainilla",
+    "en": "vanilla"
+   },
+   {
+    "cant": 120,
+    "un": "g",
+    "es": "pepitas de calabaza peladas, sin sal",
+    "en": "shelled pumpkin seeds, unsalted"
+   },
+   {
+    "cant": 100,
+    "un": "g",
+    "es": "piloncillo, rallado",
+    "en": "piloncillo, grated"
+   },
+   {
+    "cant": 100,
+    "un": "ml",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 1,
+    "un": "cm",
+    "es": "raja de canela",
+    "en": "cinnamon stick"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Calienta el horno a 180 °C. Bate la mantequilla con el azúcar glass hasta que quede cremosa. Agrega el huevo y la vainilla.",
+    "en": "Heat the oven to 180 °C. Beat the butter with the powdered sugar until creamy. Add the egg and the vanilla.",
+    "min": 8
+   },
+   {
+    "es": "Incorpora la harina y amasa solo hasta formar una masa suave. Si se pega, déjala 10 minutos en el refrigerador.",
+    "en": "Mix in the flour and knead only until you have a soft dough. If it sticks, leave it 10 minutes in the refrigerator.",
+    "min": 12
+   },
+   {
+    "es": "Extiende la masa de 1 centímetro de grosor, corta círculos de unos 5 cm y ponlos en una charola sin engrasar.",
+    "en": "Roll the dough out 1 centimeter thick, cut circles about 5 cm wide and put them on an ungreased tray.",
+    "min": 10
+   },
+   {
+    "es": "Con ayuda de un adulto, hornéalas hasta que estén ligeramente doradas de las orillas. Déjalas enfriar.",
+    "en": "With an adult's help, bake them until lightly golden at the edges. Let them cool.",
+    "min": 15
+   },
+   {
+    "es": "Tuesta las pepitas en un comal a fuego bajo, moviendo, hasta que suenen y se esponjen. Muélelas en la licuadora hasta formar un polvo grueso.",
+    "en": "Toast the pumpkin seeds on a griddle over low heat, stirring, until they pop and puff up. Grind them in the blender into a coarse powder.",
+    "min": 6
+   },
+   {
+    "es": "Con ayuda de un adulto, cuece el piloncillo con el agua y la canela a fuego bajo hasta que forme un almíbar espeso. Retira la canela, agrega las pepitas molidas y mezcla hasta que se junte como pasta.",
+    "en": "With an adult's help, cook the piloncillo with the water and cinnamon over low heat until it makes a thick syrup. Remove the cinnamon, add the ground seeds and mix until it comes together like a paste.",
+    "min": 8
+   },
+   {
+    "es": "Deja que la pasta se enfríe unos minutos y úntala con una cucharita sobre cada galleta. Deja reposar para que el dulce cuaje.",
+    "en": "Let the paste cool a few minutes and spread it on each cookie with a small spoon. Let them rest so the candy sets.",
+    "min": 20
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Se llaman así por el convento de Santa Clara, en Puebla, de cuyas cocinas salieron muchos dulces. Son «tortitas» porque son pequeñas, redondas y planas.",
+    "en": "They are named after the Santa Clara convent in Puebla, whose kitchens produced many sweets. They are «tortitas» because they are small, round and flat."
+   },
+   "origen": {
+    "es": "Son un dulce poblano de origen colonial, ligado a los conventos de Puebla. Mezclan ingredientes europeos (harina, mantequilla, azúcar) con uno de América: la pepita de calabaza. La calle de los dulces de Puebla conserva la tradición.",
+    "en": "They are a sweet from Puebla with colonial roots, linked to the convents of Puebla. They mix European ingredients (flour, butter, sugar) with one from the Americas: pumpkin seeds. The candy street of Puebla keeps the tradition alive."
+   },
+   "leyenda": {
+    "es": "Se cuenta que una monja quiso hacer un postre nuevo y juntó una galletita europea con el dulce de pepita que ya se hacía en México. Así nació la tortita.",
+    "en": "Legend says a nun wanted to make a new dessert and put together a European cookie with the pumpkin seed candy already made in Mexico. That is how the tortita was born."
+   },
+   "curiosos": [
+    {
+     "es": "La pepita de calabaza ya se comía en México mucho antes de que llegaran el trigo y el azúcar.",
+     "en": "Pumpkin seeds were eaten in Mexico long before wheat and sugar arrived."
+    },
+    {
+     "es": "En Puebla hay una calle famosa por sus dulces: la «Calle de los Dulces», donde estuvo el convento.",
+     "en": "Puebla has a street famous for its sweets: the «Calle de los Dulces», where the convent used to be."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "harina",
+    "en": "flour"
+   },
+   {
+    "es": "mantequilla",
+    "en": "butter"
+   },
+   {
+    "es": "pepitas",
+    "en": "pumpkin seeds"
+   },
+   {
+    "es": "piloncillo",
+    "en": "unrefined cane sugar"
+   }
+  ]
+ },
+ {
+  "id": "tlayudas",
+  "icono": "tlayudas",
+  "insignia": null,
+  "nombre": {
+   "es": "Tlayudas oaxaqueñas",
+   "en": "Oaxacan tlayudas (giant tortilla pizzas)"
+  },
+  "resumen": {
+   "es": "Tortilla grande y crujiente con asiento, frijoles, quesillo, tasajo, aguacate y salsa.",
+   "en": "A big crunchy tortilla with asiento, beans, quesillo, dried beef, avocado and salsa."
+  },
+  "porciones": 4,
+  "tiempoPrep": 25,
+  "tiempoCoccion": 30,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Pide ayuda a un adulto con el comal caliente y la estufa. La carne debe quedar cocida por dentro, sin nada rosa. Lávate las manos después de tocar los chiles y no te toques los ojos.",
+   "en": "Ask an adult to help with the hot griddle and the stove. The meat must be cooked all the way through, with nothing pink. Wash your hands after touching the chilies and do not touch your eyes."
+  },
+  "ingredientes": [
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "tlayudas o tortillas de maíz grandes (de 25 a 30 cm)",
+    "en": "tlayudas or large corn tortillas (25 to 30 cm)"
+   },
+   {
+    "cant": 300,
+    "un": "g",
+    "es": "frijoles negros cocidos, machacados",
+    "en": "cooked black beans, mashed"
+   },
+   {
+    "cant": 4,
+    "un": "cda",
+    "es": "asiento (o manteca de cerdo con chicharrón triturado)",
+    "en": "asiento (or lard with crushed pork rind)"
+   },
+   {
+    "cant": 250,
+    "un": "g",
+    "es": "quesillo (queso de hebra) deshebrado",
+    "en": "shredded quesillo (string cheese)"
+   },
+   {
+    "cant": 250,
+    "un": "g",
+    "es": "tasajo o cecina (carne de res en tiras delgadas)",
+    "en": "tasajo or cecina (thin strips of beef)"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "aguacate en rebanadas",
+    "en": "sliced avocado"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "col o lechuga en tiras finas",
+    "en": "finely shredded cabbage or lettuce"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "chiles pasilla, sin semillas ni venas",
+    "en": "pasilla chilies, seeds and veins removed"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "tomates verdes",
+    "en": "tomatillos"
+   },
+   {
+    "cant": 1,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic clove"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Remoja los chiles pasilla en agua caliente hasta que ablanden. Cuece los tomates verdes en agua. Licúa todo con el ajo, la sal y un poco del agua de remojar. Esa es tu salsa.",
+    "en": "Soak the pasilla chilies in hot water until soft. Cook the tomatillos in water. Blend everything with the garlic, the salt and a little of the soaking water. That is your salsa.",
+    "min": 12
+   },
+   {
+    "es": "Con ayuda de un adulto, asa la carne en un comal bien caliente, 3 minutos por lado, hasta que esté cocida y con manchitas doradas. Córtala en tiras.",
+    "en": "With an adult's help, cook the meat on a very hot griddle, 3 minutes per side, until cooked through and lightly browned. Cut it into strips.",
+    "min": 8
+   },
+   {
+    "es": "Mezcla el asiento con los frijoles machacados y caliéntalos en una olla a fuego bajo, moviendo, hasta que se unten fácil.",
+    "en": "Mix the asiento with the mashed beans and warm them in a pot over low heat, stirring, until easy to spread.",
+    "min": 6
+   },
+   {
+    "es": "Tuesta cada tlayuda en el comal caliente, 1 minuto por lado, hasta que esté firme y con puntitos dorados.",
+    "en": "Toast each tlayuda on the hot griddle, 1 minute per side, until firm with golden spots.",
+    "min": 6
+   },
+   {
+    "es": "Unta los frijoles en la tlayuda, cubre con el quesillo y regrésala al comal hasta que el queso se derrita.",
+    "en": "Spread the beans on the tlayuda, cover with the quesillo and put it back on the griddle until the cheese melts.",
+    "min": 4
+   },
+   {
+    "es": "Agrega la carne, el aguacate, la col y la salsa. Dóblala por la mitad o déjala abierta, y comparte. ¡Buen provecho, mijo!",
+    "en": "Add the meat, avocado, cabbage and salsa. Fold it in half or leave it open, and share. Enjoy, mijo!",
+    "min": 3
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Tlayuda» viene del náhuatl y se liga a «tlaolli», el grano de maíz. La explicación exacta no tiene consenso. También se oye «clayuda». La palabra aparece primero para describir un tipo de tortilla.",
+    "en": "«Tlayuda» comes from Nahuatl and is linked to «tlaolli», the corn kernel. The exact explanation has no consensus. You also hear «clayuda». The word first appears to describe a type of tortilla."
+   },
+   "origen": {
+    "es": "La tlayuda es una tortilla grande, delgada y tostada típica de Oaxaca, sobre todo de los Valles Centrales. La palabra aparece por escrito a finales del siglo XIX. Hoy se sirve con asiento, frijoles, quesillo, carne y salsa.",
+    "en": "The tlayuda is a large, thin, toasted tortilla typical of Oaxaca, especially the Central Valleys. The word appears in writing in the late nineteenth century. Today it is served with asiento, beans, quesillo, meat and salsa."
+   },
+   "leyenda": {
+    "es": "Se cuenta que las tlayudas se hacían grandes y secas para que los arrieros las llevaran de viaje sin que se echaran a perder, y que se comían con lo que hubiera a mano.",
+    "en": "Legend says tlayudas were made big and dry so that muleteers could carry them on trips without spoiling, and that they were eaten with whatever was at hand."
+   },
+   "curiosos": [
+    {
+     "es": "El asiento es la grasa espesa y oscura que queda al freír el chicharrón.",
+     "en": "Asiento is the thick, dark drippings left over from frying pork rind."
+    },
+    {
+     "es": "La cocina tradicional mexicana es Patrimonio Cultural Inmaterial de la Humanidad de la UNESCO.",
+     "en": "Traditional Mexican cuisine is on UNESCO's Intangible Cultural Heritage of Humanity list."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "frijoles",
+    "en": "beans"
+   },
+   {
+    "es": "quesillo",
+    "en": "string cheese"
+   },
+   {
+    "es": "aguacate",
+    "en": "avocado"
+   },
+   {
+    "es": "salsa",
+    "en": "sauce"
+   },
+   {
+    "es": "carne",
+    "en": "meat"
+   }
+  ]
+ },
+ {
+  "id": "mole-negro",
+  "icono": "mole-negro",
+  "insignia": null,
+  "nombre": {
+   "es": "Mole negro oaxaqueño",
+   "en": "Oaxacan black mole"
+  },
+  "resumen": {
+   "es": "El mole oscuro de Oaxaca: chiles, chocolate, frutos secos y especias sobre pollo. Un platillo de fiesta.",
+   "en": "The dark mole of Oaxaca: chilies, chocolate, nuts and spices over chicken. A party dish."
+  },
+  "porciones": 8,
+  "tiempoPrep": 60,
+  "tiempoCoccion": 150,
+  "nivel": {
+   "es": "Con paciencia",
+   "en": "Needs patience"
+  },
+  "nota": {
+   "es": "Los chiles se tuestan solo unos segundos: si se queman, el mole amarga. Pide ayuda a un adulto con el aceite caliente y las salpicaduras. Lleva almendras, ajonjolí y cacahuate: avisa si alguien es alérgico. Lávate las manos después de tocar los chiles y no te toques los ojos.",
+   "en": "Chilies toast for only a few seconds: if they burn, the mole turns bitter. Ask an adult to help with the hot oil and splashes. It has almonds, sesame and peanuts: tell everyone if someone is allergic. Wash your hands after touching the chilies and do not touch your eyes."
+  },
+  "ingredientes": [
+   {
+    "cant": 2,
+    "un": "kg",
+    "es": "pollo en piezas",
+    "en": "chicken, in pieces"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla (para el caldo)",
+    "en": "onion (for the broth)"
+   },
+   {
+    "cant": 2,
+    "un": "dientes",
+    "es": "ajo (para el caldo)",
+    "en": "garlic cloves (for the broth)"
+   },
+   {
+    "cant": 6,
+    "un": "pza",
+    "es": "chiles chilhuacle negro, sin semillas ni venas (en mercados oaxaqueños o tiendas en línea; si no los hallas, usa 3 mulatos y 3 pasilla)",
+    "en": "black chilhuacle chilies, seeds and veins removed (at Oaxacan markets or online shops; if you cannot find them, use 3 mulato and 3 pasilla)"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "chiles anchos, sin semillas ni venas",
+    "en": "ancho chilies, seeds and veins removed"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "chiles pasilla, sin semillas ni venas",
+    "en": "pasilla chilies, seeds and veins removed"
+   },
+   {
+    "cant": 40,
+    "un": "g",
+    "es": "ajonjolí",
+    "en": "sesame seeds"
+   },
+   {
+    "cant": 30,
+    "un": "g",
+    "es": "almendras",
+    "en": "almonds"
+   },
+   {
+    "cant": 30,
+    "un": "g",
+    "es": "cacahuates sin sal",
+    "en": "unsalted peanuts"
+   },
+   {
+    "cant": 40,
+    "un": "g",
+    "es": "pasas",
+    "en": "raisins"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "plátano macho maduro, en rebanadas",
+    "en": "ripe plantain, sliced"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "bolillo duro, en rebanadas",
+    "en": "stale roll, sliced"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "jitomates medianos",
+    "en": "medium tomatoes"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "tomates verdes",
+    "en": "tomatillos"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla para el mole",
+    "en": "onion for the mole"
+   },
+   {
+    "cant": 3,
+    "un": "dientes",
+    "es": "ajo para el mole",
+    "en": "garlic cloves for the mole"
+   },
+   {
+    "cant": 5,
+    "un": "cm",
+    "es": "raja de canela",
+    "en": "cinnamon stick"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "clavos de olor",
+    "en": "whole cloves"
+   },
+   {
+    "cant": 6,
+    "un": "pza",
+    "es": "pimientas negras",
+    "en": "black peppercorns"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "orégano seco",
+    "en": "dried oregano"
+   },
+   {
+    "cant": 60,
+    "un": "g",
+    "es": "chocolate de mesa",
+    "en": "Mexican table chocolate"
+   },
+   {
+    "cant": 4,
+    "un": "cda",
+    "es": "manteca o aceite",
+    "en": "lard or oil"
+   },
+   {
+    "cant": 1.5,
+    "un": "L",
+    "es": "caldo de pollo (el de la cocción)",
+    "en": "chicken broth (from cooking the chicken)"
+   },
+   {
+    "cant": 1,
+    "un": "cda",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 2,
+    "un": "cdta",
+    "es": "sal, o al gusto",
+    "en": "salt, or to taste"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Pon el pollo en una olla con 3 litros de agua, la media cebolla, 2 dientes de ajo y 1 cucharadita de sal. Con ayuda de un adulto, cuécelo a fuego medio hasta que esté suave.",
+    "en": "Put the chicken in a pot with 3 liters of water, the half onion, 2 garlic cloves and 1 teaspoon of salt. With an adult's help, cook it over medium heat until tender.",
+    "min": 45
+   },
+   {
+    "es": "Abre los chiles y quítales semillas y venas. Tuéstalos 10 segundos por lado en un comal, sin que se quemen, y remójalos en agua caliente.",
+    "en": "Open the chilies and remove the seeds and veins. Toast them 10 seconds per side on a griddle, without burning, and soak them in hot water.",
+    "min": 20
+   },
+   {
+    "es": "Con ayuda de un adulto, dora por separado en 1 cucharada de manteca: el ajonjolí, las almendras, los cacahuates, las pasas, el plátano y el bolillo, hasta que estén dorados.",
+    "en": "With an adult's help, brown separately in 1 tablespoon of lard: the sesame, almonds, peanuts, raisins, plantain and roll, until golden.",
+    "min": 12
+   },
+   {
+    "es": "Asa los jitomates, los tomates verdes, la media cebolla y los 3 dientes de ajo hasta que estén suaves y con manchitas oscuras.",
+    "en": "Roast the tomatoes, tomatillos, half onion and 3 garlic cloves until soft with dark spots.",
+    "min": 12
+   },
+   {
+    "es": "Licúa en tandas los chiles escurridos, los frutos secos, el plátano, el pan, lo asado, la canela, los clavos, la pimienta y el orégano con 3 tazas de caldo, hasta que quede muy suave.",
+    "en": "Blend in batches the drained chilies, nuts, plantain, bread, roasted items, cinnamon, cloves, pepper and oregano with 3 cups of broth, until very smooth.",
+    "min": 10
+   },
+   {
+    "es": "Calienta 3 cucharadas de manteca en una cazuela grande y vierte la pasta con cuidado, porque salpica. Fríela moviendo sin parar hasta que oscurezca.",
+    "en": "Heat 3 tablespoons of lard in a large casserole and pour in the paste carefully, because it splashes. Fry it, stirring constantly, until it darkens.",
+    "min": 15
+   },
+   {
+    "es": "Agrega el chocolate, el azúcar y el resto del caldo. Cuece a fuego bajo, moviendo de vez en cuando, hasta que espese y se vea brillante.",
+    "en": "Add the chocolate, sugar and the rest of the broth. Simmer on low heat, stirring now and then, until thick and shiny.",
+    "min": 60
+   },
+   {
+    "es": "Prueba y ajusta la sal. Mete el pollo al mole y déjalo hervir suavecito para que tome sabor. Sirve caliente con arroz y tortillas.",
+    "en": "Taste and adjust the salt. Add the chicken to the mole and let it simmer gently to soak up the flavor. Serve hot with rice and tortillas.",
+    "min": 15
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Mole» viene del náhuatl «molli», que quiere decir salsa o mezcla. Este se llama «negro» por su color oscuro, que viene de los chiles y el chocolate.",
+    "en": "«Mole» comes from the Nahuatl «molli», which means sauce or mixture. This one is called «negro» (black) for its dark color, which comes from the chilies and chocolate."
+   },
+   "origen": {
+    "es": "El mole negro es uno de los siete moles tradicionales de Oaxaca, junto con el amarillo, el coloradito, el verde, el rojo, el chichilo y el manchamanteles. Lleva muchos ingredientes y, en su versión clásica, el chile chilhuacle, típico de la Cañada oaxaqueña.",
+    "en": "Black mole is one of the seven traditional moles of Oaxaca, along with the yellow, coloradito, green, red, chichilo and manchamanteles. It has many ingredients and, in its classic version, the chilhuacle chili, typical of Oaxaca's Cañada region."
+   },
+   "curiosos": [
+    {
+     "es": "Oaxaca tiene más de siete moles; los siete son solo los más conocidos.",
+     "en": "Oaxaca has more than seven moles; the seven are just the best known."
+    },
+    {
+     "es": "El chocolate y el chile son dos ingredientes que ya se usaban en México antes de la llegada de los europeos.",
+     "en": "Chocolate and chili were both used in Mexico before the Europeans arrived."
+    },
+    {
+     "es": "Se sirve en fiestas y celebraciones familiares.",
+     "en": "It is served at parties and family celebrations."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "chiles",
+    "en": "chilies"
+   },
+   {
+    "es": "chocolate",
+    "en": "chocolate"
+   },
+   {
+    "es": "pollo",
+    "en": "chicken"
+   },
+   {
+    "es": "ajonjolí",
+    "en": "sesame"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   }
+  ]
+ },
+ {
+  "id": "tejate",
+  "icono": "tejate",
+  "insignia": null,
+  "nombre": {
+   "es": "Tejate de Oaxaca",
+   "en": "Oaxacan tejate"
+  },
+  "resumen": {
+   "es": "Bebida fría de maíz y cacao con una espuma de flores. Sin alcohol, dulce y espesita.",
+   "en": "A cold drink of corn and cacao with a flower foam. No alcohol, sweet and a little thick."
+  },
+  "porciones": 8,
+  "tiempoPrep": 40,
+  "tiempoCoccion": 25,
+  "nivel": {
+   "es": "Con paciencia",
+   "en": "Needs patience"
+  },
+  "nota": {
+   "es": "Usa agua purificada y todo muy limpio. Pide ayuda a un adulto con el comal caliente y la licuadora. Tómalo el mismo día o guárdalo en el refrigerador máximo 1 día; si huele raro o tiene espuma extraña, tíralo. Las semillas son duras: tuéstalas y muélelas bien.",
+   "en": "Use purified water and keep everything very clean. Ask an adult to help with the hot griddle and the blender. Drink it the same day or keep it in the refrigerator for 1 day at most; if it smells odd or has strange foam, throw it away. The seeds are hard: toast and grind them well."
+  },
+  "ingredientes": [
+   {
+    "cant": 120,
+    "un": "g",
+    "es": "harina de maíz nixtamalizado (la tradicional usa maíz cocido con ceniza)",
+    "en": "nixtamalized corn flour (the traditional one uses corn cooked with ash)"
+   },
+   {
+    "cant": 40,
+    "un": "g",
+    "es": "cacao en grano, sin cáscara (en tiendas de cacao o mercados)",
+    "en": "cacao beans, shelled (at cacao shops or markets)"
+   },
+   {
+    "cant": 40,
+    "un": "g",
+    "es": "pixtle (semilla de mamey) pelado (en mercados de Oaxaca o tiendas en línea)",
+    "en": "pixtle (mamey seed), peeled (at Oaxaca markets or online shops)"
+   },
+   {
+    "cant": 15,
+    "un": "g",
+    "es": "flor de cacao o rosita de cacao seca (unas 3 cucharadas; en el Mercado de Abastos de Oaxaca o tiendas en línea)",
+    "en": "dried flor de cacao or rosita de cacao (about 3 tablespoons; at Oaxaca's Mercado de Abastos or online shops)"
+   },
+   {
+    "cant": 2,
+    "un": "L",
+    "es": "agua purificada, bien fría",
+    "en": "purified water, very cold"
+   },
+   {
+    "cant": 100,
+    "un": "g",
+    "es": "azúcar",
+    "en": "sugar"
+   },
+   {
+    "cant": 1,
+    "un": "taza",
+    "es": "hielo",
+    "en": "ice"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, tuesta el maíz en un comal a fuego bajo, moviendo, hasta que huela a tostado y se ponga dorado. Pásalo a un plato.",
+    "en": "With an adult's help, toast the corn flour on a griddle over low heat, stirring, until it smells toasted and turns golden. Move it to a plate.",
+    "min": 8
+   },
+   {
+    "es": "Tuesta en el comal el cacao, el pixtle y la rosita, cada uno por separado, hasta que huelan fuerte, sin que se quemen.",
+    "en": "Toast the cacao, the pixtle and the rosita on the griddle, each one separately, until they smell strong, without burning.",
+    "min": 10
+   },
+   {
+    "es": "Muele el maíz, el cacao, el pixtle y la rosita en la licuadora con un poco de agua, en tandas, hasta que quede una pasta muy fina.",
+    "en": "Grind the corn, cacao, pixtle and rosita in the blender with a little water, in batches, until a very fine paste forms.",
+    "min": 10
+   },
+   {
+    "es": "En un recipiente grande con 2 litros de agua, deshaz la pasta con las manos limpias, apretándola y moviéndola, hasta que suba una espuma espesa a la superficie.",
+    "en": "In a big bowl with 2 liters of water, dissolve the paste with clean hands, squeezing and moving it, until a thick foam rises to the top.",
+    "min": 15
+   },
+   {
+    "es": "Agrega el azúcar poco a poco y mezcla hasta que se disuelva. Prueba y ajusta el dulce.",
+    "en": "Add the sugar little by little and mix until it dissolves. Taste and adjust the sweetness.",
+    "min": 3
+   },
+   {
+    "es": "Sirve en jícaras o vasos con hielo, sin revolver la espuma de arriba. Tómalo enseguida.",
+    "en": "Serve in gourd bowls or glasses with ice, without stirring the foam on top. Drink it right away.",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Se suele ligar la palabra «tejate» con el náhuatl, pero el origen exacto no está confirmado.",
+    "en": "The word «tejate» is often linked to Nahuatl, but its exact origin is not confirmed."
+   },
+   "origen": {
+    "es": "El tejate es una bebida fría de los Valles Centrales de Oaxaca, hecha sobre todo por mujeres zapotecas, y se vende en los mercados. Lleva maíz, cacao, pixtle (semilla de mamey) y rosita de cacao. Se piensa que su origen es muy anterior a la llegada de los españoles.",
+    "en": "Tejate is a cold drink from the Central Valleys of Oaxaca, made mostly by Zapotec women, and sold in markets. It has corn, cacao, pixtle (mamey seed) and rosita de cacao. It is thought to be much older than the arrival of the Spanish."
+   },
+   "leyenda": {
+    "es": "Se cuenta que el tejate era la bebida de los señores zapotecos y que se ofrecía en las fiestas y a los dioses, por eso se le llama «la bebida de los dioses».",
+    "en": "Legend says tejate was the drink of the Zapotec lords and was offered at festivals and to the gods, which is why it is called «the drink of the gods»."
+   },
+   "curiosos": [
+    {
+     "es": "La flor de cacao no es del árbol del cacao, sino de otro árbol llamado Quararibea funebris.",
+     "en": "The flor de cacao is not from the cacao tree, but from another tree called Quararibea funebris."
+    },
+    {
+     "es": "La espuma blanca de arriba es la parte más famosa del tejate y se forma al mezclar con las manos.",
+     "en": "The white foam on top is the most famous part of tejate and forms when mixing by hand."
+    },
+    {
+     "es": "Muchas familias de San Andrés Huayápam guardan sus proporciones como secreto.",
+     "en": "Many families in San Andrés Huayápam keep their proportions as a secret."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "maíz",
+    "en": "corn"
+   },
+   {
+    "es": "cacao",
+    "en": "cacao"
+   },
+   {
+    "es": "espuma",
+    "en": "foam"
+   },
+   {
+    "es": "agua",
+    "en": "water"
+   }
+  ]
+ },
+ {
+  "id": "memelas",
+  "icono": "memelas",
+  "insignia": null,
+  "nombre": {
+   "es": "Memelas oaxaqueñas",
+   "en": "Oaxacan memelas"
+  },
+  "resumen": {
+   "es": "Tortillas gruesas de maíz con asiento, frijoles, quesillo y salsa. Un desayuno oaxaqueño.",
+   "en": "Thick corn tortillas with asiento, beans, quesillo and salsa. An Oaxacan breakfast."
+  },
+  "porciones": 4,
+  "tiempoPrep": 25,
+  "tiempoCoccion": 25,
+  "nivel": {
+   "es": "Fácil",
+   "en": "Easy"
+  },
+  "nota": {
+   "es": "Pide ayuda a un adulto con el comal caliente. Lávate las manos después de tocar los chiles y no te toques los ojos.",
+   "en": "Ask an adult to help with the hot griddle. Wash your hands after touching the chilies and do not touch your eyes."
+  },
+  "ingredientes": [
+   {
+    "cant": 400,
+    "un": "g",
+    "es": "masa de maíz fresca",
+    "en": "fresh corn masa"
+   },
+   {
+    "cant": 300,
+    "un": "g",
+    "es": "frijoles negros cocidos, machacados",
+    "en": "cooked black beans, mashed"
+   },
+   {
+    "cant": 4,
+    "un": "cda",
+    "es": "asiento (o manteca de cerdo con chicharrón triturado)",
+    "en": "asiento (or lard with crushed pork rind)"
+   },
+   {
+    "cant": 200,
+    "un": "g",
+    "es": "quesillo (queso de hebra) deshebrado",
+    "en": "shredded quesillo (string cheese)"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "tomates verdes",
+    "en": "tomatillos"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "chiles serranos",
+    "en": "serrano chilies"
+   },
+   {
+    "cant": 1,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic clove"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla picada",
+    "en": "chopped onion"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Cuece los tomates verdes con los serranos en agua hasta que estén suaves. Licúalos con el ajo y la sal para hacer la salsa.",
+    "en": "Cook the tomatillos and serranos in water until soft. Blend them with the garlic and the salt to make the salsa.",
+    "min": 10
+   },
+   {
+    "es": "Divide la masa en 8 bolitas. Aplasta cada una con las manos o en una prensa hasta que tenga 1 centímetro de grosor y unos 10 cm de ancho.",
+    "en": "Divide the masa into 8 balls. Flatten each one with your hands or in a press until it is 1 centimeter thick and about 10 cm wide.",
+    "min": 8
+   },
+   {
+    "es": "Con ayuda de un adulto, cuece cada memela en un comal caliente, 3 minutos por lado, hasta que quede firme y con manchitas doradas.",
+    "en": "With an adult's help, cook each memela on a hot griddle, 3 minutes per side, until firm with golden spots.",
+    "min": 12
+   },
+   {
+    "es": "Mientras se cuecen, mezcla el asiento con los frijoles y caliéntalos a fuego bajo, moviendo, hasta que se unan fácil.",
+    "en": "While they cook, mix the asiento with the beans and warm them over low heat, stirring, until they spread easily.",
+    "min": 5
+   },
+   {
+    "es": "Cuando estén calientes, pellizca un poquito las orillas de cada memela para hacer un borde. Unta los frijoles, pon el quesillo, la cebolla y la salsa. Caliéntalas un minuto más para que se derrita el queso.",
+    "en": "While still hot, pinch the edges of each memela a little to make a rim. Spread the beans, add the quesillo, the onion and the salsa. Warm them one more minute so the cheese melts.",
+    "min": 3
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "No hay una explicación confirmada de la palabra «memela». Se liga con el náhuatl, y en algunos lugares se le dice «tlacoyo» a un antojito parecido, pero cada uno es distinto.",
+    "en": "There is no confirmed explanation of the word «memela». It is linked to Nahuatl, and in some places a similar snack is called «tlacoyo», but each one is different."
+   },
+   "origen": {
+    "es": "La memela es un antojito de maíz con raíces prehispánicas que se hace en Oaxaca, Puebla y otros estados. La oaxaqueña es una tortilla gruesa, con los bordes pellizcados para sostener frijoles, asiento, quesillo y salsa.",
+    "en": "The memela is a corn snack with pre-Hispanic roots made in Oaxaca, Puebla and other states. The Oaxacan one is a thick tortilla with pinched edges to hold beans, asiento, quesillo and salsa."
+   },
+   "curiosos": [
+    {
+     "es": "El asiento es la grasa espesa que queda al freír el chicharrón.",
+     "en": "Asiento is the thick drippings left from frying pork rind."
+    },
+    {
+     "es": "Se come mucho en el desayuno y en los mercados de Oaxaca.",
+     "en": "It is eaten a lot at breakfast and in the markets of Oaxaca."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "masa",
+    "en": "dough"
+   },
+   {
+    "es": "frijoles",
+    "en": "beans"
+   },
+   {
+    "es": "quesillo",
+    "en": "string cheese"
+   },
+   {
+    "es": "comal",
+    "en": "griddle"
+   }
+  ]
+ },
+ {
+  "id": "tacos-al-pastor",
+  "icono": "tacos-al-pastor",
+  "insignia": null,
+  "nombre": {
+   "es": "Tacos al pastor en sartén",
+   "en": "Tacos al pastor in a skillet"
+  },
+  "resumen": {
+   "es": "Cerdo en adobo rojo con piña, dorado en sartén y servido en tortillas con cebolla y cilantro.",
+   "en": "Pork in red adobo with pineapple, browned in a skillet and served in tortillas with onion and cilantro."
+  },
+  "porciones": 6,
+  "tiempoPrep": 40,
+  "tiempoCoccion": 25,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Pide ayuda a un adulto con el agua caliente, la licuadora y el aceite de la sartén. Lávate las manos después de tocar los chiles y no te toques los ojos. La carne cruda debe cocerse completa, hasta que no quede rosada por dentro.",
+   "en": "Ask an adult to help with the hot water, the blender and the hot oil in the skillet. Wash your hands after touching the chiles and do not touch your eyes. Raw meat must be cooked all the way through, until it is no longer pink inside."
+  },
+  "ingredientes": [
+   {
+    "cant": 800,
+    "un": "g",
+    "es": "lomo de cerdo, en filetes delgados",
+    "en": "pork loin, in thin slices"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "chiles guajillo, sin rabo ni semillas",
+    "en": "guajillo chiles, stems and seeds removed"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "chiles anchos, sin rabo ni semillas",
+    "en": "ancho chiles, stems and seeds removed"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "agua caliente, para remojar los chiles",
+    "en": "hot water, to soak the chiles"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "pasta de achiote",
+    "en": "achiote paste"
+   },
+   {
+    "cant": 60,
+    "un": "ml",
+    "es": "vinagre blanco",
+    "en": "white vinegar"
+   },
+   {
+    "cant": 4,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "comino molido",
+    "en": "ground cumin"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "orégano seco",
+    "en": "dried oregano"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 300,
+    "un": "g",
+    "es": "piña, en trozos pequeños",
+    "en": "pineapple, in small pieces"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla blanca, picada fina",
+    "en": "white onion, finely chopped"
+   },
+   {
+    "cant": 10,
+    "un": "ramas",
+    "es": "cilantro, picado fino",
+    "en": "cilantro, finely chopped"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "aceite, para la sartén",
+    "en": "oil, for the skillet"
+   },
+   {
+    "cant": 18,
+    "un": "pza",
+    "es": "tortillas de maíz chicas",
+    "en": "small corn tortillas"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "limones, en gajos",
+    "en": "limes, in wedges"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, pon los chiles guajillo y ancho en el agua caliente y déjalos remojar hasta que estén suaves.",
+    "en": "With an adult's help, put the guajillo and ancho chiles in the hot water and let them soak until soft.",
+    "min": 15
+   },
+   {
+    "es": "Licúa los chiles con 100 ml del agua del remojo, el achiote, el vinagre, el ajo, el comino, el orégano y la sal, hasta que la salsa quede lisa. Es el adobo.",
+    "en": "Blend the chiles with 100 ml of the soaking water, the achiote, the vinegar, the garlic, the cumin, the oregano and the salt until smooth. This is the adobo.",
+    "min": 3
+   },
+   {
+    "es": "Cubre bien los filetes con el adobo, tapa el recipiente y déjalo en el refrigerador para que la carne tome sabor.",
+    "en": "Coat the slices well with the adobo, cover the container and keep it in the refrigerator so the meat soaks up the flavor.",
+    "min": 120
+   },
+   {
+    "es": "Calienta una cucharada de aceite en una sartén ancha a fuego medio-alto. Con ayuda de un adulto, dora la carne por tandas, sin amontonarla, hasta que esté bien cocida y con las orillas tostadas. Pide ayuda a un adulto con el aceite caliente.",
+    "en": "Heat one tablespoon of oil in a wide skillet over medium-high heat. With an adult's help, brown the meat in batches, without crowding it, until fully cooked and crisp at the edges. Ask an adult to help with the hot oil.",
+    "min": 12
+   },
+   {
+    "es": "En la misma sartén, con el resto del aceite, dora la piña unos minutos hasta que suelte su jugo y se vea dorada.",
+    "en": "In the same skillet, with the rest of the oil, brown the pineapple for a few minutes until it releases its juice and looks golden.",
+    "min": 5
+   },
+   {
+    "es": "Pica la carne en trozos chicos y mézclala con la piña. Calienta las tortillas en un comal.",
+    "en": "Chop the meat into small pieces and mix it with the pineapple. Warm the tortillas on a griddle.",
+    "min": 5
+   },
+   {
+    "es": "Arma los tacos con carne, piña, cebolla y cilantro, y exprime limón encima. ¡Buen provecho, mijo!",
+    "en": "Build the tacos with meat, pineapple, onion and cilantro, and squeeze lime on top. Enjoy, mijo!",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Al pastor» quiere decir «a la manera del pastor». Una explicación muy repetida lo liga con el cordero de pastores que se usaba en el shawarma; en México la carne pasó a ser de cerdo, pero el nombre se quedó.",
+    "en": "«Al pastor» means «shepherd style». A much repeated explanation links it to the shepherds' lamb used in shawarma; in Mexico the meat became pork, but the name stayed."
+   },
+   "origen": {
+    "es": "Los tacos al pastor vienen del shawarma que trajeron a México migrantes de Medio Oriente, sobre todo libaneses, en las primeras décadas del siglo XX. En Puebla se hicieron los «tacos árabes», con pan árabe; después, con cerdo, adobo de chiles y tortilla de maíz, se volvieron el pastor de la Ciudad de México.",
+    "en": "Tacos al pastor come from the shawarma that migrants from the Middle East, mostly Lebanese, brought to Mexico in the early 1900s. In Puebla they became «tacos árabes», served on pita bread; later, with pork, chile adobo and a corn tortilla, they became the al pastor of Mexico City."
+   },
+   "curiosos": [
+    {
+     "es": "El trompo se llama así porque gira como un trompo, el juguete.",
+     "en": "The spit is called a «trompo» because it spins like a spinning top, the toy."
+    },
+    {
+     "es": "Las fuentes no se ponen de acuerdo sobre el origen exacto de las primeras familias que lo trajeron: libanesas, iraquíes y otras.",
+     "en": "Sources do not agree on the exact origin of the first families who brought it: Lebanese, Iraqi and others."
+    },
+    {
+     "es": "El achiote le da su color rojizo a la carne.",
+     "en": "Achiote gives the meat its reddish color."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "cerdo",
+    "en": "pork"
+   },
+   {
+    "es": "adobo",
+    "en": "adobo"
+   },
+   {
+    "es": "piña",
+    "en": "pineapple"
+   },
+   {
+    "es": "tortillas",
+    "en": "tortillas"
+   },
+   {
+    "es": "cilantro",
+    "en": "cilantro"
+   }
+  ]
+ },
+ {
+  "id": "chilaquiles-rojos",
+  "icono": "chilaquiles-rojos",
+  "insignia": null,
+  "nombre": {
+   "es": "Chilaquiles rojos",
+   "en": "Red chilaquiles"
+  },
+  "resumen": {
+   "es": "Totopos de tortilla en salsa roja de guajillo, con crema, queso, cebolla y un huevo estrellado.",
+   "en": "Tortilla chips in red guajillo sauce, with cream, cheese, onion and a fried egg."
+  },
+  "porciones": 4,
+  "tiempoPrep": 20,
+  "tiempoCoccion": 25,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Pide ayuda a un adulto con el aceite caliente, los chiles hirviendo y la licuadora. Lávate las manos después de tocar los chiles y no te toques los ojos. Si la salsa pica mucho, quítales bien las semillas.",
+   "en": "Ask an adult to help with the hot oil, the boiling chiles and the blender. Wash your hands after touching the chiles and do not touch your eyes. If the sauce is too spicy, remove the seeds well."
+  },
+  "ingredientes": [
+   {
+    "cant": 12,
+    "un": "pza",
+    "es": "tortillas de maíz del día anterior, en triángulos",
+    "en": "day-old corn tortillas, cut into triangles"
+   },
+   {
+    "cant": 250,
+    "un": "ml",
+    "es": "aceite para freír",
+    "en": "oil for frying"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "chiles guajillo, sin rabo ni semillas",
+    "en": "guajillo chiles, stems and seeds removed"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "jitomates (400 g)",
+    "en": "tomatoes (400 g)"
+   },
+   {
+    "cant": 1,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "cant": 0.25,
+    "un": "pza",
+    "es": "cebolla blanca, para la salsa",
+    "en": "white onion, for the sauce"
+   },
+   {
+    "cant": 250,
+    "un": "ml",
+    "es": "agua o caldo de pollo",
+    "en": "water or chicken broth"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 4,
+    "un": "cda",
+    "es": "crema",
+    "en": "cream"
+   },
+   {
+    "cant": 100,
+    "un": "g",
+    "es": "queso fresco desmoronado",
+    "en": "crumbled fresh cheese"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla blanca, en rodajas finas, para servir",
+    "en": "white onion, in thin slices, to serve"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "huevos",
+    "en": "eggs"
+   },
+   {
+    "cant": 4,
+    "un": "ramas",
+    "es": "cilantro",
+    "en": "cilantro"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Hierve en agua los chiles y los jitomates hasta que estén suaves. Pide ayuda a un adulto con la olla caliente.",
+    "en": "Boil the chiles and tomatoes in water until soft. Ask an adult to help with the hot pot.",
+    "min": 10
+   },
+   {
+    "es": "Deja enfriar un poco y licúa los chiles, los jitomates, el ajo, el cuarto de cebolla, el agua o caldo y la sal. Cuela la salsa.",
+    "en": "Let cool a little and blend the chiles, tomatoes, garlic, the quarter onion, the water or broth and the salt. Strain the sauce.",
+    "min": 5
+   },
+   {
+    "es": "Calienta el aceite en una sartén honda a fuego medio. Con ayuda de un adulto, fríe los triángulos por tandas hasta que estén dorados y crujientes. Escúrrelos en papel de cocina.",
+    "en": "Heat the oil in a deep skillet over medium heat. With an adult's help, fry the triangles in batches until golden and crisp. Drain them on paper towels.",
+    "min": 10
+   },
+   {
+    "es": "En una sartén ancha, cuece la salsa a fuego medio hasta que hierva suavecito y espese un poco.",
+    "en": "In a wide skillet, cook the sauce over medium heat until it gently bubbles and thickens a little.",
+    "min": 5
+   },
+   {
+    "es": "Agrega los totopos a la salsa, mézclalos con cuidado unos segundos para que se cubran, sin dejar que se ablanden demasiado, y pásalos a los platos.",
+    "en": "Add the chips to the sauce, toss them gently for a few seconds to coat them, without letting them get too soft, and put them on plates.",
+    "min": 2
+   },
+   {
+    "es": "Con ayuda de un adulto, estrella los huevos en una sartén con poquito aceite hasta que la clara cuaje por completo.",
+    "en": "With an adult's help, fry the eggs in a skillet with a little oil until the whites are set completely.",
+    "min": 4
+   },
+   {
+    "es": "Sirve los chilaquiles con crema, queso, cebolla, cilantro y un huevo encima. ¡Buen provecho, mijo!",
+    "en": "Serve the chilaquiles with cream, cheese, onion, cilantro and an egg on top. Enjoy, mijo!",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "Se cree que viene del náhuatl «chīlāquilitl», de «chīlli» (chile) y «āquilli» (algo metido o sumergido): algo así como «chile en que se mete algo». Hay otra explicación menos aceptada, con «agua» y «hierba».",
+    "en": "It is believed to come from Nahuatl «chīlāquilitl», from «chīlli» (chile) and «āquilli» (something put in or soaked): roughly «something dipped in chile». A less accepted explanation uses «water» and «herb»."
+   },
+   "origen": {
+    "es": "Los chilaquiles son tortillas fritas y bañadas en salsa de chile, una forma de aprovechar las tortillas que sobran. La palabra es de origen náhuatl y el platillo aparece en libros de cocina mexicanos del siglo XIX. Hoy se comen en todo el país, sobre todo en el desayuno.",
+    "en": "Chilaquiles are fried tortillas bathed in chile sauce, a way to use up leftover tortillas. The word is of Nahuatl origin and the dish appears in Mexican cookbooks of the 1800s. Today they are eaten all over the country, especially at breakfast."
+   },
+   "leyenda": {
+    "es": "Se cuenta que una cocinera, la mañana después de una fiesta, no quiso tirar las tortillas que habían sobrado. Las frió, les echó la salsa que quedaba en la olla y toda la casa pidió repetir.",
+    "en": "Legend says a cook, the morning after a party, did not want to throw away the leftover tortillas. She fried them, poured over the sauce left in the pot, and the whole house asked for seconds."
+   },
+   "curiosos": [
+    {
+     "es": "Se pueden hacer rojos o verdes, según la salsa.",
+     "en": "They can be made red or green, depending on the sauce."
+    },
+    {
+     "es": "Se usan tortillas de un día antes porque se fríen más crujientes.",
+     "en": "Day-old tortillas are used because they fry crisper."
+    },
+    {
+     "es": "Se acompañan con huevo o con pollo deshebrado.",
+     "en": "They come with egg or with shredded chicken."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "tortillas",
+    "en": "tortillas"
+   },
+   {
+    "es": "salsa",
+    "en": "sauce"
+   },
+   {
+    "es": "chiles",
+    "en": "chiles"
+   },
+   {
+    "es": "crema",
+    "en": "cream"
+   },
+   {
+    "es": "huevo",
+    "en": "egg"
+   }
+  ]
+ },
+ {
+  "id": "esquites",
+  "icono": "esquites",
+  "insignia": null,
+  "nombre": {
+   "es": "Esquites",
+   "en": "Esquites"
+  },
+  "resumen": {
+   "es": "Granos de elote cocidos con epazote y chile, servidos en vaso con mayonesa, queso y limón.",
+   "en": "Corn kernels cooked with epazote and chile, served in a cup with mayonnaise, cheese and lime."
+  },
+  "porciones": 6,
+  "tiempoPrep": 15,
+  "tiempoCoccion": 25,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "Pide ayuda a un adulto para desgranar los elotes con el cuchillo y con el agua y la olla calientes. Lávate las manos después de tocar el chile y no te toques los ojos. Lleva leche y huevo (en la mayonesa).",
+   "en": "Ask an adult to help cut the kernels off the cobs with the knife and with the hot water and pot. Wash your hands after touching the chile and do not touch your eyes. It contains milk and egg (in the mayonnaise)."
+  },
+  "ingredientes": [
+   {
+    "cant": 6,
+    "un": "pza",
+    "es": "elotes tiernos",
+    "en": "fresh corn on the cob"
+   },
+   {
+    "cant": 750,
+    "un": "ml",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 3,
+    "un": "ramas",
+    "es": "epazote",
+    "en": "epazote"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "chile serrano, entero",
+    "en": "serrano chile, whole"
+   },
+   {
+    "cant": 2,
+    "un": "cda",
+    "es": "mantequilla",
+    "en": "butter"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 4,
+    "un": "cda",
+    "es": "mayonesa",
+    "en": "mayonnaise"
+   },
+   {
+    "cant": 80,
+    "un": "g",
+    "es": "queso cotija, desmoronado",
+    "en": "cotija cheese, crumbled"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "chile piquín en polvo",
+    "en": "ground piquín chile"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "limones",
+    "en": "limes"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, desgrana los elotes con un cuchillo, cortando de arriba hacia abajo, sobre un tazón grande.",
+    "en": "With an adult's help, cut the kernels off the cobs with a knife, slicing from top to bottom, over a large bowl.",
+    "min": 8
+   },
+   {
+    "es": "En una olla, pon el agua, los granos, el epazote, el chile serrano entero, la mantequilla y la sal.",
+    "en": "In a pot, put the water, the kernels, the epazote, the whole serrano chile, the butter and the salt.",
+    "min": 2
+   },
+   {
+    "es": "Cuece a fuego medio, con la olla tapada a medias, hasta que los granos estén suaves. Pide ayuda a un adulto con la olla caliente.",
+    "en": "Cook over medium heat, with the pot half covered, until the kernels are soft. Ask an adult to help with the hot pot.",
+    "min": 20
+   },
+   {
+    "es": "Retira el epazote y el chile. Sirve los granos con un poco de su caldo en vasos.",
+    "en": "Remove the epazote and the chile. Serve the kernels with a little of their broth in cups.",
+    "min": 3
+   },
+   {
+    "es": "Agrega a cada vaso mayonesa, queso, un poco de chile piquín y jugo de limón. ¡Buen provecho, mijo!",
+    "en": "Add mayonnaise, cheese, a little piquín chile and lime juice to each cup. Enjoy, mijo!",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Esquites» viene del náhuatl «ízquitl», una palabra ligada al maíz tostado o cocido, según los diccionarios. En algunos lugares se llama «elote en vaso» o «trolelote».",
+    "en": "«Esquites» comes from Nahuatl «ízquitl», a word tied to toasted or cooked corn, according to dictionaries. In some places it is called «elote en vaso» (corn in a cup) or «trolelote»."
+   },
+   "origen": {
+    "es": "El maíz nació en México y se cocina desde hace miles de años. Los esquites son una de las formas más sencillas de comerlo: granos tiernos cocidos con epazote, una hierba mexicana. En la Ciudad de México se venden en vaso en puestos de la calle, con limón y chile.",
+    "en": "Corn was born in Mexico and has been cooked for thousands of years. Esquites are one of the simplest ways to eat it: tender kernels cooked with epazote, a Mexican herb. In Mexico City they are sold in cups at street stands, with lime and chile."
+   },
+   "curiosos": [
+    {
+     "es": "El epazote le da su aroma tan especial.",
+     "en": "Epazote gives it its very special aroma."
+    },
+    {
+     "es": "Se puede comer caliente en días fríos o con más limón en días de calor.",
+     "en": "It can be eaten hot on cold days or with more lime on hot days."
+    },
+    {
+     "es": "En cada región le cambian el nombre y los toppings.",
+     "en": "Every region changes its name and toppings."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "elotes",
+    "en": "corn"
+   },
+   {
+    "es": "epazote",
+    "en": "epazote"
+   },
+   {
+    "es": "granos",
+    "en": "kernels"
+   },
+   {
+    "es": "limón",
+    "en": "lime"
+   },
+   {
+    "es": "queso",
+    "en": "cheese"
+   }
+  ]
+ },
+ {
+  "id": "churros-chocolate",
+  "icono": "churros-chocolate",
+  "insignia": null,
+  "nombre": {
+   "es": "Churros con chocolate",
+   "en": "Churros with hot chocolate"
+  },
+  "resumen": {
+   "es": "Tiras de masa fritas, cubiertas de azúcar y canela, con una taza de chocolate caliente.",
+   "en": "Fried dough sticks coated in sugar and cinnamon, with a cup of hot chocolate."
+  },
+  "porciones": 6,
+  "tiempoPrep": 25,
+  "tiempoCoccion": 30,
+  "nivel": {
+   "es": "Con ayuda de un adulto",
+   "en": "With an adult's help"
+  },
+  "nota": {
+   "es": "El aceite caliente salpica y quema: la fritura y la leche caliente son trabajo de un adulto. Mete la masa al aceite con cuidado y mantén el agua lejos del aceite. Lleva trigo, leche y mantequilla (alergias).",
+   "en": "Hot oil splatters and burns: frying and the hot milk are an adult's job. Lower the dough into the oil carefully and keep water away from the oil. It contains wheat, milk and butter (allergies)."
+  },
+  "ingredientes": [
+   {
+    "cant": 250,
+    "un": "ml",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 30,
+    "un": "g",
+    "es": "mantequilla",
+    "en": "butter"
+   },
+   {
+    "cant": 1,
+    "un": "cda",
+    "es": "azúcar, para la masa",
+    "en": "sugar, for the dough"
+   },
+   {
+    "cant": 0.5,
+    "un": "cdta",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "harina de trigo",
+    "en": "wheat flour"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "aceite para freír",
+    "en": "oil for frying"
+   },
+   {
+    "cant": 100,
+    "un": "g",
+    "es": "azúcar, para cubrir",
+    "en": "sugar, for coating"
+   },
+   {
+    "cant": 2,
+    "un": "cdta",
+    "es": "canela molida",
+    "en": "ground cinnamon"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "leche",
+    "en": "milk"
+   },
+   {
+    "cant": 90,
+    "un": "g",
+    "es": "chocolate de mesa (1 tableta)",
+    "en": "Mexican table chocolate (1 tablet)"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, calienta el agua con la mantequilla, la cucharada de azúcar y la sal hasta que hierva y la mantequilla se derrita. Baja el fuego.",
+    "en": "With an adult's help, heat the water with the butter, the tablespoon of sugar and the salt until it boils and the butter melts. Lower the heat.",
+    "min": 5
+   },
+   {
+    "es": "Agrega toda la harina de golpe y mezcla con fuerza con una cuchara de madera hasta que se forme una masa lisa que se despegue de la olla. Deja entibiar.",
+    "en": "Add all the flour at once and stir hard with a wooden spoon until a smooth dough forms that pulls away from the pot. Let it cool.",
+    "min": 15
+   },
+   {
+    "es": "Pasa la masa a una manga pastelera con boquilla de estrella.",
+    "en": "Put the dough into a piping bag with a star tip.",
+    "min": 2
+   },
+   {
+    "es": "Con ayuda de un adulto, calienta el aceite a fuego medio. Exprime tiras de masa de unos 10 cm directo al aceite, cortándolas con tijeras, y fríe hasta que estén doradas por todos lados. Escúrrelas en papel de cocina.",
+    "en": "With an adult's help, heat the oil over medium heat. Squeeze strips of dough about 10 cm long straight into the oil, cutting them with scissors, and fry until golden all over. Drain them on paper towels.",
+    "min": 12
+   },
+   {
+    "es": "Mezcla el azúcar con la canela en un plato y rueda los churros calientes en la mezcla.",
+    "en": "Mix the sugar with the cinnamon on a plate and roll the warm churros in the mixture.",
+    "min": 2
+   },
+   {
+    "es": "Con ayuda de un adulto, calienta la leche, agrega el chocolate en trozos y mueve hasta que se disuelva y esté caliente, sin que hierva.",
+    "en": "With an adult's help, heat the milk, add the chocolate in pieces and stir until it dissolves and is hot, without boiling.",
+    "min": 8
+   },
+   {
+    "es": "Sirve los churros con el chocolate en tazas. Déjalo entibiar antes de tomarlo. ¡Buen provecho, mijo!",
+    "en": "Serve the churros with the chocolate in cups. Let it cool a little before drinking. Enjoy, mijo!",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "La explicación más repetida es que «churro» viene de la oveja churra, una raza de España cuyos cuernos se parecen a su forma. Es una explicación popular; los especialistas no lo tienen del todo comprobado.",
+    "en": "The most repeated explanation is that «churro» comes from the churra sheep, a breed from Spain whose horns look like its shape. It is a popular explanation; specialists have not fully proven it."
+   },
+   "origen": {
+    "es": "El churro llegó a México desde España, y el cacao es de Mesoamérica: churros con chocolate juntan dos mundos. Algunas fuentes lo comparan con una masa frita china, pero su origen exacto no se sabe. Hoy se venden en puestos y churrerías de la Ciudad de México.",
+    "en": "The churro came to Mexico from Spain, and cacao is from Mesoamerica: churros with chocolate bring two worlds together. Some sources compare it with a Chinese fried dough, but its exact origin is unknown. Today they are sold at stands and churrerías in Mexico City."
+   },
+   "leyenda": {
+    "es": "Se cuenta que unos pastores que cuidaban sus ovejas en la montaña no tenían horno para el pan. Mezclaron harina y agua, la frieron sobre el fuego del campamento en tiras y así nacieron los churros.",
+    "en": "Legend says some shepherds tending their sheep in the mountains had no oven for bread. They mixed flour and water, fried strips of it over the campfire, and that is how churros were born."
+   },
+   "curiosos": [
+    {
+     "es": "La boquilla de estrella le da sus rayitas.",
+     "en": "The star tip gives them their little ridges."
+    },
+    {
+     "es": "El cacao es originario de Mesoamérica.",
+     "en": "Cacao is native to Mesoamerica."
+    },
+    {
+     "es": "El chocolate de mesa mexicano lleva azúcar y a veces canela.",
+     "en": "Mexican table chocolate has sugar and sometimes cinnamon."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "churros",
+    "en": "churros"
+   },
+   {
+    "es": "chocolate",
+    "en": "chocolate"
+   },
+   {
+    "es": "canela",
+    "en": "cinnamon"
+   },
+   {
+    "es": "harina",
+    "en": "flour"
+   },
+   {
+    "es": "aceite",
+    "en": "oil"
+   }
+  ]
+ },
+ {
+  "id": "barbacoa-borrego-hidalgo",
+  "icono": "barbacoa-borrego-hidalgo",
+  "insignia": null,
+  "nombre": {
+   "es": "Barbacoa de borrego estilo Hidalgo, con consomé",
+   "en": "Hidalgo-style lamb barbacoa, with consommé"
+  },
+  "resumen": {
+   "es": "Borrego cocido al vapor sobre garbanzos y arroz, que se vuelven consomé con los jugos de la carne.",
+   "en": "Lamb steamed over chickpeas and rice, which become a consommé with the meat's juices."
+  },
+  "porciones": 8,
+  "tiempoPrep": 40,
+  "tiempoCoccion": 270,
+  "nivel": {
+   "es": "Con paciencia",
+   "en": "With patience"
+  },
+  "nota": {
+   "es": "Pide ayuda a un adulto con la olla grande, el vapor y el agua caliente. La carne cruda debe cocerse completa, hasta que se separe fácil del hueso. Lávate las manos después de tocar los chiles y no te toques los ojos.",
+   "en": "Ask an adult to help with the big pot, the steam and the hot water. Raw meat must be cooked all the way through, until it comes easily off the bone. Wash your hands after touching the chiles and do not touch your eyes."
+  },
+  "ingredientes": [
+   {
+    "cant": 2,
+    "un": "kg",
+    "es": "pierna de borrego con hueso, en 3 trozos",
+    "en": "lamb leg with bone, in 3 pieces"
+   },
+   {
+    "cant": 1,
+    "un": "cda",
+    "es": "sal para la carne",
+    "en": "salt for the meat"
+   },
+   {
+    "cant": 4,
+    "un": "hojas",
+    "es": "hojas de plátano grandes",
+    "en": "large banana leaves"
+   },
+   {
+    "cant": 150,
+    "un": "g",
+    "es": "garbanzos secos",
+    "en": "dried chickpeas"
+   },
+   {
+    "cant": 3,
+    "un": "L",
+    "es": "agua",
+    "en": "water"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "cebolla, en cuartos",
+    "en": "onion, in quarters"
+   },
+   {
+    "cant": 4,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "chiles guajillo, sin rabo ni semillas",
+    "en": "guajillo chiles, stems and seeds removed"
+   },
+   {
+    "cant": 80,
+    "un": "g",
+    "es": "arroz",
+    "en": "rice"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "sal para el consomé",
+    "en": "salt for the consommé"
+   },
+   {
+    "cant": 18,
+    "un": "pza",
+    "es": "tortillas de maíz",
+    "en": "corn tortillas"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "limones",
+    "en": "limes"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla, picada, para servir",
+    "en": "onion, chopped, to serve"
+   },
+   {
+    "cant": 10,
+    "un": "ramas",
+    "es": "cilantro, picado, para servir",
+    "en": "cilantro, chopped, to serve"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Remoja los garbanzos en agua fría que los cubra, toda la noche.",
+    "en": "Soak the chickpeas in cold water that covers them, overnight.",
+    "min": 480
+   },
+   {
+    "es": "Frota los trozos de borrego con la sal. Con ayuda de un adulto, pasa las hojas de plátano por la flama o un comal caliente unos segundos para que se suavicen, y envuelve cada trozo.",
+    "en": "Rub the lamb pieces with the salt. With an adult's help, pass the banana leaves over a flame or a hot griddle for a few seconds to soften them, and wrap each piece.",
+    "min": 10
+   },
+   {
+    "es": "En una olla grande, pon los garbanzos escurridos, el agua, la cebolla, el ajo y los chiles. Coloca encima una rejilla que no toque el líquido y acomoda sobre ella la carne envuelta.",
+    "en": "In a large pot, put the drained chickpeas, the water, the onion, the garlic and the chiles. Set a rack over it that does not touch the liquid and place the wrapped meat on it.",
+    "min": 5
+   },
+   {
+    "es": "Tapa y cuece a fuego bajo, con ayuda de un adulto, hasta que la carne se separe fácil del hueso. Revisa el agua cada hora y agrega agua hirviendo si hace falta; los jugos caen al caldo.",
+    "en": "Cover and cook over low heat, with an adult's help, until the meat comes easily off the bone. Check the water every hour and add boiling water if needed; the juices drip into the broth.",
+    "min": 210
+   },
+   {
+    "es": "Saca la carne con cuidado, pide ayuda a un adulto, y déjala reposar envuelta.",
+    "en": "Take the meat out carefully, with an adult's help, and let it rest, still wrapped.",
+    "min": 10
+   },
+   {
+    "es": "Agrega al caldo el arroz y la sal del consomé y cuece a fuego medio hasta que el arroz y los garbanzos estén suaves.",
+    "en": "Add the rice and the consommé salt to the broth and cook over medium heat until the rice and chickpeas are soft.",
+    "min": 20
+   },
+   {
+    "es": "Deshebra la carne con las manos limpias, quitando el hueso, y calienta las tortillas.",
+    "en": "Shred the meat with clean hands, removing the bone, and warm the tortillas.",
+    "min": 10
+   },
+   {
+    "es": "Sirve la carne en tacos con cebolla, cilantro y limón, y el consomé aparte en tazones. Déjalo entibiar antes de tomarlo. ¡Buen provecho, mijo!",
+    "en": "Serve the meat in tacos with onion, cilantro and lime, and the consommé on the side in bowls. Let it cool a little before eating. Enjoy, mijo!",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Barbacoa» es una palabra que el español tomó del taíno, de las islas del Caribe, donde nombraba un armazón de palos elevado para asar o secar carne y pescado. En México pasó a nombrar la carne cocida bajo tierra.",
+    "en": "«Barbacoa» is a word Spanish took from Taíno, from the Caribbean islands, where it named a raised frame of sticks for roasting or drying meat and fish. In Mexico it came to mean meat cooked underground."
+   },
+   "origen": {
+    "es": "En Hidalgo el borrego se cuece en un horno de tierra: un hoyo con tabiques y leña caliente, forrado con pencas de maguey asadas. La carne envuelta se pone encima de una olla con garbanzos, que recibe sus jugos y se vuelve consomé; se tapa con más pencas y tierra, y se cuece unas ocho horas.",
+    "en": "In Hidalgo the lamb is cooked in an earth oven: a pit lined with bricks and hot wood, covered with roasted maguey leaves. The wrapped meat sits over a pot of chickpeas that catches its juices and becomes consommé; it is sealed with more leaves and earth and cooks about eight hours."
+   },
+   "curiosos": [
+    {
+     "es": "El borrego llegó a México con los españoles; antes se cocían otros animales en hoyo.",
+     "en": "Sheep came to Mexico with the Spanish; before that other animals were cooked in pits."
+    },
+    {
+     "es": "Actopan, en Hidalgo, se conoce como una cuna de la barbacoa y tiene su propia feria.",
+     "en": "Actopan, in Hidalgo, is known as a cradle of barbacoa and has its own fair."
+    },
+    {
+     "es": "Aquí usamos olla y hojas de plátano porque en casa no hay hoyo ni pencas.",
+     "en": "Here we use a pot and banana leaves because at home there is no pit or maguey leaves."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "borrego",
+    "en": "lamb"
+   },
+   {
+    "es": "garbanzos",
+    "en": "chickpeas"
+   },
+   {
+    "es": "consomé",
+    "en": "consommé"
+   },
+   {
+    "es": "arroz",
+    "en": "rice"
+   },
+   {
+    "es": "cilantro",
+    "en": "cilantro"
+   }
+  ]
+ },
+ {
+  "id": "barbacoa-res",
+  "icono": "barbacoa-res",
+  "insignia": null,
+  "nombre": {
+   "es": "Barbacoa de res estilo norteño",
+   "en": "Northern-style beef barbacoa"
+  },
+  "resumen": {
+   "es": "Res cocida en olla con chiles secos y especias, desmenuzada para tacos de domingo.",
+   "en": "Beef cooked in a pot with dried chiles and spices, shredded for Sunday tacos."
+  },
+  "porciones": 8,
+  "tiempoPrep": 35,
+  "tiempoCoccion": 240,
+  "nivel": {
+   "es": "Con paciencia",
+   "en": "With patience"
+  },
+  "nota": {
+   "es": "Pide ayuda a un adulto con la olla grande, el vapor, la licuadora y el agua caliente. La carne cruda debe cocerse completa, hasta que se deshaga fácil con un tenedor. Lávate las manos después de tocar los chiles y no te toques los ojos.",
+   "en": "Ask an adult to help with the big pot, the steam, the blender and the hot water. Raw meat must be cooked all the way through, until it falls apart easily with a fork. Wash your hands after touching the chiles and do not touch your eyes."
+  },
+  "ingredientes": [
+   {
+    "cant": 1.5,
+    "un": "kg",
+    "es": "espaldilla de res, en 3 trozos",
+    "en": "beef chuck, in 3 pieces"
+   },
+   {
+    "cant": 4,
+    "un": "pza",
+    "es": "chiles guajillo, sin rabo ni semillas",
+    "en": "guajillo chiles, stems and seeds removed"
+   },
+   {
+    "cant": 2,
+    "un": "pza",
+    "es": "chiles anchos, sin rabo ni semillas",
+    "en": "ancho chiles, stems and seeds removed"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "agua caliente, para remojar los chiles",
+    "en": "hot water, to soak the chiles"
+   },
+   {
+    "cant": 5,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "cebolla, en cuartos",
+    "en": "onion, in quarters"
+   },
+   {
+    "cant": 60,
+    "un": "ml",
+    "es": "vinagre",
+    "en": "vinegar"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "comino molido",
+    "en": "ground cumin"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "orégano seco",
+    "en": "dried oregano"
+   },
+   {
+    "cant": 1,
+    "un": "pizca",
+    "es": "clavo molido",
+    "en": "ground clove"
+   },
+   {
+    "cant": 3,
+    "un": "hojas",
+    "es": "hojas de laurel",
+    "en": "bay leaves"
+   },
+   {
+    "cant": 1,
+    "un": "cda",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "agua, para la olla",
+    "en": "water, for the pot"
+   },
+   {
+    "cant": 18,
+    "un": "pza",
+    "es": "tortillas de maíz",
+    "en": "corn tortillas"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "limones",
+    "en": "limes"
+   },
+   {
+    "cant": 10,
+    "un": "ramas",
+    "es": "cilantro, picado, para servir",
+    "en": "cilantro, chopped, to serve"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, remoja los chiles guajillo y ancho en el agua caliente hasta que estén suaves.",
+    "en": "With an adult's help, soak the guajillo and ancho chiles in the hot water until soft.",
+    "min": 15
+   },
+   {
+    "es": "Licúa los chiles con 100 ml del agua del remojo, el ajo, el vinagre, el comino, el orégano, el clavo y la sal hasta que quede lisa.",
+    "en": "Blend the chiles with 100 ml of the soaking water, the garlic, the vinegar, the cumin, the oregano, the clove and the salt until smooth.",
+    "min": 3
+   },
+   {
+    "es": "Unta la carne con el adobo por todos lados, tapa y déjala en el refrigerador para que tome sabor.",
+    "en": "Spread the adobo all over the meat, cover and keep it in the refrigerator so it soaks up the flavor.",
+    "min": 120
+   },
+   {
+    "es": "En una olla grande, acomoda la cebolla y el laurel en el fondo, pon encima la carne con su adobo y agrega el agua de la olla. Tapa bien.",
+    "en": "In a large pot, put the onion and bay leaves on the bottom, set the meat with its adobo on top and add the pot water. Cover tightly.",
+    "min": 5
+   },
+   {
+    "es": "Cuece a fuego bajo, con ayuda de un adulto, hasta que la carne se deshaga fácil con un tenedor. Revisa el agua cada hora y agrega agua hirviendo si hace falta.",
+    "en": "Cook over low heat, with an adult's help, until the meat falls apart easily with a fork. Check the water every hour and add boiling water if needed.",
+    "min": 210
+   },
+   {
+    "es": "Saca la carne con cuidado, pide ayuda a un adulto, y desmenúzala con dos tenedores. Mezcla con un poco del caldo de la olla para que quede jugosa.",
+    "en": "Take the meat out carefully, with an adult's help, and shred it with two forks. Mix with a little of the pot broth to keep it juicy.",
+    "min": 10
+   },
+   {
+    "es": "Calienta las tortillas y sirve la carne en tacos con cilantro y limón. ¡Buen provecho, mijo!",
+    "en": "Warm the tortillas and serve the meat in tacos with cilantro and lime. Enjoy, mijo!",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Barbacoa» es una palabra de origen taíno, del Caribe. En México nombra carne cocida con calor lento, y «de res» quiere decir que se hace con carne de vaca o toro, no de borrego ni de chivo.",
+    "en": "«Barbacoa» is a word of Taíno origin, from the Caribbean. In Mexico it names meat cooked with slow heat, and «de res» means it is made from beef, not lamb or goat."
+   },
+   "origen": {
+    "es": "El ganado vacuno llegó con los españoles y, en el norte ganadero, la res se volvió la carne de la barbacoa. En Nuevo León se hace sobre todo con la cabeza de la res y se come en familia los domingos. En parte del norte no es de hoyo, sino de olla, con chiles secos.",
+    "en": "Cattle arrived with the Spanish, and in the ranching north, beef became the meat for barbacoa. In Nuevo León it is made mostly from the head of the animal and eaten with family on Sundays. In parts of the north it is not cooked in a pit but in a pot, with dried chiles."
+   },
+   "curiosos": [
+    {
+     "es": "En Nuevo León, los tacos de barbacoa del domingo son una costumbre muy querida.",
+     "en": "In Nuevo León, Sunday barbacoa tacos are a much loved custom."
+    },
+    {
+     "es": "La barbacoa de hoyo se cuece lentamente, sin que la carne toque el fuego.",
+     "en": "Pit barbacoa cooks slowly, without the meat touching the fire."
+    },
+    {
+     "es": "Aquí usamos espaldilla porque es más fácil de conseguir que la cabeza.",
+     "en": "Here we use chuck because it is easier to find than the head."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "res",
+    "en": "beef"
+   },
+   {
+    "es": "adobo",
+    "en": "adobo"
+   },
+   {
+    "es": "laurel",
+    "en": "bay leaves"
+   },
+   {
+    "es": "tacos",
+    "en": "tacos"
+   },
+   {
+    "es": "cilantro",
+    "en": "cilantro"
+   }
+  ]
+ },
+ {
+  "id": "barbacoa-chivo",
+  "icono": "barbacoa-chivo",
+  "insignia": null,
+  "nombre": {
+   "es": "Barbacoa de chivo estilo Oaxaca",
+   "en": "Oaxaca-style goat barbacoa"
+  },
+  "resumen": {
+   "es": "Chivo adobado con guajillo y cocido en olla con hojas de aguacate, para tacos o para un plato con tortillas.",
+   "en": "Goat marinated with guajillo and cooked in a pot with avocado leaves, for tacos or a plate with tortillas."
+  },
+  "porciones": 8,
+  "tiempoPrep": 35,
+  "tiempoCoccion": 240,
+  "nivel": {
+   "es": "Con paciencia",
+   "en": "With patience"
+  },
+  "nota": {
+   "es": "Pide ayuda a un adulto con la olla grande, el vapor, la licuadora y el agua caliente. La carne cruda debe cocerse completa, hasta que se separe fácil del hueso. Lávate las manos después de tocar los chiles y no te toques los ojos. Las hojas de aguacate solo dan aroma: no se comen.",
+   "en": "Ask an adult to help with the big pot, the steam, the blender and the hot water. Raw meat must be cooked all the way through, until it comes easily off the bone. Wash your hands after touching the chiles and do not touch your eyes. The avocado leaves only give aroma: they are not eaten."
+  },
+  "ingredientes": [
+   {
+    "cant": 2,
+    "un": "kg",
+    "es": "chivo (cabra) en trozos con hueso",
+    "en": "goat in bone-in pieces"
+   },
+   {
+    "cant": 5,
+    "un": "pza",
+    "es": "chiles guajillo, sin rabo ni semillas",
+    "en": "guajillo chiles, stems and seeds removed"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "agua caliente, para remojar los chiles",
+    "en": "hot water, to soak the chiles"
+   },
+   {
+    "cant": 6,
+    "un": "dientes",
+    "es": "ajo",
+    "en": "garlic"
+   },
+   {
+    "cant": 1,
+    "un": "pza",
+    "es": "cebolla, en cuartos",
+    "en": "onion, in quarters"
+   },
+   {
+    "cant": 3,
+    "un": "hojas",
+    "es": "hojas de laurel",
+    "en": "bay leaves"
+   },
+   {
+    "cant": 1,
+    "un": "cdta",
+    "es": "tomillo seco",
+    "en": "dried thyme"
+   },
+   {
+    "cant": 0.5,
+    "un": "cdta",
+    "es": "pimienta negra molida",
+    "en": "ground black pepper"
+   },
+   {
+    "cant": 1,
+    "un": "cda",
+    "es": "sal",
+    "en": "salt"
+   },
+   {
+    "cant": 10,
+    "un": "hojas",
+    "es": "hojas de aguacate, secas",
+    "en": "dried avocado leaves"
+   },
+   {
+    "cant": 500,
+    "un": "ml",
+    "es": "agua, para la olla",
+    "en": "water, for the pot"
+   },
+   {
+    "cant": 18,
+    "un": "pza",
+    "es": "tortillas de maíz",
+    "en": "corn tortillas"
+   },
+   {
+    "cant": 3,
+    "un": "pza",
+    "es": "limones",
+    "en": "limes"
+   },
+   {
+    "cant": 0.5,
+    "un": "pza",
+    "es": "cebolla, picada, para servir",
+    "en": "onion, chopped, to serve"
+   }
+  ],
+  "pasos": [
+   {
+    "es": "Con ayuda de un adulto, remoja los chiles guajillo en el agua caliente hasta que estén suaves.",
+    "en": "With an adult's help, soak the guajillo chiles in the hot water until soft.",
+    "min": 15
+   },
+   {
+    "es": "Licúa los chiles con 100 ml del agua del remojo, el ajo, el tomillo, la pimienta y la sal hasta que quede lisa.",
+    "en": "Blend the chiles with 100 ml of the soaking water, the garlic, the thyme, the pepper and the salt until smooth.",
+    "min": 3
+   },
+   {
+    "es": "Unta los trozos de chivo con el adobo, tapa y déjalos en el refrigerador para que tomen sabor.",
+    "en": "Spread the adobo on the goat pieces, cover and keep them in the refrigerator so they soak up the flavor.",
+    "min": 120
+   },
+   {
+    "es": "Con ayuda de un adulto, pasa las hojas de aguacate por una flama o un comal unos segundos para que suelten su aroma.",
+    "en": "With an adult's help, pass the avocado leaves over a flame or a griddle for a few seconds so they release their aroma.",
+    "min": 3
+   },
+   {
+    "es": "En una olla grande, pon en el fondo la cebolla, el laurel y la mitad de las hojas de aguacate, luego la carne con su adobo y las demás hojas encima. Agrega el agua y tapa bien.",
+    "en": "In a large pot, put the onion, bay leaves and half the avocado leaves on the bottom, then the meat with its adobo and the remaining leaves on top. Add the water and cover tightly.",
+    "min": 5
+   },
+   {
+    "es": "Cuece a fuego bajo, con ayuda de un adulto, hasta que la carne se separe fácil del hueso. Revisa el agua cada hora y agrega agua hirviendo si hace falta.",
+    "en": "Cook over low heat, with an adult's help, until the meat comes easily off the bone. Check the water every hour and add boiling water if needed.",
+    "min": 210
+   },
+   {
+    "es": "Saca la carne con cuidado, pide ayuda a un adulto, y retira las hojas de aguacate. Deshebra la carne y mézclala con un poco del caldo.",
+    "en": "Take the meat out carefully, with an adult's help, and remove the avocado leaves. Shred the meat and mix it with a little of the broth.",
+    "min": 10
+   },
+   {
+    "es": "Calienta las tortillas y sirve la carne con cebolla y limón. ¡Buen provecho, mijo!",
+    "en": "Warm the tortillas and serve the meat with onion and lime. Enjoy, mijo!",
+    "min": 2
+   }
+  ],
+  "historia": {
+   "nombre": {
+    "es": "«Chivo» es el nombre que se da en México a la cabra, sobre todo al macho. Y «barbacoa» es una palabra de origen taíno, del Caribe, que llegó a México con los españoles y nombra la carne cocida lentamente.",
+    "en": "«Chivo» is the name used in Mexico for goat, especially the male. And «barbacoa» is a word of Taíno origin, from the Caribbean, that reached Mexico with the Spanish and names slowly cooked meat."
+   },
+   "origen": {
+    "es": "Las cabras llegaron a México con los españoles. En Oaxaca la barbacoa de chivo se adoba con chile guajillo y se cuece lentamente, y en los mercados de los Valles Centrales, como el de Tlacolula, es un desayuno de domingo. Las hojas de aguacate le dan un aroma parecido al anís.",
+    "en": "Goats arrived in Mexico with the Spanish. In Oaxaca goat barbacoa is marinated with guajillo chile and cooked slowly, and in the markets of the Central Valleys, like Tlacolula's, it is a Sunday breakfast. Avocado leaves give it an aroma like anise."
+   },
+   "curiosos": [
+    {
+     "es": "Las hojas de aguacate solo dan aroma; se retiran antes de comer.",
+     "en": "Avocado leaves only give aroma; they are removed before eating."
+    },
+    {
+     "es": "En Oaxaca se acompaña con tortillas, salsa y su caldo.",
+     "en": "In Oaxaca it is served with tortillas, salsa and its broth."
+    },
+    {
+     "es": "El aguacate es originario de México.",
+     "en": "Avocado is native to Mexico."
+    }
+   ]
+  },
+  "aprende": [
+   {
+    "es": "chivo",
+    "en": "goat"
+   },
+   {
+    "es": "guajillo",
+    "en": "guajillo"
+   },
+   {
+    "es": "aguacate",
+    "en": "avocado"
+   },
+   {
+    "es": "laurel",
+    "en": "bay leaves"
+   },
+   {
+    "es": "tortillas",
+    "en": "tortillas"
+   }
+  ]
  }
 ]

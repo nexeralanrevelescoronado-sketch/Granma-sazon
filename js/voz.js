@@ -8,9 +8,14 @@ export const PERFIL = {
   abuelo: { pitch: 0.55, rate: 0.76 },
   granma: { pitch: 1.12, rate: 0.84 },
 };
-// Botón del perezoso («escuchar despacio»): la misma frase, bastante más lenta, para apreciar cada sonido.
-export const LENTA = 0.31;      // el dueño pidió la mitad de la velocidad anterior (0.62): Granma queda en 0.26 y el Abuelo en 0.24
+// Botón del perezoso («escuchar despacio»): la misma frase, PALABRA POR PALABRA, más lenta y con una pausa entre palabras
+// para que dé tiempo de repetir cada una (lo pidió el dueño, nov 2026).
+export const LENTA = 0.27;      // un poco más lento que antes (0.31): Granma queda en 0.23 y el Abuelo en 0.21
 export const PISO_LENTA = 0.2;   // por debajo de esto las voces de los teléfonos ya se entrecortan
+export const PAUSA_LENTA = 2000; // ms de silencio entre una palabra y la siguiente
+/** Las palabras de una frase, como se dicen en el modo perezoso (la puntuación se queda pegada a su palabra). Pura. */
+export const palabrasLentas = (t) => String(t || '').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w));
+let serie = 0;                   // cambia cada vez que se calla la voz: así una serie de palabras sabe que debe parar
 let lentaHasta = 0;
 /** El botón del perezoso avisa que lo siguiente que se diga (en el próximo instante) va despacio. */
 export const pedirLenta = () => { lentaHasta = Date.now() + 500; };
@@ -37,7 +42,7 @@ export function elegirVoz(voces, idioma, quien) {
   return [...delIdioma].sort((a, b) => puntos(a) - puntos(b))[0];
 }
 export function hayVozPara(idioma) { try { return speechSynthesis.getVoices().some((v) => normal(v.lang).startsWith(idioma)); } catch { return false; } }
-export const cancelarVoz = () => { try { speechSynthesis.cancel(); } catch { /* sin voz */ } };
+export const cancelarVoz = () => { serie++; try { speechSynthesis.cancel(); } catch { /* sin voz */ } };
 export const callar = () => { pararGrabacion(); cancelarVoz(); turno++; if (ultima.fin === Infinity) ultima = { ...ultima, fin: Date.now() }; };
 
 /* ---------- grabaciones (voz real del Abuelo) ----------
@@ -53,7 +58,7 @@ async function tocarGrabacion(ruta, lenta) {
   const r = await fetch(ruta); if (!r.ok) return false;
   const url = URL.createObjectURL(await r.blob()), audio = new Audio(url);
   pararGrabacion(); sonando = { audio, url };
-  if (lenta) { try { audio.preservesPitch = true; audio.playbackRate = 0.39; } catch { /* velocidad fija */ } }
+  if (lenta) { try { audio.preservesPitch = true; audio.playbackRate = 0.35; } catch { /* velocidad fija */ } }
   return new Promise((ok) => {
     const fin = (v) => { if (sonando?.audio === audio) pararGrabacion(); ok(v); };
     audio.onended = () => fin(true); audio.onerror = () => fin(false);
@@ -77,11 +82,24 @@ export async function decirPreferido(versiones, quien, opciones) {
   for (const [t, l] of versiones) if (await rutaGrabada(t, l, quien).catch(() => null)) return decir(t, l, quien, opciones);
   return decir(versiones[0][0], versiones[0][1], quien, opciones);
 }
-function decirSintetica(texto, idioma, quien, lenta = false) {
+async function decirSintetica(texto, idioma, quien, lenta = false) {
+  const pals = lenta ? palabrasLentas(texto) : [];
+  if (pals.length < 2) return decirUna(texto, idioma, quien, lenta);
+  // Modo perezoso: una palabra, pausa de 2 s, la siguiente… Si se toca otra bocina o se cambia de pantalla, se detiene.
+  if (!vozDisponible()) return false;
+  cancelarVoz(); const mia = serie; let sono = false;
+  for (let i = 0; i < pals.length; i++) {
+    if (i) { await new Promise((k) => setTimeout(k, PAUSA_LENTA)); if (mia !== serie) return sono; }
+    sono = (await decirUna(pals[i], idioma, quien, true, false)) || sono;
+    if (mia !== serie) return sono;
+  }
+  return sono;
+}
+function decirUna(texto, idioma, quien, lenta = false, callarAntes = true) {
   return new Promise((ok) => {
     try {
       if (!vozDisponible() || !texto) return ok(false);
-      cancelarVoz();
+      if (callarAntes) cancelarVoz();
       const ut = new SpeechSynthesisUtterance(texto), perfil = PERFIL[quien] || PERFIL.granma, voz = elegirVoz(speechSynthesis.getVoices(), idioma, quien);
       ut.lang = voz?.lang || (LANG[idioma] || LANG.es)[0]; if (voz) ut.voice = voz;
       ut.pitch = perfil.pitch; ut.rate = Math.max(lenta ? PISO_LENTA : 0.45, perfil.rate * (lenta ? LENTA : 1));

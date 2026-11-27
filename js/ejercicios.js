@@ -9,7 +9,7 @@ import { callar as callarVoz } from './voz.js';
 import { reaccion, tortillaPierde } from '../assets/animaciones/index.js';
 import { puedeReconocer, puedeGrabar, escuchar, grabar, soltar, parecido, UMBRAL, silabas, analizarVoz, limpiar as limpiarTxt } from './oido.js';
 import { reducirMovimiento } from './util.js';
-import { oidoPropioListo, prepararOido, escucharPropio } from './oido-propio.js';
+import { oidoPropioListo, prepararOido, escucharPropio, audioDelToque } from './oido-propio.js';
 import { confetiMexicano } from '../assets/animaciones/fiesta.js';
 import { hayVozPara } from './voz.js';
 
@@ -81,7 +81,7 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
     </div>`;
 
     // Al dejar un ejercicio de voz se apaga el micrófono y se borra la grabación (nada queda guardado).
-    const soltarVoz = (it) => { if (!it || it.tipo !== 'di') return; try { it.oido?.parar(); it.grab?.parar(); } catch { /* ya cerró */ } clearTimeout(it.borrado); soltar(it.url); it.url = null; it.oyendo = false; };
+    const soltarVoz = (it) => { if (!it || it.tipo !== 'di') return; if (it.preparando) { it.preparando.cancelado = true; it.preparando = null; } try { it.oido?.parar(); it.grab?.parar(); } catch { /* ya cerró */ } clearTimeout(it.borrado); soltar(it.url); it.url = null; it.oyendo = false; };
     const cierre = (extra) => { soltarVoz(actual); raiz.removeEventListener('click', delegado); resolver({ aciertos, errores, mejorRacha, ...extra }); };
 
     function siguiente() {
@@ -175,6 +175,8 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
         : it.intentos >= 2 ? `<button class="btn sec" data-yadije>${u('Seguir adelante', 'Move on')}</button>` : '';
     }
     async function micro(it) {
+      // Mientras prepara, otro toque cancela (antes abría un segundo micrófono encima del primero y se trababa).
+      if (it.preparando) { it.preparando.cancelado = true; it.preparando = null; return estadoDi(it); }
       if (it.oyendo) { it.oido?.parar(); it.grab?.parar(); return; }
       callarVoz();
       if (it.modo === 'reco') {
@@ -193,13 +195,16 @@ export function jugar(raiz, items, { usarVidas = true } = {}) {
       }
       if (it.modo === 'propio') {
         soltar(it.url); it.url = null; clearTimeout(it.borrado);
-        const boton = raiz.querySelector('[data-micro]'), mover = !reducirMovimiento();
-        estadoDi(it, u('Preparando el oído…', 'Getting the ear ready…'));
-        const e = await escucharPropio(T, it.frase, {
+        const boton = raiz.querySelector('[data-micro]'), mover = !reducirMovimiento(), senal = { cancelado: false };
+        audioDelToque();                                    // sin await: el audio se abre dentro del toque
+        it.preparando = senal; estadoDi(it, u('Preparando el oído…', 'Getting the ear ready…'));
+        const e = await escucharPropio(T, it.frase, { senal,
           alNivel: (v) => { if (mover && boton?.isConnected) boton.style.transform = `scale(${(1 + Math.min(0.28, v * 2.2)).toFixed(3)})`; },
           alParcial: (r) => { if (actual === it && !bloqueado) pintarPalabras(it, r.palabras); },
         });
-        if (actual !== it) return void e.parar?.();
+        if (it.preparando === senal) it.preparando = null;
+        if (actual !== it || senal.cancelado) return void e.parar?.();
+        if (!e.ok && e.motivo === 'audio') return estadoDi(it, u('No se abrió el micrófono. Tócalo otra vez.', 'The microphone did not open. Tap it again.'));
         if (!e.ok) { it.modo = e.motivo === 'permiso' ? 'solo' : 'graba'; return estadoDi(it, e.motivo === 'permiso' ? '' : u('No pude abrir el oído ahora; mido tu voz de la otra forma.', 'I could not open the ear now; I will measure your voice the other way.')); }
         it.grab = e; it.oyendo = true; estadoDi(it);
         const r = await e.fin; it.oyendo = false; if (boton) boton.style.transform = '';

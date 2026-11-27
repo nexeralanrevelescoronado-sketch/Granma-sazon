@@ -94,7 +94,7 @@ test('los ejercicios cambian según el interés (5 por capítulo, en ambos idiom
 });
 
 test('recetas: mole, pozole, champurrado, buñuelos y ponche con medidas, pasos y cronómetro', () => {
-  assert.deepEqual(recetas.map((r) => r.id).sort(), ['agua-jamaica', 'agua-limon-chia', 'agua-tamarindo', 'aguachile-camaron-cocido', 'arroz-con-leche', 'asado-de-boda', 'ate-de-membrillo', 'barbacoa-borrego-hidalgo', 'barbacoa-chivo', 'barbacoa-res', 'birria', 'bunuelos', 'cabrito-al-horno', 'caldillo-duranguense', 'capirotada', 'carne-en-su-jugo', 'cemitas', 'chalupas-poblanas', 'champurrado', 'chilaquiles-rojos', 'chiles-en-nogada', 'chiles-rellenos', 'chilorio', 'chocolate', 'churros-chocolate', 'cocada', 'discada', 'enchiladas', 'esquites', 'flan', 'frijoles-charros', 'glorias-de-linares', 'gorditas-de-horno', 'gorditas-laguneras', 'horchata', 'horchata-fresa', 'jericalla', 'machacado-con-huevo', 'memelas', 'mole', 'mole-negro', 'patoles', 'pescado-zarandeado', 'pipian', 'ponche', 'pozole', 'pozole-blanco', 'pozole-verde', 'rollos-de-membrillo', 'rosca', 'tacos-al-pastor', 'tacos-envenenados', 'tamales', 'tejate', 'tejuino', 'tlayudas', 'torta-ahogada', 'tortitas-santa-clara']);
+  assert.deepEqual(recetas.map((r) => r.id).sort(), ['agua-jamaica', 'agua-limon-chia', 'agua-tamarindo', 'aguachile-camaron-cocido', 'arroz-con-leche', 'asado-de-boda', 'ate-de-membrillo', 'barbacoa-borrego-hidalgo', 'barbacoa-chivo', 'barbacoa-res', 'birria', 'bunuelos', 'cabrito-al-horno', 'caldillo-duranguense', 'capirotada', 'carne-en-su-jugo', 'cemitas', 'chalupas-poblanas', 'champurrado', 'chilaquiles-rojos', 'chiles-en-nogada', 'chiles-rellenos', 'chilorio', 'chocolate', 'churros-chocolate', 'cocada', 'discada', 'enchiladas', 'esquites', 'flan', 'frijoles-charros', 'glorias-de-linares', 'gorditas-de-horno', 'gorditas-laguneras', 'horchata', 'horchata-fresa', 'jericalla', 'machacado-con-huevo', 'memelas', 'mole', 'mole-negro', 'patoles', 'pescado-zarandeado', 'pipian', 'ponche', 'pozole', 'pozole-blanco', 'pozole-verde', 'rollos-de-membrillo', 'rosca', 'tacos-al-pastor', 'tamales', 'tejate', 'tejuino', 'tlayudas', 'torta-ahogada', 'tortitas-santa-clara']);
   assert.equal(recetas.find((r) => r.id === 'mole').estrella, true);
   assert.equal(recetas.find((r) => r.id === 'pozole').insignia, 'dia-festivo'); assert.equal(recetas.find((r) => r.id === 'mole').insignia, 'maestro-mole');
   for (const r of recetas) {
@@ -774,8 +774,8 @@ test('recetas por región: cada botón lleva a recetas que existen, y cada histo
     assert.ok(!/^Se cuenta|leyenda/i.test(h.origen.es), `${r.id}: el origen es solo lo comprobado`);
     assert.ok(r.aprende?.length >= 3 && r.aprende.every((w) => JSON.stringify(r).toLowerCase().includes(w.es.toLowerCase())), `${r.id}: palabras para aprender que salen en la receta`);
   }
-  assert.ok(recetas.filter((x) => x.historia).length >= 57, 'las 45 recetas por región y 12 de las que ya estaban traen su historia');
-  assert.ok([...g.regiones, ...g.temas].every((x) => x.recetas.length >= 3), 'ninguna región ni tema se queda en «Muy pronto»');
+  assert.ok(recetas.filter((x) => x.historia).length >= 56, 'las 44 recetas por región y 12 de las que ya estaban traen su historia');
+  assert.ok([...g.regiones, ...g.temas].every((x) => x.recetas.length >= 2), 'ninguna región ni tema se queda en «Muy pronto»');
   // Tejuino: bebida fermentada para familias, con todos sus cuidados.
   const tej = recetas.find((r) => r.id === 'tejuino'), todo = JSON.stringify(tej).toLowerCase();
   for (const t of ['alcohol', 'embarazada', 'bebés', 'refrigerador', 'moho', 'pizca']) assert.ok(todo.includes(t), `tejuino: falta el cuidado «${t}»`);
@@ -795,4 +795,13 @@ test('cuentos de Granma: uno por receta, inventados y marcados, sin años ni per
     assert.ok(!/restaurante|taquería|marca|restaurant|brand|Iturbide|Guinness/i.test(todo), `${r.id}: sin negocios, marcas ni personajes reales`);
     assert.ok(!vistos.has(c.titulo.es), `${r.id}: título repetido`); vistos.add(c.titulo.es);
   }
+});
+
+test('nada que suene a veneno, muerte o violencia en nombres, historias ni cuentos (pedido del dueño)', () => {
+  const FEO = /envenen|veneno|poison|muert|muerte|\bdead\b|death|\bmatar?\b|\bkill|sangr|blood|borrach|drunk|diabl|devil|ahog[oóa]\b|ahogar|drown|guerra|\bwar\b|batalla|battle|soldad|soldier|balazo|\bdrogas?\b|\bdrugs?\b/i;
+  for (const r of recetas) {
+    const texto = [r.nombre.es, r.nombre.en, JSON.stringify(r.historia || {}), JSON.stringify(r.cuento || {}), r.resumen.es, r.resumen.en].join(' ').replace(/torta ahogada|tortas ahogadas|«ahogada»/gi, '');
+    assert.ok(!FEO.test(texto), `${r.id}: «${texto.match(FEO)?.[0]}» suena feo para una app de familias`);
+  }
+  assert.ok(!recetas.some((r) => r.id === 'tacos-envenenados'), 'los tacos envenenados no van');
 });

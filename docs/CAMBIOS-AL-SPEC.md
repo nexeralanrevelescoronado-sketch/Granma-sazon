@@ -236,3 +236,11 @@ Pedido del dueño: además de las leyendas reales, historias inventadas «lo má
 - Cada una de las 58 recetas trae un **«Cuento de Granma»**: un recuerdo inventado de su familia (tías, primos, el Abuelo, los vecinos), inspirado en la receta y su región. La app lo muestra en un recuadro aparte con la etiqueta «📖 Cuento de Granma: lo inventó para ti», para que nadie lo confunda con la historia comprobada ni con una leyenda.
 - 100 % original: sin personas, negocios ni marcas reales, sin fechas, sin copiar cuentos ni personajes de nadie. Apto para familias (en el del tejuino, los niños piden agua de limón).
 - Fuente: `scripts/datos/recetas-cuentos.json`. Lo vigilan el validador de la skill (campo `cuento`), `test/contenido.test.mjs` (uno por receta, sin años ni marcas, títulos sin repetir) y `scripts/qa-regiones.mjs`.
+
+### Nada que suene feo (27 nov)
+
+Pedido del dueño: «no metas nada de tacos envenenados ni nada que se escuche así, porque nos puede meter en problemas».
+- Se quitaron por completo los **tacos envenenados** (receta, historia, cuento, botón de Zacatecas y su página web).
+- Se quitaron las leyendas con guerra o soldados: la de las **chalupas** (una batalla) y la del **asado de boda** (un general de la Revolución).
+- **Torta ahogada:** el nombre es real y se queda, pero ya no se traduce como «drowned» ni se explica «como si se ahogara»: «le dicen ahogada porque va bien bañada en salsa». El cuento se llama «La torta bañada de cariño».
+- Regla fija en la skill y una prueba que revisa nombres, historias y cuentos: nada de veneno, muerte, sangre, guerra, batallas, soldados, borrachos, diablos, ahogarse ni drogas.

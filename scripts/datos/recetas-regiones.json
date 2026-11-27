@@ -147,7 +147,7 @@
   "insignia": null,
   "nombre": {
    "es": "Torta ahogada",
-   "en": "Torta ahogada (drowned sandwich)"
+   "en": "Torta ahogada (sandwich bathed in sauce)"
   },
   "resumen": {
    "es": "Birote salado relleno de carnitas y bañado en salsa de jitomate, con salsa de chile de árbol para quien aguanta el picante.",
@@ -276,15 +276,15 @@
     "min": 3
    },
    {
-    "es": "Baña cada torta con la salsa de jitomate hasta que quede casi «ahogada». Sirve con cebolla, limón y la salsa de chile de árbol aparte, para que cada quien le ponga lo que aguante.",
-    "en": "Bathe each torta with the tomato sauce until it is almost «drowned». Serve with onion, lime and the chile de árbol sauce on the side, so everyone adds what they can handle.",
+    "es": "Baña cada torta con la salsa de jitomate hasta que quede bien cubierta. Sirve con cebolla, limón y la salsa de chile de árbol aparte, para que cada quien le ponga lo que aguante.",
+    "en": "Bathe each torta with the tomato sauce until it is well covered. Serve with onion, lime and the chile de árbol sauce on the side, so everyone adds what they can handle.",
     "min": 5
    }
   ],
   "historia": {
    "nombre": {
-    "es": "En México, una «torta» es un pan relleno, y «ahogada» quiere decir que va bañada en salsa hasta quedar casi sumergida, como si se ahogara en ella.",
-    "en": "In Mexico, a «torta» is a filled sandwich, and «ahogada» means «drowned»: it is covered in sauce until it is almost swimming in it."
+    "es": "En México, una «torta» es un pan relleno, y le dicen «ahogada» porque va bien bañada en salsa.",
+    "en": "In Mexico, a «torta» is a filled sandwich, and it is called «ahogada» because it is generously bathed in sauce."
    },
    "origen": {
     "es": "Es un platillo de Guadalajara. Su base es el birote salado, un pan de corteza crujiente y centro firme que aguanta la salsa sin deshacerse. Hay varias versiones sobre dónde y cuándo nació la torta, y no hay acuerdo.",
@@ -4153,10 +4153,6 @@
     "es": "Es un guiso de cerdo en salsa roja de chiles secos, jugo de naranja y especias como clavo, canela y pimienta, típico de Zacatecas. También se come en Durango, Coahuila y La Laguna, donde se llama «asado de puerco».",
     "en": "It is a pork stew in a red sauce of dried chiles, orange juice and spices such as clove, cinnamon and pepper, typical of Zacatecas. It is also eaten in Durango, Coahuila and La Laguna, where it is called «asado de puerco»."
    },
-   "leyenda": {
-    "es": "Se cuenta que un general de la Revolución pidió un guiso de puerco con chiles rojos para sus soldados, y que de ahí quedó la receta. No hay pruebas de esta historia.",
-    "en": "Legend says a general of the Revolution asked for a pork stew with red chiles for his soldiers, and that is how the recipe stayed. There is no proof of this story."
-   },
    "curiosos": [
     {
      "es": "En La Laguna lo llaman asado de puerco, y dicen que su receta vino de Zacatecas.",
@@ -4188,147 +4184,6 @@
    {
     "es": "boda",
     "en": "wedding"
-   }
-  ]
- },
- {
-  "id": "tacos-envenenados",
-  "icono": "tacos-envenenados",
-  "insignia": null,
-  "nombre": {
-   "es": "Tacos envenenados",
-   "en": "Tacos envenenados (fried potato, bean and chorizo tacos)"
-  },
-  "resumen": {
-   "es": "Tacos grandes de frijol, papa y chorizo, dorados en manteca. Tienen nombre de susto, pero son puro sabor.",
-   "en": "Big tacos of beans, potato and chorizo, fried golden in lard. The name sounds scary, but they are pure flavor."
-  },
-  "porciones": 4,
-  "tiempoPrep": 30,
-  "tiempoCoccion": 30,
-  "nivel": {
-   "es": "Con ayuda de un adulto",
-   "en": "With an adult's help"
-  },
-  "nota": {
-   "es": "No llevan veneno: es solo el nombre. El aceite caliente salpica y quema: pide ayuda a un adulto para freír. El chorizo se cuece completo.",
-   "en": "They have no poison: it is only the name. Hot oil splashes and burns: ask an adult to help with the frying. Cook the chorizo all the way through."
-  },
-  "ingredientes": [
-   {
-    "cant": 300,
-    "un": "g",
-    "es": "papas, peladas y en cubos pequeños",
-    "en": "potatoes, peeled and diced"
-   },
-   {
-    "cant": 150,
-    "un": "g",
-    "es": "chorizo, sin tripa",
-    "en": "chorizo, casing removed"
-   },
-   {
-    "cant": 1,
-    "un": "taza",
-    "es": "frijoles refritos",
-    "en": "refried beans"
-   },
-   {
-    "cant": 8,
-    "un": "pza",
-    "es": "tortillas grandes de harina",
-    "en": "large flour tortillas"
-   },
-   {
-    "cant": 300,
-    "un": "ml",
-    "es": "manteca de cerdo o aceite, para freír",
-    "en": "lard or oil, for frying"
-   },
-   {
-    "cant": 0.5,
-    "un": "cdta",
-    "es": "sal",
-    "en": "salt"
-   },
-   {
-    "cant": 1,
-    "un": "taza",
-    "es": "salsa roja, para servir",
-    "en": "red salsa, to serve"
-   }
-  ],
-  "pasos": [
-   {
-    "es": "Cuece las papas en agua con sal hasta que estén suaves. Escúrrelas.",
-    "en": "Boil the potatoes in salted water until soft. Drain them.",
-    "min": 15
-   },
-   {
-    "es": "En un sartén, cocina el chorizo moviéndolo hasta que esté bien cocido. Mézclalo con las papas y aplástalas un poco.",
-    "en": "In a pan, cook the chorizo, stirring, until fully cooked. Mix it with the potatoes and mash them a little.",
-    "min": 8
-   },
-   {
-    "es": "Unta cada tortilla con frijoles, pon encima el relleno de papa y chorizo y enrolla en forma de taco bien apretado.",
-    "en": "Spread each tortilla with beans, add the potato and chorizo filling and roll into a tight taco.",
-    "min": 10
-   },
-   {
-    "es": "Con ayuda de un adulto, calienta la manteca y fríe los tacos hasta que estén dorados por todos lados. Pásalos a un plato con papel.",
-    "en": "With an adult's help, heat the lard and fry the tacos until golden on all sides. Move them to a plate lined with paper.",
-    "min": 12
-   },
-   {
-    "es": "Déjalos reposar un momento y sirve con salsa roja.",
-    "en": "Let them rest a moment and serve with red salsa.",
-    "min": 3
-   }
-  ],
-  "historia": {
-   "nombre": {
-    "es": "No llevan veneno. «Envenenados» es una broma del nombre: son tacos fritos en manteca, grandes y muy llenadores. Hay varias historias sobre cómo se les puso así, pero ninguna está documentada.",
-    "en": "They have no poison. «Envenenados» (poisoned) is a joke in the name: they are large tacos fried in lard and very filling. There are several stories about how they got the name, but none is documented."
-   },
-   "origen": {
-    "es": "Son un antojito de la ciudad de Zacatecas: tortillas grandes rellenas de frijol, papa y chorizo y fritas hasta dorar. Algunas fuentes dicen que tienen más de 80 años; hoy también se hacen con queso o bistec.",
-    "en": "They are a snack from the city of Zacatecas: large tortillas filled with beans, potato and chorizo and fried until golden. Some sources say they are over 80 years old; today they are also made with cheese or steak."
-   },
-   "leyenda": {
-    "es": "Se cuenta que un taquero con un puesto cerca de la estación del tren puso un letrero que decía «si quiere envenenarse, coma tacos», y que la gente se rió tanto que el nombre se quedó.",
-    "en": "Legend says a taco seller with a stand near the train station put up a sign that said «if you want to get poisoned, eat tacos», and people laughed so much that the name stuck."
-   },
-   "curiosos": [
-    {
-     "es": "Aunque se llaman envenenados, están ricos y no hacen daño.",
-     "en": "Although they are called poisoned, they are delicious and harmless."
-    },
-    {
-     "es": "La salsa roja de la mesa es parte de la tradición.",
-     "en": "The red salsa on the table is part of the tradition."
-    }
-   ]
-  },
-  "aprende": [
-   {
-    "es": "papas",
-    "en": "potatoes"
-   },
-   {
-    "es": "frijol",
-    "en": "beans"
-   },
-   {
-    "es": "chorizo",
-    "en": "chorizo"
-   },
-   {
-    "es": "manteca",
-    "en": "lard"
-   },
-   {
-    "es": "tacos",
-    "en": "tacos"
    }
   ]
  },
@@ -5226,10 +5081,6 @@
    "origen": {
     "es": "Las chalupas poblanas son un antojito de Puebla, ligado al barrio de El Alto, en el centro histórico. Se hacen con tortillas pequeñas fritas, salsa verde o roja, cerdo deshebrado y cebolla, y se sirven en tandas.",
     "en": "Chalupas poblanas are a street snack from Puebla, linked to the El Alto neighborhood in the historic center. They are made with small fried tortillas, green or red salsa, shredded pork and onion, and are served in rounds."
-   },
-   "leyenda": {
-    "es": "Se cuenta que, en los días de una famosa batalla de Puebla, las cocineras del barrio daban de comer a los soldados estas tortillitas fritas, fáciles de hacer y de comer de pie.",
-    "en": "Legend says that, in the days of a famous battle in Puebla, the neighborhood cooks fed the soldiers these little fried tortillas, easy to make and to eat standing up."
    },
    "curiosos": [
     {

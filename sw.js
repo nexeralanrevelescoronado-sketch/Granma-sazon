@@ -6,7 +6,7 @@
  * - Los cachés viejos se limpian en `activate`.
  */
 /*NUCLEO:INICIO*/
-const VERSION = '6ddb165687';
+const VERSION = '6fc5bf7662';
 const NUCLEO = [
  "assets/animaciones/animaciones.css",
  "assets/animaciones/confeti.js",
@@ -54,6 +54,8 @@ const NUCLEO = [
  "js/compartir.js",
  "js/constancia.js",
  "js/cronometros.js",
+ "js/cuenta-vuelta.js",
+ "js/cuenta.js",
  "js/datos.js",
  "js/descargas.js",
  "js/ejercicios.js",
@@ -61,6 +63,7 @@ const NUCLEO = [
  "js/fx.js",
  "js/glosario.js",
  "js/habla.js",
+ "js/legal.js",
  "js/lento.js",
  "js/oido-propio.js",
  "js/oido.js",
@@ -72,6 +75,7 @@ const NUCLEO = [
  "js/sound.js",
  "js/state.js",
  "js/util.js",
+ "js/vistas-cuenta.js",
  "js/vistas/asi.js",
  "js/vistas/biblia.js",
  "js/vistas/consejos.js",
@@ -81,6 +85,7 @@ const NUCLEO = [
  "js/vistas/historia.js",
  "js/vistas/inicio.js",
  "js/vistas/leccion.js",
+ "js/vistas/legal.js",
  "js/vistas/onboarding.js",
  "js/vistas/perfil.js",
  "js/vistas/platica.js",

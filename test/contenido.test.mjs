@@ -472,7 +472,7 @@ test('Cloudflare Pages: ningún archivo pasa de 25 MiB, los modelos van partidos
   }
   assert.ok(/PIEZA = 4 \* 1024 \* 1024/.test(leer('js/descargas.js')), 'el pedazo de Pages mide lo mismo que el que pide la app');
   assert.ok(!existsSync(join(RAIZ, 'dist/scripts')) && !existsSync(join(RAIZ, 'dist/graphify-out')) && !existsSync(join(RAIZ, 'dist/.claude')), 'nada interno se publica');
-  const rutas = JSON.parse(leer('dist/_routes.json')); assert.deepEqual(rutas.include, ['/assets/oido/modelo-en.tar.gz', '/assets/oido/modelo-es.tar.gz', '/api/avisos/*'], 'solo los modelos y el recordatorio pasan por funciones; lo demás es estático');
+  const rutas = JSON.parse(leer('dist/_routes.json')); assert.deepEqual(rutas.include, ['/assets/oido/modelo-en.tar.gz', '/assets/oido/modelo-es.tar.gz', '/api/avisos/*', '/api/cuenta', '/api/cuenta/*'], 'solo los modelos, los avisos y la cuenta pasan por funciones; lo demás es estático');
   const fn = leer('functions/assets/oido/[archivo].js'); assert.ok(/PERMITIDOS = new Set\(\['modelo-en\.tar\.gz', 'modelo-es\.tar\.gz'\]\)/.test(fn) && /206/.test(fn) && /content-range/.test(fn));
   const w = leer('wrangler.toml'); assert.ok(/pages_build_output_dir = "\.\/dist"/.test(w) && !/r2_buckets/.test(w), 'no hace falta R2');
 });
@@ -731,5 +731,28 @@ test('recordatorio diario: el teléfono arma el aviso (idioma, mijo/mija, si ya 
   assert.ok(/borrador\[tipo\] \|\|=/.test(per) && /aviso-local/.test(per), 'lo elegido no se pierde al volver a pintar, y el resultado sale junto al botón');
   assert.ok(/Ajustes<\/b> del iPhone → <b>Notificaciones<\/b> → <b>Granma Sazón<\/b>/.test(per) && /data-p="revisar"/.test(per), 'si están bloqueados, dice cómo permitirlos en el iPhone');
   const perfil = leer('js/vistas/perfil.js'); assert.ok(/Solo si activas los avisos de Granma/.test(perfil) && /quitarRecordatorio\(\)/.test(perfil), 'la privacidad lo explica y «Borrar mi progreso» también lo quita');
-  assert.ok(/Único dato que sale del teléfono/.test(leer('docs/DERECHOS-Y-LICENCIAS.md')));
+  assert.ok(/Datos que salen del teléfono\*\*, solo si la persona los activa/.test(leer('docs/DERECHOS-Y-LICENCIAS.md')) && /Cuenta con Google \(opcional\)/.test(leer('docs/DERECHOS-Y-LICENCIAS.md')), 'los datos que salen del teléfono están en DERECHOS, incluida la cuenta');
+});
+
+test('aviso de privacidad y términos: se aceptan al empezar, dicen lo que la app hace de verdad y se vuelven a pedir si cambian', async () => {
+  const { VERSION_LEGAL, RESPONSABLE, avisoHTML, terminosHTML, resumen } = await import('../js/legal.js');
+  assert.match(VERSION_LEGAL, /^\d{4}-\d{2}-\d{2}$/); assert.deepEqual(Object.keys(RESPONSABLE).sort(), ['correo', 'domicilio', 'nombre']);
+  for (const idioma of ['es', 'en']) {
+    const a = avisoHTML(idioma), t = terminosHTML(idioma), es = idioma === 'es';
+    assert.ok((a.match(/<h3>/g) || []).length >= 9 && (t.match(/<h3>/g) || []).length >= 6, `${idioma}: aviso y términos completos`);
+    // lo que dice el aviso tiene que coincidir con el código
+    assert.ok(a.includes(es ? '1 minuto' : '1 minute') && /BORRADO_MS = 60000/.test(leer('js/ejercicios.js')), 'la grabación se borra en 1 minuto');
+    assert.ok(a.includes(es ? 'la hora y los días' : 'the time and the days') && /hora_utc INTEGER NOT NULL/.test(leer('servidor/avisos/esquema.sql')), 'el servidor guarda dirección de avisos, hora y días');
+    assert.ok(a.includes('Cloudflare') && /(Google, Apple, Mozilla o Microsoft|Google, Apple, Mozilla or Microsoft)/.test(a), 'dice con quién se comparte');
+    assert.ok(a.includes(es ? 'derechos ARCO' : 'object to the use of your data') && a.includes(es ? 'Niñas y niños' : 'Children'), 'derechos y menores');
+    assert.ok(t.includes(es ? 'persona adulta' : 'with an adult') && t.includes(es ? 'alergias' : 'allergies') && t.includes(es ? 'dominio público' : 'public domain') && t.includes(es ? 'leyes de México' : 'laws of Mexico'));
+    assert.equal(resumen(es).length, 4); for (const p of PROHIBIDAS) assert.ok(!(a + t).toLowerCase().includes(p + ' '), p);
+  }
+  assert.ok(!/google-analytics|googletagmanager|gtag\(|fbq\(/.test(leer('index.html') + leer('js/app.js')), 'el aviso dice «sin analítica»: no hay etiquetas de rastreo');
+  // la bienvenida: no se avanza sin aceptar, y los avisos se ofrecen sin marcar
+  const onb = leer('js/vistas/onboarding.js');
+  assert.ok(/data-acepto/.test(onb) && /data-sig \$\{acepta \? '' : 'disabled'\}/.test(onb) && /S\.perfil\.legal = VERSION_LEGAL; sel\.legalFecha = S\.perfil\.legalFecha = new Date\(\)\.toISOString\(\)/.test(onb), 'casilla obligatoria y queda anotada la versión y la fecha');
+  assert.ok(/data-quiere="practicar" \$\{quiere\.practicar \? 'checked' : ''\}/.test(onb) && /quiere = \{ practicar: false, clase: false \}/.test(onb) && /Ahora no/.test(onb), 'los avisos son opcionales y empiezan sin marcar');
+  const app = leer('js/app.js'); assert.ok(/debeAceptar = S\.perfil\.listo && S\.perfil\.legal !== VERSION_LEGAL/.test(app) && /#\/onboarding\?aceptar/.test(app) && /base === 'privacidad' \|\| base === 'terminos'/.test(app), 'si cambia la versión, se vuelve a pedir; los textos se pueden leer antes de aceptar');
+  assert.ok(/#\/privacidad/.test(leer('js/vistas/perfil.js')) && /#\/terminos/.test(leer('js/vistas/perfil.js')), 'se pueden releer desde Perfil');
 });

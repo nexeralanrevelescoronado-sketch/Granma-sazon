@@ -11,17 +11,17 @@ const srv = createServer((q, s) => { let p = new URL(q.url, 'http://x').pathname
   let cuerpo = readFileSync(f); if (p === '/sw.js' && version) cuerpo = Buffer.from(String(cuerpo).replace(/const VERSION = '[^']+'/, `const VERSION = '${version}'`));
   s.writeHead(200, { 'Content-Type': TIPOS[extname(f)] || 'application/octet-stream', 'Cache-Control': 'no-store' }); s.end(cuerpo); }).listen(0);
 const B = `http://localhost:${srv.address().port}/`, fallas = [], ok = (c, t) => { console.log(`  ${c ? '✔' : '✘'} ${t}`); if (!c) fallas.push(t); };
-const estado = (extra = {}) => JSON.stringify({ v: 1, perfil: { aprende: 'en', interes: 'cocina', cocina: 'mexicana', nombre: 'Ana', listo: true, ...extra }, xp: 0, racha: { n: 0, ultimo: null }, caps: { 1: { hecho: true }, 2: { hecho: true }, 3: { hecho: true } }, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, pruebas: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false, vozV: 2 }, constancia: { fecha: null } });
+const estado = (extra = {}) => JSON.stringify({ v: 1, perfil: { aprende: 'en', interes: 'cocina', cocina: 'mexicana', nombre: 'Ana', listo: true, legal: '2026-11-27', ...extra }, xp: 0, racha: { n: 0, ultimo: null }, caps: { 1: { hecho: true }, 2: { hecho: true }, 3: { hecho: true } }, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, pruebas: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false, vozV: 2 }, constancia: { fecha: null } });
 const b = await chromium.launch({ args: ['--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream'] }), errores = [];
 const nueva = async (op = {}) => { const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, ...op }); const pg = await ctx.newPage(); pg.on('pageerror', (e) => errores.push(e.message)); return pg; };
 const fueraDeCitas = (t) => t.replace(/«[^»]*»|“[^”]*”|"[^"]*"/g, '');
 
 console.log('1) La bienvenida pregunta cómo le dice Granma');
 let pg = await nueva(); await pg.goto(B); await pg.waitForSelector('[data-aprende]');
-await pg.click('[data-aprende="en"]'); await pg.click('[data-sig]'); await pg.waitForSelector('[data-trato]');
+await pg.click('[data-aprende="en"]'); await pg.click('[data-sig]'); await pg.waitForSelector('[data-acepto]'); await pg.check('[data-acepto]'); await pg.click('[data-sig]'); await pg.waitForSelector('[data-trato]');
 ok((await pg.locator('[data-trato]').count()) === 3 && (await pg.locator('h1').textContent()) === '¿Cómo quieres que te diga Granma?' && await pg.locator('[data-sig]').isDisabled(), 'tres opciones (mijo, mija, como salga) y hay que escoger una');
 await pg.screenshot({ path: join(CAPT, '60-trato.png') });
-await pg.click('[data-trato="mija"]'); await pg.click('[data-sig]'); await pg.click('[data-interes="cocina"]'); await pg.click('[data-sig]'); await pg.click('[data-cocina="mexicana"]'); await pg.click('[data-sig]');
+await pg.click('[data-trato="mija"]'); await pg.click('[data-sig]'); await pg.click('[data-interes="cocina"]'); await pg.click('[data-sig]'); await pg.click('[data-cocina="mexicana"]'); await pg.click('[data-sig]'); await pg.waitForSelector('[data-quiere], .tarjeta.crema2'); await pg.click('[data-sig]');
 ok(/¡Bienvenida, mija!/.test(await pg.locator('.globo .l1').first().textContent()), 'Granma dice «¡Bienvenida, mija!»');
 await pg.click('[data-empezar]'); await pg.waitForSelector('#cta');
 ok(/mija/.test(await pg.locator('.globo h1').first().textContent()) && (await pg.locator('[data-trato-card]').count()) === 0, 'en el inicio saluda con «mija» y ya no vuelve a preguntar');
@@ -141,6 +141,43 @@ const prepararAvisos = async (permiso, iphone = false) => { const pg = await nue
   ok(/Los avisos están bloqueados/.test(t) && /Ajustes del iPhone → Notificaciones → Granma Sazón → activa Permitir notificaciones/.test(t.replace(/\s+/g, ' ')) && (await pg.locator('[data-p="revisar"]').count()) === 1, 'avisos bloqueados: explica dónde permitirlos en el iPhone y ofrece «Ya lo permití»');
   ok((await pg.locator('[data-p^="aviso:"]').count()) === 0 && pedidos.length === 0, 'mientras estén bloqueados no ofrece un «Activar» que no puede funcionar');
   await pg.locator('.permisos li.bloqueo').scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(CAPT, '64-bloqueados.png') });
+  await pg.context().close(); }
+
+console.log('6) Aviso de privacidad y términos al empezar; avisos de Granma desde el principio');
+{ const pg = await nueva({ timezoneId: 'America/Mexico_City' }), pedidos = [];
+  await pg.context().addInitScript(() => { let p = 'default'; Object.defineProperty(Notification, 'permission', { get: () => p, configurable: true }); Notification.requestPermission = async () => { p = 'granted'; window.__pidio = (window.__pidio || 0) + 1; return p; }; let sub = null;
+    PushManager.prototype.getSubscription = async () => sub; PushManager.prototype.subscribe = async () => { sub = { endpoint: 'https://fcm.googleapis.com/fcm/send/telefono-nuevo-0123456789', unsubscribe: async () => true }; return sub; }; });
+  await pg.route('**/api/avisos/**', async (ruta) => { const q = ruta.request(), u = new URL(q.url()); pedidos.push({ ruta: u.pathname, cuerpo: q.postData() ? JSON.parse(q.postData()) : null });
+    await ruta.fulfill({ contentType: 'application/json', body: JSON.stringify(u.pathname.endsWith('/clave') ? { ok: true, clave: 'BKv4rsSwut8pNXL1Bc2IjLEh3vZ1F6o_mXJAkdnbGAIHnxuBQ1H94ekDZY7py5y6H82MBoZz4TwoRK2nNYfjw_8' } : { ok: true }) }); });
+  await pg.goto(B); await pg.waitForSelector('[data-aprende]'); await pg.click('[data-aprende="en"]'); await pg.click('[data-sig]'); await pg.waitForSelector('[data-acepto]');
+  const t = await pg.locator('main').textContent();
+  ok(/Antes de empezar/.test(t) && (await pg.locator('.resumen-legal li').count()) === 4 && (await pg.locator('details.legal').count()) === 2 && await pg.locator('[data-sig]').isDisabled(), 'después del idioma: resumen en 4 renglones, aviso y términos completos a un toque, y no se avanza sin aceptar');
+  await pg.locator('details.legal').first().click(); const aviso = await pg.locator('details.legal').first().textContent();
+  ok(/Lo que se guarda solo en tu teléfono/.test(aviso) && /Avisos de Granma \(solo si los activas\)/.test(aviso) && /derechos ARCO/.test(aviso) && /Niñas y niños/.test(aviso), 'el aviso completo explica qué se guarda, los avisos, los derechos ARCO y a los menores');
+  await pg.screenshot({ path: join(CAPT, '65-aviso-privacidad.png'), fullPage: true });
+  await pg.check('[data-acepto]'); ok(!(await pg.locator('[data-sig]').isDisabled()), 'al marcar «Leí y acepto», se puede continuar');
+  await pg.click('[data-sig]'); await pg.click('[data-trato="mijo"]'); await pg.click('[data-sig]'); await pg.click('[data-interes="viajes"]'); await pg.click('[data-sig]'); await pg.click('[data-cocina="mexicana"]'); await pg.click('[data-sig]');
+  await pg.waitForSelector('[data-quiere]');
+  ok((await pg.locator('[data-quiere]').count()) === 2 && !(await pg.locator('[data-quiere]:checked').count()) && await pg.locator('[data-activar]').isDisabled() && !(await pg.evaluate(() => window.__pidio)), 'los avisos se ofrecen sin marcar y no se pide permiso hasta que la persona lo decide');
+  await pg.screenshot({ path: join(CAPT, '66-avisos-inicio.png') });
+  await pg.waitForFunction(() => navigator.serviceWorker.getRegistration().then((r) => !!r?.active), null, { timeout: 40000 });
+  await pg.check('[data-quiere="practicar"]'); await pg.check('[data-quiere="clase"]'); await pg.click('[data-activar]'); await pg.waitForSelector('.aviso-local', { timeout: 40000 });
+  ok(/Granma te avisará/.test(await pg.locator('.aviso-local').textContent()) && pedidos.filter((x) => x.ruta.endsWith('/alta')).map((x) => x.cuerpo.tipo).join() === 'practicar,clase' && (await pg.evaluate(() => window.__pidio)) === 1, 'al tocar «Activar los que marqué»: se pide permiso una vez y quedan los dos avisos');
+  await pg.click('[data-sig]'); await pg.click('[data-empezar]'); await pg.waitForSelector('#cta');
+  const S = await pg.evaluate(() => JSON.parse(localStorage.getItem('granma:v1')));
+  ok(S.perfil.legal === '2026-11-27' && Date.now() - new Date(S.perfil.legalFecha) < 60000 && S.perfil.trato === 'mijo' && S.ajustes.avisos?.practicar && S.ajustes.avisos?.clase, 'queda anotado en el teléfono qué versión aceptó y cuándo, junto con sus avisos');
+  await pg.goto(B + '#/privacidad'); await pg.waitForSelector('.legal');
+  ok(/Aviso de privacidad/.test(await pg.locator('h1').textContent()) && /Lo aceptaste el/.test(await pg.locator('main').textContent()), 'en Perfil se puede volver a leer, con la fecha en que lo aceptó');
+  await pg.context().close(); }
+{ // quien ya jugaba (sin haber aceptado): lo lee y lo acepta una vez, sin perder nada
+  const pg = await nueva(); await pg.goto(B); await pg.evaluate((e) => { const s = JSON.parse(e); delete s.perfil.legal; s.xp = 67; localStorage.setItem('granma:v1', JSON.stringify(s)); }, estado({ trato: 'mija' }));
+  await pg.goto(B + '#/recetas'); await pg.reload(); await pg.waitForSelector('[data-acepto]');
+  ok(/onboarding\?aceptar/.test(pg.url()) && /Actualizamos el aviso de privacidad/.test(await pg.locator('h1').textContent()) && !(await pg.locator('[data-atras]').count()) && !(await pg.locator('.pasos-onb').count()), 'a quien ya jugaba le sale «Actualizamos el aviso de privacidad», solo ese paso');
+  await pg.goto(B + '#/historia'); await pg.waitForTimeout(400); ok(/onboarding\?aceptar/.test(pg.url()), 'no se puede seguir jugando sin aceptarlo');
+  await pg.goto(B + '#/terminos'); await pg.waitForSelector('.legal'); ok(/Términos de uso/.test(await pg.locator('h1').textContent()), 'pero sí puede leer los términos antes de aceptar');
+  await pg.goto(B + '#/onboarding?aceptar'); await pg.waitForSelector('[data-acepto]'); await pg.check('[data-acepto]'); await pg.click('[data-sig]'); await pg.waitForSelector('#cta');
+  const S = await pg.evaluate(() => JSON.parse(localStorage.getItem('granma:v1')));
+  ok(S.perfil.legal === '2026-11-27' && S.xp === 67 && S.perfil.trato === 'mija' && S.caps[1]?.hecho, 'al aceptar vuelve al inicio con todo su avance intacto');
   await pg.context().close(); }
 
 ok(errores.length === 0, 'sin errores de JS' + (errores.length ? ': ' + errores.slice(0, 3).join(' | ') : ''));

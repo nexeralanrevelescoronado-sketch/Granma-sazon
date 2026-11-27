@@ -178,3 +178,24 @@ Pedido y aprobado por el dueño, sabiendo que la app deja de ser «sin servidor�
 - **Días:** cada aviso tiene sus días (L M M J V S D, más «Todos», «Entre semana» y «Fin de semana»). Al servidor van como máscara en UTC (a las 8 p. m. del lunes en México ya es martes en UTC).
 - **Segundo aviso, «Te espero en clase»:** «Mija, te estoy esperando para tu siguiente clase de cocina e inglés: «La rosca y el monito»» (o «de cocina y español», según lo que aprende). El capítulo que sigue lo sabe el teléfono; al tocarlo abre la Historia. Sugerido: sábados a las 10 a. m.
 - **Servidor:** la tabla guarda además `tipo` (practicar o clase) y `dias`. Un teléfono con dos avisos a la misma hora recibe un solo toque y el teléfono decide el texto (si coinciden, gana la clase). La app vieja, que no manda tipo ni días, sigue funcionando (todos los días). Base migrada en Cloudflare.
+
+## Aviso de privacidad y términos al empezar; avisos desde el inicio (27 nov)
+
+- **Bienvenida:** después de elegir idioma, la pantalla «Antes de empezar» resume en 4 renglones qué pasa con los datos, deja leer el aviso de privacidad y los términos completos (`js/legal.js`, en los dos idiomas) y pide marcar «Leí y acepto» para continuar. Se anota en el teléfono la versión aceptada y la fecha (`perfil.legal`, `perfil.legalFecha`). Pide que los menores lo lean con un adulto.
+- **Quien ya jugaba** ve una sola vez «Actualizamos el aviso de privacidad» y no puede seguir sin aceptarlo; su avance no se toca. Si el aviso cambia (`VERSION_LEGAL`), se vuelve a pedir. Los textos se pueden leer siempre en `#/privacidad` y `#/terminos` (enlazados en Perfil).
+- **Avisos desde el principio:** antes de la bienvenida, «¿Quieres que Granma te avise?» ofrece los dos avisos **sin marcar**; el permiso del teléfono se pide solo si la persona marca alguno y toca «Activar los que marqué». «Ahora no» sigue sin pedir nada.
+- **Responsable (LFPDPPP):** Nexer Alan Reveles Coronado, privacidad@granmasazon.app (reenvía al correo del dueño con el enrutamiento de correo de Cloudflare) y su domicilio en Guadalajara, en `RESPONSABLE` de `js/legal.js`. Antes decía «(pendiente)». Se llenaron en `RESPONSABLE` de `js/legal.js`.
+- **No es asesoría legal:** el texto describe con exactitud lo que la app hace, pero conviene que un abogado lo revise antes de publicar en tiendas o de cobrar.
+
+## Entrar con Google para guardar el avance (27 nov)
+
+Pedido y aprobado por el dueño («si quiero darle con Google me late»). Es **opcional**: sin entrar, todo sigue igual y el avance vive en el teléfono.
+
+- **Qué hace:** en Perfil → «☁️ Tu cuenta» → **Entrar con Google**. El avance se guarda en la cuenta para no perderlo al cambiar de teléfono y para seguir en otro. Se guarda solo (a los 5 s de un cambio) y al abrir la app se trae lo más nuevo. Hay «Guardar ahora», «Salir de la cuenta en este teléfono» y «Borrar mi cuenta y mi avance guardado».
+- **Cómo entra:** el flujo estándar de Google (OpenID Connect): la app manda a la persona a la página de Google y Google la regresa a `/cuenta.html` con un token. No se carga ningún programa de Google en la app. Se pide **solo el permiso `openid`**: Google no nos da ni el correo ni el nombre. Como no se piden datos sensibles, Google no exige revisión especial de la app (consentimiento avanzado).
+- **Servidor:** `functions/api/cuenta/[[ruta]].js` en la misma base D1 (`servidor/cuentas.sql`: tablas `cuentas` y `sesiones`). Revisa la firma del token con las llaves públicas de Google (RS256), que sea para esta app (`aud`), de Google (`iss`), vigente y con el mismo número de un solo uso (`nonce`). Guarda una **huella** (SHA-256) del identificador de Google, nunca el identificador; la sesión es una cookie `HttpOnly; Secure; SameSite=Lax` de 90 días y en la base solo queda su huella. Todo lo que escribe exige que venga de `https://granmasazon.app`.
+- **Lo que viaja:** el avance, sin el nombre de la constancia, sin los avisos y sin la cuenta. Tope de 256 KB.
+- **Dos avances:** si al entrar hay avance en la cuenta y en el teléfono, Granma pregunta «¿Cuál quieres usar?» y muestra los dos (XP y capítulos); nunca se borra sin preguntar. Si el teléfono estaba vacío, se toma el de la cuenta.
+- **Encendido:** el botón aparece solo cuando el proyecto de Pages tiene la variable `GOOGLE_CLIENT_ID` (el Client ID es público). Mientras esté vacía, la tarjeta no se ve.
+- **Aviso de privacidad:** nueva sección «Tu cuenta de Google (solo si entras)», Google en «Con quién se comparten» y borrar la cuenta en los derechos ARCO.
+- **Pruebas:** `test/cuentas.test.mjs` (la función real contra SQLite y un «Google» de mentiras con su propia llave: tokens con otra firma, otra app, otro emisor, vencidos, sin nonce, algoritmo «none»…; sesión, avance, salir y borrar) y `scripts/qa-cuenta.mjs` (navegador: tarjeta, viaje a Google, vuelta, escoger avance, cancelar).

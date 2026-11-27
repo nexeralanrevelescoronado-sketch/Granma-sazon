@@ -42,21 +42,21 @@ El modelo de español es el **0.42**, bajado de la página oficial, donde consta
 | Voces del teléfono (leer en voz alta) | Siempre que la voz está encendida | El sistema del teléfono; corre en el dispositivo |
 | Reconocimiento de voz del teléfono | Solo si la persona elige «Que mi teléfono me escuche» | Apple o Google, con sus propias reglas de privacidad. La app pide permiso antes |
 | WhatsApp (compartir) | Solo si la persona toca «compartir» | Abre WhatsApp con un texto; la app no envía datos por su cuenta |
-| GitHub Pages (hospedaje) | Al abrir la app con internet | GitHub registra las visitas como cualquier hospedaje |
-
+| GitHub Pages (respaldo) | Solo si se abre la dirección de respaldo | GitHub registra las visitas como cualquier hospedaje |
 | Cloudflare (hospedaje y recordatorio) | Al abrir la app, y solo si se activa el recordatorio diario | Cloudflare registra las visitas como cualquier hospedaje. El recordatorio guarda en una base propia (D1) la dirección de avisos del teléfono y la hora |
 | Servicio de avisos del navegador | Solo con el recordatorio diario activado | Google, Apple, Mozilla o Microsoft entregan el aviso al teléfono. El aviso viaja sin contenido |
+| Cuenta con Google (opcional) | Solo si la persona toca «Entrar con Google» | Google confirma que es ella (permiso `openid`: sin correo ni nombre). En la base D1 se guarda una huella del identificador de Google y el avance, sin el nombre de la constancia ni los avisos. Se borra con «Borrar mi cuenta» |
 
-La app **no tiene cuentas, analítica, anuncios ni cookies de rastreo**. Todo el avance vive en el teléfono.
+La app **no tiene analítica, anuncios ni cookies de rastreo**. El avance vive en el teléfono; solo si la persona entra con Google se guarda también en su cuenta (la única cookie es la de esa sesión, `HttpOnly`, y no rastrea).
 
-**Único dato que sale del teléfono** (y solo si la persona activa el recordatorio diario): la dirección de avisos que genera su navegador y la hora
-elegida, en UTC. No se guarda nombre, correo, idioma ni avance; el texto del aviso lo arma el propio teléfono. Se borra al quitar el recordatorio,
+**Datos que salen del teléfono**, solo si la persona los activa: (1) con los avisos, la dirección de avisos que genera su navegador, la hora y los días
+elegidos, en UTC; (2) con la cuenta de Google, una huella de su identificador y su avance (código: `functions/api/cuenta/`). En los avisos: No se guarda nombre, correo, idioma ni avance; el texto del aviso lo arma el propio teléfono. Se borra al quitar el recordatorio,
 al borrar el progreso, cuando el teléfono deja de existir para el servicio de avisos, o tras 7 días de fallos. Código: `servidor/avisos/`.
 
 ## 5. Privacidad y voz
 
 - La voz nunca se guarda ni se sube desde la app. La grabación de práctica vive en memoria y se borra sola en 1 minuto.
-- El aviso de privacidad está en Perfil, en español e inglés.
+- El aviso de privacidad y los términos se aceptan al empezar y están en Perfil (`#/privacidad`, `#/terminos`), en español e inglés. Responsable: Nexer Alan Reveles Coronado, privacidad@granmasazon.app.
 - **Voz real del Abuelo (pendiente):** quien grabe debe firmar un permiso por escrito para usar su voz en la app (alcance, tiempo y si es pagado).
 
 ## 6. Lo que le toca al dueño (no se puede resolver desde el código)

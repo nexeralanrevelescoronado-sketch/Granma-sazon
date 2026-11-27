@@ -10,7 +10,7 @@ const srv = createServer((q, s) => { let p = new URL(q.url, 'http://x').pathname
 const B = `http://localhost:${srv.address().port}/`, fallas = [], ok = (c, t) => { console.log(`  ${c ? '✔' : '✘'} ${t}`); if (!c) fallas.push(t); };
 const TMP = mkdtempSync(join(tmpdir(), 'oido-')), hayVoz = spawnSync('espeak-ng', ['--version']).status === 0;
 const wav = (nombre, texto, voz = 'en-us') => { const f = join(TMP, nombre); spawnSync('espeak-ng', ['-v', voz, '-s', '135', '-w', f, texto]); return f; };
-const estado = JSON.stringify({ v: 1, perfil: { aprende: 'en', interes: 'cocina', cocina: 'mexicana', nombre: 'Ana', listo: true }, xp: 0, racha: { n: 0, ultimo: null }, caps: {}, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false, vozV: 2, oido: 'local' }, constancia: { fecha: null } });
+const estado = JSON.stringify({ v: 1, perfil: { aprende: 'en', interes: 'cocina', cocina: 'mexicana', nombre: 'Ana', listo: true, legal: '2026-11-27' }, xp: 0, racha: { n: 0, ultimo: null }, caps: {}, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false, vozV: 2, oido: 'local' }, constancia: { fecha: null } });
 const errores = [];
 async function abrir(audio) {
   const b = await chromium.launch({ args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', ...(audio ? [`--use-file-for-fake-audio-capture=${audio}%noloop`] : [])] });

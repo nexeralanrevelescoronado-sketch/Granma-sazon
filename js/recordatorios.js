@@ -42,7 +42,9 @@ export function diasBonitos(dias, idioma = nat()) {
 const aBytes = (b64u) => { const s = atob(b64u.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - (b64u.length % 4)) % 4)); return Uint8Array.from(s, (c) => c.charCodeAt(0)); };
 async function enviar(ruta, datos) { const r = await fetch(API + ruta, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos) }); return r.ok; }
 async function suscripcion(crear) {
-  const reg = await navigator.serviceWorker.ready; let sub = await reg.pushManager.getSubscription();
+  // si la app se acaba de abrir, el service worker puede tardar unos segundos en quedar listo; no se espera para siempre
+  const reg = await Promise.race([navigator.serviceWorker.ready, new Promise((_, no) => setTimeout(() => no(new Error('sin service worker')), 30000))]);
+  let sub = await reg.pushManager.getSubscription();
   if (!sub && crear) { const r = await fetch(API + '/clave'), clave = r.ok ? (await r.json()).clave : null; if (!clave) throw new Error('sin clave'); sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: aBytes(clave) }); }
   return sub;
 }

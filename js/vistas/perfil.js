@@ -1,6 +1,7 @@
 // Perfil: insignias, constancia, ajustes y créditos.
 import { puedeReconocer, escuchar, grabar, soltar } from '../oido.js';
 import { conectarPermisos } from '../permisos.js';
+import { conectarCuenta } from '../vistas-cuenta.js';
 import { estado, guardar, reiniciar, u, nat, tgt, Ln, INSIGNIAS, rachaVigente } from '../state.js';
 import { generarConstancia } from '../constancia.js';
 import { sonido } from '../sound.js';
@@ -24,6 +25,7 @@ export async function montar(main) {
     <h2 class="mt2">🏆 ${u('Constancia Granma', 'Granma Certificate')}</h2>
     <div class="tarjeta">${hecha ? `<p>${u('¡La ganaste! Escribe tu nombre para tu constancia (se hace en tu teléfono).', 'You earned it! Type your name for your certificate (made on your phone).')}</p>
       <label class="muted" for="nombre">${u('Tu nombre', 'Your name')}</label><input type="text" id="nombre" maxlength="40" value="${esc(S.perfil.nombre)}" autocomplete="name" style="margin-bottom:10px"><button class="btn grande olla" data-const>${u('Crear mi constancia', 'Create my certificate')}</button><div id="const-out" class="mt"></div>` : `<p>${u('Termina los 6 capítulos de la Historia 1 para ganarla.', 'Finish the 6 chapters of Story 1 to earn it.')}</p><a class="btn" href="#/historia">${u('Ir a la historia', 'Go to the story')}</a>`}</div>
+    <section data-cuenta hidden></section>
     <h2 class="mt2">📲 ${u('La app en tu teléfono', 'The app on your phone')}</h2>
     <div class="tarjeta" data-permisos></div>
     <h2 class="mt2">${u('Ajustes', 'Settings')}</h2>
@@ -40,6 +42,7 @@ export async function montar(main) {
       <p class="muted mt">👂 ${u('Para que «Granma, en mi teléfono» reconozca tus palabras sin internet, baja el «Oído de Granma» en', 'So that "Granma, on my phone" recognizes your words offline, get "Granma\'s ear" in')} <a href="#/descargas">${u('Descargas', 'Downloads')}</a>.</p>
       <p class="muted mt" id="micro-out" role="status"></p></div>
     <h2 class="mt2">🔒 ${u('Tu privacidad', 'Your privacy')}</h2>
+    <p class="fila"><a class="btn sec" href="#/privacidad">📄 ${u('Aviso de privacidad', 'Privacy notice')}</a><a class="btn sec" href="#/terminos">📄 ${u('Términos de uso', 'Terms of use')}</a></p>
     <div class="tarjeta"><ul class="privacidad">
       <li>${u('No hay cuentas ni registro. Tu avance, tu nombre y tu cuaderno se guardan solo en este teléfono.', 'There are no accounts or sign-up. Your progress, your name and your notebook are stored only on this phone.')}</li>
       <li>${u('La app no guarda ni envía tu voz. El «Oído de Granma» reconoce tus palabras dentro del teléfono, sin internet. Si te grabas para practicar, la grabación vive solo en la memoria del teléfono y se borra sola en 1 minuto o al pasar de ejercicio.', 'The app does not store or send your voice. "Granma\'s ear" recognizes your words inside the phone, offline. If you record yourself to practice, the recording lives only in the phone\'s memory and deletes itself in 1 minute or when you move on.')}</li>
@@ -51,6 +54,7 @@ export async function montar(main) {
       <p class="atrib"><strong>${u('Oído de Granma', 'Granma\'s ear')}</strong> — ${u('usa Vosk y sus modelos de voz (Alpha Cephei Inc.), con licencia Apache 2.0.', 'uses Vosk and its speech models (Alpha Cephei Inc.), under the Apache 2.0 license.')}</p>
       ${VERSIONES.map((v) => `<p class="atrib"><strong>${esc(v.corto)}</strong> — ${esc(v.attribution[nat()])}${v.activa ? '' : ' (' + u('apagada', 'switched off') + ')'}</p>`).join('')}</div>`;
   conectarPermisos(main.querySelector('[data-permisos]'));
+  conectarCuenta(main.querySelector('[data-cuenta]'));
   main.onclick = async (e) => {
     const b = e.target.closest('button'); if (!b) return;
     if (b.hasAttribute('data-sonido')) { sonido.alternar(); montar(main); }

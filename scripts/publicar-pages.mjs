@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..'), DIST = join(RAIZ, 'dist');
 const MAX = 25 * 1024 * 1024, MAX_ARCHIVOS = 20000;
 // Solo lo que la app sirve al público (nada de scripts, pruebas, mapas ni instrucciones internas)
-const INCLUIR = ['index.html', 'manifest.webmanifest', 'sw.js', 'robots.txt', 'sitemap.xml', 'demo-animaciones.html',
+const INCLUIR = ['index.html', 'cuenta.html', 'manifest.webmanifest', 'sw.js', 'robots.txt', 'sitemap.xml', 'demo-animaciones.html',
   'css', 'js', 'assets', 'data', 'recetas', 'docs/GUION-ABUELO.pdf'];
 export const MODELOS = ['assets/oido/modelo-en.tar.gz', 'assets/oido/modelo-es.tar.gz'];   // van partidos
 export const PEDAZO = 4 * 1024 * 1024;
@@ -30,7 +30,7 @@ for (const m of MODELOS) {
   writeFileSync(join(DIST, 'assets/oido/partes', `${nombre}.json`), JSON.stringify({ tam: datos.length, pedazo: PEDAZO, n, huella: createHash('sha256').update(datos).digest('hex').slice(0, 32) }));
 }
 // Las funciones solo corren en la ruta de los modelos: todo lo demás es estático (gratis e ilimitado en Pages)
-writeFileSync(join(DIST, '_routes.json'), JSON.stringify({ version: 1, include: [...MODELOS.map((m) => '/' + m), '/api/avisos/*'], exclude: [] }, null, 1));
+writeFileSync(join(DIST, '_routes.json'), JSON.stringify({ version: 1, include: [...MODELOS.map((m) => '/' + m), '/api/avisos/*', '/api/cuenta', '/api/cuenta/*'], exclude: [] }, null, 1));
 // El service worker y la página siempre se revisan contra el servidor (si no, una versión vieja podría quedarse pegada)
 writeFileSync(join(DIST, '_headers'), ['/sw.js', '  Cache-Control: no-cache', '/', '  Cache-Control: no-cache', '/index.html', '  Cache-Control: no-cache', ''].join('\n'));
 

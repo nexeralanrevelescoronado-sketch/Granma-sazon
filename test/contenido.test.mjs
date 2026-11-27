@@ -694,7 +694,7 @@ test('recordatorio diario: el teléfono arma el aviso (idioma, mijo/mija, si ya 
   // el texto del aviso vive en el service worker: se corre aquí con un «self» de mentiras
   const vm = await import('node:vm'), escuchas = {};
   const ctx = { self: { addEventListener: (n, f) => { escuchas[n] = f; }, registration: { scope: 'https://granmasazon.app/' }, clients: {}, skipWaiting() {} }, URL, caches: {}, fetch() {}, Date, Promise, JSON, Math, String, console };
-  vm.runInNewContext(leer('sw.js') + '\n;globalThis.__t = textoDelRecordatorio; globalThis.__R = RECORDATORIOS; globalThis.__Y = YA_PRACTICO;', ctx);
+  vm.runInNewContext(leer('sw.js') + '\n;globalThis.__t = textoDelRecordatorio; globalThis.__R = RECORDATORIOS; globalThis.__Y = YA_PRACTICO; globalThis.__a = textoDelAviso; globalThis.__C = CLASE;', ctx);
   const texto = ctx.__t, R = ctx.__R, hoy = new Date(2026, 10, 26, 19, 0), hoyTxt = '2026-11-26';
   assert.ok(escuchas.push && escuchas.notificationclick, 'el service worker atiende el aviso y el toque');
   assert.ok(R.es.length >= 6 && R.en.length === R.es.length);
@@ -704,16 +704,32 @@ test('recordatorio diario: el teléfono arma el aviso (idioma, mijo/mija, si ya 
   const mija = texto({ idioma: 'es', trato: 'mija', dia: '' }, hoy); assert.ok(/mija/.test(mija.cuerpo) && !/mijo/i.test(mija.titulo + mija.cuerpo), 'con «mija», el aviso dice mija');
   const ya = texto({ idioma: 'es', trato: 'mija', dia: hoyTxt }, hoy); assert.ok(/ya practicaste/.test(ya.cuerpo) && /mija/.test(ya.titulo), 'si hoy ya practicó, la felicita en vez de insistir');
   assert.ok(texto(null, hoy).titulo, 'sin datos guardados, sale el texto general');
+  // «Te espero en clase»: a su hora y en sus días; nombra el capítulo que sigue y la materia correcta
+  const aviso = ctx.__a, jueves19 = new Date(2026, 10, 26, 19, 5), jueves10 = new Date(2026, 10, 26, 10, 3), sabado10 = new Date(2026, 10, 28, 10, 1);
+  const base = { idioma: 'es', aprende: 'en', trato: 'mija', dia: '', siguiente: { es: 'La rosca y el monito', en: 'The rosca and the little figure' }, horarios: [{ tipo: 'practicar', hora: 19, dias: [0, 1, 2, 3, 4, 5, 6] }, { tipo: 'clase', hora: 10, dias: [6] }] };
+  let a = aviso(base, sabado10); assert.equal(a.tipo, 'clase'); assert.equal(a.cuerpo, 'Mija, te estoy esperando para tu siguiente clase de cocina e inglés: «La rosca y el monito».');
+  assert.equal(aviso(base, jueves10).tipo, 'practicar', 'el jueves no tiene clase: si el aviso llega, no se inventa');
+  assert.equal(aviso(base, jueves19).tipo, 'practicar');
+  a = aviso({ ...base, idioma: 'en', aprende: 'es', trato: 'mijo' }, sabado10); assert.equal(a.cuerpo, 'Mijo, I am waiting for you for your next cooking and Spanish class: "The rosca and the little figure".');
+  a = aviso({ ...base, siguiente: null }, sabado10); assert.ok(/clase de cocina e inglés\. Ya tengo todo listo\./.test(a.cuerpo), 'sin capítulo pendiente, igual invita');
+  a = aviso({ ...base, horarios: [{ tipo: 'practicar', hora: 10, dias: [6] }, { tipo: 'clase', hora: 10, dias: [6] }] }, sabado10); assert.equal(a.tipo, 'clase', 'si coinciden, gana la clase');
+  for (const c of Object.values(ctx.__C)) for (const p of [...PROHIBIDAS, 'pierdas', 'lose']) assert.ok(!(c.titulo + c.con('x', 'y') + c.sin('x')).toLowerCase().includes(p), p);
+  assert.ok(/data: \{ ir: tipo === 'clase' \? '#\/historia' : '#\/' \}/.test(leer('sw.js')) && /v\.navigate\(destino\)/.test(leer('sw.js')), 'al tocar el de clase, abre la historia');
   for (const [t, c] of [...R.es, ...R.en, ctx.__Y.es, ctx.__Y.en]) { assert.ok(t.length <= 40 && c.length <= 90, `corto: ${t}`); for (const p of [...PROHIBIDAS, 'pierdas', 'perder', 'olvid', 'última oportunidad', 'lose', 'miss out', 'last chance', 'forgot']) assert.ok(!(t + ' ' + c).toLowerCase().includes(p), `sin culpa ni presión: «${p}»`); }
   // la app: suscripción solo al tocar el botón, y lo único que manda es la dirección de avisos y la hora
   const rec = leer('js/recordatorios.js');
-  assert.ok(/userVisibleOnly: true/.test(rec) && /enviar\('\/alta', \{ endpoint: sub\.endpoint, hora: utc \}\)/.test(rec) && /enviar\('\/baja', \{ endpoint: sub\.endpoint \}\)/.test(rec) && /sub\.unsubscribe\(\)/.test(rec));
-  assert.deepEqual([...rec.matchAll(/JSON\.stringify\(\{([^}]*)\}\)/g)].map((m) => m[1].trim()), ['idioma: nat(), trato: S.perfil.trato || \'\', dia: S.racha.ultimo || \'\''], 'idioma, trato y día se anotan solo en el teléfono (caché local), no en lo que se envía');
-  const { horaUTC, horaBonita } = await import('../js/recordatorios.js');
+  assert.ok(/userVisibleOnly: true/.test(rec) && /enviar\('\/alta', \{ endpoint: sub\.endpoint, hora: utc, tipo, dias: mascara \}\)/.test(rec) && /enviar\('\/baja'/.test(rec) && /sub\.unsubscribe\(\)/.test(rec));
+  const enviado = [...rec.matchAll(/enviar\('\/\w+', ([^)]*)\)/g)].map((m) => m[1]).join(' '); assert.ok(!/idioma|trato|nombre|aprende|siguiente|racha/.test(enviado), 'al servidor solo van dirección, hora, tipo y días');
+  assert.ok(/caches\.open\(CAJA\)\)\.put\('datos'/.test(rec) && /idioma: nat\(\), aprende: tgt\(\), trato:/.test(rec), 'idioma, trato, día y capítulo que sigue se anotan solo en el teléfono');
+  const { horaUTC, horaBonita, mascaraUTC, diasBonitos } = await import('../js/recordatorios.js');
+  assert.equal(mascaraUTC([1], 20, 360), 1 << 2, 'lunes 8 p. m. en México es martes en UTC'); assert.equal(mascaraUTC([1], 10, 360), 1 << 1); assert.equal(mascaraUTC([0], 1, -540), 1 << 6, 'domingo 1 a. m. en Japón es sábado en UTC'); assert.equal(mascaraUTC([0, 1, 2, 3, 4, 5, 6], 20, 360), 127);
+  assert.equal(diasBonitos([0, 1, 2, 3, 4, 5, 6], 'es'), 'todos los días'); assert.equal(diasBonitos([5, 1, 3, 2, 4], 'es'), 'de lunes a viernes'); assert.equal(diasBonitos([6, 0], 'en'), 'Saturdays and Sundays'); assert.equal(diasBonitos([6], 'es'), 'los sábados'); assert.equal(diasBonitos([1, 3, 5], 'es'), 'lunes, miércoles y viernes');
   assert.equal(horaUTC(19, 360), 1, '7 p. m. en México (UTC-6) es la 1 UTC'); assert.equal(horaUTC(7, -60), 6); assert.equal(horaUTC(23, 300), 4); assert.equal(horaUTC(0, -540), 15); assert.equal(horaUTC(19, -330), 13, 'zonas con media hora: se redondea hacia abajo');
   assert.equal(horaBonita(19, 'es'), '7:00 p. m.'); assert.equal(horaBonita(12, 'en'), '12:00 PM'); assert.equal(horaBonita(6, 'es'), '6:00 a. m.');
   assert.ok(!/requestPermission|pushManager\.subscribe/.test(leer('js/app.js')), 'al abrir no se pide nada: solo se revisa un recordatorio ya activado');
-  const per = leer('js/permisos.js'); assert.ok(/data-p="recordar"/.test(per) && /data-p="no-recordar"/.test(per) && /solo la dirección de avisos de este teléfono y la hora/.test(per), 'botón para activarlo y para quitarlo, diciendo qué se guarda');
-  const perfil = leer('js/vistas/perfil.js'); assert.ok(/Solo si activas el recordatorio diario/.test(perfil) && /quitarRecordatorio\(\)/.test(perfil), 'la privacidad lo explica y «Borrar mi progreso» también lo quita');
+  const per = leer('js/permisos.js'); assert.ok(/aviso2\('practicar'/.test(per) && /aviso2\('clase'/.test(per) && /data-p="aviso:\$\{tipo\}"/.test(per) && /data-p="quitar:\$\{tipo\}"/.test(per) && /data-dia="\$\{tipo\}:\$\{d\}"/.test(per), 'dos avisos, cada uno con hora, días, activar y quitar');
+  assert.ok(/borrador\[tipo\] \|\|=/.test(per) && /aviso-local/.test(per), 'lo elegido no se pierde al volver a pintar, y el resultado sale junto al botón');
+  assert.ok(/Ajustes<\/b> del iPhone → <b>Notificaciones<\/b> → <b>Granma Sazón<\/b>/.test(per) && /data-p="revisar"/.test(per), 'si están bloqueados, dice cómo permitirlos en el iPhone');
+  const perfil = leer('js/vistas/perfil.js'); assert.ok(/Solo si activas los avisos de Granma/.test(perfil) && /quitarRecordatorio\(\)/.test(perfil), 'la privacidad lo explica y «Borrar mi progreso» también lo quita');
   assert.ok(/Único dato que sale del teléfono/.test(leer('docs/DERECHOS-Y-LICENCIAS.md')));
 });

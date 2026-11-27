@@ -6,7 +6,7 @@
  * - Los cachés viejos se limpian en `activate`.
  */
 /*NUCLEO:INICIO*/
-const VERSION = 'fd01ed6883';
+const VERSION = '6ddb165687';
 const NUCLEO = [
  "assets/animaciones/animaciones.css",
  "assets/animaciones/confeti.js",
@@ -193,7 +193,7 @@ self.addEventListener('message', (ev) => {
   else if (ev.data === 'version') ev.ports?.[0]?.postMessage(VERSION);            // para mostrar la versión en el perfil
 });
 
-// Recordatorio diario. El servidor solo «toca el timbre» (el aviso llega sin contenido); el texto se arma aquí, en el teléfono,
+// Avisos de Granma (practicar y clase). El servidor solo «toca el timbre» (el aviso llega sin contenido); el texto se arma aquí, en el teléfono,
 // con lo que la app dejó anotado: idioma, si le dicen «mijo» o «mija» y si hoy ya practicó. Granma invita, nunca regaña.
 const RECORDATORIOS = {
   es: [['Granma te espera ☕', 'Ya está el café, mijo. ¿Platicamos cinco minutitos?'], ['Tu palabra de hoy', 'Mijo, hoy tengo una palabra nueva para ti. Ven tantito.'], ['Cinco minutitos', 'Con poquito diario se llega lejos, mijo. Aquí te espero.'],
@@ -202,6 +202,12 @@ const RECORDATORIOS = {
     ['The kitchen is open', 'Mijo, the stove is lit. Come practice for a little while.'], ['I saved your seat', 'Your chair is ready, mijo. Shall we pick up where we left off?'], ['How is your day going?', 'Tell me how your day is going, mijo. I am listening.']],
 };
 const YA_PRACTICO = { es: ['¡Qué gusto, mijo!', 'Hoy ya practicaste. Descansa, que mañana seguimos.'], en: ['So happy, mijo!', 'You already practiced today. Rest, and we continue tomorrow.'] };
+// «Te espero en clase»: Granma invita a la siguiente clase, con el nombre del capítulo que sigue. «clase de cocina e inglés» o «y español».
+const CLASE = {
+  es: { titulo: 'Granma te espera 👩‍🍳', con: (materia, cap) => `Mijo, te estoy esperando para tu siguiente clase de cocina ${materia}: «${cap}».`, sin: (materia) => `Mijo, te estoy esperando para tu siguiente clase de cocina ${materia}. Ya tengo todo listo.` },
+  en: { titulo: 'Granma is waiting 👩‍🍳', con: (materia, cap) => `Mijo, I am waiting for you for your next cooking and ${materia} class: "${cap}".`, sin: (materia) => `Mijo, I am waiting for you for your next cooking and ${materia} class. I have everything ready.` },
+};
+const MATERIA = { es: { en: 'e inglés', es: 'y español' }, en: { en: 'English', es: 'Spanish' } };
 function textoDelRecordatorio(datos, ahora = new Date()) {
   const idioma = datos?.idioma === 'en' ? 'en' : 'es', hoy = `${ahora.getFullYear()}-${String(ahora.getMonth() + 1).padStart(2, '0')}-${String(ahora.getDate()).padStart(2, '0')}`;
   const dia = Math.floor((Date.UTC(ahora.getFullYear(), ahora.getMonth(), ahora.getDate()) - Date.UTC(ahora.getFullYear(), 0, 0)) / 86400000);
@@ -209,20 +215,36 @@ function textoDelRecordatorio(datos, ahora = new Date()) {
   const trato = (t) => (datos?.trato === 'mija' ? t.replace(/\b([Mm])ijo\b/g, '$1ija') : t);
   return { titulo: trato(titulo), cuerpo: trato(cuerpo) };
 }
+/** Qué aviso toca a esta hora y este día (si hay dos, «clase»; si no se sabe, el de practicar). */
+function tipoQueToca(datos, ahora) {
+  const h = datos?.horarios || [], dia = ahora.getDay(), hora = ahora.getHours();
+  const toca = h.filter((x) => x.hora === hora && (!Array.isArray(x.dias) || x.dias.includes(dia))).map((x) => x.tipo);
+  return toca.includes('clase') ? 'clase' : toca.includes('practicar') || !h.length ? 'practicar' : h[0].tipo;
+}
+function textoDelAviso(datos, ahora = new Date()) {
+  const idioma = datos?.idioma === 'en' ? 'en' : 'es', trato = (t) => (datos?.trato === 'mija' ? t.replace(/\b([Mm])ijo\b/g, '$1ija') : t);
+  if (tipoQueToca(datos, ahora) === 'clase') {
+    const c = CLASE[idioma], materia = MATERIA[idioma][datos?.aprende === 'es' ? 'es' : 'en'], cap = datos?.siguiente?.[idioma];
+    return { titulo: c.titulo, cuerpo: trato(cap ? c.con(materia, cap) : c.sin(materia)), tipo: 'clase' };
+  }
+  return { ...textoDelRecordatorio(datos, ahora), tipo: 'practicar' };
+}
 self.addEventListener('push', (ev) => {
   ev.waitUntil((async () => {
     let datos = null; try { const r = await (await caches.open('granma-avisos')).match('datos'); if (r) datos = await r.json(); } catch { /* sin datos: texto general */ }
-    const { titulo, cuerpo } = textoDelRecordatorio(datos);
-    await self.registration.showNotification(titulo, { body: cuerpo, icon: aUrl('assets/iconos/icon-192.png'), badge: aUrl('assets/iconos/icon-192.png'), tag: 'recordatorio', renotify: true });
+    const { titulo, cuerpo, tipo } = textoDelAviso(datos);
+    // el de clase abre la historia; el de practicar, el inicio
+    await self.registration.showNotification(titulo, { body: cuerpo, icon: aUrl('assets/iconos/icon-192.png'), badge: aUrl('assets/iconos/icon-192.png'), tag: 'granma-' + tipo, renotify: true, data: { ir: tipo === 'clase' ? '#/historia' : '#/' } });
   })());
 });
 
 // Notificación (del cronómetro o del recordatorio): al tocarla se enfoca la app (o se abre si estaba cerrada).
 self.addEventListener('notificationclick', (ev) => {
   ev.notification.close();
+  const destino = ALCANCE + (ev.notification.data?.ir || '');
   ev.waitUntil((async () => {
     const ventanas = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
-    if (ventanas.length) return ventanas[0].focus();
-    return self.clients.openWindow(ALCANCE);
+    if (ventanas.length) { const v = ventanas[0]; try { if (ev.notification.data?.ir) await v.navigate(destino); } catch { /* sin permiso para navegar: solo se enfoca */ } return v.focus(); }
+    return self.clients.openWindow(destino);
   })());
 });

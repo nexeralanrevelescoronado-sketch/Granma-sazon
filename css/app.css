@@ -313,3 +313,12 @@ a.modo{text-decoration:none;color:inherit}
 .permisos .estado{font-weight:700}
 .permisos .estado.ok{color:var(--verde-ink)}
 .rejilla>.btn{padding:0 12px;white-space:nowrap}   /* los dos botones del inicio caben en un renglón a 360 px */
+/* días de la semana para los avisos de Granma */
+.dias{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.dia{min-height:44px;min-width:0;border-radius:12px;border:2px solid var(--linea);background:var(--blanco);color:var(--cafe);font-weight:800;font-size:1rem;cursor:pointer}
+.dia[aria-pressed="true"]{background:var(--verde-ink);border-color:var(--verde-ink);color:#fff}
+.dias-rapidos{gap:4px 14px}
+.dias-rapidos .btn-liga{min-height:44px}
+.permisos select{min-height:44px;font-size:1rem}
+.aviso-local{margin:4px 0 0;padding:10px 12px;border-radius:12px;background:var(--crema);font-weight:700}
+.permisos li.bloqueo{background:var(--mal-bg);border-radius:14px;padding:12px;border:0}

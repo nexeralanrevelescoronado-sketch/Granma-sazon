@@ -37,17 +37,24 @@ test('avisos: alta, cambio de hora y baja; sin origen de la app o con datos raro
   r = await atender(new Request('https://granmasazon.app/api/avisos/cron', { method: 'POST', headers: { 'X-Cron-Secreto': 'secreto-de-prueba-123' } }), env); assert.equal(r.status, 200); assert.equal((await r.json()).atendidas, 0);
   r = await atender(pedir('/api/avisos/clave', { metodo: 'GET' }), { VAPID_PUBLICA: k.publica }); assert.equal(r.status, 503, 'sin base de datos enlazada, avisa que falta configurar');
   r = await worker.fetch(pedir('/api/avisos/alta', { cuerpo: { endpoint: FCM, hora: 1, nombre: 'Ana', idioma: 'es' } }), env); assert.equal(r.status, 200);
-  assert.deepEqual(Object.keys(filas()[0]).sort(), ['creado', 'endpoint', 'fallos', 'hora_utc', 'id', 'ultimo'], 'solo se guarda la dirección de avisos y la hora: ni nombre ni idioma');
+  assert.deepEqual(Object.keys(filas()[0]).sort(), ['creado', 'dias', 'endpoint', 'fallos', 'hora_utc', 'id', 'tipo', 'ultimo'], 'solo se guarda la dirección de avisos, la hora, los días y el tipo: ni nombre ni idioma');
+  assert.equal(filas()[0].tipo, 'practicar'); assert.equal(filas()[0].dias, 127, 'la app vieja (sin tipo ni días) sigue funcionando: todos los días');
   assert.equal(filas()[0].id, await huella(FCM)); assert.equal(filas()[0].hora_utc, 1);
   await worker.fetch(pedir('/api/avisos/alta', { cuerpo: { endpoint: FCM, hora: 14 } }), env); assert.equal(filas().length, 1, 'el mismo teléfono no se repite'); assert.equal(filas()[0].hora_utc, 14, 'cambia la hora');
-  r = await worker.fetch(pedir('/api/avisos/baja', { cuerpo: { endpoint: FCM } }), env); assert.equal(r.status, 200); assert.equal(filas().length, 0, 'al quitar el recordatorio, se borra');
+  // el segundo aviso («Te espero en clase») con sus días, para el mismo teléfono
+  r = await worker.fetch(pedir('/api/avisos/alta', { cuerpo: { endpoint: FCM, hora: 16, tipo: 'clase', dias: 0b1000001 } }), env); assert.equal(r.status, 200);
+  assert.equal(filas().length, 2, 'un renglón por aviso'); assert.deepEqual(filas().map((f) => [f.tipo, f.hora_utc, f.dias]).sort(), [['clase', 16, 65], ['practicar', 14, 127]]);
+  for (const [caso, c] of [['tipo raro', { endpoint: FCM, hora: 1, tipo: 'publicidad' }], ['sin días', { endpoint: FCM, hora: 1, dias: 0 }], ['días de más', { endpoint: FCM, hora: 1, dias: 128 }], ['días con decimales', { endpoint: FCM, hora: 1, dias: 3.5 }]]) { r = await worker.fetch(pedir('/api/avisos/alta', { cuerpo: c }), env); assert.equal(r.status, 400, caso); }
+  r = await worker.fetch(pedir('/api/avisos/baja', { cuerpo: { endpoint: FCM, tipo: 'clase' } }), env); assert.equal(r.status, 200); assert.deepEqual(filas().map((f) => f.tipo), ['practicar'], 'se quita solo el de clase');
+  await worker.fetch(pedir('/api/avisos/alta', { cuerpo: { endpoint: FCM, hora: 16, tipo: 'clase', dias: 127 } }), env);
+  r = await worker.fetch(pedir('/api/avisos/baja', { cuerpo: { endpoint: FCM } }), env); assert.equal(r.status, 200); assert.equal(filas().length, 0, 'sin tipo, se borran todos los avisos de ese teléfono');
 });
 
 test('avisos: el cron toca el timbre una vez al día, firmado y sin contenido; lo que ya no existe se borra', { skip: !sqlite }, async () => {
   const k = await llaves(), recibidos = [];
   const servicio = createServer((q, s) => { let n = 0; q.on('data', (c) => { n += c.length; }); q.on('end', () => { recibidos.push({ ruta: q.url, metodo: q.method, cuerpo: n, auth: q.headers.authorization, ttl: q.headers.ttl }); s.writeHead(q.url.startsWith('/ya-no') ? 410 : q.url.startsWith('/falla') ? 500 : 201); s.end(); }); }).listen(0);
   const host = `127.0.0.1:${servicio.address().port}`, DB = baseDePrueba(), env = { DB, VAPID_PUBLICA: k.publica, VAPID_PRIVADA: k.privada, HOST_DE_PRUEBA: host };
-  const pon = async (ruta, hora, fallos = 0) => { const e = `http://${host}${ruta}/${'x'.repeat(20)}`; DB.crudo.prepare('INSERT INTO suscripciones (id, endpoint, hora_utc, creado, fallos) VALUES (?, ?, ?, ?, ?)').run(await huella(e), e, hora, '2026-11-01', fallos); return e; };
+  const pon = async (ruta, hora, fallos = 0, tipo = 'practicar', dias = 127) => { const e = `http://${host}${ruta}/${'x'.repeat(20)}`; DB.crudo.prepare('INSERT INTO suscripciones (id, endpoint, hora_utc, creado, fallos, tipo, dias) VALUES (?, ?, ?, ?, ?, ?, ?)').run(await huella(e, tipo), e, hora, '2026-11-01', fallos, tipo, dias); return e; };
   const una = (ruta) => DB.crudo.prepare('SELECT * FROM suscripciones WHERE endpoint LIKE ?').get(`%${ruta}/%`);
   await pon('/bien', 1); await pon('/ya-no', 1); await pon('/falla', 1); await pon('/falla-vieja', 1, DIAS_DE_FALLO - 1); await pon('/otra-hora', 2);
   const ahora = new Date('2026-11-26T01:05:00Z');
@@ -67,6 +74,16 @@ test('avisos: el cron toca el timbre una vez al día, firmado y sin contenido; l
   res = await avisar(env, new Date('2026-11-27T01:00:00Z')); assert.equal(res.atendidas, 2, 'al día siguiente, otra vez');
   const cuenta = DB.crudo.prepare('SELECT estado, SUM(n) AS n FROM envios GROUP BY estado ORDER BY estado').all(); assert.deepEqual(cuenta.map((c) => [c.estado, c.n]), [[201, 2], [410, 1], [500, 3]], 'queda la cuenta de envíos, sin datos de nadie');
   assert.deepEqual(Object.keys(DB.crudo.prepare('SELECT * FROM envios').get()).sort(), ['dia', 'estado', 'n', 'servicio']);
+  // días: el 26 de nov de 2026 es jueves (bit 4). Solo jueves → sí; solo sábado → no.
+  const antes = recibidos.length;
+  await pon('/jueves', 3, 0, 'practicar', 1 << 4); await pon('/sabado', 3, 0, 'practicar', 1 << 6);
+  res = await avisar(env, new Date('2026-11-26T03:00:00Z')); assert.equal(res.atendidas, 1, 'solo el que tiene marcado el jueves');
+  assert.ok(recibidos.slice(antes).every((x) => x.ruta.startsWith('/jueves')));
+  // el mismo teléfono con práctica y clase a la misma hora: un solo toque, y quedan marcados los dos
+  const doble = `http://${host}/doble/${'x'.repeat(20)}`;
+  for (const t of ['practicar', 'clase']) DB.crudo.prepare('INSERT INTO suscripciones (id, endpoint, hora_utc, creado, tipo, dias) VALUES (?, ?, 4, ?, ?, 127)').run(await huella(doble, t), doble, '2026-11-01', t);
+  const n0 = recibidos.length; res = await avisar(env, new Date('2026-11-26T04:00:00Z'));
+  assert.equal(recibidos.length - n0, 1, 'un solo aviso para ese teléfono'); assert.equal(DB.crudo.prepare("SELECT COUNT(*) AS n FROM suscripciones WHERE endpoint = ? AND ultimo = '2026-11-26'").get(doble).n, 2);
   // muchas a la misma hora: salen por tandas (el plan gratis limita las llamadas por ejecución)
   for (let i = 0; i < POR_TANDA + 5; i++) await pon(`/tanda${i}`, 5);
   res = await avisar(env, new Date('2026-11-26T05:00:00Z')); assert.equal(res.atendidas, POR_TANDA);

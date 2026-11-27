@@ -171,3 +171,10 @@ Pedido y aprobado por el dueño, sabiendo que la app deja de ser «sin servidor�
 - **Tono:** seis avisos que invitan («Ya está el café, mijo. ¿Platicamos cinco minutitos?»). Nada de «vas a perder tu racha». Si ese día ya practicó, el aviso la felicita.
 - **Límites:** en iPhone solo funciona con la app en la pantalla de inicio (iOS 16.4 o más reciente). En el plan gratis caben unos 480 avisos por cada hora del día. El aviso sin contenido se probó contra un servicio simulado; **falta confirmarlo en un iPhone y un Android reales**.
 - **Pruebas:** `test/avisos.test.mjs` (la función real contra SQLite y un servicio de avisos de mentiras que revisa la firma), el simulador de Cloudflare y `scripts/qa-app.mjs`.
+
+### Avisos con días y «Te espero en clase» (27 nov)
+
+- **Arreglo:** al tocar «Activar» con los avisos bloqueados, la hora elegida se regresaba a las 7 p. m. y el mensaje de error quedaba hasta abajo, fuera de la vista. Ahora lo elegido (hora y días) se conserva, el resultado sale junto al botón y, si los avisos están bloqueados, aparece un recuadro con los pasos del iPhone (Ajustes → Notificaciones → Granma Sazón → Permitir notificaciones) y el botón «Ya lo permití», sin un «Activar» que no puede funcionar.
+- **Días:** cada aviso tiene sus días (L M M J V S D, más «Todos», «Entre semana» y «Fin de semana»). Al servidor van como máscara en UTC (a las 8 p. m. del lunes en México ya es martes en UTC).
+- **Segundo aviso, «Te espero en clase»:** «Mija, te estoy esperando para tu siguiente clase de cocina e inglés: «La rosca y el monito»» (o «de cocina y español», según lo que aprende). El capítulo que sigue lo sabe el teléfono; al tocarlo abre la Historia. Sugerido: sábados a las 10 a. m.
+- **Servidor:** la tabla guarda además `tipo` (practicar o clase) y `dias`. Un teléfono con dos avisos a la misma hora recibe un solo toque y el teléfono decide el texto (si coinciden, gana la clase). La app vieja, que no manda tipo ni días, sigue funcionando (todos los días). Base migrada en Cloudflare.

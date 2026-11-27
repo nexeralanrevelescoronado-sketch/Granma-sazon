@@ -1,1 +1,582 @@
-{}
+{
+ "mole": {
+  "titulo": {
+   "es": "El mole de la tía Chayo",
+   "en": "Aunt Chayo's mole"
+  },
+  "texto": {
+   "es": "Mijo, mi tía Chayo empezaba el mole tres días antes de la fiesta. Tostaba los chiles uno por uno y la cocina entera olía a chocolate y canela. Mi primo Beto se asomaba por la ventana y decía que ya quería probar. Ella le daba un pedacito de pan con salsa y le guiñaba el ojo. Ese día aprendí que lo bueno se hace con calma y con ganas de compartir.",
+   "en": "Mijo, my aunt Chayo started the mole three days before the party. She toasted the chiles one by one, and the whole kitchen smelled of chocolate and cinnamon. My cousin Beto peeked in through the window and said he wanted a taste already. She gave him a little piece of bread with sauce and winked. That day I learned that good things are made slowly and with a wish to share."
+  }
+ },
+ "pozole": {
+  "titulo": {
+   "es": "Los rábanos del pozole",
+   "en": "The pozole radishes"
+  },
+  "texto": {
+   "es": "Mijo, cuando llegaban mis primos del pueblo, mi mamá ponía la olla grande del pozole. Los niños hacíamos una competencia: ¿quién le ponía más rábanos al plato sin que se le cayeran? El Abuelo picaba la cebolla con cara muy seria y juraba que a él no le picaba. Mi plato parecía un jardín rojo y blanco. Ganó mi primo Beto, y yo me comí sus rábanos de premio.",
+   "en": "Mijo, when my cousins came in from the village, my mother set out the big pozole pot. We kids ran a contest: who could pile the most radishes on a bowl without any falling off? The Abuelo chopped the onion with a very serious face and swore it did not sting him. My bowl looked like a red and white garden. My cousin Beto won, and I ate his radishes as a prize."
+  }
+ },
+ "champurrado": {
+  "titulo": {
+   "es": "Una mañana de lluvia",
+   "en": "A rainy morning"
+  },
+  "texto": {
+   "es": "Mijo, había mañanas de lluvia en el rancho en que no se podía salir al patio. Mi mamá giraba el molinillo entre sus manos hasta que el champurrado hacía una espuma suave. Yo creía que ese movimiento era magia, y me quedaba mirándolo con la taza tibia entre las manos. Mi hermano y yo nos sentábamos junto al fuego a escuchar la lluvia en el techo. Todavía hoy, cuando llueve, me da hambre de champurrado.",
+   "en": "Mijo, there were rainy mornings on the ranch when nobody could go out to the yard. My mother spun the molinillo between her hands until the champurrado made a soft foam. I thought that movement was magic, and I stared at it with a warm cup in my hands. My brother and I sat by the fire to listen to the rain on the roof. Even today, when it rains, I get hungry for champurrado."
+  }
+ },
+ "bunuelos": {
+  "titulo": {
+   "es": "Un deseo para cada buñuelo",
+   "en": "A wish for every buñuelo"
+  },
+  "texto": {
+   "es": "Mijo, en la Navidad de mi niñez, mi mamá freía los buñuelos y nosotros mirábamos desde lejos, porque el aceite caliente es cosa de grandes. Doña Lupe, la vecina, llegaba con una olla de miel de piloncillo todavía tibia. Antes del primer mordisco, cada quien pedía un deseo en voz bajita. Yo siempre pedía lo mismo: que la noche no se acabara. Los buñuelos se quebraban como un cristal dulce y nos reíamos con las manos pegajosas.",
+   "en": "Mijo, at Christmas when I was little, my mother fried the buñuelos and we watched from far away, because hot oil is a job for grown-ups. Doña Lupe, the neighbor, arrived with a pot of piloncillo syrup still warm. Before the first bite, each of us made a wish in a tiny voice. I always asked for the same thing: that the night would never end. The buñuelos cracked like sweet glass, and we laughed with sticky hands."
+  }
+ },
+ "ponche": {
+  "titulo": {
+   "es": "Una posada con tejocotes",
+   "en": "A posada with tejocotes"
+  },
+  "texto": {
+   "es": "Mijo, en las posadas de mi barrio caminábamos cantando de casa en casa con una vela de papel. Al final nos esperaba una olla de ponche humeante en el patio de tío Nacho. Cada taza traía un tejocote, un trozo de caña y mucha canela. Mi primo Beto contaba las frutas de su taza como si fueran un tesoro. Esa noche mi tío rompió la piñata y todos terminamos con los bolsillos llenos de cacahuates.",
+   "en": "Mijo, at the posadas in my neighborhood we walked singing from house to house with a paper lantern. At the end, a steaming pot of ponche waited for us in uncle Nacho's yard. Every cup held a tejocote, a piece of sugar cane and lots of cinnamon. My cousin Beto counted the fruit in his cup as if it were treasure. That night my uncle broke the piñata, and we all ended up with pockets full of peanuts."
+  }
+ },
+ "rosca": {
+  "titulo": {
+   "es": "Los dos monitos",
+   "en": "The two little figures"
+  },
+  "texto": {
+   "es": "Mijo, un seis de enero mi abuelita escondió dos monitos en la misma rosca, por despiste. Cuando mi tía Pili y yo encontramos uno cada una, nos miramos sorprendidas y todos soltaron la carcajada. Mi abuelita dijo que, ya que nos tocaba a las dos, haríamos los tamales juntas. Cocinamos todo el día con las manos llenas de masa y mucha plática. Desde entonces, yo creo que los despistes de mi abuelita eran su forma de juntar a la familia.",
+   "en": "Mijo, one sixth of January my grandmother hid two little figures in the same rosca, by mistake. When my aunt Pili and I each found one, we looked at each other in surprise and everyone burst out laughing. My grandmother said that since it was both our turns, we would make the tamales together. We cooked all day with our hands full of dough and lots of chatting. Since then I believe my grandmother's mix-ups were her way of bringing the family together."
+  }
+ },
+ "tamales": {
+  "titulo": {
+   "es": "La moneda en la olla",
+   "en": "The coin in the pot"
+  },
+  "texto": {
+   "es": "Mijo, mi abuelita ponía una moneda en el fondo de la olla tamalera. Mientras la moneda sonaba, quería decir que había agua suficiente. Cuando se quedaba callada, había que agregar más agua caliente. El Abuelo se acercaba, inclinaba la cabeza y escuchaba con mucha atención, como un doctor de ollas. Esa noche comimos tamales con atole y nadie se acordó de preguntar quién había ganado la moneda.",
+   "en": "Mijo, my grandmother put a coin at the bottom of the tamale pot. As long as the coin rattled, it meant there was enough water. When it went quiet, we had to add more hot water. The Abuelo came close, tilted his head and listened very carefully, like a doctor of pots. That night we ate tamales with atole, and nobody remembered to ask who had won the coin."
+  }
+ },
+ "chocolate": {
+  "titulo": {
+   "es": "El chocolate de medianoche",
+   "en": "Midnight chocolate"
+  },
+  "texto": {
+   "es": "Mijo, una noche fría no podía dormir y salí a la cocina de puntitas. Mi abuelita estaba despierta también, y sin decir nada puso la leche a calentar. Batimos el chocolate con el molinillo hasta que hizo espuma y nos sentamos en el escalón de la puerta. Contamos estrellas con las tazas calientitas entre las manos. A la tercera estrella ya me estaba cayendo el sueño, y ella me llevó cargando a la cama.",
+   "en": "Mijo, one cold night I could not sleep, so I tiptoed into the kitchen. My grandmother was awake too, and without a word she put the milk on to warm. We whisked the chocolate with the molinillo until it foamed, and sat on the doorstep. We counted stars with the warm cups in our hands. By the third star I was already getting sleepy, and she carried me to bed."
+  }
+ },
+ "enchiladas": {
+  "titulo": {
+   "es": "La cadena de las enchiladas",
+   "en": "The enchilada assembly line"
+  },
+  "texto": {
+   "es": "Mijo, los domingos mi tía Meche armaba una cadena en la cocina para las enchiladas. Uno pasaba las tortillas por la salsa, otro las rellenaba de pollo y otro las enrollaba con cuidado. A mí me tocaba lo más importante: espolvorear el queso y la cebolla encima. Mi tía decía que yo era la mejor ayudante, aunque se le perdía queso cada vez. Al final cada plato llegaba a la mesa rojo, blanco y bien acompañado.",
+   "en": "Mijo, on Sundays my aunt Meche set up an assembly line in the kitchen for the enchiladas. One person passed the tortillas through the sauce, another filled them with chicken, and another rolled them up carefully. My job was the most important one: sprinkling the cheese and the onion on top. My aunt said I was the best helper, even though some cheese went missing every time. In the end, each plate reached the table red, white and well accompanied."
+  }
+ },
+ "birria": {
+  "titulo": {
+   "es": "La olla del patio",
+   "en": "The pot in the courtyard"
+  },
+  "texto": {
+   "es": "Mijo, mi tío Rafa cocinaba la birria en una olla enorme en el patio, cuando había boda en la familia. El olor salía por encima de la barda, y los vecinos pasaban despacito, como quien no quiere la cosa. Él los invitaba a todos con una taza de consomé caliente. Decía que una olla grande siempre tiene lugar para uno más. Y tenía razón: ese día la boda tuvo el doble de invitados.",
+   "en": "Mijo, my uncle Rafa cooked the birria in a huge pot in the courtyard whenever there was a wedding in the family. The smell drifted over the wall, and the neighbors walked by slowly, pretending nothing. He invited every one of them in with a cup of hot consomé. He said a big pot always has room for one more. And he was right: that day the wedding had twice as many guests."
+  }
+ },
+ "chiles-en-nogada": {
+  "titulo": {
+   "es": "Las nueces de tía Pili",
+   "en": "Aunt Pili's walnuts"
+  },
+  "texto": {
+   "es": "Mijo, cada septiembre en Puebla nos sentábamos todos en el patio a pelar nueces. Tía Pili nos enseñaba a quitarles la piel fina con paciencia, una por una. Mis manos terminaban manchadas y mi primo Beto se comía más nueces de las que pelaba. Cuando el plato estaba listo, verde, blanco y rojo, parecía una banderita. Mi tía lo levantaba muy orgullosa, y nosotros aplaudíamos con las manos todavía manchadas.",
+   "en": "Mijo, every September in Puebla we all sat in the courtyard to peel walnuts. Aunt Pili showed us how to remove the thin skin patiently, one by one. My hands ended up stained, and my cousin Beto ate more walnuts than he peeled. When the dish was ready, green, white and red, it looked like a little flag. My aunt lifted it up proudly, and we clapped with our hands still stained."
+  }
+ },
+ "chiles-rellenos": {
+  "titulo": {
+   "es": "El chile sin zapatos",
+   "en": "The chile without shoes"
+  },
+  "texto": {
+   "es": "Mijo, mi mamá batía las claras con un tenedor hasta que parecían una nube. Un día, al voltear un chile relleno, se le salió todo el queso y quedó vacío. Ella lo miró, se rio y lo llamó «el chile sin zapatos». Lo cubrió con más huevo y lo dejó en el caldillo como si nada. El Abuelo se lo comió con una sonrisa leve y dijo que era el más sabroso de todos.",
+   "en": "Mijo, my mother beat the egg whites with a fork until they looked like a cloud. One day, as she turned a stuffed chile, all the cheese slipped out and it was left empty. She looked at it, laughed and called it «the chile without shoes». She covered it with more egg and set it in the tomato broth as if nothing had happened. The Abuelo ate it with a small smile and said it was the tastiest of them all."
+  }
+ },
+ "pipian": {
+  "titulo": {
+   "es": "Las pepitas que aplauden",
+   "en": "The clapping pumpkin seeds"
+  },
+  "texto": {
+   "es": "Mijo, doña Tere, la vecina, me enseñó a tostar las pepitas en el comal. Primero estaban quietas y de pronto empezaban a saltar, tic, tic, tic, como si aplaudieran. Yo di un brinco del susto y ella se rio con ganas. Después las molimos con el tomate verde y los chiles, hasta que la salsa quedó cremosa. Esa tarde comí pipián con pollo y me sentí más grande, porque había ayudado desde el principio.",
+   "en": "Mijo, doña Tere, the neighbor, taught me to toast pumpkin seeds on the comal. At first they sat still, and suddenly they started to jump, tic, tic, tic, as if they were clapping. I leaped back in surprise, and she laughed out loud. Then we ground them with the green tomatoes and chiles until the sauce turned creamy. That afternoon I ate pipián with chicken and felt older, because I had helped from the very start."
+  }
+ },
+ "tejuino": {
+  "titulo": {
+   "es": "El tejuino de la plaza",
+   "en": "The tejuino in the plaza"
+  },
+  "texto": {
+   "es": "Mijo, una vez fui a Guadalajara con el Abuelo, en un día de mucho calor. En la plaza había una señora con un bote grande de tejuino, con hielo, limón y un poco de sal. El Abuelo y yo lo tomamos despacito, porque es bebida de grandes y puede tener un poquito de alcohol. Los niños, que iban con nosotros, pidieron agua de limón y se quedaron felices. Esa tarde caminamos por la sombra hasta que se nos olvidó el calor.",
+   "en": "Mijo, I once went to Guadalajara with the Abuelo on a very hot day. In the plaza there was a lady with a big tub of tejuino, with ice, lime and a little salt. The Abuelo and I sipped it slowly, because it is a grown-up drink and may have a tiny bit of alcohol. The children who came with us asked for limeade and were perfectly happy. That afternoon we walked in the shade until we forgot about the heat."
+  }
+ },
+ "torta-ahogada": {
+  "titulo": {
+   "es": "La torta que se ahoga",
+   "en": "The drowning sandwich"
+  },
+  "texto": {
+   "es": "Mijo, mi primo Beto, de chiquito, me preguntó si la torta ahogada estaba triste por estar tan bañada en salsa. Yo le dije que no, que estaba feliz de tanto cariño, y nos dio un ataque de risa. El birote crujía y la salsa de jitomate nos escurría hasta el codo. La salsa de chile de árbol la probaban solo los que aguantaban, con una gotita nada más. Terminamos con la servilleta empapada y la barriga contenta.",
+   "en": "Mijo, my cousin Beto, when he was little, asked me if the drowned sandwich was sad for being so covered in sauce. I told him no, that it was happy with so much love, and we burst into laughter. The roll crunched and the tomato sauce ran down to our elbows. Only those who could handle spice tried the chile de árbol sauce, with just one tiny drop. We ended up with soaked napkins and happy bellies."
+  }
+ },
+ "carne-en-su-jugo": {
+  "titulo": {
+   "es": "Una mañana tapatía",
+   "en": "A morning in Guadalajara"
+  },
+  "texto": {
+   "es": "Mijo, una mañana de lluvia visité a una prima de mi mamá en Guadalajara. Ella puso en la mesa unos tazones de carne en su jugo, con el tocino todavía chisporroteando. Yo les eché cilantro, cebolla y unas gotas de limón, como me enseñó. Los frijoles, calientitos, llegaron en un platito aparte. Pedí otro plato con una voz muy chiquita, y ella me lo sirvió con una sonrisa sin decir nada.",
+   "en": "Mijo, one rainy morning I visited my mother's cousin in Guadalajara. She set bowls of carne en su jugo on the table, with the bacon still sizzling. I added cilantro, onion and a few drops of lime, just as she showed me. The warm beans came in a little dish on the side. I asked for another bowl in a very small voice, and she served it with a smile, without saying a word."
+  }
+ },
+ "jericalla": {
+  "titulo": {
+   "es": "El dorado de la jericalla",
+   "en": "The golden top of the jericalla"
+  },
+  "texto": {
+   "es": "Mijo, doña Lupe horneaba la jericalla los sábados y yo me sentaba frente a la puerta del horno a esperar. Decía que lo mejor era ver cómo se iba dorando arriba, como un atardecer pequeñito. El Abuelo tarareaba una canción despacito mientras esperábamos. Cuando por fin salió, olía a vainilla y canela por toda la calle. Nos dio un cuadrito a cada uno, todavía tibio, y nadie habló mientras lo comíamos.",
+   "en": "Mijo, doña Lupe baked the jericalla on Saturdays, and I sat in front of the oven door to wait. She said the best part was watching the top turn golden, like a tiny sunset. The Abuelo hummed a song softly while we waited. When it finally came out, it smelled of vanilla and cinnamon all down the street. She gave each of us a little square, still warm, and nobody spoke while we ate."
+  }
+ },
+ "horchata": {
+  "titulo": {
+   "es": "La jarra que nunca duraba",
+   "en": "The pitcher that never lasted"
+  },
+  "texto": {
+   "es": "Mijo, en las tardes de mucho calor, mi mamá dejaba el arroz remojando desde la noche. Por la mañana lo molíamos, lo colábamos y yo revolvía con una cuchara larga. La jarra de horchata se ponía en el centro de la mesa, con su hielo y su canela encima. Los vecinos pasaban a saludar con un vaso en la mano. Aunque hiciéramos una jarra enorme, siempre se acababa antes de que cayera la tarde.",
+   "en": "Mijo, on very hot afternoons, my mother left the rice soaking since the night before. In the morning we ground it, strained it, and I stirred with a long spoon. The pitcher of horchata went in the middle of the table, with its ice and cinnamon on top. The neighbors dropped by to say hello with a glass in hand. Even when we made a huge pitcher, it was always gone before the afternoon ended."
+  }
+ },
+ "horchata-fresa": {
+  "titulo": {
+   "es": "La horchata se puso rosita",
+   "en": "The horchata turned pink"
+  },
+  "texto": {
+   "es": "Mijo, para el cumpleaños de mi prima Tere, mi tía cortó fresas del jardín y las echó a la licuadora con la horchata. La bebida se puso rosita, como un atardecer de primavera. Las visitas no creían que fuera horchata y pedían probar para estar seguras. Mi prima se puso su sombrero de fiesta y sirvió vasos para todos. Esa vez la jarra rosa fue más famosa que el pastel.",
+   "en": "Mijo, for my cousin Tere's birthday, my aunt picked strawberries from the garden and tossed them in the blender with the horchata. The drink turned pink, like a spring sunset. The guests did not believe it was horchata and asked for a taste to be sure. My cousin put on her party hat and poured glasses for everyone. That time, the pink pitcher was more famous than the cake."
+  }
+ },
+ "agua-jamaica": {
+  "titulo": {
+   "es": "La poción roja",
+   "en": "The red potion"
+  },
+  "texto": {
+   "es": "Mijo, de niña yo creía que el agua de jamaica era una poción mágica, de tan roja que se veía. Mi tía Meche me dejó revolver la olla y me explicó que era una flor seca, no un hechizo. Mis dedos se tiñeron de rosa y fui a mostrárselos a toda la cuadra. Esa tarde, con el agua fría y mucho hielo, me sentí como una gran científica. Sigo creyendo que tiene un poquito de magia.",
+   "en": "Mijo, as a little girl I believed agua de jamaica was a magic potion, it looked so red. My aunt Meche let me stir the pot and explained that it was a dried flower, not a spell. My fingers turned pink, and I went to show them to the whole block. That afternoon, with the cold water and lots of ice, I felt like a great scientist. I still believe it has a little bit of magic."
+  }
+ },
+ "agua-tamarindo": {
+  "titulo": {
+   "es": "El concurso de las caras",
+   "en": "The face contest"
+  },
+  "texto": {
+   "es": "Mijo, con mi primo Beto pelábamos las vainas del tamarindo en el patio, con los dedos todos pegajosos. Cada vez que probábamos un poquito, nos salía una cara de agrio muy chistosa. Hicimos un concurso, y nos reíamos tanto que el Abuelo se asomó a ver qué pasaba. Se sentó con nosotros, probó un pedacito y apenas arrugó la nariz, con una sonrisa leve. Ganó él, claro, por ser tan serio.",
+   "en": "Mijo, with my cousin Beto we peeled the tamarind pods in the yard, with sticky fingers. Every time we tasted a little piece, we made a very funny sour face. We held a contest, and we laughed so much that the Abuelo came to see what was going on. He sat with us, tried a small piece, and barely wrinkled his nose, with a slight smile. He won, of course, for being so serious."
+  }
+ },
+ "agua-limon-chia": {
+  "titulo": {
+   "es": "Las perlitas del vaso",
+   "en": "The little pearls in the glass"
+  },
+  "texto": {
+   "es": "Mijo, un día fuimos de paseo al lago con mi abuelita y llevamos una jarra de agua de limón con chía. Los primos y yo mirábamos el vaso, porque las semillitas se vestían de una gelatina transparente. Parecían perlas chiquitas flotando en el agua. Mi abuelita nos dijo que había que esperar un ratito para que se hincharan. Esperamos jugando con las piedras de la orilla, y la espera valió la pena.",
+   "en": "Mijo, one day we went on an outing to the lake with my grandmother and brought a pitcher of lime water with chia. My cousins and I stared at the glass, because the little seeds were dressing in a clear gel. They looked like tiny pearls floating in the water. My grandmother told us we had to wait a little while for them to swell. We waited playing with the stones on the shore, and the wait was worth it."
+  }
+ },
+ "pozole-blanco": {
+  "titulo": {
+   "es": "La mesa de todo el barrio",
+   "en": "The whole neighborhood's table"
+  },
+  "texto": {
+   "es": "Mijo, cuando terminaba la cosecha, mi barrio ponía una mesa larga en plena calle para el pozole blanco. Cada familia traía su silla y su plato. Yo miraba el maíz abrirse en la olla como florecitas blancas. Mi mamá servía los tazones y los niños repartíamos los rábanos y el orégano. Cenamos bajo las luces de la calle, y por una noche los vecinos fuimos una sola familia grande.",
+   "en": "Mijo, when the harvest ended, my neighborhood set up a long table in the middle of the street for the white pozole. Every family brought its own chair and bowl. I watched the corn open up in the pot like little white flowers. My mother served the bowls, and we kids passed around the radishes and the oregano. We had dinner under the street lights, and for one night the neighbors were one big family."
+  }
+ },
+ "pozole-verde": {
+  "titulo": {
+   "es": "El molcajete de comadre Chelo",
+   "en": "Comadre Chelo's molcajete"
+  },
+  "texto": {
+   "es": "Mijo, una vez el Abuelo y yo viajamos a Guerrero a visitar a mi comadre Chelo. En su patio había un árbol de mango y un molcajete muy grande. Ella me dejó moler las pepitas con la piedra, y mis manos quedaron verdes y cansadas. Cuando se sirvió el pozole verde, la salsa tenía un sabor a hierbas del campo. Aquella tarde dormí una siesta debajo del mango, con la barriga llena.",
+   "en": "Mijo, once the Abuelo and I traveled to Guerrero to visit my comadre Chelo. In her yard there was a mango tree and a very big molcajete. She let me grind the pumpkin seeds with the stone, and my hands ended up green and tired. When the green pozole was served, the sauce tasted of herbs from the countryside. That afternoon I took a nap under the mango tree, with a full belly."
+  }
+ },
+ "arroz-con-leche": {
+  "titulo": {
+   "es": "El día de la carrera",
+   "en": "The day of the race"
+  },
+  "texto": {
+   "es": "Mijo, un día perdí la carrera de la escuela y llegué a casa con la cabeza agachada. Mi mamá no preguntó nada: puso la leche con canela a calentar y me sentó a su lado. El arroz con leche, tibio y cremoso, me supo a un abrazo. Ella me dijo que correr es cosa de valientes, y el postre es cosa de todos. Al terminar el plato ya estaba pensando en la carrera de la otra semana.",
+   "en": "Mijo, one day I lost the school race and came home with my head down. My mother asked nothing: she put the cinnamon milk on to warm and sat me beside her. The arroz con leche, warm and creamy, tasted like a hug. She told me running is for the brave, and dessert is for everyone. By the time I finished the plate I was already thinking about next week's race."
+  }
+ },
+ "capirotada": {
+  "titulo": {
+   "es": "La capirotada de todos",
+   "en": "Everybody's capirotada"
+  },
+  "texto": {
+   "es": "Mijo, para la Cuaresma, cada vecino de mi calle traía algo para hacer una sola capirotada. Una llevaba el pan tostado, otro el queso, otra los cacahuates y las pasas. Mi mamá preparaba la miel de piloncillo con canela. Armábamos las capas entre todos, y el queso se estiraba en hilitos largos. Esa capirotada no fue de nadie y fue de todos, y por eso nos supo mejor.",
+   "en": "Mijo, during Lent, each neighbor on my street brought something to make one single capirotada. One brought the toasted bread, another the cheese, another the peanuts and raisins. My mother prepared the piloncillo syrup with cinnamon. We built the layers all together, and the cheese stretched in long little threads. That capirotada belonged to nobody and to everybody, and that is why it tasted better."
+  }
+ },
+ "flan": {
+  "titulo": {
+   "es": "El flan que bailaba",
+   "en": "The dancing flan"
+  },
+  "texto": {
+   "es": "Mijo, el momento más emocionante era voltear el flan sobre el plato. Mi mamá lo hacía con mucho cuidado, y todos aguantábamos la respiración. Cuando levantaba el molde, el flan temblaba un poquito, como si bailara, y el caramelo bajaba brillante por los lados. El Abuelo decía muy serio que un flan que baila es un flan feliz. Después aplaudíamos y nos peleábamos por la cucharada de caramelo.",
+   "en": "Mijo, the most exciting moment was flipping the flan over onto the plate. My mother did it very carefully, and we all held our breath. When she lifted the mold, the flan trembled a little, as if dancing, and the caramel ran shiny down the sides. The Abuelo said very seriously that a dancing flan is a happy flan. Then we clapped and fought over the spoonful of caramel."
+  }
+ },
+ "cocada": {
+  "titulo": {
+   "es": "Cocadas con arena en los zapatos",
+   "en": "Cocadas with sand in our shoes"
+  },
+  "texto": {
+   "es": "Mijo, una vez fuimos a la playa con mis primos y volvimos con los zapatos llenos de arena y los bolsillos llenos de conchitas. Mi abuelita rayó un coco enorme en la cocina de la casita prestada. Mezcló el coco con leche y canela, y las cocadas salieron doradas en montoncitos. Las comimos en el patio, viendo cómo se iba el sol. Todavía tengo una conchita de aquel viaje en mi cajón de recuerdos.",
+   "en": "Mijo, once we went to the beach with my cousins and came home with our shoes full of sand and our pockets full of little shells. My grandmother grated a huge coconut in the kitchen of the borrowed cottage. She mixed the coconut with milk and cinnamon, and the cocadas came out golden in little mounds. We ate them in the yard, watching the sun go down. I still keep a little shell from that trip in my drawer of memories."
+  }
+ },
+ "discada": {
+  "titulo": {
+   "es": "La discada bajo las estrellas",
+   "en": "Discada under the stars"
+  },
+  "texto": {
+   "es": "Mijo, mi tío Chuy armaba la discada en el campo, con una sartén tan grande como un sol. Las carnes, el chorizo y las verduras chisporroteaban todos juntos mientras caía la tarde. Mi tía Meche extendía las tortillas de harina sobre la mesa y las iba pasando calientes. Cada quien armaba su taco como podía, y el que se le rompía lo comía igual. Cenamos mirando las estrellas salir, sin prisa y sin celulares.",
+   "en": "Mijo, my uncle Chuy set up the discada out in the countryside, with a skillet as big as the sun. The meats, the chorizo and the vegetables sizzled all together while the afternoon faded. My aunt Meche rolled out the flour tortillas on the table and passed them along hot. Everyone built a taco as best they could, and if it broke they ate it anyway. We had dinner watching the stars come out, in no hurry and with no phones."
+  }
+ },
+ "gorditas-laguneras": {
+  "titulo": {
+   "es": "La gordita chueca de tía Chayo",
+   "en": "Aunt Chayo's crooked gordita"
+  },
+  "texto": {
+   "es": "Mijo, en el rancho de mi tía Chayo había un horno de adobe que parecía una casita redonda. Los sábados ella me daba una bolita de masa para que hiciera mi propia gordita. La mía salía chueca, pero mi tía decía que las chuecas sabían mejor porque llevaban más cariño. Mi primo Beto se comió tres y juró que eran las más derechitas del mundo.",
+   "en": "Mijo, at my Aunt Chayo's ranch there was an adobe oven that looked like a little round house. On Saturdays she gave me a ball of dough to make my very own gordita. Mine came out crooked, but my aunt said crooked ones taste better because they carry more love. My cousin Beto ate three and swore they were the straightest in the world."
+  }
+ },
+ "rollos-de-membrillo": {
+  "titulo": {
+   "es": "Los rollitos de doña Lupe",
+   "en": "Doña Lupe's little rolls"
+  },
+  "texto": {
+   "es": "Mijo, mi vecina doña Lupe tenía un árbol de membrillo que daba más fruta que todo el barrio junto. En el otoño me dejaba ayudarle a picar las nueces, y yo me comía las que se rompían. Ella enrollaba el dulce con paciencia, como quien arropa a un bebé. Siempre mandaba un rollo a cada casa de la calle, y así nadie se sentía solo.",
+   "en": "Mijo, my neighbor Doña Lupe had a quince tree that gave more fruit than the whole neighborhood together. In the fall she let me help chop the pecans, and I ate the ones that broke. She rolled the sweet with patience, like tucking in a baby. She always sent a roll to every house on the street, so nobody felt alone."
+  }
+ },
+ "cabrito-al-horno": {
+  "titulo": {
+   "es": "La tarde del cabrito de tío Nacho",
+   "en": "Uncle Nacho's goat afternoon"
+  },
+  "texto": {
+   "es": "Mijo, mi tío Nacho decía que el cabrito se cocina con la paciencia de los abuelos. Toda la familia se juntaba en su patio, y los primos jugábamos a las canicas mientras el horno hacía su trabajo. El olor a ajo y limón llegaba hasta la esquina, y los vecinos asomaban la cabeza. Al final, nadie quería irse, ni siquiera para ganar una canica más.",
+   "en": "Mijo, my Uncle Nacho used to say goat is cooked with a grandparent's patience. The whole family met in his yard, and we cousins played marbles while the oven did its work. The smell of garlic and lime reached the corner, and the neighbors peeked out. In the end, nobody wanted to leave, not even to win one more marble."
+  }
+ },
+ "machacado-con-huevo": {
+  "titulo": {
+   "es": "El desayuno de las cinco de la mañana",
+   "en": "The five o'clock breakfast"
+  },
+  "texto": {
+   "es": "Mijo, mi papá se levantaba antes que el sol y yo me levantaba atrás de él, todavía en pijama. Mi mamá machacaba la carne seca con el huevo en la sartén, y ese olor era mejor que cualquier despertador. Nos sentábamos los tres en la cocina con tortillas de harina calientitas. Papá me guiñaba un ojo y decía que ese era nuestro secreto de los madrugadores.",
+   "en": "Mijo, my dad got up before the sun and I got up right behind him, still in my pajamas. My mom stirred the dried beef with the egg in the pan, and that smell beat any alarm clock. The three of us sat in the kitchen with warm flour tortillas. Dad winked at me and said that was our early birds' secret."
+  }
+ },
+ "frijoles-charros": {
+  "titulo": {
+   "es": "La olla de frijoles de la feria",
+   "en": "The bean pot at the fair"
+  },
+  "texto": {
+   "es": "Mijo, un año mi tía Chayo y yo llevamos una olla enorme de frijoles charros a la feria del pueblo. La olla pesaba tanto que mi primo Beto tuvo que ayudarnos a cargarla, y llegamos riendo todo el camino. La gente hacía fila con su plato, y yo repartía cucharones con el delantal lleno de salsa. Esa noche dormí feliz, con los pies cansados y la panza contenta.",
+   "en": "Mijo, one year my Aunt Chayo and I took a huge pot of charro beans to the town fair. The pot was so heavy my cousin Beto had to help us carry it, and we laughed the whole way. People lined up with their plates, and I served ladles with my apron covered in salsa. That night I slept happy, with tired feet and a happy belly."
+  }
+ },
+ "glorias-de-linares": {
+  "titulo": {
+   "es": "Las glorias que casi se queman",
+   "en": "The glorias that almost burned"
+  },
+  "texto": {
+   "es": "Mijo, mi abuelita revolvía la leche en un cazo de cobre y no dejaba que nadie se acercara, ni el gato. Una tarde me tocó a mí mover la cuchara, y me dio tanto sueño que casi se pegaba todo. Ella llegó justo a tiempo y se rió con ganas: el dulce quedó más oscuro, pero con un sabor a caramelo que nunca olvidé. Desde entonces decimos que lo quemadito es el secreto.",
+   "en": "Mijo, my grandma stirred the milk in a copper pot and let nobody come near, not even the cat. One afternoon it was my turn to move the spoon, and I got so sleepy it almost stuck. She arrived just in time and laughed out loud: the candy came out darker, but with a caramel taste I never forgot. Since then we say the little burnt part is the secret."
+  }
+ },
+ "chilorio": {
+  "titulo": {
+   "es": "Las gorditas de la playa de mi prima",
+   "en": "My cousin's beach gorditas"
+  },
+  "texto": {
+   "es": "Mijo, una vez fuimos de viaje a casa de mi prima Nena, cerca del mar de Sinaloa. Ella sacó una olla de chilorio y calentó tortillas en un comal sobre piedras. Comimos sentados en la arena, con el viento moviéndonos las servilletas. Los niños corrían detrás de las gaviotas, y mi prima decía que el mejor plato es el que se come con los pies descalzos.",
+   "en": "Mijo, once we traveled to my cousin Nena's house, near the sea of Sinaloa. She took out a pot of chilorio and warmed tortillas on a griddle set over stones. We ate sitting on the sand, with the wind moving our napkins. The children ran after the seagulls, and my cousin said the best plate is the one you eat barefoot."
+  }
+ },
+ "aguachile-camaron-cocido": {
+  "titulo": {
+   "es": "El día de calor de tío Memo",
+   "en": "Uncle Memo's hot day"
+  },
+  "texto": {
+   "es": "Mijo, hubo un verano tan caluroso que hasta las gallinas buscaban sombra. Mi tío Memo dijo que no íbamos a encender la estufa, y nos puso a todos a cortar pepino y exprimir limones. Lo servimos bien frío, en el patio, con los pies en una tina de agua. Todos nos reíamos de lo ridículos que nos veíamos, pero nadie se acordó del calor.",
+   "en": "Mijo, there was a summer so hot even the hens looked for shade. My Uncle Memo said we were not going to turn on the stove, and he put us all to slicing cucumber and squeezing limes. We served it ice cold, in the yard, with our feet in a tub of water. We laughed at how silly we looked, but nobody remembered the heat."
+  }
+ },
+ "pescado-zarandeado": {
+  "titulo": {
+   "es": "La parrilla de la playa de mi tía Rosa",
+   "en": "Aunt Rosa's beach grill"
+  },
+  "texto": {
+   "es": "Mijo, mi tía Rosa tenía una parrilla de fierro junto al mar y un abanico de palma para avivar las brasas. Yo me encargaba de abanicar, y ella me decía que era la ayudante más importante del día. Cuando el pescado quedó dorado, lo abrimos sobre una mesa de madera y todos le echamos limón. Esa tarde aprendí que el mejor trabajo es el que se hace en familia.",
+   "en": "Mijo, my Aunt Rosa had an iron grill by the sea and a palm fan to stir up the embers. I was in charge of fanning, and she told me I was the most important helper of the day. When the fish turned golden, we opened it on a wooden table and everyone squeezed lime on it. That afternoon I learned the best work is the kind done as a family."
+  }
+ },
+ "asado-de-boda": {
+  "titulo": {
+   "es": "La boda de mi prima Lola",
+   "en": "My cousin Lola's wedding"
+  },
+  "texto": {
+   "es": "Mijo, para la boda de mi prima Lola, las tías nos juntamos tres días antes en la cocina. Una molía los chiles, otra cortaba las naranjas y yo cuidaba que la olla no se pegara. Cantamos todas las canciones que sabíamos, y alguna que nos inventamos. El día de la fiesta el asado salió tan rico que el novio pidió la receta, y mi tía Chayo se hizo la importante.",
+   "en": "Mijo, for my cousin Lola's wedding, the aunts met three days before in the kitchen. One ground the chiles, another cut the oranges, and I made sure the pot did not stick. We sang every song we knew, and some we made up. On party day the stew came out so good the groom asked for the recipe, and my Aunt Chayo acted very important."
+  }
+ },
+ "tacos-envenenados": {
+  "titulo": {
+   "es": "Los tacos con nombre de susto",
+   "en": "The tacos with a scary name"
+  },
+  "texto": {
+   "es": "Mijo, la primera vez que mi tío Nacho dijo «hoy hay tacos envenenados», mi primo Beto se puso pálido. Mi tío soltó la carcajada y le explicó que el único veneno era el sabor, porque nadie podía parar de comer. Beto se comió cuatro y después pidió disculpas al plato. Desde entonces, en la familia, ese nombre significa que hay fiesta en la cocina.",
+   "en": "Mijo, the first time my Uncle Nacho said \"today we have poisoned tacos,\" my cousin Beto turned pale. My uncle burst out laughing and explained the only poison was the flavor, because nobody could stop eating. Beto ate four and then apologized to his plate. Since then, in our family, that name means there is a party in the kitchen."
+  }
+ },
+ "gorditas-de-horno": {
+  "titulo": {
+   "es": "El horno del patio de doña Lupe",
+   "en": "Doña Lupe's backyard oven"
+  },
+  "texto": {
+   "es": "Mijo, doña Lupe tenía un horno en el patio y cada domingo nos invitaba a todos los de la cuadra. Cada quien llevaba algo: unos el frijol, otros el queso, yo las tortillas de mi mamá. Los niños formábamos una fila para ver abrir la puerta del horno, y salía un vapor con olor a pan. Era como ver abrirse un regalo de cumpleaños, solo que se podía comer.",
+   "en": "Mijo, Doña Lupe had an oven in her yard and every Sunday she invited everyone on the block. Each person brought something: some the beans, some the cheese, and I brought my mom's tortillas. We children lined up to watch the oven door open, and out came steam smelling of fresh bread. It was like watching a birthday present open, except you could eat it."
+  }
+ },
+ "caldillo-duranguense": {
+  "titulo": {
+   "es": "El caldillo de la tarde de lluvia",
+   "en": "The rainy afternoon caldillo"
+  },
+  "texto": {
+   "es": "Mijo, una tarde llovió tanto que el patio se volvió un lago y los patos se fueron a pasear. Mi abuelita puso una olla de caldillo y nos sentó a todos juntos junto a la ventana. Escuchamos la lluvia, partimos tortillas y nos contamos adivinanzas. Cuando salió el sol, todavía quedaba un poquito de caldo, y mi hermano dijo que ese era el mejor arcoíris.",
+   "en": "Mijo, one afternoon it rained so much that the yard became a lake and the ducks went for a stroll. My grandma put on a pot of caldillo and sat us all together by the window. We listened to the rain, tore tortillas and told each other riddles. When the sun came out, there was still a little broth left, and my brother said that was the best rainbow."
+  }
+ },
+ "ate-de-membrillo": {
+  "titulo": {
+   "es": "El ate que esperó su turno",
+   "en": "The ate that waited its turn"
+  },
+  "texto": {
+   "es": "Mijo, mi abuelita preparaba el ate en un cazo grande y lo dejaba reposar toda la noche. Yo me levantaba sin hacer ruido y me asomaba a verlo, pero ella me decía que lo bueno necesita calma. Por la mañana lo cortábamos en cuadritos y los poníamos con queso en un plato bonito. Aprendí que esperar también sabe dulce, sobre todo si es con alguien que se quiere.",
+   "en": "Mijo, my grandma made the ate in a big pot and let it rest all night. I got up without a sound and peeked at it, but she told me good things need calm. In the morning we cut it into little squares and set them with cheese on a pretty plate. I learned that waiting tastes sweet too, especially when it is with someone you love."
+  }
+ },
+ "patoles": {
+  "titulo": {
+   "es": "Los patoles de las tardes de frío",
+   "en": "The patoles of cold afternoons"
+  },
+  "texto": {
+   "es": "Mijo, cuando llegaba el frío, mi mamá ponía los frijoles blancos desde la mañana y la casa se llenaba de olor. Mi hermano y yo nos peleábamos por el mejor lugar junto a la estufa, hasta que mamá nos daba una cobija a cada uno. Cuando estaba listo el caldo, cada quien servía el suyo y le ponía sus chiles. Esa era la señal de que el invierno, por fin, había llegado a la casa.",
+   "en": "Mijo, when the cold came, my mom set the white beans to cook in the morning and the house filled with the smell. My brother and I argued over the best spot by the stove, until mom gave each of us a blanket. When the broth was ready, everyone served their own and added their chiles. That was the sign that winter had finally arrived at our house."
+  }
+ },
+ "cemitas": {
+  "titulo": {
+   "es": "La cemita más grande del mercado",
+   "en": "The biggest cemita in the market"
+  },
+  "texto": {
+   "es": "Mijo, un sábado mi tío Memo me llevó al mercado de Puebla y me prometió una cemita del tamaño de mi cara. La señora del puesto se rió y me preparó una que casi no me cabía en las manos. Me la comí con tanto gusto que se me cayó el aguacate dos veces. Mi tío me limpió la cara con su pañuelo y dijo que así se come cuando uno es feliz.",
+   "en": "Mijo, one Saturday my Uncle Memo took me to the market in Puebla and promised me a cemita as big as my face. The lady at the stand laughed and made one that barely fit in my hands. I ate it with such joy that the avocado fell twice. My uncle wiped my face with his handkerchief and said that is how you eat when you are happy."
+  }
+ },
+ "chalupas-poblanas": {
+  "titulo": {
+   "es": "Las chalupas del primer día de escuela",
+   "en": "First-day-of-school chalupas"
+  },
+  "texto": {
+   "es": "Mijo, el primer día de escuela yo estaba nerviosa y no quería soltar la mano de mi mamá. Ella me dijo: «Al regresar te espera una sorpresa». Cuando volví, había chalupitas con salsa verde y roja, y mi tía Rosa las acomodó como una bandera. Les conté todo lo que había visto en la escuela, y cada chalupa me ayudó a recordar un detalle.",
+   "en": "Mijo, on the first day of school I was nervous and did not want to let go of my mom's hand. She told me, \"When you come back, a surprise awaits.\" When I returned, there were little chalupas with green and red salsa, and my Aunt Rosa arranged them like a flag. I told them everything I had seen at school, and each chalupa helped me remember one detail."
+  }
+ },
+ "tortitas-santa-clara": {
+  "titulo": {
+   "es": "Las galletas de la lata azul",
+   "en": "The cookies in the blue tin"
+  },
+  "texto": {
+   "es": "Mijo, mi tía abuela Chayo horneaba galletitas cada diciembre, y a mí me dejaba cubrirlas con el dulce de pepita. Yo ponía una pizca de más en cada una, y ella decía «ay, sobrina, estas son las mías». Las guardábamos en una lata azul para llevar a las vecinas. Cuando la lata volvía vacía, siempre traía una nota con un dibujito de gracias.",
+   "en": "Mijo, my great-aunt Chayo baked little cookies every December, and she let me cover them with the pumpkin seed candy. I put a pinch extra on each one, and she said \"oh, dear niece, these are mine.\" We kept them in a blue tin to take to the neighbors. When the tin came back empty, it always held a note with a little thank-you drawing."
+  }
+ },
+ "tlayudas": {
+  "titulo": {
+   "es": "La tlayuda del viaje en camión",
+   "en": "The bus-trip tlayuda"
+  },
+  "texto": {
+   "es": "Mijo, de niña viajé en camión a Oaxaca con mi abuelita y llevábamos una tlayuda envuelta en un trapo. A medio camino, el chofer nos oyó crujir la tortilla y volteó a sonreír. Mi abuelita le partió un pedazo y se lo pasó por el pasillo. Al llegar, él nos ayudó con las maletas y dijo que había sido el mejor viaje de su semana.",
+   "en": "Mijo, as a girl I traveled by bus to Oaxaca with my grandma, and we carried a tlayuda wrapped in a cloth. Halfway there, the driver heard the tortilla crunch and turned to smile. My grandma broke him a piece and passed it down the aisle. When we arrived, he helped us with the suitcases and said it had been the best trip of his week."
+  }
+ },
+ "mole-negro": {
+  "titulo": {
+   "es": "El mole que no tenía prisa",
+   "en": "The mole that was in no hurry"
+  },
+  "texto": {
+   "es": "Mijo, para la fiesta de mi prima Lola, las tías empezamos el mole una noche antes. Cada quien tenía su tarea: tostar los chiles, moler el chocolate, probar la sal. Mi abuelita se sentaba en una silla, vigilando con una sonrisa, y decía «el mole no tiene prisa». Al día siguiente, cuando todos lo probaron en silencio, supe que ese silencio era el mejor aplauso.",
+   "en": "Mijo, for my cousin Lola's party, the aunts started the mole the night before. Everyone had a task: toasting the chiles, grinding the chocolate, tasting the salt. My grandma sat in a chair, watching with a smile, and said \"mole is in no hurry.\" The next day, when everyone tasted it in silence, I knew that silence was the best applause."
+  }
+ },
+ "tejate": {
+  "titulo": {
+   "es": "El tejate del mercado de mi tío",
+   "en": "My uncle's market tejate"
+  },
+  "texto": {
+   "es": "Mijo, un día mi tío Memo me llevó a un mercado de Oaxaca donde una señora batía su bebida en una olla enorme de barro. La espuma subía como una nube, con florecitas blancas encima. Mi tío me dio un vaso y me dijo que lo tomara despacito. Esa noche soñé que flotaba sobre una nube de cacao, y desperté con ganas de contárselo a todos.",
+   "en": "Mijo, one day my Uncle Memo took me to a market in Oaxaca where a lady beat her drink in an enormous clay pot. The foam rose like a cloud, with little white flowers on top. My uncle handed me a glass and told me to sip slowly. That night I dreamed I floated on a cloud of cacao, and I woke up wanting to tell everyone."
+  }
+ },
+ "memelas": {
+  "titulo": {
+   "es": "Las memelas de los domingos con el Abuelo",
+   "en": "Sunday memelas with Abuelo"
+  },
+  "texto": {
+   "es": "Mijo, cada domingo el Abuelo y yo bajábamos al comal de la señora de la esquina por unas memelas calientes. Él caminaba despacio y no decía nada, pero llevaba mi mano agarrada fuerte. Nos sentábamos en un banco bajito y comíamos viendo pasar a los vecinos. Un día me dijo bajito: «Las mejores palabras son las que se callan juntos», y yo nunca lo olvidé.",
+   "en": "Mijo, every Sunday Abuelo and I walked down to the lady on the corner's griddle for warm memelas. He walked slowly and said nothing, but he held my hand tight. We sat on a low bench and ate while the neighbors passed by. One day he whispered, \"The best words are the ones we are quiet about together,\" and I never forgot it."
+  }
+ },
+ "tacos-al-pastor": {
+  "titulo": {
+   "es": "La noche de tacos de mi primo Beto",
+   "en": "My cousin Beto's taco night"
+  },
+  "texto": {
+   "es": "Mijo, una noche mi primo Beto decidió que íbamos a hacer tacos al pastor en casa y nos puso a todos a trabajar. Yo corté la piña, mi hermano picó la cebolla y Beto se encargó de dar vueltas a la carne. Terminamos con la cocina hecha un desastre y los dedos pegajosos, pero qué rico olía. Beto dijo que los mejores tacos son los que se hacen con toda la familia metida en la cocina.",
+   "en": "Mijo, one night my cousin Beto decided we were going to make tacos al pastor at home and put us all to work. I cut the pineapple, my brother chopped the onion, and Beto took care of turning the meat. We ended with the kitchen a mess and sticky fingers, but it smelled so good. Beto said the best tacos are made with the whole family squeezed into the kitchen."
+  }
+ },
+ "chilaquiles-rojos": {
+  "titulo": {
+   "es": "Los chilaquiles del día después de la fiesta",
+   "en": "The day-after-the-party chilaquiles"
+  },
+  "texto": {
+   "es": "Mijo, después de cada fiesta grande, mi mamá nos hacía chilaquiles con las tortillas que sobraron. Los primos dormíamos regados por toda la casa, y el olor del chile nos despertaba uno a uno. Salíamos en pijama, con el pelo parado, y nos sentábamos todos a la mesa. Nadie hablaba mucho, pero todos sonreíamos, porque la fiesta seguía un poquito más.",
+   "en": "Mijo, after every big party, my mom made us chilaquiles with the leftover tortillas. We cousins slept scattered all over the house, and the smell of chile woke us one by one. We came out in pajamas, hair sticking up, and sat together at the table. Nobody talked much, but we all smiled, because the party went on a little longer."
+  }
+ },
+ "esquites": {
+  "titulo": {
+   "es": "Los esquites de la plaza",
+   "en": "The plaza esquites"
+  },
+  "texto": {
+   "es": "Mijo, en las tardes de domingo mi abuelita y yo íbamos a la plaza a ver el quiosco y comer esquites en vasito. Yo siempre le echaba demasiado limón, y ella siempre se hacía la sorprendida. Nos sentábamos en una banca y contábamos las palomas, que nunca eran las mismas. Cuando se acababa el vasito, ella me daba una moneda para otro, y así empezaba la segunda vuelta de la tarde.",
+   "en": "Mijo, on Sunday afternoons my grandma and I went to the plaza to watch the bandstand and eat esquites in a little cup. I always added too much lime, and she always pretended to be surprised. We sat on a bench and counted the pigeons, which were never the same. When the cup was empty, she gave me a coin for another, and that was how the second round of the afternoon began."
+  }
+ },
+ "churros-chocolate": {
+  "titulo": {
+   "es": "El chocolate de la cena de Navidad",
+   "en": "The Christmas Eve chocolate"
+  },
+  "texto": {
+   "es": "Mijo, en Nochebuena mi tía Rosa llegaba con una bolsa de churros todavía calientes y mi abuelita ponía el chocolate en la estufa. Los primos hacíamos una competencia para ver quién mojaba mejor el churro sin que se rompiera. Mi tío Nacho siempre perdía y se reía más fuerte que todos. Esa noche la casa olía a canela, y hasta el gato se quedó dormido contento.",
+   "en": "Mijo, on Christmas Eve my Aunt Rosa arrived with a bag of still-warm churros and my grandma put the chocolate on the stove. We cousins held a contest to see who could dip the churro best without breaking it. My Uncle Nacho always lost and laughed louder than everyone. That night the house smelled of cinnamon, and even the cat fell asleep happy."
+  }
+ },
+ "barbacoa-borrego-hidalgo": {
+  "titulo": {
+   "es": "El domingo de la barbacoa en el campo",
+   "en": "The Sunday barbacoa in the countryside"
+  },
+  "texto": {
+   "es": "Mijo, un domingo mi tío Memo nos llevó al campo de unos parientes en Hidalgo y nos pidió levantarnos muy temprano. El aire olía a tierra y a hierbas, y nos recibieron con tortillas y consomé en tazas de barro. Los niños corrimos entre los magueyes y regresamos con las manos llenas de flores amarillas. Esa mañana comprendí que la comida sabe distinto cuando se come con el cielo encima.",
+   "en": "Mijo, one Sunday my Uncle Memo took us to a relatives' field in Hidalgo and asked us to get up very early. The air smelled of earth and herbs, and they greeted us with tortillas and consommé in clay cups. We children ran among the agave plants and came back with our hands full of yellow flowers. That morning I understood food tastes different when you eat it under open sky."
+  }
+ },
+ "barbacoa-res": {
+  "titulo": {
+   "es": "Los tacos de domingo de la tía Chayo",
+   "en": "Aunt Chayo's Sunday tacos"
+  },
+  "texto": {
+   "es": "Mijo, todos los domingos mi tía Chayo ponía la olla de barbacoa desde la madrugada y la casa se llenaba de olor. Cuando llegábamos de misa, la mesa ya estaba puesta con tortillas, cebolla y limón. Cada primo tenía su lugar fijo, y el de Beto era el que más se movía. Mi tía servía los tacos uno por uno, y a cada quien le preguntaba cómo le había ido en la semana.",
+   "en": "Mijo, every Sunday my Aunt Chayo set the barbacoa pot on before dawn and the house filled with the smell. When we got back from church, the table was already set with tortillas, onion and lime. Each cousin had a fixed seat, and Beto's was the one that moved the most. My aunt served the tacos one by one, and asked each of us how our week had gone."
+  }
+ },
+ "barbacoa-chivo": {
+  "titulo": {
+   "es": "Las hojas de aguacate de la tía Rosa",
+   "en": "Aunt Rosa's avocado leaves"
+  },
+  "texto": {
+   "es": "Mijo, mi tía Rosa tenía un aguacate en el patio y decía que sus hojas olían a regalo. Cada vez que hacía barbacoa, me mandaba a juntar las más verdes, y yo las llevaba en el delantal como si fueran tesoros. Ella las acomodaba con cuidado en la olla, una por una. Con ese olor, hasta los vecinos tocaban la puerta para saludarnos.",
+   "en": "Mijo, my Aunt Rosa had an avocado tree in the yard and said its leaves smelled like a gift. Whenever she made barbacoa, she sent me to gather the greenest ones, and I carried them in my apron like treasures. She laid them carefully in the pot, one by one. With that smell, even the neighbors knocked on the door to say hello."
+  }
+ }
+}

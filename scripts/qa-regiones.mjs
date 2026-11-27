@@ -29,6 +29,7 @@ for (const ancho of [390, 1280]) {
   const h = await pg.locator('.historia-receta').textContent();
   ok(/Why is it called that\?|¿Por qué se llama así\?/.test(h) && /Legend: not proven|Leyenda: no está comprobada/.test(h) && /Fun facts|Datos curiosos/.test(h), 'jericalla: «Su historia» con nombre, leyenda marcada y datos curiosos');
   ok((await pg.locator('.volver').getAttribute('href')) === '#/regiones/guadalajara', 'el «← Regresar» vuelve a Guadalajara');
+  ok(/Cuento de Granma: lo inventó para ti|Granma's tale: she made it up for you/.test(await pg.locator('.cuento-granma').textContent()), 'trae su «Cuento de Granma», marcado como inventado');
   ok(await sinDesborde(), 'ficha con historia: sin desborde');
   if (ancho === 390) await pg.screenshot({ path: join(CAPT, 'regiones-jericalla.png'), fullPage: true });
   await pg.goto(B + '#/receta/tejuino/aguas'); await pg.waitForSelector('.historia-receta');

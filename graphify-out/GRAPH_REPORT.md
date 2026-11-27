@@ -1,17 +1,17 @@
 # Graph Report - granma-sazon  (2026-11-27)
 
 ## Corpus Check
-- 134 files · ~224,779 words
+- 135 files · ~234,984 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 7 file(s) not represented in the graph (top: (none) 3, .css 2, .webmanifest 1)
 
 ## Summary
-- 1212 nodes · 3263 edges · 51 communities (47 shown, 4 thin omitted)
+- 1215 nodes · 3263 edges · 54 communities (50 shown, 4 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 51 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4a718c39`
+- Built from commit: `9002d665`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -40,10 +40,12 @@
 - app.js
 - gen-logo.mjs
 - build-biblia.py
+- contenido.test.mjs
 - qa-escucha.mjs
 - Esquemas exactos (copiados de `data/*.json`)
 - Derechos y licencias de Granma Sazón
 - ref_node_module
+- receta.js
 - publicar-pages.mjs
 - api/biblia.js
 - Ejemplos: 2 buenos y 2 malos por tipo
@@ -63,6 +65,7 @@
 - glosario-faltan.mjs
 - cotorreo.mjs
 - j
+- glosario.js
 - Recordatorio diario: cómo está armado
 
 ## God Nodes (most connected - your core abstractions)
@@ -82,17 +85,17 @@
   docs/CAMBIOS-AL-SPEC.md → js/oido-propio.js
 - `«Mijo» o «mija», botón «Actualizar» y permisos con un botón (26 nov)` --references--> `tratarComo()`  [INFERRED]
   docs/CAMBIOS-AL-SPEC.md → js/state.js
-- `«Mijo» o «mija», botón «Actualizar» y permisos con un botón (26 nov)` --references--> `u()`  [INFERRED]
-  docs/CAMBIOS-AL-SPEC.md → js/state.js
 - `Premium de $50 MXN` --references--> `descargar()`  [INFERRED]
   docs/EXTENDER.md → js/descargas.js
 - `Verificador propio de voz («que me escuche Granma, aquí en mi teléfono»)` --references--> `analizarVoz()`  [INFERRED]
+  docs/CAMBIOS-AL-SPEC.md → js/oido.js
+- `Verificador propio de voz («que me escuche Granma, aquí en mi teléfono»)` --references--> `grabar()`  [INFERRED]
   docs/CAMBIOS-AL-SPEC.md → js/oido.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (51 total, 4 thin omitted)
+## Communities (54 total, 4 thin omitted)
 
 ### Community 0 - "avisos.test.mjs"
 Cohesion: 0.06
@@ -100,11 +103,11 @@ Nodes (45): atender(), avisar(), b64u(), cuerpo(), DIAS_DE_FALLO, endpointValido
 
 ### Community 1 - "u"
 Cohesion: 0.06
-Nodes (158): confeti(), lluviaTortillas(), Historia 3 «Las fiestas de mi familia» y ocho recetas de fiesta (26 nov), vistaSinDescargar(), CLAVE, COLOQUIAL, coloquialesEn(), notaColoquial() (+150 more)
+Nodes (150): confeti(), Historia 3 «Las fiestas de mi familia» y ocho recetas de fiesta (26 nov), «Mijo» o «mija», botón «Actualizar» y permisos con un botón (26 nov), vistaSinDescargar(), versionesDe(), getPassage(), listBooks(), CLAVE (+142 more)
 
 ### Community 2 - "habla.js"
 Cohesion: 0.05
-Nodes (69): COLORES, MAX_CONFETI, GOLPE, MAX_PEGADAS, MAX_TORTILLAS, PEGADA_MS, TRICOLOR, iniciarAnimaciones() (+61 more)
+Nodes (68): COLORES, MAX_CONFETI, GOLPE, lluviaTortillas(), MAX_PEGADAS, MAX_TORTILLAS, PEGADA_MS, TRICOLOR (+60 more)
 
 ### Community 3 - "build.mjs"
 Cohesion: 0.09
@@ -119,12 +122,12 @@ Cohesion: 0.08
 Nodes (30): auto, B, base, derivarEn(), derivarEs(), distancia(), ESCRIBIR, esNombre() (+22 more)
 
 ### Community 6 - "js/descargas.js"
-Cohesion: 0.13
-Nodes (31): Comida italiana, Cómo extender la app (estructura lista para crecer), Más contenido, Premium de $50 MXN, Recetas subidas por usuarios, instalar(), paquetes(), activos (+23 more)
+Cohesion: 0.12
+Nodes (32): Comida italiana, Cómo extender la app (estructura lista para crecer), Más contenido, Premium de $50 MXN, Recetas subidas por usuarios, instalar(), paquetes(), activos (+24 more)
 
 ### Community 7 - "vistas/biblia.js"
-Cohesion: 0.12
-Nodes (23): BibleProvider, FLAGS, PROXY_URL, VERSIONES, versionesDe(), versionPorId(), libros(), LocalPublicDomain (+15 more)
+Cohesion: 0.14
+Nodes (13): BibleProvider, FLAGS, PROXY_URL, VERSIONES, versionPorId(), libros(), LocalPublicDomain, parsearReferencia() (+5 more)
 
 ### Community 8 - "gen-personajes.mjs"
 Cohesion: 0.10
@@ -151,8 +154,8 @@ Cohesion: 0.11
 Nodes (17): description, engines, node, name, private, scripts, biblia, build (+9 more)
 
 ### Community 15 - "ejercicios.js"
-Cohesion: 0.05
-Nodes (73): confetiMexicano(), Verificador propio de voz («que me escuche Granma, aquí en mi teléfono»), C, cargarImg(), generarConstancia(), BORRADO_MS, comillas(), jugar() (+65 more)
+Cohesion: 0.08
+Nodes (64): confetiMexicano(), tortillaPierde(), Verificador propio de voz («que me escuche Granma, aquí en mi teléfono»), C, cargarImg(), generarConstancia(), BORRADO_MS, comillas() (+56 more)
 
 ### Community 16 - "qa-hablar-glosario.mjs"
 Cohesion: 0.13
@@ -160,23 +163,23 @@ Nodes (13): abrir(), CAPT, { chromium }, ejs, errores, estado(), fallas, glos (+
 
 ### Community 17 - "Granma Sazón"
 Cohesion: 0.05
-Nodes (34): Aprender hablando y escuchando, modo perezoso, porras y turnos de voz (26 nov), Arranque a prueba de fallas (iPhone nuevo que se quedaba «cargando»), Aviso de privacidad y términos al empezar; avisos desde el inicio (27 nov), Avisos con días y «Te espero en clase» (27 nov), Biblia: texto intacto y glosario formal, Cambios frente al SPEC original, Dominio propio: granmasazon.app (26 nov), Energía (tortillitas) (+26 more)
+Nodes (34): Aprender hablando y escuchando, modo perezoso, porras y turnos de voz (26 nov), Arranque a prueba de fallas (iPhone nuevo que se quedaba «cargando»), Aviso de privacidad y términos al empezar; avisos desde el inicio (27 nov), Avisos con días y «Te espero en clase» (27 nov), Biblia: texto intacto y glosario formal, Cambios frente al SPEC original, Cuentos de Granma (27 nov), Dominio propio: granmasazon.app (26 nov) (+26 more)
 
 ### Community 18 - "qa-pruebas.mjs"
 Cohesion: 0.14
 Nodes (11): cap1, dic, errores, fallas, hist, pal, pregunta(), RAIZ (+3 more)
 
 ### Community 19 - "ref_node_path"
-Cohesion: 0.09
-Nodes (16): huellas(), RAIZ, VERSIONES_PD, recetas, B, formas, G, RAIZ (+8 more)
+Cohesion: 0.11
+Nodes (12): B, formas, G, RAIZ, { chromium }, ENTORNOS, fallas, R (+4 more)
 
 ### Community 20 - "qa-offline.mjs"
 Cohesion: 0.14
 Nodes (11): ejs, errores, fallas, hist, pal, propias, RAIZ, rec (+3 more)
 
 ### Community 21 - "app.js"
-Cohesion: 0.09
-Nodes (54): hilo(), logoVapor(), aplicarActualizacion(), buscarActualizacion(), hayNueva(), mostrarAviso(), versionInstalada(), vigilarActualizaciones() (+46 more)
+Cohesion: 0.07
+Nodes (64): hilo(), logoVapor(), aplicarActualizacion(), buscarActualizacion(), hayNueva(), mostrarAviso(), versionInstalada(), vigilarActualizaciones() (+56 more)
 
 ### Community 22 - "gen-logo.mjs"
 Cohesion: 0.25
@@ -185,6 +188,10 @@ Nodes (7): C, { chromium }, icono(), ICONOS, LOGO, olla(), RAIZ
 ### Community 23 - "build-biblia.py"
 Cohesion: 0.31
 Nodes (4): bajar(), desde_scrollmapper(), desde_web(), limpiar()
+
+### Community 24 - "contenido.test.mjs"
+Cohesion: 0.08
+Nodes (21): armarEscucha(), material(), MODOS, TXT, armarPrueba(), distintos(), NOTA_MINIMA, repartir() (+13 more)
 
 ### Community 25 - "qa-escucha.mjs"
 Cohesion: 0.11
@@ -202,8 +209,12 @@ Nodes (8): 1. Lo que es propio (creación original del proyecto), 2. Lo que es d
 Cohesion: 0.09
 Nodes (16): errores, fallas, librosDistintos, RAIZ, srv, TIPOS, n(), R (+8 more)
 
+### Community 29 - "receta.js"
+Cohesion: 0.25
+Nodes (17): alternar(), avisosDisponibles(), notificar(), nuevo(), pedirPermisoDeAviso(), reiniciar(), restante(), revisar() (+9 more)
+
 ### Community 30 - "publicar-pages.mjs"
-Cohesion: 0.17
+Cohesion: 0.18
 Nodes (10): andar(), DIST, fuera, grandes, INCLUIR, lista, MODELOS, PEDAZO (+2 more)
 
 ### Community 31 - "api/biblia.js"
@@ -235,16 +246,16 @@ Cohesion: 0.25
 Nodes (7): Contenido de la app: usa siempre la skill `contenido-granma`, Granma Sazón — instrucciones para Claude, Mapa de Graphify, Regla permanente: empezar recomendando modelo y esfuerzo, Regla permanente: este repositorio es lo único que se toca, Regla permanente: todo va en granmasazon.app, Reglas del repo
 
 ### Community 38 - "guion-pdf.mjs"
-Cohesion: 0.33
-Nodes (5): {chromium}, DOCS, esc(), fmt(), md
+Cohesion: 0.20
+Nodes (6): recetas, {chromium}, DOCS, esc(), fmt(), md
 
 ### Community 39 - "[archivo].js"
 Cohesion: 0.67
 Nodes (3): onRequest(), pedirEstatico(), PERMITIDOS
 
 ### Community 40 - "estado"
-Cohesion: 0.08
-Nodes (52): encabezado, icono(), ICONOS, main, nav, navegar(), pintarCromo(), promptInstalar (+44 more)
+Cohesion: 0.21
+Nodes (22): aleatorio(), bajarProgreso(), borrarCuenta(), configCuenta(), cuentaConectada(), desconectar(), entrarConGoogle(), paraLaCuenta() (+14 more)
 
 ### Community 41 - "qa-historia2.mjs"
 Cohesion: 0.10
@@ -278,29 +289,33 @@ Nodes (6): cotorreos, lista, P(), QQ, QR, T()
 Cohesion: 0.40
 Nodes (6): capas(), fuente(), glos(), j(), paquetes, peso()
 
+### Community 49 - "glosario.js"
+Cohesion: 0.24
+Nodes (14): anotar(), buscar(), cargar(), cargarBiblico(), cerrarGlosa(), iniciarGlosario(), mostrar(), palabraEn() (+6 more)
+
 ### Community 50 - "Recordatorio diario: cómo está armado"
 Cohesion: 0.33
 Nodes (5): Cómo saber si están llegando, Límites del plan gratis, Recordatorio diario: cómo está armado, Secretos (solo en Cloudflare, nunca en el repositorio), Volver a publicar el despertador
 
 ## Knowledge Gaps
 - **1 isolated node(s):** `./js/oido-propio.js`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 544 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 546 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `pj()` connect `u` to `js/descargas.js`, `vistas/biblia.js`, `estado`, `ejercicios.js`, `app.js`?**
-  _High betweenness centrality (0.051) - this node is a cross-community bridge._
+- **Why does `u()` connect `u` to `habla.js`, `js/descargas.js`, `estado`, `ejercicios.js`, `glosario.js`, `app.js`, `receta.js`?**
+  _High betweenness centrality (0.066) - this node is a cross-community bridge._
 - **What connects `./js/oido-propio.js` to the rest of the system?**
   _1 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `avisos.test.mjs` be split into smaller, more focused modules?**
   _Cohesion score 0.06265664160401002 - nodes in this community are weakly interconnected._
-- **Why does `u()` connect `u` to `habla.js`, `js/descargas.js`, `vistas/biblia.js`, `estado`, `ejercicios.js`, `Granma Sazón`, `app.js`?**
-  _High betweenness centrality (0.042) - this node is a cross-community bridge._
+- **Why does `pj()` connect `u` to `js/descargas.js`, `estado`, `ejercicios.js`, `app.js`, `contenido.test.mjs`, `receta.js`?**
+  _High betweenness centrality (0.057) - this node is a cross-community bridge._
 - **Should `u` be split into smaller, more focused modules?**
-  _Cohesion score 0.05593419506462985 - nodes in this community are weakly interconnected._
-- **Why does `estado()` connect `estado` to `u`, `habla.js`, `vistas/biblia.js`, `ejercicios.js`, `app.js`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _Cohesion score 0.05824675324675325 - nodes in this community are weakly interconnected._
+- **Why does `Cambios frente al SPEC original` connect `Granma Sazón` to `u`, `ejercicios.js`?**
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
 - **Should `habla.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.05194805194805195 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05263157894736842 - nodes in this community are weakly interconnected._

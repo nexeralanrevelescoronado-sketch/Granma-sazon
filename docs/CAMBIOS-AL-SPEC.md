@@ -229,3 +229,10 @@ Pedido del dueño: que las leyendas y datos no nos metan en problemas (propiedad
 - **Sin promesas de salud.** El tejuino cita lo que reportan investigadores de Jalisco, sin decir que «cura» o «es saludable».
 - **Leyendas y propiedad intelectual:** las leyendas populares son de la tradición (nadie es dueño de ellas); lo que sí tiene derechos es la forma en que alguien las escribe. Por eso cada texto se redactó con palabras propias y sin copiar recetas ni párrafos de otros sitios. Un script no puede comparar contra toda la web: si un día aparece un parecido, se reescribe.
 - **Ingredientes con nombre de lugar** (queso cotija, chile poblano): se usan para describir el ingrediente, como en cualquier receta; no se presentan como producto certificado.
+
+## Cuentos de Granma (27 nov)
+
+Pedido del dueño: además de las leyendas reales, historias inventadas «lo más parecidas posible», sin problemas de propiedad intelectual ni de normas.
+- Cada una de las 58 recetas trae un **«Cuento de Granma»**: un recuerdo inventado de su familia (tías, primos, el Abuelo, los vecinos), inspirado en la receta y su región. La app lo muestra en un recuadro aparte con la etiqueta «📖 Cuento de Granma: lo inventó para ti», para que nadie lo confunda con la historia comprobada ni con una leyenda.
+- 100 % original: sin personas, negocios ni marcas reales, sin fechas, sin copiar cuentos ni personajes de nadie. Apto para familias (en el del tejuino, los niños piden agua de limón).
+- Fuente: `scripts/datos/recetas-cuentos.json`. Lo vigilan el validador de la skill (campo `cuento`), `test/contenido.test.mjs` (uno por receta, sin años ni marcas, títulos sin repetir) y `scripts/qa-regiones.mjs`.

@@ -178,3 +178,11 @@ Pedido y aprobado por el dueño, sabiendo que la app deja de ser «sin servidor�
 - **Días:** cada aviso tiene sus días (L M M J V S D, más «Todos», «Entre semana» y «Fin de semana»). Al servidor van como máscara en UTC (a las 8 p. m. del lunes en México ya es martes en UTC).
 - **Segundo aviso, «Te espero en clase»:** «Mija, te estoy esperando para tu siguiente clase de cocina e inglés: «La rosca y el monito»» (o «de cocina y español», según lo que aprende). El capítulo que sigue lo sabe el teléfono; al tocarlo abre la Historia. Sugerido: sábados a las 10 a. m.
 - **Servidor:** la tabla guarda además `tipo` (practicar o clase) y `dias`. Un teléfono con dos avisos a la misma hora recibe un solo toque y el teléfono decide el texto (si coinciden, gana la clase). La app vieja, que no manda tipo ni días, sigue funcionando (todos los días). Base migrada en Cloudflare.
+
+## Aviso de privacidad y términos al empezar; avisos desde el inicio (27 nov)
+
+- **Bienvenida:** después de elegir idioma, la pantalla «Antes de empezar» resume en 4 renglones qué pasa con los datos, deja leer el aviso de privacidad y los términos completos (`js/legal.js`, en los dos idiomas) y pide marcar «Leí y acepto» para continuar. Se anota en el teléfono la versión aceptada y la fecha (`perfil.legal`, `perfil.legalFecha`). Pide que los menores lo lean con un adulto.
+- **Quien ya jugaba** ve una sola vez «Actualizamos el aviso de privacidad» y no puede seguir sin aceptarlo; su avance no se toca. Si el aviso cambia (`VERSION_LEGAL`), se vuelve a pedir. Los textos se pueden leer siempre en `#/privacidad` y `#/terminos` (enlazados en Perfil).
+- **Avisos desde el principio:** antes de la bienvenida, «¿Quieres que Granma te avise?» ofrece los dos avisos **sin marcar**; el permiso del teléfono se pide solo si la persona marca alguno y toca «Activar los que marqué». «Ahora no» sigue sin pedir nada.
+- **Falta un dato del dueño:** el aviso de privacidad necesita nombre del responsable, correo de contacto y domicilio (LFPDPPP). Mientras falten, dice «(pendiente)». Se llenan en `RESPONSABLE` de `js/legal.js`.
+- **No es asesoría legal:** el texto describe con exactitud lo que la app hace, pero conviene que un abogado lo revise antes de publicar en tiendas o de cobrar.

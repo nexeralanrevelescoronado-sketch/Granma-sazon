@@ -40,6 +40,7 @@ export async function montar(main) {
       <p class="muted mt">👂 ${u('Para que «Granma, en mi teléfono» reconozca tus palabras sin internet, baja el «Oído de Granma» en', 'So that "Granma, on my phone" recognizes your words offline, get "Granma\'s ear" in')} <a href="#/descargas">${u('Descargas', 'Downloads')}</a>.</p>
       <p class="muted mt" id="micro-out" role="status"></p></div>
     <h2 class="mt2">🔒 ${u('Tu privacidad', 'Your privacy')}</h2>
+    <p class="fila"><a class="btn sec" href="#/privacidad">📄 ${u('Aviso de privacidad', 'Privacy notice')}</a><a class="btn sec" href="#/terminos">📄 ${u('Términos de uso', 'Terms of use')}</a></p>
     <div class="tarjeta"><ul class="privacidad">
       <li>${u('No hay cuentas ni registro. Tu avance, tu nombre y tu cuaderno se guardan solo en este teléfono.', 'There are no accounts or sign-up. Your progress, your name and your notebook are stored only on this phone.')}</li>
       <li>${u('La app no guarda ni envía tu voz. El «Oído de Granma» reconoce tus palabras dentro del teléfono, sin internet. Si te grabas para practicar, la grabación vive solo en la memoria del teléfono y se borra sola en 1 minuto o al pasar de ejercicio.', 'The app does not store or send your voice. "Granma\'s ear" recognizes your words inside the phone, offline. If you record yourself to practice, the recording lives only in the phone\'s memory and deletes itself in 1 minute or when you move on.')}</li>

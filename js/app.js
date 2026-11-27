@@ -10,6 +10,7 @@ import { iniciarGlosario } from './glosario.js';
 import { vigilarDialogos, detenerHabla, alternarVoz, vozDisponible } from './habla.js';
 import { iniciarLento } from './lento.js';
 import { vigilarActualizaciones } from './actualizar.js';
+import { VERSION_LEGAL } from './legal.js';
 
 const rutas = {
   '': () => import('./vistas/inicio.js'),
@@ -24,6 +25,8 @@ const rutas = {
   platica: () => import('./vistas/platica.js'),
   asi: () => import('./vistas/asi.js'),
   reglas: () => import('./vistas/reglas.js'),
+  privacidad: () => import('./vistas/legal.js'),
+  terminos: () => import('./vistas/legal.js'),
   biblia: () => import('./vistas/biblia.js'),
   descargas: () => import('./vistas/descargas.js'),
   prueba: () => import('./vistas/prueba.js'),
@@ -82,8 +85,12 @@ function rutaActual() {
 async function navegar() {
   const { base, args } = rutaActual();
   const S = estado();
-  if (!S.perfil.listo && base !== 'onboarding') { location.replace('#/onboarding'); return; }
-  if (S.perfil.listo && base === 'onboarding' && !location.hash.includes('cambiar')) { location.replace('#/'); return; }
+  const libre = base === 'onboarding' || base === 'privacidad' || base === 'terminos';      // se pueden leer antes de aceptar
+  if (!S.perfil.listo && !libre) { location.replace('#/onboarding'); return; }
+  // Quien ya jugaba y el aviso de privacidad cambió (o nunca lo aceptó): lo lee y lo acepta antes de seguir.
+  const debeAceptar = S.perfil.listo && S.perfil.legal !== VERSION_LEGAL;
+  if (debeAceptar && !libre) { location.replace('#/onboarding?aceptar'); return; }
+  if (S.perfil.listo && base === 'onboarding' && !location.hash.includes('cambiar') && !(debeAceptar && location.hash.includes('aceptar'))) { location.replace('#/'); return; }
   detenerHabla();
   if (limpiar) { try { limpiar(); } catch { /* ya no existe */ } limpiar = null; }
   document.documentElement.lang = S.perfil.listo ? nat() : 'es';

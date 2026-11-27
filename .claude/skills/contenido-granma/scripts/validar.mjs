@@ -151,6 +151,31 @@ function validarReceta(r) {
     if (/fr[ií]e|fre[ií]r|aceite caliente/i.test(texto) && !/adulto|adult/i.test(`${r.nota?.es} ${r.nota?.en}`)) e.push('hay fritura o aceite caliente: la nota debe pedir ayuda de un adulto');
     if (/(?:\d+)\s?(?:minutos?|min)\b/i.test(texto) && !r.pasos.some((p) => p.min)) a.push('el texto menciona minutos pero ningún paso tiene «min»');
   }
+  if (r.historia !== undefined || r.aprende !== undefined) { const [e2, a2] = validarHistoria(r); e.push(...e2); a.push(...a2); }
+  return [e, a];
+}
+/* Historia de una receta (recetas por región): por qué se llama así, dónde nació (solo hechos comprobados), la leyenda
+   si la hay (siempre empieza con «Se cuenta que» / «Legend says» y se muestra con la etiqueta «Leyenda»), datos curiosos
+   y palabras para aprender. Nada de fechas ni nombres de personas dentro de una leyenda: no se pueden comprobar. */
+function validarHistoria(r) {
+  const e = [], a = [], h = r.historia;
+  if (!h || typeof h !== 'object') e.push('historia: falta (objeto con nombre, origen, curiosos y, si la hay, leyenda)');
+  else {
+    for (const k of Object.keys(h)) if (!['nombre', 'origen', 'leyenda', 'curiosos'].includes(k)) e.push(`historia: campo «${k}» no va`);
+    for (const k of ['nombre', 'origen']) if (!par(h[k])) e.push(`historia.${k} sin es/en`);
+    if (h.leyenda !== undefined) {
+      if (!par(h.leyenda)) e.push('historia.leyenda sin es/en');
+      else {
+        if (!/^Se cuenta que/.test(h.leyenda.es) || !/^Legend says/.test(h.leyenda.en)) e.push('historia.leyenda: empieza con «Se cuenta que…» y «Legend says…» (que se note que no está comprobada)');
+        if (/\b1[5-9]\d\d\b|\b20[0-2]\d\b/.test(h.leyenda.es + h.leyenda.en)) e.push('historia.leyenda: sin años (una leyenda no se puede fechar)');
+      }
+    }
+    if (h.origen && /^Se cuenta|Legend|leyenda/i.test(h.origen.es + ' ' + h.origen.en)) e.push('historia.origen: solo hechos comprobados; lo que es leyenda va en historia.leyenda');
+    if (!Array.isArray(h.curiosos) || h.curiosos.length < 2 || h.curiosos.length > 3 || !h.curiosos.every(par)) e.push('historia.curiosos: 2 o 3 datos curiosos, cada uno con es/en');
+    for (const k of ['nombre', 'origen', 'leyenda']) if (h[k] && (h[k].es?.length > 420 || h[k].en?.length > 420)) a.push(`historia.${k}: muy largo (máx. ~420 caracteres por idioma)`);
+  }
+  if (!Array.isArray(r.aprende) || r.aprende.length < 3 || r.aprende.length > 5 || !r.aprende.every(par)) e.push('aprende: 3 a 5 palabras para aprender, cada una { es, en }');
+  else for (const w of r.aprende) { const t = JSON.stringify(r).toLowerCase(); if (!t.includes(String(w.es).toLowerCase())) a.push(`aprende: «${w.es}» no aparece en la receta`); }
   return [e, a];
 }
 function validarBiblia(p) {
@@ -176,7 +201,7 @@ const CAMPOS = {
   consejos: ['id', 'tema', 'es', 'en', 'clave', 'q'],
   cotorreos: ['id', 'tema', 'tipo', 'es', 'en', 'clave', 'q', 'abuelo'],
   capitulos: ['id', 'receta', 'titulo', 'relato', 'palabras', 'palabrasInteres', 'ejemplos', 'consejo'],
-  recetas: ['id', 'icono', 'estrella', 'insignia', 'nombre', 'resumen', 'porciones', 'tiempoPrep', 'tiempoCoccion', 'nivel', 'nota', 'ingredientes', 'pasos'],
+  recetas: ['id', 'icono', 'estrella', 'insignia', 'nombre', 'resumen', 'porciones', 'tiempoPrep', 'tiempoCoccion', 'nivel', 'nota', 'ingredientes', 'pasos', 'historia', 'aprende'],
   biblia: ['id', 'ref', 'titulo', 'pares'],
 };
 /* gentilicios y apodos regionales: no son error por sí solos (puede haber un «poblano» legítimo), pero un chiste con ellos casi siempre es una burla */

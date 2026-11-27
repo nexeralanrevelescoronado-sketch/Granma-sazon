@@ -1,7 +1,8 @@
 import { estado, guardar, u, tgt, nat, Ln, vidas, rachaVigente, misionesDeHoy, progresoMision, MAX_VIDAS, sinEnergia, tocaRepetir } from '../state.js';
 import { pj } from '../personajes.js';
 import { esc, delDia, resaltar } from '../util.js';
-import { consejos, cotorreos, historia } from '../datos.js';
+import { consejos, cotorreos, historia, regiones } from '../datos.js';
+import { botonGrupo } from './regiones.js';
 import { botonWhatsApp } from '../compartir.js';
 
 // La pantalla se pinta al instante con lo que ya se sabe; el consejo, el chiste y el botón «Continuar» se rellenan
@@ -21,6 +22,7 @@ export function montar(main) {
     <a class="btn sec bloque mt" id="cta-prueba" href="#/historia" hidden></a>
     <div class="rejilla mt"><a class="btn sec" href="#/reto">⏱ ${u('Reto 60 s', '60 s quiz')}</a><a class="btn sec" href="#/descargas">⬇ ${u('Sin internet', 'Offline')}</a></div>
     <a class="btn sec bloque mt" href="#/platica">💬 ${u('Granma quiere platicar contigo', 'Granma wants to chat with you')}</a>
+    <section class="tarjeta mt2" aria-labelledby="h-regiones"><h2 id="h-regiones">🗺️ ${u('Recetas por región', 'Recipes by region')}</h2><p class="muted">${u('Con su historia, por qué se llaman así y datos curiosos.', 'With their story, why they have that name, and fun facts.')}</p><div class="rejilla grupos" data-grupos></div></section>
     <section class="tarjeta mt2" aria-labelledby="h-misiones"><h2 id="h-misiones">${u('Misiones de hoy', 'Today\'s missions')}</h2><ul style="list-style:none;padding:0;margin:0">${misiones}</ul>
       <p class="muted" style="margin-top:8px"><span class="vidas" aria-hidden="true">${Array.from({ length: MAX_VIDAS }, (_, i) => `<i class="tortilla ${i < vidas() ? '' : 'vacia'}"></i>`).join('')}</span> ${u(`energía de hoy: ${vidas()} / ${MAX_VIDAS}`, `energy today: ${vidas()} / ${MAX_VIDAS}`)}</p>
       ${sinEnergia() ? `<p role="status"><strong>${u('Se acabó la energía por hoy.', 'Out of energy for today.')}</strong> ${u('Mañana repetimos con calma.', 'Tomorrow we repeat calmly.')}</p>` : ''}</section>
@@ -32,6 +34,7 @@ export function montar(main) {
   // «Deja lista tu app»: aparece mientras falte instalarla o decidir sobre los avisos
   import('../permisos.js').then(({ faltaAlgo }) => { const a = main.querySelector('[data-app-lista]'); if (a && faltaAlgo()) a.hidden = false; }).catch(() => {});
   const poner = (id, html) => { const c = main.querySelector(`#${id} [data-cont]`); if (c) { c.innerHTML = html; c.closest('section').style.minHeight = ''; } };
+  regiones().then((d) => { const caja = main.querySelector('[data-grupos]'); if (caja) caja.innerHTML = [...d.regiones, ...d.temas].map(botonGrupo).join(''); }).catch(() => {});
   consejos().then((lista) => {
     const c = delDia(lista), claves = c.clave;
     const textoWA = `🎩 «${c.es}»\n«${c.en}»\n— ${u('El consejo del Abuelo', 'Grandpa\'s advice')}`;

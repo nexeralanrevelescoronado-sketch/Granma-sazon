@@ -30,6 +30,10 @@ const historia2 = fuente('historia2');
 const historia3 = fuente('historia3');
 for (const n of ['historia2', 'historia3', 'coloquial', 'reglas', 'platicas']) escribir(j('data', `${n}.json`), n === 'historia2' ? historia2 : n === 'historia3' ? historia3 : fuente(n));
 escribir(j('data', 'recetas.json'), recetas);
+// Recetas por región y por tema: cada grupo apunta a recetas que existen (las que aún no se escriben salen «Próximamente»).
+const regiones = fuente('regiones');
+for (const g of [...regiones.regiones, ...regiones.temas]) for (const id of g.recetas) if (!recetas.some((r) => r.id === id)) g.recetas = g.recetas.filter((x) => x !== id);
+escribir(j('data', 'regiones.json'), regiones);
 escribir(j('data', 'consejos.json'), consejos);
 escribir(j('data', 'cotorreo.json'), cotorreos);
 escribir(j('data', 'biblia', 'ruta.json'), rutaBiblia);
@@ -39,6 +43,10 @@ const iso = (min) => `PT${Math.floor(min / 60) ? Math.floor(min / 60) + 'H' : ''
 const ing = (i) => `${i.cant} ${i.un} ${i.es}`.replace('.', ',');
 const ingEn = (i) => `${i.cant} ${i.un} ${i.en}`;
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// La historia de la receta: por qué se llama así, de dónde viene, la leyenda (siempre marcada) y datos curiosos.
+const historiaHTML = (r, l) => { const h = r.historia; if (!h) return '';
+  const t = l === 'es' ? { su: 'Su historia', nom: '¿Por qué se llama así?', ori: '¿De dónde viene?', ley: 'Leyenda (no está comprobada)', cur: 'Datos curiosos', apr: 'Palabras para aprender' } : { su: 'Its story', nom: 'Why is it called that?', ori: 'Where does it come from?', ley: 'Legend (not proven)', cur: 'Fun facts', apr: 'Words to learn' };
+  return `<h2>${t.su}</h2><h3>${t.nom}</h3><p>${esc(h.nombre[l])}</p><h3>${t.ori}</h3><p>${esc(h.origen[l])}</p>${h.leyenda ? `<h3>${t.ley}</h3><p><em>${esc(h.leyenda[l])}</em></p>` : ''}<h3>${t.cur}</h3><ul>${h.curiosos.map((c) => `<li>${esc(c[l])}</li>`).join('')}</ul>${r.aprende ? `<h3>${t.apr}</h3><ul>${r.aprende.map((w) => `<li>${esc(w.es)} — <span lang="en">${esc(w.en)}</span></li>`).join('')}</ul>` : ''}`; };
 for (const r of recetas) {
   const total = r.tiempoPrep + r.tiempoCoccion;
   const ld = {
@@ -71,9 +79,10 @@ for (const r of recetas) {
 <h1>${esc(r.nombre.es)} <small lang="en">· ${esc(r.nombre.en)}</small></h1>
 <p>${esc(r.resumen.es)}</p><p lang="en">${esc(r.resumen.en)}</p>
 <p>${r.porciones} porciones · Preparación ${r.tiempoPrep} min · Cocción ${r.tiempoCoccion} min</p>
+${historiaHTML(r, 'es')}
 <h2>Ingredientes</h2><ul>${r.ingredientes.map((i) => `<li>${esc(ing(i))}</li>`).join('')}</ul>
 <h2>Preparación</h2><ol>${r.pasos.map((p) => `<li>${esc(p.es)}${p.min ? ` <em>(${p.min} min)</em>` : ''}</li>`).join('')}</ol>
-<section lang="en"><h2>Ingredients</h2><ul>${r.ingredientes.map((i) => `<li>${esc(ingEn(i))}</li>`).join('')}</ul>
+<section lang="en">${historiaHTML(r, 'en')}<h2>Ingredients</h2><ul>${r.ingredientes.map((i) => `<li>${esc(ingEn(i))}</li>`).join('')}</ul>
 <h2>Method</h2><ol>${r.pasos.map((p) => `<li>${esc(p.en)}${p.min ? ` <em>(${p.min} min)</em>` : ''}</li>`).join('')}</ol></section>
 </main></body></html>
 `;
@@ -122,7 +131,7 @@ escribir(j('sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmln
 
 // ---- 3) nucleo (cache de la app) + version por contenido
 const nucleo = [
-  'index.html', 'manifest.webmanifest', 'data/paquetes.json', 'data/audios.json', 'data/glosario.json', 'data/coloquial.json', 'data/reglas.json', 'data/platicas.json',
+  'index.html', 'manifest.webmanifest', 'data/paquetes.json', 'data/audios.json', 'data/glosario.json', 'data/coloquial.json', 'data/reglas.json', 'data/platicas.json', 'data/regiones.json',
   'demo-animaciones.html', ...listar(j('css')).map(url), ...listar(j('js')).map(url), ...listar(j('assets', 'animaciones')).map(url),
   ...listar(j('assets', 'personajes'), (f) => /\/(granma-(contenta|hablando|carinosa|pensando|aplaudiendo)|abuelo-(serio|hablando|sonrisa|asintiendo|aconsejando))\.svg$/.test(f.split(sep).join('/'))).map(url),
   ...listar(j('assets', 'logo')).map(url),

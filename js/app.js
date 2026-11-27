@@ -18,6 +18,7 @@ const rutas = {
   leccion: () => import('./vistas/leccion.js'),
   recetas: () => import('./vistas/recetas.js'),
   receta: () => import('./vistas/receta.js'),
+  regiones: () => import('./vistas/regiones.js'),
   consejos: () => import('./vistas/consejos.js'),
   consejo: () => import('./vistas/consejos.js'),
   cotorreo: () => import('./vistas/cotorreo.js'),
@@ -70,7 +71,7 @@ function pintarCromo() {
     </div>`;
   const items = [['', 'inicio', u('Inicio', 'Home')], ['historia', 'historia', u('Historia', 'Story')], ['recetas', 'recetas', u('Recetas', 'Recipes')], ['consejos', 'consejos', u('Abuelo', 'Grandpa')], ['cotorreo', 'cotorreo', u('Cotorreo', 'Chat')], ['hablar', 'hablar', u('Hablar', 'Speak')], ['biblia', 'biblia', u('Biblia', 'Bible')]];
   const ruta = rutaActual().base;
-  nav.innerHTML = items.map(([r, ic, tx]) => `<a href="#/${r}" ${(r === ruta || (r === 'consejos' && ruta === 'consejo') || (r === 'recetas' && ruta === 'receta') || (r === 'historia' && (ruta === 'leccion' || ruta === 'prueba')) || (r === 'hablar' && ['platica', 'asi', 'reglas'].includes(ruta))) ? 'aria-current="page"' : ''}>${icono(ic)}<span>${tx}</span></a>`).join('');
+  nav.innerHTML = items.map(([r, ic, tx]) => `<a href="#/${r}" ${(r === ruta || (r === 'consejos' && ruta === 'consejo') || (r === 'recetas' && (ruta === 'receta' || ruta === 'regiones')) || (r === 'historia' && (ruta === 'leccion' || ruta === 'prueba')) || (r === 'hablar' && ['platica', 'asi', 'reglas'].includes(ruta))) ? 'aria-current="page"' : ''}>${icono(ic)}<span>${tx}</span></a>`).join('');
 }
 $('#encabezado').addEventListener('click', (e) => {
   if (e.target.closest('#btn-sonido')) { sonido.alternar(); versionPintada = ''; pintarCromo(); }

@@ -141,12 +141,12 @@
  },
  "torta-ahogada": {
   "titulo": {
-   "es": "La torta que se ahoga",
-   "en": "The drowning sandwich"
+   "es": "La torta bañada de cariño",
+   "en": "The sandwich bathed in love"
   },
   "texto": {
    "es": "Mijo, mi primo Beto, de chiquito, me preguntó si la torta ahogada estaba triste por estar tan bañada en salsa. Yo le dije que no, que estaba feliz de tanto cariño, y nos dio un ataque de risa. El birote crujía y la salsa de jitomate nos escurría hasta el codo. La salsa de chile de árbol la probaban solo los que aguantaban, con una gotita nada más. Terminamos con la servilleta empapada y la barriga contenta.",
-   "en": "Mijo, my cousin Beto, when he was little, asked me if the drowned sandwich was sad for being so covered in sauce. I told him no, that it was happy with so much love, and we burst into laughter. The roll crunched and the tomato sauce ran down to our elbows. Only those who could handle spice tried the chile de árbol sauce, with just one tiny drop. We ended up with soaked napkins and happy bellies."
+   "en": "Mijo, my cousin Beto, when he was little, asked me if the torta ahogada was sad for being so covered in sauce. I told him no, that it was happy with so much love, and we burst into laughter. The roll crunched and the tomato sauce ran down to our elbows. Only those who could handle spice tried the chile de árbol sauce, with just one tiny drop. We ended up with soaked napkins and happy bellies."
   }
  },
  "carne-en-su-jugo": {
@@ -387,16 +387,6 @@
   "texto": {
    "es": "Mijo, para la boda de mi prima Lola, las tías nos juntamos tres días antes en la cocina. Una molía los chiles, otra cortaba las naranjas y yo cuidaba que la olla no se pegara. Cantamos todas las canciones que sabíamos, y alguna que nos inventamos. El día de la fiesta el asado salió tan rico que el novio pidió la receta, y mi tía Chayo se hizo la importante.",
    "en": "Mijo, for my cousin Lola's wedding, the aunts met three days before in the kitchen. One ground the chiles, another cut the oranges, and I made sure the pot did not stick. We sang every song we knew, and some we made up. On party day the stew came out so good the groom asked for the recipe, and my Aunt Chayo acted very important."
-  }
- },
- "tacos-envenenados": {
-  "titulo": {
-   "es": "Los tacos con nombre de susto",
-   "en": "The tacos with a scary name"
-  },
-  "texto": {
-   "es": "Mijo, la primera vez que mi tío Nacho dijo «hoy hay tacos envenenados», mi primo Beto se puso pálido. Mi tío soltó la carcajada y le explicó que el único veneno era el sabor, porque nadie podía parar de comer. Beto se comió cuatro y después pidió disculpas al plato. Desde entonces, en la familia, ese nombre significa que hay fiesta en la cocina.",
-   "en": "Mijo, the first time my Uncle Nacho said \"today we have poisoned tacos,\" my cousin Beto turned pale. My uncle burst out laughing and explained the only poison was the flavor, because nobody could stop eating. Beto ate four and then apologized to his plate. Since then, in our family, that name means there is a party in the kitchen."
   }
  },
  "gorditas-de-horno": {

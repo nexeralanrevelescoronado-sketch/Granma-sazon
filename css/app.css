@@ -312,3 +312,4 @@ a.modo{text-decoration:none;color:inherit}
 .permisos li:last-child{border-bottom:0;padding-bottom:0}
 .permisos .estado{font-weight:700}
 .permisos .estado.ok{color:var(--verde-ink)}
+.rejilla>.btn{padding:0 12px;white-space:nowrap}   /* los dos botones del inicio caben en un renglón a 360 px */

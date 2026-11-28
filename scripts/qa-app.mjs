@@ -11,7 +11,7 @@ const srv = createServer((q, s) => { let p = new URL(q.url, 'http://x').pathname
   let cuerpo = readFileSync(f); if (p === '/sw.js' && version) cuerpo = Buffer.from(String(cuerpo).replace(/const VERSION = '[^']+'/, `const VERSION = '${version}'`));
   s.writeHead(200, { 'Content-Type': TIPOS[extname(f)] || 'application/octet-stream', 'Cache-Control': 'no-store' }); s.end(cuerpo); }).listen(0);
 const B = `http://localhost:${srv.address().port}/`, fallas = [], ok = (c, t) => { console.log(`  ${c ? '✔' : '✘'} ${t}`); if (!c) fallas.push(t); };
-const estado = (extra = {}) => JSON.stringify({ v: 1, perfil: { aprende: 'en', interes: 'cocina', cocina: 'mexicana', nombre: 'Ana', listo: true, legal: '2026-11-27', ...extra }, xp: 0, racha: { n: 0, ultimo: null }, caps: { 1: { hecho: true }, 2: { hecho: true }, 3: { hecho: true } }, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, pruebas: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false, vozV: 2 }, constancia: { fecha: null } });
+const estado = (extra = {}) => JSON.stringify({ v: 1, perfil: { aprende: 'en', interes: 'cocina', cocina: 'mexicana', nombre: 'Ana', listo: true, legal: '2026-11-28', ...extra }, xp: 0, racha: { n: 0, ultimo: null }, caps: { 1: { hecho: true }, 2: { hecho: true }, 3: { hecho: true } }, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, pruebas: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false, vozV: 2 }, constancia: { fecha: null } });
 const b = await chromium.launch({ args: ['--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream'] }), errores = [];
 const nueva = async (op = {}) => { const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, ...op }); const pg = await ctx.newPage(); pg.on('pageerror', (e) => errores.push(e.message)); return pg; };
 const fueraDeCitas = (t) => t.replace(/«[^»]*»|“[^”]*”|"[^"]*"/g, '');
@@ -165,7 +165,7 @@ console.log('6) Aviso de privacidad y términos al empezar; avisos de Granma des
   ok(/Granma te avisará/.test(await pg.locator('.aviso-local').textContent()) && pedidos.filter((x) => x.ruta.endsWith('/alta')).map((x) => x.cuerpo.tipo).join() === 'practicar,clase' && (await pg.evaluate(() => window.__pidio)) === 1, 'al tocar «Activar los que marqué»: se pide permiso una vez y quedan los dos avisos');
   await pg.click('[data-sig]'); await pg.click('[data-empezar]'); await pg.waitForSelector('#cta');
   const S = await pg.evaluate(() => JSON.parse(localStorage.getItem('granma:v1')));
-  ok(S.perfil.legal === '2026-11-27' && Date.now() - new Date(S.perfil.legalFecha) < 60000 && S.perfil.trato === 'mijo' && S.ajustes.avisos?.practicar && S.ajustes.avisos?.clase, 'queda anotado en el teléfono qué versión aceptó y cuándo, junto con sus avisos');
+  ok(S.perfil.legal === '2026-11-28' && Date.now() - new Date(S.perfil.legalFecha) < 60000 && S.perfil.trato === 'mijo' && S.ajustes.avisos?.practicar && S.ajustes.avisos?.clase, 'queda anotado en el teléfono qué versión aceptó y cuándo, junto con sus avisos');
   await pg.goto(B + '#/privacidad'); await pg.waitForSelector('.legal');
   ok(/Aviso de privacidad/.test(await pg.locator('h1').textContent()) && /Lo aceptaste el/.test(await pg.locator('main').textContent()), 'en Perfil se puede volver a leer, con la fecha en que lo aceptó');
   await pg.context().close(); }
@@ -177,7 +177,7 @@ console.log('6) Aviso de privacidad y términos al empezar; avisos de Granma des
   await pg.goto(B + '#/terminos'); await pg.waitForSelector('.legal'); ok(/Términos de uso/.test(await pg.locator('h1').textContent()), 'pero sí puede leer los términos antes de aceptar');
   await pg.goto(B + '#/onboarding?aceptar'); await pg.waitForSelector('[data-acepto]'); await pg.check('[data-acepto]'); await pg.click('[data-sig]'); await pg.waitForSelector('#cta');
   const S = await pg.evaluate(() => JSON.parse(localStorage.getItem('granma:v1')));
-  ok(S.perfil.legal === '2026-11-27' && S.xp === 67 && S.perfil.trato === 'mija' && S.caps[1]?.hecho, 'al aceptar vuelve al inicio con todo su avance intacto');
+  ok(S.perfil.legal === '2026-11-28' && S.xp === 67 && S.perfil.trato === 'mija' && S.caps[1]?.hecho, 'al aceptar vuelve al inicio con todo su avance intacto');
   await pg.context().close(); }
 
 ok(errores.length === 0, 'sin errores de JS' + (errores.length ? ': ' + errores.slice(0, 3).join(' | ') : ''));

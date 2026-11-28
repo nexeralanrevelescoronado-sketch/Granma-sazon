@@ -11,7 +11,7 @@ const TIPOS = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '
 const srv = createServer((req, res) => { let p = new URL(req.url, 'http://x').pathname; if (p.endsWith('/')) p += 'index.html'; const f = join(RAIZ, p);
   if (!existsSync(f) || statSync(f).isDirectory()) { res.writeHead(404); return res.end(); } res.writeHead(200, { 'Content-Type': TIPOS[extname(f)] || 'application/octet-stream' }); res.end(readFileSync(f)); }).listen(0);
 const B = `http://localhost:${srv.address().port}/`;
-const estado = { v: 1, perfil: { aprende: 'en', interes: 'trabajo', cocina: 'mexicana', nombre: 'Ana', listo: true, legal: '2026-11-27' }, xp: 0, racha: { n: 0, ultimo: null }, vidas: { n: 5, t: Date.now() }, caps: {}, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false }, constancia: { fecha: null } };
+const estado = { v: 1, perfil: { aprende: 'en', interes: 'trabajo', cocina: 'mexicana', nombre: 'Ana', listo: true, legal: '2026-11-28' }, xp: 0, racha: { n: 0, ultimo: null }, vidas: { n: 5, t: Date.now() }, caps: {}, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false }, constancia: { fecha: null } };
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 3 }); const pg = await ctx.newPage();
 await pg.addInitScript(() => { window.__m = { cls: 0, largas: [], cuadros: [] };

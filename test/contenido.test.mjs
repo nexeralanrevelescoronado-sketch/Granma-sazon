@@ -472,7 +472,7 @@ test('Cloudflare Pages: ningún archivo pasa de 25 MiB, los modelos van partidos
   }
   assert.ok(/PIEZA = 4 \* 1024 \* 1024/.test(leer('js/descargas.js')), 'el pedazo de Pages mide lo mismo que el que pide la app');
   assert.ok(!existsSync(join(RAIZ, 'dist/scripts')) && !existsSync(join(RAIZ, 'dist/graphify-out')) && !existsSync(join(RAIZ, 'dist/.claude')), 'nada interno se publica');
-  const rutas = JSON.parse(leer('dist/_routes.json')); assert.deepEqual(rutas.include, ['/assets/oido/modelo-en.tar.gz', '/assets/oido/modelo-es.tar.gz', '/api/avisos/*', '/api/cuenta', '/api/cuenta/*'], 'solo los modelos, los avisos y la cuenta pasan por funciones; lo demás es estático');
+  const rutas = JSON.parse(leer('dist/_routes.json')); assert.deepEqual(rutas.include, ['/assets/oido/modelo-en.tar.gz', '/assets/oido/modelo-es.tar.gz', '/api/avisos/*', '/api/cuenta', '/api/cuenta/*', '/api/loteria/*'], 'solo los modelos, los avisos, la cuenta y la lotería en familia pasan por funciones; lo demás es estático');
   const fn = leer('functions/assets/oido/[archivo].js'); assert.ok(/PERMITIDOS = new Set\(\['modelo-en\.tar\.gz', 'modelo-es\.tar\.gz'\]\)/.test(fn) && /206/.test(fn) && /content-range/.test(fn));
   const w = leer('wrangler.toml'); assert.ok(/pages_build_output_dir = "\.\/dist"/.test(w) && !/r2_buckets/.test(w), 'no hace falta R2');
 });
@@ -820,6 +820,10 @@ test('lotería de Granma: cartas propias, misma partida con la misma semilla, re
   // con la misma semilla, la misma partida (para jugar en familia)
   assert.deepEqual(armarPartida({ nivel: 3, semilla: 42, ids }), armarPartida({ nivel: 3, semilla: 42, ids }));
   assert.notDeepEqual(armarPartida({ nivel: 3, semilla: 42, ids }).llamadas, armarPartida({ nivel: 3, semilla: 43, ids }).llamadas);
+  // en familia: mismas cartas cantadas, cada quien su tabla, y toda carta de cualquier tabla sí se canta
+  const a = armarPartida({ nivel: 3, semilla: 9, ids, jugador: 0 }), b = armarPartida({ nivel: 3, semilla: 9, ids, jugador: 1 });
+  assert.deepEqual(a.llamadas, b.llamadas); assert.notDeepEqual(a.tabla, b.tabla); assert.ok(b.tabla.every((id) => b.llamadas.includes(id)));
+  const { IDS_CARTAS } = await import('../js/loteria.js'); assert.deepEqual(IDS_CARTAS, ids, 'el servidor conoce las mismas 42 cartas');
   NIVELES.forEach((N, i) => {
     const p = armarPartida({ nivel: i + 1, semilla: 7, ids });
     assert.equal(p.tabla.length, N.lado * N.lado); assert.ok(p.tabla.every((id) => p.llamadas.includes(id)), 'toda carta de la tabla se canta');

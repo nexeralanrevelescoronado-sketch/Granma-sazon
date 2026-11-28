@@ -19,7 +19,7 @@ const CAPTURAS = process.argv[2];
 async function sesion(aprende, interes, caps, extra = {}) {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } }); const pg = await ctx.newPage(); pg.on('pageerror', (e) => errores.push(e.message));
   await pg.goto(B);
-  await pg.evaluate(([a, i, c, x]) => localStorage.setItem('granma:v1', JSON.stringify({ v: 1, perfil: { aprende: a, interes: i, cocina: 'mexicana', nombre: 'Ana', listo: true, legal: '2026-11-27' }, xp: 0, racha: { n: 0, ultimo: null }, caps: Object.fromEntries(c.map((k) => [k, { hecho: true }])), recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false }, constancia: { fecha: null }, ...x })), [aprende, interes, caps, extra]);
+  await pg.evaluate(([a, i, c, x]) => localStorage.setItem('granma:v1', JSON.stringify({ v: 1, perfil: { aprende: a, interes: i, cocina: 'mexicana', nombre: 'Ana', listo: true, legal: '2026-11-28' }, xp: 0, racha: { n: 0, ultimo: null }, caps: Object.fromEntries(c.map((k) => [k, { hecho: true }])), recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false }, constancia: { fecha: null }, ...x })), [aprende, interes, caps, extra]);
   await pg.reload(); return pg;
 }
 // diccionario de respuestas con lo aprendido hasta el capítulo n

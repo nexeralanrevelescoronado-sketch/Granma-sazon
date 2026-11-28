@@ -7,7 +7,7 @@ const TIPOS = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/cs
 const srv = createServer((q, s) => { let p = new URL(q.url, 'http://x').pathname; if (p.endsWith('/')) p += 'index.html'; const f = join(R, p); if (!existsSync(f) || statSync(f).isDirectory()) { s.writeHead(404); return s.end(); } s.writeHead(200, { 'Content-Type': TIPOS[extname(f)] || 'application/octet-stream' }); s.end(readFileSync(f)); }).listen(0);
 const B = `http://localhost:${srv.address().port}/`, fallas = [], ok = (c, t) => { console.log(`  ${c ? '✔' : '✘'} ${t}`); if (!c) fallas.push(t); };
 const J = (f) => JSON.parse(readFileSync(join(R, f), 'utf8')), h2 = J('data/historia2.json'), reglas = J('data/reglas.json'), platicas = J('data/platicas.json'), col = J('data/coloquial.json');
-const estado = (ap, caps = {}) => JSON.stringify({ v: 1, perfil: { aprende: ap, interes: 'biblia', cocina: 'mexicana', nombre: 'Ana', listo: true, legal: '2026-11-27' }, xp: 0, racha: { n: 0, ultimo: null }, caps, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, pruebas: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false, vozV: 2, oido: 'local' }, constancia: { fecha: null } });
+const estado = (ap, caps = {}) => JSON.stringify({ v: 1, perfil: { aprende: ap, interes: 'biblia', cocina: 'mexicana', nombre: 'Ana', listo: true, legal: '2026-11-28' }, xp: 0, racha: { n: 0, ultimo: null }, caps, recetas: {}, consejos: {}, cotorreos: {}, biblia: {}, insignias: {}, pruebas: {}, misiones: { fecha: '', prog: {}, cobradas: {} }, stats: { retoMejor: 0, retos: 0 }, ajustes: { sonido: false, voz: false, vozV: 2, oido: 'local' }, constancia: { fecha: null } });
 const b = await chromium.launch(), errores = [];
 async function abrir(ap, caps) {
   const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true }); const pg = await ctx.newPage(); pg.on('pageerror', (e) => errores.push(e.message));
@@ -130,7 +130,7 @@ console.log('7) Historia 3 (las fiestas) y las recetas de fiesta');
   ok((await pg.locator('.globo .l2').allTextContents()).join(' ').includes('Dale, dale, dale, no pierdas el tino, porque si lo pierdes, pierdes el camino'), 'la piñata trae su verso completo');
   await pg.screenshot({ path: join(CAPT, '57-pinata.png'), fullPage: true });
   await ir(pg, '#/recetas', '.enlace-tarjeta');
-  ok((await pg.locator('.enlace-tarjeta').count()) === recs.length && recs.length === 13 && /fiestas|celebration/.test(await pg.locator('main h2.mt2').textContent()) && await sinDesborde(pg), '13 recetas; las de fiesta van juntas con su título');
+  ok((await pg.locator('.enlace-tarjeta').count()) === recs.length && recs.length >= 13 && /fiestas|celebration/.test(await pg.locator('main h2.mt2').allTextContents().then((t) => t.join(' '))) && await sinDesborde(pg), `${recs.length} recetas; las de fiesta van juntas con su título`);
   for (const id of ['rosca', 'chiles-en-nogada', 'birria']) {
     const r = recs.find((x) => x.id === id); await ir(pg, `#/receta/${id}`, '.pasos .paso');
     const v = await pg.evaluate(() => ({ pasos: document.querySelectorAll('.pasos .paso').length, texto: document.querySelector('main').textContent, cronos: document.querySelectorAll('[data-crono], .crono, [data-reset]').length }));

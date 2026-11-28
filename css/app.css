@@ -373,3 +373,12 @@ a.modo{text-decoration:none;color:inherit}
 @keyframes nop{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
 [data-loteria]:disabled{opacity:.55}
 [data-loteria].lista{box-shadow:0 0 0 4px var(--olla)}
+/* Lotería en familia: campos, código de la sala y lista de jugadores */
+.campo{display:grid;gap:6px;margin:10px 0}
+.campo span{font-weight:700}
+.campo input{min-height:48px;padding:0 14px;border-radius:12px;border:2px solid var(--crema-2);background:var(--blanco);font:inherit;font-size:1.1rem;color:var(--cafe)}
+.campo input:focus-visible{outline:3px solid var(--olla);outline-offset:2px}
+.codigo-sala{font-size:2.6rem;font-weight:800;letter-spacing:.3em;margin:4px 0 12px;color:var(--terra-ink);font-variant-numeric:tabular-nums}
+.jugadores{list-style:none;padding:0;margin:0 0 14px;display:grid;gap:6px}
+.jugadores li{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 14px;border-radius:12px;background:var(--blanco);box-shadow:var(--sombra);font-weight:700}
+.jugadores.chico li{min-height:36px;font-size:.9rem}

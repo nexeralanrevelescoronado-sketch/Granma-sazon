@@ -254,3 +254,12 @@ Pedido del dueño: una lotería que cuente su historia, donde Granma cante las c
 - **Misma semilla, misma partida:** con la misma semilla salen la misma tabla y el mismo orden; es la base de la fase C (jugar en familia).
 - **Pruebas:** `test/contenido.test.mjs` (cartas, semilla, tiempos de 55 a 90 s, subir y bajar) y `scripts/qa-loteria.mjs` (partida completa con el reloj adelantado, a 390 y 1280 px).
 - **Siguen:** fase C (jugar con familia y amigos con código; el dueño aprobó guardar un apodo y el resultado por 24 horas) y fase B (tu personaje con ropa tradicional que se gana).
+
+## Lotería en familia y amigos, fase C (28 nov)
+
+Aprobado por el dueño: guardar en el servidor solo un apodo y el resultado de la partida, por 24 horas.
+- **Cómo:** en la Lotería, «👨‍👩‍👧 Jugar con familia y amigos» → escribes un apodo → «Crear partida» da un código de 5 letras (sin 0/O ni 1/I/L) y un botón para invitar por WhatsApp con el enlace `granmasazon.app/#/loteria/CÓDIGO`. Quien abre el enlace ve el código ya escrito, pone su apodo y entra. Quien creó la partida toca «¡Empezar!» y, 5 segundos después, a todos les empieza a la misma hora (máximo 12 jugadores).
+- **Justo:** todos oyen las mismas cartas en el mismo orden; cada quien tiene su propia tabla, hecha solo con cartas que sí se cantan. El servidor revisa que un «¡Lotería!» sea de verdad (que las cartas de esa tabla ya hayan salido) y solo hay un ganador. Los demás ven «¡Lotería de <apodo>!». En familia no cambia el nivel propio: se ganan 20 XP o 5 por jugar.
+- **Servidor:** `functions/api/loteria/[[ruta]].js` con las tablas de `servidor/loteria.sql` en la misma base D1 (ya creadas). Apodos de 1 a 16 letras, sin palabras feas. Se guarda solo el apodo, cuántas lleva cada quien y quién ganó; los tokens solo como huella; todo se borra a las 24 horas.
+- **Privacidad:** nueva sección «Lotería en familia» en el aviso (versión 2026-11-28: quien ya jugaba lo vuelve a aceptar una vez) y en `docs/DERECHOS-Y-LICENCIAS.md`. La regla del servidor en `CLAUDE.md` ahora dice «solo tres cosas».
+- **Pruebas:** `test/loteria.test.mjs` (crear, unirse, solo quien la creó empieza, trampa rechazada, un solo ganador, se borra a las 24 h, solo apodos) y `scripts/qa-loteria-familia.mjs` (dos teléfonos en navegador con el servidor de verdad).

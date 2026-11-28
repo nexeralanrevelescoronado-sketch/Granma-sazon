@@ -808,8 +808,8 @@ test('nada que suene a veneno, muerte o violencia en nombres, historias ni cuent
 
 test('lotería de Granma: cartas propias, misma partida con la misma semilla, retadora pero ganable', async () => {
   const L = JSON.parse(leer('data/loteria.json')), { NIVELES, GRACIA, armarPartida, cartaEn, yaSalio, llena, siguienteNivel } = await import('../js/loteria.js');
-  assert.equal(L.cartas.length, 42); const ids = L.cartas.map((c) => c.id);
-  assert.equal(new Set(ids).size, 42, 'sin cartas repetidas');
+  assert.equal(L.cartas.length, 54); const ids = L.cartas.map((c) => c.id);
+  assert.equal(new Set(ids).size, 54, 'sin cartas repetidas');
   for (const c of L.cartas) {
     assert.ok(c.emoji && c.es && c.en && c.verso.es && c.verso.en, `${c.id}: carta completa`);
     assert.ok(c.verso.es.toLowerCase().includes(c.es.toLowerCase()) || c.id === 'elote', `${c.id}: el verso dice la palabra`);
@@ -823,7 +823,7 @@ test('lotería de Granma: cartas propias, misma partida con la misma semilla, re
   // en familia: mismas cartas cantadas, cada quien su tabla, y toda carta de cualquier tabla sí se canta
   const a = armarPartida({ nivel: 3, semilla: 9, ids, jugador: 0 }), b = armarPartida({ nivel: 3, semilla: 9, ids, jugador: 1 });
   assert.deepEqual(a.llamadas, b.llamadas); assert.notDeepEqual(a.tabla, b.tabla); assert.ok(b.tabla.every((id) => b.llamadas.includes(id)));
-  const { IDS_CARTAS } = await import('../js/loteria.js'); assert.deepEqual(IDS_CARTAS, ids, 'el servidor conoce las mismas 42 cartas');
+  const { IDS_CARTAS } = await import('../js/loteria.js'); assert.deepEqual(IDS_CARTAS, ids, 'el servidor conoce las mismas 54 cartas');
   NIVELES.forEach((N, i) => {
     const p = armarPartida({ nivel: i + 1, semilla: 7, ids });
     assert.equal(p.tabla.length, N.lado * N.lado); assert.ok(p.tabla.every((id) => p.llamadas.includes(id)), 'toda carta de la tabla se canta');

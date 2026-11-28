@@ -427,6 +427,126 @@
     "es": "Tic, tac, ya es hora: ¡el reloj!",
     "en": "Tick, tock, the clock says it is time!"
    }
+  },
+  {
+   "id": "molcajete",
+   "emoji": "🪨",
+   "es": "molcajete",
+   "en": "stone mortar",
+   "verso": {
+    "es": "Muele la salsa en el molcajete, mijo.",
+    "en": "Mash the salsa in the stone mortar, dear."
+   }
+  },
+  {
+   "id": "comal",
+   "emoji": "🫓",
+   "es": "comal",
+   "en": "comal (griddle)",
+   "verso": {
+    "es": "Las tortillas se inflan en el comal.",
+    "en": "Tortillas puff up on the comal."
+   }
+  },
+  {
+   "id": "olla",
+   "emoji": "🍲",
+   "es": "olla",
+   "en": "clay pot",
+   "verso": {
+    "es": "Huele a frijoles en la olla de Granma.",
+    "en": "Beans smell lovely in Granma's clay pot."
+   }
+  },
+  {
+   "id": "pinata",
+   "emoji": "🪅",
+   "es": "piñata",
+   "en": "piñata",
+   "verso": {
+    "es": "Un golpecito más a la piñata, ¡que caen dulces!",
+    "en": "One more swing at the piñata: candy rains down!"
+   }
+  },
+  {
+   "id": "papel-picado",
+   "emoji": "🎏",
+   "es": "papel picado",
+   "en": "cut-paper banners",
+   "verso": {
+    "es": "Bailan al viento los papel picado de colores.",
+    "en": "Colorful cut-paper banners dance in the breeze."
+   }
+  },
+  {
+   "id": "rebozo",
+   "emoji": "🧣",
+   "es": "rebozo",
+   "en": "rebozo (shawl)",
+   "verso": {
+    "es": "Un abrazo tibio de rebozo.",
+    "en": "A warm hug wrapped in a rebozo."
+   }
+  },
+  {
+   "id": "sombrero",
+   "emoji": "👒",
+   "es": "sombrero",
+   "en": "sombrero",
+   "verso": {
+    "es": "Contra el sol de la tarde, ¡el sombrero!",
+    "en": "Against the afternoon sun: the sombrero!"
+   }
+  },
+  {
+   "id": "canasta",
+   "emoji": "🧺",
+   "es": "canasta",
+   "en": "basket",
+   "verso": {
+    "es": "Va al mercado con su canasta llena de fruta.",
+    "en": "Off to the market, basket full of fruit."
+   }
+  },
+  {
+   "id": "jarrito",
+   "emoji": "🏺",
+   "es": "jarrito",
+   "en": "clay mug",
+   "verso": {
+    "es": "Chocolate calientito en un jarrito de barro.",
+    "en": "Warm chocolate in a little clay mug."
+   }
+  },
+  {
+   "id": "trompo",
+   "emoji": "🪀",
+   "es": "trompo",
+   "en": "spinning top",
+   "verso": {
+    "es": "Gira y gira el trompo sin parar.",
+    "en": "Round and round the spinning top goes."
+   }
+  },
+  {
+   "id": "balero",
+   "emoji": "🪃",
+   "es": "balero",
+   "en": "cup-and-ball toy",
+   "verso": {
+    "es": "Un, dos, tres: ¡el balero cae en la copa!",
+    "en": "One, two, three: the cup-and-ball lands in the cup!"
+   }
+  },
+  {
+   "id": "tortillero",
+   "emoji": "🫔",
+   "es": "tortillero",
+   "en": "tortilla warmer",
+   "verso": {
+    "es": "Tortillas tibias en su tortillero.",
+    "en": "Warm tortillas in their tortilla warmer."
+   }
   }
  ]
 }

@@ -20,8 +20,8 @@ export function azar(semilla) {
 }
 const barajar = (arr, r) => { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-/** Las 42 cartas de la app (el servidor las usa para revisar que un «¡Lotería!» sea de verdad; una prueba las compara con los datos). */
-export const IDS_CARTAS = ['elote', 'chile', 'jitomate', 'aguacate', 'cebolla', 'limon', 'pan', 'queso', 'huevo', 'leche', 'cafe', 'chocolate', 'miel', 'sandia', 'pina', 'mango', 'platano', 'fresa', 'taco', 'pastel', 'cuchara', 'abuela', 'abuelo', 'casa', 'sol', 'luna', 'estrella', 'corazon', 'flor', 'arbol', 'gallo', 'perro', 'gato', 'pajaro', 'pez', 'campana', 'guitarra', 'regalo', 'globo', 'nopal', 'mariposa', 'reloj'];
+/** Las 54 cartas de la app (el servidor las usa para revisar que un «¡Lotería!» sea de verdad; una prueba las compara con los datos). */
+export const IDS_CARTAS = ['elote', 'chile', 'jitomate', 'aguacate', 'cebolla', 'limon', 'pan', 'queso', 'huevo', 'leche', 'cafe', 'chocolate', 'miel', 'sandia', 'pina', 'mango', 'platano', 'fresa', 'taco', 'pastel', 'cuchara', 'abuela', 'abuelo', 'casa', 'sol', 'luna', 'estrella', 'corazon', 'flor', 'arbol', 'gallo', 'perro', 'gato', 'pajaro', 'pez', 'campana', 'guitarra', 'regalo', 'globo', 'nopal', 'mariposa', 'reloj', 'molcajete', 'comal', 'olla', 'pinata', 'papel-picado', 'rebozo', 'sombrero', 'canasta', 'jarrito', 'trompo', 'balero', 'tortillero'];
 
 /** Arma una partida: { tabla: [ids], llamadas: [ids], paso, lado, duracion }.
  *  Las cartas que se cantan son las mismas para todos los de la misma semilla; cada `jugador` (0, 1, 2…) tiene su propia tabla,

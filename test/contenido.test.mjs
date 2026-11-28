@@ -316,7 +316,7 @@ test('glosario al toque: toda palabra del contenido tiene su significado, en los
   const anda = (o) => { if (!o || typeof o !== 'object') return; if (Array.isArray(o)) return o.forEach(anda);
     for (const [k, v] of Object.entries(o)) { const l = k === 'en' || k === 'we' ? 'en' : k === 'es' || k === 'ws' ? 'es' : null;
       if (l) (Array.isArray(v) ? v : [v]).forEach((x) => (typeof x === 'string' ? suma(l, x) : anda(x))); else anda(v); } };
-  for (const f of ['historia', 'historia2', 'historia3', 'coloquial', 'reglas', 'platicas', 'consejos', 'cotorreo', 'recetas', 'biblia/ruta']) anda(JSON.parse(leer(`data/${f}.json`)));
+  for (const f of ['historia', 'historia2', 'historia3', 'coloquial', 'reglas', 'platicas', 'consejos', 'cotorreo', 'recetas', 'loteria', 'biblia/ruta']) anda(JSON.parse(leer(`data/${f}.json`)));
   for (const l of ['en', 'es']) assert.equal(faltan[l].size, 0, `faltan en scripts/datos/glosario/${l}.json: ${[...faltan[l]].join(', ')}`);
   for (const l of ['en', 'es']) for (const [w, s] of Object.entries(g[l])) assert.ok(s && s.length <= 60 && w === w.toLowerCase(), `glosa rara: ${w}`);
   globalThis.localStorage ||= { _d: {}, getItem(k) { return this._d[k] ?? null; }, setItem(k, v) { this._d[k] = v; } };
@@ -804,4 +804,33 @@ test('nada que suene a veneno, muerte o violencia en nombres, historias ni cuent
     assert.ok(!FEO.test(texto), `${r.id}: «${texto.match(FEO)?.[0]}» suena feo para una app de familias`);
   }
   assert.ok(!recetas.some((r) => r.id === 'tacos-envenenados'), 'los tacos envenenados no van');
+});
+
+test('lotería de Granma: cartas propias, misma partida con la misma semilla, retadora pero ganable', async () => {
+  const L = JSON.parse(leer('data/loteria.json')), { NIVELES, GRACIA, armarPartida, cartaEn, yaSalio, llena, siguienteNivel } = await import('../js/loteria.js');
+  assert.equal(L.cartas.length, 42); const ids = L.cartas.map((c) => c.id);
+  assert.equal(new Set(ids).size, 42, 'sin cartas repetidas');
+  for (const c of L.cartas) {
+    assert.ok(c.emoji && c.es && c.en && c.verso.es && c.verso.en, `${c.id}: carta completa`);
+    assert.ok(c.verso.es.toLowerCase().includes(c.es.toLowerCase()) || c.id === 'elote', `${c.id}: el verso dice la palabra`);
+  }
+  // nada de versos de barajas comerciales conocidas (propiedad de otros)
+  assert.ok(!/san pedro|cantarito|cobija de los pobres|don ferruco|el que le cant|clemente/i.test(JSON.stringify(L)), 'versos propios');
+  assert.ok(!/envenen|veneno|muert|borrach|diabl|sangr/i.test(JSON.stringify(L)), 'nada que suene feo');
+  // con la misma semilla, la misma partida (para jugar en familia)
+  assert.deepEqual(armarPartida({ nivel: 3, semilla: 42, ids }), armarPartida({ nivel: 3, semilla: 42, ids }));
+  assert.notDeepEqual(armarPartida({ nivel: 3, semilla: 42, ids }).llamadas, armarPartida({ nivel: 3, semilla: 43, ids }).llamadas);
+  NIVELES.forEach((N, i) => {
+    const p = armarPartida({ nivel: i + 1, semilla: 7, ids });
+    assert.equal(p.tabla.length, N.lado * N.lado); assert.ok(p.tabla.every((id) => p.llamadas.includes(id)), 'toda carta de la tabla se canta');
+    assert.equal(new Set(p.llamadas).size, p.llamadas.length, 'ninguna carta se canta dos veces');
+    const seg = (p.duracion - GRACIA) / 1000; assert.ok(seg >= 55 && seg <= 90, `nivel ${i + 1}: ${seg} s (retador pero se puede)`);
+    assert.ok(N.paso >= 2000, `nivel ${i + 1}: da tiempo de oír y buscar (≥ 2 s por carta)`);
+  });
+  assert.ok(NIVELES[0].paso > NIVELES.at(-1).paso, 'más avanzado, más rápido');
+  const p = armarPartida({ nivel: 1, semilla: 1, ids }), primera = p.llamadas[0];
+  assert.equal(cartaEn(p, -1), -1); assert.equal(cartaEn(p, 0), 0); assert.ok(yaSalio(p, primera, 0) && !yaSalio(p, p.llamadas[1], 0));
+  assert.ok(!llena(p, new Set(p.tabla.slice(1))) && llena(p, new Set(p.tabla)));
+  let r = {}; r = siguienteNivel(r, true); assert.equal(r.nivel, 2); r = siguienteNivel(r, false); assert.equal(r.nivel, 2); r = siguienteNivel(r, false); assert.equal(r.nivel, 1, 'dos seguidas mal: baja uno');
+  for (let i = 0; i < 9; i++) r = siguienteNivel(r, true); assert.equal(r.nivel, NIVELES.length, 'no pasa del último nivel');
 });

@@ -19,6 +19,7 @@ const rutas = {
   recetas: () => import('./vistas/recetas.js'),
   receta: () => import('./vistas/receta.js'),
   regiones: () => import('./vistas/regiones.js'),
+  loteria: () => import('./vistas/loteria.js'),
   consejos: () => import('./vistas/consejos.js'),
   consejo: () => import('./vistas/consejos.js'),
   cotorreo: () => import('./vistas/cotorreo.js'),

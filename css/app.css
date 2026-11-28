@@ -353,3 +353,23 @@ a.modo{text-decoration:none;color:inherit}
 .historia-receta ul.aprende li{display:flex;gap:6px;align-items:center;min-height:44px;padding:0 12px;border-radius:999px;background:var(--crema-2);font-weight:700}
 .cuento-granma{background:var(--crema-2);border:2px dashed var(--olla)}
 .cuento-granma h2{margin:8px 0 6px}.cuento-granma p{margin:0 0 6px}
+/* Lotería de Granma: cartas propias (emoji + palabra), tabla de 3×3 o 4×4, frijolito al marcar. Solo transform y opacity. */
+.loteria .reto-tiempo{font-size:1.8rem}
+.reto-barra{height:8px;border-radius:999px;background:var(--crema-2);overflow:hidden;margin:6px 0 12px}
+.reto-barra i{display:block;height:100%;background:var(--olla);transform-origin:left;transition:transform .15s linear}
+.cantada{min-height:9.5rem;display:grid;place-items:center;gap:4px;text-align:center;padding:12px;border-radius:var(--r);background:var(--blanco);box-shadow:var(--sombra);margin-bottom:12px;position:relative}
+.cantada strong{font-size:2rem;line-height:1.1;color:var(--terra-ink)}
+.cantada em{font-size:.95rem}
+.cantada .cuenta{font-size:3rem;font-weight:800;color:var(--terra-ink)}
+.cantada .carta-num{font-size:.8rem;color:var(--muted);font-weight:700}
+.cantada .btn-icono{position:absolute;right:8px;top:8px}
+.tabla-loteria{display:grid;grid-template-columns:repeat(var(--lado),1fr);gap:8px;margin-bottom:12px}
+.casilla{position:relative;aspect-ratio:1;min-height:64px;border:3px solid var(--crema-2);border-radius:14px;background:var(--blanco);font-size:2.4rem;display:grid;place-items:center;cursor:pointer;padding:0}
+.tabla-loteria.cuatro .casilla{font-size:1.9rem}
+.casilla::after{content:'';position:absolute;width:42%;aspect-ratio:1.3;border-radius:50%;background:#6b3d22;box-shadow:inset -3px -3px 0 rgba(0,0,0,.25);opacity:0;transform:scale(.4);transition:opacity .18s ease-out,transform .18s ease-out}
+.casilla.marcada{border-color:var(--verde)}
+.casilla.marcada::after{opacity:.85;transform:scale(1)}
+@media (prefers-reduced-motion:no-preference){.casilla.nop{animation:nop .25s ease-out}}
+@keyframes nop{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+[data-loteria]:disabled{opacity:.55}
+[data-loteria].lista{box-shadow:0 0 0 4px var(--olla)}

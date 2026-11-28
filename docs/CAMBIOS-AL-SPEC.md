@@ -244,3 +244,13 @@ Pedido del dueño: «no metas nada de tacos envenenados ni nada que se escuche a
 - Se quitaron las leyendas con guerra o soldados: la de las **chalupas** (una batalla) y la del **asado de boda** (un general de la Revolución).
 - **Torta ahogada:** el nombre es real y se queda, pero ya no se traduce como «drowned» ni se explica «como si se ahogara»: «le dicen ahogada porque va bien bañada en salsa». El cuento se llama «La torta bañada de cariño».
 - Regla fija en la skill y una prueba que revisa nombres, historias y cuentos: nada de veneno, muerte, sangre, guerra, batallas, soldados, borrachos, diablos, ahogarse ni drogas.
+
+## Lotería con Granma, fase A: para jugar solo (28 nov)
+
+Pedido del dueño: una lotería que cuente su historia, donde Granma cante las cartas en inglés o en español, con tiempo retador pero ganable que se acorte al avanzar, y después jugar con familia y amigos.
+- **Cartas propias:** 42 cartas de la app (dibujo de emoji del teléfono + palabra en español e inglés) con versos inventados por Granma. No se usan las imágenes ni los versos de ninguna baraja comercial (esas tienen dueño y marca). Una prueba vigila que no se cuelen versos conocidos. Fuente: `scripts/datos/loteria.json`.
+- **Cómo se juega** (`#/loteria`, botón en Inicio): Granma canta cada carta en el idioma que escojas; la buscas en tu tabla y la tocas; solo se marca si ya salió; con la tabla llena se prende «¡Lotería!». La portada cuenta de dónde viene la lotería.
+- **Tiempo que se ajusta** (`js/loteria.js`): 5 niveles, de 3×3 con una carta cada 4 s (~72 s) a 4×4 con una cada 2.3 s (~64 s). Si ganas, subes; si pierdes dos seguidas, bajas uno. En los niveles altos la carta ya no se ve escrita: hay que oírla (si la voz está apagada, siempre se ve escrita).
+- **Misma semilla, misma partida:** con la misma semilla salen la misma tabla y el mismo orden; es la base de la fase C (jugar en familia).
+- **Pruebas:** `test/contenido.test.mjs` (cartas, semilla, tiempos de 55 a 90 s, subir y bajar) y `scripts/qa-loteria.mjs` (partida completa con el reloj adelantado, a 390 y 1280 px).
+- **Siguen:** fase C (jugar con familia y amigos con código; el dueño aprobó guardar un apodo y el resultado por 24 horas) y fase B (tu personaje con ropa tradicional que se gana).

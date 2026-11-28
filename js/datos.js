@@ -1,7 +1,7 @@
 // Carga de datos: primero lo que haya en Cache Storage (descargado), si no, la red.
 import { conTrato } from './state.js';
 // Contenido donde Granma le habla a la persona: ahí se aplica «mijo» o «mija» según lo que eligió. Los glosarios y la Biblia no se tocan.
-const CON_TRATO = /data\/(historia\d?|consejos|cotorreo|recetas|platicas|coloquial|reglas)\.json$/;
+const CON_TRATO = /data\/(historia\d?|consejos|cotorreo|recetas|platicas|coloquial|reglas|loteria)\.json$/;
 export class SinDescargar extends Error { constructor(ruta, paquete) { super('Sin descargar: ' + ruta); this.ruta = ruta; this.paquete = paquete; } }
 const memo = new Map();
 export async function cargarJSON(ruta, paquete) {
@@ -38,6 +38,8 @@ export const platicas = () => cargarJSON('data/platicas.json');
 export const recetas = () => cargarJSON('data/recetas.json', 'recetas');
 /** Recetas por región y por tema (Guadalajara, aguas, pozoles…): cada grupo con la lista de ids de sus recetas. */
 export const regiones = () => cargarJSON('data/regiones.json');
+/** Lotería de Granma: sus 42 cartas propias, con su verso en español e inglés. */
+export const loteria = () => cargarJSON('data/loteria.json');
 export const consejos = () => cargarJSON('data/consejos.json', 'consejos');
 export const cotorreos = () => cargarJSON('data/cotorreo.json', 'cotorreo');
 export const paquetes = () => cargarJSON('data/paquetes.json');

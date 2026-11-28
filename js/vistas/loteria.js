@@ -22,6 +22,12 @@ async function api(ruta, cuerpo) {
 export async function montar(main, { args = [] } = {}) {
   const S = estado(), datos = await loteria(), C = Object.fromEntries(datos.cartas.map((c) => [c.id, c]));
   S.loteria = { nivel: 1, ganadas: 0, jugadas: 0, malas: 0, ...(S.loteria || {}) };
+  const numero = Object.fromEntries(datos.cartas.map((c, i) => [c.id, i + 1]));
+  /** Una carta de lotería: marco de papel picado, número arriba, figura al centro y nombre abajo. Si trae ilustración, ella va de fondo. */
+  const carta = (id, { nombre = '', mini = false, oculta = false } = {}) => {
+    const c = C[id], img = c.img && !oculta;
+    return `<div class="carta${mini ? ' mini' : ''}${img ? ' con-img' : ''}${oculta ? ' oculta' : ''}" aria-hidden="true">${img ? `<img class="carta-img" src="${esc(c.img)}" width="400" height="600" alt="" decoding="async">` : ''}<div class="carta-in"><span class="carta-num">${oculta ? '?' : numero[id]}</span><span class="carta-fig">${img ? '' : oculta ? '🔊' : c.emoji}</span><span class="carta-nombre">${esc(nombre)}</span></div></div>`;
+  };
   let idioma = tgt(), reloj = 0, sondeo = 0, partida = null, familia = null;
   const otro = () => (idioma === 'es' ? 'en' : 'es');
   const conVoz = () => !!S.ajustes.voz;
@@ -130,7 +136,7 @@ export async function montar(main, { args = [] } = {}) {
       <div class="fila" style="justify-content:space-between"><span class="reto-tiempo" data-tiempo role="timer">${mmss(p.duracion / 1000)}</span><span class="muted">${familia ? `👨‍👩‍👧 ${esc(familia.codigo)} · ` : ''}${u('Nivel', 'Level')} ${nivel}</span></div>
       <div class="reto-barra"><i data-barra></i></div>
       <div class="cantada" data-cantada aria-live="polite"><span class="cuenta">${Math.max(1, Math.ceil((inicio - performance.now()) / 1000))}</span></div>
-      <div class="tabla-loteria ${tam}" style="--lado:${p.lado}">${p.tabla.map((id) => `<button class="casilla" data-c="${id}" aria-label="${esc(C[id][idioma])}"><span aria-hidden="true">${C[id].emoji}</span></button>`).join('')}</div>
+      <div class="tabla-loteria ${tam}" style="--lado:${p.lado}">${p.tabla.map((id) => `<button class="casilla" data-c="${id}" aria-label="${esc(C[id][idioma])}">${carta(id, { mini: true })}</button>`).join('')}</div>
       <button class="btn grande verde" data-loteria disabled>🎉 ¡Lotería!</button>
       <p class="muted centro chico" data-pista></p>
       ${familia ? '<ul class="jugadores chico" data-jugadores></ul>' : ''}</div>`;
@@ -141,9 +147,10 @@ export async function montar(main, { args = [] } = {}) {
   function pintarCantada(id) {
     const c = C[id], N = partida.nivel, caja = main.querySelector('[data-cantada]'); if (!caja) return;
     const escrita = !conVoz() || N <= 3, ayuda = N <= 2;
-    caja.innerHTML = `<span class="carta-num">${u('Carta', 'Card')} ${partida.ultima + 1} / ${partida.p.llamadas.length}</span>
+    caja.innerHTML = `${carta(id, { nombre: escrita ? c[idioma] : '', oculta: !escrita })}
+      <div class="info"><span class="avance">${u('Carta', 'Card')} ${partida.ultima + 1} / ${partida.p.llamadas.length}</span>
       ${escrita ? `<strong lang="${idioma}">${esc(c[idioma])}</strong>` : `<strong aria-label="${u('Escucha', 'Listen')}">🔊</strong>`}
-      ${ayuda ? `<span class="muted" lang="${otro()}">${esc(c[otro()])}</span><em lang="${idioma}">${esc(c.verso[idioma])}</em>` : ''}
+      ${ayuda ? `<span class="muted" lang="${otro()}">${esc(c[otro()])}</span><em lang="${idioma}">${esc(c.verso[idioma])}</em>` : ''}</div>
       ${conVoz() ? `<button class="btn-icono" data-otra-vez aria-label="${u('Oír otra vez', 'Hear again')}">🔁</button>` : ''}`;
     if (conVoz()) decir(c[idioma], idioma, 'granma');
   }

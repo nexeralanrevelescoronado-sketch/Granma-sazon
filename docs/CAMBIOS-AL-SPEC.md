@@ -263,3 +263,11 @@ Aprobado por el dueño: guardar en el servidor solo un apodo y el resultado de l
 - **Servidor:** `functions/api/loteria/[[ruta]].js` con las tablas de `servidor/loteria.sql` en la misma base D1 (ya creadas). Apodos de 1 a 16 letras, sin palabras feas. Se guarda solo el apodo, cuántas lleva cada quien y quién ganó; los tokens solo como huella; todo se borra a las 24 horas.
 - **Privacidad:** nueva sección «Lotería en familia» en el aviso (versión 2026-11-28: quien ya jugaba lo vuelve a aceptar una vez) y en `docs/DERECHOS-Y-LICENCIAS.md`. La regla del servidor en `CLAUDE.md` ahora dice «solo tres cosas».
 - **Pruebas:** `test/loteria.test.mjs` (crear, unirse, solo quien la creó empieza, trampa rechazada, un solo ganador, se borra a las 24 h, solo apodos) y `scripts/qa-loteria-familia.mjs` (dos teléfonos en navegador con el servidor de verdad).
+
+## Cartas de lotería dibujadas con CSS y listas para ilustración (28 nov)
+
+- **Qué cambia:** las cartas del juego ya no son solo un emoji: tienen marco de papel picado y flores en las esquinas (rojo oscuro y ocre), el **número arriba**, la figura al centro y el **nombre abajo** (en español o inglés). Todo en CSS propio, sin imágenes ni librerías (`.carta` en `css/app.css`, `carta()` en `js/vistas/loteria.js`).
+- **La carta que Granma canta** se ve grande, al lado de su palabra y su verso, y entra una vez (sube 10 px y aparece, 240 ms, ease-out; solo `transform` y `opacity`; nada con «reducir movimiento»). Las casillas se hunden un poquito al tocarlas (scale .97, 140 ms).
+- **En los niveles altos** la carta cantada va boca abajo: sin nombre y con «?» en lugar del número, para que no se pueda adivinar sin escuchar.
+- **Listas para las ilustraciones:** si existe `assets/loteria/<id>.webp`, el build lo detecta (`img` en `data/loteria.json`), lo mete al núcleo de la app y la carta lo usa de fondo, con el número y el nombre en las franjas lisas de arriba y de abajo (justo como pide `docs/loteria-prompts.md`). Sin imagen, se queda el dibujo de CSS. Falta traer las 54 de Figma: esta sesión no puede bajarlas de figma.com porque el dueño no aprobó abrir la red.
+- **Pruebas:** `test/contenido.test.mjs` (carta oculta sin número, uso de `img`, movimiento permitido).

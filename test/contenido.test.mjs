@@ -838,3 +838,12 @@ test('lotería de Granma: cartas propias, misma partida con la misma semilla, re
   let r = {}; r = siguienteNivel(r, true); assert.equal(r.nivel, 2); r = siguienteNivel(r, false); assert.equal(r.nivel, 2); r = siguienteNivel(r, false); assert.equal(r.nivel, 1, 'dos seguidas mal: baja uno');
   for (let i = 0; i < 9; i++) r = siguienteNivel(r, true); assert.equal(r.nivel, NIVELES.length, 'no pasa del último nivel');
 });
+
+test('lotería: las cartas son de CSS, listas para ilustración, con movimiento permitido y sin delatar la carta oculta', () => {
+  const v = leer('js/vistas/loteria.js'), c = leer('css/app.css');
+  assert.ok(/oculta \? '\?' : numero\[id\]/.test(v), 'la carta boca abajo no enseña su número (se podría adivinar sin escuchar)');
+  assert.ok(/c\.img && !oculta/.test(v) && /carta-img/.test(v), 'si la carta trae ilustración (img), la usa en lugar del dibujo');
+  const bloque = c.slice(c.indexOf('/* Lotería de Granma: cartas de lotería'), c.indexOf('/* Lotería en familia: campos'));
+  assert.ok(/prefers-reduced-motion:no-preference\)\{\s*\.cantada \.carta\{animation:carta-entra 240ms/.test(bloque), 'la entrada de la carta solo corre con movimiento permitido y dura ≤ 300 ms');
+  assert.ok(!/infinite|transition:\s*all|box-shadow [0-9.]+m?s|scale\(0\)/.test(bloque), 'nada en bucle, sin «transition: all», sin animar sombras ni escalar desde 0');
+});

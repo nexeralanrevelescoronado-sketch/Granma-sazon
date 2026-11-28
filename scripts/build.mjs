@@ -29,6 +29,8 @@ const fuente = (n) => JSON.parse(readFileSync(j('scripts', 'datos', `${n}.json`)
 const historia2 = fuente('historia2');
 const historia3 = fuente('historia3');
 for (const n of ['historia2', 'historia3', 'coloquial', 'reglas', 'platicas', 'loteria']) escribir(j('data', `${n}.json`), n === 'historia2' ? historia2 : n === 'historia3' ? historia3 : fuente(n));
+// Lotería de Granma: si hay ilustración (assets/loteria/<id>.webp) la carta la usa; si no, se dibuja con CSS.
+{ const l = fuente('loteria'); for (const c of l.cartas) if (existsSync(j('assets', 'loteria', `${c.id}.webp`))) c.img = `assets/loteria/${c.id}.webp`; escribir(j('data', 'loteria.json'), l); }
 escribir(j('data', 'recetas.json'), recetas);
 // Recetas por región y por tema: cada grupo apunta a recetas que existen (las que aún no se escriben salen «Próximamente»).
 const regiones = fuente('regiones');
@@ -134,6 +136,7 @@ escribir(j('sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmln
 const nucleo = [
   'index.html', 'manifest.webmanifest', 'data/paquetes.json', 'data/audios.json', 'data/glosario.json', 'data/coloquial.json', 'data/reglas.json', 'data/platicas.json', 'data/regiones.json', 'data/loteria.json',
   'demo-animaciones.html', ...listar(j('css')).map(url), ...listar(j('js')).map(url), ...listar(j('assets', 'animaciones')).map(url),
+  ...(existsSync(j('assets', 'loteria')) ? listar(j('assets', 'loteria'), (f) => f.endsWith('.webp')).map(url) : []),
   ...listar(j('assets', 'personajes'), (f) => /\/(granma-(contenta|hablando|carinosa|pensando|aplaudiendo)|abuelo-(serio|hablando|sonrisa|asintiendo|aconsejando))\.svg$/.test(f.split(sep).join('/'))).map(url),
   ...listar(j('assets', 'logo')).map(url),
   ...listar(j('assets', 'iconos'), (f) => !/og-1200/.test(f)).map(url),

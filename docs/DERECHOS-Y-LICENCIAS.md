@@ -13,6 +13,7 @@ la app se vende, un abogado) sepa qué hay, de quién es y qué falta. Se actual
 | Historia 2, pláticas, frases coloquiales y reglas | `scripts/datos/*.json` | Escritas para la app. Los versículos de la Historia 2 no se escriben: solo se guarda la cita y el texto se lee de RV1909/KJV. Los chistes de ejemplo son juegos de palabras populares, sin autor |
 | Historia 3 y recetas de fiesta | `scripts/datos/historia3.json`, `recetas-fiestas.json` | Escritas para la app con los recuerdos del dueño. El verso de la piñata («Dale, dale, dale…») es un canto tradicional mexicano sin autor conocido; es la única letra de canción que se cita |
 | Recetas | `scripts/datos/recetas.mjs` | Redacción propia de platillos tradicionales (la lista de ingredientes de un platillo tradicional no tiene dueño; la redacción sí es nuestra) |
+| Ilustraciones de la Lotería | `assets/loteria/` | Generadas con IA (Figma, con el plan del dueño) a partir de descripciones propias de `docs/loteria-prompts.md`; sin texto, sin personajes ni marcas ajenas y sin parecerse a ninguna baraja comercial. En la app se rotulan «Ilustración generada con IA». Falta confirmar con los términos de Figma el uso comercial de lo generado |
 | Animaciones, sonidos | `assets/animaciones/`, `js/sound.js` | Los sonidos se sintetizan en el teléfono: no hay archivos de audio ni música de terceros |
 | Tipografías | — | Solo las del sistema del teléfono (Georgia, system-ui). No se distribuye ninguna fuente |
 | Fotos | — | No hay fotos. Si se agregan, deben ser del dueño o con permiso por escrito |

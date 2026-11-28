@@ -440,7 +440,7 @@ test('derechos: nada de terceros fuera del Oído, sin peticiones externas y con 
   const doc = leer('docs/DERECHOS-Y-LICENCIAS.md'); for (const t of ['Apache-2.0', 'Reina-Valera 1909', 'IMPI', 'No es asesoría legal']) assert.ok(doc.includes(t), t);
   const css = leer('css/app.css') + leer('assets/animaciones/animaciones.css'); assert.ok(!/@font-face|@import|url\(\s*["']?https?:/.test(css), 'sin tipografías ni hojas ajenas');
   const html = leer('index.html'); assert.ok(!/<script[^>]+src=["']https?:|<link[^>]+href=["']https?:\/\/(?!nexeralanrevelescoronado-sketch\.github\.io|granma-sazon\.pages\.dev|granmasazon\.app)/.test(html), 'index.html no carga nada de otros sitios');
-  const permitidos = /^assets\/(oido|iconos|logo|personajes|animaciones)\//;
+  const permitidos = /^assets\/(oido|iconos|logo|personajes|animaciones|loteria)\//;
   for (const f of readdirSync(join(RAIZ, 'assets'), { recursive: true }).map((x) => 'assets/' + String(x).split('\\').join('/'))) assert.ok(permitidos.test(f) || !f.includes('.'), `archivo fuera de inventario: ${f}`);
   const lic = leer('assets/oido/LICENCIAS.md'); assert.ok(/vosk-model-small-es-0\.42/.test(lic) && !/modelo-es\.tar\.gz` \| `vosk-model-small-es-0\.3/.test(lic), 'el español que se distribuye es el 0.42, con licencia publicada');
   for (const f of readdirSync(join(RAIZ, 'js'), { recursive: true }).filter((x) => String(x).endsWith('.js'))) { const t = leer('js/' + f); assert.ok(!/google-analytics|googletagmanager|facebook\.net|doubleclick|hotjar/.test(t), `${f}: sin rastreadores`); }
@@ -808,8 +808,8 @@ test('nada que suene a veneno, muerte o violencia en nombres, historias ni cuent
 
 test('lotería de Granma: cartas propias, misma partida con la misma semilla, retadora pero ganable', async () => {
   const L = JSON.parse(leer('data/loteria.json')), { NIVELES, GRACIA, armarPartida, cartaEn, yaSalio, llena, siguienteNivel } = await import('../js/loteria.js');
-  assert.equal(L.cartas.length, 42); const ids = L.cartas.map((c) => c.id);
-  assert.equal(new Set(ids).size, 42, 'sin cartas repetidas');
+  assert.equal(L.cartas.length, 54); const ids = L.cartas.map((c) => c.id);
+  assert.equal(new Set(ids).size, 54, 'sin cartas repetidas');
   for (const c of L.cartas) {
     assert.ok(c.emoji && c.es && c.en && c.verso.es && c.verso.en, `${c.id}: carta completa`);
     assert.ok(c.verso.es.toLowerCase().includes(c.es.toLowerCase()) || c.id === 'elote', `${c.id}: el verso dice la palabra`);
@@ -823,7 +823,7 @@ test('lotería de Granma: cartas propias, misma partida con la misma semilla, re
   // en familia: mismas cartas cantadas, cada quien su tabla, y toda carta de cualquier tabla sí se canta
   const a = armarPartida({ nivel: 3, semilla: 9, ids, jugador: 0 }), b = armarPartida({ nivel: 3, semilla: 9, ids, jugador: 1 });
   assert.deepEqual(a.llamadas, b.llamadas); assert.notDeepEqual(a.tabla, b.tabla); assert.ok(b.tabla.every((id) => b.llamadas.includes(id)));
-  const { IDS_CARTAS } = await import('../js/loteria.js'); assert.deepEqual(IDS_CARTAS, ids, 'el servidor conoce las mismas 42 cartas');
+  const { IDS_CARTAS } = await import('../js/loteria.js'); assert.deepEqual(IDS_CARTAS, ids, 'el servidor conoce las mismas 54 cartas');
   NIVELES.forEach((N, i) => {
     const p = armarPartida({ nivel: i + 1, semilla: 7, ids });
     assert.equal(p.tabla.length, N.lado * N.lado); assert.ok(p.tabla.every((id) => p.llamadas.includes(id)), 'toda carta de la tabla se canta');

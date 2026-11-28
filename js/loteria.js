@@ -20,11 +20,16 @@ export function azar(semilla) {
 }
 const barajar = (arr, r) => { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-/** Arma una partida: { tabla: [ids], llamadas: [ids], paso, lado, duracion }. Toda carta de la tabla sí se canta. */
-export function armarPartida({ nivel = 1, semilla = Date.now(), ids }) {
+/** Las 42 cartas de la app (el servidor las usa para revisar que un «¡Lotería!» sea de verdad; una prueba las compara con los datos). */
+export const IDS_CARTAS = ['elote', 'chile', 'jitomate', 'aguacate', 'cebolla', 'limon', 'pan', 'queso', 'huevo', 'leche', 'cafe', 'chocolate', 'miel', 'sandia', 'pina', 'mango', 'platano', 'fresa', 'taco', 'pastel', 'cuchara', 'abuela', 'abuelo', 'casa', 'sol', 'luna', 'estrella', 'corazon', 'flor', 'arbol', 'gallo', 'perro', 'gato', 'pajaro', 'pez', 'campana', 'guitarra', 'regalo', 'globo', 'nopal', 'mariposa', 'reloj'];
+
+/** Arma una partida: { tabla: [ids], llamadas: [ids], paso, lado, duracion }.
+ *  Las cartas que se cantan son las mismas para todos los de la misma semilla; cada `jugador` (0, 1, 2…) tiene su propia tabla,
+ *  hecha solo con cartas que sí se cantan. */
+export function armarPartida({ nivel = 1, semilla = Date.now(), ids = IDS_CARTAS, jugador = 0 }) {
   const N = NIVELES[Math.min(NIVELES.length, Math.max(1, nivel)) - 1], r = azar(semilla);
-  const todas = barajar(ids, r), tabla = todas.slice(0, N.lado * N.lado), relleno = todas.slice(tabla.length, tabla.length + N.relleno);
-  const llamadas = barajar([...tabla, ...relleno], r);
+  const monton = barajar(ids, r).slice(0, N.lado * N.lado + N.relleno);
+  const llamadas = barajar(monton, r), tabla = barajar(monton, azar((Number(semilla) >>> 0) ^ Math.imul(jugador + 1, 0x9E3779B1))).slice(0, N.lado * N.lado);
   return { tabla, llamadas, paso: N.paso, lado: N.lado, duracion: llamadas.length * N.paso + GRACIA };
 }
 

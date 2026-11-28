@@ -45,6 +45,7 @@ El modelo de español es el **0.42**, bajado de la página oficial, donde consta
 | GitHub Pages (respaldo) | Solo si se abre la dirección de respaldo | GitHub registra las visitas como cualquier hospedaje |
 | Cloudflare (hospedaje y recordatorio) | Al abrir la app, y solo si se activa el recordatorio diario | Cloudflare registra las visitas como cualquier hospedaje. El recordatorio guarda en una base propia (D1) la dirección de avisos del teléfono y la hora |
 | Servicio de avisos del navegador | Solo con el recordatorio diario activado | Google, Apple, Mozilla o Microsoft entregan el aviso al teléfono. El aviso viaja sin contenido |
+| Lotería en familia (opcional) | Solo si la persona crea una partida o entra con código | En la base D1 se guarda el apodo (no el nombre), cuántas cartas lleva y quién ganó; se borra solo a las 24 horas |
 | Cuenta con Google (opcional) | Solo si la persona toca «Entrar con Google» | Google confirma que es ella (permiso `openid`: sin correo ni nombre). En la base D1 se guarda una huella del identificador de Google y el avance, sin el nombre de la constancia ni los avisos. Se borra con «Borrar mi cuenta» |
 
 La app **no tiene analítica, anuncios ni cookies de rastreo**. El avance vive en el teléfono; solo si la persona entra con Google se guarda también en su cuenta (la única cookie es la de esa sesión, `HttpOnly`, y no rastrea).
@@ -76,3 +77,9 @@ al borrar el progreso, cuando el teléfono deja de existir para el servicio de a
 
 Nada de terceros entra sin: (a) licencia escrita o dominio público comprobable, (b) su fila en este documento, y (c) si es un archivo,
 su huella en `assets/oido/LICENCIAS.md` o equivalente. Fotos, audios y música: solo propios o con permiso por escrito.
+
+## Lotería de Granma: cartas propias
+
+El juego de la lotería es de todos, pero las imágenes y los versos de las barajas comerciales tienen dueño y marca. La Lotería de Granma usa
+42 cartas propias: el dibujo es el emoji del teléfono (cada sistema dibuja el suyo, de uso libre para mostrar texto) y la palabra, con versos
+inventados por Granma (`scripts/datos/loteria.json`). Una prueba vigila que no se cuelen versos conocidos de otras barajas.
